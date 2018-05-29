@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name map
- * @since v0.6.0
+ * @since v0.1.0
  * @category Array
  * @sig (a -> b) -> f a -> f b
  * @description

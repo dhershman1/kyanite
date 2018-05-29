@@ -1,6 +1,6 @@
 /**
  * @name first
- * @since v0.4.0
+ * @since v0.1.0
  * @category Array
  * @sig [a] -> a | Undefined
  * @description Grabs the first index of a passed array or string

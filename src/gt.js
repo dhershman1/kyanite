@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name gt
- * @since v3.0.0
+ * @since v0.1.0
  * @category Function
  * @sig a -> a -> Boolean
  * @param {Any} a Value to determine if it is greater than the other

@@ -3,7 +3,7 @@ import isNil from './isNil'
 
 /**
  * @name path
- * @since v3.0.0
+ * @since v0.1.0
  * @category Object
  * @sig (a -> Array) -> Object -> a | Boolean
  * @description Find an item based on the function sent in and its list

@@ -2,7 +2,7 @@ import last from './last'
 
 /**
  * @name max
- * @since v1.0.0
+ * @since v0.1.0
  * @category Array
  * @description
  * Goes through an array of values and grabs the last value of the array when it's been sorted

@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name find
- * @since v0.2.0
+ * @since v0.1.0
  * @category Array
  * @sig (a -> Boolean) -> [a] -> a | Boolean
  * @description Find an item based on the function sent in and its list

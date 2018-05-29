@@ -1,6 +1,6 @@
 /**
  * @name values
- * @since v2.0.3
+ * @since v0.1.0
  * @category Object
  * @sig Object { k: v } -> Array v
  * @description Grabs the values from a key value pair object

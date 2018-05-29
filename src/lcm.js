@@ -3,7 +3,7 @@ import gcd from './gcd'
 
 /**
  * @name lcm
- * @since v2.0.0
+ * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
  * @description Finds the least common multiple of the provided numbers

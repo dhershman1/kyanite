@@ -3,7 +3,7 @@ import not from './not'
 
 /**
  * @name complement
- * @since v0.6.0
+ * @since v0.1.0
  * @category Function
  * @description
  * Takes a function and returns a new function that when called returns the opposite truthy/falsy value of

@@ -3,7 +3,7 @@ import uniqBy from './uniqBy'
 
 /**
  * @name uniq
- * @since v2.0.0
+ * @since v0.1.0
  * @category Array
  * @sig (a -> b) -> Array a -> Array a
  * @description Returns an array of unique values from the applied function

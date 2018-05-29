@@ -1,7 +1,7 @@
 
 /**
  * @name height
- * @since v3.0.0
+ * @since v0.1.0
  * @category Object
  * @sig Object -> Number
  * @description Works a lot like length for arrays, but allows you to get the length of an object

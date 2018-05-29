@@ -2,7 +2,7 @@ import first from './first'
 
 /**
  * @name min
- * @since v1.0.0
+ * @since v0.1.0
  * @category Array
  * @description
  * Goes through an array of values and grabs the first value of the array when it's been sorted

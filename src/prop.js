@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name prop
- * @since v0.6.0
+ * @since v0.1.0
  * @category Object
  * @sig k -> {k: v} -> v | Undefined
  * @description

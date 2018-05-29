@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name pipe
- * @since v2.0.0
+ * @since v0.1.0
  * @category Function
  * @sig Array (a -> b) -> a -> b
  * @description Applies a sequence of transformations over a value.

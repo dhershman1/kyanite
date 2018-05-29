@@ -1,7 +1,7 @@
 
 /**
  * @name reverse
- * @since v2.0.0
+ * @since v0.1.0
  * @category Array
  * @sig Array a -> Array a
  * @description Accepts an array and returns a brand new reversed array

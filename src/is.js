@@ -6,7 +6,7 @@ import isNil from './isNil'
 
 /**
  * @name is
- * @since v0.5.0
+ * @since v0.1.0
  * @category Function
  * @sig (* -> {*}) -> a -> Boolean
  * @description

@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name intersection
- * @since v2.0.1
+ * @since v0.1.0
  * @category Array
  * @sig Array a -> Array a -> Array a
  * @description Returns an array containing elements present in both arrays

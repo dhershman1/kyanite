@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name sub
- * @since v2.0.0
+ * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
  * @description Subtracts the provided items

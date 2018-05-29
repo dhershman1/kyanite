@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name defaults
- * @since v0.5.0
+ * @since v0.1.0
  * @category Object
  * @sig {a} -> {b} -> {c}
  * @description

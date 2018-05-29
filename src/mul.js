@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name mul
- * @since v2.0.0
+ * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
  * @description Multiplies the provided items

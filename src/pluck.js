@@ -3,7 +3,7 @@ import isObject from './_internals/isObject'
 
 /**
  * @name pluck
- * @since v0.6.0
+ * @since v0.1.0
  * @category Object
  * @sig k -> f {k: v} -> f v
  * @description Recursively digs through objects to create a new list of values based on the provided property name and provided object

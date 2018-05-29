@@ -3,7 +3,7 @@ import curry from './curry'
 
 /**
  * @name plan
- * @since v3.0.0
+ * @since v0.1.0
  * @category Object
  * @sig Object -> Object -> Object
  * @description Uses a schema to apply a map like functionality on a given object

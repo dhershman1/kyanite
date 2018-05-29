@@ -2,7 +2,7 @@ import trim from './trim'
 
 /**
  * @name words
- * @since v2.0.0
+ * @since v0.1.0
  * @category String
  * @sig String -> Array String
  * @description

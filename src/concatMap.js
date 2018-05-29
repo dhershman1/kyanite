@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name concatMap
- * @since v3.0.0
+ * @since v0.1.0
  * @category Array
  * @sig Function -> Array -> Array
  * @description Take an array and concats the values into a new array after applying the function

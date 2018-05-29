@@ -32,7 +32,7 @@ const search = (haystack, needle) => {
 
 /**
  * @name fuzzySearch
- * @since v0.3.0
+ * @since v0.1.0
  * @sig a -> Boolean
  * @category Function
  * @description Fuzzy search setup to look find things fast and effective

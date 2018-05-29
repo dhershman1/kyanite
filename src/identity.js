@@ -1,7 +1,7 @@
 
 /**
  * @name identity
- * @since v2.0.0
+ * @since v0.1.0
  * @category Function
  * @sig a -> a
  * @description A function that returns the value passed to it

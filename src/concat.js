@@ -1,6 +1,6 @@
 /**
  * @name concat
- * @since v3.0.0
+ * @since v0.1.0
  * @category Array
  * @sig Array -> Array
  * @description Take an array and concats the values into a new array

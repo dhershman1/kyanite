@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name insert
- * @since v3.0.0
+ * @since v0.1.0
  * @category Array
  * @sig Number -> a -> [b]
  * @description Insert an item in a certain index of an array

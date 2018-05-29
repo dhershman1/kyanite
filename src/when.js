@@ -2,7 +2,7 @@ import curryN from './curryN'
 
 /**
  * @name when
- * @since v3.0.0
+ * @since v0.1.0
  * @category Function
  * @sig Function -> Function -> a -> b
  * @param {Function} fn The function that when passed, do the action

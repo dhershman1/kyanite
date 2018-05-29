@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name round
- * @since v2.2.0
+ * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
  * @description Round a number using exponent rounding

@@ -2,7 +2,7 @@ import isNil from './isNil'
 
 /**
  * @name compress
- * @since v0.3.0
+ * @since v0.1.0
  * @category Object
  * @sig Object a -> Object b
  * @description Takes an object and compresses it down removing undefined or null values

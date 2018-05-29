@@ -1,7 +1,7 @@
 
 /**
  * @name length
- * @since v2.0.0
+ * @since v0.1.0
  * @category Array
  * @sig Array a -> Number
  * @description Obtains the length of the passed array

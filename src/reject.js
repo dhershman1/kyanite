@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name reject
- * @since v0.5.0
+ * @since v0.1.0
  * @category Array
  * @sig Filterable f => (a → Boolean) → f a → f a
  * @description

@@ -3,7 +3,7 @@ import ensureArray from './ensureArray'
 
 /**
  * @name omit
- * @since v0.4.0
+ * @since v0.1.0
  * @category Object
  * @sig [String] -> {String: *} → {String: *}
  * @description Create a new Array/Object by omitting the requested values

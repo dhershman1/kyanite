@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name sort
- * @since v2.0.0
+ * @since v0.1.0
  * @category Array
  * @sig ((a, a) -> Number) -> Array a -> Array a
  * @description Uses a comparison function to sort an array

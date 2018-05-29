@@ -3,7 +3,7 @@ import uniq from './uniq'
 
 /**
  * @name union
- * @since v2.0.0
+ * @since v0.1.0
  * @category Array
  * @sig Array a -> Array a -> Array a
  * @description Creates a union between two arrays, removing duplicates from each

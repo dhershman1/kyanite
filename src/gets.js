@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name gets
- * @since v3.0.0
+ * @since v0.1.0
  * @category Object
  * @sig Object { k: v } -> Array v
  * @description Pulls a list of values from an object and returns them as an array

@@ -1,6 +1,6 @@
 /**
  * @name capitalize
- * @since v2.0.0
+ * @since v0.1.0
  * @category String
  * @sig String -> String
  * @description Capitalizes the first letter of a string

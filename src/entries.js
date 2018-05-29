@@ -1,6 +1,6 @@
 /**
  * @name entries
- * @since v2.0.3
+ * @since v0.1.0
  * @category Object
  * @sig Object { k: v } -> Array [k, v]
  * @description Creates an array of arrays with the key value pairs of an object

@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name includes
- * @since v2.0.0
+ * @since v0.1.0
  * @category String
  * @sig String -> String -> Boolean
  * @description

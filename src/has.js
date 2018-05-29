@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name has
- * @since v0.2.0
+ * @since v0.1.0
  * @category Object
  * @sig s -> {s: x} -> Boolean
  * @description Determines if the object has a property

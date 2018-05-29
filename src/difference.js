@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name difference
- * @since v2.0.0
+ * @since v0.1.0
  * @category Array
  * @sig Array a -> Array a -> Array a
  * @description Returns an array with the elements present in the first that are not in the second

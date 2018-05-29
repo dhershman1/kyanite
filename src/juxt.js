@@ -1,6 +1,6 @@
 /**
  * @name juxt
- * @since v0.5.0
+ * @since v0.1.0
  * @category Function
  * @sig (a, b, …, m) → n → ((a, b, …, m) → [n])
  * @description Applies the provided function and turns them into a single function you can use on a value

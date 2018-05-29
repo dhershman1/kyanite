@@ -1,7 +1,7 @@
 
 /**
  * @name compact
- * @since v3.0.0
+ * @since v0.1.0
  * @category Array
  * @sig Array -> Array
  * @description Takes an array of items and removes all of the falsy values
