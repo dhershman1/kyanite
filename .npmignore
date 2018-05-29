@@ -1,0 +1,10 @@
+.travis.yml
+src/
+rollup.config.js
+rollup.split.js
+webpack.config.js
+.eslintrc.js
+.eslintignore
+.gitignore
+scripts
+.nyc_output
