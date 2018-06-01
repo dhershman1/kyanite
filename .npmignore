@@ -8,3 +8,4 @@ webpack.config.js
 .gitignore
 scripts
 .nyc_output
+tests/
