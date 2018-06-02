@@ -1,7 +1,8 @@
-[![David](https://img.shields.io/david/silicate-tools/kyanite.svg?style=flat-square)](https://david-dm.org/silicate-tools/kyanite)
-[![David](https://img.shields.io/david/dev/silicate-tools/kyanite.svg?style=flat-square)](https://david-dm.org/silicate-tools/kyanite?type=dev)
-[![Travis](https://img.shields.io/travis/silicate-tools/kyanite.svg?style=flat-square)](https://travis-ci.org/silicate-tools/kyanite)
-[![Coverage Status](https://img.shields.io/coveralls/github/silicate-tools/kyanite.svg?style=flat-square)](https://coveralls.io/github/silicate-tools/kyanite?branch=master)
+[![npm](https://img.shields.io/npm/v/kyanite.svg?style=flat-square)](https://www.npmjs.com/package/kyanite)
+[![David](https://img.shields.io/david/dhershman1/kyanite.svg?style=flat-square)](https://david-dm.org/dhershman1/kyanite)
+[![David](https://img.shields.io/david/dev/dhershman1/kyanite.svg?style=flat-square)](https://david-dm.org/dhershman1/kyanite?type=dev)
+[![Travis](https://img.shields.io/travis/dhershman1/kyanite.svg?style=flat-square)](https://travis-ci.org/dhershman1/kyanite)
+[![Coverage Status](https://img.shields.io/coveralls/github/dhershman1/kyanite.svg?style=flat-square)](https://coveralls.io/github/dhershman1/kyanite?branch=master)
 
 # Kyanite
 
@@ -19,7 +20,7 @@ A light weight pure functional library with single type utility functions and it
 
 ## Changelog
 
-You can view the changelog here: https://github.com/silicate-tools/kyanite/blob/master/CHANGELOG.md
+You can view the changelog here: https://github.com/dhershman1/kyanite/blob/master/CHANGELOG.md
 
 ## Credit
 
@@ -66,9 +67,7 @@ Through the browser
 
 ## Documentation
 
-Create a new documentation setup for the library
-
-Will need to create a main documentation page for this on dusty.codes
+You can find the documentation here: https://www.dusty.codes/documentation/kyanite
 
 ## Modular
 
