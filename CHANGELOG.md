@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.1.0 (Unreleased)
+## v0.1.0
 
-### BREAKING CHANGES
+### BREAKING CHANGES (If converting from dusty-fns)
 
 - `fuzzySearch` params have been swapped, so now its `fuzzySearch(needle, haystack)` instead
 - Renamed `removeAt` to just  `remove`
