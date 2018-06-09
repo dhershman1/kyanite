@@ -20,6 +20,6 @@ import curry from './curry'
  * adder(3); // => 5
  * adder(2); // => 4
  */
-const add = (a, b) => a + b
+const add = (a, b) => Number(a) + Number(b)
 
 export default curry(add)
