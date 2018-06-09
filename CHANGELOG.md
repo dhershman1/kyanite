@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.2.0
+
+### New
+
+- Added `ascend` function which can be used with sort for ascending order
+- Added `descend` function which can be used with sort for descending order
+
+### Improved
+
+- Added ability to handle string numbers to `add` function
+
 ## v0.1.0
 
 ### BREAKING CHANGES (If converting from dusty-fns)

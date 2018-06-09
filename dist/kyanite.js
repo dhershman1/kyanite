@@ -20,7 +20,7 @@
   };
 
   var add = function add(a, b) {
-    return a + b;
+    return Number(a) + Number(b);
   };
   var add$1 = curry(add);
 
@@ -35,6 +35,11 @@
     });
   };
   var any$1 = curry(any);
+
+  var ascend = function ascend(a, b) {
+    return a < b ? -1 : a > b ? 1 : 0;
+  };
+  var ascend$1 = curry(ascend);
 
   var has = function has(prop, obj) {
     return Object.prototype.hasOwnProperty.call(obj, prop);
@@ -133,6 +138,11 @@
     }, data);
   };
   var defaults$1 = curry(defaults);
+
+  var descend = function descend(a, b) {
+    return a > b ? -1 : a < b ? 1 : 0;
+  };
+  var descend$1 = curry(descend);
 
   var difference = function difference(first, second) {
     return first.filter(function (x) {
@@ -774,6 +784,7 @@
   exports.add = add$1;
   exports.and = and$1;
   exports.any = any$1;
+  exports.ascend = ascend$1;
   exports.assign = assign;
   exports.capitalize = capitalize;
   exports.compact = compact;
@@ -786,6 +797,7 @@
   exports.curryN = curryN;
   exports.deepClone = deepClone;
   exports.defaults = defaults$1;
+  exports.descend = descend$1;
   exports.difference = difference$1;
   exports.div = div$1;
   exports.empty = empty;
