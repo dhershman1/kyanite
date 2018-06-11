@@ -1,6 +1,6 @@
 {
   "name": "kyanite",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A small library of pure functional utilities to make life easier and data better",
   "main": "dist/kyanite.min.js",
   "devDependencies": {
@@ -24,7 +24,6 @@
   },
   "scripts": {
     "prepack": "rollup -c rollup.split.js && node scripts/create-export.js && rollup -c && node scripts/docs.js",
-    "postpack": "npm run clean",
     "build": "rollup -c",
     "split": "rollup -c rollup.split.js",
     "scripts": "node scripts/create-export.js && node scripts/docs.js",
