@@ -8,6 +8,8 @@
 
 A light weight pure functional library with single type utility functions and it only depends on itself.
 
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+
 ## Contents
 
 - [Changelog](#changelog)
