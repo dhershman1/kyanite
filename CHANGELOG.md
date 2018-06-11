@@ -6,6 +6,7 @@
 
 - Added `ascend` function which can be used with sort for ascending order
 - Added `descend` function which can be used with sort for descending order
+- Added `both` function which accepts 2 functions and a value, returns true if both functions pass, otherwise returns false
 
 ### Improved
 

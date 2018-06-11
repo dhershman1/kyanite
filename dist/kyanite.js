@@ -60,6 +60,11 @@
     }, {});
   };
 
+  var both = function both(f, g, a) {
+    return f(a) && g(a);
+  };
+  var both$1 = curry(both);
+
   var capitalize = function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
@@ -786,6 +791,7 @@
   exports.any = any$1;
   exports.ascend = ascend$1;
   exports.assign = assign;
+  exports.both = both$1;
   exports.capitalize = capitalize;
   exports.compact = compact;
   exports.complement = complement$1;
