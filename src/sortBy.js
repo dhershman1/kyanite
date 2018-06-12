@@ -8,6 +8,7 @@ import curry from './curry'
  * @description Sorts through an array of values using the provided function on each value
  * @param {Function} fn The function to use on values within our array
  * @param {Array} list The array to run through
+ * @return {Array} A newly sorted array
  *
  * @example
  * sortBy(x => x.name, [
