@@ -149,6 +149,11 @@
   };
   var descend$1 = curry(descend);
 
+  var descendBy = function descendBy(fn, a, b) {
+    return descend$1(fn(a), fn(b));
+  };
+  var descendBy$1 = curry(descendBy);
+
   var difference = function difference(first, second) {
     return first.filter(function (x) {
       return second.indexOf(x) === -1;
@@ -288,6 +293,16 @@
     });
   };
   var gets$1 = curry(gets);
+
+  var groupBy = function groupBy(fn, list) {
+    return list.reduce(function (acc, v) {
+      var k = fn(v);
+      var tmp = {};
+      tmp[k] = has$1(k, acc) ? acc[k].concat(v) : [v];
+      return assign(acc, tmp);
+    }, {});
+  };
+  var groupBy$1 = curry(groupBy);
 
   var gt = function gt(a, b) {
     return a > b;
@@ -740,6 +755,19 @@
   };
   var sort$1 = curry(sort);
 
+  var sortBy = function sortBy(fn, list) {
+    return list.concat().sort(function (a, b) {
+      var x = fn(a);
+      var y = fn(b);
+      return x < y ? -1 : x > y ? 1 : 0;
+    });
+  };
+  var sortBy$1 = curry(sortBy);
+
+  var strip = function strip(a) {
+    return a.replace(/\s/g, '');
+  };
+
   var sub = function sub(a, b) {
     return a - b;
   };
@@ -817,6 +845,7 @@
   exports.deepClone = deepClone;
   exports.defaults = defaults$1;
   exports.descend = descend$1;
+  exports.descendBy = descendBy$1;
   exports.difference = difference$1;
   exports.div = div$1;
   exports.empty = empty;
@@ -830,6 +859,7 @@
   exports.fuzzySearch = fuzzySearch$1;
   exports.gcd = gcd$1;
   exports.gets = gets$1;
+  exports.groupBy = groupBy$1;
   exports.gt = gt$1;
   exports.gte = gte$1;
   exports.has = has$1;
@@ -875,6 +905,8 @@
   exports.slice = slice$1;
   exports.some = some$1;
   exports.sort = sort$1;
+  exports.sortBy = sortBy$1;
+  exports.strip = strip;
   exports.sub = sub$1;
   exports.trim = trim;
   exports.type = type;

@@ -1,10 +1,13 @@
 # Changelog
 
-## v0.3.0 (Unreleased)
+## v0.2.1 (Unreleased)
 
 ### New
 
 - Added `findIndex` function which takes a function and array and returns the first value from the array that passes the function
+- Added `groupBy` function which groups the values of an array into common properties of an object
+- Added `sortBy` function which sorts an array based on the values when ran through a function
+- Added `descendBy` function which accepts a function to run against values for sorting
 
 ## v0.2.0
 

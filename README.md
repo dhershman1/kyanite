@@ -45,7 +45,7 @@ Some of the primary features for Kyanite are:
 - Purely Functional, this was a big thing for me I wanted it to be easy to use functional system but also I wanted everything to be completely pure. I am happy with the results.
 - Emphasis on single type utility functions, all of the functionality is (Theroetically) based around accepting a single data type (String, Array, Object, Number) doing what it does, and giving you back a result. Making it reliable and stable while also staying lightweight
 - Everything is curried! Setup static in one spot and then pass the rest of the dynamic data in later.
-- Modular! Despite the main minified file being `9.13kb` (`3.08kb` gzipped) ontop of that the library is completely modular, allowing you to bring in single functions for use! Most functions (aside from say something like `isEqual`) are below `1kb` (even smaller if you gzip) most of these are even below `500 Bytes`! Making it easy and even lighter on your large scale applications!
+- The library is completely modular, allowing you to bring in single functions for use! Making it super easy to only use the stuff you need or the stuff you want.
 
 ## How To
 
