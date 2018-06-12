@@ -6,7 +6,7 @@ import descend from './descend'
  * @since v0.2.1
  * @category Array
  * @sig Function -> Any -> Any -> Number
- * @description Can be used with sorts to descend an array based on the function passed in
+ * @description Can be used with sort to descend an array based on the function passed in
  * @param {Function} fn The function to use on values within our array
  * @param {Any} a The first value to compare
  * @param {Any} b The second value to compare
