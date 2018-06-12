@@ -7,7 +7,8 @@
 - Added `findIndex` function which takes a function and array and returns the first value from the array that passes the function
 - Added `groupBy` function which groups the values of an array into common properties of an object
 - Added `sortBy` function which sorts an array based on the values when ran through a function
-- Added `descendBy` function which accepts a function to run against values for sorting
+- Added `descendBy` function which accepts a function to run against values for sorting in descending order
+- Added `ascendBy` function which accepts a function to run against values for sorting in ascending order
 
 ## v0.2.0
 

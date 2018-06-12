@@ -41,6 +41,11 @@
   };
   var ascend$1 = curry(ascend);
 
+  var ascendBy = function ascendBy(fn, a, b) {
+    return ascend$1(fn(a), fn(b));
+  };
+  var ascendBy$1 = curry(ascendBy);
+
   var has = function has(prop, obj) {
     return Object.prototype.hasOwnProperty.call(obj, prop);
   };
@@ -831,6 +836,7 @@
   exports.and = and$1;
   exports.any = any$1;
   exports.ascend = ascend$1;
+  exports.ascendBy = ascendBy$1;
   exports.assign = assign;
   exports.both = both$1;
   exports.capitalize = capitalize;
