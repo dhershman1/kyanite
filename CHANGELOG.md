@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.0 (Unreleased)
+
+### New
+
+- Added `findIndex` function which takes a function and array and returns the first value from the array that passes the function
+
 ## v0.2.0
 
 ### New

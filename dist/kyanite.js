@@ -223,6 +223,19 @@
   };
   var find$1 = curry(find);
 
+  var findIndex = function findIndex(fn, list) {
+    var len = list.length;
+    var i = 0;
+    while (i < len) {
+      if (fn(list[i])) {
+        return i;
+      }
+      i++;
+    }
+    return -1;
+  };
+  var findIndex$1 = curry(findIndex);
+
   var first = function first(x) {
     return x[0];
   };
@@ -812,6 +825,7 @@
   exports.every = every$1;
   exports.filter = filter$1;
   exports.find = find$1;
+  exports.findIndex = findIndex$1;
   exports.first = first;
   exports.fuzzySearch = fuzzySearch$1;
   exports.gcd = gcd$1;
