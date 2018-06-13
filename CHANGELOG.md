@@ -6,6 +6,7 @@
 
 - Added `encase` which encases the provided function with try catch to safely execute the function
 - Added `drop` which takes an array and drops the requested number of values from the front
+- Added `take` which pulls values from an array up until the point specified (sort of the opposite as drop)
 
 ## v0.2.1
 
