@@ -4,7 +4,7 @@ import ascend from './ascend'
 /**
  * @name ascendBy
  * @since v0.2.1
- * @category Array
+ * @category Function
  * @sig Function -> Any -> Any -> Number
  * @description Can be used with sort to ascend an array based on the function passed in
  * @param {Function} fn The function to use on values within our array
