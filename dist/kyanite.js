@@ -171,6 +171,11 @@
   };
   var div$1 = curry(div);
 
+  var drop = function drop(i, list) {
+    return list.slice(i, Infinity);
+  };
+  var drop$1 = curry(drop);
+
   var type = function type(x) {
     if (x === null) {
       return 'Null';
@@ -787,6 +792,11 @@
   };
   var sub$1 = curry(sub);
 
+  var take = function take(i, list) {
+    return list.slice(0, i);
+  };
+  var take$1 = curry(take);
+
   var trim = function trim(str) {
     return str.trim();
   };
@@ -863,6 +873,7 @@
   exports.descendBy = descendBy$1;
   exports.difference = difference$1;
   exports.div = div$1;
+  exports.drop = drop$1;
   exports.empty = empty;
   exports.encase = encase$1;
   exports.ensureArray = ensureArray;
@@ -924,6 +935,7 @@
   exports.sortBy = sortBy$1;
   exports.strip = strip;
   exports.sub = sub$1;
+  exports.take = take$1;
   exports.trim = trim;
   exports.type = type;
   exports.union = union$1;
