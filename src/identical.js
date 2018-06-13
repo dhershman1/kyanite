@@ -3,7 +3,7 @@ import curry from './curry'
 /**
  * @name identical
  * @since v0.1.0
- * @category Relation
+ * @category Function
  * @sig a -> a-> Boolean
  * @description Performs a check to see if the items are identical in the sense that they reference the same memory
  * @param  {Any} a The first value to compare
