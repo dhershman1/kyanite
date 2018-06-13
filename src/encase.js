@@ -2,7 +2,7 @@ import curry from './curry'
 
 /**
  * @name encase
- * @since v0.2.1
+ * @since v0.2.2
  * @category Function
  * @sig Function -> Any -> Maybe
  * @param {Function} fn The function to encase before running
