@@ -194,6 +194,15 @@
     return void 0;
   };
 
+  var encase = function encase(fn, a) {
+    try {
+      return fn(a);
+    } catch (err) {
+      return undefined;
+    }
+  };
+  var encase$1 = curry(encase);
+
   var ensureArray = function ensureArray(x) {
     if (Array.isArray(x)) {
       return x;
@@ -855,6 +864,7 @@
   exports.difference = difference$1;
   exports.div = div$1;
   exports.empty = empty;
+  exports.encase = encase$1;
   exports.ensureArray = ensureArray;
   exports.entries = entries;
   exports.every = every$1;

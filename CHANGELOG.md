@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.2.2
+
+### New
+
+- Added `encase` which encases the provided function with try catch to safely execute the function
+
 ## v0.2.1
 
 ### New
