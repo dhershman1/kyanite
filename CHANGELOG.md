@@ -5,6 +5,7 @@
 ### New
 
 - Added `encase` which encases the provided function with try catch to safely execute the function
+- Added `drop` which takes an array and drops the requested number of values from the front
 
 ## v0.2.1
 
