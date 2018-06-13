@@ -1,15 +1,18 @@
 const fs = require('fs')
 const path = require('path')
+const globby = require('globby')
 const jsDocParser = require('jsdoc-to-markdown')
 const { version } = require('../package.json')
-const ignoredFiles = ['_internals', 'esm', 'index.js']
 
 const listFns = () => {
-  const files = fs.readdirSync(path.join(process.cwd(), 'src'))
+  const files = globby.sync(['src/**/*.js', '!src/index.js', '!src/_internals'])
 
   return files
-    .filter(file => (/^[^._]/).test(file) && !ignoredFiles.includes(file))
-    .map(file => `./src/${file}`)
+    .map(file => {
+      const { dir, base } = path.parse(file)
+
+      return `./src/${path.join(dir.replace('src/', ''), base)}`
+    })
 }
 
 const generateUsage = name => ({
