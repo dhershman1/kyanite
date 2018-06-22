@@ -1,12 +1,13 @@
 # Changelog
 
-## v0.2.2 (Unreleased)
+## v0.2.2 (unreleased)
 
 ### New
 
 - Added `encase` which encases the provided function with try catch to safely execute the function
 - Added `drop` which takes an array and drops the requested number of values from the front
-- Added `take` which pulls values from an array up until the point specified (sort of the opposite as drop)
+- Added `take` which pulls values from an array up until the point specified (the opposite of drop)
+- Added `sortWith` which takes an array of functions and goes through the array when it encounters ties with the data while sorting it
 
 ## v0.2.1
 
