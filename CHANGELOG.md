@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.0 (Unreleased)
+
+### Changes
+
+- `findIndex` returns a maybe, so instead of a -1 if no index is found it will return `undefined`
+
 ## v0.2.2
 
 ### New
