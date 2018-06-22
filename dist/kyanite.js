@@ -400,6 +400,18 @@
     return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest();
   }
 
+  function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+  }
+
+  function _arrayWithoutHoles(arr) {
+    if (Array.isArray(arr)) {
+      for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+      return arr2;
+    }
+  }
+
   function _arrayWithHoles(arr) {
     if (Array.isArray(arr)) return arr;
   }
@@ -432,6 +444,10 @@
     }
 
     return _arr;
+  }
+
+  function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance");
   }
 
   function _nonIterableRest() {
@@ -783,6 +799,15 @@
   };
   var sortBy$1 = curry(sortBy);
 
+  var sortWith = function sortWith(fns, arr) {
+    return _toConsumableArray(arr).sort(function (a, b) {
+      return fns.reduce(function (acc, f) {
+        return acc === 0 ? f(a, b) : acc;
+      }, 0);
+    });
+  };
+  var sortWith$1 = curry(sortWith);
+
   var strip = function strip(a) {
     return a.replace(/\s/g, '');
   };
@@ -933,6 +958,7 @@
   exports.some = some$1;
   exports.sort = sort$1;
   exports.sortBy = sortBy$1;
+  exports.sortWith = sortWith$1;
   exports.strip = strip;
   exports.sub = sub$1;
   exports.take = take$1;
