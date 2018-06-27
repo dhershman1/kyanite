@@ -1,4 +1,4 @@
-import curry from './curry'
+import curry from '../function/curry'
 
 /**
  * @name sortWith

@@ -7,7 +7,7 @@ import curry from '../function/curry'
  * @sig Function -> Array -> Number
  * @param {Function} fn The function to test our value against
  * @param {Array} list The array to loop through
- * @return {Number} The index the passing value lives at
+ * @return {Maybe} The index the passing value lives at or undefined
  * @example
  * findIndex(x => x > 5, [1, 3, 4, 5, 6]) // => 4
  * findIndex(x => x < 0, [1, 3, 4, 5, 6]) // => -1
@@ -29,7 +29,7 @@ const findIndex = (fn, list) => {
     i++
   }
 
-  return -1
+  return undefined
 }
 
 export default curry(findIndex)
