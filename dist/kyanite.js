@@ -256,7 +256,7 @@
       }
       i++;
     }
-    return -1;
+    return undefined;
   };
   var findIndex$1 = curry(findIndex);
 
