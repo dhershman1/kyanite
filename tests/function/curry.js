@@ -1,5 +1,5 @@
 import curry from '../../src/function/curry'
-import update from '../../src/function/update'
+import update from '../../src/array/update'
 import test from 'tape'
 
 test('Basic Curry test', t => {

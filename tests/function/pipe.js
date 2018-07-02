@@ -1,5 +1,5 @@
-import add from '../../src/function/add'
-import mul from '../../src/function/mul'
+import add from '../../src/number/add'
+import mul from '../../src/number/mul'
 import pipe from '../../src/function/pipe'
 import test from 'tape'
 

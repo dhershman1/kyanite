@@ -1,4 +1,4 @@
-import filter from '../../src/function/filter'
+import filter from '../../src/array/filter'
 import identity from '../../src/function/identity'
 import test from 'tape'
 

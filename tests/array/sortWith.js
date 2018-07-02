@@ -1,5 +1,5 @@
-import ascendBy from '../../src/array/ascendBy'
-import descendBy from '../../src/array/descendBy'
+import ascendBy from '../../src/function/ascendBy'
+import descendBy from '../../src/function/descendBy'
 import sortWith from '../../src/array/sortWith'
 import test from 'tape'
 
