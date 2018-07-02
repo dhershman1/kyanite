@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.3.0 (Unreleased)
+## v0.3.0
 
 ### New
 
@@ -12,6 +12,10 @@
 - `findIndex` returns a maybe, so instead of a -1 if no index is found it will return `undefined`
 - The `src` folder is now included on install, so if you want to use the es6 versions of the module, you can import them from `kyanite/src/type/function`
   - An example might be for curry it'd be: `import curry from 'kyanite/src/function/curry'`
+
+### Fixes
+
+- A few documentation fixes which also involved some missing information/categories
 
 ## v0.2.2
 

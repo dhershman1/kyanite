@@ -5,6 +5,7 @@ import curry from './curry'
  * @since v0.1.0
  * @category Function
  * @sig a -> a -> Boolean
+ * @description Checks if a value is greater than or equal to the other
  * @param {Any} a Value to determine if it is greater than or equal to the other
  * @param {Any} b Value to compare to see if it is less than or equal to the other
  * @return {Boolean} Based on the outcome of the logic a Boolean

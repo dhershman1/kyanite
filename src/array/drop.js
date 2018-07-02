@@ -5,6 +5,7 @@ import curry from '../function/curry'
  * @since v0.2.2
  * @category Array
  * @sig Number -> Array -> Array
+ * @description Starts at a at desired index and pulls the values from that point until the end
  * @param {Number} i The index we want the slice to start at
  * @param {Array} list The array we want to drop from
  * @return {Array} An array with the indicated values removed from the array

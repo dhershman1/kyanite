@@ -435,6 +435,62 @@
   };
   var encase$1 = curry(encase);
 
+  var ensureArray = function ensureArray(x) {
+    if (Array.isArray(x)) {
+      return x;
+    }
+    if (isNil(x)) {
+      return [];
+    }
+    return [x];
+  };
+
+  var entries = function entries(obj) {
+    return Object.keys(obj).map(function (k) {
+      return [k, obj[k]];
+    });
+  };
+
+  var every = function every(fn, x) {
+    return x.every(fn);
+  };
+  var every$1 = curry(every);
+
+  var filter = function filter(fn, list) {
+    return list.filter(fn);
+  };
+  var filter$1 = curry(filter);
+
+  var find = function find(fn, list) {
+    var idx = 0;
+    var len = list.length;
+    while (idx < len) {
+      if (fn(list[idx])) {
+        return list[idx];
+      }
+      idx += 1;
+    }
+    return false;
+  };
+  var find$1 = curry(find);
+
+  var findIndex = function findIndex(fn, list) {
+    var len = list.length;
+    var i = 0;
+    while (i < len) {
+      if (fn(list[i])) {
+        return i;
+      }
+      i++;
+    }
+    return undefined;
+  };
+  var findIndex$1 = curry(findIndex);
+
+  var first = function first(x) {
+    return x[0];
+  };
+
   var innerSearch = function innerSearch(start, haystack, nChar) {
     var j = start;
     var len = haystack.length;
