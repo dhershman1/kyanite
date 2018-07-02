@@ -1,11 +1,13 @@
 # Changelog
 
-## v0.3.0
+## v0.3.1 (Unreleased)
 
-### New
+### Changes
 
-- Re organized the `src` folder into seperate folders
+- Re organized the `src` and `test` folder contents into seperate folders based on category
   - This is no way affects usage, you can still do `import isEmpty from 'kyanite/isEmpty'` it's more to make it easier to work with and avoid duplication
+
+## v0.3.0
 
 ### Changes
 
