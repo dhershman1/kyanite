@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.0
+
+### BREAKING CHANGES
+
+- Renamed `gets` to `props` to meep the convention consistent
+
 ## v0.3.0
 
 ### Changes
