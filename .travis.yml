@@ -4,6 +4,7 @@ node_js:
 branches:
   only:
   - master
+  - development
 script:
   - npm run lint
   - npm run test:cov
