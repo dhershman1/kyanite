@@ -1,7 +1,7 @@
 import curry from '../function/curry'
 
 /**
- * @name includes
+ * @name contains
  * @since v0.1.0
  * @category String
  * @sig String -> String -> Boolean
@@ -11,19 +11,19 @@ import curry from '../function/curry'
  * @param {String} a The string we want to find
  * @return {Boolean} Based on if the string is found or not
  * @example
- * includes('cow', 'small brown cow'); // => true
- * includes('cow', 'Small Brown Cow'); // => true
+ * contains('cow', 'small brown cow'); // => true
+ * contains('cow', 'Small Brown Cow'); // => true
  *
  * const x = 'cow';
  *
- * includes('cow', `small brown ${x}`); // => true
+ * contains('cow', `small brown ${x}`); // => true
  *
  * // It's also curried
  *
- * const checker = includes('cow');
+ * const checker = contains('cow');
  *
  * checker('small brown cow'); // => true
  */
-const includes = (a, str) => str.indexOf(a) !== -1
+const contains = (a, str) => str.indexOf(a) !== -1
 
-export default curry(includes)
+export default curry(contains)

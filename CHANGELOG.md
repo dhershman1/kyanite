@@ -5,6 +5,8 @@
 ### BREAKING CHANGES
 
 - Renamed `gets` to `props` to meep the convention consistent
+- Renamed `includes` to `contains` for strings (swapped with array)
+- Renamed `contains` to `includes` for arrays (swapped with string)
 
 ## v0.3.0
 

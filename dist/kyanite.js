@@ -38,11 +38,6 @@
   };
   var concatMap$1 = curry(concatMap);
 
-  var contains = function contains(a, list) {
-    return list.indexOf(a) !== -1;
-  };
-  var contains$1 = curry(contains);
-
   var difference = function difference(first, second) {
     return first.filter(function (x) {
       return second.indexOf(x) === -1;
@@ -137,6 +132,11 @@
     }, {});
   };
   var groupBy$1 = curry(groupBy);
+
+  var includes = function includes(a, list) {
+    return list.indexOf(a) !== -1;
+  };
+  var includes$1 = curry(includes);
 
   var insert = function insert(i, d, arr) {
     var idx = i < arr.length && i >= 0 ? i : arr.length;
@@ -859,10 +859,10 @@
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
-  var includes = function includes(a, str) {
-    return str.indexOf(a) !== -1;
+  var contains = function contains(a, str) {
+    return str.search(a) !== -1;
   };
-  var includes$1 = curry(includes);
+  var contains$1 = curry(contains);
 
   var strip = function strip(a) {
     return a.replace(/\s/g, '');
@@ -879,7 +879,6 @@
   exports.compact = compact;
   exports.concat = concat;
   exports.concatMap = concatMap$1;
-  exports.contains = contains$1;
   exports.difference = difference$1;
   exports.drop = drop$1;
   exports.ensureArray = ensureArray;
@@ -889,6 +888,7 @@
   exports.findIndex = findIndex$1;
   exports.first = first;
   exports.groupBy = groupBy$1;
+  exports.includes = includes$1;
   exports.insert = insert$1;
   exports.intersection = intersection$1;
   exports.last = last;
@@ -968,7 +968,7 @@
   exports.values = values;
   exports.whole = whole$1;
   exports.capitalize = capitalize;
-  exports.includes = includes$1;
+  exports.contains = contains$1;
   exports.strip = strip;
   exports.trim = trim;
   exports.words = words;
