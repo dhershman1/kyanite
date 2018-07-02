@@ -762,13 +762,6 @@
     });
   };
 
-  var gets = function gets(keys, obj) {
-    return keys.map(function (k) {
-      return obj[k];
-    });
-  };
-  var gets$1 = curry(gets);
-
   var height = function height(obj) {
     return Object.keys(obj).length;
   };
@@ -831,6 +824,13 @@
     return obj[p];
   };
   var prop$1 = curry(prop);
+
+  var props = function props(keys, obj) {
+    return keys.map(function (k) {
+      return obj[k];
+    });
+  };
+  var props$1 = curry(props);
 
   var sift = function sift(arr, obj) {
     return Object.keys(obj).reduce(function (acc, k) {
@@ -956,7 +956,6 @@
   exports.compress = compress;
   exports.defaults = defaults$1;
   exports.entries = entries;
-  exports.gets = gets$1;
   exports.has = has$1;
   exports.height = height;
   exports.omit = omit$1;
@@ -964,6 +963,7 @@
   exports.plan = plan$1;
   exports.pluck = pluck$1;
   exports.prop = prop$1;
+  exports.props = props$1;
   exports.sift = sift$1;
   exports.values = values;
   exports.whole = whole$1;
