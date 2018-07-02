@@ -6,15 +6,10 @@ import { uglify } from 'rollup-plugin-uglify'
 
 const buildEntry = () => {
   const results = []
-  const paths = globby.sync(['src/*.js', '!src/index.js', '!src/_internals'])
+  const paths = globby.sync(['src/**/*.js', '!src/index.js', '!src/_internals'])
 
   paths.forEach(p => {
-    const { name, dir } = path.parse(p)
-    let [, moduleName] = dir.split('/')
-
-    if (name !== 'index') {
-      moduleName = name
-    }
+    const { name } = path.parse(p)
 
     const config = {
       input: path.resolve(__dirname, p),
@@ -24,10 +19,10 @@ const buildEntry = () => {
         filesize()
       ],
       output: {
-        dir,
-        file: `${moduleName}.js`,
+        dir: './',
+        file: `${name}.js`,
         format: 'umd',
-        name: moduleName
+        name: name
       }
     }
 
