@@ -1,3 +1,4 @@
+import identity from '../function/identity'
 
 /**
  * @name compact
@@ -12,4 +13,4 @@
  * compact([1, '', false, 2, undefined, 3, null]) // => [1, 2, 3]
  */
 export default arr =>
-  arr.filter(v => Boolean(v))
+  arr.filter(identity)
