@@ -102,3 +102,17 @@ test('Handles values that do not own the prop', t => {
   })
   t.end()
 })
+
+test('Does not mutate original object', t => {
+  const obj = { a: 1, b: 2 }
+  const clone = assign({}, obj, { a: 3, b: 4 })
+
+  t.same(obj, { a: 1, b: 2 })
+  t.same(clone, { a: 3, b: 4 })
+
+  clone.a = 5
+
+  t.same(obj, { a: 1, b: 2 })
+  t.same(clone, { a: 5, b: 4 })
+  t.end()
+})
