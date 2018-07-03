@@ -1,12 +1,21 @@
 # Changelog
 
-## v0.4.0
+## v0.4.0 (Unreleased)
 
 ### BREAKING CHANGES
 
 - Renamed `gets` to `props` to meep the convention consistent
 - Renamed `includes` to `contains` for strings (swapped with array)
 - Renamed `contains` to `includes` for arrays (swapped with string)
+- Removed `deepClone` because `assign` ultimately generates a brand new object when ran
+
+### New
+
+- Added `join` string function which accepts a string and an array to generate a joined string
+
+### Changes
+
+- Converted the function used by compact to just be `identity`
 
 ## v0.3.0
 
