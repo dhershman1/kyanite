@@ -12,6 +12,7 @@
 ### New
 
 - Added `join` string function which accepts a string and an array to generate a joined string
+- Added `branch` function which takes 3 functions and a value, and will run either the 2nd or 3rd function based on if the first passes
 
 ### Changes
 
