@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.4.0 (Unreleased)
+## v0.4.0
 
 ### BREAKING CHANGES
 
