@@ -11,7 +11,7 @@ const listFns = () => {
 
       return {
         name,
-        fullPath: `./${path.join(dir.replace('src/', ''), base)}`
+        fullPath: `./${dir.replace('src/', '')}/${base}`
       }
     })
 }
