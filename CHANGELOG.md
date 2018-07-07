@@ -20,6 +20,7 @@
 
 - Converted the function used by compact to just be `identity`
 - Added some slight test additions to `pipe`
+- Tweaked documentation automation to make sure the main site is always up to date
 
 ## v0.3.0
 
