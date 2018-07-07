@@ -1,10 +1,36 @@
 # Changelog
 
+## v0.4.0
+
+### BREAKING CHANGES
+
+- Renamed `gets` to `props` to meep the convention consistent
+- Renamed `includes` to `contains` for strings (swapped with array)
+- Renamed `contains` to `includes` for arrays (swapped with string)
+- Removed `deepClone` because `assign` ultimately generates a brand new object when ran
+
+### New
+
+- Added `join` string function which accepts a string and an array to generate a joined string
+- Added `branch` function which takes 3 functions and a value, and will run either the 2nd or 3rd function based on if the first passes
+- Added `ap` function which takes an array of functions to be applied to an array of data, concating the results together
+- Added `on` function which takes 2 functions and 2 values, applies the 2nd function to both values and then applies the first function onto those
+
+### Changes
+
+- Converted the function used by compact to just be `identity`
+- Added some slight test additions to `pipe`
+- Tweaked documentation automation to make sure the main site is always up to date
+
 ## v0.3.0
 
 ### Changes
 
+- Re organized the `src` and `test` folder contents into seperate folders based on category
+  - This is no way affects usage, you can still do `import isEmpty from 'kyanite/isEmpty'` it's more to make it easier to work with and avoid duplication
 - `findIndex` returns a maybe, so instead of a -1 if no index is found it will return `undefined`
+- The `src` folder is now included on install, so if you want to use the es6 versions of the module, you can import them from `kyanite/src/type/function`
+  - An example might be for curry it'd be: `import curry from 'kyanite/src/function/curry'`
 
 ### Fixes
 

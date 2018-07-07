@@ -1,22 +1,24 @@
 const fs = require('fs')
 const path = require('path')
-const ignoredFiles = ['_internals', 'esm', 'index.js']
+const globby = require('globby')
 
 const listFns = () => {
-  const files = fs.readdirSync(path.join(process.cwd(), 'src'))
+  const files = globby.sync(['src/**/*.js', '!src/index.js', '!src/_internals'])
 
   return files
-    .filter(file => (/^[^._]/).test(file) && !ignoredFiles.includes(file))
-    .map(file => ({
-      name: file.replace('.js', ''),
-      path: `./${file}`,
-      fullPath: `./src/${file}/index.js`
-    }))
+    .map(file => {
+      const { dir, base, name } = path.parse(file)
+
+      return {
+        name,
+        fullPath: `./${dir.replace('src/', '')}/${base}`
+      }
+    })
 }
 
 const generateIndex = () => {
   const propertyRequireLines = listFns()
-    .map(fn => `export { default as ${fn.name} } from './${fn.name}'`)
+    .map(fn => `export { default as ${fn.name} } from '${fn.fullPath}'`)
 
   const indexLines = []
     .concat(propertyRequireLines.join('\n'))

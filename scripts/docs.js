@@ -1,44 +1,47 @@
 const fs = require('fs')
 const path = require('path')
+const globby = require('globby')
 const jsDocParser = require('jsdoc-to-markdown')
-const { version } = require('../package.json')
-const ignoredFiles = ['_internals', 'esm', 'index.js']
+const { name, version, description } = require('../package.json')
 
 const listFns = () => {
-  const files = fs.readdirSync(path.join(process.cwd(), 'src'))
+  const files = globby.sync(['src/**/*.js', '!src/index.js', '!src/_internals'])
 
   return files
-    .filter(file => (/^[^._]/).test(file) && !ignoredFiles.includes(file))
-    .map(file => `./src/${file}`)
+    .map(file => {
+      const { dir, base } = path.parse(file)
+
+      return `./src/${path.join(dir.replace('src/', ''), base)}`
+    })
 }
 
-const generateUsage = name => ({
+const generateUsage = fnName => ({
   'commonjs': {
     title: 'CommonJs',
-    code: `const ${name} = require('kyanite/${name}')`
+    code: `const ${fnName} = require('kyanite/${fnName}')`
   },
   'standard': {
     title: 'Standard',
-    code: `import ${name} from 'kyanite/${name}'`
+    code: `import ${fnName} from 'kyanite/${fnName}'`
   },
   'cdn': {
     title: 'CDN',
-    code: `<script src="https://cdn.jsdelivr.net/npm/kyanite@${version}/${name}.js"></script>`
+    code: `<script src="https://cdn.jsdelivr.net/npm/kyanite@${version}/${fnName}.js"></script>`
   },
   'browser': {
     title: 'Browser',
-    code: `<script src="path/to/modules/kyanite/${name}.js"></script>`
+    code: `<script src="path/to/modules/kyanite/${fnName}.js"></script>`
   }
 })
 
-const generateSyntax = (name, args) => {
+const generateSyntax = (fnName, args) => {
   if (!args) {
     return ''
   }
 
-  const argsStr = args.map(a => a.optional ? `[${a.name}]` : a.name).join(', ')
+  const argsStr = args.map(a => a.optional ? `[${a.fnName}]` : a.fnName).join(', ')
 
-  return `${name}(${argsStr})`
+  return `${fnName}(${argsStr})`
 }
 
 jsDocParser.getTemplateData({
@@ -58,5 +61,10 @@ jsDocParser.getTemplateData({
     usage: generateUsage(d.name)
   }))
 
-  fs.writeFileSync('docs.js', `module.exports = ${JSON.stringify(results)}`)
+  fs.writeFileSync('info.json', JSON.stringify({
+    name,
+    version,
+    description,
+    docs: results
+  }))
 })
