@@ -13,10 +13,13 @@
 
 - Added `join` string function which accepts a string and an array to generate a joined string
 - Added `branch` function which takes 3 functions and a value, and will run either the 2nd or 3rd function based on if the first passes
+- Added `ap` function which takes an array of functions to be applied to an array of data, concating the results together
+- Added `on` function which takes 2 functions and 2 values, applies the 2nd function to both values and then applies the first function onto those
 
 ### Changes
 
 - Converted the function used by compact to just be `identity`
+- Added some slight test additions to `pipe`
 
 ## v0.3.0
 

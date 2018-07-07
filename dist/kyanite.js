@@ -4,10 +4,12 @@
   (factory((global.kyanite = {})));
 }(this, (function (exports) { 'use strict';
 
+  var identity = function identity(a) {
+    return a;
+  };
+
   var compact = (function (arr) {
-    return arr.filter(function (v) {
-      return Boolean(v);
-    });
+    return arr.filter(identity);
   });
 
   var concat = function concat(arr) {
@@ -344,10 +346,6 @@
   };
   var take$1 = curry(take);
 
-  var identity = function identity(a) {
-    return a;
-  };
-
   var uniqBy = function uniqBy(fn, list) {
     return list.reduce(function (acc, a) {
       if (acc.map(fn).indexOf(fn(a)) === -1) {
@@ -375,6 +373,13 @@
   };
   var and$1 = curry(and);
 
+  var ap = function ap(fns, list) {
+    return fns.reduce(function (acc, f) {
+      return acc.concat(list.map(f));
+    }, []);
+  };
+  var ap$1 = curry(ap);
+
   var ascend = function ascend(a, b) {
     return a < b ? -1 : a > b ? 1 : 0;
   };
@@ -389,6 +394,11 @@
     return f(a) && g(a);
   };
   var both$1 = curry(both);
+
+  var branch = function branch(p, f, g, a) {
+    return p(a) ? f(a) : g(a);
+  };
+  var branch$1 = curry(branch);
 
   var not = function not(x) {
     return !x;
@@ -651,6 +661,11 @@
   };
   var lte$1 = curry(lte);
 
+  var on = function on(fn, gn, a, b) {
+    return fn(gn(a), gn(b));
+  };
+  var on$1 = curry(on);
+
   var or = function or(a, b) {
     return a || b;
   };
@@ -860,9 +875,14 @@
   };
 
   var contains = function contains(a, str) {
-    return str.search(a) !== -1;
+    return str.indexOf(a) !== -1;
   };
   var contains$1 = curry(contains);
+
+  var join = function join(str, list) {
+    return list.join(str);
+  };
+  var join$1 = curry(join);
 
   var strip = function strip(a) {
     return a.replace(/\s/g, '');
@@ -915,9 +935,11 @@
   exports.uniqBy = uniqBy$1;
   exports.update = update$1;
   exports.and = and$1;
+  exports.ap = ap$1;
   exports.ascend = ascend$1;
   exports.ascendBy = ascendBy$1;
   exports.both = both$1;
+  exports.branch = branch$1;
   exports.complement = complement$1;
   exports.curry = curry;
   exports.curryN = curryN;
@@ -939,6 +961,7 @@
   exports.lt = lt$1;
   exports.lte = lte$1;
   exports.not = not;
+  exports.on = on$1;
   exports.or = or$1;
   exports.pipe = pipe$1;
   exports.range = range;
@@ -969,6 +992,7 @@
   exports.whole = whole$1;
   exports.capitalize = capitalize;
   exports.contains = contains$1;
+  exports.join = join$1;
   exports.strip = strip;
   exports.trim = trim;
   exports.words = words;
