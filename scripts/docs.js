@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const globby = require('globby')
 const jsDocParser = require('jsdoc-to-markdown')
-const { version } = require('../package.json')
+const { version, description } = require('../package.json')
 
 const listFns = () => {
   const files = globby.sync(['src/**/*.js', '!src/index.js', '!src/_internals'])
@@ -61,5 +61,9 @@ jsDocParser.getTemplateData({
     usage: generateUsage(d.name)
   }))
 
-  fs.writeFileSync('docs.js', `module.exports = ${JSON.stringify(results)}`)
+  fs.writeFileSync('info.json', JSON.stringify({
+    version,
+    description,
+    docs: results
+  }))
 })

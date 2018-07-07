@@ -1,6 +1,6 @@
 {
   "name": "kyanite",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A small library of pure functional utilities to make life easier and data better",
   "main": "dist/kyanite.min.js",
   "devDependencies": {
