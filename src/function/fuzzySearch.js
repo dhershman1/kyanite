@@ -1,34 +1,6 @@
 import curry from './curry'
 
-// Our inner layer search
-const innerSearch = (start, haystack, nChar) => {
-  let j = start
-  const len = haystack.length
-
-  while (j < len) {
-    if (haystack.charCodeAt(j++) === nChar) {
-      return true
-    }
-  }
-
-  return false
-}
-
-// Our outer layer search
-const search = (haystack, needle) => {
-  const len = needle.length
-  const j = 0
-
-  for (let i = 0; i < len; i++) {
-    if (innerSearch(j, haystack, needle.charCodeAt(i))) {
-      continue
-    }
-
-    return false
-  }
-
-  return true
-}
+/* eslint-disable no-labels */
 
 /**
  * @name fuzzySearch
@@ -41,27 +13,39 @@ const search = (haystack, needle) => {
  * @return {Boolean} Returns a boolean determined by if the value is found or not by the search
  *
  * @example
- * const results = fuzzySearch('te', 'test'); // => true
- * const results = fuzzySearch('dog', 'testing'); // => false
+ * fuzzySearch('te', 'test'); // => true
+ * fuzzySearch('dog', 'testing'); // => false
  *
  * // search is also curried
  *
- * const search = fuzzySearch('te');
- * const results = search('test'); // => true
+ * const search = fuzzySearch('te')
+ * search('test'); // => true
  */
-const fuzzySearch = (n, h) => {
-  const hLen = h.length
-  const nLen = n.length
+const fuzzySearch = (needle, haystack) => {
+  const hLen = haystack.length
+  const nLen = needle.length
+  let j = 0
 
   if (nLen > hLen) {
     return false
   }
 
   if (nLen === hLen) {
-    return n === h
+    return needle === haystack
   }
 
-  return search(h, n)
+  outer: for (let i = 0; i < nLen; i++) {
+    const nChar = needle.charCodeAt(i)
+
+    while (j < hLen) {
+      if (haystack.charCodeAt(j++) === nChar) {
+        continue outer
+      }
+    }
+    return false
+  }
+
+  return true
 }
 
 export default curry(fuzzySearch)
