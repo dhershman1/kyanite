@@ -470,37 +470,26 @@
   };
   var encase$1 = curry(encase);
 
-  var innerSearch = function innerSearch(start, haystack, nChar) {
-    var j = start;
-    var len = haystack.length;
-    while (j < len) {
-      if (haystack.charCodeAt(j++) === nChar) {
-        return true;
-      }
-    }
-    return false;
-  };
-  var search = function search(haystack, needle) {
-    var len = needle.length;
+  var fuzzySearch = function fuzzySearch(needle, haystack) {
+    var hLen = haystack.length;
+    var nLen = needle.length;
     var j = 0;
-    for (var i = 0; i < len; i++) {
-      if (innerSearch(j, haystack, needle.charCodeAt(i))) {
-        continue;
-      }
-      return false;
-    }
-    return true;
-  };
-  var fuzzySearch = function fuzzySearch(n, h) {
-    var hLen = h.length;
-    var nLen = n.length;
     if (nLen > hLen) {
       return false;
     }
     if (nLen === hLen) {
-      return n === h;
+      return needle === haystack;
     }
-    return search(h, n);
+    outer: for (var i = 0; i < nLen; i++) {
+      var nChar = needle.charCodeAt(i);
+      while (j < hLen) {
+        if (haystack.charCodeAt(j++) === nChar) {
+          continue outer;
+        }
+      }
+      return false;
+    }
+    return true;
   };
   var fuzzySearch$1 = curry(fuzzySearch);
 
