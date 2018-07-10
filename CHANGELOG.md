@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.4.1
+
+### Fixed
+
+- `fuzzySearch` algorithm is stable again and extremely more accurate than before
+  - I may need to look into a better solution than I currently have for it however
+
+### Improved
+
+- Added more complex testing strings to `fuzzySearch` tests
+
 ## v0.4.0
 
 ### BREAKING CHANGES
