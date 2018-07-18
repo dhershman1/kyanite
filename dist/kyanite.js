@@ -168,11 +168,18 @@
   };
   var map$1 = curry(map);
 
-  var max = function max(x) {
-    return last(x.sort(function (a, b) {
-      return a > b;
-    }));
+  var max = function max(list) {
+    return list.reduce(function (a, b) {
+      return a >= b ? a : b;
+    });
   };
+
+  var maxBy = function maxBy(fn, list) {
+    return list.reduce(function (a, b) {
+      return fn(a) >= fn(b) ? a : b;
+    });
+  };
+  var maxBy$1 = curry(maxBy);
 
   var mean = function mean() {
     var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -184,11 +191,18 @@
     }, 0) / x.length;
   };
 
-  var min = function min(x) {
-    return first(x.sort(function (a, b) {
-      return a > b;
-    }));
+  var min = function min(list) {
+    return list.reduce(function (a, b) {
+      return a <= b ? a : b;
+    });
   };
+
+  var minBy = function minBy(fn, list) {
+    return list.reduce(function (a, b) {
+      return fn(a) <= fn(b) ? a : b;
+    });
+  };
+  var minBy$1 = curry(minBy);
 
   var nth = function nth(o, x) {
     var idx = o < 0 ? x.length + o : o;
@@ -916,8 +930,10 @@
   exports.length = length;
   exports.map = map$1;
   exports.max = max;
+  exports.maxBy = maxBy$1;
   exports.mean = mean;
   exports.min = min;
+  exports.minBy = minBy$1;
   exports.nth = nth$1;
   exports.partition = partition$1;
   exports.prepend = prepend$1;
