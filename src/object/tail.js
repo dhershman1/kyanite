@@ -2,7 +2,7 @@ import last from '../array/last'
 
 /**
  * @name tail
- * @since v0.4.2
+ * @since v0.5.0
  * @category Object
  * @sig Object { k: v } -> v
  * @description Returns the last value from an object
