@@ -766,6 +766,13 @@
     });
   };
 
+  var head = function head(obj) {
+    var _Object$keys = Object.keys(obj),
+        _Object$keys2 = _slicedToArray(_Object$keys, 1),
+        key = _Object$keys2[0];
+    return key ? obj[key] : {};
+  };
+
   var height = function height(obj) {
     return Object.keys(obj).length;
   };
@@ -845,6 +852,11 @@
     }, {});
   };
   var sift$1 = curry(sift);
+
+  var tail = function tail(obj) {
+    var key = last(Object.keys(obj));
+    return key ? obj[key] : {};
+  };
 
   var values = function values(obj) {
     return Object.keys(obj).map(function (k) {
@@ -969,6 +981,7 @@
   exports.defaults = defaults$1;
   exports.entries = entries;
   exports.has = has$1;
+  exports.head = head;
   exports.height = height;
   exports.omit = omit$1;
   exports.path = path$1;
@@ -977,6 +990,7 @@
   exports.prop = prop$1;
   exports.props = props$1;
   exports.sift = sift$1;
+  exports.tail = tail;
   exports.values = values;
   exports.whole = whole$1;
   exports.capitalize = capitalize;
