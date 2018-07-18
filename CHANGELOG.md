@@ -13,6 +13,7 @@
 - Added `tail` function for objects, which pulls the last value from it
 - Added `maxBy` function which applies a function to each value before comparing the max
 - Added `minBy` function which applies a function to each value before comparing the min
+- Added `zip` function which takes two arrays and turns them into an object key value pair
 
 ## v0.4.1
 
