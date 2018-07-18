@@ -382,6 +382,16 @@
   };
   var update$1 = curry(update);
 
+  var zip = function zip(x, y) {
+    var arr = x.length < y.length ? x : y;
+    return arr.reduce(function (acc, _, i) {
+      var tmp = {};
+      tmp[x[i]] = y[i];
+      return assign(acc, tmp);
+    }, {});
+  };
+  var zip$1 = curry(zip);
+
   var and = function and(a, b) {
     return a && b;
   };
@@ -951,6 +961,7 @@
   exports.uniq = uniq;
   exports.uniqBy = uniqBy$1;
   exports.update = update$1;
+  exports.zip = zip$1;
   exports.and = and$1;
   exports.ap = ap$1;
   exports.ascend = ascend$1;
