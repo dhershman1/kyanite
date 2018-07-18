@@ -1,11 +1,18 @@
 # Changelog
 
-## v0.4.2 (Unreleased)
+## v0.5.0 (Unreleased)
+
+### BREAKING CHANGES
+
+- Tweaked how `max` was running it's comparisons
+- Tweaked how `min` was running it's comparisons
 
 ### New
 
 - Added `head` function for objects, which pulls the first value from it
 - Added `tail` function for objects, which pulls the last value from it
+- Added `maxBy` function which applies a function to each value before comparing the max
+- Added `minBy` function which applies a function to each value before comparing the min
 
 ## v0.4.1
 
