@@ -12,7 +12,7 @@ import isObject from '../_internals/isObject'
  * @return {Array} The new list which will be the same type as the list provided
  *
  * @example
- * pluck('val', { a: { val: 3 }, b: { val: 5 } }); // => { a: 3, b: 5 }
+ * pluck('val', { a: { val: 3 }, b: { val: 5 } }); // => [3, 5]
  *
  * // It is also curried
  * const plucker = pluck('a');
