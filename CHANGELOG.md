@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.4.2 (Unreleased)
+
+### New
+
+- Added `head` function for objects, which pulls the first value from it
+- Added `tail` function for objects, which pulls the last value from it
+
 ## v0.4.1
 
 ### Fixed
