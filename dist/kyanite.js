@@ -168,11 +168,18 @@
   };
   var map$1 = curry(map);
 
-  var max = function max(x) {
-    return last(x.sort(function (a, b) {
-      return a > b;
-    }));
+  var max = function max(list) {
+    return list.reduce(function (a, b) {
+      return a >= b ? a : b;
+    });
   };
+
+  var maxBy = function maxBy(fn, list) {
+    return list.reduce(function (a, b) {
+      return fn(a) >= fn(b) ? a : b;
+    });
+  };
+  var maxBy$1 = curry(maxBy);
 
   var mean = function mean() {
     var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -184,11 +191,18 @@
     }, 0) / x.length;
   };
 
-  var min = function min(x) {
-    return first(x.sort(function (a, b) {
-      return a > b;
-    }));
+  var min = function min(list) {
+    return list.reduce(function (a, b) {
+      return a <= b ? a : b;
+    });
   };
+
+  var minBy = function minBy(fn, list) {
+    return list.reduce(function (a, b) {
+      return fn(a) <= fn(b) ? a : b;
+    });
+  };
+  var minBy$1 = curry(minBy);
 
   var nth = function nth(o, x) {
     var idx = o < 0 ? x.length + o : o;
@@ -367,6 +381,16 @@
     return concat([list.slice(0, index), val, list.slice(index + 1)]);
   };
   var update$1 = curry(update);
+
+  var zip = function zip(x, y) {
+    var arr = x.length < y.length ? x : y;
+    return arr.reduce(function (acc, _, i) {
+      var tmp = {};
+      tmp[x[i]] = y[i];
+      return assign(acc, tmp);
+    }, {});
+  };
+  var zip$1 = curry(zip);
 
   var and = function and(a, b) {
     return a && b;
@@ -766,6 +790,13 @@
     });
   };
 
+  var head = function head(obj) {
+    var _Object$keys = Object.keys(obj),
+        _Object$keys2 = _slicedToArray(_Object$keys, 1),
+        key = _Object$keys2[0];
+    return key ? obj[key] : {};
+  };
+
   var height = function height(obj) {
     return Object.keys(obj).length;
   };
@@ -846,6 +877,11 @@
   };
   var sift$1 = curry(sift);
 
+  var tail = function tail(obj) {
+    var key = last(Object.keys(obj));
+    return key ? obj[key] : {};
+  };
+
   var values = function values(obj) {
     return Object.keys(obj).map(function (k) {
       return obj[k];
@@ -904,8 +940,10 @@
   exports.length = length;
   exports.map = map$1;
   exports.max = max;
+  exports.maxBy = maxBy$1;
   exports.mean = mean;
   exports.min = min;
+  exports.minBy = minBy$1;
   exports.nth = nth$1;
   exports.partition = partition$1;
   exports.prepend = prepend$1;
@@ -923,6 +961,7 @@
   exports.uniq = uniq;
   exports.uniqBy = uniqBy$1;
   exports.update = update$1;
+  exports.zip = zip$1;
   exports.and = and$1;
   exports.ap = ap$1;
   exports.ascend = ascend$1;
@@ -969,6 +1008,7 @@
   exports.defaults = defaults$1;
   exports.entries = entries;
   exports.has = has$1;
+  exports.head = head;
   exports.height = height;
   exports.omit = omit$1;
   exports.path = path$1;
@@ -977,6 +1017,7 @@
   exports.prop = prop$1;
   exports.props = props$1;
   exports.sift = sift$1;
+  exports.tail = tail;
   exports.values = values;
   exports.whole = whole$1;
   exports.capitalize = capitalize;
