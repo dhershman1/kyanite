@@ -4,8 +4,6 @@
 [![Travis](https://img.shields.io/travis/dhershman1/kyanite.svg?style=flat-square)](https://travis-ci.org/dhershman1/kyanite)
 [![Coverage Status](https://img.shields.io/coveralls/github/dhershman1/kyanite.svg?style=flat-square)](https://coveralls.io/github/dhershman1/kyanite?branch=master)
 
-I am a change to the readme
-
 # Kyanite
 
 A light weight pure functional library with single type utility functions and it only depends on itself.
