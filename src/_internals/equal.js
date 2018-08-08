@@ -1,8 +1,8 @@
 import arrayFromIterator from './array-from-iterator'
 import identical from '../function/identical'
+import has from '../object/has'
 
-const nullTypeCheck = (a, b) =>
-  a === null ||
+const nullTypeCheck = (a, b) => a === null ||
   b === null ||
   Object.prototype.toString.call(a).slice(8, -1) !== Object.prototype.toString.call(b).slice(8, -1)
 
@@ -80,8 +80,10 @@ const equal = (a, b, stackA, stackB) => {
       }
       break
     case 'map':
-      if (!equal(arrayFromIterator(a.entries()), arrayFromIterator(b.entries()), stackA, stackB)) {
-        return false
+      if ('entries' in a && 'entries' in b) {
+        if (!equal(arrayFromIterator(a.entries()), arrayFromIterator(b.entries()), stackA, stackB)) {
+          return false
+        }
       }
       break
     case 'other':
