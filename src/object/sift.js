@@ -4,28 +4,32 @@ import curry from '../function/curry'
  * @name sift
  * @since v0.1.0
  * @category Object
- * @sig Array -> Object -> Object
+ * @sig (a -> Boolean) -> Object -> Object
  * @description Works a lot like an array filter, but for the object data type
- * @param {Array} arr An array of properties to filter for
+ * Accepts a function and an object, it then runs the function against each value
+ * @param {Function} fn A function to run against the values within the object
  * @param {Object} obj The object to sift through
  * @return {Object} A new filtered out object
  *
  * @example
- * sift(['id', 'thing'], { id: 44, thing: 'test', other: 'cool' }) // => { id: 44, thing: 'test' }
+ * sift(x => typeof x === 'string', {
+ *   id: 44,
+ *   thing: 'test',
+ *   other: 'cool'
+ * }) // => { thing: 'test', other: 'cool' }
  *
  * // It's also curried
  *
- * const sifter = sift(['id', 'thing'])
+ * const sifter = sift(x => typeof x === 'string')
  *
- * sifter({ id: 44, thing: 'test', other: 'cool' }) // => { id: 44, thing: 'test' }
+ * sifter({ id: 44, thing: 'test', other: 'cool' }) // => { thing: 'test', other: 'cool' }
  */
-const sift = (arr, obj) =>
-  Object.keys(obj).reduce((acc, k) => {
-    if (arr.indexOf(k) !== -1) {
-      acc[k] = obj[k]
-    }
+const sift = (fn, obj) => Object.keys(obj).reduce((acc, k) => {
+  if (fn(obj[k])) {
+    acc[k] = obj[k]
+  }
 
-    return acc
-  }, {})
+  return acc
+}, {})
 
 export default curry(sift)
