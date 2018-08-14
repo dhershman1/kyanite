@@ -1,4 +1,5 @@
-import _equal from '../_internals/equal'
+import curry from '../function/curry'
+import _equal from '../_internals/_equal'
 
 /**
  * @name isEqual
@@ -14,6 +15,6 @@ import _equal from '../_internals/equal'
  * const obj = isEqual({}, {}); // => true
  * const arr = isEqual([], []); // => true
  */
-const isEqual = (a, b) => _equal(a, b, [], [])
+const isEqual = (a, b) => _equal(a, b)
 
-export default isEqual
+export default curry(isEqual)

@@ -210,18 +210,19 @@
   };
   var nth$1 = curry(nth);
 
-  function _typeof(obj) {
-    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof = function (obj) {
-        return typeof obj;
-      };
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
     } else {
-      _typeof = function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-      };
+      obj[key] = value;
     }
 
-    return _typeof(obj);
+    return obj;
   }
 
   function _slicedToArray(arr, i) {
@@ -544,113 +545,86 @@
     return !x || !Object.keys(x).length;
   };
 
-  var arrayFromIterator = (function (iter) {
-    var list = [];
-    var next = '';
-    while (!(next = iter.next()).done) {
-      list.push(next.value);
-    }
-    return list;
+  var isObject = (function (x) {
+    return Object.prototype.toString.call(x) === '[object Object]';
   });
 
-  var nullTypeCheck = function nullTypeCheck(a, b) {
-    return a === null || b === null || Object.prototype.toString.call(a).slice(8, -1) !== Object.prototype.toString.call(b).slice(8, -1);
+  var keysCheck = function keysCheck(a, b) {
+    var aKeys = Object.keys(a);
+    var bKeys = Object.keys(b);
+    return and$1(aKeys.length === bKeys.length, !difference$1(aKeys, bKeys).length);
   };
-  var regexCheck = function regexCheck(a, b) {
-    var vals = ['source', 'global', 'ignoreCase', 'multiline', 'sticky', 'unicode'];
-    for (var i = 0; i < vals.length; i++) {
-      var p = vals[i];
-      if (a[p] !== b[p]) {
+  var equal = function equal(a, b) {
+    if (!keysCheck(a, b)) {
+      return false;
+    }
+    var aKeys = Object.keys(a);
+    return aKeys.every(function (key) {
+      if (!has$1(key, b)) {
         return false;
       }
-    }
-    return true;
+      var aVal = a[key];
+      var bVal = b[key];
+      if (isObject(aVal)) {
+        return equal(aVal, bVal);
+      }
+      if (Array.isArray(aVal)) {
+        return equal$1(aVal, bVal);
+      }
+      return aVal === bVal;
+    });
   };
-  var typeConvert = function typeConvert(a) {
-    var allTypes = {
-      complex: ['Arguments', 'Array', 'Object'],
-      simple: ['Boolean', 'Number', 'String'],
-      date: ['Date'],
-      err: ['Error'],
-      regex: ['RegExp'],
-      map: ['Map', 'Set'],
-      other: ['Int8Array', 'Uint8Array', 'Uint8ClampedArray', 'Int16Array', 'Uint16Array', 'Int32Array', 'Uint32Array', 'Float32Array', 'Float64Array', 'ArrayBuffer']
+
+  var equal$1 = function equal$$1(a, b) {
+    var s = sort$1(function (a, b) {
+      return a - b;
+    });
+    if (a.length !== b.length) {
+      return false;
+    }
+    var aSorted = s(a);
+    var bSorted = s(b);
+    return aSorted.every(function (val, i) {
+      var bVal = bSorted[i];
+      if (Array.isArray(val)) {
+        return equal$$1(val, bVal);
+      }
+      if (isObject(val)) {
+        return equal(val, bVal);
+      }
+      return val === bVal;
+    });
+  };
+
+  var equal$2 = function equal$$1(a, b) {
+    var aTy = type(a);
+    var regVals = ['source', 'global', 'ignoreCase', 'multiline', 'sticky', 'unicode'];
+    var methods = {
+      Object: equal,
+      Array: equal$1,
+      Date: function Date(a, b) {
+        return a.valueOf() === b.valueOf();
+      },
+      RegExp: function RegExp(a, b) {
+        return regVals.every(function (p) {
+          return a[p] === b[p];
+        });
+      }
     };
-    for (var prop in allTypes) {
-      var currType = allTypes[prop];
-      if (currType.indexOf(a) !== -1) {
-        return prop;
-      }
-    }
-    return '';
-  };
-  var equal = function equal(a, b, stackA, stackB) {
-    var aType = typeConvert(Object.prototype.toString.call(a).slice(8, -1));
-    if (identical$1(a, b)) {
-      return true;
-    }
-    if (nullTypeCheck(a, b)) {
+    if (aTy !== type(b)) {
       return false;
     }
-    switch (aType) {
-      case 'complex':
-        break;
-      case 'simple':
-        if (!(_typeof(a) === _typeof(b) && identical$1(a.valueOf(), b.valueOf()))) {
-          return false;
-        }
-        break;
-      case 'date':
-        if (!identical$1(a.valueOf(), b.valueOf())) {
-          return false;
-        }
-        break;
-      case 'err':
-        return a.name === b.name && a.message === b.message;
-      case 'regex':
-        if (!regexCheck(a, b)) {
-          return false;
-        }
-        break;
-      case 'map':
-        if (!equal(arrayFromIterator(a.entries()), arrayFromIterator(b.entries()), stackA, stackB)) {
-          return false;
-        }
-        break;
-      case 'other':
-        break;
-      default:
-        return false;
+    var currMethod = methods[aTy];
+    if (currMethod) {
+      return currMethod(a, b);
     }
-    var keysA = Object.keys(a);
-    if (keysA.length !== Object.keys(b).length) {
-      return false;
-    }
-    var idx = stackA.length - 1;
-    var idy = keysA.length - 1;
-    while (idx >= 0) {
-      if (stackA[idx] === a) {
-        return stackB[idx] === b;
-      }
-      idx -= 1;
-    }
-    stackA.push(a);
-    stackB.push(b);
-    while (idy >= 0) {
-      var key = keysA[idy];
-      if (!(Object.prototype.hasOwnProperty.call(b, key) && equal(b[key], a[key], stackA, stackB))) {
-        return false;
-      }
-      idy -= 1;
-    }
-    stackA.pop();
-    stackB.pop();
-    return true;
+    return identical$1(a, b);
   };
 
   var isEqual = function isEqual(a, b) {
-    return equal(a, b, [], []);
+    return equal$2(a, b);
   };
+  var isEqual$1 = curry(isEqual);
 
   var juxt = function juxt() {
     var fns = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -784,6 +758,13 @@
   };
   var defaults$1 = curry(defaults);
 
+  var draft = function draft(fn, obj) {
+    return Object.keys(obj).reduce(function (acc, key) {
+      return assign({}, acc, _defineProperty({}, key, fn(obj[key])));
+    }, {});
+  };
+  var draft$1 = curry(draft);
+
   var entries = function entries(obj) {
     return Object.keys(obj).map(function (k) {
       return [k, obj[k]];
@@ -837,10 +818,6 @@
   };
   var plan$1 = curry(plan);
 
-  var isObject = (function (x) {
-    return Object.prototype.toString.call(x) === '[object Object]';
-  });
-
   var pluck = function pluck(p, list) {
     return Object.keys(list).reduce(function (acc, v) {
       var val = list[v];
@@ -867,9 +844,9 @@
   };
   var props$1 = curry(props);
 
-  var sift = function sift(arr, obj) {
+  var sift = function sift(fn, obj) {
     return Object.keys(obj).reduce(function (acc, k) {
-      if (arr.indexOf(k) !== -1) {
+      if (fn(obj[k])) {
         acc[k] = obj[k];
       }
       return acc;
@@ -983,7 +960,7 @@
   exports.identity = identity;
   exports.is = is$1;
   exports.isEmpty = isEmpty;
-  exports.isEqual = isEqual;
+  exports.isEqual = isEqual$1;
   exports.isNil = isNil;
   exports.juxt = juxt;
   exports.lt = lt$1;
@@ -1006,6 +983,7 @@
   exports.assign = assign;
   exports.compress = compress;
   exports.defaults = defaults$1;
+  exports.draft = draft$1;
   exports.entries = entries;
   exports.has = has$1;
   exports.head = head;
