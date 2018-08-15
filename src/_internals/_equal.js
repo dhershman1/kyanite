@@ -1,11 +1,8 @@
-// import arrEq from './array-equals'
 import identical from '../function/identical'
-// import objEq from './object-equal'
 import type from '../function/type'
 import and from '../function/and'
 import difference from '../array/difference'
 import has from '../object/has'
-import isObject from './isObject'
 import sort from '../array/sort'
 
 const organize = (a, b) => {
@@ -25,7 +22,9 @@ const keysCheck = (a, b) => {
   return and(aKeys.length === bKeys.length, !difference(aKeys, bKeys).length)
 }
 
-const _eq = (a, b) => {
+const isComplex = a => Array.isArray(a) || Object.prototype.toString.call(a) === '[object Object]'
+
+const equal = (a, b) => {
   const aTy = type(a)
   const regVals = ['source', 'global', 'ignoreCase', 'multiline', 'sticky', 'unicode']
 
@@ -33,18 +32,19 @@ const _eq = (a, b) => {
     Date: (x, y) => x.valueOf() === y.valueOf(),
     RegExp: (x, y) => regVals.every(p => x[p] === y[p])
   }
-  const [c, d] = organize(a, b)
   const current = methods[aTy]
 
   if (current) {
     return current(a, b)
   }
 
+  const [c, d] = organize(a, b)
+
   if (!keysCheck(c, d)) {
     return false
   }
 
-  if (Array.isArray(c) || isObject(c)) {
+  if (isComplex(c)) {
     return Object.keys(c).every(key => {
       if (!has(key, d)) {
         return false
@@ -53,8 +53,8 @@ const _eq = (a, b) => {
       const aVal = c[key]
       const bVal = d[key]
 
-      if (Array.isArray(aVal) || isObject(aVal)) {
-        return _eq(aVal, bVal)
+      if (isComplex(aVal)) {
+        return equal(aVal, bVal)
       }
 
       return identical(aVal, bVal)
@@ -83,4 +83,4 @@ const _eq = (a, b) => {
 //   return identical(a, b)
 // }
 
-export default _eq
+export default equal
