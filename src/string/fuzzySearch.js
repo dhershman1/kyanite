@@ -1,4 +1,4 @@
-import curry from './curry'
+import curry from '../function/curry'
 
 /* eslint-disable no-labels */
 
@@ -6,7 +6,7 @@ import curry from './curry'
  * @name fuzzySearch
  * @since v0.1.0
  * @sig a -> Boolean
- * @category Function
+ * @category String
  * @description Fuzzy search setup to look find things fast and effective
  * @param  {String} n The Item to search
  * @param  {String} h The value to search for
