@@ -545,84 +545,65 @@
     return !x || !Object.keys(x).length;
   };
 
-  var isObject = (function (x) {
-    return Object.prototype.toString.call(x) === '[object Object]';
-  });
-
+  var organize = function organize(a, b) {
+    var s = sort$1(function (x, y) {
+      return x - y;
+    });
+    if (Array.isArray(a)) {
+      return [s(a), s(b)];
+    }
+    return [a, b];
+  };
   var keysCheck = function keysCheck(a, b) {
     var aKeys = Object.keys(a);
     var bKeys = Object.keys(b);
     return and$1(aKeys.length === bKeys.length, !difference$1(aKeys, bKeys).length);
   };
+  var isComplex = function isComplex(a) {
+    return Array.isArray(a) || Object.prototype.toString.call(a) === '[object Object]';
+  };
   var equal = function equal(a, b) {
-    if (!keysCheck(a, b)) {
-      return false;
-    }
-    var aKeys = Object.keys(a);
-    return aKeys.every(function (key) {
-      if (!has$1(key, b)) {
-        return false;
-      }
-      var aVal = a[key];
-      var bVal = b[key];
-      if (isObject(aVal)) {
-        return equal(aVal, bVal);
-      }
-      if (Array.isArray(aVal)) {
-        return equal$1(aVal, bVal);
-      }
-      return aVal === bVal;
-    });
-  };
-
-  var equal$1 = function equal$$1(a, b) {
-    var s = sort$1(function (a, b) {
-      return a - b;
-    });
-    if (a.length !== b.length) {
-      return false;
-    }
-    var aSorted = s(a);
-    var bSorted = s(b);
-    return aSorted.every(function (val, i) {
-      var bVal = bSorted[i];
-      if (Array.isArray(val)) {
-        return equal$$1(val, bVal);
-      }
-      if (isObject(val)) {
-        return equal(val, bVal);
-      }
-      return val === bVal;
-    });
-  };
-
-  var equal$2 = function equal$$1(a, b) {
     var aTy = type(a);
     var regVals = ['source', 'global', 'ignoreCase', 'multiline', 'sticky', 'unicode'];
     var methods = {
-      Object: equal,
-      Array: equal$1,
-      Date: function Date(a, b) {
-        return a.valueOf() === b.valueOf();
+      Date: function Date(x, y) {
+        return x.valueOf() === y.valueOf();
       },
-      RegExp: function RegExp(a, b) {
+      RegExp: function RegExp(x, y) {
         return regVals.every(function (p) {
-          return a[p] === b[p];
+          return x[p] === y[p];
         });
       }
     };
-    if (aTy !== type(b)) {
+    var current = methods[aTy];
+    if (current) {
+      return current(a, b);
+    }
+    var _organize = organize(a, b),
+        _organize2 = _slicedToArray(_organize, 2),
+        c = _organize2[0],
+        d = _organize2[1];
+    if (!keysCheck(c, d)) {
       return false;
     }
-    var currMethod = methods[aTy];
-    if (currMethod) {
-      return currMethod(a, b);
+    if (isComplex(c)) {
+      return Object.keys(c).every(function (key) {
+        if (!has$1(key, d)) {
+          return false;
+        }
+        var aVal = c[key];
+        var bVal = d[key];
+        if (isComplex(aVal)) {
+          return equal(aVal, bVal);
+        }
+        return identical$1(aVal, bVal);
+      });
     }
-    return identical$1(a, b);
+    return identical$1(c, d);
   };
 
   var isEqual = function isEqual(a, b) {
-    return equal$2(a, b);
+    return equal(a, b);
   };
   var isEqual$1 = curry(isEqual);
 
@@ -817,6 +798,10 @@
     }, {}));
   };
   var plan$1 = curry(plan);
+
+  var isObject = (function (x) {
+    return Object.prototype.toString.call(x) === '[object Object]';
+  });
 
   var pluck = function pluck(p, list) {
     return Object.keys(list).reduce(function (acc, v) {

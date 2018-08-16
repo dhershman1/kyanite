@@ -10,13 +10,18 @@
   - It can still compare Primitive types, as well as Arrays, Objects, Dates, RegExp, and memory like Promises
   - Dropped support for items like Object based Booleans/Strings (`new Boolean`), Maps, Errors, And a lot of the really super rare edge cases
 
+### Fixed
+
+- Compatibility patch for using `isEqual` in IE
+
 ### New
 
 - Added a new `draft` function for objects which essentially applies a provided function to all of the values within an object (essentially an object map)
 
-### Fixed
+### Improved
 
-- Compatibility patch for using `isEqual` in IE
+- `isEqual` gained a lot of improvements to performance, this is also dependent on the size/format of the data being compared
+- `isEqual` file size has dropped by a lot with the new re write
 
 ## v0.5.0
 
