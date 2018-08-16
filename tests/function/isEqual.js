@@ -1,11 +1,7 @@
 import isEqual from '../../src/function/isEqual'
 import test from 'tape'
 
-test('Test boolean primitive do not equal boolean objects', t => {
-  t.notOk(isEqual(true, new Boolean(true)), 'true is not equal to object true')
-  t.notOk(isEqual(false, new Boolean(false)), 'flase is not equal to object false')
-  t.end()
-})
+/* eslint-disable no-new-wrappers */
 
 test('Compares Promise objects by identity', t => {
   const p1 = Promise.resolve(42)
@@ -54,9 +50,26 @@ test('Handles boolean types nicely', t => {
 test('Test handles regex', t => {
   t.ok(isEqual(/\s/, /\s/), 'handles whitespace regex')
   t.ok(isEqual(/a/gi, /a/gi), 'handles flags')
-  t.notOk(isEqual(/\s/, /\d/), 'whitespace regex is not equal to digit regex')
   t.ok(isEqual(/a/mgi, /a/img), 'handles mixed flags')
+  t.ok(isEqual(/[A-Z]/, new RegExp('[A-Z]')), 'Regex is generated the same so they are equal')
+  t.notOk(isEqual(/\s/, /\d/), 'whitespace regex is not equal to digit regex')
   t.notOk(isEqual(/a/gi, /a/i), 'Handles not equal flags')
+  t.end()
+})
+
+test('Test boolean primitive do not equal boolean objects', t => {
+  t.notOk(isEqual(true, new Boolean(true)), 'true is not equal to object true')
+  t.notOk(isEqual(false, new Boolean(false)), 'flase is not equal to object false')
+  t.end()
+})
+
+test('Test String primitive do not equal String objects', t => {
+  t.notOk(isEqual('test', new String('test')), 'String is not equal to Object String')
+  t.end()
+})
+
+test('Test Number primitive do not equal Number objects', t => {
+  t.notOk(isEqual(5, new Number(5)), 'Number is not equal to Object Number')
   t.end()
 })
 
