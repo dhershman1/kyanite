@@ -64,23 +64,4 @@ const equal = (a, b) => {
   return identical(c, d)
 }
 
-// const equal = (a, b) => {
-//   const aTy = type(a)
-//   const regVals = ['source', 'global', 'ignoreCase', 'multiline', 'sticky', 'unicode']
-//   const methods = {
-//     Object: objEq,
-//     Array: arrEq,
-//     Date: (x, y) => x.valueOf() === y.valueOf(),
-//     RegExp: (x, y) => regVals.every(p => x[p] === y[p])
-//   }
-
-//   const current = methods[aTy]
-
-//   if (current) {
-//     return current(a, b)
-//   }
-
-//   return identical(a, b)
-// }
-
 export default equal
