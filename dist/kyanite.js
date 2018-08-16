@@ -495,29 +495,6 @@
   };
   var encase$1 = curry(encase);
 
-  var fuzzySearch = function fuzzySearch(needle, haystack) {
-    var hLen = haystack.length;
-    var nLen = needle.length;
-    var j = 0;
-    if (nLen > hLen) {
-      return false;
-    }
-    if (nLen === hLen) {
-      return needle === haystack;
-    }
-    outer: for (var i = 0; i < nLen; i++) {
-      var nChar = needle.charCodeAt(i);
-      while (j < hLen) {
-        if (haystack.charCodeAt(j++) === nChar) {
-          continue outer;
-        }
-      }
-      return false;
-    }
-    return true;
-  };
-  var fuzzySearch$1 = curry(fuzzySearch);
-
   var gt = function gt(a, b) {
     return a > b;
   };
@@ -866,6 +843,29 @@
   };
   var contains$1 = curry(contains);
 
+  var fuzzySearch = function fuzzySearch(needle, haystack) {
+    var hLen = haystack.length;
+    var nLen = needle.length;
+    var j = 0;
+    if (nLen > hLen) {
+      return false;
+    }
+    if (nLen === hLen) {
+      return needle === haystack;
+    }
+    outer: for (var i = 0; i < nLen; i++) {
+      var nChar = needle.charCodeAt(i);
+      while (j < hLen) {
+        if (haystack.charCodeAt(j++) === nChar) {
+          continue outer;
+        }
+      }
+      return false;
+    }
+    return true;
+  };
+  var fuzzySearch$1 = curry(fuzzySearch);
+
   var join = function join(str, list) {
     return list.join(str);
   };
@@ -938,7 +938,6 @@
   exports.descendBy = descendBy$1;
   exports.empty = empty;
   exports.encase = encase$1;
-  exports.fuzzySearch = fuzzySearch$1;
   exports.gt = gt$1;
   exports.gte = gte$1;
   exports.identical = identical$1;
@@ -985,6 +984,7 @@
   exports.whole = whole$1;
   exports.capitalize = capitalize;
   exports.contains = contains$1;
+  exports.fuzzySearch = fuzzySearch$1;
   exports.join = join$1;
   exports.strip = strip;
   exports.trim = trim;
