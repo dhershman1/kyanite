@@ -17,6 +17,7 @@
 ### New
 
 - Added a new `draft` function for objects which essentially applies a provided function to all of the values within an object (essentially an object map)
+- Re categorized `fuzzySearch` as a String function rather than a normal function
 
 ### Improved
 
