@@ -8,8 +8,8 @@ import curry from '../function/curry'
  * @sig a -> Boolean
  * @category String
  * @description Fuzzy search setup to look find things fast and effective
- * @param  {String} n The Item to search
- * @param  {String} h The value to search for
+ * @param  {String} needle The Item to search
+ * @param  {String} haystack The value to search for
  * @return {Boolean} Returns a boolean determined by if the value is found or not by the search
  *
  * @example

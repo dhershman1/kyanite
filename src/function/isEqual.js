@@ -7,8 +7,8 @@ import _equal from '../_internals/_equal'
  * @category Function
  * @sig a -> b -> Boolean
  * @description Takes and compares two items. Capable of handling cyclical data structures
- * @param  {Any} a First item to compare
- * @param  {Any} b Second item to compare
+ * @param {Any} a First item to compare
+ * @param {Any} b Second item to compare
  * @return {Boolean} Returns the boolean after running our comparison check
  *
  * @example
