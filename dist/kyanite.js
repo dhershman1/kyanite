@@ -210,18 +210,19 @@
   };
   var nth$1 = curry(nth);
 
-  function _typeof(obj) {
-    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof = function (obj) {
-        return typeof obj;
-      };
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
     } else {
-      _typeof = function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-      };
+      obj[key] = value;
     }
 
-    return _typeof(obj);
+    return obj;
   }
 
   function _slicedToArray(arr, i) {
@@ -494,29 +495,6 @@
   };
   var encase$1 = curry(encase);
 
-  var fuzzySearch = function fuzzySearch(needle, haystack) {
-    var hLen = haystack.length;
-    var nLen = needle.length;
-    var j = 0;
-    if (nLen > hLen) {
-      return false;
-    }
-    if (nLen === hLen) {
-      return needle === haystack;
-    }
-    outer: for (var i = 0; i < nLen; i++) {
-      var nChar = needle.charCodeAt(i);
-      while (j < hLen) {
-        if (haystack.charCodeAt(j++) === nChar) {
-          continue outer;
-        }
-      }
-      return false;
-    }
-    return true;
-  };
-  var fuzzySearch$1 = curry(fuzzySearch);
-
   var gt = function gt(a, b) {
     return a > b;
   };
@@ -544,113 +522,67 @@
     return !x || !Object.keys(x).length;
   };
 
-  var arrayFromIterator = (function (iter) {
-    var list = [];
-    var next = '';
-    while (!(next = iter.next()).done) {
-      list.push(next.value);
+  var organize = function organize(a, b) {
+    var s = sort$1(function (x, y) {
+      return x - y;
+    });
+    if (Array.isArray(a)) {
+      return [s(a), s(b)];
     }
-    return list;
-  });
-
-  var nullTypeCheck = function nullTypeCheck(a, b) {
-    return a === null || b === null || Object.prototype.toString.call(a).slice(8, -1) !== Object.prototype.toString.call(b).slice(8, -1);
+    return [a, b];
   };
-  var regexCheck = function regexCheck(a, b) {
-    var vals = ['source', 'global', 'ignoreCase', 'multiline', 'sticky', 'unicode'];
-    for (var i = 0; i < vals.length; i++) {
-      var p = vals[i];
-      if (a[p] !== b[p]) {
-        return false;
+  var keysCheck = function keysCheck(a, b) {
+    var aKeys = Object.keys(a);
+    var bKeys = Object.keys(b);
+    return and$1(aKeys.length === bKeys.length, !difference$1(aKeys, bKeys).length);
+  };
+  var isComplex = function isComplex(a) {
+    return Array.isArray(a) || Object.prototype.toString.call(a) === '[object Object]';
+  };
+  var equal = function equal(a, b) {
+    var aTy = type(a);
+    var regVals = ['source', 'global', 'ignoreCase', 'multiline', 'sticky', 'unicode'];
+    var methods = {
+      Date: function Date(x, y) {
+        return x.valueOf() === y.valueOf();
+      },
+      RegExp: function RegExp(x, y) {
+        return regVals.every(function (p) {
+          return x[p] === y[p];
+        });
       }
-    }
-    return true;
-  };
-  var typeConvert = function typeConvert(a) {
-    var allTypes = {
-      complex: ['Arguments', 'Array', 'Object'],
-      simple: ['Boolean', 'Number', 'String'],
-      date: ['Date'],
-      err: ['Error'],
-      regex: ['RegExp'],
-      map: ['Map', 'Set'],
-      other: ['Int8Array', 'Uint8Array', 'Uint8ClampedArray', 'Int16Array', 'Uint16Array', 'Int32Array', 'Uint32Array', 'Float32Array', 'Float64Array', 'ArrayBuffer']
     };
-    for (var prop in allTypes) {
-      var currType = allTypes[prop];
-      if (currType.indexOf(a) !== -1) {
-        return prop;
-      }
+    var current = methods[aTy];
+    if (current) {
+      return current(a, b);
     }
-    return '';
-  };
-  var equal = function equal(a, b, stackA, stackB) {
-    var aType = typeConvert(Object.prototype.toString.call(a).slice(8, -1));
-    if (identical$1(a, b)) {
-      return true;
-    }
-    if (nullTypeCheck(a, b)) {
+    var _organize = organize(a, b),
+        _organize2 = _slicedToArray(_organize, 2),
+        c = _organize2[0],
+        d = _organize2[1];
+    if (!keysCheck(c, d)) {
       return false;
     }
-    switch (aType) {
-      case 'complex':
-        break;
-      case 'simple':
-        if (!(_typeof(a) === _typeof(b) && identical$1(a.valueOf(), b.valueOf()))) {
+    if (isComplex(c)) {
+      return Object.keys(c).every(function (key) {
+        if (!has$1(key, d)) {
           return false;
         }
-        break;
-      case 'date':
-        if (!identical$1(a.valueOf(), b.valueOf())) {
-          return false;
+        var aVal = c[key];
+        var bVal = d[key];
+        if (isComplex(aVal)) {
+          return equal(aVal, bVal);
         }
-        break;
-      case 'err':
-        return a.name === b.name && a.message === b.message;
-      case 'regex':
-        if (!regexCheck(a, b)) {
-          return false;
-        }
-        break;
-      case 'map':
-        if (!equal(arrayFromIterator(a.entries()), arrayFromIterator(b.entries()), stackA, stackB)) {
-          return false;
-        }
-        break;
-      case 'other':
-        break;
-      default:
-        return false;
+        return identical$1(aVal, bVal);
+      });
     }
-    var keysA = Object.keys(a);
-    if (keysA.length !== Object.keys(b).length) {
-      return false;
-    }
-    var idx = stackA.length - 1;
-    var idy = keysA.length - 1;
-    while (idx >= 0) {
-      if (stackA[idx] === a) {
-        return stackB[idx] === b;
-      }
-      idx -= 1;
-    }
-    stackA.push(a);
-    stackB.push(b);
-    while (idy >= 0) {
-      var key = keysA[idy];
-      if (!(Object.prototype.hasOwnProperty.call(b, key) && equal(b[key], a[key], stackA, stackB))) {
-        return false;
-      }
-      idy -= 1;
-    }
-    stackA.pop();
-    stackB.pop();
-    return true;
+    return identical$1(c, d);
   };
 
   var isEqual = function isEqual(a, b) {
-    return equal(a, b, [], []);
+    return equal(a, b);
   };
+  var isEqual$1 = curry(isEqual);
 
   var juxt = function juxt() {
     var fns = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -784,6 +716,13 @@
   };
   var defaults$1 = curry(defaults);
 
+  var draft = function draft(fn, obj) {
+    return Object.keys(obj).reduce(function (acc, key) {
+      return assign({}, acc, _defineProperty({}, key, fn(obj[key])));
+    }, {});
+  };
+  var draft$1 = curry(draft);
+
   var entries = function entries(obj) {
     return Object.keys(obj).map(function (k) {
       return [k, obj[k]];
@@ -867,9 +806,9 @@
   };
   var props$1 = curry(props);
 
-  var sift = function sift(arr, obj) {
+  var sift = function sift(fn, obj) {
     return Object.keys(obj).reduce(function (acc, k) {
-      if (arr.indexOf(k) !== -1) {
+      if (fn(obj[k])) {
         acc[k] = obj[k];
       }
       return acc;
@@ -903,6 +842,29 @@
     return str.indexOf(a) !== -1;
   };
   var contains$1 = curry(contains);
+
+  var fuzzySearch = function fuzzySearch(needle, haystack) {
+    var hLen = haystack.length;
+    var nLen = needle.length;
+    var j = 0;
+    if (nLen > hLen) {
+      return false;
+    }
+    if (nLen === hLen) {
+      return needle === haystack;
+    }
+    outer: for (var i = 0; i < nLen; i++) {
+      var nChar = needle.charCodeAt(i);
+      while (j < hLen) {
+        if (haystack.charCodeAt(j++) === nChar) {
+          continue outer;
+        }
+      }
+      return false;
+    }
+    return true;
+  };
+  var fuzzySearch$1 = curry(fuzzySearch);
 
   var join = function join(str, list) {
     return list.join(str);
@@ -976,14 +938,13 @@
   exports.descendBy = descendBy$1;
   exports.empty = empty;
   exports.encase = encase$1;
-  exports.fuzzySearch = fuzzySearch$1;
   exports.gt = gt$1;
   exports.gte = gte$1;
   exports.identical = identical$1;
   exports.identity = identity;
   exports.is = is$1;
   exports.isEmpty = isEmpty;
-  exports.isEqual = isEqual;
+  exports.isEqual = isEqual$1;
   exports.isNil = isNil;
   exports.juxt = juxt;
   exports.lt = lt$1;
@@ -1006,6 +967,7 @@
   exports.assign = assign;
   exports.compress = compress;
   exports.defaults = defaults$1;
+  exports.draft = draft$1;
   exports.entries = entries;
   exports.has = has$1;
   exports.head = head;
@@ -1022,6 +984,7 @@
   exports.whole = whole$1;
   exports.capitalize = capitalize;
   exports.contains = contains$1;
+  exports.fuzzySearch = fuzzySearch$1;
   exports.join = join$1;
   exports.strip = strip;
   exports.trim = trim;

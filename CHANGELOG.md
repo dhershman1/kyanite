@@ -1,5 +1,31 @@
 # Changelog
 
+## v0.6.0
+
+### BREAKING CHANGES
+
+- Completely re wrote `sift` to act as a for real filter, instead of another `omit`
+- Complete re work of `isEqual` in an attempt to make it much more lightweight
+  - IMPORTANT: This method will no longer handle/care about recursive data in objects so if you are comparing potential circular/recursive data you will get a memory stack error
+  - It can still compare Primitive types, as well as Arrays, Objects, Dates, RegExp, and memory like Promises
+  - Dropped support for items like Object based Booleans/Strings (`new Boolean`), Maps, Errors, And a lot of the really super rare edge cases
+
+### Fixed
+
+- Compatibility patch for using `isEqual` in IE
+- Documentation bug not showing arguments for functions
+- fuzzySearch param naming in documentation was inconsistent
+
+### New
+
+- Added a new `draft` function for objects which essentially applies a provided function to all of the values within an object (essentially an object map)
+- Re categorized `fuzzySearch` as a String function rather than a normal function
+
+### Improved
+
+- `isEqual` gained a lot of improvements to performance, this is also dependent on the size/format of the data being compared
+- `isEqual` file size has dropped by a lot with the new re write
+
 ## v0.5.0
 
 ### BREAKING CHANGES

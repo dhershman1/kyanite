@@ -7,6 +7,13 @@ test('Test base functionality', t => {
   t.end()
 })
 
+test('Test boolean types', t => {
+  t.ok(identical(false, false))
+  t.ok(identical(true, true))
+  t.notOk(identical(true, false))
+  t.end()
+})
+
 test('Test object types', t => {
   const o = {}
 

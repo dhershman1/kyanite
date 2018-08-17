@@ -5,6 +5,7 @@ import curry from './curry'
  * @since v0.2.2
  * @category Function
  * @sig Function -> Any -> Maybe
+ * @description Encase the provided function in a try catch which if the function errors will give back an undefined
  * @param {Function} fn The function to encase before running
  * @param {Any} a The value we want to pass into the given function
  * @return {Any} The return of the provided function

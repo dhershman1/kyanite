@@ -6,7 +6,7 @@ import curry from '../function/curry'
  * @since v0.1.0
  * @category Object
  * @sig Object -> Object -> Object
- * @description Uses a schema to apply a map like functionality on a given object
+ * @description Uses a schema to allow you to plan out functions being ran against values within your object
  * @param {Object} schema The object of functions we want to apply
  * @param {Object} obj The object to apply our functions too
  * @return {Object} A new object with the updated data from our applied functions
