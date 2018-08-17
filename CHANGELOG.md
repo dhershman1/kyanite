@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.6.1
+
+## Improved
+
+- Removed unreachable code block from equals functionality
+
+## Fixed
+
+- Coverage for `tail` and `head` functions
+
 ## v0.6.0
 
 ### BREAKING CHANGES
