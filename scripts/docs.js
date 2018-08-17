@@ -39,7 +39,7 @@ const generateSyntax = (fnName, args) => {
     return ''
   }
 
-  const argsStr = args.map(a => a.optional ? `[${a.fnName}]` : a.fnName).join(', ')
+  const argsStr = args.map(a => a.optional ? `[${a.name}]` : a.name).join(', ')
 
   return `${fnName}(${argsStr})`
 }
