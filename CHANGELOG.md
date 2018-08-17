@@ -13,6 +13,8 @@
 ### Fixed
 
 - Compatibility patch for using `isEqual` in IE
+- Documentation bug not showing arguments for functions
+- fuzzySearch param naming in documentation was inconsistent
 
 ### New
 
