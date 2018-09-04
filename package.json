@@ -65,10 +65,10 @@
     "utility",
     "single type"
   ],
-  "author": "Dustin Hershman",
+  "author": "Dustin Hershman <dustinh17@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dhershman1/kyanite/issues"
   },
-  "homepage": "https://github.com/dhershman1/kyanite#readme"
+  "homepage": "https://dusty.codes/documentation/kyanite"
 }
