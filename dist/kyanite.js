@@ -895,6 +895,14 @@
     return a.replace(/\s/g, '');
   };
 
+  var toLower = function toLower(a) {
+    return a.toLowerCase();
+  };
+
+  var toUpper = function toUpper(a) {
+    return a.toUpperCase();
+  };
+
   var trim = function trim(str) {
     return str.trim();
   };
@@ -1012,6 +1020,8 @@
   exports.fuzzySearch = fuzzySearch$1;
   exports.join = join$1;
   exports.strip = strip;
+  exports.toLower = toLower;
+  exports.toUpper = toUpper;
   exports.trim = trim;
   exports.words = words;
 
