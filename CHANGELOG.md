@@ -1,12 +1,16 @@
 # Changelog
 
-## v0.6.1
+## v0.7.0
 
-## Improved
+### New
+
+- Added number `pow` function which takes an exponent and base number and rises the number to the exponents value
+
+### Improved
 
 - Removed unreachable code block from equals functionality
 
-## Fixed
+### Fixed
 
 - Coverage for `tail` and `head` functions
 
