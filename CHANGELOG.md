@@ -13,6 +13,8 @@
 - Added number `rem` function which finds the remainder of two numbers
 - Added number `isOdd` function which checks if the provided number is odd or not
 - Added number `isEven` function which checks if the provided number is even or not
+- Added string `toUpper` function which transforms a string to all upper case
+- Added string `toLower` function which transforms a string to all lower case
 
 ### Improved
 
