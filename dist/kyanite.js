@@ -565,9 +565,6 @@
     }
     if (isComplex(c)) {
       return Object.keys(c).every(function (key) {
-        if (!has$1(key, d)) {
-          return false;
-        }
         var aVal = c[key];
         var bVal = d[key];
         if (isComplex(aVal)) {
@@ -657,8 +654,13 @@
   };
   var add$1 = curry(add);
 
+  var between = function between(a, b, n) {
+    return a <= n && b >= n;
+  };
+  var between$1 = curry(between);
+
   var div = function div(a, b) {
-    return a / b;
+    return b / a;
   };
   var div$1 = curry(div);
 
@@ -670,6 +672,14 @@
   };
   var gcd$1 = curry(gcd);
 
+  var isEven = function isEven(n) {
+    return !isNaN(n) && n % 2 === 0;
+  };
+
+  var isOdd = function isOdd(n) {
+    return !isNaN(n) && n % 2 !== 0;
+  };
+
   var lcm = function lcm(a, b) {
     return Math.abs(Math.floor(a / gcd$1(a, b) * b));
   };
@@ -679,6 +689,16 @@
     return a * b;
   };
   var mul$1 = curry(mul);
+
+  var pow = function pow(a, b) {
+    return Math.pow(b, a);
+  };
+  var pow$1 = curry(pow);
+
+  var rem = function rem(a, b) {
+    return b % a;
+  };
+  var rem$1 = curry(rem);
 
   var round = function round(precision, num) {
     return Number("".concat(Math.round("".concat(num, "e").concat(precision)), "e-").concat(precision));
@@ -875,6 +895,14 @@
     return a.replace(/\s/g, '');
   };
 
+  var toLower = function toLower(a) {
+    return a.toLowerCase();
+  };
+
+  var toUpper = function toUpper(a) {
+    return a.toUpperCase();
+  };
+
   var trim = function trim(str) {
     return str.trim();
   };
@@ -957,10 +985,15 @@
   exports.type = type;
   exports.when = when$1;
   exports.add = add$1;
+  exports.between = between$1;
   exports.div = div$1;
   exports.gcd = gcd$1;
+  exports.isEven = isEven;
+  exports.isOdd = isOdd;
   exports.lcm = lcm$1;
   exports.mul = mul$1;
+  exports.pow = pow$1;
+  exports.rem = rem$1;
   exports.round = round$1;
   exports.sub = sub$1;
   exports.any = any$1;
@@ -987,6 +1020,8 @@
   exports.fuzzySearch = fuzzySearch$1;
   exports.join = join$1;
   exports.strip = strip;
+  exports.toLower = toLower;
+  exports.toUpper = toUpper;
   exports.trim = trim;
   exports.words = words;
 

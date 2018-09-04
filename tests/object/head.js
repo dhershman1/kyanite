@@ -14,3 +14,8 @@ test('Returns the first value complex data', t => {
   t.same(result, { b: 2, c: 3 })
   t.end()
 })
+
+test('Handles empty objects', t => {
+  t.same(head({}), {})
+  t.end()
+})

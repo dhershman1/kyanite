@@ -2,7 +2,6 @@ import identical from '../function/identical'
 import type from '../function/type'
 import and from '../function/and'
 import difference from '../array/difference'
-import has from '../object/has'
 import sort from '../array/sort'
 
 const organize = (a, b) => {
@@ -46,10 +45,6 @@ const equal = (a, b) => {
 
   if (isComplex(c)) {
     return Object.keys(c).every(key => {
-      if (!has(key, d)) {
-        return false
-      }
-
       const aVal = c[key]
       const bVal = d[key]
 

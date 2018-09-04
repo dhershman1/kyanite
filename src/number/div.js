@@ -6,8 +6,8 @@ import curry from '../function/curry'
  * @category Number
  * @sig Number -> Number -> Number
  * @description Divides the provided items
- * @param {Number} a The dividend of the division problem
- * @param {Number} b The divisor which the dividend will be divided by
+ * @param {Number} a The divisor which the dividend will be divided by
+ * @param {Number} b The dividend of the division problem
  * @return {Number} The quotient of the two numbers
  *
  * @example
@@ -20,6 +20,6 @@ import curry from '../function/curry'
  * divide(3) // => 5
  * divide(5) // => 3
  */
-const div = (a, b) => a / b
+const div = (a, b) => b / a
 
 export default curry(div)

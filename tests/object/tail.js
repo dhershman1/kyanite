@@ -14,3 +14,8 @@ test('Returns the last value complex data', t => {
   t.same(result, { b: 2, c: 3 })
   t.end()
 })
+
+test('Handles empty objects', t => {
+  t.same(tail({}), {})
+  t.end()
+})

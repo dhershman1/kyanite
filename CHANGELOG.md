@@ -1,5 +1,29 @@
 # Changelog
 
+## v0.7.0
+
+### BREAKING CHANGES
+
+- Swapped param usage for `div` functionality
+  - Ex: `div(4, 2) // => 2` should now be `div(2, 4) // => 2`
+
+### New
+
+- Added number `pow` function which takes an exponent and base number and rises the number to the exponents value
+- Added number `rem` function which finds the remainder of two numbers
+- Added number `isOdd` function which checks if the provided number is odd or not
+- Added number `isEven` function which checks if the provided number is even or not
+- Added string `toUpper` function which transforms a string to all upper case
+- Added string `toLower` function which transforms a string to all lower case
+
+### Improved
+
+- Removed unreachable code block from equals functionality
+
+### Fixed
+
+- Coverage for `tail` and `head` functions
+
 ## v0.6.0
 
 ### BREAKING CHANGES
