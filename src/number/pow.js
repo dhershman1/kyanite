@@ -3,6 +3,7 @@ import curry from '../function/curry'
 /**
  * @name pow
  * @since v0.7.0
+ * @category Number
  * @sig Number -> Number -> Number
  * @description Take a base number and brings it to the value of base^exponent
  * @param {Number} a The exponent used to raise the base number
