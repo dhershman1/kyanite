@@ -1,4 +1,5 @@
 import curry from '../function/curry'
+import isNil from '../function/isNil'
 
 /**
  * @name defaults
@@ -23,7 +24,7 @@ import curry from '../function/curry'
  */
 const defaults = (def, data) =>
   Object.keys(def).reduce((acc, prop) => {
-    if (acc[prop] == null) {
+    if (isNil(acc[prop])) {
       acc[prop] = def[prop]
     }
 
