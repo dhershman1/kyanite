@@ -728,7 +728,7 @@
 
   var defaults = function defaults(def, data) {
     return Object.keys(def).reduce(function (acc, prop) {
-      if (acc[prop] == null) {
+      if (isNil(acc[prop])) {
         acc[prop] = def[prop];
       }
       return acc;
