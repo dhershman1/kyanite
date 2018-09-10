@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.7.1
+
+### Improved
+
+- Replaced null check within `defaults` with `isNil` to keep non strict to a minimum
+
 ## v0.7.0
 
 ### BREAKING CHANGES
