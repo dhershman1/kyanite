@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.8.0
+
+### Breaking Changes
+
+- `assign` is now curried and expects a minimum of 2 values passed in
+
+### New
+
+- Added new `clone` function, it can create a shallow clone for Objects however accepts a 2nd param to use deep clone capabilities
+- Marked `deepClone` as deprecated switch over to use `clone` Example: `clone({ a: 1 }, true)`
+
+### Improved
+
+- Re structured and re wrote the assign function using `Object.keys` to remove the need for `for in` looping and checking `hasOwnProperty`
+
 ## v0.7.1
 
 ### Improved
