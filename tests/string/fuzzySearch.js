@@ -32,12 +32,12 @@ test('Handles needle length being equal to haystack length', t => {
 
 test('Handles slightly more complex strings within an array of objects', t => {
   const list = [
-    {name: 'Atlanta (GA) - ADM Rolloff  *FRANCHISED*'},
-    {name: 'Atlanta (GA) - All Haulers  *NO SERVICE*'},
-    {name: 'Hagerstown/Winchester, VA (MD) - Rep *CHECK W/ HAULER'},
-    {name: 'Chicago (IL) *Oak Park'},
-    {name: 'Chicago (IL) *Evergreen Park*'},
-    {name: 'Chicago (IL) *NO SERVICE*'}
+    { name: 'Atlanta (GA) - ADM Rolloff  *FRANCHISED*' },
+    { name: 'Atlanta (GA) - All Haulers  *NO SERVICE*' },
+    { name: 'Hagerstown/Winchester, VA (MD) - Rep *CHECK W/ HAULER' },
+    { name: 'Chicago (IL) *Oak Park' },
+    { name: 'Chicago (IL) *Evergreen Park*' },
+    { name: 'Chicago (IL) *NO SERVICE*' }
   ]
   const results = list.filter(({ name }) => fuzzySearch('chicago', name.toLowerCase()))
 
