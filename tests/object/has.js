@@ -17,12 +17,13 @@ test('Test curried has', t => {
 
 test('It does not check props from the prototype chain', t => {
   const Person = function () {
-    Array.isArray([])
+    this.name = 'Bob'
   }
 
   Person.prototype.age = 10
   const bob = new Person()
 
   t.false(has('age', bob))
+  t.true(has('name', bob))
   t.end()
 })
