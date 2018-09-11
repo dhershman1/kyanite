@@ -29,7 +29,7 @@
     "stats": "rollup -c rollup.split.js && node scripts/clean.js",
     "clean": "node scripts/clean.js",
     "postpublish": "npm run clean",
-    "test": "tape -r esm tests/**/fuzzySearch.js | tap-spec",
+    "test": "tape -r esm tests/**/*.js | tap-spec",
     "test:cov": "nyc npm test",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "cov": "nyc --reporter=html npm test",
