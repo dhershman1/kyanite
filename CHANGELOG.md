@@ -13,7 +13,8 @@
 
 ### Improved
 
-- Re structured and re wrote the assign function using `Object.keys` to remove the need for `for in` looping and checking `hasOwnProperty`
+- Re wrote the assign function using `Object.keys` to remove the need for `for in` looping and checking `hasOwnProperty`
+- Slight tweaks to `has` and `assign` unit tests
 
 ## v0.7.1
 
