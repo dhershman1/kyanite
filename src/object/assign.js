@@ -1,4 +1,4 @@
-import has from './has'
+import curryN from '../function/curryN'
 
 /**
  * @name assign
@@ -16,14 +16,11 @@ import has from './has'
  * assign({ a: 1 }, { b: 2 }, { c: 5 }, { c: 3 }, { d: 4 }); // => { a: 1, b: 2, c: 3, d: 4 }
  */
 const assign = (...args) =>
-  args.reduce(function (acc, x) {
-    for (const key in x) {
-      if (has(key, x)) {
-        acc[key] = x[key]
-      }
-    }
+  args.reduce((acc, x) =>
+    Object.keys(x).reduce((obj, k) => {
+      obj[k] = x[k]
 
-    return acc
-  }, {})
+      return obj
+    }, acc), {})
 
-export default assign
+export default curryN(2, assign)
