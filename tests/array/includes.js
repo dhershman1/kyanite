@@ -1,7 +1,7 @@
 import includes from '../../src/array/includes'
 import test from 'tape'
 
-test('Basic simple functionality', t => {
+test('includes -- Basic simple functionality', t => {
   const list = [1, 2, 3, 4]
 
   t.true(includes(2, list))
@@ -9,7 +9,7 @@ test('Basic simple functionality', t => {
   t.end()
 })
 
-test('Basic curry functionality', t => {
+test('includes -- Basic curry functionality', t => {
   const list = [1, 2, 3]
   const checker = includes(3)
 
@@ -17,7 +17,7 @@ test('Basic curry functionality', t => {
   t.end()
 })
 
-test('Returns false for invalid type comparisons', t => {
+test('includes -- Returns false for invalid type comparisons', t => {
   t.false(includes('1', [1]))
   t.end()
 })
