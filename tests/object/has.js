@@ -1,13 +1,13 @@
 import has from '../../src/object/has'
 import test from 'tape'
 
-test('Test has()', t => {
+test('has -- Test has()', t => {
   t.ok(has('test', { test: 1 }), 'Has test')
   t.notOk(has('test', { cool: 1 }), 'Does not have test')
   t.end()
 })
 
-test('Test curried has', t => {
+test('has -- Test curried has', t => {
   const hasProp = has('test')
 
   t.ok(hasProp({ test: 1 }))
@@ -15,7 +15,7 @@ test('Test curried has', t => {
   t.end()
 })
 
-test('It does not check props from the prototype chain', t => {
+test('has -- It does not check props from the prototype chain', t => {
   const Person = function () {
     this.name = 'Bob'
   }

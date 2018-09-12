@@ -1,7 +1,7 @@
 import sift from '../../src/object/sift'
 import test from 'tape'
 
-test('Properly filters out desired properties', t => {
+test('sift -- Properly filters out desired properties', t => {
   const results = sift(x => typeof x === 'string', {
     id: 4,
     thing: 'test',
@@ -15,7 +15,7 @@ test('Properly filters out desired properties', t => {
   t.end()
 })
 
-test('Properly removes emptied values based on function', t => {
+test('sift -- Properly removes emptied values based on function', t => {
   const results = sift(x => x.length, {
     'h422dcr4': [],
     'frtcsq1231': ['hello'],
@@ -30,7 +30,7 @@ test('Properly removes emptied values based on function', t => {
   t.end()
 })
 
-test('Is Curried', t => {
+test('sift -- Is Curried', t => {
   const sifter = sift(x => typeof x === 'string')
 
   t.deepEqual(sifter({

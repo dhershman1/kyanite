@@ -8,12 +8,12 @@ const result = whole({
   y: x => x < 20
 })
 
-test('object whole: predicate is true', t => {
+test('whole -- predicate is true', t => {
   t.is(result({ a: 'foo', b: 'xxx', x: 11, y: 19 }), true)
   t.end()
 })
 
-test('object whole: predicate is false', t => {
+test('whole -- predicate is false', t => {
   t.is(result({ a: 'xxx', b: 'xxx', x: 11, y: 19 }), false)
   t.end()
 })

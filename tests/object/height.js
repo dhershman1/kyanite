@@ -1,12 +1,12 @@
 import height from '../../src/object/height'
 import test from 'tape'
 
-test('Basic functionality', t => {
+test('height -- Basic functionality', t => {
   t.is(height({ a: 1, b: 2 }), 2)
   t.end()
 })
 
-test('Ignores nested objects', t => {
+test('height -- Ignores nested objects', t => {
   t.is(height({ a: 1, b: { c: 2 } }), 2)
   t.end()
 })

@@ -1,7 +1,7 @@
 import draft from '../../src/object/draft'
 import test from 'tape'
 
-test('Applies the function to all object values', t => {
+test('draft -- Applies the function to all object values', t => {
   const results = draft(x => x * 2, {
     a: 1,
     b: 2,
@@ -18,7 +18,7 @@ test('Applies the function to all object values', t => {
   t.end()
 })
 
-test('Is curried', t => {
+test('draft -- Is curried', t => {
   const p = draft(x => x * 2)
   const results = p({
     a: 1,

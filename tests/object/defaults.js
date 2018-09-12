@@ -1,7 +1,7 @@
 import defaults from '../../src/object/defaults'
 import test from 'tape'
 
-test('Basic functionality test', t => {
+test('defaults -- Basic functionality test', t => {
   const data = {
     thing: 4
   }
@@ -17,7 +17,7 @@ test('Basic functionality test', t => {
   t.end()
 })
 
-test('Basic Curried functionality', t => {
+test('defaults -- Basic Curried functionality', t => {
   const defaulter = defaults({
     test: 'Mew!',
     thing: 'Kitty'
@@ -33,7 +33,7 @@ test('Basic Curried functionality', t => {
   t.end()
 })
 
-test('Overwrites false or undefined values', t => {
+test('defaults -- Overwrites false or undefined values', t => {
   const data = {
     thing: 4,
     test: undefined
@@ -50,7 +50,7 @@ test('Overwrites false or undefined values', t => {
   t.end()
 })
 
-test('Does not overwrite zero or empty string', t => {
+test('defaults -- Does not overwrite zero or empty string', t => {
   const data = {
     thing: '',
     test: 0
@@ -67,7 +67,7 @@ test('Does not overwrite zero or empty string', t => {
   t.end()
 })
 
-test('Does overwrite null', t => {
+test('defaults -- Does overwrite null', t => {
   const data = {
     thing: 4,
     test: null

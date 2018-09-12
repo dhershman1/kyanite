@@ -1,12 +1,12 @@
 import assign from '../../src/object/assign'
 import test from 'tape'
 
-test('Handle single level object', t => {
+test('assign -- Handle single level object', t => {
   t.same(assign({}, { a: 1 }), { a: 1 })
   t.end()
 })
 
-test('Test base functionality', t => {
+test('assign -- Test base functionality', t => {
   const compare = {
     test: 1,
     again: 2
@@ -17,7 +17,7 @@ test('Test base functionality', t => {
   t.end()
 })
 
-test('Overwrite matching properties', t => {
+test('assign -- Overwrite matching properties', t => {
   const results = assign({
     a: 1,
     b: 2,
@@ -36,7 +36,7 @@ test('Overwrite matching properties', t => {
   t.end()
 })
 
-test('Test with more complex objects', t => {
+test('assign -- Test with more complex objects', t => {
   const compare = {
     test: 1,
     again: 2,
@@ -51,7 +51,7 @@ test('Test with more complex objects', t => {
   t.end()
 })
 
-test('Test with nested objects', t => {
+test('assign -- Test with nested objects', t => {
   const compare = {
     test: 1,
     again: 2,
@@ -75,7 +75,7 @@ test('Test with nested objects', t => {
   t.end()
 })
 
-test('Handles any number of objects passed in', t => {
+test('assign -- Handles any number of objects passed in', t => {
   const results = assign({ a: 1 }, { b: 2 }, { c: 5 }, { c: 3 }, { d: 4 })
 
   t.same(results, {
@@ -87,7 +87,7 @@ test('Handles any number of objects passed in', t => {
   t.end()
 })
 
-test('Handles values that do not own the prop', t => {
+test('assign -- Handles values that do not own the prop', t => {
   const Person = function () {
     Array.isArray([])
   }
@@ -103,7 +103,7 @@ test('Handles values that do not own the prop', t => {
   t.end()
 })
 
-test('Does not mutate original object', t => {
+test('assign -- Does not mutate original object', t => {
   const obj = { a: 1, b: 2 }
   const clone = assign({}, obj, { a: 3, b: 4 })
 
@@ -117,7 +117,7 @@ test('Does not mutate original object', t => {
   t.end()
 })
 
-test('Does not carry over prototyped properties', t => {
+test('assign -- Does not carry over prototyped properties', t => {
   const Person = function () {
     this.name = 'Bob'
   }
@@ -133,7 +133,7 @@ test('Does not carry over prototyped properties', t => {
   t.end()
 })
 
-test('It is curried', t => {
+test('assign -- It is curried', t => {
   const extend = assign({ a: 1, b: 2 })
 
   t.same(extend({ c: 3, d: 4 }), { a: 1, b: 2, c: 3, d: 4 })

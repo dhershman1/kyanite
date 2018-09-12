@@ -1,7 +1,7 @@
 import test from 'tape'
 import unzip from '../../src/object/unzip'
 
-test('Unzips a basic object', t => {
+test('unzip -- handles basic object', t => {
   const [props, vals] = unzip({ a: 1, b: 2, c: 3 })
 
   t.same(props, ['a', 'b', 'c'], 'unzip -- props match')
@@ -9,7 +9,7 @@ test('Unzips a basic object', t => {
   t.end()
 })
 
-test('Unzips a more complex object', t => {
+test('unzip -- handles complex object', t => {
   const [props, vals] = unzip({
     a: {
       b: 1
@@ -25,7 +25,7 @@ test('Unzips a more complex object', t => {
   t.end()
 })
 
-test('Handles array values', t => {
+test('unzip -- handles array values', t => {
   const [props, vals] = unzip({ a: [1, 2, 3], b: [4, 5, 6] })
 
   t.same(props, ['a', 'b'], 'unzip -- props match')
