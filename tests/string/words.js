@@ -1,7 +1,7 @@
 import test from 'tape'
 import words from '../../src/string/words'
 
-test('Returns an array of words', t => {
+test('words -- Returns an array of words', t => {
   t.deepEqual(words('my brown cow'), ['my', 'brown', 'cow'])
   t.end()
 })
