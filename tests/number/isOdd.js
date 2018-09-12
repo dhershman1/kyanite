@@ -1,7 +1,7 @@
 import isOdd from '../../src/number/isOdd'
 import test from 'tape'
 
-test('Checks numbers for odds', t => {
+test('isOdd -- Checks numbers for odds', t => {
   t.true(isOdd(1))
   t.true(isOdd(3))
   t.true(isOdd(15))
