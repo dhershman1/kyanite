@@ -16,6 +16,7 @@
 - Re wrote the assign function using `Object.keys` to remove the need for `for in` looping and checking `hasOwnProperty`
 - Slight tweaks to `has` and `assign` unit tests
 - Added function names to descriptions of tests to verify what is testing what
+- Further unit test improvements
 
 ### Fixed
 
