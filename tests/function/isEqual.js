@@ -3,7 +3,7 @@ import test from 'tape'
 
 /* eslint-disable no-new-wrappers */
 
-test('Compares Promise objects by identity', t => {
+test('isEqual -- Compares Promise objects by identity', t => {
   const p1 = Promise.resolve(42)
   const p2 = Promise.resolve(42)
 
@@ -12,7 +12,7 @@ test('Compares Promise objects by identity', t => {
   t.end()
 })
 
-test('Handles number types nicely', t => {
+test('isEqual -- Handles number types nicely', t => {
   const q = 1
 
   t.true(isEqual(1, 1))
@@ -23,7 +23,7 @@ test('Handles number types nicely', t => {
   t.end()
 })
 
-test('Handles string types nicely', t => {
+test('isEqual -- Handles string types nicely', t => {
   const q = 'hi'
 
   t.true(isEqual('hi', 'hi'))
@@ -34,7 +34,7 @@ test('Handles string types nicely', t => {
   t.end()
 })
 
-test('Handles boolean types nicely', t => {
+test('isEqual -- Handles boolean types nicely', t => {
   const q = true
 
   t.true(isEqual(true, true))
@@ -47,7 +47,7 @@ test('Handles boolean types nicely', t => {
   t.end()
 })
 
-test('Test handles regex', t => {
+test('isEqual -- Test handles regex', t => {
   t.ok(isEqual(/\s/, /\s/), 'handles whitespace regex')
   t.ok(isEqual(/a/gi, /a/gi), 'handles flags')
   t.ok(isEqual(/a/mgi, /a/img), 'handles mixed flags')
@@ -57,23 +57,23 @@ test('Test handles regex', t => {
   t.end()
 })
 
-test('Test boolean primitive do not equal boolean objects', t => {
+test('isEqual -- Test boolean primitive do not equal boolean objects', t => {
   t.notOk(isEqual(true, new Boolean(true)), 'true is not equal to object true')
   t.notOk(isEqual(false, new Boolean(false)), 'flase is not equal to object false')
   t.end()
 })
 
-test('Test String primitive do not equal String objects', t => {
+test('isEqual -- Test String primitive do not equal String objects', t => {
   t.notOk(isEqual('test', new String('test')), 'String is not equal to Object String')
   t.end()
 })
 
-test('Test Number primitive do not equal Number objects', t => {
+test('isEqual -- Test Number primitive do not equal Number objects', t => {
   t.notOk(isEqual(5, new Number(5)), 'Number is not equal to Object Number')
   t.end()
 })
 
-test('Handles Object types nicely', t => {
+test('isEqual -- Handles Object types nicely', t => {
   const q = { a: 1 }
 
   t.same(isEqual({}, {}), true, 'Empty Objects are equal')
@@ -91,7 +91,7 @@ test('Handles Object types nicely', t => {
   t.end()
 })
 
-test('Handles array types nicely', t => {
+test('isEqual -- Handles array types nicely', t => {
   const q = []
 
   t.same(isEqual([], []), true, 'Empty array is equal to empty array')
@@ -106,14 +106,14 @@ test('Handles array types nicely', t => {
   t.end()
 })
 
-test('Handles date objects nicely', t => {
+test('isEqual -- Handles date objects nicely', t => {
   t.same(isEqual(new Date(), new Date()), true, 'Current Date is equal to current date')
   t.same(isEqual(new Date('12/14/1992'), new Date('12/14/1992')), true, 'Statically set dates are equal')
   t.same(isEqual(new Date('09/14/1992'), new Date('09/14/2018')), false, 'Different year dates not equal')
   t.end()
 })
 
-test('Handles nested objects nicely', t => {
+test('isEqual -- Handles nested objects nicely', t => {
   const q = { a: 1 }
 
   t.same(isEqual({ q }, { q }), true, 'Single nested object')
@@ -121,7 +121,7 @@ test('Handles nested objects nicely', t => {
   t.end()
 })
 
-test('Handles more complex object combinations', t => {
+test('isEqual -- Handles more complex object combinations', t => {
   const q = {
     a: [1]
   }

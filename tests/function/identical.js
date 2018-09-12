@@ -1,20 +1,20 @@
 import identical from '../../src/function/identical'
 import test from 'tape'
 
-test('Test base functionality', t => {
+test('identical -- Test base functionality', t => {
   t.ok(identical(0, 0))
   t.ok(identical('t', 't'))
   t.end()
 })
 
-test('Test boolean types', t => {
+test('identical -- Test boolean types', t => {
   t.ok(identical(false, false))
   t.ok(identical(true, true))
   t.notOk(identical(true, false))
   t.end()
 })
 
-test('Test object types', t => {
+test('identical -- Test object types', t => {
   const o = {}
 
   t.ok(identical(o, o))
@@ -24,20 +24,20 @@ test('Test object types', t => {
   t.end()
 })
 
-test('Test array types', t => {
+test('identical -- Test array types', t => {
   t.notOk(identical([], []))
   t.notOk(identical([1], [1]))
   t.notOk(identical([1], [2]))
   t.end()
 })
 
-test('Test edge case type', t => {
+test('identical -- Test edge case type', t => {
   t.notOk(identical(0, -0))
   t.ok(identical(NaN, NaN))
   t.end()
 })
 
-test('Test curried identical', t => {
+test('identical -- Test curried identical', t => {
   const i = identical(NaN)
 
   t.ok(i(NaN))

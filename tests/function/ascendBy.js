@@ -1,7 +1,7 @@
 import ascendBy from '../../src/function/ascendBy'
 import test from 'tape'
 
-test('Properly decends using the desired function', t => {
+test('ascendBy -- Properly decends using the desired function', t => {
   const results = [
     { name: 'bob' },
     { name: 'amanda' },
@@ -18,7 +18,7 @@ test('Properly decends using the desired function', t => {
   t.end()
 })
 
-test('Is curried', t => {
+test('ascendBy -- Is curried', t => {
   const asc = ascendBy(x => x.name)
   const results = [
     { name: 'bob' },
@@ -36,4 +36,3 @@ test('Is curried', t => {
   ])
   t.end()
 })
-
