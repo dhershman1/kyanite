@@ -857,6 +857,10 @@
     });
   };
 
+  var unzip = function unzip(obj) {
+    return [Object.keys(obj), values(obj)];
+  };
+
   var whole = function whole(schema, obj) {
     return Object.keys(schema).every(function (key) {
       return schema[key](obj[key]);
@@ -1024,6 +1028,7 @@
   exports.props = props$1;
   exports.sift = sift$1;
   exports.tail = tail;
+  exports.unzip = unzip;
   exports.values = values;
   exports.whole = whole$1;
   exports.capitalize = capitalize;
