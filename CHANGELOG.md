@@ -16,6 +16,10 @@
 - Re wrote the assign function using `Object.keys` to remove the need for `for in` looping and checking `hasOwnProperty`
 - Slight tweaks to `has` and `assign` unit tests
 
+### Fixed
+
+- The documentation for `when` was missing a description, this has been addressed
+
 ## v0.7.1
 
 ### Improved
