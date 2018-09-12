@@ -6,7 +6,7 @@ test('words -- Returns an array of words', t => {
   t.end()
 })
 
-test('Works with template strings', t => {
+test('words -- Works with template strings', t => {
   const x = 'brown'
 
   t.deepEqual(words(`my ${x} cow`), ['my', 'brown', 'cow'])
