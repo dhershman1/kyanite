@@ -6,6 +6,7 @@
  * @description Creates either a shallow or deep clone of the provided object
  * @param {Object} x The object we want to create a clone of
  * @param {Boolean} deep Whether or not we want to create a shallow or deep clone of the object
+ * @return {Object} A clone of the provided object
  * @example
  *
  * clone({ a: 1 }) // => { a: 1 }
