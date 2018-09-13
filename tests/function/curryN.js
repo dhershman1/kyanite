@@ -1,7 +1,7 @@
 import curryN from '../../src/function/curryN'
 import test from 'tape'
 
-test('Curries as expected', t => {
+test('curryN -- Curries as expected', t => {
   const add = curryN(2, (a, b) => a + b)
   const sum = add(2)
 
@@ -9,7 +9,7 @@ test('Curries as expected', t => {
   t.end()
 })
 
-test('Curry works with default params', t => {
+test('curryN -- Curry works with default params', t => {
   const add = curryN(2, (a, b = 1) => a + b)
   const sum = add(1)
 
@@ -18,7 +18,7 @@ test('Curry works with default params', t => {
   t.end()
 })
 
-test('Curry throws out extra params', t => {
+test('curryN -- Curry throws out extra params', t => {
   const add = curryN(2, (a, b) => a + b)
 
   t.is(add(1, 2, 3), 3)

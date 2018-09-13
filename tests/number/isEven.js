@@ -1,7 +1,7 @@
 import isEven from '../../src/number/isEven'
 import test from 'tape'
 
-test('Handles checking for even numbers', t => {
+test('isEven -- Handles checking for even numbers', t => {
   t.true(isEven(2))
   t.true(isEven(12))
   t.true(isEven(4))

@@ -1,13 +1,13 @@
 import empty from '../../src/function/empty'
 import test from 'tape'
 
-test('Test array functionality', t => {
+test('empty -- Test array functionality', t => {
   t.deepEqual(empty([1, 2, 3]), [])
   t.deepEqual(empty(['abc', 123, 'you and me']), [])
   t.end()
 })
 
-test('Test object functionality', t => {
+test('empty -- Test object functionality', t => {
   t.deepEqual(empty({ test: 1 }), {})
   t.deepEqual(empty({
     test: 1,
@@ -18,20 +18,20 @@ test('Test object functionality', t => {
   t.end()
 })
 
-test('Test string functionality', t => {
+test('empty -- Test string functionality', t => {
   t.is(empty('Empty this string!'), '')
   t.is(empty('123456789'), '')
   t.end()
 })
 
-test('Empty String', t => {
+test('empty -- Empty String', t => {
   const results = empty('Sweet little fox')
 
   t.is(results, '', 'The string is empty')
   t.end()
 })
 
-test('Empty an array', t => {
+test('empty -- Empty an array', t => {
   const results = empty([1, 2, 3])
 
   t.is(results.length, 0, 'Array is empty')
@@ -39,7 +39,7 @@ test('Empty an array', t => {
   t.end()
 })
 
-test('Empty an object', t => {
+test('empty -- Empty an object', t => {
   const results = empty({
     test: 'an object',
     inner: {
@@ -52,7 +52,7 @@ test('Empty an object', t => {
   t.end()
 })
 
-test('Empty non complex', t => {
+test('empty -- Empty non complex', t => {
   t.notOk(empty(0))
   t.end()
 })

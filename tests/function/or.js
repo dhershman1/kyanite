@@ -1,22 +1,22 @@
 import or from '../../src/function/or'
 import test from 'tape'
 
-test('Returns true when both params are true', t => {
+test('or -- Returns true when both params are true', t => {
   t.true(or(true, true))
   t.end()
 })
 
-test('Returns true when one param is false', t => {
+test('or -- Returns true when one param is false', t => {
   t.true(or(true, false))
   t.end()
 })
 
-test('Returns false when both params are false', t => {
+test('or -- Returns false when both params are false', t => {
   t.false(or(false, false))
   t.end()
 })
 
-test('Is curried true', t => {
+test('or -- Is curried true', t => {
   const a = or(true)
 
   t.true(a(true))
@@ -24,7 +24,7 @@ test('Is curried true', t => {
   t.end()
 })
 
-test('Is curried false', t => {
+test('or -- Is curried false', t => {
   const a = or(false)
 
   t.true(a(true))

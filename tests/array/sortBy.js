@@ -1,7 +1,7 @@
 import sortBy from '../../src/array/sortBy'
 import test from 'tape'
 
-test('Sorts using provided function', t => {
+test('sortBy -- Sorts using provided function', t => {
   const results = sortBy(x => x.name, [
     { name: 'bob' },
     { name: 'amanda' },
@@ -18,7 +18,7 @@ test('Sorts using provided function', t => {
   t.end()
 })
 
-test('Is curried', t => {
+test('sortBy -- Is curried', t => {
   const sb = sortBy(x => x.name)
   const results = sb([
     { name: 'bob' },

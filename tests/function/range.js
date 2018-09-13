@@ -1,7 +1,7 @@
 import range from '../../src/function/range'
 import test from 'tape'
 
-test('Create basic range array', t => {
+test('range -- Create basic range array', t => {
   const results = range(1, 5)
 
   t.ok(results)
@@ -9,7 +9,7 @@ test('Create basic range array', t => {
   t.end()
 })
 
-test('Creates range while missing the first argument', t => {
+test('range -- Creates range while missing the first argument', t => {
   const results = range(5)
 
   t.ok(results)
@@ -17,7 +17,7 @@ test('Creates range while missing the first argument', t => {
   t.end()
 })
 
-test('Should throw an error when values are NaN', t => {
+test('range -- Should throw an error when values are NaN', t => {
   try {
     range('h')
   } catch (err) {

@@ -2,7 +2,7 @@ import compress from '../../src/object/compress'
 import has from '../../src/object/has'
 import test from 'tape'
 
-test('Removes undefined values', t => {
+test('compress -- Removes undefined values', t => {
   const results = compress({
     test: undefined,
     cool: 'thing',
@@ -15,7 +15,7 @@ test('Removes undefined values', t => {
   t.end()
 })
 
-test('Removes null values', t => {
+test('compress -- Removes null values', t => {
   const results = compress({
     test: null,
     cool: 'thing',
@@ -28,7 +28,7 @@ test('Removes null values', t => {
   t.end()
 })
 
-test('Skips falsy value like empty string', t => {
+test('compress -- Skips falsy value like empty string', t => {
   const results = compress({
     test: '',
     cool: 'thing',
@@ -42,7 +42,7 @@ test('Skips falsy value like empty string', t => {
   t.end()
 })
 
-test('Skips falsy value like a number zero', t => {
+test('compress -- Skips falsy value like a number zero', t => {
   const results = compress({
     test: 0,
     cool: 'thing',

@@ -1,21 +1,21 @@
 import drop from '../../src/array/drop'
 import test from 'tape'
 
-test('Handles dropping values', t => {
+test('drop -- Handles dropping values', t => {
   const results = drop(3, [1, 2, 3, 4, 5])
 
   t.same(results, [4, 5])
   t.end()
 })
 
-test('Handles invalid data sets', t => {
+test('drop -- Handles invalid data sets', t => {
   const results = drop(3, [])
 
   t.same(results, [])
   t.end()
 })
 
-test('Is curried', t => {
+test('drop -- Is curried', t => {
   const d = drop(3)
 
   t.same(d([1, 2, 3, 4, 5]), [4, 5])

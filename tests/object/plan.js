@@ -6,7 +6,7 @@ const testFns = {
   b: x => x + 10
 }
 
-test('Applies the schema functions accordingly', t => {
+test('plan -- Applies the schema functions accordingly', t => {
   const results = plan(testFns, {
     a: 2,
     b: 15
@@ -16,7 +16,7 @@ test('Applies the schema functions accordingly', t => {
   t.end()
 })
 
-test('Is curried', t => {
+test('plan -- Is curried', t => {
   const p = plan(testFns)
   const results = p({ a: 5, b: 10 })
 
@@ -24,14 +24,14 @@ test('Is curried', t => {
   t.end()
 })
 
-test('Handles missing properties', t => {
+test('plan -- Handles missing properties', t => {
   const results = plan(testFns, { a: 5 })
 
   t.deepEqual(results, { a: 10 })
   t.end()
 })
 
-test('Handles if the object has the own prop', t => {
+test('plan -- Handles if the object has the own prop', t => {
   const data = {
     id: 123,
     firstName: '   Test ',

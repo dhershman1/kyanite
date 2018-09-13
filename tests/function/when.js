@@ -6,12 +6,12 @@ const testFn = when(
   x => x * 2
 )
 
-test('Returns expected results', t => {
+test('when -- Returns expected results', t => {
   t.is(testFn(5), 10)
   t.end()
 })
 
-test('Gives back undefined if condition not met', t => {
+test('when -- Gives back undefined if condition not met', t => {
   t.is(testFn(2), undefined)
   t.end()
 })

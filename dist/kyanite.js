@@ -106,31 +106,45 @@
     return x[0];
   };
 
-  var has = function has(prop, obj) {
-    return Object.prototype.hasOwnProperty.call(obj, prop);
+  var curryN = function curryN(n, f) {
+    for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      args[_key - 2] = arguments[_key];
+    }
+    if (n <= 0) {
+      return f.apply(void 0, args);
+    }
+    return function () {
+      for (var _len2 = arguments.length, rest = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        rest[_key2] = arguments[_key2];
+      }
+      return curryN.apply(void 0, [n - rest.length, f].concat(args, rest));
+    };
   };
-  var has$1 = curry(has);
 
   var assign = function assign() {
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
     return args.reduce(function (acc, x) {
-      for (var key in x) {
-        if (has$1(key, x)) {
-          acc[key] = x[key];
-        }
-      }
-      return acc;
+      return Object.keys(x).reduce(function (obj, k) {
+        obj[k] = x[k];
+        return obj;
+      }, acc);
     }, {});
   };
+  var assign$1 = curryN(2, assign);
+
+  var has = function has(prop, obj) {
+    return Object.prototype.hasOwnProperty.call(obj, prop);
+  };
+  var has$1 = curry(has);
 
   var groupBy = function groupBy(fn, list) {
     return list.reduce(function (acc, v) {
       var k = fn(v);
       var tmp = {};
       tmp[k] = has$1(k, acc) ? acc[k].concat(v) : [v];
-      return assign(acc, tmp);
+      return assign$1(acc, tmp);
     }, {});
   };
   var groupBy$1 = curry(groupBy);
@@ -388,7 +402,7 @@
     return arr.reduce(function (acc, _, i) {
       var tmp = {};
       tmp[x[i]] = y[i];
-      return assign(acc, tmp);
+      return assign$1(acc, tmp);
     }, {});
   };
   var zip$1 = curry(zip);
@@ -433,21 +447,6 @@
     return not(fn(a));
   };
   var complement$1 = curry(complement);
-
-  var curryN = function curryN(n, f) {
-    for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-      args[_key - 2] = arguments[_key];
-    }
-    if (n <= 0) {
-      return f.apply(void 0, args);
-    }
-    return function () {
-      for (var _len2 = arguments.length, rest = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        rest[_key2] = arguments[_key2];
-      }
-      return curryN.apply(void 0, [n - rest.length, f].concat(args, rest));
-    };
-  };
 
   var deepClone = function deepClone(x) {
     return JSON.parse(JSON.stringify(x));
@@ -717,6 +716,17 @@
   };
   var any$1 = curry(any);
 
+  var clone = function clone(x) {
+    var deep = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    if (deep) {
+      return JSON.parse(JSON.stringify(x));
+    }
+    return Object.keys(x).reduce(function (acc, k) {
+      acc[k] = x[k];
+      return acc;
+    }, {});
+  };
+
   var compress = function compress(obj) {
     return Object.keys(obj).reduce(function (acc, k) {
       if (!isNil(obj[k])) {
@@ -728,7 +738,7 @@
 
   var defaults = function defaults(def, data) {
     return Object.keys(def).reduce(function (acc, prop) {
-      if (acc[prop] == null) {
+      if (isNil(acc[prop])) {
         acc[prop] = def[prop];
       }
       return acc;
@@ -738,7 +748,7 @@
 
   var draft = function draft(fn, obj) {
     return Object.keys(obj).reduce(function (acc, key) {
-      return assign({}, acc, _defineProperty({}, key, fn(obj[key])));
+      return assign$1({}, acc, _defineProperty({}, key, fn(obj[key])));
     }, {});
   };
   var draft$1 = curry(draft);
@@ -786,7 +796,7 @@
   var path$1 = curryN(2, path);
 
   var plan = function plan(schema, obj) {
-    return assign({}, obj, Object.keys(schema).reduce(function (acc, k) {
+    return assign$1({}, obj, Object.keys(schema).reduce(function (acc, k) {
       if (!obj.hasOwnProperty(k)) {
         return acc;
       }
@@ -845,6 +855,10 @@
     return Object.keys(obj).map(function (k) {
       return obj[k];
     });
+  };
+
+  var unzip = function unzip(obj) {
+    return [Object.keys(obj), values(obj)];
   };
 
   var whole = function whole(schema, obj) {
@@ -997,7 +1011,8 @@
   exports.round = round$1;
   exports.sub = sub$1;
   exports.any = any$1;
-  exports.assign = assign;
+  exports.assign = assign$1;
+  exports.clone = clone;
   exports.compress = compress;
   exports.defaults = defaults$1;
   exports.draft = draft$1;
@@ -1013,6 +1028,7 @@
   exports.props = props$1;
   exports.sift = sift$1;
   exports.tail = tail;
+  exports.unzip = unzip;
   exports.values = values;
   exports.whole = whole$1;
   exports.capitalize = capitalize;
