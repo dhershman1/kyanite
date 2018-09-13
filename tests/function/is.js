@@ -75,5 +75,8 @@ test('is -- It\'s curried & considers almost everything as an object', t => {
   t.true(isObj(function () { }))
   t.true(isObj(/(?:)/))
   t.true(isObj(new String('')))
+  t.false(isObj(''))
+  t.false(isObj(1))
+  t.false(isObj(false))
   t.end()
 })
