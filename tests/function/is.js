@@ -5,6 +5,7 @@ test('is -- Test simple types functionality', t => {
   t.true(is(String, ''))
   t.true(is(Number, 0))
   t.true(is(Boolean, true))
+  t.false(is(Object, ''))
   t.end()
 })
 
