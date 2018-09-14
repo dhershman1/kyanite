@@ -1,7 +1,7 @@
 import branch from '../../src/function/branch'
 import test from 'tape'
 
-test('Branches truthy', t => {
+test('branch -- Branches truthy', t => {
   const results = branch(
     x => x < 10,
     x => x + 1,
@@ -13,7 +13,7 @@ test('Branches truthy', t => {
   t.end()
 })
 
-test('Branches falsy', t => {
+test('branch -- Branches falsy', t => {
   const results = branch(
     x => x < 10,
     x => x + 1,
@@ -25,7 +25,7 @@ test('Branches falsy', t => {
   t.end()
 })
 
-test('Is curried', t => {
+test('branch -- Is curried', t => {
   const b = branch(
     x => x < 10,
     x => x + 1,

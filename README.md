@@ -61,10 +61,16 @@ Common JS
 const kyanite = require('kyanite')
 ```
 
-Through the browser
+CDN
 
 ```html
-<script src="path/to/kyanite/kyanite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.min.js"></script>
+```
+
+Local copy script tag
+
+```html
+<script src="/path/to/kyantie.min.js"></script>
 ```
 
 ## Documentation
@@ -80,17 +86,26 @@ Examples:
 Standard module system
 
 ```js
-import isEmpty from 'kyanite/isEmpty';
+import isEmpty from 'kyanite/isEmpty'
 
-isEmpty({});
+isEmpty({})
 ```
 
 Common JS
 
 ```js
-const isEmpty = require('kyanite/isEmpty');
+const isEmpty = require('kyanite/isEmpty')
 
-isEmpty({});
+isEmpty({})
+```
+
+CDN
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/isEmpty.js"></script>
+<script>
+  isEmpty({})
+</script>
 ```
 
 Through your browser
@@ -98,6 +113,6 @@ Through your browser
 ```html
 <script src="path/to/kyanite/isEmpty.js"></script>
 <script>
-  isEmpty({});
+  isEmpty({})
 </script>
 ```

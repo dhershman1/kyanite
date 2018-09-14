@@ -3,7 +3,7 @@ import descendBy from '../../src/function/descendBy'
 import sortWith from '../../src/array/sortWith'
 import test from 'tape'
 
-test('Falls back to secondary functions to break ties', t => {
+test('sortWith -- Falls back to secondary functions to break ties', t => {
   const data = [{ name: 'alice', age: 40 }, { name: 'bob', age: 30 }, { name: 'clara', age: 40 }]
 
   const results = sortWith([
@@ -15,7 +15,7 @@ test('Falls back to secondary functions to break ties', t => {
   t.end()
 })
 
-test('Is also curried', t => {
+test('sortWith -- Is also curried', t => {
   const data = [{ name: 'alice', age: 40 }, { name: 'bob', age: 30 }, { name: 'clara', age: 40 }]
   const nameAgeSort = sortWith([
     descendBy(x => x.age),

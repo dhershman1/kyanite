@@ -1,14 +1,14 @@
 import test from 'tape'
 import zip from '../../src/array/zip'
 
-test('Zipped even arrays', t => {
+test('zip -- Zipped even arrays', t => {
   const result = zip(['a', 'b', 'c'], [1, 2, 3])
 
   t.same(result, { a: 1, b: 2, c: 3 })
   t.end()
 })
 
-test('Zipped different length arrays', t => {
+test('zip -- Zipped different length arrays', t => {
   const res1 = zip(['a', 'b', 'c'], [1, 2, 3, 4])
   const res2 = zip(['a', 'b', 'c'], [1, 2])
 
@@ -18,7 +18,7 @@ test('Zipped different length arrays', t => {
   t.end()
 })
 
-test('It is curried', t => {
+test('zip -- It is curried', t => {
   const z = zip(['a', 'b', 'c'])
 
   t.same(z([1, 2, 3]), { a: 1, b: 2, c: 3 })

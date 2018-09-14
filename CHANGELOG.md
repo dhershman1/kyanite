@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.8.0
+
+### Breaking Changes
+
+- `assign` is now curried and expects a minimum of 2 values passed in
+
+### New
+
+- Added new `clone` function, it can create a shallow clone for Objects however accepts a 2nd param to use deep clone capabilities
+- Marked `deepClone` as deprecated switch over to use `clone` Example: `clone({ a: 1 }, true)`
+- New `unzip` function which takes an object and breaks down into two arrays one of keys and one of values
+
+### Improved
+
+- Re wrote the assign function using `Object.keys` to remove the need for `for in` looping and checking `hasOwnProperty`
+- Slight tweaks to `has` and `assign` unit tests
+- Added function names to descriptions of tests to verify what is testing what
+- Further unit test improvements
+
+### Fixed
+
+- The documentation for `when` was missing a description, this has been addressed
+
 ## v0.7.1
 
 ### Improved

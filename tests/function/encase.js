@@ -3,7 +3,7 @@ import test from 'tape'
 
 const getter = x => x.a.b.c
 
-test('Encases the function and returns undefined if fails', t => {
+test('encase -- Encases the function and returns undefined if fails', t => {
   const results = encase(getter, { a: 0 })
 
   t.notOk(results)
@@ -11,14 +11,14 @@ test('Encases the function and returns undefined if fails', t => {
   t.end()
 })
 
-test('Encases the function and returns the functions returned value', t => {
+test('encase -- Encases the function and returns the functions returned value', t => {
   const results = encase(getter, { a: { b: { c: 0 } } })
 
   t.same(results, 0)
   t.end()
 })
 
-test('Is curried', t => {
+test('encase -- Is curried', t => {
   const en = encase(getter)
 
   t.same(en({ a: 0 }), undefined)

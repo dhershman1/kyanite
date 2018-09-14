@@ -1,6 +1,6 @@
 {
   "name": "kyanite",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "A small library of pure functional utilities to make life easier and data better",
   "main": "dist/kyanite.min.js",
   "devDependencies": {
@@ -12,7 +12,7 @@
     "globby": "8.0.1",
     "jsdoc-to-markdown": "4.0.1",
     "nyc": "13.0.1",
-    "rollup": "0.65.0",
+    "rollup": "0.65.2",
     "rollup-plugin-babel": "4.0.3",
     "rollup-plugin-cleanup": "3.0.0",
     "rollup-plugin-filesize": "4.0.1",

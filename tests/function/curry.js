@@ -2,7 +2,7 @@ import curry from '../../src/function/curry'
 import update from '../../src/array/update'
 import test from 'tape'
 
-test('Basic Curry test', t => {
+test('curry -- Basic Curry test', t => {
   const add = curry((a, b, c) => a + b + c)
   const results = add(2)(4)(10)
 
@@ -12,7 +12,7 @@ test('Basic Curry test', t => {
   t.end()
 })
 
-test('Testing curry with another function', t => {
+test('curry -- Testing curry with another function', t => {
   const first = curry(update)(0)
   const results = first('brown', [1, 2, 3, 4])
 
@@ -21,7 +21,7 @@ test('Testing curry with another function', t => {
   t.end()
 })
 
-test('Testing curry with another function again', t => {
+test('curry -- Testing curry with another function again', t => {
   const second = curry(update)(1)('brown')
   const results = second([1, 2, 3, 4])
 
