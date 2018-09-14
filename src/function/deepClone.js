@@ -1,8 +1,9 @@
 /**
  * @name deepClone
  * @since v0.1.0
+ * @deprecated Since v0.8.0 -- Use clone
  * @category Function
- * @sig {*} -> {*}
+ * @sig a -> a
  * @description Clones the object sent in (Hard Clone)
  * @param  {Any} x The value we want to get cloned
  * @return {Any} The newly cloned value

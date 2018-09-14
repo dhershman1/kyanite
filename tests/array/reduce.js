@@ -1,12 +1,12 @@
 import reduce from '../../src/array/reduce'
 import test from 'tape'
 
-test('Reduces an addition array', t => {
+test('reduce -- Reduces an addition array', t => {
   t.is(reduce((acc, n) => acc + n, 0, [1, 2, 3, 4, 5]), 15)
   t.end()
 })
 
-test('Reduces down to another array', t => {
+test('reduce -- Reduces down to another array', t => {
   t.deepEqual(reduce((acc, n) => {
     if (typeof n === 'number') {
       acc.push(n)
@@ -17,7 +17,7 @@ test('Reduces down to another array', t => {
   t.end()
 })
 
-test('Is curried', t => {
+test('reduce -- Is curried', t => {
   const r = reduce((acc, n) => acc + n, 0)
 
   t.is(r([1, 2, 3, 4, 5]), 15)

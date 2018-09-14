@@ -1,7 +1,7 @@
 import some from '../../src/array/some'
 import test from 'tape'
 
-test('Basic functionality', t => {
+test('some -- Basic functionality', t => {
   const runner = x => typeof x === 'string'
 
   t.ok(some(runner, ['foo', 'bar']))
@@ -10,7 +10,7 @@ test('Basic functionality', t => {
   t.end()
 })
 
-test('Basic curried functionality', t => {
+test('some -- Basic curried functionality', t => {
   const a = some(x => typeof x === 'string')
 
   t.ok(a(['foo', 'bar']))
@@ -19,7 +19,7 @@ test('Basic curried functionality', t => {
   t.end()
 })
 
-test('Run against objects', t => {
+test('some -- Run against objects', t => {
   const runner = ({ val }) => val === 'test'
 
   t.ok(some(runner, [{ val: 'thing' }, { val: 'test' }]))

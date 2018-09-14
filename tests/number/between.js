@@ -1,7 +1,7 @@
 import between from '../../src/number/between'
 import test from 'tape'
 
-test('Handles between main numbers', t => {
+test('between -- Handles between main numbers', t => {
   t.true(between(1, 10, 9))
   t.true(between(1, 10, 3))
   t.false(between(1, 10, 13))
@@ -9,7 +9,7 @@ test('Handles between main numbers', t => {
   t.end()
 })
 
-test('Is curried teir 1', t => {
+test('between -- Is curried teir 1', t => {
   const b = between(1)
 
   t.true(b(10, 9))
@@ -17,7 +17,7 @@ test('Is curried teir 1', t => {
   t.end()
 })
 
-test('Is curried teir 2', t => {
+test('between -- Is curried teir 2', t => {
   const b = between(1, 10)
 
   t.true(b(9))

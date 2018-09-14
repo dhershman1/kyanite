@@ -8,7 +8,4 @@ branches:
 script:
   - npm run lint
   - npm run test:cov
-cache:
-  directories:
-  - "node_modules"
 after_success: npm run coverage

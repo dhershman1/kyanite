@@ -1,7 +1,7 @@
 import nth from '../../src/array/nth'
 import test from 'tape'
 
-test('Test base functionality', t => {
+test('nth -- Test base functionality', t => {
   const list = ['foo', 'bar', 'baz', 'quux']
 
   t.is(nth(1, list), 'bar')
@@ -10,14 +10,14 @@ test('Test base functionality', t => {
   t.end()
 })
 
-test('Test string functionality', t => {
+test('nth -- Test string functionality', t => {
   t.is(nth(1, 'abc'), 'b')
   t.is(nth(3, 'abc'), undefined)
   t.is(nth(0, 'abc'), 'a')
   t.end()
 })
 
-test('Test curried nth', t => {
+test('nth -- Test curried nth', t => {
   const third = nth(2)
 
   t.is(third([1, 2, 3, 4]), 3)

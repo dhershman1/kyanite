@@ -61,10 +61,16 @@ Common JS
 const kyanite = require('kyanite')
 ```
 
-Through the browser
+CDN
 
 ```html
-<script src="path/to/kyanite/kyanite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.min.js"></script>
+```
+
+Local copy script tag
+
+```html
+<script src="/path/to/kyantie.min.js"></script>
 ```
 
 ## Documentation

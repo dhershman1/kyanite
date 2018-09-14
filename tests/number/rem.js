@@ -1,7 +1,7 @@
 import rem from '../../src/number/rem'
 import test from 'tape'
 
-test('Handles obtaining remainders', t => {
+test('rem -- Handles obtaining remainders', t => {
   t.is(rem(5, 12), 2)
   t.is(rem(2, -1), -1)
   t.is(rem(2, 5.5), 1.5)
@@ -9,7 +9,7 @@ test('Handles obtaining remainders', t => {
   t.end()
 })
 
-test('Is curried', t => {
+test('rem -- Is curried', t => {
   const r = rem(5)
 
   t.is(r(12), 2)

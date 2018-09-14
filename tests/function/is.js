@@ -1,14 +1,14 @@
 import is from '../../src/function/is'
 import test from 'tape'
 
-test('Test simple types functionality', t => {
+test('is -- Test simple types functionality', t => {
   t.true(is(String, ''))
   t.true(is(Number, 0))
   t.true(is(Boolean, true))
   t.end()
 })
 
-test('Test complex types functionality', t => {
+test('is -- Test complex types functionality', t => {
   t.true(is(Function, a => a))
   t.true(is(Object, {}))
   t.true(is(Array, []))
@@ -16,7 +16,7 @@ test('Test complex types functionality', t => {
   t.end()
 })
 
-test('Considers almost everything as an object', t => {
+test('is -- Considers almost everything as an object', t => {
   const isObj = is(Object)
 
   t.true(isObj({}))
@@ -31,21 +31,21 @@ test('Considers almost everything as an object', t => {
   t.end()
 })
 
-test('Does not coerce', t => {
+test('is -- Does not coerce', t => {
   t.false(is(Boolean, 1))
   t.false(is(Number, '1'))
   t.false(is(Number, false))
   t.end()
 })
 
-test('Recognizes primitives as their object equivilents', t => {
+test('is -- Recognizes primitives as their object equivilents', t => {
   t.true(is(Boolean, false))
   t.true(is(Number, 0))
   t.true(is(String, ''))
   t.end()
 })
 
-test('Should now consider primitives to be part of an object', t => {
+test('is -- Should now consider primitives to be part of an object', t => {
   t.false(is(Object, false))
   t.false(is(Object, 0))
   t.false(is(Object, ''))

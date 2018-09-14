@@ -2,7 +2,7 @@ import is from '../../src/function/is'
 import partition from '../../src/array/partition'
 import test from 'tape'
 
-test('Basic functionality', t => {
+test('partition -- Basic functionality', t => {
   const check = is(String)
 
   t.deepEqual(partition(check, []), [[], []])
@@ -11,7 +11,7 @@ test('Basic functionality', t => {
   t.end()
 })
 
-test('Is curried', t => {
+test('partition -- Is curried', t => {
   const part = partition(is(String))
 
   t.deepEqual(part(['foo', 'bar', 100]), [['foo', 'bar'], [100]])

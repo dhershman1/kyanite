@@ -1,7 +1,7 @@
 import descendBy from '../../src/function/descendBy'
 import test from 'tape'
 
-test('Properly decends using the desired function', t => {
+test('descendBy -- Properly decends using the desired function', t => {
   const results = [
     { name: 'bob' },
     { name: 'amanda' },
@@ -18,7 +18,7 @@ test('Properly decends using the desired function', t => {
   t.end()
 })
 
-test('Is curried', t => {
+test('descendBy -- Is curried', t => {
   const desc = descendBy(x => x.name)
   const results = [
     { name: 'bob' },
