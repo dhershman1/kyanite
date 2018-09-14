@@ -10,6 +10,7 @@
 
 - Added new `clone` function, it can create a shallow clone for Objects however accepts a 2nd param to use deep clone capabilities
 - Marked `deepClone` as deprecated switch over to use `clone` Example: `clone({ a: 1 }, true)`
+- New `unzip` function which takes an object and breaks down into two arrays one of keys and one of values
 
 ### Improved
 
