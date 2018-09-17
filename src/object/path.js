@@ -9,7 +9,7 @@ import isNil from '../function/isNil'
  * @description Find an item based on the function sent in and its list
  * @param  {Array} keys The path to safely traverse the object with
  * @param  {Object} obj The object to traverse
- * @return {Any} Returns Data if found, undfined if not
+ * @return {Any} Returns Maybe Data if found, undefined if not
  *
  * @example
  *
