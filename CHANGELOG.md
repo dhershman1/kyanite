@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.8.1 (Unreleased)
+
+### Fixed
+
+- Documentation spelling error for `path`
+
 ## v0.8.0
 
 ### Breaking Changes
