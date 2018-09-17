@@ -1,7 +1,3 @@
-# VERSION NUMBER
-
-Please give a light description of your changes here
-
 ## Breaking Changes
 
 - List of breaking changes if any
