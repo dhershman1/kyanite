@@ -1,4 +1,5 @@
 import babel from 'rollup-plugin-babel'
+import filesize from 'rollup-plugin-filesize'
 import globby from 'globby'
 import path from 'path'
 import { uglify } from 'rollup-plugin-uglify'
@@ -32,4 +33,29 @@ const buildEntry = () => {
   return results
 }
 
-export default buildEntry()
+const buildTypes = () => {
+  const typeList = ['array', 'function', 'number', 'object', 'string']
+  const names = {
+    array: 'KA',
+    function: 'KF',
+    number: 'KN',
+    object: 'KO',
+    string: 'KS'
+  }
+
+  return typeList.map(t => ({
+    input: `./src/${t}/index.js`,
+    plugins: [
+      babel(),
+      uglify(),
+      filesize()
+    ],
+    output: {
+      file: `./${t}.js`,
+      format: 'umd',
+      name: names[t]
+    }
+  }))
+}
+
+export default [...buildEntry(), ...buildTypes()]
