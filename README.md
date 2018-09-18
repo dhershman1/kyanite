@@ -19,6 +19,7 @@ A light weight pure functional library with single type utility functions and it
 - [How To](#how-to)
 - [Documentation](#documentation)
 - [Modular](#modular)
+- [Modular By Datatype](#modular-by-datatype)
 
 ## Changelog
 
@@ -52,25 +53,31 @@ Some of the primary features for Kyanite are:
 Standard module system
 
 ```js
-import kyanite from 'kyanite'
+import K from 'kyanite'
 ```
 
 Common JS
 
 ```js
-const kyanite = require('kyanite')
+const K = require('kyanite')
 ```
 
 CDN
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.min.js"></script>
+<script>
+  K.isEmpty({})
+</script>
 ```
 
 Local copy script tag
 
 ```html
 <script src="/path/to/kyantie.min.js"></script>
+<script>
+  K.isEmpty({})
+</script>
 ```
 
 ## Documentation
@@ -114,5 +121,71 @@ Through your browser
 <script src="path/to/kyanite/isEmpty.js"></script>
 <script>
   isEmpty({})
+</script>
+```
+
+## Modular By Datatype
+
+However You can also break it down by data type too!
+
+- `kyanite/array` : All of the `Array` based functions (`intersection`, `difference`, `concat`, etc...)
+- `kyanite/function` : All of the `"Function"` based functions (`curry`, `is`, `isEmpty`, etc...)
+- `kyanite/number` : All of the `Number` based functions (`add`, `gcd`, `isOdd`, etc...)
+- `kyanite/object` : All of the `Object` based functions (`sift`, `height`, `assign`, etc...)
+- `kyanite/string` : All of the `String` based functions (`capitalize`, `toLower`, `fuzzySearch`, etc...)
+
+Examples:
+
+Standard JS
+
+```js
+import KA from 'kyanite/array'
+import KF from 'kyanite/function'
+import KN from 'kyanite/number'
+import KO from 'kyanite/object'
+import KS from 'kyanite/string'
+```
+
+CommonJs
+
+```js
+const KA = require('kyanite/array')
+const KF = require('kyanite/function')
+const KN = require('kyanite/number')
+const KO = require('kyanite/object')
+const KS = require('kyanite/string')
+```
+
+CDN
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/array.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/function.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/number.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/object.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/string.js"></script>
+<script>
+  KA.filter()
+  KF.curry()
+  KN.add()
+  KO.isEmpty()
+  KS.fuzzySearch()
+</script>
+```
+
+Through your browser
+
+```html
+<script src="path/to/kyanite/array.js"></script>
+<script src="path/to/kyanite/function.js"></script>
+<script src="path/to/kyanite/number.js"></script>
+<script src="path/to/kyanite/object.js"></script>
+<script src="path/to/kyanite/string.js"></script>
+<script>
+  KA.filter()
+  KF.curry()
+  KN.add()
+  KO.isEmpty()
+  KS.fuzzySearch()
 </script>
 ```
