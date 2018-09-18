@@ -14,10 +14,10 @@ A light weight pure functional library with single type utility functions and it
 
 - [Changelog](#changelog)
 - [Credit](#credit)
+- [Documentation](#documentation)
 - [Philosophy](#philosophy)
 - [Key Features](#key-features)
 - [How To](#how-to)
-- [Documentation](#documentation)
 - [Modular](#modular)
 - [Modular By Datatype](#modular-by-datatype)
 
@@ -32,16 +32,15 @@ A lot of the if not most of the inpiration for this library came from 2 librarie
 - [foreword](https://github.com/abstract-tools/foreword) by [Abstract Tools](https://github.com/abstract-tools) which is a very nice and easy to use library developed by a close friend. This is where a lot of functionality, AND the idea of a pure single data type system came from I can't recommend it enough.
 - [Ramdajs](http://ramdajs.com/) by [Ramda](https://github.com/ramda) a large and fairly handy library where the original idea sparked
 
+## Documentation
+
+You can find the documentation here: https://www.dusty.codes/documentation/kyanite
+
 ## Philosophy
 
-The idea for Kyanite is to not just be another library but to introduce a pure single task functional experience. This is to keep things light, and optimal in terms of size and performance.
-
-Working with the functional experience is working with immutable data, with this library I wanted to keep that as true as I could with using pure functions, but also in using single type data structures through out the library.
-
-The goal for the library was to be stripped down, light weight and easy to understand intuitively. As well as being performant and optimized in the best ways possible, and I am happy with that current outcome.
+The goal for the library was to be stripped down, light weight and easy to understand intuitively. As well as being performant and optimized in the best ways possible, and I am happy with that current outcome. Everything out of the box is Curried while also being easy to use with a pipe, Kyanite also gives the ability to curry your own custom functionality that can be used within pipes as well.
 
 ## Key Features
-Some of the primary features for Kyanite are:
 
 - Purely Functional, this was a big thing for me I wanted it to be easy to use functional system but also I wanted everything to be completely pure. I am happy with the results.
 - Emphasis on single type utility functions, all of the functionality is (Theroetically) based around accepting a single data type (String, Array, Object, Number) doing what it does, and giving you back a result. Making it reliable and stable while also staying lightweight
@@ -79,10 +78,6 @@ Local copy script tag
   K.isEmpty({})
 </script>
 ```
-
-## Documentation
-
-You can find the documentation here: https://www.dusty.codes/documentation/kyanite
 
 ## Modular
 
