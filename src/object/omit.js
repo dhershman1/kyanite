@@ -12,14 +12,14 @@ import ensureArray from '../array/ensureArray'
  * @return {Object} Returns the newly created data without the omitted values
  *
  * @example
- * const obj = omit('test', { test: '3432', thing: 123 }); // => { thing: 123 }
- * const arr = omit(['a', 'b'], { a: 1, b: 2, c: 3}); // => { c: 3 }
+ * const obj = omit('test', { test: '3432', thing: 123 }) // => { thing: 123 }
+ * const arr = omit(['a', 'b'], { a: 1, b: 2, c: 3}) // => { c: 3 }
  *
  * // omit is curried
  *
- * const omitKeys = omit('test');
+ * const omitKeys = omit('test')
  *
- * omitKeys({ test: '3432', thing: 123 }); // => { thing: 123 }
+ * omitKeys({ test: '3432', thing: 123 }) // => { thing: 123 }
  */
 const omit = (key, x) => {
   const keyArr = ensureArray(key)

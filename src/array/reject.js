@@ -12,15 +12,15 @@ import curry from '../function/curry'
  * @return {Array} Returns a new Array or Object based on the type of list provided
  *
  * @example
- * const isEven = n => n % 2 === 0;
+ * const isEven = n => n % 2 === 0
  *
- * reject(isEven, [1, 2, 3, 4]); // => [1, 3]
+ * reject(isEven, [1, 2, 3, 4]) // => [1, 3]
  *
  * // Is also curried
  *
- * const rejecter = reject(isEven);
+ * const rejecter = reject(isEven)
  *
- * rejecter([1, 2, 3, 4]); // => [1, 3]
+ * rejecter([1, 2, 3, 4]) // => [1, 3]
  */
 const reject = (fn, list) =>
   list.filter(v => !fn(v))

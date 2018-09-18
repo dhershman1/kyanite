@@ -11,14 +11,14 @@ import curry from '../function/curry'
  * @return {Array} A new sorted array
  *
  * @example
- * sort((a, b) => a - b, [99, 23, 10, 53, 1]); // => [1, 10, 23, 53, 99]
+ * sort((a, b) => a - b, [99, 23, 10, 53, 1]) // => [1, 10, 23, 53, 99]
  *
  * // It's also curried
  *
- * const sorter = sort((a, b) => a - b);
+ * const sorter = sort((a, b) => a - b)
  *
- * sorter([99, 23, 10, 53, 1]); // => [1, 10, 23, 53, 99]
- * sorter([5, 3, 4, 6, 2, 1]); // => [1, 2, 3, 4, 5, 6]
+ * sorter([99, 23, 10, 53, 1]) // => [1, 10, 23, 53, 99]
+ * sorter([5, 3, 4, 6, 2, 1]) // => [1, 2, 3, 4, 5, 6]
  */
 const sort = (fn, a) => a.slice().sort(fn)
 

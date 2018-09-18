@@ -12,8 +12,8 @@ import _equal from '../_internals/_equal'
  * @return {Boolean} Returns the boolean after running our comparison check
  *
  * @example
- * const obj = isEqual({}, {}); // => true
- * const arr = isEqual([], []); // => true
+ * const obj = isEqual({}, {}) // => true
+ * const arr = isEqual([], []) // => true
  */
 const isEqual = (a, b) => _equal(a, b)
 

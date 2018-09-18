@@ -10,8 +10,8 @@ import isNil from '../function/isNil'
  * @return {Object} Returns a new object without the unwanted values
  *
  * @example
- * compress({ thing: '', test: 1, other: undefined }); // => { thing: '', test: 1 }
- * compress({ thing: '', test: 1, other: null }); // => { thing: '', test: 1 }
+ * compress({ thing: '', test: 1, other: undefined }) // => { thing: '', test: 1 }
+ * compress({ thing: '', test: 1, other: null }) // => { thing: '', test: 1 }
  */
 const compress = obj =>
   Object.keys(obj).reduce((acc, k) => {

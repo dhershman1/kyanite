@@ -12,15 +12,15 @@ import curry from '../function/curry'
  * @return {Any} The value that exists at 'obj.p'
  *
  * @example
- * prop('thing', { thing: 'test' }); // => 'test'
- * prop('thing', {}); // => undefined
- * map(prop('a'), [{ a: 1 }, { a: 2 }, { a: 3 }]); // => [1, 2, 3]
+ * prop('thing', { thing: 'test' }) // => 'test'
+ * prop('thing', {}) // => undefined
+ * map(prop('a'), [{ a: 1 }, { a: 2 }, { a: 3 }]) // => [1, 2, 3]
  *
  * // It is also curried
  *
- * const proper = prop('a');
+ * const proper = prop('a')
  *
- * proper({ a: 1, b: 2 }); // => 1
+ * proper({ a: 1, b: 2 }) // => 1
  */
 const prop = (p, obj) => obj[p]
 

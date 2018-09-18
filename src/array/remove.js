@@ -12,12 +12,12 @@ import curry from '../function/curry'
  * @return {Array}     returns the modified array back
  *
  * @example
- * const test = remove(2, [1, 2, 3, 4]); // => [1, 2, 4]
+ * const test = remove(2, [1, 2, 3, 4]) // => [1, 2, 4]
  *
  * // This is also a curried method
  *
- * const remover = remove(2);
- * const test = remover([1, 2, 3, 4]); // => [1, 2, 4]
+ * const remover = remove(2)
+ * const test = remover([1, 2, 3, 4]) // => [1, 2, 4]
  */
 const remove = (i, x) =>
   concat([x.slice(0, i), x.slice(i + 1)])

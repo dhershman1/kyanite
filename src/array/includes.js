@@ -12,13 +12,13 @@ import curry from '../function/curry'
  * @return {Boolean} A Boolean based on if the value is found or not
  *
  * @example
- * includes(3, [1, 2, 3]); // => true
+ * includes(3, [1, 2, 3]) // => true
  *
  * // It is also curried
  *
- * const checker = includes(3);
+ * const checker = includes(3)
  *
- * checker([1, 2, 3]); // => true
+ * checker([1, 2, 3]) // => true
  */
 const includes = (a, list) =>
   list.indexOf(a) !== -1

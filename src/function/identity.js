@@ -9,14 +9,14 @@
  * @return {Any} The value
  *
  * @example
- * identity(10); // => 10
+ * identity(10) // => 10
  *
- * const test = identity(10);
+ * const test = identity(10)
  *
- * console.log(typeof test.constructor); // => 'function'
- * console.log(10.constructor); // => error
+ * console.log(typeof test.constructor) // => 'function'
+ * console.log(10.constructor) // => error
  *
- * filter(identity, [0, 'cool', null, 1]); // => ['cool', 1]
+ * filter(identity, [0, 'cool', null, 1]) // => ['cool', 1]
  */
 const identity = a => a
 

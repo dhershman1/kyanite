@@ -13,14 +13,14 @@ import curry from '../function/curry'
  * @return {Any} Returns based on the original init parameter that is passed in
  *
  * @example
- * reduce((acc, n) => acc + n, 0, [1, 2, 3, 4, 5]); // => 15
+ * reduce((acc, n) => acc + n, 0, [1, 2, 3, 4, 5]) // => 15
  * reduce((acc, n) => {
     if (typeof n === 'number') {
-      acc.push(n);
+      acc.push(n)
     }
 
-    return acc;
-  }, [], ['', 1, 2, '0', 3]); // => [1, 2, 3]
+    return acc
+  }, [], ['', 1, 2, '0', 3]) // => [1, 2, 3]
  */
 const reduce = (fn, init, list) => list.reduce(fn, init)
 

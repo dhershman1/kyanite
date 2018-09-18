@@ -11,8 +11,8 @@
  * @return {Any} Returns whatever was the last piece of our array
  *
  * @example
- * const arr = last([1, 3]); // => 3
- * const str = last('abc'); // => 'c'
+ * const arr = last([1, 3]) // => 3
+ * const str = last('abc') // => 'c'
  */
 const last = x => x[x.length - 1]
 

@@ -9,8 +9,8 @@
  * @return {Array} A new reversed array
  *
  * @example
- * reverse([1, 2, 3]); // => [3, 2, 1]
- * reverse([]); // => []
+ * reverse([1, 2, 3]) // => [3, 2, 1]
+ * reverse([]) // => []
  */
 const reverse = arr => arr.slice().reverse()
 

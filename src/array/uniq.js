@@ -12,7 +12,7 @@ import uniqBy from './uniqBy'
  *
  * @example
  *
- * uniq([1, 2, 2, 3, 3, 4, 5]); // => [1, 2, 3, 4, 5]
+ * uniq([1, 2, 2, 3, 3, 4, 5]) // => [1, 2, 3, 4, 5]
  */
 const uniq = uniqBy(identity)
 

@@ -8,8 +8,8 @@
  * @return {Any} Returns whatever was the first piece of our array
  *
  * @example
- * const arr = first([1, 3]); // => 1
- * const str = first('abc'); // => 'a'
+ * const arr = first([1, 3]) // => 1
+ * const str = first('abc') // => 'a'
  */
 const first = x => x[0]
 

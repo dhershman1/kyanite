@@ -11,7 +11,7 @@ import trim from './trim'
  * @return {Array} The words broken down into an array of strings
  *
  * @example
- * words('my brown cow'); // => ['my', 'brown', 'cow']
+ * words('my brown cow') // => ['my', 'brown', 'cow']
  */
 const words = str => trim(str).split(/\s+/)
 

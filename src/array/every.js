@@ -12,17 +12,17 @@ import curry from '../function/curry'
  * @return {Boolean} If all values passed will return true else false
  *
  * @example
- * const data = [1, 2, 3, 4];
+ * const data = [1, 2, 3, 4]
  *
- * every(x => x > 0, data); // => true
- * every(x => x < 3, data); // => false
+ * every(x => x > 0, data) // => true
+ * every(x => x < 3, data) // => false
  *
  * // It is also curried
  *
- * const run = every(x => x > 0);
+ * const run = every(x => x > 0)
  *
- * run([1, 2, 3]); // => true
- * run([-1, 0, 1]); // => false
+ * run([1, 2, 3]) // => true
+ * run([-1, 0, 1]) // => false
  */
 const every = (fn, x) => x.every(fn)
 

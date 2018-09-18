@@ -11,13 +11,13 @@ import curry from '../function/curry'
  * @return {Number} Returns the value of the found index
  *
  * @example
- * nth(3, [1, 2, 3, 4, 5, 6, 7]); // => 4
+ * nth(3, [1, 2, 3, 4, 5, 6, 7]) // => 4
  *
  * // nth is curried
  *
- * const third = nth(2);
+ * const third = nth(2)
  *
- * third([1, 2, 3, 4, 5]); // => 3
+ * third([1, 2, 3, 4, 5]) // => 3
  */
 const nth = (o, x) => {
   const idx = o < 0 ? x.length + o : o

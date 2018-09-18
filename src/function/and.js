@@ -12,9 +12,9 @@ import curry from './curry'
  * @return {Boolean} The evaluated outcome of the parameters
  *
  * @example
- * and(true, true); // => true
- * and(true, false); // => false
- * and(false, false); // => false
+ * and(true, true) // => true
+ * and(true, false) // => false
+ * and(false, false) // => false
  */
 const and = (a, b) => a && b
 

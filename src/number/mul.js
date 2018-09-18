@@ -11,14 +11,14 @@ import curry from '../function/curry'
  * @return {Number} The product of the numbers
  *
  * @example
- * mul(2, 1); // => 2
+ * mul(2, 1) // => 2
  *
  * // It's also curried
  *
- * const multiply = mul(5);
+ * const multiply = mul(5)
  *
- * multiply(3); // => 15
- * multiply(2); // => 10
+ * multiply(3) // => 15
+ * multiply(2) // => 10
  */
 const mul = (a, b) => a * b
 

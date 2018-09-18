@@ -13,10 +13,10 @@ import not from './not'
  * @return {Function} Returns the opposite function back
  *
  * @example
- * const isNot = complement(is(String));
+ * const isNot = complement(is(String))
  *
- * isNot(1); // => true
- * isNot('test'); // => false
+ * isNot(1) // => true
+ * isNot('test') // => false
  */
 const complement = (fn, a) => not(fn(a))
 

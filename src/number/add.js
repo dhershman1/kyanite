@@ -11,14 +11,14 @@ import curry from '../function/curry'
  * @return {Number} The sum of the numbers
  *
  * @example
- * add(1, 2); // => 3
+ * add(1, 2) // => 3
  *
  * // It's also curried
  *
- * const adder = add(2);
+ * const adder = add(2)
  *
- * adder(3); // => 5
- * adder(2); // => 4
+ * adder(3) // => 5
+ * adder(2) // => 4
  */
 const add = (a, b) => Number(a) + Number(b)
 

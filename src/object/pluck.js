@@ -12,12 +12,12 @@ import isObject from '../_internals/isObject'
  * @return {Array} The new list which will be the same type as the list provided
  *
  * @example
- * pluck('val', { a: { val: 3 }, b: { val: 5 } }); // => [3, 5]
+ * pluck('val', { a: { val: 3 }, b: { val: 5 } }) // => [3, 5]
  *
  * // It is also curried
- * const plucker = pluck('a');
+ * const plucker = pluck('a')
  *
- * plucker([{ a: 1 }, { a: 2 }]); // => [1, 2]
+ * plucker([{ a: 1 }, { a: 2 }]) // => [1, 2]
  */
 const pluck = (p, list) =>
   Object.keys(list).reduce((acc, v) => {

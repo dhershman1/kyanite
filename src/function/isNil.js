@@ -8,9 +8,9 @@
  * @return {Boolean} Returns a boolean based on the check
  *
  * @example
- * isNill(null); // => true
- * isNill(); // => true
- * isNill(1); // => false
+ * isNill(null) // => true
+ * isNill() // => true
+ * isNill(1) // => false
  */
 const isNil = x => x == null
 

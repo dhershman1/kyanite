@@ -9,6 +9,7 @@
 ### Fixed
 
 - Documentation spelling error for `path`
+- Documentation is now Consistent to the linter and the rest of the module
 
 ### New
 

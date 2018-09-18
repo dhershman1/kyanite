@@ -13,15 +13,15 @@ import gcd from './gcd'
  *
  * @example
  *
- * lcm(90, 70); // => 630
- * lcm(91, 4); // => 364
+ * lcm(90, 70) // => 630
+ * lcm(91, 4) // => 364
  *
  * // It's also curried
  *
- * const a = lcm(90);
+ * const a = lcm(90)
  *
- * a(70); // => 630
- * a(4); // => 180
+ * a(70) // => 630
+ * a(4) // => 180
  */
 const lcm = (a, b) =>
   Math.abs(Math.floor(a / gcd(a, b) * b))

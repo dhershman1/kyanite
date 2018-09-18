@@ -12,13 +12,13 @@ import curry from '../function/curry'
  * @return {Array} The newly created subset Array
  *
  * @example
- * slice(1, 3, [1, 2, 3, 4, 5]); // => [2, 3]
+ * slice(1, 3, [1, 2, 3, 4, 5]) // => [2, 3]
  *
  * // It is curried
  *
- * const slicer = slice(1, 3);
+ * const slicer = slice(1, 3)
  *
- * slicer([1, 2, 3, 4, 5]); // => [2, 3]
+ * slicer([1, 2, 3, 4, 5]) // => [2, 3]
  */
 const slice = (a, b, list) => list.slice(a, b)
 

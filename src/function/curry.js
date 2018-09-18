@@ -9,10 +9,10 @@
  * @return {Any} Returns based on the function sent in
  *
  * @example
- * const add = curry((a, b) => a + b);
+ * const add = curry((a, b) => a + b)
  *
- * add(1)(2); // => 3
- * add(1, 2); // => 3
+ * add(1)(2) // => 3
+ * add(1, 2) // => 3
  */
 const curry = (f, ...args) => {
   if (f.length <= args.length) {
