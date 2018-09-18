@@ -1,10 +1,19 @@
 # Changelog
 
-## v0.8.1 (Unreleased)
+## v0.9.0 (Unreleased)
+
+### Breaking Changes
+
+- HIGH: **If you are using a CDN or local `<script>` tag of the module the naming was changed to `K` vs full kyanite please change this accordingly**
 
 ### Fixed
 
 - Documentation spelling error for `path`
+
+### New
+
+- Added 2nd level Modularity you can now request sections of the library by type
+  - Example: `import KO from 'kyanite/object` See the `Modular By Datatype` section of the readme
 
 ## v0.8.0
 
