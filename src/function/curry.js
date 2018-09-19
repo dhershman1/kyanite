@@ -13,6 +13,10 @@
  *
  * add(1)(2) // => 3
  * add(1, 2) // => 3
+ *
+ * const add1 = add(1)
+ *
+ * add1(2) // => 3
  */
 const curry = (f, ...args) => {
   if (f.length <= args.length) {
