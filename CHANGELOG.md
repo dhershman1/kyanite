@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.8.2
+
+### Fixed
+
+- No longer packaging unwanted items like coverage results
+
+### Improved
+
+- Slightly the build process of the module (pre-publish/release anyway)
+
 ## v0.8.1
 
 ### New
