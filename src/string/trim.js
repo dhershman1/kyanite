@@ -9,8 +9,8 @@
  * @param {String} str The string to trim
  * @return {String} The trimmed string
  * @example
- * trim('my new cow   '); // => 'my new cow'
- * trim('   new things   '); // => 'new things'
+ * trim('my new cow   ') // => 'my new cow'
+ * trim('   new things   ') // => 'new things'
  */
 const trim = str => str.trim()
 

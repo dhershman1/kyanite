@@ -8,4 +8,5 @@ branches:
 script:
   - npm run lint
   - npm run test:cov
+  - npm run check-cov
 after_success: npm run coverage

@@ -8,8 +8,8 @@
  * @return {Any} The item that was deemed to be the max
  *
  * @example
- * max([1, 3, 2, 5, 4]); // => 5
- * max(['c', 'a', 'b', 'f']); // => 'f'
+ * max([1, 3, 2, 5, 4]) // => 5
+ * max(['c', 'a', 'b', 'f']) // => 'f'
  */
 const max = list => list.reduce((a, b) => a >= b ? a : b)
 

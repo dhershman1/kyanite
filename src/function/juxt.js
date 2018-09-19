@@ -8,9 +8,9 @@
  * @return {Function} The function you can use on your data value
  *
  * @example
- * const getRange = juxt([Math.min, Math.max]);
+ * const getRange = juxt([Math.min, Math.max])
  *
- * getRange(3, 4, 9, -3); // => [-3, 9]
+ * getRange(3, 4, 9, -3) // => [-3, 9]
  */
 const juxt = (fns = []) =>
   (...x) => fns.map(f => f(...x))

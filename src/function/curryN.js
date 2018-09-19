@@ -11,21 +11,21 @@
  *
  * @example
  *
- * const add = curryN(2, (a, b) => a + b);
+ * const add = curryN(2, (a, b) => a + b)
  *
- * add(1)(2); // => 3
- * add(1, 2); // => 3
+ * add(1)(2) // => 3
+ * add(1, 2) // => 3
  *
- * const sum = add(1);
+ * const sum = add(1)
  *
- * sum(2); // => 3
- * sum(4); // => 5
+ * sum(2) // => 3
+ * sum(4) // => 5
  *
- * const add2 = curryN(2, (a, b = 1) => a + b);
- * const sum1 = add(1);
+ * const add2 = curryN(2, (a, b = 1) => a + b)
+ * const sum1 = add(1)
  *
- * sum1(4); // => 5
- * sum1(undefined); // => 2
+ * sum1(4) // => 5
+ * sum1(undefined) // => 2
  */
 const curryN = (n, f, ...args) => {
   if (n <= 0) {

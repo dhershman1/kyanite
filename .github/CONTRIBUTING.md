@@ -4,6 +4,8 @@ I am open to, and grateful for, any contributions made to this project.
 
 Please abide by the linter setup which uses [Standardjs](http://standardjs.com) rules
 
+Please make sure all PRs are pointed at and processed through the main Development branch
+
 ## Commit Messages
 
 Please write and use meaningful and helpful commit messages for your contributions and changes.

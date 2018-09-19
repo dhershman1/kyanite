@@ -12,9 +12,9 @@ import curry from './curry'
  * @return {Boolean} The evaluated outcome of the parameters
  *
  * @example
- * or(true, true); // => true
- * or(true, false); // => true
- * or(false, false); // => false
+ * or(true, true) // => true
+ * or(true, false) // => true
+ * or(false, false) // => false
  */
 const or = (a, b) => a || b
 

@@ -17,7 +17,7 @@ import curry from '../function/curry'
  *
  * const pender = prepend('testing')
  *
- * pender(['is', 'cool']); // => ['testing', 'is', 'cool']
+ * pender(['is', 'cool']) // => ['testing', 'is', 'cool']
  */
 const prepend = (x, list) => [].concat(x, list)
 

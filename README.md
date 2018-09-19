@@ -14,11 +14,12 @@ A light weight pure functional library with single type utility functions and it
 
 - [Changelog](#changelog)
 - [Credit](#credit)
+- [Documentation](#documentation)
 - [Philosophy](#philosophy)
 - [Key Features](#key-features)
 - [How To](#how-to)
-- [Documentation](#documentation)
 - [Modular](#modular)
+- [Modular By Datatype](#modular-by-datatype)
 
 ## Changelog
 
@@ -31,16 +32,15 @@ A lot of the if not most of the inpiration for this library came from 2 librarie
 - [foreword](https://github.com/abstract-tools/foreword) by [Abstract Tools](https://github.com/abstract-tools) which is a very nice and easy to use library developed by a close friend. This is where a lot of functionality, AND the idea of a pure single data type system came from I can't recommend it enough.
 - [Ramdajs](http://ramdajs.com/) by [Ramda](https://github.com/ramda) a large and fairly handy library where the original idea sparked
 
+## Documentation
+
+You can find the documentation here: https://www.dusty.codes/documentation/kyanite
+
 ## Philosophy
 
-The idea for Kyanite is to not just be another library but to introduce a pure single task functional experience. This is to keep things light, and optimal in terms of size and performance.
-
-Working with the functional experience is working with immutable data, with this library I wanted to keep that as true as I could with using pure functions, but also in using single type data structures through out the library.
-
-The goal for the library was to be stripped down, light weight and easy to understand intuitively. As well as being performant and optimized in the best ways possible, and I am happy with that current outcome.
+The goal for the library was to be stripped down, light weight and easy to understand intuitively. As well as being performant and optimized in the best ways possible, and I am happy with that current outcome. Everything out of the box is Curried while also being easy to use with a pipe, Kyanite also gives the ability to curry your own custom functionality that can be used within pipes as well.
 
 ## Key Features
-Some of the primary features for Kyanite are:
 
 - Purely Functional, this was a big thing for me I wanted it to be easy to use functional system but also I wanted everything to be completely pure. I am happy with the results.
 - Emphasis on single type utility functions, all of the functionality is (Theroetically) based around accepting a single data type (String, Array, Object, Number) doing what it does, and giving you back a result. Making it reliable and stable while also staying lightweight
@@ -52,30 +52,36 @@ Some of the primary features for Kyanite are:
 Standard module system
 
 ```js
-import kyanite from 'kyanite'
+import K from 'kyanite'
 ```
 
 Common JS
 
 ```js
-const kyanite = require('kyanite')
+const K = require('kyanite')
 ```
 
 CDN
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.min.js"></script>
+<script>
+  const K = kyanite
+
+  K.isEmpty({})
+</script>
 ```
 
 Local copy script tag
 
 ```html
 <script src="/path/to/kyantie.min.js"></script>
+<script>
+  const K = kyanite
+
+  K.isEmpty({})
+</script>
 ```
-
-## Documentation
-
-You can find the documentation here: https://www.dusty.codes/documentation/kyanite
 
 ## Modular
 
@@ -114,5 +120,71 @@ Through your browser
 <script src="path/to/kyanite/isEmpty.js"></script>
 <script>
   isEmpty({})
+</script>
+```
+
+## Modular By Datatype
+
+However You can also break it down by data type too!
+
+- `kyanite/array` : All of the `Array` based functions (`intersection`, `difference`, `concat`, etc...)
+- `kyanite/function` : All of the `"Function"` based functions (`curry`, `is`, `isEmpty`, etc...)
+- `kyanite/number` : All of the `Number` based functions (`add`, `gcd`, `isOdd`, etc...)
+- `kyanite/object` : All of the `Object` based functions (`sift`, `height`, `assign`, etc...)
+- `kyanite/string` : All of the `String` based functions (`capitalize`, `toLower`, `fuzzySearch`, etc...)
+
+Examples:
+
+Standard JS
+
+```js
+import KA from 'kyanite/array'
+import KF from 'kyanite/function'
+import KN from 'kyanite/number'
+import KO from 'kyanite/object'
+import KS from 'kyanite/string'
+```
+
+CommonJs
+
+```js
+const KA = require('kyanite/array')
+const KF = require('kyanite/function')
+const KN = require('kyanite/number')
+const KO = require('kyanite/object')
+const KS = require('kyanite/string')
+```
+
+CDN
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/array.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/function.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/number.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/object.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/string.js"></script>
+<script>
+  KA.filter()
+  KF.curry()
+  KN.add()
+  KO.isEmpty()
+  KS.fuzzySearch()
+</script>
+```
+
+Through your browser
+
+```html
+<script src="path/to/kyanite/array.js"></script>
+<script src="path/to/kyanite/function.js"></script>
+<script src="path/to/kyanite/number.js"></script>
+<script src="path/to/kyanite/object.js"></script>
+<script src="path/to/kyanite/string.js"></script>
+<script>
+  KA.filter()
+  KF.curry()
+  KN.add()
+  KO.isEmpty()
+  KS.fuzzySearch()
 </script>
 ```

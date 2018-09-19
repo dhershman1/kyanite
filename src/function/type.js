@@ -8,15 +8,15 @@
  * @return {String} A string based on the type of the value passed in
  *
  * @example
- * type({}); // => 'Object'
- * type([]); // => 'Array'
- * type(null); // => 'Null'
- * type(undefined); // => 'Undefined'
- * type('hi'); // => 'String'
- * type(1); // => 'Number'
- * type(/1/g); // => 'RegExp'
- * type(new Date()); // => 'Date'
- * type(true); // => 'Boolean'
+ * type({}) // => 'Object'
+ * type([]) // => 'Array'
+ * type(null) // => 'Null'
+ * type(undefined) // => 'Undefined'
+ * type('hi') // => 'String'
+ * type(1) // => 'Number'
+ * type(/1/g) // => 'RegExp'
+ * type(new Date()) // => 'Date'
+ * type(true) // => 'Boolean'
  */
 const type = x => {
   if (x === null) {

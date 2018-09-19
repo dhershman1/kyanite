@@ -11,13 +11,13 @@ import curry from './curry'
  * @return {Any} The transformed value
  *
  * @example
- * pipe([add(2), mul(2)], 10); // => 24
+ * pipe([add(2), mul(2)], 10) // => 24
  *
  * // It's also curried
  *
- * const piper = pipe([add(2), mul(2)]);
+ * const piper = pipe([add(2), mul(2)])
  *
- * piper(10); // => 24
+ * piper(10) // => 24
  */
 const pipe = (list, a) =>
   list.reduce((acc, fn) => fn(acc), a)

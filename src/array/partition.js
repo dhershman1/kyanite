@@ -14,13 +14,13 @@ import curry from '../function/curry'
  * And a second that did not
  *
  * @example
- * partition(is(String), ['foo', 'bar', 100]); // => [ ['foo', 'bar'], [100] ]
+ * partition(is(String), ['foo', 'bar', 100]) // => [ ['foo', 'bar'], [100] ]
  *
  * // Is curried as well
  *
- * const part = partition(is(String));
+ * const part = partition(is(String))
  *
- * part(['foo', 'bar', 100]); // => [ ['foo', 'bar'], [100] ]
+ * part(['foo', 'bar', 100]) // => [ ['foo', 'bar'], [100] ]
  */
 const partition = (fn, list) =>
   list.reduce(([pass, fail], v) =>

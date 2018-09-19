@@ -12,13 +12,13 @@ import curry from '../function/curry'
  *
  * @example
  *
- * uniqBy(x => x > 2, [1, 2, 3, 4, 5]); // => [3, 4, 5]
+ * uniqBy(x => x > 2, [1, 2, 3, 4, 5]) // => [3, 4, 5]
  *
  * // It is also curried
  *
- * const uq = uniqBy(x => x > 2);
+ * const uq = uniqBy(x => x > 2)
  *
- * uq([1, 2, 3, 4, 5]); // => [3, 4, 5]
+ * uq([1, 2, 3, 4, 5]) // => [3, 4, 5]
  */
 const uniqBy = (fn, list) =>
   list.reduce((acc, a) => {

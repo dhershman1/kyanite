@@ -13,15 +13,15 @@ import curry from '../function/curry'
  * @return {Array|Object} The new Array or Object that was created
  *
  * @example
- * const dbl = n => n * 2;
+ * const dbl = n => n * 2
  *
- * map(dbl, [1, 2, 3]); // => [2, 4, 6]
+ * map(dbl, [1, 2, 3]) // => [2, 4, 6]
  *
  * // It's also curried
  *
- * const dbler = map(dbl);
+ * const dbler = map(dbl)
  *
- * dbler([1, 2, 3]); // => [2, 4, 6]
+ * dbler([1, 2, 3]) // => [2, 4, 6]
  */
 const map = (fn, list) => list.map(fn)
 

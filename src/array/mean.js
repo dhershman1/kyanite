@@ -8,9 +8,9 @@
  * @return {Number} Returns the mean avg of the numbers
  *
  * @example
- * mean([1, 2, 3, 2]); // => 2
- * mean([]); // => NaN
- * mean(); // => NaN
+ * mean([1, 2, 3, 2]) // => 2
+ * mean([]) // => NaN
+ * mean() // => NaN
  */
 const mean = (x = []) => {
   if (!x.length) {

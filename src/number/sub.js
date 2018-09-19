@@ -11,14 +11,14 @@ import curry from '../function/curry'
  * @return {Number} The difference of the numbers
  *
  * @example
- * sub(2, 1); // => 1
+ * sub(2, 1) // => 1
  *
  * // It's also curried
  *
- * const subtract = sub(5);
+ * const subtract = sub(5)
  *
- * subtract(3); // => 2
- * subtract(2); // => 3
+ * subtract(3) // => 2
+ * subtract(2) // => 3
  */
 const sub = (a, b) => a - b
 

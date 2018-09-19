@@ -8,7 +8,7 @@
  * @return {Boolean}   Returns boolean back based on the results
  *
  * @example
- * const reverse = not(true); // => false
+ * const reverse = not(true) // => false
  */
 const not = x => !x
 

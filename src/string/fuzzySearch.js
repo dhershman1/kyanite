@@ -13,13 +13,13 @@ import curry from '../function/curry'
  * @return {Boolean} Returns a boolean determined by if the value is found or not by the search
  *
  * @example
- * fuzzySearch('te', 'test'); // => true
- * fuzzySearch('dog', 'testing'); // => false
+ * fuzzySearch('te', 'test') // => true
+ * fuzzySearch('dog', 'testing') // => false
  *
  * // search is also curried
  *
  * const search = fuzzySearch('te')
- * search('test'); // => true
+ * search('test') // => true
  */
 const fuzzySearch = (needle, haystack) => {
   const hLen = haystack.length

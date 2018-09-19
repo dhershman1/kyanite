@@ -9,7 +9,7 @@
  *
  * @example
  *
- * value({ a: 1, b: 2, c: 3 }); // => [1, 2, 3]
+ * value({ a: 1, b: 2, c: 3 }) // => [1, 2, 3]
  */
 const values = obj =>
   Object.keys(obj).map(k => obj[k])

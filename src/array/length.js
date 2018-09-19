@@ -9,8 +9,8 @@
  * @return {Number} The length of the array
  *
  * @example
- * length([1, 2, 3, 4]); // => 4
- * length([]); // => 0
+ * length([1, 2, 3, 4]) // => 4
+ * length([]) // => 0
  */
 const length = a => a.length
 

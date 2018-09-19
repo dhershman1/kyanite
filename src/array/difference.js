@@ -12,12 +12,12 @@ import curry from '../function/curry'
  *
  * @example
  *
- * difference([1, 2, 3], [1]); // => [2, 3];
+ * difference([1, 2, 3], [1]) // => [2, 3]
  *
  * // It's also curried
- * const diff = difference([1, 2, 3]);
+ * const diff = difference([1, 2, 3])
  *
- * diff([1]); // => [2, 3]
+ * diff([1]) // => [2, 3]
  */
 const difference = (first, second) => first.filter(x => second.indexOf(x) === -1)
 

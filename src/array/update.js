@@ -13,19 +13,19 @@ import curry from '../function/curry'
  * @return {Array} Returns the modified array
  *
  * @example
- * update(2, 10, [1, 2, 3]); // => [1, 2, 10]
+ * update(2, 10, [1, 2, 3]) // => [1, 2, 10]
  *
  * // You can also use it as a curried method
  *
- * const updater = update(2, 10);
+ * const updater = update(2, 10)
  *
- * updater([1, 2, 3]); // => [1, 2, 10]
+ * updater([1, 2, 3]) // => [1, 2, 10]
  *
  * // This can be taken further like so
  *
- * const index = update(2);
- * const val = index(10);
- * val([1, 2, 3]); // => [1, 2, 10]
+ * const index = update(2)
+ * const val = index(10)
+ * val([1, 2, 3]) // => [1, 2, 10]
  */
 const update = (index, val, list) =>
   concat([list.slice(0, index), val, list.slice(index + 1)])

@@ -11,10 +11,10 @@ import isNil from '../function/isNil'
  * @return {Array} Returns a new array
  *
  * @example
- * ensureArray(1); // => [1]
- * ensureArray(); // => []
- * ensureArray(null); // => []
- * ensureArray('test'); // => ['test']
+ * ensureArray(1) // => [1]
+ * ensureArray() // => []
+ * ensureArray(null) // => []
+ * ensureArray('test') // => ['test']
  */
 const ensureArray = x => {
   if (Array.isArray(x)) {

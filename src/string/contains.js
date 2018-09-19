@@ -11,18 +11,18 @@ import curry from '../function/curry'
  * @param {String} a The string we want to find
  * @return {Boolean} Based on if the string is found or not
  * @example
- * contains('cow', 'small brown cow'); // => true
- * contains('cow', 'Small Brown Cow'); // => true
+ * contains('cow', 'small brown cow') // => true
+ * contains('cow', 'Small Brown Cow') // => true
  *
- * const x = 'cow';
+ * const x = 'cow'
  *
- * contains('cow', `small brown ${x}`); // => true
+ * contains('cow', `small brown ${x}`) // => true
  *
  * // It's also curried
  *
- * const checker = contains('cow');
+ * const checker = contains('cow')
  *
- * checker('small brown cow'); // => true
+ * checker('small brown cow') // => true
  */
 const contains = (a, str) => str.indexOf(a) !== -1
 

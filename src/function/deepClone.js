@@ -10,12 +10,12 @@
  *
  * @example
  * const data = { test: 1 }
- * const cloned = deepClone(data); // => { test: 1 }
+ * const cloned = deepClone(data) // => { test: 1 }
  *
- * cloned.test = 2;
+ * cloned.test = 2
  *
- * console.log(data); // => { test: 1 }
- * console.log(cloned); // => { test: 2 }
+ * console.log(data) // => { test: 1 }
+ * console.log(cloned) // => { test: 2 }
  */
 const deepClone = x => JSON.parse(JSON.stringify(x))
 

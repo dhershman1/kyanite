@@ -9,8 +9,8 @@
  * @return {Array} Returns an array of numbers consisting of the range
  *
  * @example
- * const test = range(3, 7); // => [3, 4, 5, 6]
- * const test = range(3); // => [0, 1, 2];
+ * const test = range(3, 7) // => [3, 4, 5, 6]
+ * const test = range(3) // => [0, 1, 2]
  */
 const range = (from, to) => {
   if (isNaN(from) || (to && isNaN(to))) {

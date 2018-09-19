@@ -11,13 +11,13 @@ import curry from '../function/curry'
  * @return {Boolean} Returns based on if the prop is found or not
  *
  * @example
- * const obj = has('thing', { test: 1, thing: 2 }); // => true
+ * const obj = has('thing', { test: 1, thing: 2 }) // => true
  *
  * // has is also curried
  *
- * const propSet = has('thing');
+ * const propSet = has('thing')
  *
- * propSet({ test: 1, thing: 2 }); // => true
+ * propSet({ test: 1, thing: 2 }) // => true
  */
 const has = (prop, obj) =>
   Object.prototype.hasOwnProperty.call(obj, prop)

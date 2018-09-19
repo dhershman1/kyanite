@@ -9,8 +9,8 @@
  *
  * @example
  *
- * capitalize('test'); // => 'Test'
- * capitalize('small brown cow'); // => 'Small brown cow'
+ * capitalize('test') // => 'Test'
+ * capitalize('small brown cow') // => 'Small brown cow'
  */
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 

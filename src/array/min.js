@@ -8,8 +8,8 @@
  * @return {Any} Returns the item at the start of an array based on what's passed in
  *
  * @example
- * min([1, 3, 2, 5, 4]); // => 1
- * min(['c', 'a', 'b', 'f']); // => 'a'
+ * min([1, 3, 2, 5, 4]) // => 1
+ * min(['c', 'a', 'b', 'f']) // => 'a'
  */
 const min = list => list.reduce((a, b) => a <= b ? a : b)
 

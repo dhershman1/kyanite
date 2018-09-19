@@ -11,13 +11,13 @@ import curry from '../function/curry'
  * @return {Array} A new array containing values that both arrays had
  *
  * @example
- * intersection([1, 2, 3, 4], [3, 4, 5, 6]); // => [3, 4]
+ * intersection([1, 2, 3, 4], [3, 4, 5, 6]) // => [3, 4]
  *
  * // It's also curried
  *
- * const inter = intersection([1, 2, 3, 4]);
+ * const inter = intersection([1, 2, 3, 4])
  *
- * inter([3, 4, 5, 6]); // => [3, 4]
+ * inter([3, 4, 5, 6]) // => [3, 4]
  */
 const intersection = (a, b) => a.filter(x => b.indexOf(x) !== -1)
 
