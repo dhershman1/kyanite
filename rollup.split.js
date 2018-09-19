@@ -5,57 +5,33 @@ import path from 'path'
 import { uglify } from 'rollup-plugin-uglify'
 
 const buildEntry = () => {
-  const results = []
+  const plugins = [babel(), uglify()]
+  const typesPaths = ['array', 'function', 'number', 'object', 'string']
+    .map(p => `./src/${p}/index.js`)
   const paths = globby.sync(['src/**/*.js', '!src/**/index.js', '!src/_internals'])
 
-  paths.forEach(p => {
-    const { name } = path.parse(p)
+  return [...paths, ...typesPaths].map(p => {
+    const { name, dir } = path.parse(p)
 
-    const config = {
+    const convert = {
+      array: 'KA',
+      function: 'KF',
+      number: 'KN',
+      object: 'KO',
+      string: 'KS'
+    }
+
+    return {
       input: path.resolve(__dirname, p),
-      plugins: [
-        babel(),
-        uglify()
-      ],
+      plugins: name === 'index' ? [...plugins, filesize()] : plugins,
       output: {
         dir: './',
-        file: `${name}.js`,
+        file: name === 'index' ? `${dir}.js` : `${name}.js`,
         format: 'umd',
-        name: name
+        name: convert[name] || name
       }
     }
-
-    results.push(config)
-
-    return true
   })
-
-  return results
 }
 
-const buildTypes = () => {
-  const typeList = ['array', 'function', 'number', 'object', 'string']
-  const names = {
-    array: 'KA',
-    function: 'KF',
-    number: 'KN',
-    object: 'KO',
-    string: 'KS'
-  }
-
-  return typeList.map(t => ({
-    input: `./src/${t}/index.js`,
-    plugins: [
-      babel(),
-      uglify(),
-      filesize()
-    ],
-    output: {
-      file: `./${t}.js`,
-      format: 'umd',
-      name: names[t]
-    }
-  }))
-}
-
-export default [...buildEntry(), ...buildTypes()]
+export default buildEntry()
