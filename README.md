@@ -66,6 +66,8 @@ CDN
 ```html
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.min.js"></script>
 <script>
+  const K = kyanite
+
   K.isEmpty({})
 </script>
 ```
@@ -75,6 +77,8 @@ Local copy script tag
 ```html
 <script src="/path/to/kyantie.min.js"></script>
 <script>
+  const K = kyanite
+
   K.isEmpty({})
 </script>
 ```

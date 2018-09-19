@@ -1,10 +1,6 @@
 # Changelog
 
-## v0.9.0 (Unreleased)
-
-### Breaking Changes
-
-- HIGH: **If you are using a CDN or local `<script>` tag of the module the naming was changed to `K` vs full kyanite please change this accordingly**
+## v0.8.1 (Unreleased)
 
 ### Fixed
 
