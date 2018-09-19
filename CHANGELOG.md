@@ -2,15 +2,15 @@
 
 ## v0.8.1 (Unreleased)
 
-### Fixed
-
-- Documentation spelling error for `path`
-- Documentation is now Consistent to the linter and the rest of the module
-
 ### New
 
 - Added 2nd level Modularity you can now request sections of the library by type
   - Example: `import KO from 'kyanite/object` See the `Modular By Datatype` section of the readme
+
+### Fixed
+
+- Documentation spelling error for `path`
+- Documentation is now Consistent to the linter and the rest of the module
 
 ## v0.8.0
 
