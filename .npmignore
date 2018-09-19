@@ -1,10 +1,12 @@
 .travis.yml
 rollup.config.js
 rollup.split.js
-webpack.config.js
 .eslintrc.js
 .eslintignore
 .gitignore
 scripts
 .nyc_output
 tests/
+coverage
+.nyc_output
+.babelrc
