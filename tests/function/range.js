@@ -6,6 +6,7 @@ test('range -- Create basic range array', t => {
 
   t.ok(results)
   t.deepEqual(results, [1, 2, 3, 4])
+  t.same(range(), [])
   t.end()
 })
 

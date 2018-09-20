@@ -6,6 +6,7 @@ test('factors -- Find the factors of the provided numbers', t => {
   t.same(factors(102), [1, 2, 3, 6, 17, 34, 51])
   t.same(factors(0), [])
   t.same(factors(-1), [])
+  t.same(factors(), [])
   t.end()
 })
 
