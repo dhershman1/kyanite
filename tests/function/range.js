@@ -26,3 +26,10 @@ test('range -- Should throw an error when values are NaN', t => {
     t.end()
   }
 })
+
+test('range -- Handles string types', t => {
+  t.same(range('1', 4), [1, 2, 3])
+  t.same(range(1, '4'), [1, 2, 3])
+  t.same(range('1', '4'), [1, 2, 3])
+  t.end()
+})
