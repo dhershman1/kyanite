@@ -619,9 +619,11 @@
   };
   var pipe$1 = curry(pipe);
 
-  var range = function range(from, to) {
+  var range = function range() {
+    var from = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var to = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     if (isNaN(from) || to && isNaN(to)) {
-      throw new TypeError('Both Arguments should be a number type');
+      throw new TypeError('Arguments should be Numbers');
     }
     var result = [];
     var stop = to;
@@ -663,6 +665,18 @@
   };
   var div$1 = curry(div);
 
+  var rem = function rem(a, b) {
+    return b % a;
+  };
+  var rem$1 = curry(rem);
+
+  var factors = function factors() {
+    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    return range(x).filter(function (i) {
+      return rem$1(i, x) === 0;
+    });
+  };
+
   var gcd = function gcd(a, b) {
     if (!b) {
       return a;
@@ -679,6 +693,17 @@
     return !isNaN(n) && n % 2 !== 0;
   };
 
+  var isPrime = function isPrime(x) {
+    var i = 2;
+    var s = Math.sqrt(x);
+    for (i; i <= s; i++) {
+      if (!rem$1(i, x)) {
+        return false;
+      }
+    }
+    return x && x !== 1;
+  };
+
   var lcm = function lcm(a, b) {
     return Math.abs(Math.floor(a / gcd$1(a, b) * b));
   };
@@ -693,11 +718,6 @@
     return Math.pow(b, a);
   };
   var pow$1 = curry(pow);
-
-  var rem = function rem(a, b) {
-    return b % a;
-  };
-  var rem$1 = curry(rem);
 
   var round = function round(precision, num) {
     return Number("".concat(Math.round("".concat(num, "e").concat(precision)), "e-").concat(precision));
@@ -1001,9 +1021,11 @@
   exports.add = add$1;
   exports.between = between$1;
   exports.div = div$1;
+  exports.factors = factors;
   exports.gcd = gcd$1;
   exports.isEven = isEven;
   exports.isOdd = isOdd;
+  exports.isPrime = isPrime;
   exports.lcm = lcm$1;
   exports.mul = mul$1;
   exports.pow = pow$1;
