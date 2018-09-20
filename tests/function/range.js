@@ -21,7 +21,7 @@ test('range -- Should throw an error when values are NaN', t => {
   try {
     range('h')
   } catch (err) {
-    t.is(err.message, 'Both Arguments should be a number type')
+    t.is(err.message, 'Arguments should be Numbers')
     t.end()
   }
 })

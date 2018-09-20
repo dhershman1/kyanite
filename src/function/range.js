@@ -12,9 +12,9 @@
  * const test = range(3, 7) // => [3, 4, 5, 6]
  * const test = range(3) // => [0, 1, 2]
  */
-const range = (from, to) => {
+const range = (from = 0, to = 0) => {
   if (isNaN(from) || (to && isNaN(to))) {
-    throw new TypeError('Both Arguments should be a number type')
+    throw new TypeError('Arguments should be Numbers')
   }
 
   const result = []
