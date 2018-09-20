@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.8.3
+
+### New
+
+- Added `isPrime` function which accepts a number and determines if its prime or not
+- Added `factors` function which accepts a number and finds its factors
+
+### Improved
+
+- Tweaked `range` handling and flow to work better with `factors`
+
 ## v0.8.2
 
 ### Fixed
