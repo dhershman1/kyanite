@@ -18,12 +18,12 @@ const range = (from = 0, to = 0) => {
   }
 
   const result = []
-  let stop = to
-  let start = from
+  let stop = Number(to)
+  let start = Number(from)
 
   if (!to) {
+    stop = Number(from)
     start = 0
-    stop = from
   }
 
   while (start < stop) {
