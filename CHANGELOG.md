@@ -11,6 +11,10 @@
 
 - Tweaked `range` handling and flow to work better with `factors`
 
+### Fixed
+
+- Case where passing a string number to range might produce weird results
+
 ## v0.8.2
 
 ### Fixed
