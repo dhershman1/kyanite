@@ -9,21 +9,23 @@
  * @return {Array} Returns an array of numbers consisting of the range
  *
  * @example
- * const test = range(3, 7) // => [3, 4, 5, 6]
- * const test = range(3) // => [0, 1, 2]
+ * range(3, 7) // => [3, 4, 5, 6]
+ * range(3) // => [0, 1, 2]
+ * range() // => []
+ * range(NaN) // => TypeError: Arguments should be Numbers
  */
-const range = (from, to) => {
+const range = (from = 0, to = 0) => {
   if (isNaN(from) || (to && isNaN(to))) {
-    throw new TypeError('Both Arguments should be a number type')
+    throw new TypeError('Arguments should be Numbers')
   }
 
   const result = []
-  let stop = to
-  let start = from
+  let stop = Number(to)
+  let start = Number(from)
 
   if (!to) {
+    stop = Number(from)
     start = 0
-    stop = from
   }
 
   while (start < stop) {

@@ -6,6 +6,7 @@ test('range -- Create basic range array', t => {
 
   t.ok(results)
   t.deepEqual(results, [1, 2, 3, 4])
+  t.same(range(), [])
   t.end()
 })
 
@@ -21,7 +22,14 @@ test('range -- Should throw an error when values are NaN', t => {
   try {
     range('h')
   } catch (err) {
-    t.is(err.message, 'Both Arguments should be a number type')
+    t.is(err.message, 'Arguments should be Numbers')
     t.end()
   }
+})
+
+test('range -- Handles string types', t => {
+  t.same(range('1', 4), [1, 2, 3])
+  t.same(range(1, '4'), [1, 2, 3])
+  t.same(range('1', '4'), [1, 2, 3])
+  t.end()
 })
