@@ -626,11 +626,11 @@
       throw new TypeError('Arguments should be Numbers');
     }
     var result = [];
-    var stop = to;
-    var start = from;
+    var stop = Number(to);
+    var start = Number(from);
     if (!to) {
+      stop = Number(from);
       start = 0;
-      stop = from;
     }
     while (start < stop) {
       result.push(start);
