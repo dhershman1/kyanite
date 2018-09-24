@@ -521,15 +521,6 @@
     return !x || !Object.keys(x).length;
   };
 
-  var organize = function organize(a, b) {
-    var s = sort$1(function (x, y) {
-      return x - y;
-    });
-    if (Array.isArray(a)) {
-      return [s(a), s(b)];
-    }
-    return [a, b];
-  };
   var keysCheck = function keysCheck(a, b) {
     var aKeys = Object.keys(a);
     var bKeys = Object.keys(b);
@@ -555,24 +546,20 @@
     if (current) {
       return current(a, b);
     }
-    var _organize = organize(a, b),
-        _organize2 = _slicedToArray(_organize, 2),
-        c = _organize2[0],
-        d = _organize2[1];
-    if (!keysCheck(c, d)) {
+    if (!keysCheck(a, b)) {
       return false;
     }
-    if (isComplex(c)) {
-      return Object.keys(c).every(function (key) {
-        var aVal = c[key];
-        var bVal = d[key];
+    if (isComplex(a)) {
+      return Object.keys(a).every(function (key) {
+        var aVal = a[key];
+        var bVal = b[key];
         if (isComplex(aVal)) {
           return equal(aVal, bVal);
         }
         return identical$1(aVal, bVal);
       });
     }
-    return identical$1(c, d);
+    return identical$1(a, b);
   };
 
   var isEqual = function isEqual(a, b) {

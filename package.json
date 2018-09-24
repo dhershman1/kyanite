@@ -1,6 +1,6 @@
 {
   "name": "kyanite",
-  "version": "0.8.3",
+  "version": "0.9.0",
   "description": "A small library of pure functional utilities to make life easier and data better",
   "main": "dist/kyanite.min.js",
   "directories": {
@@ -8,15 +8,15 @@
     "lib": "src"
   },
   "devDependencies": {
-    "@babel/core": "7.0.0",
-    "@babel/preset-env": "7.0.0",
+    "@babel/core": "7.1.0",
+    "@babel/preset-env": "7.1.0",
     "coveralls": "3.0.2",
     "del": "3.0.0",
     "esm": "3.0.84",
     "globby": "8.0.1",
     "jsdoc-to-markdown": "4.0.1",
     "nyc": "13.0.1",
-    "rollup": "0.66.0",
+    "rollup": "0.66.2",
     "rollup-plugin-babel": "4.0.3",
     "rollup-plugin-cleanup": "3.0.0",
     "rollup-plugin-filesize": "4.0.1",
