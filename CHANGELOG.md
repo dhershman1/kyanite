@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.9.0
+
+### Breaking Changes
+
+- `isEqual` now takes order of arrays into consideration and will return false if arrays do not match in order
+
 ## v0.8.3
 
 ### New

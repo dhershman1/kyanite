@@ -2,17 +2,6 @@ import identical from '../function/identical'
 import type from '../function/type'
 import and from '../function/and'
 import difference from '../array/difference'
-import sort from '../array/sort'
-
-const organize = (a, b) => {
-  const s = sort((x, y) => x - y)
-
-  if (Array.isArray(a)) {
-    return [s(a), s(b)]
-  }
-
-  return [a, b]
-}
 
 const keysCheck = (a, b) => {
   const aKeys = Object.keys(a)
@@ -37,16 +26,14 @@ const equal = (a, b) => {
     return current(a, b)
   }
 
-  const [c, d] = organize(a, b)
-
-  if (!keysCheck(c, d)) {
+  if (!keysCheck(a, b)) {
     return false
   }
 
-  if (isComplex(c)) {
-    return Object.keys(c).every(key => {
-      const aVal = c[key]
-      const bVal = d[key]
+  if (isComplex(a)) {
+    return Object.keys(a).every(key => {
+      const aVal = a[key]
+      const bVal = b[key]
 
       if (isComplex(aVal)) {
         return equal(aVal, bVal)
@@ -56,7 +43,7 @@ const equal = (a, b) => {
     })
   }
 
-  return identical(c, d)
+  return identical(a, b)
 }
 
 export default equal
