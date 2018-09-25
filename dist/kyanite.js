@@ -149,8 +149,8 @@
   };
   var groupBy$1 = curry(groupBy);
 
-  var includes = function includes(a, list) {
-    return list.indexOf(a) !== -1;
+  var includes = function includes(value, list) {
+    return list.indexOf(value) !== -1;
   };
   var includes$1 = curry(includes);
 

@@ -6,6 +6,10 @@
 
 - `isEqual` now takes order of arrays into consideration and will return false if arrays do not match in order
 
+### Improved
+
+- Documentation for `includes` and `identity` functions
+
 ## v0.8.3
 
 ### New
