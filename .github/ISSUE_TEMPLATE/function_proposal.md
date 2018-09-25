@@ -6,6 +6,8 @@ about: Suggest a new function idea for the
 
 ## Function Name
 
+**If possible leave the signature type here too**
+
 **Leave a description of the purpose of your function here**
 
 ### Why
