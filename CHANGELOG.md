@@ -9,6 +9,7 @@
 ### Improved
 
 - Documentation for `includes` and `identity` functions
+- Removed unused code
 
 ## v0.8.3
 
