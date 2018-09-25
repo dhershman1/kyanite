@@ -1,5 +1,4 @@
 import curry from '../function/curry'
-import isObject from '../_internals/isObject'
 
 /**
  * @name pluck
@@ -23,7 +22,7 @@ const pluck = (p, list) =>
   Object.keys(list).reduce((acc, v) => {
     const val = list[v]
 
-    if (isObject(val)) {
+    if (Object.prototype.toString.call(val) === '[object Object]') {
       return acc.concat(pluck(p, val))
     }
 

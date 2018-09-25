@@ -9,7 +9,7 @@
 ### Improved
 
 - Documentation for `includes` and `identity` functions
-- Removed unused code
+- Removed unused code (`circular` and `isObject`)
 
 ## v0.8.3
 
