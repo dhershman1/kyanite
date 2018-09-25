@@ -1,5 +1,5 @@
 ---
-name: Function request
+name: Function Proposal
 about: Suggest a new function idea for the
 
 ---
