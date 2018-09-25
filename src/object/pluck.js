@@ -1,4 +1,6 @@
 import curry from '../function/curry'
+import draft from './draft'
+import prop from './prop'
 
 /**
  * @name pluck
@@ -7,7 +9,7 @@ import curry from '../function/curry'
  * @sig k -> f {k: v} -> f v
  * @description Recursively digs through objects to create a new list of values based on the provided property name and provided object
  * @param {String} p The property to look for
- * @param {Array|Object} list An array of objects or a single object to pluck through
+ * @param {Object} list An array of objects or a single object to pluck through
  * @return {Array} The new list which will be the same type as the list provided
  *
  * @example
@@ -22,12 +24,12 @@ const pluck = (p, list) =>
   Object.keys(list).reduce((acc, v) => {
     const val = list[v]
 
-    if (Object.prototype.toString.call(val) === '[object Object]') {
-      return acc.concat(pluck(p, val))
+    if (v === p) {
+      return acc.concat(val)
     }
 
-    if (v === p) {
-      acc.push(val)
+    if (Object.prototype.toString.call(val) === '[object Object]') {
+      return acc.concat(pluck(p, val))
     }
 
     return acc
