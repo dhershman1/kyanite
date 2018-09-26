@@ -10,6 +10,8 @@
 ### New
 
 - Marked `pluck` as deprecated
+- Marked `strip` as deprecated
+- Marked `contains` as deprecated
 
 ### Improved
 
