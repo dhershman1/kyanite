@@ -1,3 +1,5 @@
+import curry from './curry'
+
 /**
  * @name range
  * @since v0.1.0
@@ -10,25 +12,19 @@
  *
  * @example
  * range(3, 7) // => [3, 4, 5, 6]
- * range(3) // => [0, 1, 2]
- * range() // => []
+ * range(0, 3) // => [0, 1, 2]
+ * range(0, 0) // => []
  * range(NaN) // => TypeError: Arguments should be Numbers
  */
-const range = (from = 0, to = 0) => {
+const range = (from, to) => {
   if (isNaN(from) || (to && isNaN(to))) {
     throw new TypeError('Arguments should be Numbers')
   }
 
   const result = []
-  let stop = Number(to)
   let start = Number(from)
 
-  if (!to) {
-    stop = Number(from)
-    start = 0
-  }
-
-  while (start < stop) {
+  while (start < Number(to)) {
     result.push(start)
     start += 1
   }
@@ -36,4 +32,4 @@ const range = (from = 0, to = 0) => {
   return result
 }
 
-export default range
+export default curry(range)
