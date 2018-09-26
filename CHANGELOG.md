@@ -5,6 +5,7 @@
 ### Breaking Changes
 
 - `isEqual` now takes order of arrays into consideration and will return false if arrays do not match in order
+- `when` is no longer a maybe return and should give back the original data passed in. It also supports only a single param passed in
 
 ### New
 
