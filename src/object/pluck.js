@@ -2,7 +2,7 @@ import curry from '../function/curry'
 
 /**
  * @name pluck
- * @deprecated Use case is small/bad
+ * @deprecated Prefer prop and props
  * @since v0.1.0
  * @category Object
  * @sig k -> f {k: v} -> f v
