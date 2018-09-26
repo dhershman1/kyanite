@@ -3,17 +3,12 @@ import type from '../function/type'
 import and from '../function/and'
 import difference from '../array/difference'
 
-const keysCheck = (a, b) => {
-  const aKeys = Object.keys(a)
-  const bKeys = Object.keys(b)
-
-  return and(aKeys.length === bKeys.length, !difference(aKeys, bKeys).length)
-}
-
 const isComplex = a => Array.isArray(a) || Object.prototype.toString.call(a) === '[object Object]'
 
 const equal = (a, b) => {
   const aTy = type(a)
+  const aKeys = Object.keys(a)
+  const bKeys = Object.keys(b)
   const regVals = ['source', 'global', 'ignoreCase', 'multiline', 'sticky', 'unicode']
 
   const methods = {
@@ -26,12 +21,12 @@ const equal = (a, b) => {
     return current(a, b)
   }
 
-  if (!keysCheck(a, b)) {
+  if (!and(aKeys.length === bKeys.length, !difference(aKeys, bKeys).length)) {
     return false
   }
 
   if (isComplex(a)) {
-    return Object.keys(a).every(key => {
+    return aKeys.every(key => {
       const aVal = a[key]
       const bVal = b[key]
 
