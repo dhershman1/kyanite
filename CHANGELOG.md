@@ -6,6 +6,10 @@
 
 - `isEqual` now takes order of arrays into consideration and will return false if arrays do not match in order
 
+### New
+
+- Marked `pluck` as deprecated
+
 ### Improved
 
 - Documentation for `includes` and `identity` functions
