@@ -8,6 +8,13 @@ test('concatMap -- Apples function to values and merges arrays', t => {
   t.end()
 })
 
+test('concatMap -- Shrinks the array', t => {
+  const results = concatMap(x => x, [[1, 2], [3, 4], [5, 6]])
+
+  t.same(results, [1, 2, 3, 4, 5, 6])
+  t.end()
+})
+
 test('concatMap -- Is properly curried', t => {
   const con = concatMap(x => [x, x])
 
