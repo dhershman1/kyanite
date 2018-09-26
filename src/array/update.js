@@ -1,5 +1,6 @@
-import concat from './concat'
+import concatMap from './concatMap'
 import curry from '../function/curry'
+import identity from '../function/identity'
 
 /**
  * @name update
@@ -28,6 +29,6 @@ import curry from '../function/curry'
  * val([1, 2, 3]) // => [1, 2, 10]
  */
 const update = (index, val, list) =>
-  concat([list.slice(0, index), val, list.slice(index + 1)])
+  concatMap(identity, [list.slice(0, index), val, list.slice(index + 1)])
 
 export default curry(update)
