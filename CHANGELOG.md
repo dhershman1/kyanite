@@ -24,6 +24,7 @@
 
 - Documentation for `includes` and `identity` functions
 - Removed unused code (`circular` and `isObject`)
+- Added handling for an edge case with `Object.keys` inside of `isEqual`
 
 ## v0.8.3
 
