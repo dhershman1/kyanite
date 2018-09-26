@@ -6,6 +6,12 @@
 
 - `isEqual` now takes order of arrays into consideration and will return false if arrays do not match in order
 - `when` is no longer a maybe return and should give back the original data passed in. It also supports only a single param passed in
+- New `List` type for similar functions that apply to a List of characters (string) and a List of items (Array)
+  - `slice` has been moved to this type
+  - `includes` has been moved to this type
+  - `concat` has been moved to this type
+- `concat` flow changed a little bit to work more like built in concat
+  - In order to achieve array type simply use `concatMap` like so: `concatMap(x => x, [[1, 2], [3, 4], [5, 6]])`
 
 ### New
 
