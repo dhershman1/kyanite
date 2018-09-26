@@ -29,6 +29,6 @@ about: Suggest a new function idea for the
 // Give some usage examples of your function
 ```
 
-### Additional Info
+### Additional Info (Optional)
 
-**Leave any extra info & Comments here**
+**Leave any extra info & Comments here if needed**
