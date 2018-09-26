@@ -18,7 +18,7 @@
 
 - Marked `pluck` as deprecated -- Shaky code stack, and lack of use cases that `props` and `prop` can't handle
 - Marked `strip` as deprecated -- No real use cases to benefit from this
-- Marked `contains` as deprecated -- Use slice within the list type
+- Marked `contains` as deprecated -- Use `includes` within the list type
 - Marked `empty` as deprecated -- No real use cases to benefit from this
 
 ### Improved
