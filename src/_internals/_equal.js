@@ -17,6 +17,10 @@ const equal = (a, b) => {
   }
   const current = methods[aTy]
 
+  if (identical(a, b)) {
+    return true
+  }
+
   if (current) {
     return current(a, b)
   }
@@ -38,7 +42,7 @@ const equal = (a, b) => {
     })
   }
 
-  return identical(a, b)
+  return false
 }
 
 export default equal
