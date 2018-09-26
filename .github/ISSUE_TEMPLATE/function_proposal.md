@@ -7,7 +7,7 @@ about: Suggest a new function idea for the
 ## Function Name
 
 **Signature(s):**
-**If possible leave the signature type here too**
+`If possible leave the signature type here too`
 
 **Type:** `What is the data type this function works with`
 
