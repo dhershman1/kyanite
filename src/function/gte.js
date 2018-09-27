@@ -22,6 +22,6 @@ import curry from './curry'
  * g(2) // => true
  * g(3) // => false
  */
-const gte = (a, b) => a >= b
+const gte = (a, b) => b >= a
 
 export default curry(gte)

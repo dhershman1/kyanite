@@ -2,19 +2,19 @@ import gt from '../../src/function/gt'
 import test from 'tape'
 
 test('gt -- Determines if the numbers are gt', t => {
-  t.true(gt(2, 1))
+  t.true(gt(1, 2))
   t.end()
 })
 
 test('gt -- Determines if the letters are gt', t => {
-  t.true(gt('b', 'a'))
+  t.true(gt('a', 'b'))
   t.end()
 })
 
 test('gt -- It is curried', t => {
-  const g = gt(2)
+  const g = gt(1)
 
-  t.true(g(1))
+  t.true(g(2))
   t.end()
 })
 
