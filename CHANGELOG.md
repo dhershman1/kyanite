@@ -26,6 +26,7 @@
 - Marked `contains` as deprecated -- Use `includes` within the list type
 - Marked `empty` as deprecated -- No real use cases to benefit from this
 - Added `always` function which takes 2 params and always returns the first one. Good for pipes since its curried
+- Added `compose` function (finally)
 
 ### Improved
 
