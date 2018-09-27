@@ -614,6 +614,11 @@
   };
   var range$1 = curry(range);
 
+  var unless = function unless(fn, act, x) {
+    return fn(x) ? x : act(x);
+  };
+  var unless$1 = curryN(3, unless);
+
   var when = function when(fn, act, x) {
     return fn(x) ? act(x) : x;
   };
@@ -996,6 +1001,7 @@
   exports.pipe = pipe$1;
   exports.range = range$1;
   exports.type = type;
+  exports.unless = unless$1;
   exports.when = when$1;
   exports.concat = concat$1;
   exports.includes = includes$1;
