@@ -18,6 +18,7 @@
 ### Fixed
 
 - `filter` had incorrect data types within its documentation
+- `when` documentation typos and no longer hard to read
 
 ### New
 
@@ -27,6 +28,7 @@
 - Marked `empty` as deprecated -- No real use cases to benefit from this
 - Added `always` function which takes 2 params and always returns the first one. Good for pipes since its curried
 - Added `compose` function (finally)
+- Added `unless` function which takes 3 params, and acts the opposite of `when`
 
 ### Improved
 
