@@ -8,7 +8,6 @@
  * @param {Function} f The function we are going to be running with said arguments
  * @param {Any} args The arguments to apply to said function curry wont execute until this length matches n
  * @return {Any} Returns based on the results of the function passed in
- *
  * @example
  *
  * const add = curryN(2, (a, b) => a + b)
@@ -26,6 +25,15 @@
  *
  * sum1(4) // => 5
  * sum1(undefined) // => 2
+ *
+ * // Possible gotcha
+ * const foo = curryN(2, (a, b) => a)
+ *
+ * foo(1)() // => [Function]
+ * const bar = foo(1)
+ *
+ * bar() // => [Function]
+ * bar(null) // => 1
  */
 const curryN = (n, f, ...args) => {
   if (n <= 0) {
