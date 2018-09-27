@@ -7,9 +7,8 @@ import curry from '../function/curry'
  * @sig Filterable f => (a → Boolean) → f a → f a
  * @description Filter through a filterable data piece using the provided function
  * @param {Function} fn The predicate function to run on our values
- * @param {Array|Object} list The filterable list to go through
- * @return {Array|Object} Returns a new Array or Object based on the type of list provided
- *
+ * @param {Array} list The filterable list to go through
+ * @return {Array} Returns a new Array based on the type of list provided
  * @example
  * const isEven = n => n % 2 === 0
  *

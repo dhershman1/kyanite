@@ -15,6 +15,10 @@
 - `range` now requires you to pass 2 params to it, it is curried out of the box as well.
 - The parameters for `gt`, `gte`, `lt` and `lte` have been flipped to meet the proper data last structure
 
+### Fixed
+
+- `filter` had incorrect data types within its documentation
+
 ### New
 
 - Marked `pluck` as deprecated -- Shaky code stack, and lack of use cases that `props` and `prop` can't handle
