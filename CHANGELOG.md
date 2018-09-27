@@ -30,6 +30,7 @@
 - Added `always` function which takes 2 params and always returns the first one. Good for pipes since its curried
 - Added `compose` function (finally)
 - Added `unless` function which takes 3 params, and acts the opposite of `when`
+- Added `split` function which takes a char and a string and splits the string based on the char
 
 ### Improved
 
