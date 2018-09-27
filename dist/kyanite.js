@@ -322,10 +322,6 @@
   };
   var remove$1 = curry(remove);
 
-  var reverse = function reverse(arr) {
-    return arr.slice().reverse();
-  };
-
   var some = function some(fn, x) {
     return x.some(fn);
   };
@@ -633,6 +629,10 @@
     return list.indexOf(value) !== -1;
   };
   var includes$1 = curry(includes);
+
+  var reverse = function reverse(list) {
+    return Array.isArray(list) ? list.slice().reverse() : list.split('').reverse().join('');
+  };
 
   var slice = function slice(a, b, list) {
     return list.slice(a, b);
@@ -957,7 +957,6 @@
   exports.reduce = reduce$1;
   exports.reject = reject$1;
   exports.remove = remove$1;
-  exports.reverse = reverse;
   exports.some = some$1;
   exports.sort = sort$1;
   exports.sortBy = sortBy$1;
@@ -1005,6 +1004,7 @@
   exports.when = when$1;
   exports.concat = concat$1;
   exports.includes = includes$1;
+  exports.reverse = reverse;
   exports.slice = slice$1;
   exports.add = add$1;
   exports.between = between$1;
