@@ -910,6 +910,11 @@
   };
   var join$1 = curry(join);
 
+  var split = function split(char, str) {
+    return str.split(char);
+  };
+  var split$1 = curry(split);
+
   var strip = function strip(a) {
     return a.replace(/\s/g, '');
   };
@@ -1045,6 +1050,7 @@
   exports.contains = contains$1;
   exports.fuzzySearch = fuzzySearch$1;
   exports.join = join$1;
+  exports.split = split$1;
   exports.strip = strip;
   exports.toLower = toLower;
   exports.toUpper = toUpper;
