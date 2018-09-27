@@ -3,6 +3,7 @@ import curryN from './curryN'
 /**
  * @name when
  * @since v0.1.0
+ * @deprecated Use branch with identity instead
  * @category Function
  * @sig (a -> Boolean) -> (a -> b) -> a -> b
  * @description Takes a value and if it passes the check function (1st param) then it will apply the action function (2nd param) otherwise it gives back the given value
