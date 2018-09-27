@@ -1,3 +1,5 @@
+import curry from '../function/curry'
+
 /**
  * @name concat
  * @since v0.1.0
@@ -14,4 +16,4 @@
 const concat = (val, list) =>
   list.concat(val)
 
-export default concat
+export default curry(concat)
