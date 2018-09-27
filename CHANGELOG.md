@@ -25,7 +25,6 @@
 - Marked `strip` as deprecated -- No real use cases to benefit from this
 - Marked `contains` as deprecated -- Use `includes` within the list type
 - Marked `empty` as deprecated -- No real use cases to benefit from this
-- Marked `when` as deprecated -- You can use `branch`: `branch(x => x > 2, x = > x * 2, x => x)` which does the same thing
 - Added `always` function which takes 2 params and always returns the first one. Good for pipes since its curried
 
 ### Improved
