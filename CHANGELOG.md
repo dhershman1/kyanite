@@ -37,6 +37,7 @@
 - Added `unless` function which takes 3 params, and acts the opposite of `when`
 - Added `split` function which takes a char and a string and splits the string based on the char
 - Added `takeWhile` function which will take values from an array based on a function boolean
+- Added `apply` function which takes an array of data and applys a function to it
 
 ### Improved
 
