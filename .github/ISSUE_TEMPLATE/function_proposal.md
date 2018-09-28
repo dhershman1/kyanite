@@ -19,6 +19,8 @@ about: Suggest a new function idea for the
 
 ### Syntax
 
+**Parameters:**
+
 ```js
 // What does your function syntax look like
 ```
