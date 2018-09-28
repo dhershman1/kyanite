@@ -3,12 +3,12 @@ import curry from '../function/curry'
 /**
  * @name nth
  * @since v0.1.0
- * @category Array
+ * @category List
  * @sig Number -> Array a -> Maybe a
- * @description Returns the nth element of the given list or string.
+ * @description Returns the nth element of the given list
  * @param  {Number} o How much to offset the value
- * @param  {Array} x   The Array or list to crawl through
- * @return {Number} Returns the value of the found index
+ * @param  {Array|String} list The Array or list to crawl through
+ * @return {Any} Returns the value found at the index
  *
  * @example
  * nth(3, [1, 2, 3, 4, 5, 6, 7]) // => 4
@@ -19,10 +19,10 @@ import curry from '../function/curry'
  *
  * third([1, 2, 3, 4, 5]) // => 3
  */
-const nth = (o, x) => {
-  const idx = o < 0 ? x.length + o : o
+const nth = (o, list) => {
+  const i = o < 0 ? list.length + o : o
 
-  return x[idx]
+  return list[i]
 }
 
 export default curry(nth)
