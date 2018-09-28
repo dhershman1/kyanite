@@ -38,7 +38,7 @@ You can find the documentation here: https://www.dusty.codes/documentation/kyani
 
 ## Philosophy
 
-The goal for the library was to be stripped down, light weight and easy to understand intuitively. The idea is to not only be performant but also easy to use in a functional setting, it's easy to build powerful, organized, yet small alogirthm pipes into reusable functions for your codebase. This is the idea behind Kyanite and what it will continue to bring to the world of JavaScript, with only the hope of improvement as it grows!
+The goal for the library is to be stripped down, light weight, and intuitive. With Kyanite, The idea is to be performant and easy to use in a functional setting, it's easy to build powerful and organized, yet small, algorithmic pipes into reusable functions for your codebase. The hope is that it will continue to bring functionality to the world of JavaScript with continued improvement as it grows!
 
 ## Key Features
 
