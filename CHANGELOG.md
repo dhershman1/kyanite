@@ -5,6 +5,12 @@
 ### Breaking Changes
 
 - Flipped the way `sub` does math instead of `sub(2, 1) === 2 - 1` it will now be `sub(1, 2) === 2 - 1`
+- Removed all deprecated functions
+  - `empty`, `deepClone`, `contains`, `strip`, and `pluck`
+
+### Fixed
+
+- `whole` & `any` documentation which incorrectly compared them to other functions
 
 ## v0.9.0
 
