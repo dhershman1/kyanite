@@ -129,6 +129,7 @@ However You can also break it down by data type too!
 
 - `kyanite/array` : All of the `Array` based functions (`intersection`, `difference`, `concat`, etc...)
 - `kyanite/function` : All of the `"Function"` based functions (`curry`, `is`, `isEmpty`, etc...)
+- `kyanite/list` : All of the `List` based functions (`includes`, `nth`, `reverse`, etc...)
 - `kyanite/number` : All of the `Number` based functions (`add`, `gcd`, `isOdd`, etc...)
 - `kyanite/object` : All of the `Object` based functions (`sift`, `height`, `assign`, etc...)
 - `kyanite/string` : All of the `String` based functions (`capitalize`, `toLower`, `fuzzySearch`, etc...)
@@ -140,6 +141,7 @@ Standard JS
 ```js
 import KA from 'kyanite/array'
 import KF from 'kyanite/function'
+import KL from 'kyanite/list'
 import KN from 'kyanite/number'
 import KO from 'kyanite/object'
 import KS from 'kyanite/string'
@@ -150,6 +152,7 @@ CommonJs
 ```js
 const KA = require('kyanite/array')
 const KF = require('kyanite/function')
+const KL = require('kyanite/list')
 const KN = require('kyanite/number')
 const KO = require('kyanite/object')
 const KS = require('kyanite/string')
@@ -160,12 +163,14 @@ CDN
 ```html
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/array.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/function.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/list.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/number.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/object.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/string.js"></script>
 <script>
   KA.filter()
   KF.curry()
+  KL.includes()
   KN.add()
   KO.isEmpty()
   KS.fuzzySearch()
@@ -177,12 +182,14 @@ Through your browser
 ```html
 <script src="path/to/kyanite/array.js"></script>
 <script src="path/to/kyanite/function.js"></script>
+<script src="path/to/kyanite/list.js"></script>
 <script src="path/to/kyanite/number.js"></script>
 <script src="path/to/kyanite/object.js"></script>
 <script src="path/to/kyanite/string.js"></script>
 <script>
   KA.filter()
   KF.curry()
+  KL.includes()
   KN.add()
   KO.isEmpty()
   KS.fuzzySearch()
