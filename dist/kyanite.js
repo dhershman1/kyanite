@@ -46,23 +46,10 @@
   };
   var drop$1 = curry(drop);
 
-  var findIndex = function findIndex(fn, list) {
-    var len = list.length;
-    var i = 0;
-    while (i < len) {
-      if (fn(list[i])) {
-        return i;
-      }
-      i++;
-    }
-    return undefined;
-  };
-  var findIndex$1 = curry(findIndex);
-
   var dropWhile = function dropWhile(fn, arr) {
-    var i = findIndex$1(function (x) {
+    var i = arr.findIndex(function (x) {
       return !fn(x);
-    }, arr);
+    });
     return i < 0 ? [] : arr.slice(i);
   };
   var dropWhile$1 = curry(dropWhile);
@@ -103,6 +90,19 @@
     return false;
   };
   var find$1 = curry(find);
+
+  var findIndex = function findIndex(fn, list) {
+    var len = list.length;
+    var i = 0;
+    while (i < len) {
+      if (fn(list[i])) {
+        return i;
+      }
+      i++;
+    }
+    return undefined;
+  };
+  var findIndex$1 = curry(findIndex);
 
   var first = function first(x) {
     return x[0];
@@ -358,9 +358,9 @@
   var take$1 = curry(take);
 
   var takeWhile = function takeWhile(fn, arr) {
-    var i = findIndex$1(function (x) {
+    var i = arr.findIndex(function (x) {
       return !fn(x);
-    }, arr);
+    });
     return i < 0 ? arr : arr.slice(0, i);
   };
   var takeWhile$1 = curry(takeWhile);
