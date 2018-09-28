@@ -5,7 +5,7 @@ import findIndex from './findIndex'
  * @name takeWhile
  * @since v0.9.0
  * @category Array
- * @sig (a -> Boolean) -> Array [a] -> Array [b]
+ * @sig (a -> Boolean) -> Array [a] -> Array [a]
  * @description Takes values from an array and puts them into a new array while the function parameter returns true
  * @param {Function} fn The function ran against each value within the array should return a boolean
  * @param {Array} arr The array to take from
