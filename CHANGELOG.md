@@ -13,6 +13,7 @@
   - `includes` has been moved to this type
   - `concat` has been moved to this type
   - `reversed` has been moved to this type
+  - `nth` has been moved to this type
 - `concat` flow changed a little bit to work more like built in concat
   - In order to achieve array type simply use `concatMap` like so: `concatMap(x => x, [[1, 2], [3, 4], [5, 6]])`
 - `range` now requires you to pass 2 params to it, it is curried out of the box as well.
