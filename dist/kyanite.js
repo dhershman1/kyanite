@@ -46,6 +46,27 @@
   };
   var drop$1 = curry(drop);
 
+  var findIndex = function findIndex(fn, list) {
+    var len = list.length;
+    var i = 0;
+    while (i < len) {
+      if (fn(list[i])) {
+        return i;
+      }
+      i++;
+    }
+    return undefined;
+  };
+  var findIndex$1 = curry(findIndex);
+
+  var dropWhile = function dropWhile(fn, arr) {
+    var i = findIndex$1(function (x) {
+      return !fn(x);
+    }, arr);
+    return i < 0 ? [] : arr.slice(i);
+  };
+  var dropWhile$1 = curry(dropWhile);
+
   var isNil = function isNil(x) {
     return x == null;
   };
@@ -82,19 +103,6 @@
     return false;
   };
   var find$1 = curry(find);
-
-  var findIndex = function findIndex(fn, list) {
-    var len = list.length;
-    var i = 0;
-    while (i < len) {
-      if (fn(list[i])) {
-        return i;
-      }
-      i++;
-    }
-    return undefined;
-  };
-  var findIndex$1 = curry(findIndex);
 
   var first = function first(x) {
     return x[0];
@@ -206,12 +214,6 @@
     });
   };
   var minBy$1 = curry(minBy);
-
-  var nth = function nth(o, x) {
-    var idx = o < 0 ? x.length + o : o;
-    return x[idx];
-  };
-  var nth$1 = curry(nth);
 
   function _defineProperty(obj, key, value) {
     if (key in obj) {
@@ -355,6 +357,14 @@
   };
   var take$1 = curry(take);
 
+  var takeWhile = function takeWhile(fn, arr) {
+    var i = findIndex$1(function (x) {
+      return !fn(x);
+    }, arr);
+    return i < 0 ? arr : arr.slice(0, i);
+  };
+  var takeWhile$1 = curry(takeWhile);
+
   var uniqBy = function uniqBy(fn, list) {
     return list.reduce(function (acc, a) {
       if (acc.map(fn).indexOf(fn(a)) === -1) {
@@ -404,6 +414,11 @@
   };
   var ap$1 = curry(ap);
 
+  var apply = function apply(fn, a) {
+    return fn.apply(void 0, _toConsumableArray(ensureArray(a)));
+  };
+  var apply$1 = curry(apply);
+
   var ascend = function ascend(a, b) {
     return a < b ? -1 : a > b ? 1 : 0;
   };
@@ -451,6 +466,11 @@
     return descend$1(fn(a), fn(b));
   };
   var descendBy$1 = curry(descendBy);
+
+  var either = function either(fn, gn, a) {
+    return fn(a) || gn(a);
+  };
+  var either$1 = curry(either);
 
   var type = function type(x) {
     if (x === null) {
@@ -624,6 +644,17 @@
     return list.concat(val);
   };
   var concat$1 = curry(concat);
+
+  var nth = function nth(o, list) {
+    var i = o < 0 ? list.length + o : o;
+    return list[i];
+  };
+  var nth$1 = curry(nth);
+
+  var endsWith = function endsWith(a, list) {
+    return nth$1(-1, list) === a;
+  };
+  var endsWith$1 = curry(endsWith);
 
   var includes = function includes(value, list) {
     return list.indexOf(value) !== -1;
@@ -939,6 +970,7 @@
   exports.concatMap = concatMap$1;
   exports.difference = difference$1;
   exports.drop = drop$1;
+  exports.dropWhile = dropWhile$1;
   exports.ensureArray = ensureArray;
   exports.every = every$1;
   exports.filter = filter$1;
@@ -956,7 +988,6 @@
   exports.mean = mean;
   exports.min = min;
   exports.minBy = minBy$1;
-  exports.nth = nth$1;
   exports.partition = partition$1;
   exports.prepend = prepend$1;
   exports.reduce = reduce$1;
@@ -967,6 +998,7 @@
   exports.sortBy = sortBy$1;
   exports.sortWith = sortWith$1;
   exports.take = take$1;
+  exports.takeWhile = takeWhile$1;
   exports.union = union$1;
   exports.uniq = uniq;
   exports.uniqBy = uniqBy$1;
@@ -975,6 +1007,7 @@
   exports.always = always$1;
   exports.and = and$1;
   exports.ap = ap$1;
+  exports.apply = apply$1;
   exports.ascend = ascend$1;
   exports.ascendBy = ascendBy$1;
   exports.both = both$1;
@@ -986,6 +1019,7 @@
   exports.deepClone = deepClone;
   exports.descend = descend$1;
   exports.descendBy = descendBy$1;
+  exports.either = either$1;
   exports.empty = empty;
   exports.encase = encase$1;
   exports.gt = gt$1;
@@ -1008,7 +1042,9 @@
   exports.unless = unless$1;
   exports.when = when$1;
   exports.concat = concat$1;
+  exports.endsWith = endsWith$1;
   exports.includes = includes$1;
+  exports.nth = nth$1;
   exports.reverse = reverse;
   exports.slice = slice$1;
   exports.add = add$1;
