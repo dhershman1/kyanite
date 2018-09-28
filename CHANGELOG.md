@@ -41,6 +41,7 @@
 - Added `dropWhile` function which will drop values from an array based on a function boolean
 - Added `apply` function which takes an array of data and applys a function to it
 - Added `either` function which takes 2 functions and a value and if either function returns truthy will return true
+- Added `endsWith` function which checks if the passed in list ends with the given value
 
 ### Improved
 
