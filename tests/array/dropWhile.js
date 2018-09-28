@@ -3,6 +3,7 @@ import test from 'tape'
 
 test('dropWhile -- Basic usage tests', t => {
   t.same(dropWhile(x => x <= 2, [1, 2, 3, 4, 3, 2, 1]), [3, 4, 3, 2, 1])
+  t.same(dropWhile(x => x !== 2, [0, 1, 9]), [])
   t.end()
 })
 

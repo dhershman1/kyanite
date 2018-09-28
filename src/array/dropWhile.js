@@ -1,5 +1,4 @@
 import curry from '../function/curry'
-import findIndex from './findIndex'
 
 /**
  * @name dropWhile
@@ -21,7 +20,7 @@ import findIndex from './findIndex'
  * fn([-1, 0, 1, 2, 3]) // => [3]
  */
 const dropWhile = (fn, arr) => {
-  const i = findIndex(x => !fn(x), arr)
+  const i = arr.findIndex(x => !fn(x))
 
   return i < 0 ? [] : arr.slice(i)
 }
