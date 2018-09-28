@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.10.0
+
+### Breaking Changes
+
+- Flipped the way `sub` does math instead of `sub(2, 1) === 2 - 1` it will now be `sub(1, 2) === 2 - 1`
+
 ## v0.9.0
 
 > **Notice:** All deprecated functions will be removed in the v0.10.0 release

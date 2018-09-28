@@ -6,8 +6,8 @@ import curry from '../function/curry'
  * @category Number
  * @sig Number -> Number -> Number
  * @description Subtracts the provided items
- * @param {Number} a The number to subtract from
- * @param {Number} b The number to subtract with
+ * @param {Number} a The number to subtract with
+ * @param {Number} b The number to subtract from
  * @return {Number} The difference of the numbers
  *
  * @example
@@ -20,6 +20,6 @@ import curry from '../function/curry'
  * subtract(3) // => 2
  * subtract(2) // => 3
  */
-const sub = (a, b) => a - b
+const sub = (a, b) => b - a
 
 export default curry(sub)
