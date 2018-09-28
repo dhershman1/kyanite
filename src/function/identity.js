@@ -5,9 +5,8 @@
  * @category Function
  * @sig a -> a
  * @description A function that returns the value passed to it
- * @param {Any} a The value to return
- * @return {Any} The value
- *
+ * @param {Any} a The value to identify
+ * @return {Any} The identified value
  * @example
  * identity(10) // => 10
  *

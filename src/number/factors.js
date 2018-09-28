@@ -18,7 +18,7 @@ import rem from './rem'
  * factors(NaN) // => []
  */
 const factors = (x = 0) =>
-  range(x)
+  range(0, x)
     .filter(i => rem(i, x) === 0)
 
 export default factors

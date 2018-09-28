@@ -1,4 +1,4 @@
-import includes from '../../src/array/includes'
+import includes from '../../src/list/includes'
 import test from 'tape'
 
 test('includes -- Basic simple functionality', t => {

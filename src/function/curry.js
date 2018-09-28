@@ -17,6 +17,15 @@
  * const add1 = add(1)
  *
  * add1(2) // => 3
+ *
+ * // Possible gotcha
+ * const foo = curry((a, b) => a)
+ *
+ * foo(1)() // => [Function]
+ * const bar = foo(1)
+ *
+ * bar() // => [Function]
+ * bar(null) // => 1
  */
 const curry = (f, ...args) => {
   if (f.length <= args.length) {

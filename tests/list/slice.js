@@ -1,7 +1,7 @@
-import slice from '../../src/array/slice'
+import slice from '../../src/list/slice'
 import test from 'tape'
 
-test('slice -- Handles basic array', t => {
+test('slice -- Handles basic lists', t => {
   t.deepEqual(slice(1, 3, [1, 2, 3, 4, 5]), [2, 3])
   t.end()
 })

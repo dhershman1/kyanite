@@ -1,4 +1,4 @@
-import nth from '../../src/array/nth'
+import nth from '../../src/list/nth'
 import test from 'tape'
 
 test('nth -- Test base functionality', t => {

@@ -1,5 +1,6 @@
 /**
  * @name strip
+ * @deprecated No valid use case for usefulness
  * @since v0.2.1
  * @category String
  * @sig String a -> String a

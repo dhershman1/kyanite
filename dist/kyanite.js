@@ -12,12 +12,6 @@
     return arr.filter(identity);
   });
 
-  var concat = function concat(arr) {
-    return arr.reduce(function (acc, v) {
-      return acc.concat(v);
-    }, []);
-  };
-
   var curry = function curry(f) {
     for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
@@ -51,6 +45,14 @@
     return list.slice(i, Infinity);
   };
   var drop$1 = curry(drop);
+
+  var dropWhile = function dropWhile(fn, arr) {
+    var i = arr.findIndex(function (x) {
+      return !fn(x);
+    });
+    return i < 0 ? [] : arr.slice(i);
+  };
+  var dropWhile$1 = curry(dropWhile);
 
   var isNil = function isNil(x) {
     return x == null;
@@ -149,11 +151,6 @@
   };
   var groupBy$1 = curry(groupBy);
 
-  var includes = function includes(a, list) {
-    return list.indexOf(a) !== -1;
-  };
-  var includes$1 = curry(includes);
-
   var insert = function insert(i, d, arr) {
     var idx = i < arr.length && i >= 0 ? i : arr.length;
     var result = arr.slice(0);
@@ -217,12 +214,6 @@
     });
   };
   var minBy$1 = curry(minBy);
-
-  var nth = function nth(o, x) {
-    var idx = o < 0 ? x.length + o : o;
-    return x[idx];
-  };
-  var nth$1 = curry(nth);
 
   function _defineProperty(obj, key, value) {
     if (key in obj) {
@@ -329,18 +320,9 @@
   var reject$1 = curry(reject);
 
   var remove = function remove(i, x) {
-    return concat([x.slice(0, i), x.slice(i + 1)]);
+    return concatMap$1(identity, [x.slice(0, i), x.slice(i + 1)]);
   };
   var remove$1 = curry(remove);
-
-  var reverse = function reverse(arr) {
-    return arr.slice().reverse();
-  };
-
-  var slice = function slice(a, b, list) {
-    return list.slice(a, b);
-  };
-  var slice$1 = curry(slice);
 
   var some = function some(fn, x) {
     return x.some(fn);
@@ -375,6 +357,14 @@
   };
   var take$1 = curry(take);
 
+  var takeWhile = function takeWhile(fn, arr) {
+    var i = arr.findIndex(function (x) {
+      return !fn(x);
+    });
+    return i < 0 ? arr : arr.slice(0, i);
+  };
+  var takeWhile$1 = curry(takeWhile);
+
   var uniqBy = function uniqBy(fn, list) {
     return list.reduce(function (acc, a) {
       if (acc.map(fn).indexOf(fn(a)) === -1) {
@@ -393,7 +383,7 @@
   var union$1 = curry(union);
 
   var update = function update(index, val, list) {
-    return concat([list.slice(0, index), val, list.slice(index + 1)]);
+    return concatMap$1(identity, [list.slice(0, index), val, list.slice(index + 1)]);
   };
   var update$1 = curry(update);
 
@@ -407,6 +397,11 @@
   };
   var zip$1 = curry(zip);
 
+  var always = function always(a, _) {
+    return a;
+  };
+  var always$1 = curry(always);
+
   var and = function and(a, b) {
     return a && b;
   };
@@ -418,6 +413,11 @@
     }, []);
   };
   var ap$1 = curry(ap);
+
+  var apply = function apply(fn, a) {
+    return fn.apply(void 0, _toConsumableArray(ensureArray(a)));
+  };
+  var apply$1 = curry(apply);
 
   var ascend = function ascend(a, b) {
     return a < b ? -1 : a > b ? 1 : 0;
@@ -448,6 +448,11 @@
   };
   var complement$1 = curry(complement);
 
+  var compose = function compose(fn, gn, a) {
+    return fn(gn(a));
+  };
+  var compose$1 = curry(compose);
+
   var deepClone = function deepClone(x) {
     return JSON.parse(JSON.stringify(x));
   };
@@ -461,6 +466,11 @@
     return descend$1(fn(a), fn(b));
   };
   var descendBy$1 = curry(descendBy);
+
+  var either = function either(fn, gn, a) {
+    return fn(a) || gn(a);
+  };
+  var either$1 = curry(either);
 
   var type = function type(x) {
     if (x === null) {
@@ -495,12 +505,12 @@
   var encase$1 = curry(encase);
 
   var gt = function gt(a, b) {
-    return a > b;
+    return b > a;
   };
   var gt$1 = curry(gt);
 
   var gte = function gte(a, b) {
-    return a >= b;
+    return b >= a;
   };
   var gte$1 = curry(gte);
 
@@ -521,25 +531,13 @@
     return !x || !Object.keys(x).length;
   };
 
-  var organize = function organize(a, b) {
-    var s = sort$1(function (x, y) {
-      return x - y;
-    });
-    if (Array.isArray(a)) {
-      return [s(a), s(b)];
-    }
-    return [a, b];
-  };
-  var keysCheck = function keysCheck(a, b) {
-    var aKeys = Object.keys(a);
-    var bKeys = Object.keys(b);
-    return and$1(aKeys.length === bKeys.length, !difference$1(aKeys, bKeys).length);
-  };
   var isComplex = function isComplex(a) {
     return Array.isArray(a) || Object.prototype.toString.call(a) === '[object Object]';
   };
   var equal = function equal(a, b) {
     var aTy = type(a);
+    var aKeys = Object.keys(a);
+    var bKeys = Object.keys(b);
     var regVals = ['source', 'global', 'ignoreCase', 'multiline', 'sticky', 'unicode'];
     var methods = {
       Date: function Date(x, y) {
@@ -552,27 +550,26 @@
       }
     };
     var current = methods[aTy];
+    if (identical$1(a, b)) {
+      return true;
+    }
     if (current) {
       return current(a, b);
     }
-    var _organize = organize(a, b),
-        _organize2 = _slicedToArray(_organize, 2),
-        c = _organize2[0],
-        d = _organize2[1];
-    if (!keysCheck(c, d)) {
+    if (!and$1(aKeys.length === bKeys.length, !difference$1(aKeys, bKeys).length)) {
       return false;
     }
-    if (isComplex(c)) {
-      return Object.keys(c).every(function (key) {
-        var aVal = c[key];
-        var bVal = d[key];
+    if (isComplex(a)) {
+      return aKeys.every(function (key) {
+        var aVal = a[key];
+        var bVal = b[key];
         if (isComplex(aVal)) {
           return equal(aVal, bVal);
         }
         return identical$1(aVal, bVal);
       });
     }
-    return identical$1(c, d);
+    return false;
   };
 
   var isEqual = function isEqual(a, b) {
@@ -593,12 +590,12 @@
   };
 
   var lt = function lt(a, b) {
-    return a < b;
+    return b < a;
   };
   var lt$1 = curry(lt);
 
   var lte = function lte(a, b) {
-    return a <= b;
+    return b <= a;
   };
   var lte$1 = curry(lte);
 
@@ -619,36 +616,59 @@
   };
   var pipe$1 = curry(pipe);
 
-  var range = function range() {
-    var from = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    var to = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var range = function range(from, to) {
     if (isNaN(from) || to && isNaN(to)) {
       throw new TypeError('Arguments should be Numbers');
     }
     var result = [];
-    var stop = Number(to);
     var start = Number(from);
-    if (!to) {
-      stop = Number(from);
-      start = 0;
-    }
-    while (start < stop) {
+    while (start < Number(to)) {
       result.push(start);
       start += 1;
     }
     return result;
   };
+  var range$1 = curry(range);
 
-  var when = function when(fn, act) {
-    for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-      args[_key - 2] = arguments[_key];
-    }
-    if (fn.apply(void 0, args)) {
-      return act.apply(void 0, args);
-    }
-    return undefined;
+  var unless = function unless(fn, act, x) {
+    return fn(x) ? x : act(x);
+  };
+  var unless$1 = curryN(3, unless);
+
+  var when = function when(fn, act, x) {
+    return fn(x) ? act(x) : x;
   };
   var when$1 = curryN(3, when);
+
+  var concat = function concat(val, list) {
+    return list.concat(val);
+  };
+  var concat$1 = curry(concat);
+
+  var nth = function nth(o, list) {
+    var i = o < 0 ? list.length + o : o;
+    return list[i];
+  };
+  var nth$1 = curry(nth);
+
+  var endsWith = function endsWith(a, list) {
+    return nth$1(-1, list) === a;
+  };
+  var endsWith$1 = curry(endsWith);
+
+  var includes = function includes(value, list) {
+    return list.indexOf(value) !== -1;
+  };
+  var includes$1 = curry(includes);
+
+  var reverse = function reverse(list) {
+    return Array.isArray(list) ? list.slice().reverse() : list.split('').reverse().join('');
+  };
+
+  var slice = function slice(a, b, list) {
+    return list.slice(a, b);
+  };
+  var slice$1 = curry(slice);
 
   var add = function add(a, b) {
     return Number(a) + Number(b);
@@ -672,7 +692,7 @@
 
   var factors = function factors() {
     var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    return range(x).filter(function (i) {
+    return range$1(0, x).filter(function (i) {
       return rem$1(i, x) === 0;
     });
   };
@@ -826,18 +846,14 @@
   };
   var plan$1 = curry(plan);
 
-  var isObject = (function (x) {
-    return Object.prototype.toString.call(x) === '[object Object]';
-  });
-
   var pluck = function pluck(p, list) {
     return Object.keys(list).reduce(function (acc, v) {
       var val = list[v];
-      if (isObject(val)) {
-        return acc.concat(pluck(p, val));
-      }
       if (v === p) {
-        acc.push(val);
+        return acc.concat(val);
+      }
+      if (Object.prototype.toString.call(val) === '[object Object]') {
+        return acc.concat(pluck(p, val));
       }
       return acc;
     }, []);
@@ -925,6 +941,11 @@
   };
   var join$1 = curry(join);
 
+  var split = function split(char, str) {
+    return str.split(char);
+  };
+  var split$1 = curry(split);
+
   var strip = function strip(a) {
     return a.replace(/\s/g, '');
   };
@@ -946,10 +967,10 @@
   };
 
   exports.compact = compact;
-  exports.concat = concat;
   exports.concatMap = concatMap$1;
   exports.difference = difference$1;
   exports.drop = drop$1;
+  exports.dropWhile = dropWhile$1;
   exports.ensureArray = ensureArray;
   exports.every = every$1;
   exports.filter = filter$1;
@@ -957,7 +978,6 @@
   exports.findIndex = findIndex$1;
   exports.first = first;
   exports.groupBy = groupBy$1;
-  exports.includes = includes$1;
   exports.insert = insert$1;
   exports.intersection = intersection$1;
   exports.last = last;
@@ -968,36 +988,38 @@
   exports.mean = mean;
   exports.min = min;
   exports.minBy = minBy$1;
-  exports.nth = nth$1;
   exports.partition = partition$1;
   exports.prepend = prepend$1;
   exports.reduce = reduce$1;
   exports.reject = reject$1;
   exports.remove = remove$1;
-  exports.reverse = reverse;
-  exports.slice = slice$1;
   exports.some = some$1;
   exports.sort = sort$1;
   exports.sortBy = sortBy$1;
   exports.sortWith = sortWith$1;
   exports.take = take$1;
+  exports.takeWhile = takeWhile$1;
   exports.union = union$1;
   exports.uniq = uniq;
   exports.uniqBy = uniqBy$1;
   exports.update = update$1;
   exports.zip = zip$1;
+  exports.always = always$1;
   exports.and = and$1;
   exports.ap = ap$1;
+  exports.apply = apply$1;
   exports.ascend = ascend$1;
   exports.ascendBy = ascendBy$1;
   exports.both = both$1;
   exports.branch = branch$1;
   exports.complement = complement$1;
+  exports.compose = compose$1;
   exports.curry = curry;
   exports.curryN = curryN;
   exports.deepClone = deepClone;
   exports.descend = descend$1;
   exports.descendBy = descendBy$1;
+  exports.either = either$1;
   exports.empty = empty;
   exports.encase = encase$1;
   exports.gt = gt$1;
@@ -1015,9 +1037,16 @@
   exports.on = on$1;
   exports.or = or$1;
   exports.pipe = pipe$1;
-  exports.range = range;
+  exports.range = range$1;
   exports.type = type;
+  exports.unless = unless$1;
   exports.when = when$1;
+  exports.concat = concat$1;
+  exports.endsWith = endsWith$1;
+  exports.includes = includes$1;
+  exports.nth = nth$1;
+  exports.reverse = reverse;
+  exports.slice = slice$1;
   exports.add = add$1;
   exports.between = between$1;
   exports.div = div$1;
@@ -1057,6 +1086,7 @@
   exports.contains = contains$1;
   exports.fuzzySearch = fuzzySearch$1;
   exports.join = join$1;
+  exports.split = split$1;
   exports.strip = strip;
   exports.toLower = toLower;
   exports.toUpper = toUpper;

@@ -1,5 +1,54 @@
 # Changelog
 
+## v0.9.0
+
+> **Notice:** All deprecated functions will be removed in the v0.10.0 release
+
+### Breaking Changes
+
+- `isEqual` now takes order of arrays into consideration and will return false if arrays do not match in order
+- `when` is no longer a maybe return and should give back the original data passed in. It also supports only a single param passed in
+- New `List` type for similar functions that apply to a List of characters (string) and a List of items (Array)
+  - `slice` has been moved to this type
+  - `includes` has been moved to this type
+  - `concat` has been moved to this type
+  - `reversed` has been moved to this type
+  - `nth` has been moved to this type
+- `concat` flow changed a little bit to work more like built in concat
+  - In order to achieve array type simply use `concatMap` like so: `concatMap(x => x, [[1, 2], [3, 4], [5, 6]])`
+- `range` now requires you to pass 2 params to it, it is curried out of the box as well.
+- The parameters for `gt`, `gte`, `lt` and `lte` have been flipped to meet the proper data last structure
+
+### Deprecated
+
+- `pluck` : Shaky code stack, and lack of use cases that `props` and `prop` can't handle
+- `strip` : No real use cases to benefit from this
+- `empty` : No real use cases to benefit from this
+- `contains` : Use `includes` within the list type
+
+### Fixed
+
+- `filter` had incorrect data types within its documentation
+- `when` documentation typos and no longer hard to read
+
+### New
+
+- Added `always` function which takes 2 params and always returns the first one. Good for pipes since its curried
+- Added `compose` function (finally)
+- Added `unless` function which takes 3 params, and acts the opposite of `when`
+- Added `split` function which takes a char and a string and splits the string based on the char
+- Added `takeWhile` function which will take values from an array based on a function boolean
+- Added `dropWhile` function which will drop values from an array based on a function boolean
+- Added `apply` function which takes an array of data and applys a function to it
+- Added `either` function which takes 2 functions and a value and if either function returns truthy will return true
+- Added `endsWith` function which checks if the passed in list ends with the given value
+
+### Improved
+
+- Documentation for `includes` and `identity` functions
+- Removed unused code (`circular` and `isObject`)
+- Added handling for an edge case with `Object.keys` inside of `isEqual`
+
 ## v0.8.3
 
 ### New
@@ -43,10 +92,13 @@
 
 - `assign` is now curried and expects a minimum of 2 values passed in
 
+### Deprecated
+
+- `deepClone` : Use `clone` instead, to mimic the deep clone functionality do this: `clone({ a: 1 }, true)`
+
 ### New
 
 - Added new `clone` function, it can create a shallow clone for Objects however accepts a 2nd param to use deep clone capabilities
-- Marked `deepClone` as deprecated switch over to use `clone` Example: `clone({ a: 1 }, true)`
 - New `unzip` function which takes an object and breaks down into two arrays one of keys and one of values
 
 ### Improved

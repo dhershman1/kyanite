@@ -20,7 +20,7 @@ const listFns = type => {
     })
 }
 
-const types = ['array', 'function', 'number', 'object', 'string', '']
+const types = ['array', 'function', 'list', 'number', 'object', 'string', '']
 
 types.forEach(v => {
   const propertyRequireLines = listFns(v)

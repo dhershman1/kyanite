@@ -20,3 +20,8 @@ test('remove -- Is curried', t => {
   t.deepEqual(result, [1, 2, 4])
   t.end()
 })
+
+test('remove -- Handles indecies that do not exist', t => {
+  t.same(remove(2, [1, 2]), [1, 2])
+  t.end()
+})

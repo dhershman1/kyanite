@@ -38,7 +38,7 @@ You can find the documentation here: https://www.dusty.codes/documentation/kyani
 
 ## Philosophy
 
-The goal for the library was to be stripped down, light weight and easy to understand intuitively. As well as being performant and optimized in the best ways possible, and I am happy with that current outcome. Everything out of the box is Curried while also being easy to use with a pipe, Kyanite also gives the ability to curry your own custom functionality that can be used within pipes as well.
+The goal for the library is to be stripped down, light weight, and intuitive. With Kyanite, The idea is to be performant and easy to use in a functional setting, it's easy to build powerful and organized, yet small, algorithmic pipes into reusable functions for your codebase. The hope is that it will continue to bring functionality to the world of JavaScript with continued improvement as it grows!
 
 ## Key Features
 
@@ -129,6 +129,7 @@ However You can also break it down by data type too!
 
 - `kyanite/array` : All of the `Array` based functions (`intersection`, `difference`, `concat`, etc...)
 - `kyanite/function` : All of the `"Function"` based functions (`curry`, `is`, `isEmpty`, etc...)
+- `kyanite/list` : All of the `List` based functions (`includes`, `nth`, `reverse`, etc...)
 - `kyanite/number` : All of the `Number` based functions (`add`, `gcd`, `isOdd`, etc...)
 - `kyanite/object` : All of the `Object` based functions (`sift`, `height`, `assign`, etc...)
 - `kyanite/string` : All of the `String` based functions (`capitalize`, `toLower`, `fuzzySearch`, etc...)
@@ -140,6 +141,7 @@ Standard JS
 ```js
 import KA from 'kyanite/array'
 import KF from 'kyanite/function'
+import KL from 'kyanite/list'
 import KN from 'kyanite/number'
 import KO from 'kyanite/object'
 import KS from 'kyanite/string'
@@ -150,6 +152,7 @@ CommonJs
 ```js
 const KA = require('kyanite/array')
 const KF = require('kyanite/function')
+const KL = require('kyanite/list')
 const KN = require('kyanite/number')
 const KO = require('kyanite/object')
 const KS = require('kyanite/string')
@@ -160,12 +163,14 @@ CDN
 ```html
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/array.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/function.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/list.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/number.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/object.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/string.js"></script>
 <script>
   KA.filter()
   KF.curry()
+  KL.includes()
   KN.add()
   KO.isEmpty()
   KS.fuzzySearch()
@@ -177,12 +182,14 @@ Through your browser
 ```html
 <script src="path/to/kyanite/array.js"></script>
 <script src="path/to/kyanite/function.js"></script>
+<script src="path/to/kyanite/list.js"></script>
 <script src="path/to/kyanite/number.js"></script>
 <script src="path/to/kyanite/object.js"></script>
 <script src="path/to/kyanite/string.js"></script>
 <script>
   KA.filter()
   KF.curry()
+  KL.includes()
   KN.add()
   KO.isEmpty()
   KS.fuzzySearch()

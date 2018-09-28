@@ -6,12 +6,12 @@ test('range -- Create basic range array', t => {
 
   t.ok(results)
   t.deepEqual(results, [1, 2, 3, 4])
-  t.same(range(), [])
+  t.same(range(0, 0), [])
   t.end()
 })
 
-test('range -- Creates range while missing the first argument', t => {
-  const results = range(5)
+test('range -- Creates range from zero to five', t => {
+  const results = range(0, 5)
 
   t.ok(results)
   t.deepEqual(results, [0, 1, 2, 3, 4])
@@ -20,7 +20,7 @@ test('range -- Creates range while missing the first argument', t => {
 
 test('range -- Should throw an error when values are NaN', t => {
   try {
-    range('h')
+    range(0, 'h')
   } catch (err) {
     t.is(err.message, 'Arguments should be Numbers')
     t.end()

@@ -2,6 +2,7 @@ import curry from '../function/curry'
 
 /**
  * @name contains
+ * @deprecated Use includes
  * @since v0.1.0
  * @category String
  * @sig String -> String -> Boolean
