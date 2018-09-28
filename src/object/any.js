@@ -5,9 +5,9 @@ import curry from '../function/curry'
  * @since v0.1.0
  * @category Object
  * @sig Object k (v -> Boolean) -> Object -> Boolean
- * @description Works a lot like every for array, but for the object data type. Returns whether every key matches the predicate or not
+ * @description Works a lot like some for array, but for the object data type. Returns whether some keys match the predicate or not
  * @param {Object} schema An Object schema containing the matching properties and the function to run
- * @param {Object} obj The object to run through
+ * @param {Object} obj The object to iterate through
  * @return {Boolean} A boolean dependent on whether or not any values passed
  *
  * @example
