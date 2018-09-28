@@ -38,7 +38,7 @@ You can find the documentation here: https://www.dusty.codes/documentation/kyani
 
 ## Philosophy
 
-The goal for the library was to be stripped down, light weight and easy to understand intuitively. As well as being performant and optimized in the best ways possible, and I am happy with that current outcome. Everything out of the box is Curried while also being easy to use with a pipe, Kyanite also gives the ability to curry your own custom functionality that can be used within pipes as well.
+The goal for the library was to be stripped down, light weight and easy to understand intuitively. The idea is to not only be performant but also easy to use in a functional setting, it's easy to build powerful, organized, yet small alogirthm pipes into reusable functions for your codebase. This is the idea behind Kyanite and what it will continue to bring to the world of JavaScript, with only the hope of improvement as it grows!
 
 ## Key Features
 
