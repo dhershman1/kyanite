@@ -8,12 +8,9 @@
 - `head` : Bad use case, objects are in no particular order
 - `tail` : Bad use case, objects are in no particular order
 
-### Fixed
-
-- The documentation for `any` and `whole` didn't make a lot of sense
-
 ### Improved
 
+- The documentation for `any` and `whole` didn't make a lot of sense
 - `round` description needed a slight tweak
 - Made `add`, `div`, `mul`, and `sub` descriptions a bit more strict
 
