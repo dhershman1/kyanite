@@ -5,6 +5,7 @@ import curry from './curry'
  * @since v0.9.0
  * @category Function
  * @sig (a -> b) -> (b -> c) -> a -> c
+ * @description Applies value through two functions, from right to left
  * @param {Function} fn The second function to apply to our result of the first
  * @param {Function} gn The first function to run against the data
  * @param {Any} a The data to compose our functions on

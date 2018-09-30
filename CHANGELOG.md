@@ -8,6 +8,10 @@
 - `head` : Bad use case, objects are in no particular order
 - `tail` : Bad use case, objects are in no particular order
 
+### Fixed
+
+- Added description to `compose` function
+
 ### Improved
 
 - The documentation for `any` and `whole` didn't make a lot of sense
