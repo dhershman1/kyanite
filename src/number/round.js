@@ -5,7 +5,7 @@ import curry from '../function/curry'
  * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
- * @description Round a number using exponent rounding
+ * @description Round a number using exponent rounding to a desired precision
  * @param {Number} precision The precision we want the number to be rounded to
  * @param {Number} num The number we are going to round
  * @return {Number} The rounded number to the desired precision

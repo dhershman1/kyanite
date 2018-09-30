@@ -20,6 +20,7 @@ about: Suggest a new function idea for the
 ### Syntax
 
 **Parameters:**
+`a` - `type`: <description>
 
 ```js
 // What does your function syntax look like

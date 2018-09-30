@@ -5,7 +5,7 @@ import curry from '../function/curry'
  * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
- * @description Subtracts the provided items
+ * @description Subtracts the provided numbers
  * @param {Number} a The number to subtract with
  * @param {Number} b The number to subtract from
  * @return {Number} The difference of the numbers
