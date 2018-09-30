@@ -15,7 +15,7 @@
 ### Improved
 
 - `round` description needed a slight tweak
-- Made `add` description a bit more strict
+- Made `add`, `div`, `mul`, and `sub` descriptions a bit more strict
 
 ## v0.9.0
 
