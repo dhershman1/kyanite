@@ -453,10 +453,6 @@
   };
   var compose$1 = curry(compose);
 
-  var deepClone = function deepClone(x) {
-    return JSON.parse(JSON.stringify(x));
-  };
-
   var descend = function descend(a, b) {
     return a > b ? -1 : a < b ? 1 : 0;
   };
@@ -471,29 +467,6 @@
     return fn(a) || gn(a);
   };
   var either$1 = curry(either);
-
-  var type = function type(x) {
-    if (x === null) {
-      return 'Null';
-    }
-    if (x === undefined) {
-      return 'Undefined';
-    }
-    return Object.prototype.toString.call(x).slice(8, -1);
-  };
-
-  var empty = function empty(x) {
-    if (type(x) === 'Array') {
-      return [];
-    }
-    if (type(x) === 'String') {
-      return '';
-    }
-    if (type(x) === 'Object') {
-      return {};
-    }
-    return void 0;
-  };
 
   var encase = function encase(fn, a) {
     try {
@@ -529,6 +502,16 @@
 
   var isEmpty = function isEmpty(x) {
     return !x || !Object.keys(x).length;
+  };
+
+  var type = function type(x) {
+    if (x === null) {
+      return 'Null';
+    }
+    if (x === undefined) {
+      return 'Undefined';
+    }
+    return Object.prototype.toString.call(x).slice(8, -1);
   };
 
   var isComplex = function isComplex(a) {
@@ -745,7 +728,7 @@
   var round$1 = curry(round);
 
   var sub = function sub(a, b) {
-    return a - b;
+    return b - a;
   };
   var sub$1 = curry(sub);
 
@@ -755,17 +738,6 @@
     });
   };
   var any$1 = curry(any);
-
-  var clone = function clone(x) {
-    var deep = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-    if (deep) {
-      return JSON.parse(JSON.stringify(x));
-    }
-    return Object.keys(x).reduce(function (acc, k) {
-      acc[k] = x[k];
-      return acc;
-    }, {});
-  };
 
   var compress = function compress(obj) {
     return Object.keys(obj).reduce(function (acc, k) {
@@ -797,13 +769,6 @@
     return Object.keys(obj).map(function (k) {
       return [k, obj[k]];
     });
-  };
-
-  var head = function head(obj) {
-    var _Object$keys = Object.keys(obj),
-        _Object$keys2 = _slicedToArray(_Object$keys, 1),
-        key = _Object$keys2[0];
-    return key ? obj[key] : {};
   };
 
   var height = function height(obj) {
@@ -846,20 +811,6 @@
   };
   var plan$1 = curry(plan);
 
-  var pluck = function pluck(p, list) {
-    return Object.keys(list).reduce(function (acc, v) {
-      var val = list[v];
-      if (v === p) {
-        return acc.concat(val);
-      }
-      if (Object.prototype.toString.call(val) === '[object Object]') {
-        return acc.concat(pluck(p, val));
-      }
-      return acc;
-    }, []);
-  };
-  var pluck$1 = curry(pluck);
-
   var prop = function prop(p, obj) {
     return obj[p];
   };
@@ -882,11 +833,6 @@
   };
   var sift$1 = curry(sift);
 
-  var tail = function tail(obj) {
-    var key = last(Object.keys(obj));
-    return key ? obj[key] : {};
-  };
-
   var values = function values(obj) {
     return Object.keys(obj).map(function (k) {
       return obj[k];
@@ -907,11 +853,6 @@
   var capitalize = function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
-
-  var contains = function contains(a, str) {
-    return str.indexOf(a) !== -1;
-  };
-  var contains$1 = curry(contains);
 
   var fuzzySearch = function fuzzySearch(needle, haystack) {
     var hLen = haystack.length;
@@ -945,10 +886,6 @@
     return str.split(char);
   };
   var split$1 = curry(split);
-
-  var strip = function strip(a) {
-    return a.replace(/\s/g, '');
-  };
 
   var toLower = function toLower(a) {
     return a.toLowerCase();
@@ -1016,11 +953,9 @@
   exports.compose = compose$1;
   exports.curry = curry;
   exports.curryN = curryN;
-  exports.deepClone = deepClone;
   exports.descend = descend$1;
   exports.descendBy = descendBy$1;
   exports.either = either$1;
-  exports.empty = empty;
   exports.encase = encase$1;
   exports.gt = gt$1;
   exports.gte = gte$1;
@@ -1063,31 +998,25 @@
   exports.sub = sub$1;
   exports.any = any$1;
   exports.assign = assign$1;
-  exports.clone = clone;
   exports.compress = compress;
   exports.defaults = defaults$1;
   exports.draft = draft$1;
   exports.entries = entries;
   exports.has = has$1;
-  exports.head = head;
   exports.height = height;
   exports.omit = omit$1;
   exports.path = path$1;
   exports.plan = plan$1;
-  exports.pluck = pluck$1;
   exports.prop = prop$1;
   exports.props = props$1;
   exports.sift = sift$1;
-  exports.tail = tail;
   exports.unzip = unzip;
   exports.values = values;
   exports.whole = whole$1;
   exports.capitalize = capitalize;
-  exports.contains = contains$1;
   exports.fuzzySearch = fuzzySearch$1;
   exports.join = join$1;
   exports.split = split$1;
-  exports.strip = strip;
   exports.toLower = toLower;
   exports.toUpper = toUpper;
   exports.trim = trim;
