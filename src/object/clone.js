@@ -1,6 +1,7 @@
 /**
  * @name clone
  * @since v0.8.0
+ * @deprecated There is no real need for this
  * @category Object
  * @sig Object -> Maybe Boolean -> Object
  * @description Creates either a shallow or deep clone of the provided object
