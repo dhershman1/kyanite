@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.9.1
+
+### Deprecated
+
+- `clone` : There is no real need for this since every function already shallow clones data, and a deep clone is shaky ground at best
+- `head` : Bad use case, objects are in no particular order
+- `tail` : Bad use case, objects are in no particular order
+
+### Fixed
+
+- Added description to `compose` function
+
+### Improved
+
+- The documentation for `any` and `whole` didn't make a lot of sense
+- `round` description needed a slight tweak
+- Made `add`, `div`, `mul`, and `sub` descriptions a bit more strict
+
 ## v0.9.0
 
 > **Notice:** All deprecated functions will be removed in the v0.10.0 release

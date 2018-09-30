@@ -5,7 +5,7 @@ import curry from '../function/curry'
  * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
- * @description Multiplies the provided items
+ * @description Multiplies the provided numbers
  * @param {Number} a The first factor to multiply with
  * @param {Number} b The second factor to multiply with
  * @return {Number} The product of the numbers

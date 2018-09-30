@@ -1,6 +1,7 @@
 /**
  * @name head
  * @since v0.5.0
+ * @deprecated Since v0.9.1 -- Bad use case objects are in no particular order
  * @category Object
  * @sig Object { k: v } -> v
  * @description Returns the first value from an object

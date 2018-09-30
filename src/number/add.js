@@ -5,7 +5,7 @@ import curry from '../function/curry'
  * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
- * @description Adds the provided items together
+ * @description Adds the provided numbers together
  * @param {Number} a The first number to add
  * @param {Number} b The second number to add
  * @return {Number} The sum of the numbers

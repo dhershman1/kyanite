@@ -2,7 +2,7 @@ import type from './type'
 
 /**
  * @name empty
- * @deprecated No true use case to keep
+ * @deprecated Since v0.9.0 -- No true use case to keep
  * @since v0.1.0
  * @category Function
  * @sig a -> a

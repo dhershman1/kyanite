@@ -5,7 +5,7 @@ import curry from '../function/curry'
  * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
- * @description Divides the provided items
+ * @description Divides the provided numbers
  * @param {Number} a The divisor which the dividend will be divided by
  * @param {Number} b The dividend of the division problem
  * @return {Number} The quotient of the two numbers
