@@ -5,6 +5,8 @@
 ### Deprecated
 
 - `clone` : There is no real need for this since every function already shallow clones data, and a deep clone is shaky ground at best
+- `head` : Bad use case, objects are in no particular order
+- `tail` : Bad use case, objects are in no particular order
 
 ### Fixed
 
