@@ -3,7 +3,7 @@ import last from '../array/last'
 /**
  * @name tail
  * @since v0.5.0
- * @deprecated Bad use case objects are in no particular order
+ * @deprecated Since v0.9.1 -- Bad use case objects are in no particular order
  * @category Object
  * @sig Object { k: v } -> v
  * @description Returns the last value from an object
