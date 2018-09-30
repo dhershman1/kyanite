@@ -10,6 +10,10 @@
 
 - The documentation for `any` and `whole` didn't make a lot of sense
 
+### Improved
+
+- `round` description needed a slight tweak
+
 ## v0.9.0
 
 > **Notice:** All deprecated functions will be removed in the v0.10.0 release
