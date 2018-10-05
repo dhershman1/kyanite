@@ -1,4 +1,4 @@
-import first from '../../src/array/first'
+import first from '../../src/list/first'
 import test from 'tape'
 
 test('first -- test first() Array functionality', t => {

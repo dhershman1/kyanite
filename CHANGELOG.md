@@ -7,6 +7,7 @@
 - Flipped the way `sub` does math instead of `sub(2, 1) === 2 - 1` it will now be `sub(1, 2) === 2 - 1`
 - Removed all deprecated functions
   - `empty`, `deepClone`, `contains`, `strip`, `clon`, `head`, `tail`, and `pluck`
+- Moved `last` and `first` into the list type rather than array
 
 ## v0.9.1
 

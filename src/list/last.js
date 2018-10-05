@@ -2,13 +2,13 @@
 /**
  * @name last
  * @since v0.1.0
- * @category Array
+ * @category List
  * @sig
  * [a] -> a | Undefined
  * String -> String
- * @description Grabs the last index of an array
+ * @description Grabs the last index of a list
  * @param  {Array|String} x The list or string we want to use
- * @return {Any} Returns whatever was the last piece of our array
+ * @return {Any} Returns whatever was the last piece of our list
  *
  * @example
  * const arr = last([1, 3]) // => 3
