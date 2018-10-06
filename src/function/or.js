@@ -1,4 +1,5 @@
-import curry from './curry'
+import curryN from './curryN'
+import identity from './identity'
 
 /**
  * @name or
@@ -7,8 +8,7 @@ import curry from './curry'
  * @sig Boolean -> Boolean -> Boolean
  * @description
  * Runs an or comparison on the two values passed in
- * @param {Boolean} a The first boolean to compare
- * @param {Boolean} b The second boolean to compare
+ * @param {...Boolean} args The values to be used to make sure some of them are passing
  * @return {Boolean} The evaluated outcome of the parameters
  *
  * @example
@@ -16,6 +16,6 @@ import curry from './curry'
  * or(true, false) // => true
  * or(false, false) // => false
  */
-const or = (a, b) => a || b
+const or = (...args) => args.some(identity)
 
-export default curry(or)
+export default curryN(2, or)

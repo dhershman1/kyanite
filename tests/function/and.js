@@ -19,7 +19,13 @@ test('and -- Returns false when both params are false', t => {
 test('and -- Is curried', t => {
   const a = and(true)
 
-  t.true(a(true))
-  t.false(a(false))
+  t.same(a(true), true)
+  t.same(a(false), false)
+  t.end()
+})
+
+test('and -- Handles multiple arguments', t => {
+  t.same(and(true, true, true), true)
+  t.same(and(true, true, false), false)
   t.end()
 })

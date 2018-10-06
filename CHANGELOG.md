@@ -9,6 +9,11 @@
   - `empty`, `deepClone`, `contains`, `strip`, `clon`, `head`, `tail`, and `pluck`
 - Moved `last` and `first` into the list type rather than array
 
+### Improved
+
+- `and` now accepts as many parameters as needed
+- `or` now accepts as many parameters as needed
+
 ## v0.9.1
 
 ### Deprecated

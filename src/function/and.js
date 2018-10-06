@@ -1,4 +1,5 @@
-import curry from './curry'
+import curryN from './curryN'
+import identity from './identity'
 
 /**
  * @name and
@@ -7,8 +8,7 @@ import curry from './curry'
  * @sig Boolean -> Boolean -> Boolean
  * @description
  * Runs an and comparison on the two values passed in
- * @param {Boolean} a The first boolean to compare
- * @param {Boolean} b The second boolean to compare
+ * @param {...Boolean} args The values to be used to make sure all of them are passing
  * @return {Boolean} The evaluated outcome of the parameters
  *
  * @example
@@ -16,6 +16,6 @@ import curry from './curry'
  * and(true, false) // => false
  * and(false, false) // => false
  */
-const and = (a, b) => a && b
+const and = (...args) => args.every(identity)
 
-export default curry(and)
+export default curryN(2, and)
