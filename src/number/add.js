@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import curryN from '../function/curryN'
 
 /**
  * @name add
@@ -6,8 +6,7 @@ import curry from '../function/curry'
  * @category Number
  * @sig Number -> Number -> Number
  * @description Adds the provided numbers together
- * @param {Number} a The first number to add
- * @param {Number} b The second number to add
+ * @param {...Number} nums The numbers to add together
  * @return {Number} The sum of the numbers
  *
  * @example
@@ -20,6 +19,6 @@ import curry from '../function/curry'
  * adder(3) // => 5
  * adder(2) // => 4
  */
-const add = (a, b) => Number(a) + Number(b)
+const add = (...nums) => nums.reduce((total, x) => total + Number(x), 0)
 
-export default curry(add)
+export default curryN(2, add)

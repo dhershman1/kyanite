@@ -27,3 +27,9 @@ test('add -- Is curried', t => {
 
   t.end()
 })
+
+test('add -- Handles more than just 2 params', t => {
+  t.same(add(1, 2, 3, 4), 10)
+  t.same(add(2, 3, 4, 5, 6), 20)
+  t.end()
+})
