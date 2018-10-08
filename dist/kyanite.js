@@ -104,10 +104,6 @@
   };
   var findIndex$1 = curry(findIndex);
 
-  var first = function first(x) {
-    return x[0];
-  };
-
   var curryN = function curryN(n, f) {
     for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
       args[_key - 2] = arguments[_key];
@@ -165,10 +161,6 @@
     });
   };
   var intersection$1 = curry(intersection);
-
-  var last = function last(x) {
-    return x[x.length - 1];
-  };
 
   var length = function length(a) {
     return a.length;
@@ -402,10 +394,13 @@
   };
   var always$1 = curry(always);
 
-  var and = function and(a, b) {
-    return a && b;
+  var and = function and() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    return args.every(identity);
   };
-  var and$1 = curry(and);
+  var and$1 = curryN(2, and);
 
   var ap = function ap(fns, list) {
     return fns.reduce(function (acc, f) {
@@ -587,10 +582,13 @@
   };
   var on$1 = curry(on);
 
-  var or = function or(a, b) {
-    return a || b;
+  var or = function or() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    return args.some(identity);
   };
-  var or$1 = curry(or);
+  var or$1 = curryN(2, or);
 
   var pipe = function pipe(list, a) {
     return list.reduce(function (acc, fn) {
@@ -639,10 +637,18 @@
   };
   var endsWith$1 = curry(endsWith);
 
+  var first = function first(x) {
+    return x[0];
+  };
+
   var includes = function includes(value, list) {
     return list.indexOf(value) !== -1;
   };
   var includes$1 = curry(includes);
+
+  var last = function last(x) {
+    return x[x.length - 1];
+  };
 
   var reverse = function reverse(list) {
     return Array.isArray(list) ? list.slice().reverse() : list.split('').reverse().join('');
@@ -653,20 +659,25 @@
   };
   var slice$1 = curry(slice);
 
-  var add = function add(a, b) {
-    return Number(a) + Number(b);
+  var add = function add() {
+    for (var _len = arguments.length, nums = new Array(_len), _key = 0; _key < _len; _key++) {
+      nums[_key] = arguments[_key];
+    }
+    return nums.reduce(function (total, x) {
+      return total + Number(x);
+    }, 0);
   };
-  var add$1 = curry(add);
+  var add$1 = curryN(2, add);
 
   var between = function between(a, b, n) {
     return a <= n && b >= n;
   };
   var between$1 = curry(between);
 
-  var div = function div(a, b) {
+  var divide = function divide(a, b) {
     return b / a;
   };
-  var div$1 = curry(div);
+  var divide$1 = curry(divide);
 
   var rem = function rem(a, b) {
     return b % a;
@@ -712,10 +723,10 @@
   };
   var lcm$1 = curry(lcm);
 
-  var mul = function mul(a, b) {
+  var multiply = function multiply(a, b) {
     return a * b;
   };
-  var mul$1 = curry(mul);
+  var multiply$1 = curry(multiply);
 
   var pow = function pow(a, b) {
     return Math.pow(b, a);
@@ -727,10 +738,10 @@
   };
   var round$1 = curry(round);
 
-  var sub = function sub(a, b) {
+  var subtract = function subtract(a, b) {
     return b - a;
   };
-  var sub$1 = curry(sub);
+  var subtract$1 = curry(subtract);
 
   var any = function any(schema, obj) {
     return Object.keys(schema).some(function (key) {
@@ -913,11 +924,9 @@
   exports.filter = filter$1;
   exports.find = find$1;
   exports.findIndex = findIndex$1;
-  exports.first = first;
   exports.groupBy = groupBy$1;
   exports.insert = insert$1;
   exports.intersection = intersection$1;
-  exports.last = last;
   exports.length = length;
   exports.map = map$1;
   exports.max = max;
@@ -978,24 +987,26 @@
   exports.when = when$1;
   exports.concat = concat$1;
   exports.endsWith = endsWith$1;
+  exports.first = first;
   exports.includes = includes$1;
+  exports.last = last;
   exports.nth = nth$1;
   exports.reverse = reverse;
   exports.slice = slice$1;
   exports.add = add$1;
   exports.between = between$1;
-  exports.div = div$1;
+  exports.divide = divide$1;
   exports.factors = factors;
   exports.gcd = gcd$1;
   exports.isEven = isEven;
   exports.isOdd = isOdd;
   exports.isPrime = isPrime;
   exports.lcm = lcm$1;
-  exports.mul = mul$1;
+  exports.multiply = multiply$1;
   exports.pow = pow$1;
   exports.rem = rem$1;
   exports.round = round$1;
-  exports.sub = sub$1;
+  exports.subtract = subtract$1;
   exports.any = any$1;
   exports.assign = assign$1;
   exports.compress = compress;
