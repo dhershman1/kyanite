@@ -1,7 +1,7 @@
 import curry from '../function/curry'
 
 /**
- * @name mul
+ * @name multiply
  * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
@@ -11,15 +11,15 @@ import curry from '../function/curry'
  * @return {Number} The product of the numbers
  *
  * @example
- * mul(2, 1) // => 2
+ * multiply(2, 1) // => 2
  *
  * // It's also curried
  *
- * const multiply = mul(5)
+ * const mul = multiply(5)
  *
- * multiply(3) // => 15
- * multiply(2) // => 10
+ * mul(3) // => 15
+ * mul(2) // => 10
  */
-const mul = (a, b) => a * b
+const multiply = (a, b) => a * b
 
-export default curry(mul)
+export default curry(multiply)

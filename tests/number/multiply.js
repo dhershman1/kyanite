@@ -1,4 +1,4 @@
-import mul from '../../src/number/mul'
+import mul from '../../src/number/multiply'
 import test from 'tape'
 
 test('mul -- Multiplies numbers', t => {

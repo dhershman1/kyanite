@@ -9,6 +9,7 @@
   - `empty`, `deepClone`, `contains`, `strip`, `clon`, `head`, `tail`, and `pluck`
 - Moved `last` and `first` into the list type rather than array
 - Renamed `sub` to `subtract`
+- Renamed `mul` to `multiply`
 
 ### Improved
 
