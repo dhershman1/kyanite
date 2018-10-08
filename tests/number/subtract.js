@@ -1,4 +1,4 @@
-import sub from '../../src/number/sub'
+import sub from '../../src/number/subtract'
 import test from 'tape'
 
 test('sub -- Subtracts two numbers', t => {
