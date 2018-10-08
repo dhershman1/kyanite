@@ -472,6 +472,11 @@
   };
   var encase$1 = curry(encase);
 
+  var flip = function flip(fn, a, b) {
+    return fn(b, a);
+  };
+  var flip$1 = curry(flip);
+
   var gt = function gt(a, b) {
     return b > a;
   };
@@ -659,15 +664,10 @@
   };
   var slice$1 = curry(slice);
 
-  var add = function add() {
-    for (var _len = arguments.length, nums = new Array(_len), _key = 0; _key < _len; _key++) {
-      nums[_key] = arguments[_key];
-    }
-    return nums.reduce(function (total, x) {
-      return total + Number(x);
-    }, 0);
+  var add = function add(a, b) {
+    return Number(a) + Number(b);
   };
-  var add$1 = curryN(2, add);
+  var add$1 = curry(add);
 
   var between = function between(a, b, n) {
     return a <= n && b >= n;
@@ -966,6 +966,7 @@
   exports.descendBy = descendBy$1;
   exports.either = either$1;
   exports.encase = encase$1;
+  exports.flip = flip$1;
   exports.gt = gt$1;
   exports.gte = gte$1;
   exports.identical = identical$1;
