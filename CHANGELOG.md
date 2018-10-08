@@ -10,6 +10,7 @@
 - Moved `last` and `first` into the list type rather than array
 - Renamed `sub` to `subtract`
 - Renamed `mul` to `multiply`
+- Renamed `div` to `divide`
 
 ### Improved
 

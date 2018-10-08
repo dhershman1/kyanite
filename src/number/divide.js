@@ -1,7 +1,7 @@
 import curry from '../function/curry'
 
 /**
- * @name div
+ * @name divide
  * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
@@ -11,15 +11,15 @@ import curry from '../function/curry'
  * @return {Number} The quotient of the two numbers
  *
  * @example
- * div(2, 1) // => 2
+ * divide(2, 1) // => 2
  *
  * // It's also curried
  *
- * const divide = div(15)
+ * const div = divide(15)
  *
- * divide(3) // => 5
- * divide(5) // => 3
+ * div(3) // => 5
+ * div(5) // => 3
  */
-const div = (a, b) => b / a
+const divide = (a, b) => b / a
 
-export default curry(div)
+export default curry(divide)
