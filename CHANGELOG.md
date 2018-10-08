@@ -17,6 +17,10 @@
 - `and` now accepts as many parameters as needed
 - `or` now accepts as many parameters as needed
 
+### New
+
+- Added `flip` function which flips the params sent to a given function
+
 ## v0.9.1
 
 ### Deprecated
