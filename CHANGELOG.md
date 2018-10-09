@@ -21,6 +21,10 @@
 
 - Added `flip` function which flips the params sent to a given function
 
+### Fixed
+
+- `compose` example with incorrect math
+
 ## v0.9.1
 
 ### Deprecated
