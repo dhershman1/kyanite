@@ -1,4 +1,4 @@
-import identical from '../function/identical'
+import eq from '../function/eq'
 import type from '../function/type'
 import and from '../function/and'
 import difference from '../array/difference'
@@ -17,7 +17,7 @@ const equal = (a, b) => {
   }
   const current = methods[aTy]
 
-  if (identical(a, b)) {
+  if (eq(a, b)) {
     return true
   }
 
@@ -38,7 +38,7 @@ const equal = (a, b) => {
         return equal(aVal, bVal)
       }
 
-      return identical(aVal, bVal)
+      return eq(aVal, bVal)
     })
   }
 
