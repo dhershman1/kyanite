@@ -4,14 +4,6 @@
   (factory((global.kyanite = {})));
 }(this, (function (exports) { 'use strict';
 
-  var identity = function identity(a) {
-    return a;
-  };
-
-  var compact = (function (arr) {
-    return arr.filter(identity);
-  });
-
   var curry = function curry(f) {
     for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
@@ -311,6 +303,10 @@
   };
   var reject$1 = curry(reject);
 
+  var identity = function identity(a) {
+    return a;
+  };
+
   var remove = function remove(i, x) {
     return concatMap$1(identity, [x.slice(0, i), x.slice(i + 1)]);
   };
@@ -499,11 +495,6 @@
     return b >= a;
   };
   var gte$1 = curry(gte);
-
-  var is = function is(Ctor, x) {
-    return !isNil(x) && x.constructor === Ctor || x instanceof Ctor;
-  };
-  var is$1 = curry(is);
 
   var isEmpty = function isEmpty(x) {
     return !x || !Object.keys(x).length;
@@ -755,15 +746,6 @@
   };
   var any$1 = curry(any);
 
-  var compress = function compress(obj) {
-    return Object.keys(obj).reduce(function (acc, k) {
-      if (!isNil(obj[k])) {
-        acc[k] = obj[k];
-      }
-      return acc;
-    }, {});
-  };
-
   var defaults = function defaults(def, data) {
     return Object.keys(def).reduce(function (acc, prop) {
       if (isNil(acc[prop])) {
@@ -915,11 +897,6 @@
     return str.trim();
   };
 
-  var words = function words(str) {
-    return trim(str).split(/\s+/);
-  };
-
-  exports.compact = compact;
   exports.concatMap = concatMap$1;
   exports.difference = difference$1;
   exports.drop = drop$1;
@@ -977,7 +954,6 @@
   exports.gt = gt$1;
   exports.gte = gte$1;
   exports.identity = identity;
-  exports.is = is$1;
   exports.isEmpty = isEmpty;
   exports.isEqual = isEqual$1;
   exports.isNil = isNil;
@@ -1016,7 +992,6 @@
   exports.subtract = subtract$1;
   exports.any = any$1;
   exports.assign = assign$1;
-  exports.compress = compress;
   exports.defaults = defaults$1;
   exports.draft = draft$1;
   exports.entries = entries;
@@ -1038,7 +1013,6 @@
   exports.toLower = toLower;
   exports.toUpper = toUpper;
   exports.trim = trim;
-  exports.words = words;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
