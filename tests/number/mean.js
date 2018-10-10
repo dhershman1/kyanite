@@ -1,4 +1,4 @@
-import mean from '../../src/array/mean'
+import mean from '../../src/number/mean'
 import test from 'tape'
 
 test('mean -- Test base functionality', t => {

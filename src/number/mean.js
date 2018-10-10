@@ -1,7 +1,9 @@
+import add from './add'
+
 /**
  * @name mean
  * @since v0.1.0
- * @category Array
+ * @category Number
  * @sig [Number] -> Number
  * @description Get the mean of a set of numbers
  * @param  {Array} x An amount of numbers to get the mean from
@@ -9,15 +11,15 @@
  *
  * @example
  * mean([1, 2, 3, 2]) // => 2
- * mean([]) // => NaN
- * mean() // => NaN
+ * mean([]) // => 0
+ * mean() // => 0
  */
 const mean = (x = []) => {
   if (!x.length) {
     return 0
   }
 
-  return x.reduce((a, v) => a + v, 0) / x.length
+  return x.reduce(add, 0) / x.length
 }
 
 export default mean
