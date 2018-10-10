@@ -4,6 +4,7 @@ import isNil from './isNil'
 /**
  * @name is
  * @since v0.1.0
+ * @deprecated Since v0.9.2 - Very low use case use type
  * @category Function
  * @sig (* -> {*}) -> a -> Boolean
  * @description
