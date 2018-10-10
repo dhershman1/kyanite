@@ -743,59 +743,6 @@
   };
   var subtract$1 = curry(subtract);
 
-  var capitalize = function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
-
-  var fuzzySearch = function fuzzySearch(needle, haystack) {
-    var hLen = haystack.length;
-    var nLen = needle.length;
-    var j = 0;
-    if (nLen > hLen) {
-      return false;
-    }
-    if (nLen === hLen) {
-      return needle === haystack;
-    }
-    outer: for (var i = 0; i < nLen; i++) {
-      var nChar = needle.charCodeAt(i);
-      while (j < hLen) {
-        if (haystack.charCodeAt(j++) === nChar) {
-          continue outer;
-        }
-      }
-      return false;
-    }
-    return true;
-  };
-  var fuzzySearch$1 = curry(fuzzySearch);
-
-  var join = function join(str, list) {
-    return list.join(str);
-  };
-  var join$1 = curry(join);
-
-  var split = function split(char, str) {
-    return str.split(char);
-  };
-  var split$1 = curry(split);
-
-  var toLower = function toLower(a) {
-    return a.toLowerCase();
-  };
-
-  var toUpper = function toUpper(a) {
-    return a.toUpperCase();
-  };
-
-  var trim = function trim(str) {
-    return str.trim();
-  };
-
-  var words = function words(str) {
-    return trim(str).split(/\s+/);
-  };
-
   var any = function any(schema, obj) {
     return Object.keys(schema).some(function (key) {
       return schema[key](obj[key]);
@@ -914,6 +861,59 @@
   };
   var whole$1 = curry(whole);
 
+  var capitalize = function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
+  var fuzzySearch = function fuzzySearch(needle, haystack) {
+    var hLen = haystack.length;
+    var nLen = needle.length;
+    var j = 0;
+    if (nLen > hLen) {
+      return false;
+    }
+    if (nLen === hLen) {
+      return needle === haystack;
+    }
+    outer: for (var i = 0; i < nLen; i++) {
+      var nChar = needle.charCodeAt(i);
+      while (j < hLen) {
+        if (haystack.charCodeAt(j++) === nChar) {
+          continue outer;
+        }
+      }
+      return false;
+    }
+    return true;
+  };
+  var fuzzySearch$1 = curry(fuzzySearch);
+
+  var join = function join(str, list) {
+    return list.join(str);
+  };
+  var join$1 = curry(join);
+
+  var split = function split(char, str) {
+    return str.split(char);
+  };
+  var split$1 = curry(split);
+
+  var toLower = function toLower(a) {
+    return a.toLowerCase();
+  };
+
+  var toUpper = function toUpper(a) {
+    return a.toUpperCase();
+  };
+
+  var trim = function trim(str) {
+    return str.trim();
+  };
+
+  var words = function words(str) {
+    return trim(str).split(/\s+/);
+  };
+
   exports.compact = compact;
   exports.concatMap = concatMap$1;
   exports.difference = difference$1;
@@ -1008,14 +1008,6 @@
   exports.rem = rem$1;
   exports.round = round$1;
   exports.subtract = subtract$1;
-  exports.capitalize = capitalize;
-  exports.fuzzySearch = fuzzySearch$1;
-  exports.join = join$1;
-  exports.split = split$1;
-  exports.toLower = toLower;
-  exports.toUpper = toUpper;
-  exports.trim = trim;
-  exports.words = words;
   exports.any = any$1;
   exports.assign = assign$1;
   exports.compress = compress;
@@ -1033,6 +1025,14 @@
   exports.unzip = unzip;
   exports.values = values;
   exports.whole = whole$1;
+  exports.capitalize = capitalize;
+  exports.fuzzySearch = fuzzySearch$1;
+  exports.join = join$1;
+  exports.split = split$1;
+  exports.toLower = toLower;
+  exports.toUpper = toUpper;
+  exports.trim = trim;
+  exports.words = words;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
