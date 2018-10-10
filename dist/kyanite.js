@@ -176,16 +176,6 @@
   };
   var maxBy$1 = curry(maxBy);
 
-  var mean = function mean() {
-    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    if (!x.length) {
-      return 0;
-    }
-    return x.reduce(function (a, v) {
-      return a + v;
-    }, 0) / x.length;
-  };
-
   var min = function min(list) {
     return list.reduce(function (a, b) {
       return a <= b ? a : b;
@@ -296,10 +286,17 @@
   };
   var reduce$1 = curry(reduce);
 
+  var not = function not(x) {
+    return !x;
+  };
+
+  var complement = function complement(fn, a) {
+    return not(fn(a));
+  };
+  var complement$1 = curry(complement);
+
   var reject = function reject(fn, list) {
-    return list.filter(function (v) {
-      return !fn(v);
-    });
+    return list.filter(complement$1(fn));
   };
   var reject$1 = curry(reject);
 
@@ -429,15 +426,6 @@
     return p(a) ? f(a) : g(a);
   };
   var branch$1 = curry(branch);
-
-  var not = function not(x) {
-    return !x;
-  };
-
-  var complement = function complement(fn, a) {
-    return not(fn(a));
-  };
-  var complement$1 = curry(complement);
 
   var compose = function compose(fn, gn, a) {
     return fn(gn(a));
@@ -719,6 +707,14 @@
   };
   var lcm$1 = curry(lcm);
 
+  var mean = function mean() {
+    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    if (!x.length) {
+      return 0;
+    }
+    return x.reduce(add$1, 0) / x.length;
+  };
+
   var multiply = function multiply(a, b) {
     return a * b;
   };
@@ -913,7 +909,6 @@
   exports.map = map$1;
   exports.max = max;
   exports.maxBy = maxBy$1;
-  exports.mean = mean;
   exports.min = min;
   exports.minBy = minBy$1;
   exports.partition = partition$1;
@@ -985,6 +980,7 @@
   exports.isOdd = isOdd;
   exports.isPrime = isPrime;
   exports.lcm = lcm$1;
+  exports.mean = mean;
   exports.multiply = multiply$1;
   exports.pow = pow$1;
   exports.rem = rem$1;
