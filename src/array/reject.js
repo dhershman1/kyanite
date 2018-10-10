@@ -1,3 +1,4 @@
+import complement from '../function/complement'
 import curry from '../function/curry'
 
 /**
@@ -24,6 +25,6 @@ import curry from '../function/curry'
  * rejecter([1, 2, 3, 4]) // => [1, 3]
  */
 const reject = (fn, list) =>
-  list.filter(v => !fn(v))
+  list.filter(complement(fn))
 
 export default curry(reject)
