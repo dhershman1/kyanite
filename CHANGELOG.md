@@ -11,6 +11,7 @@
 - Renamed `sub` to `subtract`
 - Renamed `mul` to `multiply`
 - Renamed `div` to `divide`
+- **Dropped modularity support please see issue #61 for more info**
 
 ### Improved
 
