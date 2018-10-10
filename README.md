@@ -18,8 +18,6 @@ A light weight pure functional library with single type utility functions and it
 - [Philosophy](#philosophy)
 - [Key Features](#key-features)
 - [How To](#how-to)
-- [Modular](#modular)
-- [Modular By Datatype](#modular-by-datatype)
 
 ## Changelog
 
@@ -42,10 +40,10 @@ The goal for the library is to be stripped down, light weight, and intuitive. Wi
 
 ## Key Features
 
-- Purely Functional, this was a big thing for me I wanted it to be easy to use functional system but also I wanted everything to be completely pure. I am happy with the results.
-- Emphasis on single type utility functions, all of the functionality is (Theroetically) based around accepting a single data type (String, Array, Object, Number) doing what it does, and giving you back a result. Making it reliable and stable while also staying lightweight
+- Purely Functional, this was a big thing for me I wanted it to be easy to use functional system but also I wanted everything to be completely pure. Making use of piping, and transducers to boost performance
+- Emphasis on single type utility functions, all of the functionality is (Theroetically) based around accepting a single data type doing what it does, and giving you back a result. Making it reliable and stable while also staying lightweight
 - Everything is curried! Setup static in one spot and then pass the rest of the dynamic data in later.
-- The library is completely modular, allowing you to bring in single functions for use! Making it super easy to only use the stuff you need or the stuff you want.
+- Data last ideaology
 
 ## How To
 
@@ -83,118 +81,5 @@ Local copy script tag
   const K = kyanite
 
   K.isEmpty({})
-</script>
-```
-
-## Modular
-
-Like [lodash](https://lodash.com/) each method is importable by itself or desturctured from the main object. The benefit to being split up and importable individually is this helps out with tree shaking and only using the functionality you need at that time. Keeping builds smaller.
-
-Examples:
-
-Standard module system
-
-```js
-import isEmpty from 'kyanite/isEmpty'
-
-isEmpty({})
-```
-
-Common JS
-
-```js
-const isEmpty = require('kyanite/isEmpty')
-
-isEmpty({})
-```
-
-CDN
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/isEmpty.js"></script>
-<script>
-  isEmpty({})
-</script>
-```
-
-Through your browser
-
-```html
-<script src="path/to/kyanite/isEmpty.js"></script>
-<script>
-  isEmpty({})
-</script>
-```
-
-## Modular By Datatype
-
-However You can also break it down by data type too!
-
-- `kyanite/array` : All of the `Array` based functions (`intersection`, `difference`, `concat`, etc...)
-- `kyanite/function` : All of the `"Function"` based functions (`curry`, `is`, `isEmpty`, etc...)
-- `kyanite/list` : All of the `List` based functions (`includes`, `nth`, `reverse`, etc...)
-- `kyanite/number` : All of the `Number` based functions (`add`, `gcd`, `isOdd`, etc...)
-- `kyanite/object` : All of the `Object` based functions (`sift`, `height`, `assign`, etc...)
-- `kyanite/string` : All of the `String` based functions (`capitalize`, `toLower`, `fuzzySearch`, etc...)
-
-Examples:
-
-Standard JS
-
-```js
-import KA from 'kyanite/array'
-import KF from 'kyanite/function'
-import KL from 'kyanite/list'
-import KN from 'kyanite/number'
-import KO from 'kyanite/object'
-import KS from 'kyanite/string'
-```
-
-CommonJs
-
-```js
-const KA = require('kyanite/array')
-const KF = require('kyanite/function')
-const KL = require('kyanite/list')
-const KN = require('kyanite/number')
-const KO = require('kyanite/object')
-const KS = require('kyanite/string')
-```
-
-CDN
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/array.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/function.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/list.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/number.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/object.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/string.js"></script>
-<script>
-  KA.filter()
-  KF.curry()
-  KL.includes()
-  KN.add()
-  KO.isEmpty()
-  KS.fuzzySearch()
-</script>
-```
-
-Through your browser
-
-```html
-<script src="path/to/kyanite/array.js"></script>
-<script src="path/to/kyanite/function.js"></script>
-<script src="path/to/kyanite/list.js"></script>
-<script src="path/to/kyanite/number.js"></script>
-<script src="path/to/kyanite/object.js"></script>
-<script src="path/to/kyanite/string.js"></script>
-<script>
-  KA.filter()
-  KF.curry()
-  KL.includes()
-  KN.add()
-  KO.isEmpty()
-  KS.fuzzySearch()
 </script>
 ```
