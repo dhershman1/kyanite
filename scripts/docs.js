@@ -39,7 +39,7 @@ const generateSyntax = (fnName, args) => {
 }
 
 globby(['src/**/*.js', '!src/index.js', '!src/_internals'])
-  .then(files => jsDocParser.getTemplateData({ files, 'no-cache': true }))
+  .then(files => jsDocParser.getTemplateData({ files: files.sort(), 'no-cache': true }))
   .then(data => fs.writeFile('info.json', JSON.stringify({
     name,
     version,

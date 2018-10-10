@@ -8,7 +8,7 @@ globby(['src/**/*.js', '!src/index.js', '!src/_internals'])
       const { dir, base, name } = path.parse(f)
 
       return `export { default as ${name} } from './${dir.replace('src/', '')}/${base}'`
-    }))
+    }).sort())
   .then(list => fs.writeFile('src/index.js', `${list.join('\n')}\n`, err => {
     if (err) {
       throw err
