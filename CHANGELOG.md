@@ -5,7 +5,7 @@
 ### Breaking Changes
 
 - Removed all deprecated functions
-  - `empty`, `deepClone`, `contains`, `strip`, `clon`, `head`, `tail`, and `pluck`
+  - `is`, `compact`, `compress` `empty`, `deepClone`, `contains`, `strip`, `clon`, `head`, `tail`, `pluck`, and `words`
 - Moved `last` and `first` into the list type rather than array
 - Renamed `sub` to `subtract`
 - Renamed `mul` to `multiply`
