@@ -11,7 +11,7 @@
 - Renamed `sub` to `subtract`
 - Renamed `mul` to `multiply`
 - Renamed `div` to `divide`
-- **Dropped modularity support please see issue #61 for more info**
+- **Dropped modularity support please see issue [#61](https://github.com/dhershman1/kyanite/issues/61) for more info**
 
 ### Improved
 
