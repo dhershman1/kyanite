@@ -21,6 +21,7 @@
 - Replaced `uglify-js` with `terser`
 - Moved `mean` to Number type rather than Array type
 - Cleaned up and fixed the `mean` documentation
+- Cleaned up `complement` and `reject` documentation
 
 ### New
 
