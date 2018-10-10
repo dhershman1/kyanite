@@ -4,13 +4,13 @@
 
 ### Breaking Changes
 
-- Flipped the way `sub` does math instead of `sub(2, 1) === 2 - 1` it will now be `sub(1, 2) === 2 - 1`
 - Removed all deprecated functions
   - `empty`, `deepClone`, `contains`, `strip`, `clon`, `head`, `tail`, and `pluck`
 - Moved `last` and `first` into the list type rather than array
 - Renamed `sub` to `subtract`
 - Renamed `mul` to `multiply`
 - Renamed `div` to `divide`
+- Flipped the way `subtract` does math instead of `subtract(2, 1) === 2 - 1` it will now be `subtract(1, 2) === 2 - 1`
 - **Dropped modularity support please see issue [#61](https://github.com/dhershman1/kyanite/issues/61) for more info**
 - **Renamed `identical` to `eq`**
 
