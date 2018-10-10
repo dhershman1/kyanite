@@ -4,6 +4,7 @@ import test from 'tape'
 test('complement -- Basic functionality', t => {
   t.false(complement(Array.isArray, []))
   t.true(complement(Array.isArray, 10))
+  t.same(complement(Number.isInteger, 42), false)
   t.end()
 })
 
