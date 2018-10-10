@@ -38,13 +38,13 @@ const generateSyntax = (fnName, args) => {
   return `${fnName}(${argsStr})`
 }
 
-globby(['src/**/*.js', '!src/index.js', '!src/_internals'])
-  .then(files => jsDocParser.getTemplateData({ files: files.sort(), 'no-cache': true }))
-  .then(data => fs.writeFile('info.json', JSON.stringify({
-    name,
-    version,
-    description,
-    docs: data.map(d => ({
+const files = globby.sync(['src/**/*.js', '!src/index.js', '!src/_internals'])
+
+fs.writeFileSync('info.json', JSON.stringify({
+  name,
+  version,
+  description,
+  docs: jsDocParser.getTemplateDataSync({ files }).map(d => ({
       since: d.since ? d.since : 'Unknown',
       deprecated: d.deprecated || false,
       category: d.category || 'Uncategorized',
@@ -56,13 +56,6 @@ globby(['src/**/*.js', '!src/index.js', '!src/_internals'])
       syntax: generateSyntax(d.name, d.params),
       usage: generateUsage(d.name)
     }))
-  }), err => {
-    if (err) {
-      throw err
-    }
-
-    console.log('Finished Writing Docs...')
   }))
-  .catch(err => {
-    throw err
-  })
+
+console.log('Finished Writing Docs...')

@@ -2,20 +2,13 @@ const fs = require('fs')
 const path = require('path')
 const globby = require('globby')
 
-globby(['src/**/*.js', '!src/index.js', '!src/_internals'])
-  .then(files =>
-    files.map(f => {
-      const { dir, base, name } = path.parse(f)
+const files = globby.sync(['src/**/*.js', '!src/index.js', '!src/_internals'])
+  .map(f => {
+    const { dir, base, name } = path.parse(f)
 
-      return `export { default as ${name} } from './${dir.replace('src/', '')}/${base}'`
-    }).sort())
-  .then(list => fs.writeFile('src/index.js', `${list.join('\n')}\n`, err => {
-    if (err) {
-      throw err
-    }
+    return `export { default as ${name} } from './${dir.replace('src/', '')}/${base}'`
+  }).join('\n')
 
-    console.log('Finished Writing index.js...')
-  }))
-  .catch(err => {
-    throw err
-  })
+fs.writeFileSync('src/index.js', `${files}\n`)
+
+console.log('Finished Writing Exports...')
