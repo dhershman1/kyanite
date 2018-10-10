@@ -16,6 +16,7 @@
 
 - `and` now accepts as many parameters as needed
 - `or` now accepts as many parameters as needed
+- Replaced `uglify-js` with `terser`
 
 ### New
 
