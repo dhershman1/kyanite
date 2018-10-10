@@ -472,6 +472,19 @@
   };
   var encase$1 = curry(encase);
 
+  var eq = function eq(a, b) {
+    if (a === b) {
+      return a !== 0 || 1 / a === 1 / b;
+    }
+    return a !== a && b !== b;
+  };
+  var eq$1 = curry(eq);
+
+  var eqBy = function eqBy(fn, a, b) {
+    return eq$1(fn(a), fn(b));
+  };
+  var eqBy$1 = curry(eqBy);
+
   var flip = function flip(fn, a, b) {
     return fn(b, a);
   };
@@ -486,14 +499,6 @@
     return b >= a;
   };
   var gte$1 = curry(gte);
-
-  var identical = function identical(a, b) {
-    if (a === b) {
-      return a !== 0 || 1 / a === 1 / b;
-    }
-    return a !== a && b !== b;
-  };
-  var identical$1 = curry(identical);
 
   var is = function is(Ctor, x) {
     return !isNil(x) && x.constructor === Ctor || x instanceof Ctor;
@@ -533,7 +538,7 @@
       }
     };
     var current = methods[aTy];
-    if (identical$1(a, b)) {
+    if (eq$1(a, b)) {
       return true;
     }
     if (current) {
@@ -549,7 +554,7 @@
         if (isComplex(aVal)) {
           return equal(aVal, bVal);
         }
-        return identical$1(aVal, bVal);
+        return eq$1(aVal, bVal);
       });
     }
     return false;
@@ -966,10 +971,11 @@
   exports.descendBy = descendBy$1;
   exports.either = either$1;
   exports.encase = encase$1;
+  exports.eq = eq$1;
+  exports.eqBy = eqBy$1;
   exports.flip = flip$1;
   exports.gt = gt$1;
   exports.gte = gte$1;
-  exports.identical = identical$1;
   exports.identity = identity;
   exports.is = is$1;
   exports.isEmpty = isEmpty;
