@@ -5,12 +5,13 @@ import curry from './curry'
  * @since v0.10.0
  * @category Function
  * @sig a -> a-> Boolean
- * @description Performs a check to see if the items are equal in the sense that they reference the same memory
+ * @description Performs an equality check of two values
  * @param  {Any} a The first value to compare
  * @param  {Any} b The second value to compare
  * @return {Boolean} Returns a boolean based on the check
  *
  * @example
+ * eq(1, 1) // => true
  * eq(NaN, NaN) // => true
  * eq([1], [1]) // => false
  *
