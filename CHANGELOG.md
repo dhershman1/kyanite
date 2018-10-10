@@ -25,9 +25,21 @@
 - Added `flip` function which flips the params sent to a given function
 - Added `eqBy` function which compares two values after applying a function to both
 
+## v0.9.2
+
+### Deprecated
+
+- `is` There isn't a solid enough use case for this aside from maybe a test suite, this is also pretty messy data wise
+  - Try using `type` instead
+- `identical` As it is going to become the `eq` function in v0.10.0
+- `compact` use `filter` instead
+- `compress` use `sift` instead
+- `words` The use case is basically just using `split` anyway
+
 ### Fixed
 
-- `compose` example with incorrect math
+- Incorrect documentation on `compose`
+- Typo in `includes` documentation
 
 ## v0.9.1
 

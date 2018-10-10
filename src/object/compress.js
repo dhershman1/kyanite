@@ -3,6 +3,7 @@ import isNil from '../function/isNil'
 /**
  * @name compress
  * @since v0.1.0
+ * @deprecated Since v0.9.2 use sift
  * @category Object
  * @sig Object a -> Object b
  * @description Takes an object and compresses it down removing undefined or null values

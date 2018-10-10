@@ -3,6 +3,7 @@ import trim from './trim'
 /**
  * @name words
  * @since v0.1.0
+ * @deprecated Since v0.9.2 -- Use split instead
  * @category String
  * @sig String -> Array String
  * @description

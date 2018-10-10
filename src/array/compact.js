@@ -3,6 +3,7 @@ import identity from '../function/identity'
 /**
  * @name compact
  * @since v0.1.0
+ * @deprecated Since v0.9.2 -- Use filter
  * @category Array
  * @sig Array -> Array
  * @description Takes an array of items and removes all of the falsy values
