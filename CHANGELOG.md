@@ -12,7 +12,7 @@
 - Renamed `mul` to `multiply`
 - Renamed `div` to `divide`
 - **Dropped modularity support please see issue [#61](https://github.com/dhershman1/kyanite/issues/61) for more info**
-- Renamed `identical` to `eq`
+- **Renamed `identical` to `eq`**
 
 ### Improved
 
@@ -23,6 +23,7 @@
 ### New
 
 - Added `flip` function which flips the params sent to a given function
+- Added `eqBy` function which compares two values after applying a function to both
 
 ### Fixed
 
