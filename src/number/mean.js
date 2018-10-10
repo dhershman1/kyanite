@@ -5,8 +5,8 @@ import add from './add'
  * @since v0.1.0
  * @category Number
  * @sig [Number] -> Number
- * @description Get the mean of a set of numbers
- * @param  {Array} x An amount of numbers to get the mean from
+ * @description Gets the average from a given array of numbers
+ * @param  {Array} x An array of numbers to add together
  * @return {Number} Returns the mean avg of the numbers
  *
  * @example

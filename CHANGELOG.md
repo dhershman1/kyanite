@@ -19,6 +19,8 @@
 - `and` now accepts as many parameters as needed
 - `or` now accepts as many parameters as needed
 - Replaced `uglify-js` with `terser`
+- Moved `mean` to Number type rather than Array type
+- Cleaned up and fixed the `mean` documentation
 
 ### New
 
