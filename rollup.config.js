@@ -1,14 +1,14 @@
 import babel from 'rollup-plugin-babel'
 import cleanup from 'rollup-plugin-cleanup'
 import filesize from 'rollup-plugin-filesize'
-import { uglify } from 'rollup-plugin-uglify'
+import { terser } from 'rollup-plugin-terser'
 
 export default [
   {
     input: './src/index.js',
     plugins: [
       babel(),
-      uglify(),
+      terser(),
       filesize()
     ],
     output: {
