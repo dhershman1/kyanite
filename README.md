@@ -12,27 +12,12 @@ A light weight pure functional library with single type utility functions and it
 
 ## Contents
 
-- [Changelog](#changelog)
-- [Credit](#credit)
-- [Documentation](#documentation)
+- [Changelog](https://github.com/dhershman1/kyanite/blob/master/CHANGELOG.md)
+- [Documentation](https://www.dusty.codes/documentation/kyanite)
 - [Philosophy](#philosophy)
 - [Key Features](#key-features)
 - [How To](#how-to)
-
-## Changelog
-
-You can view the changelog here: https://github.com/dhershman1/kyanite/blob/master/CHANGELOG.md
-
-## Credit
-
-A lot of the if not most of the inpiration for this library came from 2 libraries I follow closely, Primarily most of it stems from:
-
-- [foreword](https://github.com/abstract-tools/foreword) by [Abstract Tools](https://github.com/abstract-tools) which is a very nice and easy to use library developed by a close friend. This is where a lot of functionality, AND the idea of a pure single data type system came from I can't recommend it enough.
-- [Ramdajs](http://ramdajs.com/) by [Ramda](https://github.com/ramda) a large and fairly handy library where the original idea sparked
-
-## Documentation
-
-You can find the documentation here: https://www.dusty.codes/documentation/kyanite
+- [Credit](#credit)
 
 ## Philosophy
 
@@ -83,3 +68,10 @@ Local copy script tag
   K.isEmpty({})
 </script>
 ```
+
+## Credit
+
+A lot of the if not most of the inpiration for this library came from 2 libraries I follow closely, Primarily most of it stems from:
+
+- [foreword](https://github.com/abstract-tools/foreword) by [Abstract Tools](https://github.com/abstract-tools) which is a very nice and easy to use library developed by a close friend. This is where a lot of functionality, AND the idea of a pure single data type system came from I can't recommend it enough.
+- [Ramdajs](http://ramdajs.com/) by [Ramda](https://github.com/ramda) a large and fairly handy library where the original idea sparked
