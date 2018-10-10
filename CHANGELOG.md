@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.9.2
+
+### Deprecated
+
+- `is` There isn't a solid enough use case for this aside from maybe a test suite, this is also pretty messy data wise
+  - Try using `type` instead
+- `identical` As it is going to become the `eq` function in v0.10.0
+- `compact` use `filter` instead
+- `compress` use `sift` instead
+- `words` The use case is basically just using `split` anyway
+
+### Fixed
+
+- Incorrect documentation on `compose`
+- Typo in `includes` documentation
+
 ## v0.9.1
 
 ### Deprecated
