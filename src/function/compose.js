@@ -18,7 +18,7 @@ import curry from './curry'
  * const comp = compose(Math.sqrt, x => x + 1)
  *
  * comp(99) // => 10
- * comp(199) // => 20
+ * comp(399) // => 20
  */
 const compose = (fn, gn, a) =>
   fn(gn(a))
