@@ -66,6 +66,7 @@ const K = require('kyanite')
 CDN
 
 ```html
+<!-- It is recommended to replace the @latest with a strict version number for production -->
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.min.js"></script>
 <script>
   const K = kyanite
