@@ -27,6 +27,7 @@
 
 - Added `flip` function which flips the params sent to a given function
 - Added `eqBy` function which compares two values after applying a function to both
+- Added `sample` function which takes a list and pulls a random value from it
 
 ## v0.9.2
 

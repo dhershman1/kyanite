@@ -643,6 +643,10 @@
     return Array.isArray(list) ? list.slice().reverse() : list.split('').reverse().join('');
   };
 
+  var sample = function sample(list) {
+    return list[Math.floor(Math.random() * list.length)];
+  };
+
   var slice = function slice(a, b, list) {
     return list.slice(a, b);
   };
@@ -970,6 +974,7 @@
   exports.last = last;
   exports.nth = nth$1;
   exports.reverse = reverse;
+  exports.sample = sample;
   exports.slice = slice$1;
   exports.add = add$1;
   exports.between = between$1;
