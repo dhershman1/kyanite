@@ -37,13 +37,20 @@ The goal for the library is to be stripped down, light weight, and intuitive. Wi
 Standard module system
 
 ```js
+// This pulls from the actual source folder and builds with
+// Your own build setup so you shouldn't need the dev distro
 import K from 'kyanite'
+// However if you want to be sure just in case
+import K from 'kyanite/dist/kyanite.js'
 ```
 
 Common JS
 
 ```js
+// For the prod minified version
 const K = require('kyanite')
+// For the dev/debug friendly version
+const K = require('kyanite/dist/kyanite.js')
 ```
 
 CDN
@@ -51,6 +58,8 @@ CDN
 ```html
 <!-- It is recommended to replace the @latest with a strict version number for production -->
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.min.js"></script>
+<!-- To use the debug friendly kyanite simply remove .min from the filename -->
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.js"></script>
 <script>
   const K = kyanite
 
@@ -61,7 +70,10 @@ CDN
 Local copy script tag
 
 ```html
+<!-- To use the prod minified version -->
 <script src="/path/to/kyantie.min.js"></script>
+<!-- To use the dev/debug friendly version -->
+<script src="/path/to/kyantie.js"></script>
 <script>
   const K = kyanite
 
