@@ -1,3 +1,5 @@
+import compose from '../function/compose'
+import filter from '../array/filter'
 import range from '../function/range'
 import rem from './rem'
 
@@ -17,8 +19,6 @@ import rem from './rem'
  * factors(-1) // => []
  * factors(NaN) // => []
  */
-const factors = (x = 0) =>
-  range(0, x)
-    .filter(i => rem(i, x) === 0)
+const factors = (x = 0) => compose(filter(i => rem(i, x) === 0), range(0), x)
 
 export default factors
