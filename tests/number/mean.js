@@ -15,11 +15,15 @@ test('mean -- Returns mean of a single value list', t => {
 })
 
 test('mean -- Returns NaN for empty lists', t => {
-  t.equal(mean([]), 0)
+  t.same(Number.isNaN(mean([])), true)
   t.end()
 })
 
-test('mean -- Returns NaN when nothing is passed', t => {
-  t.equal(mean(), 0)
-  t.end()
+test('mean -- Errors when provided nothing', t => {
+  try {
+    mean()
+  } catch (err) {
+    t.is(err.message, 'Cannot read property \'length\' of undefined')
+    t.end()
+  }
 })
