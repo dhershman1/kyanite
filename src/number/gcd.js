@@ -22,12 +22,6 @@ import curry from '../function/curry'
  * a(90) // => 10
  * a(93) // => 1
 */
-const gcd = (a, b) => {
-  if (!b) {
-    return a
-  }
-
-  return gcd(b, a % b)
-}
+const gcd = (a, b) => b ? gcd(b, a % b) : a
 
 export default curry(gcd)
