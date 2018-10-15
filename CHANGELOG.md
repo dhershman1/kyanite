@@ -13,6 +13,7 @@
 - Flipped the way `subtract` does math instead of `subtract(2, 1) === 2 - 1` it will now be `subtract(1, 2) === 2 - 1`
 - **Dropped modularity support please see issue [#61](https://github.com/dhershman1/kyanite/issues/61) for more info**
 - **Renamed `identical` to `eq`**
+- `mean` has gone back to returning NaN if given an empty array and will throw a `Ref Error` if given no params
 
 ### Improved
 
@@ -20,9 +21,15 @@
 - `or` now accepts as many parameters as needed
 - Replaced `uglify-js` with `terser`
 - Moved `mean` to Number type rather than Array type
+- Also cleaned up `mean`
 - Cleaned up and fixed the `mean` documentation
 - Cleaned up `complement` and `reject` documentation
 - Param rename in `pipe` to be more verbose/accurate
+- Cleaned up `sortBy`
+- Cleaned up `gcd`
+- Cleaned up `factors`
+- Moved `length` to list type
+- `isEqual`'s documentation needed more examples
 
 ### New
 
