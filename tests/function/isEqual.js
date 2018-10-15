@@ -139,3 +139,23 @@ test('isEqual -- Handles more complex object combinations', t => {
   }), true, 'Overly complex data is equal')
   t.end()
 })
+
+test('isEqual -- Handles basic Set data types', t => {
+  const setA = new Set([1, 2, 3])
+  const setB = new Set([1, 2, 3])
+
+  t.same(isEqual(setA, setB), true)
+  t.same(isEqual(setA, [1, 2, 3]), false)
+  t.same(isEqual([1, 2, 3], setB), false)
+  t.end()
+})
+
+test('isEqual -- Handles more complex Set data types', t => {
+  const setA = new Set([1, 2, { a: 1, b: 2 }])
+  const setB = new Set([1, 2, { a: 1, b: 2 }])
+
+  t.same(isEqual(setA, setB), true)
+  t.same(isEqual(setA, [1, 2, { a: 1, b: 2 }]), false)
+  t.same(isEqual([1, 2, { a: 1, b: 2 }], setB), false)
+  t.end()
+})

@@ -1,14 +1,23 @@
-import eq from '../function/eq'
-import type from '../function/type'
 import and from '../function/and'
 import difference from '../array/difference'
+import eq from '../function/eq'
+import type from '../function/type'
 
 const isComplex = a => Array.isArray(a) || Object.prototype.toString.call(a) === '[object Object]'
 
+const checkSet = (a, b) => {
+  if (and(a.constructor === Set, b.constructor === Set)) {
+    return [[...a], [...b]]
+  }
+
+  return [a, b]
+}
+
 const equal = (a, b) => {
-  const aTy = type(a)
-  const aKeys = Object.keys(a)
-  const bKeys = Object.keys(b)
+  const [convA, convB] = checkSet(a, b)
+  const aTy = type(convA)
+  const aKeys = Object.keys(convA)
+  const bKeys = Object.keys(convB)
   const regVals = ['source', 'global', 'ignoreCase', 'multiline', 'sticky', 'unicode']
 
   const methods = {
@@ -17,22 +26,22 @@ const equal = (a, b) => {
   }
   const current = methods[aTy]
 
-  if (eq(a, b)) {
+  if (eq(convA, convB)) {
     return true
   }
 
   if (current) {
-    return current(a, b)
+    return current(convA, convB)
   }
 
   if (!and(aKeys.length === bKeys.length, !difference(aKeys, bKeys).length)) {
     return false
   }
 
-  if (isComplex(a)) {
+  if (isComplex(convA)) {
     return aKeys.every(key => {
-      const aVal = a[key]
-      const bVal = b[key]
+      const aVal = convA[key]
+      const bVal = convB[key]
 
       if (isComplex(aVal)) {
         return equal(aVal, bVal)
