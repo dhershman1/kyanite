@@ -82,6 +82,7 @@ test('isEqual -- Handles Object types nicely', t => {
   t.same(isEqual(q, q), true, 'Object var compared against itself is equal')
   t.same(isEqual({ a: 1, b: 2 }, { a: 1, b: 2 }), true, 'Stacked Object is equal')
   t.same(isEqual({ a: 1, b: 2 }, { b: 2, a: 1 }), true, 'Stacked but switched object is equal')
+  t.same(isEqual({ 'a': 1 }, { a: 1 }), true)
   t.same(isEqual({}, { a: 1 }), false)
   t.same(isEqual({}, { b: 2 }), false)
   t.same(isEqual({ a: 1 }, { a: '1' }), false)
