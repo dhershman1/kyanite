@@ -30,6 +30,7 @@
 - Cleaned up `factors`
 - Moved `length` to list type
 - `isEqual`'s documentation needed more examples
+- `isEqual` is able to handle `Set` data types
 
 ### New
 
