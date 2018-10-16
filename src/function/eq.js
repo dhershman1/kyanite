@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name eq
@@ -35,4 +35,4 @@ const eq = (a, b) => {
   return a !== a && b !== b // eslint-disable-line no-self-compare
 }
 
-export default curry(eq)
+export default _curry2(eq)

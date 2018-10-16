@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name concatMap
@@ -22,4 +22,4 @@ import curry from '../function/curry'
 const concatMap = (fn, arr) =>
   arr.reduce((acc, v) => acc.concat(fn(v)), [])
 
-export default curry(concatMap)
+export default _curry2(concatMap)

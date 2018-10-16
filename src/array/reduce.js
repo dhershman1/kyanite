@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry3 from '../_internals/_curry3'
 
 /**
  * @name reduce
@@ -24,4 +24,4 @@ import curry from '../function/curry'
  */
 const reduce = (fn, init, list) => list.reduce(fn, init)
 
-export default curry(reduce)
+export default _curry3(reduce)
