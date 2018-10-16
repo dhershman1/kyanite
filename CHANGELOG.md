@@ -31,6 +31,7 @@
 - Moved `length` to list type
 - `isEqual`'s documentation needed more examples
 - `isEqual` is able to handle `Set` data types
+- `isEmpty` uses `isNil` now instead of `!x`
 
 ### New
 

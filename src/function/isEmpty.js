@@ -1,3 +1,5 @@
+import isNil from './isNil'
+
 /**
  * @name isEmpty
  * @since v0.1.0
@@ -17,6 +19,6 @@
  * isEmpty(true) // => true
  * isEmpty(false) // => true
  */
-const isEmpty = x => !x || !Object.keys(x).length
+const isEmpty = x => isNil(x) || !Object.keys(x).length
 
 export default isEmpty
