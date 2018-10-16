@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 import not from './not'
 
 /**
@@ -19,4 +19,4 @@ import not from './not'
  */
 const complement = (fn, a) => not(fn(a))
 
-export default curry(complement)
+export default _curry2(complement)

@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name ap
@@ -24,4 +24,4 @@ const ap = (fns, list) =>
   fns.reduce((acc, f) =>
     acc.concat(list.map(f)), [])
 
-export default curry(ap)
+export default _curry2(ap)

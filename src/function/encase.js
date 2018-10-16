@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name encase
@@ -29,4 +29,4 @@ const encase = (fn, a) => {
   }
 }
 
-export default curry(encase)
+export default _curry2(encase)

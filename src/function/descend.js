@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name descend
@@ -16,4 +16,4 @@ import curry from './curry'
  */
 const descend = (a, b) => a > b ? -1 : a < b ? 1 : 0
 
-export default curry(descend)
+export default _curry2(descend)

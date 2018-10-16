@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 import _equal from '../_internals/_equal'
 
 /**
@@ -31,4 +31,4 @@ import _equal from '../_internals/_equal'
  */
 const isEqual = (a, b) => _equal(a, b)
 
-export default curry(isEqual)
+export default _curry2(isEqual)

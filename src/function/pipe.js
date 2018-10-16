@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name pipe
@@ -22,4 +22,4 @@ import curry from './curry'
 const pipe = (arr, init) =>
   arr.reduce((acc, fn) => fn(acc), init)
 
-export default curry(pipe)
+export default _curry2(pipe)

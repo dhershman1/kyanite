@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 import ensureArray from '../array/ensureArray'
 
 /**
@@ -23,4 +23,4 @@ import ensureArray from '../array/ensureArray'
  */
 const apply = (fn, a) => fn(...ensureArray(a))
 
-export default curry(apply)
+export default _curry2(apply)

@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name range
@@ -32,4 +32,4 @@ const range = (from, to) => {
   return result
 }
 
-export default curry(range)
+export default _curry2(range)
