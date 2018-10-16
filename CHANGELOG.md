@@ -18,8 +18,6 @@
 ### Improved
 
 - Huge performance gains, added internal curry backend since functions rely on each other so much
-- `and` now accepts as many parameters as needed
-- `or` now accepts as many parameters as needed
 - Replaced `uglify-js` with `terser`
 - Moved `mean` to Number type rather than Array type
 - Also cleaned up `mean`
