@@ -1,5 +1,5 @@
 import assign from '../object/assign'
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 import has from '../object/has'
 
 /**
@@ -30,4 +30,4 @@ const groupBy = (fn, list) => list.reduce((acc, v) => {
   return assign(acc, tmp)
 }, {})
 
-export default curry(groupBy)
+export default _curry2(groupBy)

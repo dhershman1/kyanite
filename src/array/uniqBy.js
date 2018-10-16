@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name uniqBy
@@ -29,4 +29,4 @@ const uniqBy = (fn, list) =>
     return acc
   }, [])
 
-export default curry(uniqBy)
+export default _curry2(uniqBy)

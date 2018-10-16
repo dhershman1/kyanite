@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name find
@@ -37,4 +37,4 @@ const find = (fn, list) => {
   return false
 }
 
-export default curry(find)
+export default _curry2(find)

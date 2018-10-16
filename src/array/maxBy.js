@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name maxBy
@@ -22,4 +22,4 @@ import curry from '../function/curry'
  */
 const maxBy = (fn, list) => list.reduce((a, b) => fn(a) >= fn(b) ? a : b)
 
-export default curry(maxBy)
+export default _curry2(maxBy)

@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name intersection
@@ -21,4 +21,4 @@ import curry from '../function/curry'
  */
 const intersection = (a, b) => a.filter(x => b.indexOf(x) !== -1)
 
-export default curry(intersection)
+export default _curry2(intersection)

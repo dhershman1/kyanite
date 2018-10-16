@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name map
@@ -25,4 +25,4 @@ import curry from '../function/curry'
  */
 const map = (fn, list) => list.map(fn)
 
-export default curry(map)
+export default _curry2(map)

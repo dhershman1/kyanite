@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name some
@@ -28,4 +28,4 @@ import curry from '../function/curry'
  */
 const some = (fn, x) => x.some(fn)
 
-export default curry(some)
+export default _curry2(some)

@@ -1,5 +1,5 @@
 import complement from '../function/complement'
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name reject
@@ -27,4 +27,4 @@ import curry from '../function/curry'
 const reject = (fn, list) =>
   list.filter(complement(fn))
 
-export default curry(reject)
+export default _curry2(reject)

@@ -1,5 +1,5 @@
 import ascend from '../function/ascend'
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 import on from '../function/on'
 import sort from './sort'
 
@@ -34,4 +34,4 @@ import sort from './sort'
  */
 const sortBy = (fn, arr) => sort(on(ascend, fn), arr)
 
-export default curry(sortBy)
+export default _curry2(sortBy)

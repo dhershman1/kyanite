@@ -1,5 +1,5 @@
 import concatMap from './concatMap'
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 import identity from '../function/identity'
 
 /**
@@ -23,4 +23,4 @@ import identity from '../function/identity'
 const remove = (i, x) =>
   concatMap(identity, [x.slice(0, i), x.slice(i + 1)])
 
-export default curry(remove)
+export default _curry2(remove)

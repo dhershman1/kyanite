@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name findIndex
@@ -33,4 +33,4 @@ const findIndex = (fn, list) => {
   return undefined
 }
 
-export default curry(findIndex)
+export default _curry2(findIndex)

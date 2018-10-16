@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name dropWhile
@@ -25,4 +25,4 @@ const dropWhile = (fn, arr) => {
   return i < 0 ? [] : arr.slice(i)
 }
 
-export default curry(dropWhile)
+export default _curry2(dropWhile)

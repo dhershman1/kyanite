@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name difference
@@ -21,4 +21,4 @@ import curry from '../function/curry'
  */
 const difference = (first, second) => first.filter(x => second.indexOf(x) === -1)
 
-export default curry(difference)
+export default _curry2(difference)

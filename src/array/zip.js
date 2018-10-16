@@ -1,5 +1,5 @@
 import assign from '../object/assign'
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name zip
@@ -35,4 +35,4 @@ const zip = (x, y) => {
   }, {})
 }
 
-export default curry(zip)
+export default _curry2(zip)

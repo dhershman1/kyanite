@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name partition
@@ -26,4 +26,4 @@ const partition = (fn, list) =>
   list.reduce(([pass, fail], v) =>
     fn(v) ? [pass.concat(v), fail] : [pass, fail.concat(v)], [[], []])
 
-export default curry(partition)
+export default _curry2(partition)
