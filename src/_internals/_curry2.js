@@ -1,4 +1,6 @@
-
+/**
+ * This is an optimized internal curry function for 2 param functions
+ */
 function _curry2 (fn) {
   return function f2 (a, b) {
     if (!arguments.length) {
