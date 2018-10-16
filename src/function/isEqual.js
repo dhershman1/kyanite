@@ -1,5 +1,9 @@
 import _curry2 from '../_internals/_curry2'
-import _equal from '../_internals/_equal'
+import compose from '../function/compose'
+import eq from './eq'
+import length from '../list/length'
+import type from './type'
+// import _equal from '../_internals/_equal'
 
 /**
  * @name isEqual
@@ -29,6 +33,40 @@ import _equal from '../_internals/_equal'
  * isEqual(false, new Boolean(false)) // => false
  * isEqual(5, new Number(5)) // => false
  */
-const isEqual = (a, b) => _equal(a, b)
+const isEqual = (a, b) => {
+  if (type(a) !== type(b)) {
+    return false
+  }
+
+  switch (type(a)) {
+    case 'String':
+    case 'Number':
+    case 'Boolean':
+    case 'Promise':
+      return eq(a, b)
+    case 'Date':
+      return a.valueOf() === b.valueOf()
+    case 'RegExp':
+      return ['source', 'global', 'ignoreCase', 'multiline', 'sticky', 'unicode'].every(p => a[p] === b[p])
+    default:
+      const isComplex = a => Array.isArray(a) || Object.prototype.toString.call(a) === '[object Object]'
+      const keyCheck = compose(length, Object.keys)
+
+      if (keyCheck(a) !== keyCheck(b)) {
+        return false
+      }
+
+      return Object.keys(a).every(key => {
+        const aVal = a[key]
+        const bVal = b[key]
+
+        if (isComplex(aVal)) {
+          return isEqual(aVal, bVal)
+        }
+
+        return eq(aVal, bVal)
+      })
+  }
+}
 
 export default _curry2(isEqual)
