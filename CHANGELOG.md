@@ -13,12 +13,12 @@
 - Flipped the way `subtract` does math instead of `subtract(2, 1) === 2 - 1` it will now be `subtract(1, 2) === 2 - 1`
 - **Dropped modularity support please see issue [#61](https://github.com/dhershman1/kyanite/issues/61) for more info**
 - **Renamed `identical` to `eq`**
-- `mean` has gone back to returning NaN if given an empty array and will throw a `Ref Error` if given no params
+- `mean` has gone back to returning `NaN` if given an empty array and will throw a `Ref Error` if given no params
 - Removed currying from `assign` based on new strategy, will need to re approach this perhaps?
 
 ### Improved
 
-- Huge performance gains, added internal curry backend since functions rely on each other so much
+- **Huge performance gains, added internal curry backend since functions rely on each other so much**
 - Replaced `uglify-js` with `terser`
 - Moved `mean` to Number type rather than Array type
 - Also cleaned up `mean`
