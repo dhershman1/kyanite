@@ -14,6 +14,7 @@
 - **Dropped modularity support please see issue [#61](https://github.com/dhershman1/kyanite/issues/61) for more info**
 - **Renamed `identical` to `eq`**
 - `mean` has gone back to returning NaN if given an empty array and will throw a `Ref Error` if given no params
+- Removed currying from `assign` based on new strategy, will need to re approach this perhaps?
 
 ### Improved
 

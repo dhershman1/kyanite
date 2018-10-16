@@ -1,5 +1,3 @@
-import curryN from '../function/curryN'
-
 /**
  * @name assign
  * @since v0.1.0
@@ -23,4 +21,4 @@ const assign = (...args) =>
       return obj
     }, acc), {})
 
-export default curryN(2, assign)
+export default assign
