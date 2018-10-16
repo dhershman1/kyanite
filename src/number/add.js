@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name add
@@ -22,4 +22,4 @@ import curry from '../function/curry'
  */
 const add = (a, b) => Number(a) + Number(b)
 
-export default curry(add)
+export default _curry2(add)

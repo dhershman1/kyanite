@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name gcd
@@ -24,4 +24,4 @@ import curry from '../function/curry'
 */
 const gcd = (a, b) => b ? gcd(b, a % b) : a
 
-export default curry(gcd)
+export default _curry2(gcd)

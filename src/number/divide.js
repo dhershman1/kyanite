@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name divide
@@ -22,4 +22,4 @@ import curry from '../function/curry'
  */
 const divide = (a, b) => b / a
 
-export default curry(divide)
+export default _curry2(divide)

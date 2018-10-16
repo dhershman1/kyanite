@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry3 from '../_internals/_curry3'
 
 /**
  * @name between
@@ -30,4 +30,4 @@ import curry from '../function/curry'
  */
 const between = (a, b, n) => a <= n && b >= n
 
-export default curry(between)
+export default _curry3(between)

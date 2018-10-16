@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name subtract
@@ -22,4 +22,4 @@ import curry from '../function/curry'
  */
 const subtract = (a, b) => b - a
 
-export default curry(subtract)
+export default _curry2(subtract)

@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name round
@@ -22,4 +22,4 @@ import curry from '../function/curry'
  */
 const round = (precision, num) => Number(`${Math.round(`${num}e${precision}`)}e-${precision}`)
 
-export default curry(round)
+export default _curry2(round)

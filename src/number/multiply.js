@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name multiply
@@ -22,4 +22,4 @@ import curry from '../function/curry'
  */
 const multiply = (a, b) => a * b
 
-export default curry(multiply)
+export default _curry2(multiply)
