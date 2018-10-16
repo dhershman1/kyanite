@@ -1,5 +1,4 @@
-import curryN from './curryN'
-import identity from './identity'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name and
@@ -16,6 +15,6 @@ import identity from './identity'
  * and(true, false) // => false
  * and(false, false) // => false
  */
-const and = (...args) => args.every(identity)
+const and = (a, b) => a && b
 
-export default curryN(2, and)
+export default _curry2(and)

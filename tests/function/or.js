@@ -31,9 +31,3 @@ test('or -- Is curried false', t => {
   t.same(a(false), false)
   t.end()
 })
-
-test('or -- Handles more than two arguments', t => {
-  t.same(or(false, false, true), true)
-  t.same(or(false, false, false), false)
-  t.end()
-})

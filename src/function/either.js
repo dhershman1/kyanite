@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry3 from '../_internals/_curry3'
 
 /**
  * @name either
@@ -25,4 +25,4 @@ import curry from './curry'
  */
 const either = (fn, gn, a) => fn(a) || gn(a)
 
-export default curry(either)
+export default _curry3(either)

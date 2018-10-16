@@ -1,5 +1,4 @@
-import curryN from './curryN'
-import identity from './identity'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name or
@@ -16,6 +15,6 @@ import identity from './identity'
  * or(true, false) // => true
  * or(false, false) // => false
  */
-const or = (...args) => args.some(identity)
+const or = (a, b) => a || b
 
-export default curryN(2, or)
+export default _curry2(or)

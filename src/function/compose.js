@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry3 from '../_internals/_curry3'
 
 /**
  * @name compose
@@ -23,4 +23,4 @@ import curry from './curry'
 const compose = (fn, gn, a) =>
   fn(gn(a))
 
-export default curry(compose)
+export default _curry3(compose)

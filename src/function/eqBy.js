@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry3 from '../_internals/_curry3'
 import eq from './eq'
 
 /**
@@ -27,4 +27,4 @@ import eq from './eq'
 const eqBy = (fn, a, b) =>
   eq(fn(a), fn(b))
 
-export default curry(eqBy)
+export default _curry3(eqBy)

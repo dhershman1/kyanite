@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry3 from '../_internals/_curry3'
 
 /**
  * @name flip
@@ -22,4 +22,4 @@ import curry from './curry'
  */
 const flip = (fn, a, b) => fn(b, a)
 
-export default curry(flip)
+export default _curry3(flip)

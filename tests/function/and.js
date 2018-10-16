@@ -23,9 +23,3 @@ test('and -- Is curried', t => {
   t.same(a(false), false)
   t.end()
 })
-
-test('and -- Handles multiple arguments', t => {
-  t.same(and(true, true, true), true)
-  t.same(and(true, true, false), false)
-  t.end()
-})

@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry4 from '../_internals/_curry4'
 
 /**
  * @name on
@@ -31,4 +31,4 @@ import curry from './curry'
  */
 const on = (fn, gn, a, b) => fn(gn(a), gn(b))
 
-export default curry(on)
+export default _curry4(on)
