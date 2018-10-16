@@ -6,8 +6,6 @@ import _curry3 from './_curry3'
  */
 function _curry4 (fn) {
   return function f4 (a, b, c, d) {
-    console.log(arguments.length)
-
     switch (arguments.length) {
       case 0:
         return f4
