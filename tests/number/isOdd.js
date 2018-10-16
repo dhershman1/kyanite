@@ -8,5 +8,6 @@ test('isOdd -- Checks numbers for odds', t => {
   t.false(isOdd(2))
   t.false(isOdd(4))
   t.false(isOdd(NaN))
+  t.false(isOdd('h'))
   t.end()
 })
