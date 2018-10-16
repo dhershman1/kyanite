@@ -133,10 +133,10 @@ test('assign -- Does not carry over prototyped properties', t => {
   t.end()
 })
 
-test('assign -- It is curried', t => {
-  const extend = assign({ a: 1, b: 2 })
+// test('assign -- It is curried', t => {
+//   const extend = assign({ a: 1, b: 2 })
 
-  t.same(extend({ c: 3, d: 4 }), { a: 1, b: 2, c: 3, d: 4 })
-  t.same(extend({ a: 2, b: 3 }), { a: 2, b: 3 })
-  t.end()
-})
+//   t.same(extend({ c: 3, d: 4 }), { a: 1, b: 2, c: 3, d: 4 })
+//   t.same(extend({ a: 2, b: 3 }), { a: 2, b: 3 })
+//   t.end()
+// })

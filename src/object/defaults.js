@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 import isNil from '../function/isNil'
 
 /**
@@ -31,4 +31,4 @@ const defaults = (def, data) =>
     return acc
   }, data)
 
-export default curry(defaults)
+export default _curry2(defaults)

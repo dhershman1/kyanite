@@ -1,5 +1,5 @@
 import assign from './assign'
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name plan
@@ -35,4 +35,4 @@ const plan = (schema, obj) =>
     return acc
   }, {}))
 
-export default curry(plan)
+export default _curry2(plan)

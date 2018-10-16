@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name sift
@@ -32,4 +32,4 @@ const sift = (fn, obj) => Object.keys(obj).reduce((acc, k) => {
   return acc
 }, {})
 
-export default curry(sift)
+export default _curry2(sift)

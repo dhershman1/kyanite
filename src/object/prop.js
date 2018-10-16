@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name prop
@@ -24,4 +24,4 @@ import curry from '../function/curry'
  */
 const prop = (p, obj) => obj[p]
 
-export default curry(prop)
+export default _curry2(prop)

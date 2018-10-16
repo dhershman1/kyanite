@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name has
@@ -22,4 +22,4 @@ import curry from '../function/curry'
 const has = (prop, obj) =>
   Object.prototype.hasOwnProperty.call(obj, prop)
 
-export default curry(has)
+export default _curry2(has)

@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 import ensureArray from '../array/ensureArray'
 
 /**
@@ -33,4 +33,4 @@ const omit = (key, x) => {
   }, {})
 }
 
-export default curry(omit)
+export default _curry2(omit)

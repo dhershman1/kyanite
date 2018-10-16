@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name props
@@ -22,4 +22,4 @@ const props = (keys, obj) =>
   keys.map(k =>
     obj[k])
 
-export default curry(props)
+export default _curry2(props)

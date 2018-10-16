@@ -1,4 +1,4 @@
-import curryN from '../function/curryN'
+import _curry2 from '../_internals/_curry2'
 import isNil from '../function/isNil'
 
 /**
@@ -34,4 +34,4 @@ const path = ([p, ...keys], obj) => {
   return path(keys, obj[p])
 }
 
-export default curryN(2, path)
+export default _curry2(path)
