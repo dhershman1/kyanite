@@ -1,5 +1,5 @@
 import compose from '../function/compose'
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 import isEqual from '../function/isEqual'
 import slice from './slice'
 
@@ -27,4 +27,4 @@ import slice from './slice'
  */
 const endsWith = (a, list) => compose(isEqual(a), slice(-a.length, Infinity), list)
 
-export default curry(endsWith)
+export default _curry2(endsWith)

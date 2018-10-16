@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name concat
@@ -16,4 +16,4 @@ import curry from '../function/curry'
 const concat = (val, list) =>
   list.concat(val)
 
-export default curry(concat)
+export default _curry2(concat)
