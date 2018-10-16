@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name split
@@ -19,4 +19,4 @@ import curry from '../function/curry'
  */
 const split = (char, str) => str.split(char)
 
-export default curry(split)
+export default _curry2(split)

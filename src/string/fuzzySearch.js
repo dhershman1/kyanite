@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /* eslint-disable no-labels */
 
@@ -48,4 +48,4 @@ const fuzzySearch = (needle, haystack) => {
   return true
 }
 
-export default curry(fuzzySearch)
+export default _curry2(fuzzySearch)
