@@ -42,6 +42,7 @@
 - Added `eqBy` function which compares two values after applying a function to both
 - Added `sample` function which takes a list and pulls a random value from it
 - Added `call` function which calls a provided function on a given value
+- Added `negate` function which adds a negative to a given number
 
 ## v0.9.2
 

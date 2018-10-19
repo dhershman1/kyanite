@@ -848,6 +848,10 @@
   };
   var multiply$1 = _curry2(multiply);
 
+  var negate = function negate(n) {
+    return -n;
+  };
+
   var pow = function pow(a, b) {
     return Math.pow(b, a);
   };
@@ -1112,6 +1116,7 @@
   exports.lcm = lcm$1;
   exports.mean = mean;
   exports.multiply = multiply$1;
+  exports.negate = negate;
   exports.pow = pow$1;
   exports.rem = rem$1;
   exports.round = round$1;
