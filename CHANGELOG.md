@@ -4,6 +4,7 @@
 
 ### Breaking Changes
 
+- **Dropped IE support** or what little we had, IE 11 might be able to use some features but no real guarantee
 - Removed all deprecated functions
   - `is`, `compact`, `compress` `empty`, `deepClone`, `contains`, `strip`, `clon`, `head`, `tail`, `pluck`, and `words`
 - Moved `last` and `first` into the list type rather than array
@@ -15,6 +16,7 @@
 - **Renamed `identical` to `eq`**
 - `mean` has gone back to returning `NaN` if given an empty array and will throw a `Ref Error` if given no params
 - Removed currying from `assign` based on new strategy, will need to re approach this perhaps?
+- Re wrote `isEqual` again, making it far more flexible again as well as far more performant
 
 ### Improved
 
