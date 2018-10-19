@@ -542,6 +542,15 @@
     return isNil(x) || !Object.keys(x).length;
   };
 
+  var arrFromIter = function arrFromIter(iter) {
+    var list = [];
+    var next = null;
+    while (!(next = iter.next()).done) {
+      list.push(next.value);
+    }
+    return list;
+  };
+
   var type = function type(x) {
     if (x === null) {
       return 'Null';
@@ -552,59 +561,117 @@
     return Object.prototype.toString.call(x).slice(8, -1);
   };
 
-  var isComplex = function isComplex(a) {
-    return Array.isArray(a) || Object.prototype.toString.call(a) === '[object Object]';
-  };
-  var checkSet = function checkSet(a, b) {
-    if (and$1(a.constructor === Set, b.constructor === Set)) {
-      return [_toConsumableArray(a), _toConsumableArray(b)];
-    }
-    return [a, b];
-  };
-  var equal = function equal(a, b) {
-    var _checkSet = checkSet(a, b),
-        _checkSet2 = _slicedToArray(_checkSet, 2),
-        convA = _checkSet2[0],
-        convB = _checkSet2[1];
-    var aTy = type(convA);
-    var aKeys = Object.keys(convA);
-    var bKeys = Object.keys(convB);
-    var regVals = ['source', 'global', 'ignoreCase', 'multiline', 'sticky', 'unicode'];
-    var methods = {
-      Date: function Date(x, y) {
-        return x.valueOf() === y.valueOf();
-      },
-      RegExp: function RegExp(x, y) {
-        return regVals.every(function (p) {
-          return x[p] === y[p];
-        });
+  var containsWith = function containsWith(pred, x, list) {
+    var idx = 0;
+    var len = list.length;
+    while (idx < len) {
+      if (pred(x, list[idx])) {
+        return true;
       }
-    };
-    var current = methods[aTy];
-    if (eq$1(convA, convB)) {
-      return true;
-    }
-    if (current) {
-      return current(convA, convB);
-    }
-    if (!and$1(aKeys.length === bKeys.length, !difference$1(aKeys, bKeys).length)) {
-      return false;
-    }
-    if (isComplex(convA)) {
-      return aKeys.every(function (key) {
-        var aVal = convA[key];
-        var bVal = convB[key];
-        if (isComplex(aVal)) {
-          return equal(aVal, bVal);
-        }
-        return eq$1(aVal, bVal);
-      });
+      idx += 1;
     }
     return false;
   };
+  var uniqContentEquals = function uniqContentEquals(aIterator, bIterator, stackA, stackB, eqFn) {
+    var a = arrFromIter(aIterator);
+    var b = arrFromIter(bIterator);
+    function eq(_a, _b) {
+      return eqFn(_a, _b, stackA.slice(), stackB.slice());
+    }
+    return !containsWith(function (b, aItem) {
+      return !containsWith(eq, aItem, b);
+    }, b, a);
+  };
+  var _deepEq = function _deepEq(a, b, stackA, stackB, eqFn) {
+    var aTag = type(a);
+    var bTag = type(b);
+    var SymbolProto = typeof Symbol !== 'undefined' ? Symbol.prototype : null;
+    if (aTag !== bTag) {
+      return false;
+    }
+    switch (aTag) {
+      case 'RegExp':
+      case 'String':
+        return '' + a === '' + b;
+      case 'Number':
+        if (+a !== +a) {
+          return +b !== +b;
+        }
+        return +a === 0 ? 1 / +a === 1 / b : +a === +b;
+      case 'Date':
+      case 'Boolean':
+        return +a === +b;
+      case 'Symbol':
+        return SymbolProto.valueOf.call(a) === SymbolProto.valueOf.call(b);
+    }
+    var idx = stackA.length;
+    while (idx--) {
+      if (stackA[idx] === a) {
+        return stackB[idx] === b;
+      }
+    }
+    switch (aTag) {
+      case 'Map':
+        if (a.size !== b.size) {
+          return false;
+        }
+        return uniqContentEquals(a.entries(), b.entries(), stackA.concat([a]), stackB.concat([b]), eqFn);
+      case 'Set':
+        if (a.size !== b.size) {
+          return false;
+        }
+        return uniqContentEquals(a.values(), b.values(), stackA.concat([a]), stackB.concat([b]), eqFn);
+      case 'Arguments':
+      case 'Array':
+      case 'Object':
+      case 'Boolean':
+      case 'Number':
+      case 'String':
+      case 'Date':
+      case 'Error':
+      case 'RegExp':
+      case 'Int8Array':
+      case 'Uint8Array':
+      case 'Uint8ClampedArray':
+      case 'Int16Array':
+      case 'Uint16Array':
+      case 'Int32Array':
+      case 'Uint32Array':
+      case 'Float32Array':
+      case 'Float64Array':
+      case 'ArrayBuffer':
+        break;
+      default:
+        return false;
+    }
+    var keysA = Object.keys(a);
+    if (keysA.length !== Object.keys(b).length) {
+      return false;
+    }
+    idx = keysA.length;
+    while (idx--) {
+      var key = keysA[idx];
+      if (!(has$1(key, b) && eqFn(b[key], a[key], stackA.concat([a]), stackB.concat([b])))) {
+        return false;
+      }
+    }
+    return true;
+  };
+  var equal = function equal(a, b, stackA, stackB) {
+    if (a === b) {
+      return a !== 0 || 1 / a === 1 / b;
+    }
+    if (a == null || b == null) {
+      return false;
+    }
+    if (a !== a) {
+      return b !== b;
+    }
+    return _deepEq(a, b, stackA, stackB, equal);
+  };
 
   var isEqual = function isEqual(a, b) {
-    return equal(a, b);
+    return equal(a, b, [], []);
   };
   var isEqual$1 = _curry2(isEqual);
 
