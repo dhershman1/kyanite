@@ -39,7 +39,6 @@ const _deepEq = (a, b, stackA, stackB, eqFn) => {
     return false
   }
 
-  // console.log(aTag, bTag)
   switch (aTag) {
     case 'RegExp':
     case 'String':
