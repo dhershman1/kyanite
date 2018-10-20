@@ -25,7 +25,7 @@ const omit = (key, x) => {
   const keyArr = ensureArray(key)
 
   return Object.keys(x).reduce((acc, prop) => {
-    if (keyArr.indexOf(prop) === -1) {
+    if (!keyArr.includes(prop)) {
       acc[prop] = x[prop]
     }
 

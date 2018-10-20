@@ -95,18 +95,6 @@
   };
   var findIndex$1 = _curry2(findIndex);
 
-  var assign = function assign() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    return args.reduce(function (acc, x) {
-      return Object.keys(x).reduce(function (obj, k) {
-        obj[k] = x[k];
-        return obj;
-      }, acc);
-    }, {});
-  };
-
   var has = function has(prop, obj) {
     return Object.prototype.hasOwnProperty.call(obj, prop);
   };
@@ -117,7 +105,7 @@
       var k = fn(v);
       var tmp = {};
       tmp[k] = has$1(k, acc) ? acc[k].concat(v) : [v];
-      return assign(acc, tmp);
+      return Object.assign(acc, tmp);
     }, {});
   };
   var groupBy$1 = _curry2(groupBy);
@@ -378,12 +366,13 @@
   var takeWhile$1 = _curry2(takeWhile);
 
   var uniqBy = function uniqBy(fn, list) {
-    return list.reduce(function (acc, a) {
-      if (acc.map(fn).indexOf(fn(a)) === -1) {
-        acc.push(a);
+    return Object.values(list.reduce(function (acc, a) {
+      var k = fn(a);
+      if (!acc.hasOwnProperty(k)) {
+        acc[k] = a;
       }
       return acc;
-    }, []);
+    }, {}));
   };
   var uniqBy$1 = _curry2(uniqBy);
 
@@ -402,9 +391,7 @@
   var zip = function zip(x, y) {
     var arr = x.length < y.length ? x : y;
     return arr.reduce(function (acc, _, i) {
-      var tmp = {};
-      tmp[x[i]] = y[i];
-      return assign(acc, tmp);
+      return Object.assign(acc, _defineProperty({}, x[i], y[i]));
     }, {});
   };
   var zip$1 = _curry2(zip);
@@ -710,9 +697,6 @@
   var pipe$1 = _curry2(pipe);
 
   var range = function range(from, to) {
-    if (isNaN(from) || to && isNaN(to)) {
-      throw new TypeError('Arguments should be Numbers');
-    }
     var result = [];
     var start = Number(from);
     while (start < Number(to)) {
@@ -886,16 +870,10 @@
 
   var draft = function draft(fn, obj) {
     return Object.keys(obj).reduce(function (acc, key) {
-      return assign({}, acc, _defineProperty({}, key, fn(obj[key])));
+      return Object.assign(acc, _defineProperty({}, key, fn(obj[key])));
     }, {});
   };
   var draft$1 = _curry2(draft);
-
-  var entries = function entries(obj) {
-    return Object.keys(obj).map(function (k) {
-      return [k, obj[k]];
-    });
-  };
 
   var height = function height(obj) {
     return Object.keys(obj).length;
@@ -904,7 +882,7 @@
   var omit = function omit(key, x) {
     var keyArr = ensureArray(key);
     return Object.keys(x).reduce(function (acc, prop) {
-      if (keyArr.indexOf(prop) === -1) {
+      if (!keyArr.includes(prop)) {
         acc[prop] = x[prop];
       }
       return acc;
@@ -927,7 +905,7 @@
   var path$1 = _curry2(path);
 
   var plan = function plan(schema, obj) {
-    return assign({}, obj, Object.keys(schema).reduce(function (acc, k) {
+    return Object.assign({}, obj, Object.keys(schema).reduce(function (acc, k) {
       if (!obj.hasOwnProperty(k)) {
         return acc;
       }
@@ -959,14 +937,8 @@
   };
   var sift$1 = _curry2(sift);
 
-  var values = function values(obj) {
-    return Object.keys(obj).map(function (k) {
-      return obj[k];
-    });
-  };
-
   var unzip = function unzip(obj) {
-    return [Object.keys(obj), values(obj)];
+    return [Object.keys(obj), Object.values(obj)];
   };
 
   var whole = function whole(schema, obj) {
@@ -1122,10 +1094,8 @@
   exports.round = round$1;
   exports.subtract = subtract$1;
   exports.any = any$1;
-  exports.assign = assign;
   exports.defaults = defaults$1;
   exports.draft = draft$1;
-  exports.entries = entries;
   exports.has = has$1;
   exports.height = height;
   exports.omit = omit$1;
@@ -1135,7 +1105,6 @@
   exports.props = props$1;
   exports.sift = sift$1;
   exports.unzip = unzip;
-  exports.values = values;
   exports.whole = whole$1;
   exports.capitalize = capitalize;
   exports.fuzzySearch = fuzzySearch$1;

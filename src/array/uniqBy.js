@@ -21,12 +21,14 @@ import _curry2 from '../_internals/_curry2'
  * uq([1, 2, 3, 4, 5]) // => [3, 4, 5]
  */
 const uniqBy = (fn, list) =>
-  list.reduce((acc, a) => {
-    if (acc.map(fn).indexOf(fn(a)) === -1) {
-      acc.push(a)
+  Object.values(list.reduce((acc, a) => {
+    const k = fn(a)
+
+    if (!acc.hasOwnProperty(k)) {
+      acc[k] = a
     }
 
     return acc
-  }, [])
+  }, {}))
 
 export default _curry2(uniqBy)

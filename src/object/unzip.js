@@ -1,5 +1,3 @@
-import values from './values'
-
 /**
  * @name unzip
  * @since v0.8.0
@@ -13,6 +11,6 @@ import values from './values'
  * unzip({ a: 1, b: 2, c: 3 }) // => [['a', 'b', 'c'], [1, 2, 3]]
  */
 const unzip = obj =>
-  [Object.keys(obj), values(obj)]
+  [Object.keys(obj), Object.values(obj)]
 
 export default unzip

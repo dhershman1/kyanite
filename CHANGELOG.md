@@ -5,6 +5,8 @@
 ### Breaking Changes
 
 - **Dropped IE support** or what little we had, IE 11 might be able to use some features but no real guarantee
+- Removed several ES6 ported functions
+  - `values`, `entries`, and `assign` have been removed
 - Removed all deprecated functions
   - `is`, `compact`, `compress` `empty`, `deepClone`, `contains`, `strip`, `clon`, `head`, `tail`, `pluck`, and `words`
 - Moved `last` and `first` into the list type rather than array
@@ -21,6 +23,7 @@
 ### Improved
 
 - **Huge performance gains, added internal curry backend since functions rely on each other so much**
+- Very large performance gains in many functions as well by relying on better technique and algorithms
 - Replaced `uglify-js` with `terser`
 - Moved `mean` to Number type rather than Array type
 - Also cleaned up `mean`
@@ -35,6 +38,7 @@
 - `isEqual` is able to handle `Set` data types
 - `isEmpty` uses `isNil` now instead of `!x`
 - `isOdd` and `isEven` both cleaned up nicely
+- Moved `range` to number type
 
 ### New
 
