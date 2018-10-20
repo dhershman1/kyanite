@@ -480,62 +480,6 @@
     };
   };
 
-  var descend = function descend(a, b) {
-    return a > b ? -1 : a < b ? 1 : 0;
-  };
-  var descend$1 = _curry2(descend);
-
-  var descendBy = function descendBy(fn, a, b) {
-    return descend$1(fn(a), fn(b));
-  };
-  var descendBy$1 = _curry3(descendBy);
-
-  var either = function either(fn, gn, a) {
-    return fn(a) || gn(a);
-  };
-  var either$1 = _curry3(either);
-
-  var encase = function encase(fn, a) {
-    try {
-      return fn(a);
-    } catch (err) {
-      return undefined;
-    }
-  };
-  var encase$1 = _curry2(encase);
-
-  var eq = function eq(a, b) {
-    if (a === b) {
-      return a !== 0 || 1 / a === 1 / b;
-    }
-    return a !== a && b !== b;
-  };
-  var eq$1 = _curry2(eq);
-
-  var eqBy = function eqBy(fn, a, b) {
-    return eq$1(fn(a), fn(b));
-  };
-  var eqBy$1 = _curry3(eqBy);
-
-  var flip = function flip(fn, a, b) {
-    return fn(b, a);
-  };
-  var flip$1 = _curry3(flip);
-
-  var gt = function gt(a, b) {
-    return b > a;
-  };
-  var gt$1 = _curry2(gt);
-
-  var gte = function gte(a, b) {
-    return b >= a;
-  };
-  var gte$1 = _curry2(gte);
-
-  var isEmpty = function isEmpty(x) {
-    return isNil(x) || !Object.keys(x).length;
-  };
-
   var arrFromIter = function arrFromIter(iter) {
     var list = [];
     var next = null;
@@ -664,10 +608,66 @@
     return _deepEq(a, b, stackA, stackB, equal);
   };
 
-  var isEqual = function isEqual(a, b) {
+  var deepEq = function deepEq(a, b) {
     return equal(a, b, [], []);
   };
-  var isEqual$1 = _curry2(isEqual);
+  var deepEq$1 = _curry2(deepEq);
+
+  var descend = function descend(a, b) {
+    return a > b ? -1 : a < b ? 1 : 0;
+  };
+  var descend$1 = _curry2(descend);
+
+  var descendBy = function descendBy(fn, a, b) {
+    return descend$1(fn(a), fn(b));
+  };
+  var descendBy$1 = _curry3(descendBy);
+
+  var either = function either(fn, gn, a) {
+    return fn(a) || gn(a);
+  };
+  var either$1 = _curry3(either);
+
+  var encase = function encase(fn, a) {
+    try {
+      return fn(a);
+    } catch (err) {
+      return undefined;
+    }
+  };
+  var encase$1 = _curry2(encase);
+
+  var eq = function eq(a, b) {
+    if (a === b) {
+      return a !== 0 || 1 / a === 1 / b;
+    }
+    return a !== a && b !== b;
+  };
+  var eq$1 = _curry2(eq);
+
+  var eqBy = function eqBy(fn, a, b) {
+    return eq$1(fn(a), fn(b));
+  };
+  var eqBy$1 = _curry3(eqBy);
+
+  var flip = function flip(fn, a, b) {
+    return fn(b, a);
+  };
+  var flip$1 = _curry3(flip);
+
+  var gt = function gt(a, b) {
+    return b > a;
+  };
+  var gt$1 = _curry2(gt);
+
+  var gte = function gte(a, b) {
+    return b >= a;
+  };
+  var gte$1 = _curry2(gte);
+
+  var isEmpty = function isEmpty(x) {
+    return isNil(x) || !Object.keys(x).length;
+  };
 
   var juxt = function juxt() {
     var fns = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -724,7 +724,7 @@
   var slice$1 = _curry3(slice);
 
   var endsWith = function endsWith(a, list) {
-    return compose$1(isEqual$1(a), slice$1(-a.length, Infinity), list);
+    return compose$1(deepEq$1(a), slice$1(-a.length, Infinity), list);
   };
   var endsWith$1 = _curry2(endsWith);
 
@@ -1050,6 +1050,7 @@
   exports.compose = compose$1;
   exports.curry = curry;
   exports.curryN = curryN;
+  exports.deepEq = deepEq$1;
   exports.descend = descend$1;
   exports.descendBy = descendBy$1;
   exports.either = either$1;
@@ -1061,7 +1062,6 @@
   exports.gte = gte$1;
   exports.identity = identity;
   exports.isEmpty = isEmpty;
-  exports.isEqual = isEqual$1;
   exports.isNil = isNil;
   exports.juxt = juxt;
   exports.lt = lt$1;

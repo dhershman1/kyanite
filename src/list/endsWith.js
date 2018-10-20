@@ -1,6 +1,6 @@
 import compose from '../function/compose'
 import _curry2 from '../_internals/_curry2'
-import isEqual from '../function/isEqual'
+import deepEq from '../function/deepEq'
 import slice from './slice'
 
 /**
@@ -25,6 +25,6 @@ import slice from './slice'
  * fn('abc') // => true
  * fn('cba') // => false
  */
-const endsWith = (a, list) => compose(isEqual(a), slice(-a.length, Infinity), list)
+const endsWith = (a, list) => compose(deepEq(a), slice(-a.length, Infinity), list)
 
 export default _curry2(endsWith)
