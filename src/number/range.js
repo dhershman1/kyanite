@@ -14,7 +14,7 @@ import _curry2 from '../_internals/_curry2'
  * range(3, 7) // => [3, 4, 5, 6]
  * range(0, 3) // => [0, 1, 2]
  * range(0, 0) // => []
- * range(NaN) // => TypeError: Arguments should be Numbers
+ * range(NaN) // => []
  */
 const range = (from, to) => {
   const result = []
