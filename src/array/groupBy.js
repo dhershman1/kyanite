@@ -1,4 +1,3 @@
-import assign from '../object/assign'
 import _curry2 from '../_internals/_curry2'
 import has from '../object/has'
 
@@ -27,7 +26,7 @@ const groupBy = (fn, list) => list.reduce((acc, v) => {
 
   tmp[k] = has(k, acc) ? acc[k].concat(v) : [v]
 
-  return assign(acc, tmp)
+  return Object.assign(acc, tmp)
 }, {})
 
 export default _curry2(groupBy)

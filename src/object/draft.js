@@ -1,4 +1,3 @@
-import assign from './assign'
 import _curry2 from '../_internals/_curry2'
 
 /**
@@ -21,6 +20,6 @@ import _curry2 from '../_internals/_curry2'
  */
 const draft = (fn, obj) =>
   Object.keys(obj).reduce((acc, key) =>
-    assign({}, acc, { [key]: fn(obj[key]) }), {})
+    Object.assign(acc, { [key]: fn(obj[key]) }), {})
 
 export default _curry2(draft)
