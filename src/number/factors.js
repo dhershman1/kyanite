@@ -1,6 +1,6 @@
 import compose from '../function/compose'
 import filter from '../array/filter'
-import range from '../function/range'
+import range from './range'
 import rem from './rem'
 
 /**
