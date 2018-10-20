@@ -23,6 +23,17 @@ import _curry2 from '../_internals/_curry2'
  *
  * dbler([1, 2, 3]) // => [2, 4, 6]
  */
-const map = (fn, list) => list.map(fn)
+const map = (fn, list) => {
+  let idx = 0
+  const len = list.length
+  const result = Array(len)
+
+  while (idx < len) {
+    result[idx] = fn(list[idx])
+    idx += 1
+  }
+
+  return result
+}
 
 export default _curry2(map)

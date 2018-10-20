@@ -145,7 +145,14 @@
   var intersection$1 = _curry2(intersection);
 
   var map = function map(fn, list) {
-    return list.map(fn);
+    var idx = 0;
+    var len = list.length;
+    var result = Array(len);
+    while (idx < len) {
+      result[idx] = fn(list[idx]);
+      idx += 1;
+    }
+    return result;
   };
   var map$1 = _curry2(map);
 
@@ -696,17 +703,6 @@
   };
   var pipe$1 = _curry2(pipe);
 
-  var range = function range(from, to) {
-    var result = [];
-    var start = Number(from);
-    while (start < Number(to)) {
-      result.push(start);
-      start += 1;
-    }
-    return result;
-  };
-  var range$1 = _curry2(range);
-
   var unless = function unless(fn, act, x) {
     return fn(x) ? x : act(x);
   };
@@ -777,6 +773,17 @@
     return b / a;
   };
   var divide$1 = _curry2(divide);
+
+  var range = function range(from, to) {
+    var result = [];
+    var start = Number(from);
+    while (start < Number(to)) {
+      result.push(start);
+      start += 1;
+    }
+    return result;
+  };
+  var range$1 = _curry2(range);
 
   var rem = function rem(a, b) {
     return b % a;
@@ -1063,7 +1070,6 @@
   exports.on = on$1;
   exports.or = or$1;
   exports.pipe = pipe$1;
-  exports.range = range$1;
   exports.type = type;
   exports.unless = unless$1;
   exports.when = when$1;
@@ -1090,6 +1096,7 @@
   exports.multiply = multiply$1;
   exports.negate = negate;
   exports.pow = pow$1;
+  exports.range = range$1;
   exports.rem = rem$1;
   exports.round = round$1;
   exports.subtract = subtract$1;

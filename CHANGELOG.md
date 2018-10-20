@@ -19,6 +19,7 @@
 - `mean` has gone back to returning `NaN` if given an empty array and will throw a `Ref Error` if given no params
 - Removed currying from `assign` based on new strategy, will need to re approach this perhaps?
 - Re wrote `isEqual` again, making it far more flexible again as well as far more performant
+- `range` will not return a type error if given a string
 
 ### Improved
 
