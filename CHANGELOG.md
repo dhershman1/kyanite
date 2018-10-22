@@ -21,6 +21,7 @@
 - Re wrote `isEqual` again, making it far more flexible again as well as far more performant
 - `range` will not return a type error if given a string
 - Renamed `isEqual` to `deepEq` to match other `eq` functions
+- `omit` now requires you to send an array of keys even if it's just one
 
 ### Improved
 

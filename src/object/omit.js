@@ -1,5 +1,4 @@
 import _curry2 from '../_internals/_curry2'
-import ensureArray from '../array/ensureArray'
 
 /**
  * @name omit
@@ -21,16 +20,13 @@ import ensureArray from '../array/ensureArray'
  *
  * omitKeys({ test: '3432', thing: 123 }) // => { thing: 123 }
  */
-const omit = (key, x) => {
-  const keyArr = ensureArray(key)
-
-  return Object.keys(x).reduce((acc, prop) => {
-    if (!keyArr.includes(prop)) {
+const omit = (keys, x) =>
+  Object.keys(x).reduce((acc, prop) => {
+    if (!keys.includes(prop)) {
       acc[prop] = x[prop]
     }
 
     return acc
   }, {})
-}
 
 export default _curry2(omit)
