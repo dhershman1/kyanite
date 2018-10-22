@@ -50,6 +50,7 @@
 - Added `sample` function which takes a list and pulls a random value from it
 - Added `call` function which calls a provided function on a given value
 - Added `negate` function which adds a negative to a given number
+- Added `composeP` function which works like `compose` but with Promises
 - Added `pipeP` function which works like `pipe` but with Promises
 
 ## v0.9.2
