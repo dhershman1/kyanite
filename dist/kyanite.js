@@ -865,19 +865,20 @@
   };
   var any$1 = _curry2(any);
 
-  var defaults = function defaults(def, data) {
+  var defaults = function defaults(def, obj) {
     return Object.keys(def).reduce(function (acc, prop) {
       if (isNil(acc[prop])) {
         acc[prop] = def[prop];
       }
       return acc;
-    }, data);
+    }, obj);
   };
   var defaults$1 = _curry2(defaults);
 
   var draft = function draft(fn, obj) {
     return Object.keys(obj).reduce(function (acc, key) {
-      return Object.assign(acc, _defineProperty({}, key, fn(obj[key])));
+      acc[key] = fn(obj[key]);
+      return acc;
     }, {});
   };
   var draft$1 = _curry2(draft);
@@ -886,10 +887,9 @@
     return Object.keys(obj).length;
   };
 
-  var omit = function omit(key, x) {
-    var keyArr = ensureArray(key);
+  var omit = function omit(keys, x) {
     return Object.keys(x).reduce(function (acc, prop) {
-      if (!keyArr.includes(prop)) {
+      if (!keys.includes(prop)) {
         acc[prop] = x[prop];
       }
       return acc;
