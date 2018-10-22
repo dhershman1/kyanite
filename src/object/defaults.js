@@ -22,13 +22,13 @@ import isNil from '../function/isNil'
  *
  * def({ thing: 4 }) // => { test: 1, thing: 4 }
  */
-const defaults = (def, data) =>
+const defaults = (def, obj) =>
   Object.keys(def).reduce((acc, prop) => {
     if (isNil(acc[prop])) {
       acc[prop] = def[prop]
     }
 
     return acc
-  }, data)
+  }, obj)
 
 export default _curry2(defaults)
