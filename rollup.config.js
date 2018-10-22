@@ -9,7 +9,9 @@ export default [
     plugins: [
       babel(),
       terser(),
-      filesize()
+      filesize({
+        showMinifiedSize: false
+      })
     ],
     output: {
       file: 'dist/kyanite.min.js',
@@ -21,7 +23,9 @@ export default [
     plugins: [
       babel(),
       cleanup(),
-      filesize()
+      filesize({
+        showMinifiedSize: false
+      })
     ],
     output: {
       file: 'dist/kyanite.js',
