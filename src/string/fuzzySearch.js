@@ -37,11 +37,12 @@ const fuzzySearch = (needle, haystack) => {
   outer: for (let i = 0; i < nLen; i++) {
     const nChar = needle.charCodeAt(i)
 
-    while (j < hLen) {
-      if (haystack.charCodeAt(j++) === nChar) {
+    for (j; j < hLen; j++) {
+      if (haystack.charCodeAt(j) === nChar) {
         continue outer
       }
     }
+
     return false
   }
 

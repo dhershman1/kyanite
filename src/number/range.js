@@ -18,11 +18,9 @@ import _curry2 from '../_internals/_curry2'
  */
 const range = (from, to) => {
   const result = []
-  let start = Number(from)
 
-  while (start < Number(to)) {
-    result.push(start)
-    start += 1
+  for (let i = Number(from), len = Number(to); i < len; i++) {
+    result.push(i)
   }
 
   return result

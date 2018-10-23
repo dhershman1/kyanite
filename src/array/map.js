@@ -24,11 +24,11 @@ import _curry2 from '../_internals/_curry2'
  * dbler([1, 2, 3]) // => [2, 4, 6]
  */
 const map = (fn, list) => {
-  let i = 0
+  // let i = 0
   const len = list.length
   const result = Array(len)
 
-  for (i; i < len; i++) {
+  for (let i = 0; i < len; i++) {
     result[i] = fn(list[i])
   }
 
