@@ -4,23 +4,29 @@
 
 ### Breaking Changes
 
+#### Compatibility
 - **Dropped IE support** or what little we had, IE 11 might be able to use some features but no real guarantee
-- Removed several ES6 ported functions
-  - `values`, `entries`, and `assign` have been removed
-- Removed all deprecated functions
-  - `is`, `compact`, `compress` `empty`, `deepClone`, `contains`, `strip`, `clon`, `head`, `tail`, `pluck`, and `words`
-- Moved `last` and `first` into the list type rather than array
-- Renamed `sub` to `subtract`
-- Renamed `mul` to `multiply`
-- Renamed `div` to `divide`
-- Flipped the way `subtract` does math instead of `subtract(2, 1) === 2 - 1` it will now be `subtract(1, 2) === 2 - 1`
 - **Dropped modularity support please see issue [#61](https://github.com/dhershman1/kyanite/issues/61) for more info**
-- **Renamed `identical` to `eq`**
+
+#### Removed
+- All deprecated functions
+  - `is`, `compact`, `compress`, `empty`, `deepClone`, `contains`, `strip`, `clone`, `head`, `tail`, `pluck`, and `words`
+- `assign`, `entries`, and `values`
+  - Since we dropped IE support you shouldn't need these functions
+
+#### Rename
+- `sub` to `subtract`
+- `mul` to `multiply`
+- `div` to `divide`
+- `identical` to `eq`
+- `isEqual` to `deepEq`
+
+#### Other
+- Moved `last` and `first` into the list type rather than array
+- Flipped the way `subtract` does math instead of `subtract(2, 1) === 2 - 1` it will now be `subtract(1, 2) === 2 - 1`
 - `mean` has gone back to returning `NaN` if given an empty array and will throw a `Ref Error` if given no params
-- Removed currying from `assign` based on new strategy, will need to re approach this perhaps?
-- Re wrote `isEqual` again, making it far more flexible again as well as far more performant
 - `range` will not return a type error if given a string
-- Renamed `isEqual` to `deepEq` to match other `eq` functions
+- Re wrote `isEqual` again, making it far more flexible again as well as far more performant
 - `omit` now requires you to send an array of keys even if it's just one
 
 ### Improved
@@ -52,6 +58,7 @@
 - Added `negate` function which adds a negative to a given number
 - Added `composeP` function which works like `compose` but with Promises
 - Added `pipeP` function which works like `pipe` but with Promises
+- Added `replace` function which takes a string and replaces a value within it
 
 ## v0.9.2
 
