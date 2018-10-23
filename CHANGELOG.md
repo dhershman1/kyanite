@@ -59,6 +59,7 @@
 - Added `composeP` function which works like `compose` but with Promises
 - Added `pipeP` function which works like `pipe` but with Promises
 - Added `replace` function which takes a string and replaces a value within it
+- Added `countBy` function which takes an array and counts the values
 
 ## v0.9.2
 

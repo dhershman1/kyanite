@@ -1,4 +1,5 @@
 export { default as concatMap } from './array/concatMap.js'
+export { default as countBy } from './array/countBy.js'
 export { default as difference } from './array/difference.js'
 export { default as drop } from './array/drop.js'
 export { default as dropWhile } from './array/dropWhile.js'

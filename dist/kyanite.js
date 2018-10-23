@@ -25,6 +25,19 @@
   };
   var concatMap$1 = _curry2(concatMap);
 
+  var countBy = function countBy(fn, arr) {
+    return arr.reduce(function (acc, a) {
+      var k = fn(a);
+      if (acc.hasOwnProperty(k)) {
+        acc[k] += 1;
+      } else {
+        acc[k] = 1;
+      }
+      return acc;
+    }, {});
+  };
+  var countBy$1 = _curry2(countBy);
+
   var difference = function difference(first, second) {
     return first.filter(function (x) {
       return second.indexOf(x) === -1;
@@ -1022,6 +1035,7 @@
   };
 
   exports.concatMap = concatMap$1;
+  exports.countBy = countBy$1;
   exports.difference = difference$1;
   exports.drop = drop$1;
   exports.dropWhile = dropWhile$1;
