@@ -28,6 +28,8 @@
 - `range` will not return a type error if given a string
 - Re wrote `isEqual` again, making it far more flexible again as well as far more performant
 - `omit` now requires you to send an array of keys even if it's just one
+- Changed `findIndex` to return `-1` now instead of `undefined` like vanilla
+- Changed `find` to return `undefined` rather than `false` like vanilla
 
 ### Improved
 

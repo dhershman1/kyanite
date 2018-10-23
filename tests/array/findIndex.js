@@ -12,7 +12,7 @@ test('findIndex -- Returns the index number of the First value which passes', t 
 })
 
 test('findIndex -- Gives back -1 if no value matches', t => {
-  t.same(findIndex(x => x < 0, [1, 3, 4, 5, 6]), undefined)
+  t.same(findIndex(x => x < 0, [1, 3, 4, 5, 6]), -1)
   t.end()
 })
 
