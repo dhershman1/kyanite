@@ -83,9 +83,7 @@
   var filter$1 = _curry2(filter);
 
   var find = function find(fn, list) {
-    var i = 0;
-    var len = list.length;
-    for (i; i < len; i++) {
+    for (var i = 0, len = list.length; i < len; i++) {
       var val = list[i];
       if (fn(val)) {
         return val;
@@ -96,9 +94,7 @@
   var find$1 = _curry2(find);
 
   var findIndex = function findIndex(fn, list) {
-    var len = list.length;
-    var i = 0;
-    for (i; i < len; i++) {
+    for (var i = 0, len = list.length; i < len; i++) {
       if (fn(list[i])) {
         return i;
       }
@@ -786,10 +782,21 @@
   };
   var add$1 = _curry2(add);
 
-  var between = function between(a, b, n) {
-    return a <= n && b >= n;
+  var between = function between(min, max, n) {
+    return min <= n && max >= n;
   };
   var between$1 = _curry3(between);
+
+  var clamp = function clamp(min, max, val) {
+    if (min > max) {
+      throw new Error('Min cannot be greater than max in clamp');
+    }
+    if (val > min && val < max) {
+      return val;
+    }
+    return val <= min ? min : max;
+  };
+  var clamp$1 = _curry3(clamp);
 
   var divide = function divide(a, b) {
     return b / a;
@@ -1118,6 +1125,7 @@
   exports.slice = slice$1;
   exports.add = add$1;
   exports.between = between$1;
+  exports.clamp = clamp$1;
   exports.divide = divide$1;
   exports.factors = factors;
   exports.gcd = gcd$1;
