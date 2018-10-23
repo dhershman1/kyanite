@@ -23,10 +23,7 @@ import _curry2 from '../_internals/_curry2'
  * finder([{val: 'test'}, {val: 'none'}]) // => { val: 'test' }
  */
 const find = (fn, list) => {
-  let i = 0
-  const len = list.length
-
-  for (i; i < len; i++) {
+  for (let i = 0, len = list.length; i < len; i++) {
     const val = list[i]
 
     if (fn(val)) {

@@ -19,10 +19,7 @@ import _curry2 from '../_internals/_curry2'
  * f([1, 2, 3, 4, 5, 6]) // => 5
  */
 const findIndex = (fn, list) => {
-  const len = list.length
-  let i = 0
-
-  for (i; i < len; i++) {
+  for (let i = 0, len = list.length; i < len; i++) {
     if (fn(list[i])) {
       return i
     }
