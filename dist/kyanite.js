@@ -86,12 +86,13 @@
     var idx = 0;
     var len = list.length;
     while (idx < len) {
-      if (fn(list[idx])) {
-        return list[idx];
+      var val = list[idx];
+      if (fn(val)) {
+        return val;
       }
       idx += 1;
     }
-    return false;
+    return undefined;
   };
   var find$1 = _curry2(find);
 
@@ -104,7 +105,7 @@
       }
       i++;
     }
-    return undefined;
+    return -1;
   };
   var findIndex$1 = _curry2(findIndex);
 
@@ -883,6 +884,11 @@
   };
   var subtract$1 = _curry2(subtract);
 
+  var amend = function amend(a, b) {
+    return Object.assign({}, b, a);
+  };
+  var amend$1 = _curry2(amend);
+
   var any = function any(schema, obj) {
     return Object.keys(schema).some(function (key) {
       return schema[key](obj[key]);
@@ -1133,6 +1139,7 @@
   exports.rem = rem$1;
   exports.round = round$1;
   exports.subtract = subtract$1;
+  exports.amend = amend$1;
   exports.any = any$1;
   exports.defaults = defaults$1;
   exports.draft = draft$1;

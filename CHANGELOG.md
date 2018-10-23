@@ -62,6 +62,7 @@
 - Added `pipeP` function which works like `pipe` but with Promises
 - Added `replace` function which takes a string and replaces a value within it
 - Added `countBy` function which takes an array and counts the values
+- Added `amend` function which amends a new object into an old to update data
 
 ## v0.9.2
 
