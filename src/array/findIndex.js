@@ -22,12 +22,10 @@ const findIndex = (fn, list) => {
   const len = list.length
   let i = 0
 
-  while (i < len) {
+  for (i; i < len; i++) {
     if (fn(list[i])) {
       return i
     }
-
-    i++
   }
 
   return -1
