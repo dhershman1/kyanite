@@ -62,6 +62,7 @@
 - Added `replace` function which takes a string and replaces a value within it
 - Added `countBy` function which takes an array and counts the values
 - Added `amend` function which amends a new object into an old to update data
+- Added `clamp` function which clamps a number between 2 others
 
 ## v0.9.2
 
