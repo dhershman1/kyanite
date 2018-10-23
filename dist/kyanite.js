@@ -450,6 +450,11 @@
   };
   var compose$1 = _curry3(compose);
 
+  var composeP = function composeP(fn, gn, a) {
+    return gn(a).then(fn);
+  };
+  var composeP$1 = _curry3(composeP);
+
   var curry = function curry(f) {
     for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
@@ -702,6 +707,13 @@
     }, init);
   };
   var pipe$1 = _curry2(pipe);
+
+  var pipeP = function pipeP(fns, data) {
+    return fns.reduce(function (acc, f) {
+      return acc.then(f);
+    }, Promise.resolve(data));
+  };
+  var pipeP$1 = _curry2(pipeP);
 
   var unless = function unless(fn, act, x) {
     return fn(x) ? x : act(x);
@@ -987,6 +999,11 @@
   };
   var join$1 = _curry2(join);
 
+  var replace = function replace(a, b, str) {
+    return str.replace(a, b);
+  };
+  var replace$1 = _curry3(replace);
+
   var split = function split(char, str) {
     return str.split(char);
   };
@@ -1048,6 +1065,7 @@
   exports.call = call$1;
   exports.complement = complement$1;
   exports.compose = compose$1;
+  exports.composeP = composeP$1;
   exports.curry = curry;
   exports.curryN = curryN;
   exports.deepEq = deepEq$1;
@@ -1070,6 +1088,7 @@
   exports.on = on$1;
   exports.or = or$1;
   exports.pipe = pipe$1;
+  exports.pipeP = pipeP$1;
   exports.type = type;
   exports.unless = unless$1;
   exports.when = when$1;
@@ -1116,6 +1135,7 @@
   exports.capitalize = capitalize;
   exports.fuzzySearch = fuzzySearch$1;
   exports.join = join$1;
+  exports.replace = replace$1;
   exports.split = split$1;
   exports.toLower = toLower;
   exports.toUpper = toUpper;
