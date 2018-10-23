@@ -83,14 +83,13 @@
   var filter$1 = _curry2(filter);
 
   var find = function find(fn, list) {
-    var idx = 0;
+    var i = 0;
     var len = list.length;
-    while (idx < len) {
-      var val = list[idx];
+    for (i; i < len; i++) {
+      var val = list[i];
       if (fn(val)) {
         return val;
       }
-      idx += 1;
     }
     return undefined;
   };
@@ -99,11 +98,10 @@
   var findIndex = function findIndex(fn, list) {
     var len = list.length;
     var i = 0;
-    while (i < len) {
+    for (i; i < len; i++) {
       if (fn(list[i])) {
         return i;
       }
-      i++;
     }
     return -1;
   };
@@ -159,12 +157,10 @@
   var intersection$1 = _curry2(intersection);
 
   var map = function map(fn, list) {
-    var idx = 0;
     var len = list.length;
     var result = Array(len);
-    while (idx < len) {
-      result[idx] = fn(list[idx]);
-      idx += 1;
+    for (var i = 0; i < len; i++) {
+      result[i] = fn(list[i]);
     }
     return result;
   };
@@ -802,10 +798,8 @@
 
   var range = function range(from, to) {
     var result = [];
-    var start = Number(from);
-    while (start < Number(to)) {
-      result.push(start);
-      start += 1;
+    for (var i = Number(from), len = Number(to); i < len; i++) {
+      result.push(i);
     }
     return result;
   };
@@ -1002,8 +996,8 @@
     }
     outer: for (var i = 0; i < nLen; i++) {
       var nChar = needle.charCodeAt(i);
-      while (j < hLen) {
-        if (haystack.charCodeAt(j++) === nChar) {
+      for (j; j < hLen; j++) {
+        if (haystack.charCodeAt(j) === nChar) {
           continue outer;
         }
       }
