@@ -34,7 +34,7 @@ const find = (fn, list) => {
     idx += 1
   }
 
-  return false
+  return undefined
 }
 
 export default _curry2(find)
