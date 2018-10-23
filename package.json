@@ -37,7 +37,7 @@
     "check-cov": "nyc check-coverage --lines 100 --functions 100 --branches 100",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "cov": "nyc --reporter=html npm test",
-    "prepack": "npm-run-all --parallel create docs lint --serial build"
+    "prepack": "npm-run-all --parallel create docs lint test --serial build"
   },
   "nyc": {
     "include": [
