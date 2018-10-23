@@ -27,8 +27,10 @@ const find = (fn, list) => {
   const len = list.length
 
   while (idx < len) {
-    if (fn(list[idx])) {
-      return list[idx]
+    const val = list[idx]
+
+    if (fn(val)) {
+      return val
     }
 
     idx += 1
