@@ -34,7 +34,6 @@
 ### Improved
 
 - **Huge performance gains, added internal curry backend since functions rely on each other so much**
-- Very large performance gains in many functions as well by relying on better technique and algorithms
 - Replaced `uglify-js` with `terser`
 - Moved `mean` to Number type rather than Array type
 - Also cleaned up `mean`
