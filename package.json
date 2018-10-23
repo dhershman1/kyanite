@@ -27,16 +27,16 @@
     "tape": "4.9.1"
   },
   "scripts": {
+    "test": "tape -r esm tests/**/*.js | tap-spec",
+    "lint": "standard src/**/*.js",
     "build": "rollup -c",
     "create": "node scripts/create-export.js",
     "docs": "node scripts/docs.js",
     "scripts": "npm-run-all create docs build",
-    "test": "tape -r esm tests/**/*.js | tap-spec",
     "test:cov": "nyc npm test",
     "check-cov": "nyc check-coverage --lines 100 --functions 100 --branches 100",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "cov": "nyc --reporter=html npm test",
-    "lint": "standard src/**/*.js",
     "prepack": "npm-run-all --parallel create docs lint --serial build"
   },
   "nyc": {
