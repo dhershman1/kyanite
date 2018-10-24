@@ -624,6 +624,19 @@
   };
   var deepEq$1 = _curry2(deepEq);
 
+  var eq = function eq(a, b) {
+    if (a === b) {
+      return a !== 0 || 1 / a === 1 / b;
+    }
+    return a !== a && b !== b;
+  };
+  var eq$1 = _curry2(eq);
+
+  var defaultTo = function defaultTo(def, val) {
+    return isNil(val) || eq$1(NaN, val) ? def : val;
+  };
+  var defaultTo$1 = _curry2(defaultTo);
+
   var descend = function descend(a, b) {
     return a > b ? -1 : a < b ? 1 : 0;
   };
@@ -647,14 +660,6 @@
     }
   };
   var encase$1 = _curry2(encase);
-
-  var eq = function eq(a, b) {
-    if (a === b) {
-      return a !== 0 || 1 / a === 1 / b;
-    }
-    return a !== a && b !== b;
-  };
-  var eq$1 = _curry2(eq);
 
   var eqBy = function eqBy(fn, a, b) {
     return eq$1(fn(a), fn(b));
@@ -1090,6 +1095,7 @@
   exports.curry = curry;
   exports.curryN = curryN;
   exports.deepEq = deepEq$1;
+  exports.defaultTo = defaultTo$1;
   exports.descend = descend$1;
   exports.descendBy = descendBy$1;
   exports.either = either$1;

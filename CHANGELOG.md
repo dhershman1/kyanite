@@ -63,6 +63,7 @@
 - Added `countBy` function which takes an array and counts the values
 - Added `amend` function which amends a new object into an old to update data
 - Added `clamp` function which clamps a number between 2 others
+- Added `defaultTo` function which returns a value unless it is `NaN`, `undefined`, or `null` then it returns a default
 
 ## v0.9.2
 
