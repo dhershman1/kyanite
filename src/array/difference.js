@@ -1,4 +1,8 @@
 import _curry2 from '../_internals/_curry2'
+import concatMap from './concatMap'
+import groupBy from './groupBy'
+import identity from '../function/identity'
+import uniq from './uniq'
 
 /**
  * @name difference
@@ -19,6 +23,11 @@ import _curry2 from '../_internals/_curry2'
  *
  * diff([1]) // => [2, 3]
  */
-const difference = (first, second) => first.filter(x => second.indexOf(x) === -1)
+const difference = (first, second) => {
+  const arr = concatMap(uniq, [first, second])
+  const grouped = groupBy(identity, arr)
+
+  return arr.filter(x => grouped[x].length === 1)
+}
 
 export default _curry2(difference)

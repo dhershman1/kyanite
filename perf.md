@@ -10,5 +10,7 @@ This is strictly to keep track of performance changes, in case I need them later
 - `draft` improved from 8s down to 1.5s
 - `omit` slight gain from 2s to 1.5-1.6s
 - `find` gain from 300ms to 12.5ms
-- `intersection` improved from 8s+ to 200-300ms
+- `intersection` improved and is heavily based on array complexity
 - `props` Optimized to use internal map down from 1s to 62ms
+- `groupBy` Optimized from 23s to 1.6s
+- `difference` improved and is heavily based on array complexity
