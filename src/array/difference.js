@@ -9,19 +9,21 @@ import uniq from './uniq'
  * @since v0.1.0
  * @category Array
  * @sig Array a -> Array a -> Array a
- * @description Returns an array with the elements present in the first that are not in the second
- * @param {Array} first The list to search through
- * @param {Array} second The second list to compare against
- * @return {Array} An array of elements present in the first that are not in the second
+ * @description Returns a new array of values that are not contained within both arrays
+ * @param {Array} first The first array to compare
+ * @param {Array} second The second array to compare
+ * @return {Array} An array of elements that are not present in both arrays
  *
  * @example
  *
  * difference([1, 2, 3], [1]) // => [2, 3]
+ * difference([1], [1, 2, 3]) // => [2, 3]
  *
  * // It's also curried
  * const diff = difference([1, 2, 3])
  *
  * diff([1]) // => [2, 3]
+ * diff([2, 3, 4]) // => [1, 4]
  */
 const difference = (first, second) => {
   const arr = concatMap(uniq, [first, second])
