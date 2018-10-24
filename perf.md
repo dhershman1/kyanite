@@ -10,7 +10,8 @@ This is strictly to keep track of performance changes, in case I need them later
 - `draft` improved from 8s down to 1.5s
 - `omit` slight gain from 2s to 1.5-1.6s
 - `find` gain from 300ms to 12.5ms
-- `intersection` improved from 23s to 4s
+- `intersection` improved from 23s to 1.6s
 - `props` Optimized to use internal map down from 1s to 62ms
 - `groupBy` Optimized from 23s to 1.6s
 - `difference` improved from 25s to 4s
+- `partition` is now able to handle this many records in 550ms
