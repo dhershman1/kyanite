@@ -20,13 +20,13 @@ import has from '../object/has'
  *
  * g([4.2, 6.1, 6.4]) // => { '4': [4.2], '6': [6.1, 6.4] }
 */
-const groupBy = (fn, list) => list.reduce((acc, v) => {
-  const k = fn(v)
-  const tmp = {}
+const groupBy = (fn, list) =>
+  list.reduce((acc, v) => {
+    const k = fn(v)
 
-  tmp[k] = has(k, acc) ? acc[k].concat(v) : [v]
+    acc[k] = has(k, acc) ? acc[k].concat(v) : [v]
 
-  return Object.assign(acc, tmp)
-}, {})
+    return acc
+  }, {})
 
 export default _curry2(groupBy)
