@@ -1,4 +1,5 @@
 import _curry2 from '../_internals/_curry2'
+import map from '../array/map'
 
 /**
  * @name ap
@@ -22,6 +23,6 @@ import _curry2 from '../_internals/_curry2'
  */
 const ap = (fns, list) =>
   fns.reduce((acc, f) =>
-    acc.concat(list.map(f)), [])
+    acc.concat(map(f, list)), [])
 
 export default _curry2(ap)
