@@ -30,6 +30,7 @@
 - `omit` now requires you to send an array of keys even if it's just one
 - Changed `findIndex` to return `-1` now instead of `undefined` like vanilla
 - Changed `find` to return `undefined` rather than `false` like vanilla
+- `difference` no longer cares about array order, and accepts an array of arrays
 
 ### Improved
 
