@@ -25,10 +25,11 @@ import _curry2 from '../_internals/_curry2'
 const zip = (x, y) => {
   const arr = x.length < y.length ? x : y
 
-  return arr.reduce((acc, _, i) =>
-    Object.assign(acc, {
-      [x[i]]: y[i]
-    }), {})
+  return arr.reduce((acc, _, i) => {
+    acc[x[i]] = y[i]
+
+    return acc
+  }, {})
 }
 
 export default _curry2(zip)
