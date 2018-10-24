@@ -1,4 +1,7 @@
 import _curry2 from '../_internals/_curry2'
+import groupBy from './groupBy'
+import identity from '../function/identity'
+import uniq from './uniq'
 
 /**
  * @name intersection
@@ -19,6 +22,11 @@ import _curry2 from '../_internals/_curry2'
  *
  * inter([3, 4, 5, 6]) // => [3, 4]
  */
-const intersection = (a, b) => a.filter(x => b.indexOf(x) !== -1)
+const intersection = (a, b) => {
+  const arr = uniq(a).concat(b)
+  const grouped = groupBy(identity, arr)
+
+  return uniq(arr.filter(x => grouped[x].length > 1))
+}
 
 export default _curry2(intersection)
