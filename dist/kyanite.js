@@ -38,6 +38,11 @@
   };
   var countBy$1 = _curry2(countBy);
 
+  var _appendǃ = function _appendǃ(acc, value) {
+    acc.push(value);
+    return acc;
+  };
+
   var has = function has(prop, obj) {
     return Object.prototype.hasOwnProperty.call(obj, prop);
   };
@@ -46,7 +51,11 @@
   var groupBy = function groupBy(fn, list) {
     return list.reduce(function (acc, v) {
       var k = fn(v);
-      acc[k] = has$1(k, acc) ? acc[k].concat(v) : [v];
+      if (has$1(k, acc)) {
+        acc[k] = _appendǃ(acc[k], v);
+      } else {
+        acc[k] = [v];
+      }
       return acc;
     }, {});
   };

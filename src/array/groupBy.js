@@ -1,4 +1,5 @@
 import _curry2 from '../_internals/_curry2'
+import _appendǃ from '../_internals/_appendǃ'
 import has from '../object/has'
 
 /**
@@ -24,7 +25,11 @@ const groupBy = (fn, list) =>
   list.reduce((acc, v) => {
     const k = fn(v)
 
-    acc[k] = has(k, acc) ? acc[k].concat(v) : [v]
+    if (has(k, acc)) {
+      acc[k] = _appendǃ(acc[k], v)
+    } else {
+      acc[k] = [v]
+    }
 
     return acc
   }, {})
