@@ -66,6 +66,7 @@
 - Added `clamp` function which clamps a number between 2 others
 - Added `defaultTo` function which returns a value unless it is `NaN`, `undefined`, or `null` then it returns a default
 - Added `reduceRight` function which works like `reduce` but starts from the right of the array
+- Added `differenceBy` function like difference but runs a function on the arrays. **May or may not keep**
 
 ## v0.9.2
 
