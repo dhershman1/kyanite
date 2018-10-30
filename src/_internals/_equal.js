@@ -1,86 +1,100 @@
-/* eslint-disable no-self-compare */
 import _arrFromIter from './_arrFromIter'
+import _containsWith from './_containsWith'
 import has from '../object/has'
 import type from '../function/type'
+import eq from '../function/eq'
 
-const containsWith = (pred, x, list) => {
-  var idx = 0
-  var len = list.length
+const _functionName = f => {
+  const match = String(f).match(/^function (\w*)/)
 
-  while (idx < len) {
-    if (pred(x, list[idx])) {
-      return true
-    }
-    idx += 1
-  }
-  return false
+  return match == null ? '' : match[1]
 }
 
-const uniqContentEquals = (aIterator, bIterator, stackA, stackB, eqFn) => {
+function _uniqContentEquals (aIterator, bIterator, stackA, stackB) {
   var a = _arrFromIter(aIterator)
   var b = _arrFromIter(bIterator)
 
   function eq (_a, _b) {
-    return eqFn(_a, _b, stackA.slice(), stackB.slice())
+    return _equals(_a, _b, stackA.slice(), stackB.slice())
   }
 
   // if *a* array contains any element that is not included in *b*
-  return !containsWith(function (b, aItem) {
-    return !containsWith(eq, aItem, b)
+  return !_containsWith(function (b, aItem) {
+    return !_containsWith(eq, aItem, b)
   }, b, a)
 }
 
-const _deepEq = (a, b, stackA, stackB, eqFn) => {
-  const aTag = type(a)
-  const bTag = type(b)
-  const SymbolProto = typeof Symbol !== 'undefined' ? Symbol.prototype : null
+// The vast functionality of the extremely strict equals functionality
+const _equals = (a, b, stackA, stackB) => {
+  const aType = type(a)
 
-  if (aTag !== bTag) {
+  if (eq(a, b)) {
+    return true
+  }
+
+  if (aType !== type(b)) {
     return false
   }
 
-  switch (aTag) {
-    case 'RegExp':
-    case 'String':
-      // Primitives and their corresponding object wrappers are equivalent
-      // Meaning that '5' is equal to new String('5')
-      return '' + a === '' + b
-    case 'Number':
-      // NaN are equivalent but not reflexive
-      if (+a !== +a) {
-        return +b !== +b
-      }
-
-      // An egal comparison performed for other numerics
-      return +a === 0 ? 1 / +a === 1 / b : +a === +b
-    case 'Date':
-    case 'Boolean':
-      return +a === +b
-    case 'Symbol':
-      return SymbolProto.valueOf.call(a) === SymbolProto.valueOf.call(b)
+  if (a == null || b == null) {
+    return false
   }
 
-  let idx = stackA.length
+  // Using the types certain logic should be called and addressed
+  switch (aType) {
+    case 'Arguments':
+    case 'Array':
+    case 'Object':
+      if (typeof a.constructor === 'function' &&
+        _functionName(a.constructor) === 'Promise') {
+        return a === b
+      }
+      break
+    case 'Boolean':
+    case 'Number':
+    case 'String':
+      if (!(typeof a === typeof b && eq(a.valueOf(), b.valueOf()))) {
+        return false
+      }
+      break
+    case 'Date':
+      if (!eq(a.valueOf(), b.valueOf())) {
+        return false
+      }
+      break
+    case 'Error':
+      return a.name === b.name && a.message === b.message
+    case 'RegExp':
+      if (!(a.source === b.source &&
+        a.global === b.global &&
+        a.ignoreCase === b.ignoreCase &&
+        a.multiline === b.multiline &&
+        a.sticky === b.sticky &&
+        a.unicode === b.unicode)) {
+        return false
+      }
+      break
+  }
 
-  while (idx--) {
-    if (stackA[idx] === a) {
-      return stackB[idx] === b
+  for (let i = stackA.length - 1; i >= 0; i--) {
+    if (stackA[i] === a) {
+      return stackB[i] === b
     }
   }
 
-  switch (aTag) {
+  switch (aType) {
     case 'Map':
       if (a.size !== b.size) {
         return false
       }
 
-      return uniqContentEquals(a.entries(), b.entries(), stackA.concat([a]), stackB.concat([b]), eqFn)
+      return _uniqContentEquals(a.entries(), b.entries(), stackA.concat([a]), stackB.concat([b]))
     case 'Set':
       if (a.size !== b.size) {
         return false
       }
 
-      return uniqContentEquals(a.values(), b.values(), stackA.concat([a]), stackB.concat([b]), eqFn)
+      return _uniqContentEquals(a.values(), b.values(), stackA.concat([a]), stackB.concat([b]))
     case 'Arguments':
     case 'Array':
     case 'Object':
@@ -102,7 +116,6 @@ const _deepEq = (a, b, stackA, stackB, eqFn) => {
     case 'ArrayBuffer':
       break
     default:
-      // Values of other types are only equal if identical.
       return false
   }
 
@@ -112,12 +125,13 @@ const _deepEq = (a, b, stackA, stackB, eqFn) => {
     return false
   }
 
-  idx = keysA.length
+  const extendedStackA = stackA.concat([a])
+  const extendedStackB = stackB.concat([b])
 
-  while (idx--) {
-    const key = keysA[idx]
+  for (let i = keysA.length - 1; i >= 0; i--) {
+    const key = keysA[i]
 
-    if (!(has(key, b) && eqFn(b[key], a[key], stackA.concat([a]), stackB.concat([b])))) {
+    if (!(has(key, b) && _equals(b[key], a[key], extendedStackA, extendedStackB))) {
       return false
     }
   }
@@ -125,20 +139,4 @@ const _deepEq = (a, b, stackA, stackB, eqFn) => {
   return true
 }
 
-const equal = (a, b, stackA, stackB) => {
-  if (a === b) {
-    return a !== 0 || 1 / a === 1 / b
-  }
-  // `null` or `undefined` only equal to itself (strict comparison).
-  if (a == null || b == null) {
-    return false
-  }
-  // `NaN`s are equivalent, but non-reflexive.
-  if (a !== a) {
-    return b !== b
-  }
-
-  return _deepEq(a, b, stackA, stackB, equal)
-}
-
-export default equal
+export default _equals
