@@ -121,7 +121,7 @@ const _equals = (a, b, stackA, stackB) => {
 
   const keysA = Object.keys(a)
 
-  if (keysA.length !== Object.keys(b).length) {
+  if (keysA.length !== Object.values(b).length) {
     return false
   }
 
