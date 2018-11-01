@@ -59,14 +59,62 @@ test('deepEq -- Test handles regex', t => {
   t.end()
 })
 
+test('deepEq -- Handles equivalent argument objects', t => {
+  const a = (function () { return arguments }())
+  const b = (function () { return arguments }())
+  const c = (function () { return arguments }(1, 2, 3))
+  const d = (function () { return arguments }(1, 2, 3))
+
+  t.is(deepEq(a, b), true)
+  t.is(deepEq(b, a), true)
+  t.is(deepEq(c, d), true)
+  t.is(deepEq(d, c), true)
+  t.is(deepEq(a, c), false)
+  t.is(deepEq(c, a), false)
+  t.end()
+})
+
 test('deepEq -- Primitives compared against their object wrappers', t => {
-  t.is(deepEq(true, new Boolean(true)), true, 'true is equal to object true')
-  t.is(deepEq(false, new Boolean(false)), true, 'flase is equal to object false')
+  t.is(deepEq(true, new Boolean(true)), false, 'true is not equal to object true')
+  t.is(deepEq(false, new Boolean(false)), false, 'false is not equal to object false')
   t.is(deepEq(false, new Boolean(true)), false, 'false is not equal to true')
-  t.is(deepEq('test', new String('test')), true, 'String is equal to Object String')
-  t.is(deepEq('12', new String(12)), true, 'String is equal to Object String')
-  t.is(deepEq(12, new Number(12)), true, 'Number is equal to Object Number')
-  t.is(deepEq(12, new Number('12')), true, 'Number is equal to Object Number')
+  t.is(deepEq('test', new String('test')), false, 'String is not equal to Object String')
+  t.is(deepEq('12', new String(12)), false, 'String is not equal to Object String')
+  t.is(deepEq(12, new Number(12)), false, 'Number is not equal to Object Number')
+  t.is(deepEq(12, new Number('12')), false, 'Number is not equal to Object Number')
+  t.end()
+})
+
+test('deepEq -- Handles primitive boolean object types', t => {
+  t.is(deepEq(new Boolean(true), new Boolean(true)), true, 'Object true is equal to object true')
+  t.is(deepEq(new Boolean(false), new Boolean(false)), true, 'Object false is equal to object false')
+  t.is(deepEq(new Boolean(true), new Boolean(false)), false, 'Object true is not equal to object false')
+  t.is(deepEq(new Boolean(false), new Boolean(true)), false, 'Object false is equal to object true')
+  t.end()
+})
+
+test('deepEq -- Handles primitive number object types', t => {
+  t.is(deepEq(new Number(0), new Number(0)), true)
+  t.is(deepEq(new Number(0), new Number(1)), false)
+  t.is(deepEq(new Number(1), new Number(0)), false)
+  t.end()
+})
+
+test('deepEq -- Handles primitive string object types', t => {
+  t.is(deepEq(new String(''), new String('')), true)
+  t.is(deepEq(new String(''), new String('x')), false)
+  t.is(deepEq(new String('x'), new String('')), false)
+  t.is(deepEq(new String('foo'), new String('foo')), true)
+  t.is(deepEq(new String('foo'), new String('bar')), false)
+  t.is(deepEq(new String('bar'), new String('foo')), false)
+  t.end()
+})
+
+test('deepEq -- Handles error objects', t => {
+  t.is(deepEq(new Error('XXX'), new Error('XXX')), true)
+  t.is(deepEq(new Error('XXX'), new Error('YYY')), false)
+  t.is(deepEq(new Error('XXX'), new TypeError('XXX')), false)
+  t.is(deepEq(new Error('XXX'), new TypeError('YYY')), false)
   t.end()
 })
 
@@ -104,6 +152,40 @@ test('deepEq -- Handles array types nicely', t => {
   t.end()
 })
 
+test('deepEq -- Requires that both objects have the same enum properties', t => {
+  const a1 = []
+  const a2 = []
+  a2.x = 0
+
+  const b1 = new Boolean(false)
+  const b2 = new Boolean(false)
+  b2.x = 0
+
+  const d1 = new Date(0)
+  const d2 = new Date(0)
+  d2.x = 0
+
+  const n1 = new Number(0)
+  const n2 = new Number(0)
+  n2.x = 0
+
+  const r1 = /(?:)/
+  const r2 = /(?:)/
+  r2.x = 0
+
+  const s1 = new String('')
+  const s2 = new String('')
+  s2.x = 0
+
+  t.is(deepEq(a1, a2), false)
+  t.is(deepEq(b1, b2), false)
+  t.is(deepEq(d1, d2), false)
+  t.is(deepEq(n1, n2), false)
+  t.is(deepEq(r1, r2), false)
+  t.is(deepEq(s1, s2), false)
+  t.end()
+})
+
 test('deepEq -- Handles date objects nicely', t => {
   t.same(deepEq(new Date(), new Date()), true, 'Current Date is equal to current date')
   t.same(deepEq(new Date('12/14/1992'), new Date('12/14/1992')), true, 'Statically set dates are equal')
@@ -134,6 +216,21 @@ test('deepEq -- Handles more complex object combinations', t => {
       b: 1
     }]
   }), true, 'Overly complex data is equal')
+  t.end()
+})
+
+test('deepEq -- Handles Array Buffer', t => {
+  const typArr1 = new ArrayBuffer(10)
+  typArr1[0] = 1
+  const typArr2 = new ArrayBuffer(10)
+  typArr2[0] = 1
+  const typArr3 = new ArrayBuffer(10)
+  const intTypArr = new Int8Array(typArr1)
+  typArr3[0] = 0
+
+  t.is(deepEq(typArr1, typArr2), true)
+  t.is(deepEq(typArr1, typArr3), false)
+  t.is(deepEq(typArr1, intTypArr), false)
   t.end()
 })
 
