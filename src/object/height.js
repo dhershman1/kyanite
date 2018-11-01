@@ -10,6 +10,6 @@
  * @example
  * height({ a: 1, b: 2 }) // => 2
  */
-const height = obj => Object.keys(obj).length
+const height = obj => Object.values(obj).length
 
 export default height

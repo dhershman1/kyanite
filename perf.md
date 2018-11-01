@@ -15,3 +15,4 @@ This is strictly to keep track of performance changes, in case I need them later
 - `groupBy` Optimized from 23s to 1.6s
 - `difference` improved from 25s to 4s
 - `partition` is now able to handle this many records in 550ms
+- `height` improved from 1.2s to 80-100ms
