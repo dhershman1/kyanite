@@ -5,14 +5,14 @@
 ### Breaking Changes
 
 #### Compatibility
-- **Dropped IE support** or what little we had, IE 11 might be able to use some features but no real guarantee
+- **Dropped IE support**
 - **Dropped modularity support please see issue [#61](https://github.com/dhershman1/kyanite/issues/61) for more info**
 
 #### Removed
 - All deprecated functions
   - `is`, `compact`, `compress`, `empty`, `deepClone`, `contains`, `strip`, `clone`, `head`, `tail`, `pluck`, and `words`
-- `assign`, `entries`, and `values`
-  - Since we dropped IE support you shouldn't need these functions
+- `assign`, `entries`, and `values` Since we dropped IE support you shouldn't need these functions
+- `unzip` - Rare use case limited usability
 
 #### Rename
 - `sub` to `subtract`
@@ -50,6 +50,7 @@
 - `isEmpty` uses `isNil` now instead of `!x`
 - `isOdd` and `isEven` both cleaned up nicely
 - Moved `range` to number type
+- `height` improvements to use `.values` vs `.keys`
 
 ### New
 
