@@ -312,6 +312,20 @@
   };
   var sortBy$1 = _curry2(sortBy);
 
+  function _typeof(obj) {
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+      _typeof = function (obj) {
+        return typeof obj;
+      };
+    } else {
+      _typeof = function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      };
+    }
+
+    return _typeof(obj);
+  }
+
   function _toArray(arr) {
     return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest();
   }
@@ -476,6 +490,15 @@
     return list;
   };
 
+  var _containsWith = function _containsWith(pred, x, list) {
+    for (var i = 0, len = list.length; i < len; i++) {
+      if (pred(x, list[i])) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   var type = function type(x) {
     if (x === null) {
       return 'Null';
@@ -486,66 +509,83 @@
     return Object.prototype.toString.call(x).slice(8, -1);
   };
 
-  var containsWith = function containsWith(pred, x, list) {
-    var idx = 0;
-    var len = list.length;
-    while (idx < len) {
-      if (pred(x, list[idx])) {
-        return true;
-      }
-      idx += 1;
+  var eq = function eq(a, b) {
+    if (a === b) {
+      return a !== 0 || 1 / a === 1 / b;
     }
-    return false;
+    return a !== a && b !== b;
   };
-  var uniqContentEquals = function uniqContentEquals(aIterator, bIterator, stackA, stackB, eqFn) {
+  var eq$1 = _curry2(eq);
+
+  var _functionName = function _functionName(f) {
+    var match = String(f).match(/^function (\w*)/);
+    return match == null ? '' : match[1];
+  };
+  function _uniqContentEquals(aIterator, bIterator, stackA, stackB) {
     var a = arrFromIter(aIterator);
     var b = arrFromIter(bIterator);
     function eq(_a, _b) {
-      return eqFn(_a, _b, stackA.slice(), stackB.slice());
+      return _equals(_a, _b, stackA.slice(), stackB.slice());
     }
-    return !containsWith(function (b, aItem) {
-      return !containsWith(eq, aItem, b);
+    return !_containsWith(function (b, aItem) {
+      return !_containsWith(eq, aItem, b);
     }, b, a);
-  };
-  var _deepEq = function _deepEq(a, b, stackA, stackB, eqFn) {
-    var aTag = type(a);
-    var bTag = type(b);
-    var SymbolProto = typeof Symbol !== 'undefined' ? Symbol.prototype : null;
-    if (aTag !== bTag) {
+  }
+  var _equals = function _equals(a, b, stackA, stackB) {
+    var aType = type(a);
+    if (eq$1(a, b)) {
+      return true;
+    }
+    if (aType !== type(b)) {
       return false;
     }
-    switch (aTag) {
-      case 'RegExp':
-      case 'String':
-        return '' + a === '' + b;
-      case 'Number':
-        if (+a !== +a) {
-          return +b !== +b;
-        }
-        return +a === 0 ? 1 / +a === 1 / b : +a === +b;
-      case 'Date':
-      case 'Boolean':
-        return +a === +b;
-      case 'Symbol':
-        return SymbolProto.valueOf.call(a) === SymbolProto.valueOf.call(b);
+    if (a == null || b == null) {
+      return false;
     }
-    var idx = stackA.length;
-    while (idx--) {
-      if (stackA[idx] === a) {
-        return stackB[idx] === b;
+    switch (aType) {
+      case 'Arguments':
+      case 'Array':
+      case 'Object':
+        if (typeof a.constructor === 'function' && _functionName(a.constructor) === 'Promise') {
+          return a === b;
+        }
+        break;
+      case 'Boolean':
+      case 'Number':
+      case 'String':
+        if (!(_typeof(a) === _typeof(b) && eq$1(a.valueOf(), b.valueOf()))) {
+          return false;
+        }
+        break;
+      case 'Date':
+        if (!eq$1(a.valueOf(), b.valueOf())) {
+          return false;
+        }
+        break;
+      case 'Error':
+        return a.name === b.name && a.message === b.message;
+      case 'RegExp':
+        if (!(a.source === b.source && a.global === b.global && a.ignoreCase === b.ignoreCase && a.multiline === b.multiline && a.sticky === b.sticky && a.unicode === b.unicode)) {
+          return false;
+        }
+        break;
+    }
+    for (var i = stackA.length - 1; i >= 0; i--) {
+      if (stackA[i] === a) {
+        return stackB[i] === b;
       }
     }
-    switch (aTag) {
+    switch (aType) {
       case 'Map':
         if (a.size !== b.size) {
           return false;
         }
-        return uniqContentEquals(a.entries(), b.entries(), stackA.concat([a]), stackB.concat([b]), eqFn);
+        return _uniqContentEquals(a.entries(), b.entries(), stackA.concat([a]), stackB.concat([b]));
       case 'Set':
         if (a.size !== b.size) {
           return false;
         }
-        return uniqContentEquals(a.values(), b.values(), stackA.concat([a]), stackB.concat([b]), eqFn);
+        return _uniqContentEquals(a.values(), b.values(), stackA.concat([a]), stackB.concat([b]));
       case 'Arguments':
       case 'Array':
       case 'Object':
@@ -570,43 +610,24 @@
         return false;
     }
     var keysA = Object.keys(a);
-    if (keysA.length !== Object.keys(b).length) {
+    if (keysA.length !== Object.values(b).length) {
       return false;
     }
-    idx = keysA.length;
-    while (idx--) {
-      var key = keysA[idx];
-      if (!(has$1(key, b) && eqFn(b[key], a[key], stackA.concat([a]), stackB.concat([b])))) {
+    var extendedStackA = stackA.concat([a]);
+    var extendedStackB = stackB.concat([b]);
+    for (var _i = keysA.length - 1; _i >= 0; _i--) {
+      var key = keysA[_i];
+      if (!(has$1(key, b) && _equals(b[key], a[key], extendedStackA, extendedStackB))) {
         return false;
       }
     }
     return true;
   };
-  var equal = function equal(a, b, stackA, stackB) {
-    if (a === b) {
-      return a !== 0 || 1 / a === 1 / b;
-    }
-    if (a == null || b == null) {
-      return false;
-    }
-    if (a !== a) {
-      return b !== b;
-    }
-    return _deepEq(a, b, stackA, stackB, equal);
-  };
 
   var deepEq = function deepEq(a, b) {
-    return equal(a, b, [], []);
+    return _equals(a, b, [], []);
   };
   var deepEq$1 = _curry2(deepEq);
-
-  var eq = function eq(a, b) {
-    if (a === b) {
-      return a !== 0 || 1 / a === 1 / b;
-    }
-    return a !== a && b !== b;
-  };
-  var eq$1 = _curry2(eq);
 
   var defaultTo = function defaultTo(def, val) {
     return isNil(val) || eq$1(NaN, val) ? def : val;
@@ -885,7 +906,7 @@
   var draft$1 = _curry2(draft);
 
   var height = function height(obj) {
-    return Object.keys(obj).length;
+    return Object.values(obj).length;
   };
 
   var omit = function omit(keys, x) {
@@ -944,10 +965,6 @@
     }, {});
   };
   var sift$1 = _curry2(sift);
-
-  var unzip = function unzip(obj) {
-    return [Object.keys(obj), Object.values(obj)];
-  };
 
   var whole = function whole(schema, obj) {
     return Object.keys(schema).every(function (key) {
@@ -1124,7 +1141,6 @@
   exports.prop = prop$1;
   exports.props = props$1;
   exports.sift = sift$1;
-  exports.unzip = unzip;
   exports.whole = whole$1;
   exports.capitalize = capitalize;
   exports.fuzzySearch = fuzzySearch$1;
