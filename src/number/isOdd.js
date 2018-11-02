@@ -1,11 +1,4 @@
-import and from '../function/and'
 import eq from '../function/eq'
-
-const _eqOf = x => {
-  const _eq = eq(x)
-
-  return and(!_eq(NaN), !_eq(0))
-}
 
 /**
  * @name isOdd
@@ -22,6 +15,14 @@ const _eqOf = x => {
  * isOdd(2) // => false
  * isOdd(NaN) // => false
  */
-const isOdd = n => and(!eq(n, NaN), _eqOf(n % 2))
+const isOdd = n => {
+  if (!eq(n, NaN)) {
+    const _eq = eq(n % 2)
+
+    return !_eq(NaN) && !_eq(0)
+  }
+
+  return false
+}
 
 export default isOdd
