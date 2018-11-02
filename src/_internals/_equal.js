@@ -26,17 +26,13 @@ function _uniqContentEquals (aIterator, bIterator, stackA, stackB) {
 
 // The vast functionality of the extremely strict equals functionality
 const _equals = (a, b, stackA, stackB) => {
-  const aType = type(a)
-
   if (eq(a, b)) {
     return true
   }
 
-  if (aType !== type(b)) {
-    return false
-  }
+  const aType = type(a)
 
-  if (a == null || b == null) {
+  if (aType !== type(b) || a == null || b == null) {
     return false
   }
 
