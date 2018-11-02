@@ -9,7 +9,7 @@ import _curry3 from '../_internals/_curry3'
  * Accepts an array and runs a reduce based on the passed values
  * The reducer function accepts the params a bit differently than the vanilla counterpart
  * As the reducer should expect the value first, and the accumulator second
- * @param {Function} fn The function to run with the reduce
+ * @param {Function} fn The function to run with the reduce should expect the value first and the accumulator second: (a, acc) => {}
  * @param {Any} init The empty initial state of the reduce accumulator
  * @param {Array} list The list to run our reduce against
  * @return {Any} Returns based on the original init parameter that is passed in
