@@ -751,7 +751,7 @@
   };
 
   var add = function add(a, b) {
-    return Number(a) + Number(b);
+    return a + b;
   };
   var add$1 = _curry2(add);
 
