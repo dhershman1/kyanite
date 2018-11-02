@@ -56,7 +56,6 @@
 - Added `flip` function which flips the params sent to a given function
 - Added `eqBy` function which compares two values after applying a function to both
 - Added `sample` function which takes a list and pulls a random value from it
-- Added `call` function which calls a provided function on a given value
 - Added `negate` function which adds a negative to a given number
 - Added `composeP` function which works like `compose` but with Promises
 - Added `pipeP` function which works like `pipe` but with Promises
