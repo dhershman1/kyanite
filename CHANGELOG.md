@@ -22,6 +22,7 @@
 - `isEqual` to `deepEq`
 
 #### Other
+- `add` No longer does type coercion to the values passed in
 - `find` and `findIndex` now use the built in higher order functions
 - Moved `last` and `first` into the list type rather than array
 - Flipped the way `subtract` does math instead of `subtract(2, 1) === 2 - 1` it will now be `subtract(1, 2) === 2 - 1`
