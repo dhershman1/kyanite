@@ -26,5 +26,6 @@ import _curry3 from '../_internals/_curry3'
  */
 const reduce = (fn, init, list) =>
   list.reduce((acc, x) => fn(x, acc), init)
+  // list.reduce(fn, init)
 
 export default _curry3(reduce)
