@@ -124,23 +124,12 @@
   var filter$1 = _curry2(filter);
 
   var find = function find(fn, list) {
-    for (var i = 0, len = list.length; i < len; i++) {
-      var val = list[i];
-      if (fn(val)) {
-        return val;
-      }
-    }
-    return undefined;
+    return list.find(fn);
   };
   var find$1 = _curry2(find);
 
   var findIndex = function findIndex(fn, list) {
-    for (var i = 0, len = list.length; i < len; i++) {
-      if (fn(list[i])) {
-        return i;
-      }
-    }
-    return -1;
+    return list.findIndex(fn);
   };
   var findIndex$1 = _curry2(findIndex);
 
@@ -250,7 +239,9 @@
   var prepend$1 = _curry2(prepend);
 
   var reduce = function reduce(fn, init, list) {
-    return list.reduce(fn, init);
+    return list.reduce(function (acc, x) {
+      return fn(x, acc);
+    }, init);
   };
   var reduce$1 = _curry3(reduce);
 
@@ -417,7 +408,7 @@
   var ap$1 = _curry2(ap);
 
   var apply = function apply(fn, a) {
-    return fn.apply(void 0, _toConsumableArray(ensureArray(a)));
+    return fn.apply(void 0, _toConsumableArray(a));
   };
   var apply$1 = _curry2(apply);
 
@@ -435,11 +426,6 @@
     return p(a) ? f(a) : g(a);
   };
   var branch$1 = _curry4(branch);
-
-  var call = function call(fn, a) {
-    return fn(a);
-  };
-  var call$1 = _curry2(call);
 
   var compose = function compose(fn, gn, a) {
     return fn(gn(a));
@@ -532,14 +518,11 @@
     }, b, a);
   }
   var _equals = function _equals(a, b, stackA, stackB) {
-    var aType = type(a);
     if (eq$1(a, b)) {
       return true;
     }
-    if (aType !== type(b)) {
-      return false;
-    }
-    if (a == null || b == null) {
+    var aType = type(a);
+    if (aType !== type(b) || a == null || b == null) {
       return false;
     }
     switch (aType) {
@@ -823,12 +806,12 @@
     return and$1(!eq$1(n, NaN), eq$1(n % 2, 0));
   };
 
-  var _eqOf = function _eqOf(x) {
-    var _eq = eq$1(x);
-    return and$1(!_eq(NaN), !_eq(0));
-  };
   var isOdd = function isOdd(n) {
-    return and$1(!eq$1(n, NaN), _eqOf(n % 2));
+    if (!eq$1(n, NaN)) {
+      var _eq = eq$1(n % 2);
+      return !_eq(NaN) && !_eq(0);
+    }
+    return false;
   };
 
   var isPrime = function isPrime(x) {
@@ -1070,7 +1053,6 @@
   exports.ascendBy = ascendBy$1;
   exports.both = both$1;
   exports.branch = branch$1;
-  exports.call = call$1;
   exports.complement = complement$1;
   exports.compose = compose$1;
   exports.composeP = composeP$1;
