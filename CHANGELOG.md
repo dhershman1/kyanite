@@ -30,6 +30,7 @@
 - Re wrote `isEqual` again, making it far more flexible again as well as far more performant
 - `omit` now requires you to send an array of keys even if it's just one
 - `difference` no longer cares about array order, and accepts an array of arrays
+- `apply` now always requires an array for values
 
 ### Improved
 

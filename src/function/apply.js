@@ -1,5 +1,4 @@
 import _curry2 from '../_internals/_curry2'
-import ensureArray from '../array/ensureArray'
 
 /**
  * @name apply
@@ -12,7 +11,8 @@ import ensureArray from '../array/ensureArray'
  * @return {Any} The result of whatever fn(a) will be
  * @example
  *
- * apply(x => x * 2, 2) // => 4
+ * apply(x => x * 2, [2]) // => 4
+ * apply((a, b, c) => a + b + c, [1, 2, 3]) // => 6
  * apply(Math.max, [1, 2, 3, -99, 42, 6, 7]) // => 42
  *
  * // It's also curried
@@ -21,6 +21,6 @@ import ensureArray from '../array/ensureArray'
  * fn(2) // => 4
  * fn(100) // => 200
  */
-const apply = (fn, a) => fn(...ensureArray(a))
+const apply = (fn, a) => fn(...a)
 
 export default _curry2(apply)
