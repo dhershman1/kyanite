@@ -22,14 +22,13 @@
 - `isEqual` to `deepEq`
 
 #### Other
+- `find` and `findIndex` now use the built in higher order functions
 - Moved `last` and `first` into the list type rather than array
 - Flipped the way `subtract` does math instead of `subtract(2, 1) === 2 - 1` it will now be `subtract(1, 2) === 2 - 1`
 - `mean` has gone back to returning `NaN` if given an empty array and will throw a `Ref Error` if given no params
 - `range` will not return a type error if given a string
 - Re wrote `isEqual` again, making it far more flexible again as well as far more performant
 - `omit` now requires you to send an array of keys even if it's just one
-- Changed `findIndex` to return `-1` now instead of `undefined` like vanilla
-- Changed `find` to return `undefined` rather than `false` like vanilla
 - `difference` no longer cares about array order, and accepts an array of arrays
 
 ### Improved

@@ -22,16 +22,6 @@ import _curry2 from '../_internals/_curry2'
  * finder([{val: 'test'}]) // => 'test'
  * finder([{val: 'test'}, {val: 'none'}]) // => { val: 'test' }
  */
-const find = (fn, list) => {
-  for (let i = 0, len = list.length; i < len; i++) {
-    const val = list[i]
-
-    if (fn(val)) {
-      return val
-    }
-  }
-
-  return undefined
-}
+const find = (fn, list) => list.find(fn)
 
 export default _curry2(find)

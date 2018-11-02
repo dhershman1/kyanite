@@ -18,14 +18,6 @@ import _curry2 from '../_internals/_curry2'
  *
  * f([1, 2, 3, 4, 5, 6]) // => 5
  */
-const findIndex = (fn, list) => {
-  for (let i = 0, len = list.length; i < len; i++) {
-    if (fn(list[i])) {
-      return i
-    }
-  }
-
-  return -1
-}
+const findIndex = (fn, list) => list.findIndex(fn)
 
 export default _curry2(findIndex)
