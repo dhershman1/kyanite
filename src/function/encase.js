@@ -8,7 +8,7 @@ import _curry2 from '../_internals/_curry2'
  * @description Encase the provided function in a try catch which if the function errors will give back an undefined
  * @param {Function} fn The function to encase before running
  * @param {Any} a The value we want to pass into the given function
- * @return {Any} The return of the provided function
+ * @return {Any} The return of the provided function or undefined if it errors
  *
  * @example
  * encase(x => x.a.b.c, {a: 0}) // => undefined

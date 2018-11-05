@@ -5,7 +5,7 @@ import _curry3 from '../_internals/_curry3'
  * @since v0.9.0
  * @category Function
  * @sig (a -> Boolean)-> (a -> Boolean) -> a -> Boolean
- * @description Validates that the value passes in either the first or second function
+ * @description Validates that the value passes in either the provided functions
  * @param {Function} fn The first function to test the value in
  * @param {Function} gn The second function to test the value in
  * @param {Any} a The value to run in the two functions

@@ -5,7 +5,7 @@ import _curry2 from '../_internals/_curry2'
  * @since v0.2.0
  * @category Function
  * @sig Any -> Any -> Number
- * @description Determiens which of the two passed in values should be ascended
+ * @description Determines which of the two passed in values should be ascended
  * @param {Any} a The first value to compare
  * @param {Any} b The second value to compare
  * @return {Number} A number based on which value should ascend

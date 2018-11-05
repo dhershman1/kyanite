@@ -4,8 +4,8 @@
  * @since v0.1.0
  * @category List
  * @sig List a -> List a
- * @description Accepts an array and returns a brand new reversed array
- * @param {Array|String} arr The list to reverse
+ * @description Accepts a list of values or characters and reverses it
+ * @param {Array|String} list The list to reverse
  * @return {Array|String} A new reversed list
  * @example
  * reverse([1, 2, 3]) // => [3, 2, 1]
