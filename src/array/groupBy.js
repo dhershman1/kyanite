@@ -1,5 +1,6 @@
 import _curry2 from '../_internals/_curry2'
 import _appendǃ from '../_internals/_appendǃ'
+import _assocǃ from '../_internals/_assocǃ'
 import has from '../object/has'
 
 /**
@@ -24,14 +25,9 @@ import has from '../object/has'
 const groupBy = (fn, list) =>
   list.reduce((acc, v) => {
     const k = fn(v)
+    const _an = _assocǃ(acc, k)
 
-    if (has(k, acc)) {
-      acc[k] = _appendǃ(acc[k], v)
-    } else {
-      acc[k] = [v]
-    }
-
-    return acc
+    return has(k, acc) ? _an(_appendǃ(acc[k], v)) : _an([v])
   }, {})
 
 export default _curry2(groupBy)

@@ -1,4 +1,5 @@
 import _curry2 from '../_internals/_curry2'
+import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name map
@@ -28,7 +29,7 @@ const map = (fn, list) => {
   const result = Array(len)
 
   for (let i = 0; i < len; i++) {
-    result[i] = fn(list[i])
+    _assocǃ(result, i, fn(list[i]))
   }
 
   return result

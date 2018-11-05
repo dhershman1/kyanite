@@ -1,4 +1,5 @@
 import _curry2 from '../_internals/_curry2'
+import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name omit
@@ -21,12 +22,7 @@ import _curry2 from '../_internals/_curry2'
  * omitKeys({ test: '3432', thing: 123 }) // => { thing: 123 }
  */
 const omit = (keys, x) =>
-  Object.keys(x).reduce((acc, prop) => {
-    if (!keys.includes(prop)) {
-      acc[prop] = x[prop]
-    }
-
-    return acc
-  }, {})
+  Object.keys(x).reduce((acc, prop) =>
+    !keys.includes(prop) ? _assocǃ(acc, prop, x[prop]) : acc, {})
 
 export default _curry2(omit)

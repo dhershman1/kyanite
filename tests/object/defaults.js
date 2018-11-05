@@ -67,7 +67,7 @@ test('defaults -- Does not overwrite zero or empty string', t => {
   t.end()
 })
 
-test('defaults -- Does overwrite null', t => {
+test('defaults -- Doesnt overwrite null', t => {
   const data = {
     thing: 4,
     test: null
@@ -78,7 +78,7 @@ test('defaults -- Does overwrite null', t => {
   }
 
   t.deepEqual(defaults(def, data), {
-    test: 1,
+    test: null,
     thing: 4
   })
   t.end()

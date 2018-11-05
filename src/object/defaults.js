@@ -1,5 +1,5 @@
 import _curry2 from '../_internals/_curry2'
-import isNil from '../function/isNil'
+import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name defaults
@@ -15,6 +15,7 @@ import isNil from '../function/isNil'
  * @example
  *
  * defaults({ test: 1, thing: 2 }, { thing: 4 }) // => { test: 1, thing: 4 }
+ * defaults({ foo: 1, bar: 2, baz: 3 }, { foo: 3, bar: 12, baz: null }) // => { foo: 3, bar: 12, baz: null }
  *
  * // It's also curried
  *
@@ -23,12 +24,7 @@ import isNil from '../function/isNil'
  * def({ thing: 4 }) // => { test: 1, thing: 4 }
  */
 const defaults = (def, obj) =>
-  Object.keys(def).reduce((acc, prop) => {
-    if (isNil(acc[prop])) {
-      acc[prop] = def[prop]
-    }
-
-    return acc
-  }, obj)
+  Object.keys(def).reduce((acc, prop) =>
+    obj[prop] === undefined ? _assocǃ(acc, prop, def[prop]) : _assocǃ(acc, prop, obj[prop]), {})
 
 export default _curry2(defaults)
