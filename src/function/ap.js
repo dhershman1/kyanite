@@ -1,5 +1,7 @@
 import _curry2 from '../_internals/_curry2'
 import map from '../array/map'
+import reduce from '../array/reduce'
+import concat from '../list/concat'
 
 /**
  * @name ap
@@ -22,7 +24,6 @@ import map from '../array/map'
  * a([3, 4, 5]) // => [4, 5, 6, 6, 8, 10]
  */
 const ap = (fns, list) =>
-  fns.reduce((acc, f) =>
-    acc.concat(map(f, list)), [])
+  reduce((f, acc) => concat(map(f, list), acc), [], fns)
 
 export default _curry2(ap)
