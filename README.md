@@ -71,9 +71,9 @@ Local copy script tag
 
 ```html
 <!-- To use the prod minified version -->
-<script src="/path/to/kyantie.min.js"></script>
+<script src="/path/to/kyanite.min.js"></script>
 <!-- To use the dev/debug friendly version -->
-<script src="/path/to/kyantie.js"></script>
+<script src="/path/to/kyanite.js"></script>
 <script>
   const K = kyanite
 
