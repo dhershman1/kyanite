@@ -18,10 +18,41 @@
     };
   }
 
+  var concat = function concat(val, list) {
+    return list.concat(val);
+  };
+  var concat$1 = _curry2(concat);
+
+  function _curry3(fn) {
+    return function f3(a, b, c) {
+      switch (arguments.length) {
+        case 0:
+          return f3;
+        case 1:
+          return _curry2(function (_b, _c) {
+            return fn(a, _b, _c);
+          });
+        case 2:
+          return function (_c) {
+            return fn(a, b, _c);
+          };
+        default:
+          return fn(a, b, c);
+      }
+    };
+  }
+
+  var reduce = function reduce(fn, init, list) {
+    return list.reduce(function (acc, x) {
+      return fn(x, acc);
+    }, init);
+  };
+  var reduce$1 = _curry3(reduce);
+
   var concatMap = function concatMap(fn, arr) {
-    return arr.reduce(function (acc, v) {
-      return acc.concat(fn(v));
-    }, []);
+    return reduce$1(function (v, acc) {
+      return concat$1(fn(v), acc);
+    }, [], arr);
   };
   var concatMap$1 = _curry2(concatMap);
 
@@ -133,25 +164,6 @@
   };
   var findIndex$1 = _curry2(findIndex);
 
-  function _curry3(fn) {
-    return function f3(a, b, c) {
-      switch (arguments.length) {
-        case 0:
-          return f3;
-        case 1:
-          return _curry2(function (_b, _c) {
-            return fn(a, _b, _c);
-          });
-        case 2:
-          return function (_c) {
-            return fn(a, b, _c);
-          };
-        default:
-          return fn(a, b, c);
-      }
-    };
-  }
-
   var insert = function insert(i, d, arr) {
     var idx = i < arr.length && i >= 0 ? i : arr.length;
     var result = arr.slice(0);
@@ -237,13 +249,6 @@
     return [].concat(x, list);
   };
   var prepend$1 = _curry2(prepend);
-
-  var reduce = function reduce(fn, init, list) {
-    return list.reduce(function (acc, x) {
-      return fn(x, acc);
-    }, init);
-  };
-  var reduce$1 = _curry3(reduce);
 
   var reduceRight = function reduceRight(fn, init, arr) {
     return arr.reduceRight(fn, init);
@@ -401,9 +406,9 @@
   var and$1 = _curry2(and);
 
   var ap = function ap(fns, list) {
-    return fns.reduce(function (acc, f) {
-      return acc.concat(map$1(f, list));
-    }, []);
+    return reduce$1(function (f, acc) {
+      return concat$1(map$1(f, list), acc);
+    }, [], fns);
   };
   var ap$1 = _curry2(ap);
 
@@ -704,11 +709,6 @@
   };
   var when$1 = _curry3(when);
 
-  var concat = function concat(val, list) {
-    return list.concat(val);
-  };
-  var concat$1 = _curry2(concat);
-
   var slice = function slice(a, b, list) {
     return list.slice(a, b);
   };
@@ -815,8 +815,8 @@
   };
 
   var isPrime = function isPrime(x) {
-    var i = 2;
     var s = Math.sqrt(x);
+    var i = 2;
     for (i; i <= s; i++) {
       if (!rem$1(i, x)) {
         return false;
