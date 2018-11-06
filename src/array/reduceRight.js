@@ -1,4 +1,5 @@
 import _curry3 from '../_internals/_curry3'
+import flip from '../function/flip'
 
 /**
  * @name reduceRight
@@ -23,6 +24,6 @@ import _curry3 from '../_internals/_curry3'
  * fn([], ['', 1, 2, '0', 3]) // => [3, 2, 1]
  */
 const reduceRight = (fn, init, arr) =>
-  arr.reduceRight((acc, x) => fn(x, acc), init)
+  arr.reduceRight(flip(fn), init)
 
 export default _curry3(reduceRight)

@@ -1,4 +1,5 @@
 import _curry3 from '../_internals/_curry3'
+import flip from '../function/flip'
 
 /**
  * @name reduce
@@ -25,6 +26,6 @@ import _curry3 from '../_internals/_curry3'
   }, [], ['', 1, 2, '0', 3]) // => [1, 2, 3]
  */
 const reduce = (fn, init, list) =>
-  list.reduce((acc, x) => fn(x, acc), init)
+  list.reduce(flip(fn), init)
 
 export default _curry3(reduce)
