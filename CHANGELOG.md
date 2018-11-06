@@ -24,6 +24,7 @@
 - `isEqual` to `deepEq`
 
 #### Other
+- `reduce` now expects a flipped reducer function `(x, acc)` rather than `(acc, x)`
 - `add` No longer does type coercion to the values passed in
 - `find` and `findIndex` now use the built in higher order functions
 - Moved `last` and `first` into the list type rather than array
