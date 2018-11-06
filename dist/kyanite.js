@@ -42,10 +42,13 @@
     };
   }
 
+  var flip = function flip(fn, a, b) {
+    return fn(b, a);
+  };
+  var flip$1 = _curry3(flip);
+
   var reduce = function reduce(fn, init, list) {
-    return list.reduce(function (acc, x) {
-      return fn(x, acc);
-    }, init);
+    return list.reduce(flip$1(fn), init);
   };
   var reduce$1 = _curry3(reduce);
 
@@ -246,7 +249,7 @@
   var prepend$1 = _curry2(prepend);
 
   var reduceRight = function reduceRight(fn, init, arr) {
-    return arr.reduceRight(fn, init);
+    return arr.reduceRight(flip$1(fn), init);
   };
   var reduceRight$1 = _curry3(reduceRight);
 
@@ -642,11 +645,6 @@
     return eq$1(fn(a), fn(b));
   };
   var eqBy$1 = _curry3(eqBy);
-
-  var flip = function flip(fn, a, b) {
-    return fn(b, a);
-  };
-  var flip$1 = _curry3(flip);
 
   var gt = function gt(a, b) {
     return b > a;
