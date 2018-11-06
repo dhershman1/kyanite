@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry3 from '../_internals/_curry3'
 
 /**
  * @name slice
@@ -25,4 +25,4 @@ import curry from '../function/curry'
  */
 const slice = (a, b, list) => list.slice(a, b)
 
-export default curry(slice)
+export default _curry3(slice)

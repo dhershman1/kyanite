@@ -2,32 +2,13 @@ const fs = require('fs')
 const path = require('path')
 const globby = require('globby')
 
-const listFns = type => {
-  const fileList = type
-    ? [`src/${type}/*.js`, `!src/${type}/index.js`]
-    : ['src/**/*.js', '!src/**/index.js', '!src/_internals']
+const files = globby.sync(['src/**/*.js', '!src/index.js', '!src/_internals'])
+  .map(f => {
+    const { dir, base, name } = path.parse(f)
 
-  return globby.sync(fileList)
-    .map(file => {
-      const { dir, base, name } = path.parse(file)
+    return `export { default as ${name} } from './${dir.replace('src/', '')}/${base}'`
+  }).join('\n')
 
-      return {
-        name,
-        fullPath: !type
-          ? `./${dir.replace('src/', '')}/${base}`
-          : `./${base}`
-      }
-    })
-}
+fs.writeFileSync('src/index.js', `${files}\n`)
 
-const types = ['array', 'function', 'list', 'number', 'object', 'string', '']
-
-types.forEach(v => {
-  const propertyRequireLines = listFns(v)
-    .map(fn => `export { default as ${fn.name} } from '${fn.fullPath}'`)
-  const indexLines = []
-    .concat(propertyRequireLines.join('\n'))
-    .join('\n')
-
-  fs.writeFileSync(v ? `src/${v}/index.js` : 'src/index.js', `${indexLines}\n`)
-})
+console.log('Finished Writing Exports...')

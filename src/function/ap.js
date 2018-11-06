@@ -1,4 +1,7 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
+import map from '../array/map'
+import reduce from '../array/reduce'
+import concat from '../list/concat'
 
 /**
  * @name ap
@@ -7,6 +10,7 @@ import curry from './curry'
  * @sig Array (a -> b) -> Array a -> Array b
  * @description
  * Takes an array of functions to be applied to an array of data, concating the results together
+ * also known as the S combinator
  * @param {Array} fns The list of functions to apply
  * @param {Array} list The array of data to run the functions on
  * @return {Array} A new array of data modified by the functions concated together
@@ -21,7 +25,6 @@ import curry from './curry'
  * a([3, 4, 5]) // => [4, 5, 6, 6, 8, 10]
  */
 const ap = (fns, list) =>
-  fns.reduce((acc, f) =>
-    acc.concat(list.map(f)), [])
+  reduce((f, acc) => concat(map(f, list), acc), [], fns)
 
-export default curry(ap)
+export default _curry2(ap)

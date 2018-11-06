@@ -1,13 +1,13 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name any
  * @since v0.1.0
  * @category Object
  * @sig Object k (v -> Boolean) -> Object -> Boolean
- * @description Works a lot like every for array, but for the object data type. Returns whether every key matches the predicate or not
+ * @description Takes in a schema of functions to apply to an object, makes sure any of them pass
  * @param {Object} schema An Object schema containing the matching properties and the function to run
- * @param {Object} obj The object to run through
+ * @param {Object} obj The object to iterate through
  * @return {Boolean} A boolean dependent on whether or not any values passed
  *
  * @example
@@ -23,4 +23,4 @@ const any = (schema, obj) =>
   Object.keys(schema).some(key =>
     schema[key](obj[key]))
 
-export default curry(any)
+export default _curry2(any)

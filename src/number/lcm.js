@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 import gcd from './gcd'
 
 /**
@@ -26,4 +26,4 @@ import gcd from './gcd'
 const lcm = (a, b) =>
   Math.abs(Math.floor(a / gcd(a, b) * b))
 
-export default curry(lcm)
+export default _curry2(lcm)

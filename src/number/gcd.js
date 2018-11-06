@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name gcd
@@ -22,12 +22,6 @@ import curry from '../function/curry'
  * a(90) // => 10
  * a(93) // => 1
 */
-const gcd = (a, b) => {
-  if (!b) {
-    return a
-  }
+const gcd = (a, b) => b ? gcd(b, a % b) : a
 
-  return gcd(b, a % b)
-}
-
-export default curry(gcd)
+export default _curry2(gcd)

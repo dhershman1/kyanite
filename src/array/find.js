@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name find
@@ -22,19 +22,6 @@ import curry from '../function/curry'
  * finder([{val: 'test'}]) // => 'test'
  * finder([{val: 'test'}, {val: 'none'}]) // => { val: 'test' }
  */
-const find = (fn, list) => {
-  let idx = 0
-  const len = list.length
+const find = (fn, list) => list.find(fn)
 
-  while (idx < len) {
-    if (fn(list[idx])) {
-      return list[idx]
-    }
-
-    idx += 1
-  }
-
-  return false
-}
-
-export default curry(find)
+export default _curry2(find)

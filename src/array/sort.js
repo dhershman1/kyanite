@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name sort
@@ -22,4 +22,4 @@ import curry from '../function/curry'
  */
 const sort = (fn, a) => a.slice().sort(fn)
 
-export default curry(sort)
+export default _curry2(sort)

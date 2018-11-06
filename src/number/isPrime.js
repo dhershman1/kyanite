@@ -16,8 +16,8 @@ import rem from './rem'
  * isPrime(5010) // => false
  */
 const isPrime = x => {
+  const s = Math.sqrt(x)
   let i = 2
-  let s = Math.sqrt(x)
 
   for (i; i <= s; i++) {
     if (!rem(i, x)) {

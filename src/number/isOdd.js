@@ -1,3 +1,4 @@
+import eq from '../function/eq'
 
 /**
  * @name isOdd
@@ -8,11 +9,20 @@
  * @param {Number} n The number to check against
  * @return {Boolean} Whether or not the number is odd
  * @example
- * isOdd(2) // => false
- * isOdd(NaN) // => false
  * isOdd(1) // => true
  * isOdd(3) // => true
+ * isOdd('h') // => false
+ * isOdd(2) // => false
+ * isOdd(NaN) // => false
  */
-const isOdd = n => !isNaN(n) && n % 2 !== 0
+const isOdd = n => {
+  if (!eq(n, NaN)) {
+    const _eq = eq(n % 2)
+
+    return !_eq(NaN) && !_eq(0)
+  }
+
+  return false
+}
 
 export default isOdd

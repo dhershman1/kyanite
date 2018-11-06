@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry3 from '../_internals/_curry3'
 
 /**
  * @name both
@@ -24,4 +24,4 @@ import curry from './curry'
  */
 const both = (f, g, a) => f(a) && g(a)
 
-export default curry(both)
+export default _curry3(both)

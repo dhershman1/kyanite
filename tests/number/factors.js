@@ -7,14 +7,6 @@ test('factors -- Find the factors of the provided numbers', t => {
   t.same(factors(0), [])
   t.same(factors(-1), [])
   t.same(factors(), [])
+  t.same(factors(NaN), [])
   t.end()
-})
-
-test('factors -- Should throw an error when values are NaN', t => {
-  try {
-    factors('h')
-  } catch (err) {
-    t.is(err.message, 'Arguments should be Numbers')
-    t.end()
-  }
 })

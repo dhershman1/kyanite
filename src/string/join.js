@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name join
@@ -22,4 +22,4 @@ import curry from '../function/curry'
  */
 const join = (str, list) => list.join(str)
 
-export default curry(join)
+export default _curry2(join)

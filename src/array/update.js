@@ -1,5 +1,5 @@
 import concatMap from './concatMap'
-import curry from '../function/curry'
+import _curry3 from '../_internals/_curry3'
 import identity from '../function/identity'
 
 /**
@@ -31,4 +31,4 @@ import identity from '../function/identity'
 const update = (index, val, list) =>
   concatMap(identity, [list.slice(0, index), val, list.slice(index + 1)])
 
-export default curry(update)
+export default _curry3(update)

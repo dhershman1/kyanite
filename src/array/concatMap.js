@@ -1,4 +1,6 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
+import concat from '../list/concat'
+import reduce from './reduce'
 
 /**
  * @name concatMap
@@ -20,6 +22,6 @@ import curry from '../function/curry'
  * con([1, 2, 3]) // => [1, 1, 2, 2, 3, 3]
  */
 const concatMap = (fn, arr) =>
-  arr.reduce((acc, v) => acc.concat(fn(v)), [])
+  reduce((v, acc) => concat(fn(v), acc), [], arr)
 
-export default curry(concatMap)
+export default _curry2(concatMap)

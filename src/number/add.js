@@ -1,11 +1,11 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name add
  * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
- * @description Adds the provided items together
+ * @description Adds the provided numbers together
  * @param {Number} a The first number to add
  * @param {Number} b The second number to add
  * @return {Number} The sum of the numbers
@@ -20,6 +20,6 @@ import curry from '../function/curry'
  * adder(3) // => 5
  * adder(2) // => 4
  */
-const add = (a, b) => Number(a) + Number(b)
+const add = (a, b) => a + b
 
-export default curry(add)
+export default _curry2(add)

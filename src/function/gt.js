@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name gt
@@ -22,4 +22,4 @@ import curry from './curry'
  */
 const gt = (a, b) => b > a
 
-export default curry(gt)
+export default _curry2(gt)

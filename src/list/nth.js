@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name nth
@@ -25,4 +25,4 @@ const nth = (o, list) => {
   return list[i]
 }
 
-export default curry(nth)
+export default _curry2(nth)

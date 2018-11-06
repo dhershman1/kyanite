@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 import uniq from './uniq'
 
 /**
@@ -25,4 +25,4 @@ import uniq from './uniq'
  */
 const union = (list, other) => uniq(list.concat(other))
 
-export default curry(union)
+export default _curry2(union)

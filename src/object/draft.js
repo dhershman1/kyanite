@@ -1,5 +1,5 @@
-import assign from './assign'
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
+import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name draft
@@ -21,6 +21,6 @@ import curry from '../function/curry'
  */
 const draft = (fn, obj) =>
   Object.keys(obj).reduce((acc, key) =>
-    assign({}, acc, { [key]: fn(obj[key]) }), {})
+    _assocǃ(acc, key, fn(obj[key])), {})
 
-export default curry(draft)
+export default _curry2(draft)

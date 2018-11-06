@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name filter
@@ -22,4 +22,4 @@ import curry from '../function/curry'
  */
 const filter = (fn, list) => list.filter(fn)
 
-export default curry(filter)
+export default _curry2(filter)

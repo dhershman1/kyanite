@@ -1,11 +1,11 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name round
  * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number
- * @description Round a number using exponent rounding
+ * @description Round a number using exponent rounding to a desired precision
  * @param {Number} precision The precision we want the number to be rounded to
  * @param {Number} num The number we are going to round
  * @return {Number} The rounded number to the desired precision
@@ -22,4 +22,4 @@ import curry from '../function/curry'
  */
 const round = (precision, num) => Number(`${Math.round(`${num}e${precision}`)}e-${precision}`)
 
-export default curry(round)
+export default _curry2(round)

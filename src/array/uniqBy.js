@@ -1,4 +1,5 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
+import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name uniqBy
@@ -21,12 +22,10 @@ import curry from '../function/curry'
  * uq([1, 2, 3, 4, 5]) // => [3, 4, 5]
  */
 const uniqBy = (fn, list) =>
-  list.reduce((acc, a) => {
-    if (acc.map(fn).indexOf(fn(a)) === -1) {
-      acc.push(a)
-    }
+  Object.values(list.reduce((acc, a) => {
+    const k = fn(a)
 
-    return acc
-  }, [])
+    return !acc.hasOwnProperty(k) ? _assocǃ(acc, k, a) : acc
+  }, {}))
 
-export default curry(uniqBy)
+export default _curry2(uniqBy)

@@ -1,5 +1,109 @@
 # Changelog
 
+## v0.10.0
+
+### Breaking Changes
+
+#### Compatibility
+- **Dropped IE support**
+- **Dropped modularity support please see issue [#61](https://github.com/dhershman1/kyanite/issues/61) for more info**
+  - In short, with the recent rollup versions currying is better supported for tree shaking
+
+#### Removed
+- All deprecated functions
+  - `is`, `compact`, `compress`, `empty`, `deepClone`, `contains`, `strip`, `clone`, `head`, `tail`, `pluck`, and `words`
+- `assign`, `entries`, and `values` Since we dropped IE support you shouldn't need these functions
+- `unzip` - Rare use case limited usability
+- `defaults` - Rare use case, you can achieve similar with `Object.assign` and small tweaking
+
+#### Rename
+- `sub` to `subtract`
+- `mul` to `multiply`
+- `div` to `divide`
+- `identical` to `eq`
+- `isEqual` to `deepEq`
+
+#### Other
+- `reduce` now expects a flipped reducer function `(x, acc)` rather than `(acc, x)`
+- `add` No longer does type coercion to the values passed in
+- `find` and `findIndex` now use the built in higher order functions
+- Moved `last` and `first` into the list type rather than array
+- Flipped the way `subtract` does math instead of `subtract(2, 1) === 2 - 1` it will now be `subtract(1, 2) === 2 - 1`
+- `mean` has gone back to returning `NaN` if given an empty array and will throw a `Ref Error` if given no params
+- `range` will not return a type error if given a string
+- Re wrote `isEqual` again, making it far more flexible again as well as far more performant
+- `omit` now requires you to send an array of keys even if it's just one
+- `difference` no longer cares about array order, and accepts an array of arrays
+- `apply` now always requires an array for values
+
+### Improved
+
+- **Huge performance gains, added internal curry backend since functions rely on each other so much**
+- Replaced `uglify-js` with `terser`
+- Moved `mean` to Number type rather than Array type
+- Also cleaned up `mean`
+- Cleaned up and fixed the `mean` documentation
+- Cleaned up `complement` and `reject` documentation
+- Param rename in `pipe` to be more verbose/accurate
+- Cleaned up `sortBy`
+- Cleaned up `gcd`
+- Cleaned up `factors`
+- Moved `length` to list type
+- `isEqual`'s documentation needed more examples
+- `isEqual` is able to handle `Set` data types
+- `isEmpty` uses `isNil` now instead of `!x`
+- `isOdd` and `isEven` both cleaned up nicely
+- Moved `range` to number type
+- `height` improvements to use `.values` vs `.keys`
+
+### New
+
+- Added `flip` function which flips the params sent to a given function
+- Added `eqBy` function which compares two values after applying a function to both
+- Added `negate` function which adds a negative to a given number
+- Added `composeP` function which works like `compose` but with Promises
+- Added `pipeP` function which works like `pipe` but with Promises
+- Added `replace` function which takes a string and replaces a value within it
+- Added `countBy` function which takes an array and counts the values
+- Added `amend` function which amends a new object into an old to update data
+- Added `clamp` function which clamps a number between 2 others
+- Added `defaultTo` function which returns a value unless it is `NaN`, `undefined`, or `null` then it returns a default
+- Added `reduceRight` function which works like `reduce` but starts from the right of the array
+
+## v0.9.2
+
+### Deprecated
+
+- `is` There isn't a solid enough use case for this aside from maybe a test suite, this is also pretty messy data wise
+  - Try using `type` instead
+- `identical` As it is going to become the `eq` function in v0.10.0
+- `compact` use `filter` instead
+- `compress` use `sift` instead
+- `words` The use case is basically just using `split` anyway
+
+### Fixed
+
+- Incorrect documentation on `compose`
+- Typo in `includes` documentation
+
+## v0.9.1
+
+### Deprecated
+
+- `clone` : There is no real need for this since every function already shallow clones data, and a deep clone is shaky ground at best
+- `head` : Bad use case, objects are in no particular order
+- `tail` : Bad use case, objects are in no particular order
+
+### Fixed
+
+- Added description to `compose` function
+
+### Improved
+
+- The documentation for `any` and `whole` didn't make a lot of sense
+- `round` description needed a slight tweak
+- Made `add`, `div`, `mul`, and `sub` descriptions a bit more strict
+
 ## v0.9.0
 
 > **Notice:** All deprecated functions will be removed in the v0.10.0 release

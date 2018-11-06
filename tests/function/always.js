@@ -3,7 +3,7 @@ import branch from '../../src/function/branch'
 import concat from '../../src/list/concat'
 import identity from '../../src/function/identity'
 import isEmpty from '../../src/function/isEmpty'
-import length from '../../src/array/length'
+import length from '../../src/list/length'
 import pipe from '../../src/function/pipe'
 import test from 'tape'
 

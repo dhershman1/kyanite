@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /* eslint-disable no-labels */
 
@@ -37,15 +37,16 @@ const fuzzySearch = (needle, haystack) => {
   outer: for (let i = 0; i < nLen; i++) {
     const nChar = needle.charCodeAt(i)
 
-    while (j < hLen) {
-      if (haystack.charCodeAt(j++) === nChar) {
+    for (j; j < hLen; j++) {
+      if (haystack.charCodeAt(j) === nChar) {
         continue outer
       }
     }
+
     return false
   }
 
   return true
 }
 
-export default curry(fuzzySearch)
+export default _curry2(fuzzySearch)

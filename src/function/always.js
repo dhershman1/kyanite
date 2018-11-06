@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name always
@@ -6,7 +6,7 @@ import curry from './curry'
  * @category Function
  * @sig a -> b -> a
  * @description
- * Always returns the first param sent to it, and ignores the 2nd
+ * Always returns the first param sent to it, and ignores the 2nd also known as the K combinator
  * @param {Any} a The value we want to return
  * @param {Any} _ The ignored parameter
  * @return {Any} The first parameter passed in
@@ -20,4 +20,4 @@ import curry from './curry'
  */
 const always = (a, _) => a
 
-export default curry(always)
+export default _curry2(always)

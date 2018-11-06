@@ -36,3 +36,12 @@ test('branch -- Is curried', t => {
   t.same(b(10), 9)
   t.end()
 })
+
+test('branch -- break down curried', t => {
+  const fn = branch(x => x < 10)
+  const fn2 = fn(x => x + 1, x => x - 1)
+
+  t.same(fn2(0), 1)
+  t.same(fn2(10), 9)
+  t.end()
+})

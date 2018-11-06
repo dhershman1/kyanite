@@ -1,51 +1,52 @@
 {
   "name": "kyanite",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "A small library of pure functional utilities to make life easier and data better",
   "main": "dist/kyanite.min.js",
+  "module": "src/index.js",
   "directories": {
     "test": "tests",
     "lib": "src"
   },
   "devDependencies": {
-    "@babel/core": "7.1.0",
+    "@babel/core": "7.1.2",
     "@babel/preset-env": "7.1.0",
     "coveralls": "3.0.2",
-    "del": "3.0.0",
     "esm": "3.0.84",
     "globby": "8.0.1",
     "jsdoc-to-markdown": "4.0.1",
-    "nyc": "13.0.1",
-    "rollup": "0.66.2",
+    "npm-run-all": "4.1.3",
+    "nyc": "13.1.0",
+    "rollup": "0.67.0",
     "rollup-plugin-babel": "4.0.3",
     "rollup-plugin-cleanup": "3.0.0",
-    "rollup-plugin-filesize": "4.0.1",
-    "rollup-plugin-uglify": "6.0.0",
+    "rollup-plugin-filesize": "5.0.1",
+    "rollup-plugin-terser": "3.0.0",
     "standard": "12.0.1",
     "tap-spec": "5.0.0",
     "tape": "4.9.1"
   },
   "scripts": {
-    "prepack": "rollup -c rollup.split.js && node scripts/create-export.js && rollup -c && node scripts/docs.js",
-    "build": "rollup -c",
-    "split": "rollup -c rollup.split.js",
-    "scripts": "node scripts/create-export.js && node scripts/docs.js",
-    "stats": "rollup -c rollup.split.js && node scripts/clean.js",
-    "clean": "node scripts/clean.js",
-    "postpublish": "npm run clean",
     "test": "tape -r esm tests/**/*.js | tap-spec",
+    "lint": "standard src/**/*.js",
+    "build": "rollup -c",
+    "create": "node scripts/create-export.js",
+    "docs": "node scripts/docs.js",
+    "scripts": "npm-run-all create docs build",
     "test:cov": "nyc npm test",
-    "check-cov": "nyc check-coverage --lines 100 --functions 100 --branches 100",
+    "check-cov": "nyc check-coverage --lines 95 --functions 100 --branches 95",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "cov": "nyc --reporter=html npm test",
-    "lint": "standard src/**/*.js"
+    "prepack": "npm-run-all --parallel create docs lint test --serial build"
   },
   "nyc": {
     "include": [
       "src/**"
     ],
     "exclude": [
-      "tests/**"
+      "tests/**",
+      "src/_internals",
+      "dist/**"
     ]
   },
   "standard": {

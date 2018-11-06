@@ -1,10 +1,10 @@
-import is from '../../src/function/is'
+import type from '../../src/function/type'
 import partition from '../../src/array/partition'
 import test from 'tape'
 
-test('partition -- Basic functionality', t => {
-  const check = is(String)
+const check = x => type(x) === 'String'
 
+test('partition -- Basic functionality', t => {
   t.deepEqual(partition(check, []), [[], []])
   t.deepEqual(partition(check, ['foo', 'bar', 100]), [['foo', 'bar'], [100]])
   t.deepEqual(partition(check, ['foo', 'bar']), [['foo', 'bar'], []])
@@ -12,7 +12,7 @@ test('partition -- Basic functionality', t => {
 })
 
 test('partition -- Is curried', t => {
-  const part = partition(is(String))
+  const part = partition(check)
 
   t.deepEqual(part(['foo', 'bar', 100]), [['foo', 'bar'], [100]])
   t.end()

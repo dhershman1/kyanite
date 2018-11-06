@@ -1,5 +1,5 @@
-import assign from '../object/assign'
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
+import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name zip
@@ -26,13 +26,7 @@ import curry from '../function/curry'
 const zip = (x, y) => {
   const arr = x.length < y.length ? x : y
 
-  return arr.reduce((acc, _, i) => {
-    const tmp = {}
-
-    tmp[x[i]] = y[i]
-
-    return assign(acc, tmp)
-  }, {})
+  return arr.reduce((acc, _, i) => _assocǃ(acc, x[i], y[i]), {})
 }
 
-export default curry(zip)
+export default _curry2(zip)
