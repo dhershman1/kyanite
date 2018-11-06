@@ -37,10 +37,9 @@ The goal for the library is to be stripped down, light weight, and intuitive. Wi
 Standard module system
 
 ```js
-// This pulls from the actual source folder and builds with
-// Your own build setup so you shouldn't need the dev distro
+// This will use the module path in the package.json (src/index.js)
 import K from 'kyanite'
-// However if you want to be sure just in case
+// However if you want to grab the dev version
 import K from 'kyanite/dist/kyanite.js'
 ```
 
