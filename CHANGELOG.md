@@ -7,12 +7,14 @@
 #### Compatibility
 - **Dropped IE support**
 - **Dropped modularity support please see issue [#61](https://github.com/dhershman1/kyanite/issues/61) for more info**
+  - In short, with the recent rollup versions currying is better supported for tree shaking
 
 #### Removed
 - All deprecated functions
   - `is`, `compact`, `compress`, `empty`, `deepClone`, `contains`, `strip`, `clone`, `head`, `tail`, `pluck`, and `words`
 - `assign`, `entries`, and `values` Since we dropped IE support you shouldn't need these functions
 - `unzip` - Rare use case limited usability
+- `defaults` - Rare use case, you can achieve similar with `Object.assign` and small tweaking
 
 #### Rename
 - `sub` to `subtract`
@@ -57,7 +59,6 @@
 
 - Added `flip` function which flips the params sent to a given function
 - Added `eqBy` function which compares two values after applying a function to both
-- Added `sample` function which takes a list and pulls a random value from it
 - Added `negate` function which adds a negative to a given number
 - Added `composeP` function which works like `compose` but with Promises
 - Added `pipeP` function which works like `pipe` but with Promises

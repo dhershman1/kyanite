@@ -466,24 +466,6 @@
     };
   };
 
-  var arrFromIter = function arrFromIter(iter) {
-    var list = [];
-    var next = null;
-    while (!(next = iter.next()).done) {
-      list.push(next.value);
-    }
-    return list;
-  };
-
-  var _containsWith = function _containsWith(pred, x, list) {
-    for (var i = 0, len = list.length; i < len; i++) {
-      if (pred(x, list[i])) {
-        return true;
-      }
-    }
-    return false;
-  };
-
   var type = function type(x) {
     if (x === null) {
       return 'Null';
@@ -506,9 +488,25 @@
     var match = String(f).match(/^function (\w*)/);
     return match == null ? '' : match[1];
   };
+  var _containsWith = function _containsWith(pred, x, list) {
+    for (var i = 0, len = list.length; i < len; i++) {
+      if (pred(x, list[i])) {
+        return true;
+      }
+    }
+    return false;
+  };
+  var _arrFromIter = function _arrFromIter(iter) {
+    var list = [];
+    var next = null;
+    while (!(next = iter.next()).done) {
+      list.push(next.value);
+    }
+    return list;
+  };
   function _uniqContentEquals(aIterator, bIterator, stackA, stackB) {
-    var a = arrFromIter(aIterator);
-    var b = arrFromIter(bIterator);
+    var a = _arrFromIter(aIterator);
+    var b = _arrFromIter(bIterator);
     function eq(_a, _b) {
       return _equals(_a, _b, stackA.slice(), stackB.slice());
     }
@@ -740,10 +738,6 @@
     return Array.isArray(list) ? list.slice().reverse() : list.split('').reverse().join('');
   };
 
-  var sample = function sample(list) {
-    return list[Math.floor(Math.random() * list.length)];
-  };
-
   var add = function add(a, b) {
     return a + b;
   };
@@ -863,13 +857,6 @@
     });
   };
   var any$1 = _curry2(any);
-
-  var defaults = function defaults(def, obj) {
-    return Object.keys(def).reduce(function (acc, prop) {
-      return obj[prop] === undefined ? _assocǃ$1(acc, prop, def[prop]) : _assocǃ$1(acc, prop, obj[prop]);
-    }, {});
-  };
-  var defaults$1 = _curry2(defaults);
 
   var draft = function draft(fn, obj) {
     return Object.keys(obj).reduce(function (acc, key) {
@@ -1071,7 +1058,6 @@
   exports.length = length;
   exports.nth = nth$1;
   exports.reverse = reverse;
-  exports.sample = sample;
   exports.slice = slice$1;
   exports.add = add$1;
   exports.between = between$1;
@@ -1093,7 +1079,6 @@
   exports.subtract = subtract$1;
   exports.amend = amend$1;
   exports.any = any$1;
-  exports.defaults = defaults$1;
   exports.draft = draft$1;
   exports.has = has$1;
   exports.height = height;
