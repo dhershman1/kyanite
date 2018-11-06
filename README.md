@@ -25,8 +25,8 @@ The goal for the library is to be stripped down, light weight, and intuitive. Wi
 
 ## Key Features
 
-- Purely Functional, this was a big thing for me I wanted it to be easy to use functional system but also I wanted everything to be completely pure. Making use of piping, and transducers to boost performance
-- Emphasis on single type utility functions, all of the functionality is (Theroetically) based around accepting a single data type doing what it does, and giving you back a result. Making it reliable and stable while also staying lightweight
+- Purely Functional - This was a main focus for the project. I wanted it to be an easy to use, functional system while also being completely pure by making use of piping and transducers to boost performance.
+- Single type utility functions - Theoretically, all of the functionality is based around accepting a single data type, doing what it does, and giving you back a result, thus making it reliable, stable, and lightweight.
 - Everything is curried! Setup static in one spot and then pass the rest of the dynamic data in later.
 - Data last ideaology
 
