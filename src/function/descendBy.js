@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry3 from '../_internals/_curry3'
 import descend from './descend'
 
 /**
@@ -33,4 +33,4 @@ import descend from './descend'
  */
 const descendBy = (fn, a, b) => descend(fn(a), fn(b))
 
-export default curry(descendBy)
+export default _curry3(descendBy)

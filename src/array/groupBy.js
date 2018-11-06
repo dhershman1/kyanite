@@ -1,5 +1,6 @@
-import assign from '../object/assign'
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
+import _appendǃ from '../_internals/_appendǃ'
+import _assocǃ from '../_internals/_assocǃ'
 import has from '../object/has'
 
 /**
@@ -21,13 +22,12 @@ import has from '../object/has'
  *
  * g([4.2, 6.1, 6.4]) // => { '4': [4.2], '6': [6.1, 6.4] }
 */
-const groupBy = (fn, list) => list.reduce((acc, v) => {
-  const k = fn(v)
-  const tmp = {}
+const groupBy = (fn, list) =>
+  list.reduce((acc, v) => {
+    const k = fn(v)
+    const _an = _assocǃ(acc, k)
 
-  tmp[k] = has(k, acc) ? acc[k].concat(v) : [v]
+    return has(k, acc) ? _an(_appendǃ(acc[k], v)) : _an([v])
+  }, {})
 
-  return assign(acc, tmp)
-}, {})
-
-export default curry(groupBy)
+export default _curry2(groupBy)

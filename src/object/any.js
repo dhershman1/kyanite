@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name any
@@ -23,4 +23,4 @@ const any = (schema, obj) =>
   Object.keys(schema).some(key =>
     schema[key](obj[key]))
 
-export default curry(any)
+export default _curry2(any)

@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name takeWhile
@@ -24,4 +24,4 @@ const takeWhile = (fn, arr) => {
   return i < 0 ? arr : arr.slice(0, i)
 }
 
-export default curry(takeWhile)
+export default _curry2(takeWhile)

@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name pipe
@@ -6,20 +6,20 @@ import curry from './curry'
  * @category Function
  * @sig Array (a -> b) -> a -> b
  * @description Applies a sequence of transformations over a value.
- * @param {Array} list The array of functions to apply to our value
- * @param {Any} a The value to apply our functions too
+ * @param {Array} arr The array of functions to apply to our value
+ * @param {Any} init The value to apply our functions too
  * @return {Any} The transformed value
  *
  * @example
- * pipe([add(2), mul(2)], 10) // => 24
+ * pipe([add(2), multiply(2)], 10) // => 24
  *
  * // It's also curried
  *
- * const piper = pipe([add(2), mul(2)])
+ * const piper = pipe([add(2), multiply(2)])
  *
  * piper(10) // => 24
  */
-const pipe = (list, a) =>
-  list.reduce((acc, fn) => fn(acc), a)
+const pipe = (arr, init) =>
+  arr.reduce((acc, fn) => fn(acc), init)
 
-export default curry(pipe)
+export default _curry2(pipe)

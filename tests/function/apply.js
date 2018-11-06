@@ -3,7 +3,7 @@ import test from 'tape'
 
 test('apply -- Basic usage', t => {
   t.equal(apply(Math.max, [1, 2, 3, -99, 42, 6, 7]), 42)
-  t.equal(apply(x => x * 2, 2), 4)
+  t.equal(apply(x => x * 2, [2]), 4)
   t.end()
 })
 

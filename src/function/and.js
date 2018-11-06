@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name and
@@ -7,8 +7,8 @@ import curry from './curry'
  * @sig Boolean -> Boolean -> Boolean
  * @description
  * Runs an and comparison on the two values passed in
- * @param {Boolean} a The first boolean to compare
- * @param {Boolean} b The second boolean to compare
+ * @param {Boolean} a The first value to compare
+ * @param {Boolean} b The second value to compare
  * @return {Boolean} The evaluated outcome of the parameters
  *
  * @example
@@ -18,4 +18,4 @@ import curry from './curry'
  */
 const and = (a, b) => a && b
 
-export default curry(and)
+export default _curry2(and)

@@ -9,9 +9,18 @@ test('insert -- Inserts the desired value into the array', t => {
 })
 
 test('insert -- Is curried', t => {
-  const ins = insert(2, 'x')
+  const fn = insert()
+  const ins = fn(2, 'x')
 
   t.deepEqual(ins([1, 2, 3, 4]), [1, 2, 'x', 3, 4])
+  t.end()
+})
+
+test('insert -- Handles double curry', t => {
+  const x = insert(2)
+  const y = x('x')
+
+  t.deepEqual(y([1, 2, 3, 4]), [1, 2, 'x', 3, 4])
   t.end()
 })
 

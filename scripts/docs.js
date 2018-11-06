@@ -1,36 +1,30 @@
 const fs = require('fs')
-const path = require('path')
 const globby = require('globby')
 const jsDocParser = require('jsdoc-to-markdown')
 const { name, version, description } = require('../package.json')
 
-const listFns = () => {
-  const files = globby.sync(['src/**/*.js', '!src/index.js', '!src/_internals'])
-
-  return files
-    .map(file => {
-      const { dir, base } = path.parse(file)
-
-      return `./src/${path.join(dir.replace('src/', ''), base)}`
-    })
-}
-
 const generateUsage = fnName => ({
   'commonjs': {
     title: 'CommonJs',
-    code: `const ${fnName} = require('kyanite/${fnName}')`
+    code: `const { ${fnName} } = require('kyanite')`
   },
   'standard': {
     title: 'Standard',
-    code: `import ${fnName} from 'kyanite/${fnName}'`
+    code: `import { ${fnName} } from 'kyanite'`
   },
   'cdn': {
     title: 'CDN',
-    code: `<script src="https://cdn.jsdelivr.net/npm/kyanite@${version}/${fnName}.js"></script>`
+    code: `<script src="https://cdn.jsdelivr.net/npm/kyanite@${version}/dist/kyanite.min.js"></script>
+    <script>
+      kyanite.${fnName}
+    </script>`
   },
   'browser': {
     title: 'Browser',
-    code: `<script src="path/to/modules/kyanite/${fnName}.js"></script>`
+    code: `<script src="path/to/modules/kyanite/dist/kyanite.min.js"></script>
+    <script>
+      kyanite.${fnName}
+    </script>`
   }
 })
 
@@ -44,27 +38,24 @@ const generateSyntax = (fnName, args) => {
   return `${fnName}(${argsStr})`
 }
 
-jsDocParser.getTemplateData({
-  'files': listFns(),
-  'no-cache': true
-}).then((data) => {
-  const results = data.map(d => ({
-    since: d.since ? d.since : 'Unknown',
-    deprecated: d.deprecated || false,
-    category: d.category || 'Uncategorized',
-    title: d.name,
-    desc: d.description,
-    examples: d.examples,
-    returns: d.returns,
-    params: d.params,
-    syntax: generateSyntax(d.name, d.params),
-    usage: generateUsage(d.name)
+const files = globby.sync(['src/**/*.js', '!src/index.js', '!src/_internals'])
+
+fs.writeFileSync('info.json', JSON.stringify({
+  name,
+  version,
+  description,
+  docs: jsDocParser.getTemplateDataSync({ files }).map(d => ({
+      since: d.since ? d.since : 'Unknown',
+      deprecated: d.deprecated || false,
+      category: d.category || 'Uncategorized',
+      title: d.name,
+      desc: d.description,
+      examples: d.examples,
+      returns: d.returns,
+      params: d.params,
+      syntax: generateSyntax(d.name, d.params),
+      usage: generateUsage(d.name)
+    }))
   }))
 
-  fs.writeFileSync('info.json', JSON.stringify({
-    name,
-    version,
-    description,
-    docs: results
-  }))
-})
+console.log('Finished Writing Docs...')

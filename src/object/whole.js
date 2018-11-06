@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name whole
@@ -20,4 +20,4 @@ const whole = (schema, obj) =>
   Object.keys(schema).every(key =>
     schema[key](obj[key]))
 
-export default curry(whole)
+export default _curry2(whole)

@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name every
@@ -26,4 +26,4 @@ import curry from '../function/curry'
  */
 const every = (fn, x) => x.every(fn)
 
-export default curry(every)
+export default _curry2(every)

@@ -1,4 +1,7 @@
-import curry from '../function/curry'
+import ascend from '../function/ascend'
+import _curry2 from '../_internals/_curry2'
+import on from '../function/on'
+import sort from './sort'
 
 /**
  * @name sortBy
@@ -29,11 +32,6 @@ import curry from '../function/curry'
  *  { name: 'amanda' }
  * ]) // => [{ name: 'amanda' }, { name: 'amanda' }, { name: 'bob' }, { name: 'carl' }]
  */
-const sortBy = (fn, list) => list.concat().sort((a, b) => {
-  const x = fn(a)
-  const y = fn(b)
+const sortBy = (fn, arr) => sort(on(ascend, fn), arr)
 
-  return x < y ? -1 : x > y ? 1 : 0
-})
-
-export default curry(sortBy)
+export default _curry2(sortBy)

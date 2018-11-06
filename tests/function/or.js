@@ -27,7 +27,7 @@ test('or -- Is curried true', t => {
 test('or -- Is curried false', t => {
   const a = or(false)
 
-  t.true(a(true))
-  t.false(a(false))
+  t.same(a(true), true)
+  t.same(a(false), false)
   t.end()
 })

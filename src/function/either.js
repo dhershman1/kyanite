@@ -1,11 +1,11 @@
-import curry from './curry'
+import _curry3 from '../_internals/_curry3'
 
 /**
  * @name either
  * @since v0.9.0
  * @category Function
  * @sig (a -> Boolean)-> (a -> Boolean) -> a -> Boolean
- * @description Validates that the value passes in either the first or second function
+ * @description Validates that the value passes in either the provided functions
  * @param {Function} fn The first function to test the value in
  * @param {Function} gn The second function to test the value in
  * @param {Any} a The value to run in the two functions
@@ -25,4 +25,4 @@ import curry from './curry'
  */
 const either = (fn, gn, a) => fn(a) || gn(a)
 
-export default curry(either)
+export default _curry3(either)

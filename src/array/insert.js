@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry3 from '../_internals/_curry3'
 
 /**
  * @name insert
@@ -29,4 +29,4 @@ const insert = (i, d, arr) => {
   return result
 }
 
-export default curry(insert)
+export default _curry3(insert)

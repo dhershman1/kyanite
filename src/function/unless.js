@@ -1,4 +1,4 @@
-import curryN from './curryN'
+import _curry3 from '../_internals/_curry3'
 
 /**
  * @name unless
@@ -24,4 +24,4 @@ import curryN from './curryN'
 const unless = (fn, act, x) =>
   fn(x) ? x : act(x)
 
-export default curryN(3, unless)
+export default _curry3(unless)

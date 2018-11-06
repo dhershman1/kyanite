@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name sortWith
@@ -32,4 +32,4 @@ const sortWith = (fns, arr) =>
   [...arr].sort((a, b) =>
     fns.reduce((acc, f) => acc === 0 ? f(a, b) : acc, 0))
 
-export default curry(sortWith)
+export default _curry2(sortWith)

@@ -1,4 +1,8 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
+import groupBy from './groupBy'
+import has from '../object/has'
+import identity from '../function/identity'
+import uniq from './uniq'
 
 /**
  * @name intersection
@@ -19,6 +23,10 @@ import curry from '../function/curry'
  *
  * inter([3, 4, 5, 6]) // => [3, 4]
  */
-const intersection = (a, b) => a.filter(x => b.indexOf(x) !== -1)
+const intersection = (a, b) => {
+  const grouped = groupBy(identity, b)
 
-export default curry(intersection)
+  return uniq(a.filter(x => has(x, grouped)))
+}
+
+export default _curry2(intersection)

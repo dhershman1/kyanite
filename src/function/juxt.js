@@ -1,3 +1,5 @@
+import map from '../array/map'
+
 /**
  * @name juxt
  * @since v0.1.0
@@ -13,6 +15,6 @@
  * getRange(3, 4, 9, -3) // => [-3, 9]
  */
 const juxt = (fns = []) =>
-  (...x) => fns.map(f => f(...x))
+  (...x) => map(f => f(...x), fns)
 
 export default juxt

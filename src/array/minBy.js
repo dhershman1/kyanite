@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name minBy
@@ -22,4 +22,4 @@ import curry from '../function/curry'
  */
 const minBy = (fn, list) => list.reduce((a, b) => fn(a) <= fn(b) ? a : b)
 
-export default curry(minBy)
+export default _curry2(minBy)

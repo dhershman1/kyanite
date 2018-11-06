@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name includes
@@ -24,4 +24,4 @@ import curry from '../function/curry'
 const includes = (value, list) =>
   list.indexOf(value) !== -1
 
-export default curry(includes)
+export default _curry2(includes)

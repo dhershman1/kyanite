@@ -1,11 +1,11 @@
-import curry from './curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name ascend
  * @since v0.2.0
  * @category Function
  * @sig Any -> Any -> Number
- * @description Determiens which of the two passed in values should be ascended
+ * @description Determines which of the two passed in values should be ascended
  * @param {Any} a The first value to compare
  * @param {Any} b The second value to compare
  * @return {Number} A number based on which value should ascend
@@ -16,4 +16,4 @@ import curry from './curry'
  */
 const ascend = (a, b) => a < b ? -1 : a > b ? 1 : 0
 
-export default curry(ascend)
+export default _curry2(ascend)

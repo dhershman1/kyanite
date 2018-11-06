@@ -8,5 +8,6 @@ test('isEven -- Handles checking for even numbers', t => {
   t.false(isEven(1))
   t.false(isEven(-1))
   t.false(isEven(NaN))
+  t.false(isEven('h'))
   t.end()
 })

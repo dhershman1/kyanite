@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry3 from '../_internals/_curry3'
 
 /**
  * @name between
@@ -6,8 +6,8 @@ import curry from '../function/curry'
  * @category Number
  * @sig Number -> Number -> Number -> Boolean
  * @description Checks to see if a number is between two other provided numbers
- * @param {Number} a The number our value should be greater than or equal too
- * @param {Number} b The number our value should be less than or equal too
+ * @param {Number} min The number our value should be greater than or equal too
+ * @param {Number} max The number our value should be less than or equal too
  * @param {Number} n The value to compare with
  * @return {Boolean} Whether or not the provided number is between the other two numbers
  * @example
@@ -28,6 +28,6 @@ import curry from '../function/curry'
  * c(9) // => true
  * c(11) // => false
  */
-const between = (a, b, n) => a <= n && b >= n
+const between = (min, max, n) => min <= n && max >= n
 
-export default curry(between)
+export default _curry3(between)

@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry4 from '../_internals/_curry4'
 
 /**
  * @name on
@@ -6,7 +6,8 @@ import curry from './curry'
  * @category Function
  * @sig (c -> c -> d) -> (a -> b -> c) -> a -> b -> d
  * @description
- * Applies the second function to the values passed in, and then runs the first function against those new values
+ * Applies the second function to the values passed in, and then runs the first function against those new values,
+ * also known as the P combinator
  * @param {Function} fn The first function being ran against the values from the second
  * @param {Function} gn The function to be applied to the two values passed in
  * @param {Any} a The first value to use
@@ -31,4 +32,4 @@ import curry from './curry'
  */
 const on = (fn, gn, a, b) => fn(gn(a), gn(b))
 
-export default curry(on)
+export default _curry4(on)

@@ -1,4 +1,4 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
 
 /**
  * @name prepend
@@ -21,4 +21,4 @@ import curry from '../function/curry'
  */
 const prepend = (x, list) => [].concat(x, list)
 
-export default curry(prepend)
+export default _curry2(prepend)

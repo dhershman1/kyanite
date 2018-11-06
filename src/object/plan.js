@@ -1,5 +1,5 @@
-import assign from './assign'
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
+import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name plan
@@ -25,14 +25,7 @@ import curry from '../function/curry'
  * p({ a: 5, b: 10 }) // => { a: 10, b: 20 }
  */
 const plan = (schema, obj) =>
-  assign({}, obj, Object.keys(schema).reduce((acc, k) => {
-    if (!obj.hasOwnProperty(k)) {
-      return acc
-    }
+  Object.assign({}, obj, Object.keys(schema).reduce((acc, k) =>
+    !obj.hasOwnProperty(k) ? acc : _assocǃ(acc, k, schema[k](obj[k])), {}))
 
-    acc[k] = schema[k](obj[k])
-
-    return acc
-  }, {}))
-
-export default curry(plan)
+export default _curry2(plan)

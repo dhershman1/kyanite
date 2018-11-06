@@ -1,4 +1,7 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
+import juxt from '../function/juxt'
+import filter from './filter'
+import reject from './reject'
 
 /**
  * @name partition
@@ -22,8 +25,6 @@ import curry from '../function/curry'
  *
  * part(['foo', 'bar', 100]) // => [ ['foo', 'bar'], [100] ]
  */
-const partition = (fn, list) =>
-  list.reduce(([pass, fail], v) =>
-    fn(v) ? [pass.concat(v), fail] : [pass, fail.concat(v)], [[], []])
+const partition = juxt([filter, reject])
 
-export default curry(partition)
+export default _curry2(partition)

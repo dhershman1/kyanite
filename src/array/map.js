@@ -1,4 +1,5 @@
-import curry from '../function/curry'
+import _curry2 from '../_internals/_curry2'
+import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name map
@@ -23,6 +24,15 @@ import curry from '../function/curry'
  *
  * dbler([1, 2, 3]) // => [2, 4, 6]
  */
-const map = (fn, list) => list.map(fn)
+const map = (fn, list) => {
+  const len = list.length
+  const result = Array(len)
 
-export default curry(map)
+  for (let i = 0; i < len; i++) {
+    _assocǃ(result, i, fn(list[i]))
+  }
+
+  return result
+}
+
+export default _curry2(map)

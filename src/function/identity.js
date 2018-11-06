@@ -4,7 +4,7 @@
  * @since v0.1.0
  * @category Function
  * @sig a -> a
- * @description A function that returns the value passed to it
+ * @description A function that returns the value passed to it, also known as the I combinator
  * @param {Any} a The value to identify
  * @return {Any} The identified value
  * @example

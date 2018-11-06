@@ -2,7 +2,7 @@ import omit from '../../src/object/omit'
 import test from 'tape'
 
 test('omit -- Test omit()', t => {
-  t.deepEqual(omit('test', {
+  t.deepEqual(omit(['test'], {
     test: 1,
     cool: 2,
     cat: 'Mew!'
@@ -22,7 +22,7 @@ test('omit -- Test omit()', t => {
 })
 
 test('omit -- Test curried omit single key', t => {
-  const omiter = omit('test')
+  const omiter = omit(['test'])
   const results = omiter({
     test: 1,
     cool: 2,

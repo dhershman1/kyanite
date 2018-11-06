@@ -1,4 +1,4 @@
-import curry from './curry'
+import _curry4 from '../_internals/_curry4'
 
 /**
  * @name branch
@@ -32,4 +32,4 @@ import curry from './curry'
  */
 const branch = (p, f, g, a) => p(a) ? f(a) : g(a)
 
-export default curry(branch)
+export default _curry4(branch)
