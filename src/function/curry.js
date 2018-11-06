@@ -3,7 +3,7 @@
  * @since v0.1.0
  * @category Function
  * @sig (* -> a) -> (* -> a)
- * @description Create a curried function
+ * @description Create a curried or partial function
  * @param  {Function} f The function we will be running
  * @param  {Any} args extra args to apply if needed
  * @return {Any} Returns based on the function sent in
