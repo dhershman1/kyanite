@@ -1,5 +1,4 @@
 import _arrFromIter from './_arrFromIter'
-import _containsWith from './_containsWith'
 import has from '../object/has'
 import type from '../function/type'
 import eq from '../function/eq'
@@ -8,6 +7,16 @@ const _functionName = f => {
   const match = String(f).match(/^function (\w*)/)
 
   return match == null ? '' : match[1]
+}
+
+const _containsWith = (pred, x, list) => {
+  for (let i = 0, len = list.length; i < len; i++) {
+    if (pred(x, list[i])) {
+      return true
+    }
+  }
+
+  return false
 }
 
 function _uniqContentEquals (aIterator, bIterator, stackA, stackB) {
