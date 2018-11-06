@@ -1,4 +1,3 @@
-import _arrFromIter from './_arrFromIter'
 import has from '../object/has'
 import type from '../function/type'
 import eq from '../function/eq'
@@ -17,6 +16,17 @@ const _containsWith = (pred, x, list) => {
   }
 
   return false
+}
+
+const _arrFromIter = iter => {
+  const list = []
+  let next = null
+
+  while (!(next = iter.next()).done) {
+    list.push(next.value)
+  }
+
+  return list
 }
 
 function _uniqContentEquals (aIterator, bIterator, stackA, stackB) {
