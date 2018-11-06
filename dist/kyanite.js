@@ -56,15 +56,17 @@
   };
   var concatMap$1 = _curry2(concatMap);
 
+  var _assocǃ = function _assocǃ(acc, key, val) {
+    acc[key] = val;
+    return acc;
+  };
+  var _assocǃ$1 = _curry3(_assocǃ);
+
   var countBy = function countBy(fn, arr) {
     return arr.reduce(function (acc, a) {
       var k = fn(a);
-      if (acc.hasOwnProperty(k)) {
-        acc[k] += 1;
-      } else {
-        acc[k] = 1;
-      }
-      return acc;
+      var _an = _assocǃ$1(acc, k);
+      return acc.hasOwnProperty(k) ? _an(acc[k] + 1) : _an(1);
     }, {});
   };
   var countBy$1 = _curry2(countBy);
@@ -82,12 +84,8 @@
   var groupBy = function groupBy(fn, list) {
     return list.reduce(function (acc, v) {
       var k = fn(v);
-      if (has$1(k, acc)) {
-        acc[k] = _appendǃ(acc[k], v);
-      } else {
-        acc[k] = [v];
-      }
-      return acc;
+      var _an = _assocǃ$1(acc, k);
+      return has$1(k, acc) ? _an(_appendǃ(acc[k], v)) : _an([v]);
     }, {});
   };
   var groupBy$1 = _curry2(groupBy);
@@ -184,7 +182,7 @@
     var len = list.length;
     var result = Array(len);
     for (var i = 0; i < len; i++) {
-      result[i] = fn(list[i]);
+      _assocǃ$1(result, i, fn(list[i]));
     }
     return result;
   };
@@ -872,18 +870,14 @@
 
   var defaults = function defaults(def, obj) {
     return Object.keys(def).reduce(function (acc, prop) {
-      if (isNil(acc[prop])) {
-        acc[prop] = def[prop];
-      }
-      return acc;
-    }, obj);
+      return obj[prop] === undefined ? _assocǃ$1(acc, prop, def[prop]) : _assocǃ$1(acc, prop, obj[prop]);
+    }, {});
   };
   var defaults$1 = _curry2(defaults);
 
   var draft = function draft(fn, obj) {
     return Object.keys(obj).reduce(function (acc, key) {
-      acc[key] = fn(obj[key]);
-      return acc;
+      return _assocǃ$1(acc, key, fn(obj[key]));
     }, {});
   };
   var draft$1 = _curry2(draft);
@@ -894,10 +888,7 @@
 
   var omit = function omit(keys, x) {
     return Object.keys(x).reduce(function (acc, prop) {
-      if (!keys.includes(prop)) {
-        acc[prop] = x[prop];
-      }
-      return acc;
+      return !keys.includes(prop) ? _assocǃ$1(acc, prop, x[prop]) : acc;
     }, {});
   };
   var omit$1 = _curry2(omit);
@@ -918,11 +909,7 @@
 
   var plan = function plan(schema, obj) {
     return Object.assign({}, obj, Object.keys(schema).reduce(function (acc, k) {
-      if (!obj.hasOwnProperty(k)) {
-        return acc;
-      }
-      acc[k] = schema[k](obj[k]);
-      return acc;
+      return !obj.hasOwnProperty(k) ? acc : _assocǃ$1(acc, k, schema[k](obj[k]));
     }, {}));
   };
   var plan$1 = _curry2(plan);
@@ -941,10 +928,7 @@
 
   var sift = function sift(fn, obj) {
     return Object.keys(obj).reduce(function (acc, k) {
-      if (fn(obj[k])) {
-        acc[k] = obj[k];
-      }
-      return acc;
+      return fn(obj[k]) ? _assocǃ$1(acc, k, obj[k]) : acc;
     }, {});
   };
   var sift$1 = _curry2(sift);
