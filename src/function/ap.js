@@ -10,6 +10,7 @@ import concat from '../list/concat'
  * @sig Array (a -> b) -> Array a -> Array b
  * @description
  * Takes an array of functions to be applied to an array of data, concating the results together
+ * also known as the S combinator
  * @param {Array} fns The list of functions to apply
  * @param {Array} list The array of data to run the functions on
  * @return {Array} A new array of data modified by the functions concated together

@@ -6,7 +6,8 @@ import _curry4 from '../_internals/_curry4'
  * @category Function
  * @sig (c -> c -> d) -> (a -> b -> c) -> a -> b -> d
  * @description
- * Applies the second function to the values passed in, and then runs the first function against those new values
+ * Applies the second function to the values passed in, and then runs the first function against those new values,
+ * also known as the P combinator
  * @param {Function} fn The first function being ran against the values from the second
  * @param {Function} gn The function to be applied to the two values passed in
  * @param {Any} a The first value to use
