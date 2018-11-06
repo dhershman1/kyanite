@@ -1,4 +1,5 @@
 import _curry2 from '../_internals/_curry2'
+import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name uniqBy
@@ -24,11 +25,7 @@ const uniqBy = (fn, list) =>
   Object.values(list.reduce((acc, a) => {
     const k = fn(a)
 
-    if (!acc.hasOwnProperty(k)) {
-      acc[k] = a
-    }
-
-    return acc
+    return !acc.hasOwnProperty(k) ? _assocǃ(acc, k, a) : acc
   }, {}))
 
 export default _curry2(uniqBy)

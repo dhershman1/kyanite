@@ -97,10 +97,7 @@
   var uniqBy = function uniqBy(fn, list) {
     return Object.values(list.reduce(function (acc, a) {
       var k = fn(a);
-      if (!acc.hasOwnProperty(k)) {
-        acc[k] = a;
-      }
-      return acc;
+      return !acc.hasOwnProperty(k) ? _assocǃ$1(acc, k, a) : acc;
     }, {}));
   };
   var uniqBy$1 = _curry2(uniqBy);
@@ -387,8 +384,7 @@
   var zip = function zip(x, y) {
     var arr = x.length < y.length ? x : y;
     return arr.reduce(function (acc, _, i) {
-      acc[x[i]] = y[i];
-      return acc;
+      return _assocǃ$1(acc, x[i], y[i]);
     }, {});
   };
   var zip$1 = _curry2(zip);
