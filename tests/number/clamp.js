@@ -20,3 +20,12 @@ test('clamp -- Is curried', t => {
   t.same(fn(1), 1)
   t.end()
 })
+
+test('clamp -- Throws error', t => {
+  try {
+    clamp(900, 1, 30)
+  } catch (err) {
+    t.is(err.message, 'Min cannot be greater than max in clamp')
+    t.end()
+  }
+})
