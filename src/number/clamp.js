@@ -5,6 +5,7 @@ import _curry3 from '../_internals/_curry3'
  * @since v0.10.0
  * @category Number
  * @sig Number -> Number -> Number -> Number
+ * @description Restricts a number to be within a range
  * @param {Number} min The minimum of the clamp
  * @param {Number} max The maximum of the clamp
  * @param {Number} val The number to clamp

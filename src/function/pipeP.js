@@ -5,6 +5,7 @@ import _curry2 from '../_internals/_curry2'
  * @since v0.10.0
  * @category Function
  * @sig [(a -> Promise b), (b -> Promise c), ..., (y -> Promise z)] -> a -> (a -> Promise z)
+ * @description Runs a pipe of promise based functions against data
  * @param {Array} fns The list of async functions to run
  * @param {Any} data The data to apply our functions to
  * @return {Promise} A promise that once fulfilled has the results from the pipe
