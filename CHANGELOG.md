@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.10.1
+
+### Fixed
+
+- `omit` documentation to show correct input
+
+### New
+
+- Added `over` function which applies a function over a object value
+
 ## v0.10.0
 
 ### Breaking Changes
