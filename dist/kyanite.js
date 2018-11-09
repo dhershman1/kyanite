@@ -320,6 +320,40 @@
     return _typeof(obj);
   }
 
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _objectSpread(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i] != null ? arguments[i] : {};
+      var ownKeys = Object.keys(source);
+
+      if (typeof Object.getOwnPropertySymbols === 'function') {
+        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+        }));
+      }
+
+      ownKeys.forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    }
+
+    return target;
+  }
+
   function _toArray(arr) {
     return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest();
   }
@@ -874,6 +908,11 @@
   };
   var omit$1 = _curry2(omit);
 
+  var over = function over(key, fn, acc) {
+    return _objectSpread({}, acc, _defineProperty({}, key, fn(acc[key])));
+  };
+  var over$1 = _curry3(over);
+
   var path = function path(_ref, obj) {
     var _ref2 = _toArray(_ref),
         p = _ref2[0],
@@ -1081,6 +1120,7 @@
   exports.has = has$1;
   exports.height = height;
   exports.omit = omit$1;
+  exports.over = over$1;
   exports.path = path$1;
   exports.plan = plan$1;
   exports.prop = prop$1;
