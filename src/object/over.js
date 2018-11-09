@@ -22,6 +22,6 @@ import _curry3 from '../_internals/_curry3'
  * withFn({ a: 1, b: 1 }) // => { a: 1, b: 2 }
  */
 const over = (key, fn, acc) =>
-  ({ ...acc, [key]: fn(acc[key]) })
+  Object.assign({}, acc, { [key]: fn(acc[key]) })
 
 export default _curry3(over)
