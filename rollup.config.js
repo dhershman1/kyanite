@@ -16,7 +16,8 @@ export default [
     output: {
       file: 'dist/kyanite.min.js',
       format: 'umd',
-      name: 'kyanite'
+      name: 'kyanite',
+      exports: 'named'
     }
   }, {
     input: './src/index.js',
@@ -30,7 +31,8 @@ export default [
     output: {
       file: 'dist/kyanite.js',
       format: 'umd',
-      name: 'kyanite'
+      name: 'kyanite',
+      exports: 'named'
     }
   }
 ]
