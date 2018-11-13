@@ -1,9 +1,10 @@
 {
   "name": "kyanite",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "description": "A small library of pure functional utilities to make life easier and data better",
-  "main": "dist/kyanite.min.js",
+  "main": "src/common.js",
   "module": "src/index.js",
+  "jsdelivr": "dist/kyanite.min.js",
   "directories": {
     "test": "tests",
     "lib": "src"
