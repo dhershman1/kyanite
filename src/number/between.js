@@ -3,6 +3,8 @@ import _curry3 from '../_internals/_curry3'
 /**
  * @name between
  * @since v0.7.0
+ * @function
+ * @memberof Kyanite
  * @category Number
  * @sig Number -> Number -> Number -> Boolean
  * @description Checks to see if a number is between two other provided numbers

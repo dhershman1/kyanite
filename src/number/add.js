@@ -2,7 +2,9 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name add
+ * @memberof Kyanite
  * @since v0.1.0
+ * @function
  * @category Number
  * @sig Number -> Number -> Number
  * @description Adds the provided numbers together
