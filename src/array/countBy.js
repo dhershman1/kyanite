@@ -3,6 +3,7 @@ import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name countBy
+ * @function
  * @since v0.10.0
  * @category Array
  * @sig (a -> String) -> [a] -> {*}

@@ -2,6 +2,7 @@ import _curry4 from '../_internals/_curry4'
 
 /**
  * @name branch
+ * @function
  * @since v0.4.0
  * @category Function
  * @sig (a -> Boolean) -> (a -> b) -> (a -> b)

@@ -2,6 +2,7 @@ import _curry3 from '../_internals/_curry3'
 
 /**
  * @name clamp
+ * @function
  * @since v0.10.0
  * @category Number
  * @sig Number -> Number -> Number -> Number

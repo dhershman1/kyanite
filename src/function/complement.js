@@ -3,6 +3,7 @@ import not from './not'
 
 /**
  * @name complement
+ * @function
  * @since v0.1.0
  * @category Function
  * @description

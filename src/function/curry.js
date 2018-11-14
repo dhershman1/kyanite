@@ -1,5 +1,6 @@
 /**
  * @name curry
+ * @function
  * @since v0.1.0
  * @category Function
  * @sig (* -> a) -> (* -> a)

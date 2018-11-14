@@ -2,6 +2,7 @@ import _curry3 from '../_internals/_curry3'
 
 /**
  * @name insert
+ * @function
  * @since v0.1.0
  * @category Array
  * @sig Number -> a -> [b]

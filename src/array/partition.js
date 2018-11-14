@@ -5,6 +5,7 @@ import reject from './reject'
 
 /**
  * @name partition
+ * @function
  * @since v0.1.0
  * @category Array
  * @sig Filterable f => (a -> Boolean) -> f a -> [f a, f a]

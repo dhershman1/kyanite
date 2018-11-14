@@ -1,6 +1,7 @@
 
 /**
  * @name last
+ * @function
  * @since v0.1.0
  * @category List
  * @sig

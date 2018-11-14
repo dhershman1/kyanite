@@ -3,6 +3,7 @@ import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name map
+ * @function
  * @since v0.1.0
  * @category Array
  * @sig (a -> b) -> f a -> f b

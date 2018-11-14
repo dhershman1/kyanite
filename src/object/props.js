@@ -3,6 +3,7 @@ import map from '../array/map'
 
 /**
  * @name props
+ * @function
  * @since v0.4.0
  * @category Object
  * @sig Object { k: v } -> Array v

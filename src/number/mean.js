@@ -5,6 +5,7 @@ import reduce from '../array/reduce'
 
 /**
  * @name mean
+ * @function
  * @since v0.1.0
  * @category Number
  * @sig [Number] -> Number

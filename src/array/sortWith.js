@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name sortWith
+ * @function
  * @since v0.2.2
  * @category Array
  * @sig (Array -> Function) -> Array -> Array

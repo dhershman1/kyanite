@@ -2,6 +2,7 @@ import _curry4 from '../_internals/_curry4'
 
 /**
  * @name on
+ * @function
  * @since v0.4.0
  * @category Function
  * @sig (c -> c -> d) -> (a -> b -> c) -> a -> b -> d

@@ -2,6 +2,10 @@ import _curry2 from './_curry2'
 
 /**
  * This is an optimized internal curry function for 3 param functions
+ * @private
+ * @category Function
+ * @param {Function} fn The function to curry
+ * @return {Function} The curried function
  */
 function _curry3 (fn) {
   return function f3 (a, b, c) {

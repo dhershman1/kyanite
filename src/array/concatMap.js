@@ -5,6 +5,7 @@ import reduce from './reduce'
 /**
  * @name concatMap
  * @since v0.1.0
+ * @function
  * @category Array
  * @sig Function -> Array -> Array
  * @description Take an array and concats the values into a new array after applying the function

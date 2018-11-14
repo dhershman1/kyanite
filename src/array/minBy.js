@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name minBy
+ * @function
  * @since v0.5.0
  * @category Array
  * @description

@@ -3,6 +3,7 @@ import gcd from './gcd'
 
 /**
  * @name lcm
+ * @function
  * @since v0.1.0
  * @category Number
  * @sig Number -> Number -> Number

@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name prop
+ * @function
  * @since v0.1.0
  * @category Object
  * @sig k -> {k: v} -> v | Undefined

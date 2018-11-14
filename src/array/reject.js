@@ -3,6 +3,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name reject
+ * @function
  * @since v0.1.0
  * @category Function
  * @sig (a -> Boolean) -> Array [a] -> Array [a]

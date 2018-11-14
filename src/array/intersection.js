@@ -6,6 +6,7 @@ import uniq from './uniq'
 
 /**
  * @name intersection
+ * @function
  * @since v0.1.0
  * @category Array
  * @sig Array a -> Array a -> Array a

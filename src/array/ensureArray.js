@@ -2,6 +2,7 @@ import isNil from '../function/isNil'
 
 /**
  * @name ensureArray
+ * @function
  * @since v0.1.0
  * @category Array
  * @description

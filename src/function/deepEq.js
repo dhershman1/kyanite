@@ -3,6 +3,7 @@ import _equal from '../_internals/_equal'
 
 /**
  * @name deepEq
+ * @function
  * @since v0.1.0
  * @category Function
  * @sig a -> b -> Boolean

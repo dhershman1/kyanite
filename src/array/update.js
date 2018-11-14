@@ -4,6 +4,7 @@ import identity from '../function/identity'
 
 /**
  * @name update
+ * @function
  * @since v0.1.0
  * @category Array
  * @sig Number -> a -> [b] -> [c]

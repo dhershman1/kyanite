@@ -3,6 +3,7 @@ import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name draft
+ * @function
  * @since v0.6.0
  * @category Object
  * @sig Function (a -> b) -> Object { k: v }

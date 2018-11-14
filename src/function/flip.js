@@ -2,6 +2,7 @@ import _curry3 from '../_internals/_curry3'
 
 /**
  * @name flip
+ * @function
  * @since v0.10.0
  * @category Function
  * @sig (a -> b -> c) -> b -> a -> c

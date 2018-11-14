@@ -3,6 +3,7 @@ import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name omit
+ * @function
  * @since v0.1.0
  * @category Object
  * @sig [String] -> {String: *} → {String: *}

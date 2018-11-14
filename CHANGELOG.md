@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.10.2
+
+### New
+
+- Added onto documentation, expanding upon the build to hopefully allow you to see notes when using the lib
+
+### Fixed
+
+- Added a common.js build to scripts this allows tools like esm and webpack to fallback to a main common.js
+
 ## v0.10.1
 
 ### Fixed

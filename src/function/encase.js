@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name encase
+ * @function
  * @since v0.2.2
  * @category Function
  * @sig Function -> Any -> Maybe

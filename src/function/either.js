@@ -2,6 +2,7 @@ import _curry3 from '../_internals/_curry3'
 
 /**
  * @name either
+ * @function
  * @since v0.9.0
  * @category Function
  * @sig (a -> Boolean)-> (a -> Boolean) -> a -> Boolean

@@ -5,6 +5,7 @@ import slice from './slice'
 
 /**
  * @name endsWith
+ * @function
  * @since v0.10.0
  * @category List
  * @sig a -> List -> Boolean

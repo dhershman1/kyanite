@@ -5,6 +5,7 @@ import rem from './rem'
 
 /**
  * @name factors
+ * @function
  * @since v0.8.3
  * @category Number
  * @sig Number -> Array

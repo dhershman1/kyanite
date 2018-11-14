@@ -3,6 +3,7 @@ import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name zip
+ * @function
  * @since v0.5.0
  * @category Array
  * @sig Array -> Array -> Object

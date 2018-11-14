@@ -3,6 +3,7 @@ import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name sift
+ * @function
  * @since v0.1.0
  * @category Object
  * @sig (a -> Boolean) -> Object -> Object

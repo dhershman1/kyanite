@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name pipeP
+ * @function
  * @since v0.10.0
  * @category Function
  * @sig [(a -> Promise b), (b -> Promise c), ..., (y -> Promise z)] -> a -> (a -> Promise z)

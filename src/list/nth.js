@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name nth
+ * @function
  * @since v0.1.0
  * @category List
  * @sig Number -> Array a -> Maybe a

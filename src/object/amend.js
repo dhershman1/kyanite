@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name amend
+ * @function
  * @since v0.10.0
  * @category Object
  * @sig Object -> Object -> Object

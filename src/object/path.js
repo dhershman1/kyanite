@@ -3,6 +3,7 @@ import isNil from '../function/isNil'
 
 /**
  * @name path
+ * @function
  * @since v0.1.0
  * @category Object
  * @sig (a -> Array) -> Object -> a | Boolean

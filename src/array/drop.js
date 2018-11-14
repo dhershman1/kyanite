@@ -3,6 +3,7 @@ import _curry2 from '../_internals/_curry2'
 /**
  * @name drop
  * @since v0.2.2
+ * @function
  * @category Array
  * @sig Number -> Array -> Array
  * @description Starts at a at desired index and pulls the values from that point until the end

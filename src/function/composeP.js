@@ -2,6 +2,7 @@ import _curry3 from '../_internals/_curry3'
 
 /**
  * @name composeP
+ * @function
  * @since v0.10.0
  * @category Function
  * @sig (a -> Promise b) -> (b -> Promise c) -> a -> (a -> Promise c)

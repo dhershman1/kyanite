@@ -2,6 +2,7 @@ import map from '../array/map'
 
 /**
  * @name juxt
+ * @function
  * @since v0.1.0
  * @category Function
  * @sig (a, b, …, m) → n → ((a, b, …, m) → [n])

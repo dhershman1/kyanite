@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name has
+ * @function
  * @since v0.1.0
  * @category Object
  * @sig s -> {s: x} -> Boolean
