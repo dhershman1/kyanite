@@ -12,8 +12,8 @@
   "devDependencies": {
     "@babel/core": "7.1.2",
     "@babel/preset-env": "7.1.0",
+    "@killparadise/docdash": "github:dhershman1/docdash",
     "coveralls": "3.0.2",
-    "docdash": "^1.0.0",
     "esm": "3.0.84",
     "globby": "8.0.1",
     "jsdoc": "^3.5.5",
@@ -34,14 +34,13 @@
     "lint": "standard src/**/*.js",
     "build": "rollup -c",
     "create": "node scripts/create-export.js",
-    "docs": "node scripts/docs.js",
+    "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
     "scripts": "npm-run-all create docs build",
     "test:cov": "nyc npm test",
     "check-cov": "nyc check-coverage --lines 95 --functions 100 --branches 95",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "cov": "nyc --reporter=html npm test",
-    "prepack": "npm-run-all --parallel create docs lint test --serial build",
-    "gen": "./node_modules/.bin/jsdoc -c jsdoc.json"
+    "prepack": "npm-run-all --parallel create docs lint test --serial build"
   },
   "nyc": {
     "include": [
