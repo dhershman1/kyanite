@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name pow
+ * @function
  * @since v0.7.0
  * @category Number
  * @sig Number -> Number -> Number

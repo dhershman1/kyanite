@@ -2,6 +2,7 @@ import _curry3 from '../_internals/_curry3'
 
 /**
  * @name replace
+ * @function
  * @since v0.10.0
  * @category String
  * @sig RegExp|String -> String -> String -> String

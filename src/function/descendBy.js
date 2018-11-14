@@ -3,6 +3,7 @@ import descend from './descend'
 
 /**
  * @name descendBy
+ * @function
  * @since v0.2.1
  * @category Function
  * @sig Function -> Any -> Any -> Number

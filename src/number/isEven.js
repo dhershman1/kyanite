@@ -3,6 +3,7 @@ import eq from '../function/eq'
 
 /**
  * @name isEven
+ * @function
  * @since v0.7.0
  * @category Number
  * @sig Number -> Boolean

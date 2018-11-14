@@ -5,6 +5,7 @@ import concat from '../list/concat'
 
 /**
  * @name ap
+ * @function
  * @since v0.4.0
  * @category Function
  * @sig Array (a -> b) -> Array a -> Array b

@@ -3,6 +3,7 @@ import eq from './eq'
 
 /**
  * @name eqBy
+ * @function
  * @since v0.10.0
  * @category Function
  * @sig (a -> b) -> a -> a -> Boolean

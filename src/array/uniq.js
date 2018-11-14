@@ -3,6 +3,7 @@ import uniqBy from './uniqBy'
 
 /**
  * @name uniq
+ * @function
  * @since v0.1.0
  * @category Array
  * @sig (a -> b) -> Array a -> Array a

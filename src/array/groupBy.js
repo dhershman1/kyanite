@@ -5,6 +5,7 @@ import has from '../object/has'
 
 /**
  * @name groupBy
+ * @function
  * @since v0.2.1
  * @category Array
  * @sig Function -> Array -> Object

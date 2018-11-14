@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name dropWhile
+ * @function
  * @since v0.9.0
  * @category Array
  * @sig (a -> Boolean) -> Array [a] -> Array [a]

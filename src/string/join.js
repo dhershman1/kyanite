@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name join
+ * @function
  * @since v0.4.0
  * @category String
  * @sig String a -> Array String

@@ -3,6 +3,7 @@ import ascend from './ascend'
 
 /**
  * @name ascendBy
+ * @function
  * @since v0.2.1
  * @category Function
  * @sig Function -> Any -> Any -> Number

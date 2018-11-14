@@ -3,6 +3,7 @@ import flip from '../function/flip'
 
 /**
  * @name reduce
+ * @function
  * @since v0.1.0
  * @category Array
  * @sig (a -> b -> b) -> b -> Array a -> b

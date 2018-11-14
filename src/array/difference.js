@@ -6,6 +6,7 @@ import uniq from './uniq'
 /**
  * @name difference
  * @since v0.1.0
+ * @function
  * @category Array
  * @sig Array [a] -> Array -> [b]
  * @description Returns a new array of values that are not contained within both arrays

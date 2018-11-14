@@ -5,6 +5,7 @@ import sort from './sort'
 
 /**
  * @name sortBy
+ * @function
  * @since v0.2.1
  * @category Array
  * @sig Function -> Array -> Array

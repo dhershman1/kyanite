@@ -2,6 +2,7 @@ import _curry3 from '../_internals/_curry3'
 
 /**
  * @name slice
+ * @function
  * @since v0.1.0
  * @category List
  * @sig Number -> Number -> List a -> List a

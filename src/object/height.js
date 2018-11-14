@@ -1,6 +1,7 @@
 
 /**
  * @name height
+ * @function
  * @since v0.1.0
  * @category Object
  * @sig Object -> Number

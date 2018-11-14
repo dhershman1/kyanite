@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name filter
+ * @function
  * @since v0.1.0
  * @category Array
  * @sig Filterable f => (a → Boolean) → f a → f a

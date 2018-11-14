@@ -1,6 +1,7 @@
 
 /**
  * @name trim
+ * @function
  * @since v0.1.0
  * @category String
  * @sig String a -> String a

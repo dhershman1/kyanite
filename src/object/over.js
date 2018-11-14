@@ -2,6 +2,7 @@ import _curry3 from '../_internals/_curry3'
 
 /**
  * @name over
+ * @function
  * @since v0.10.1
  * @sig String -> Function -> Object -> Object
  * @category Object

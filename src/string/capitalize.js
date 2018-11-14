@@ -1,5 +1,6 @@
 /**
  * @name capitalize
+ * @function
  * @since v0.1.0
  * @category String
  * @sig String -> String

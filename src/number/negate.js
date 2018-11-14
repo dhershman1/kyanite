@@ -1,6 +1,7 @@
 
 /**
  * @name negate
+ * @function
  * @since v0.10.0
  * @category Number
  * @sig Number -> Number

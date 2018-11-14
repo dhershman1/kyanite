@@ -2,6 +2,7 @@ import rem from './rem'
 
 /**
  * @name isPrime
+ * @function
  * @since v0.8.3
  * @category Number
  * @sig Number -> Boolean

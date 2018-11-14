@@ -1,5 +1,6 @@
 /**
  * @name toUpper
+ * @function
  * @since v0.7.0
  * @category String
  * @sig String -> String

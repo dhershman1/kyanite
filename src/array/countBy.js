@@ -3,7 +3,6 @@ import _assocǃ from '../_internals/_assocǃ'
 
 /**
  * @name countBy
- * @memberof Kyanite
  * @function
  * @since v0.10.0
  * @category Array

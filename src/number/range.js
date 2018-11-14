@@ -2,8 +2,9 @@ import _curry2 from '../_internals/_curry2'
 
 /**
  * @name range
+ * @function
  * @since v0.1.0
- * @category Function
+ * @category Number
  * @sig Number a -> Number b -> [Number a...b]
  * @description Create an array range from start to end
  * @param  {Number} from Starting number for the range

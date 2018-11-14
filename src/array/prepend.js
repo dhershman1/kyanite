@@ -3,6 +3,7 @@ import _curry2 from '../_internals/_curry2'
 /**
  * @name prepend
  * @since v0.1.0
+ * @function
  * @category Array
  * @sig a -> [a] -> [a]
  * @description Returns a new list with the provided value at the front of the given list

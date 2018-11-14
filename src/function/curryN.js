@@ -1,5 +1,7 @@
 /**
  * @name curryN
+ * @function
+ * @since v0.1.0
  * @category Function
  * @sig Number -> ((a, b) -> c) -> a -> b -> c
  * @description Acts like curry but this one expects you to tell it how many arguments to expect

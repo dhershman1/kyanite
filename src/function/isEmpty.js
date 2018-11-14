@@ -2,6 +2,7 @@ import isNil from './isNil'
 
 /**
  * @name isEmpty
+ * @function
  * @since v0.1.0
  * @category Function
  * @sig a -> Boolean

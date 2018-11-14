@@ -1,5 +1,6 @@
 /**
  * @name first
+ * @function
  * @since v0.1.0
  * @category List
  * @sig [a] -> a | Undefined

@@ -4,6 +4,7 @@ import isNil from './isNil'
 
 /**
  * @name defaultTo
+ * @function
  * @since v0.10.0
  * @category Function
  * @sig a -> b -> a|b
