@@ -12,8 +12,8 @@ A light weight pure functional library with single type utility functions and it
 
 ## Contents
 
-- [Changelog](https://github.com/dhershman1/kyanite/blob/master/CHANGELOG.md)
-- [Documentation](https://www.dusty.codes/documentation/kyanite)
+- [View the Changelog](https://github.com/dhershman1/kyanite/blob/master/CHANGELOG.md)
+- [View the Documentation](https://dhershman1.github.io/kyanite/)
 - [Philosophy](#philosophy)
 - [Key Features](#key-features)
 - [How To](#how-to)
