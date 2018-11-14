@@ -2,13 +2,17 @@
 
 ## v0.10.2
 
+**Note these changes only affect documentation and there won't be a publish to npm until other items become needed**
+
 ### New
 
-- Added onto documentation, expanding upon the build to hopefully allow you to see notes when using the lib
+- Enhanced documentation to give it a more natural feel, also hosted it on github pages for easier access
+  - This should allow the documentation to keep pace with updates without cache delay or navigation issues
 
 ### Fixed
 
 - Added a common.js build to scripts this allows tools like esm and webpack to fallback to a main common.js
+- Fixed range showing up as a Function Category still
 
 ## v0.10.1
 
