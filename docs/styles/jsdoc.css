@@ -147,6 +147,10 @@ section {
   padding: 0 0 0 30px;
 }
 
+.hidden {
+  display: none;
+}
+
 .variation {
   display: none
 }
