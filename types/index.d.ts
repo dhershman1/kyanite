@@ -17,20 +17,13 @@ declare namespace K {
     [key: string]: ((value: any) => any) | Schema;
   }
 
-  interface ArrayLike {
-    nodeType: number;
-  }
-
   type Arity1Fn = (a: any) => any;
-
-  type Arity2Fn = (a: any, b: any) => any;
 
   interface ObjFunc {
     [index: string]: (...a: any[]) => any;
   }
 
   type Pred = (...a: any[]) => boolean;
-  type SafePred<T> = (...a: T[]) => boolean;
 
   interface Static {
     /**
