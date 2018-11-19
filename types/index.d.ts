@@ -194,7 +194,7 @@ declare namespace K {
      * Returns a new array of values that are not contained within both given arrays
      * Note: Order of arrays does not matter here
      */
-    difference<T>(arrs: ReadonlyArray<T[]>): T[];
+    difference<T>(arrs: ReadonlyArray<T>): T[];
 
     /**
      * Divides the provided numbers
