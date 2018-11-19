@@ -56,11 +56,11 @@
  * @function
  * @since v0.1.0
  * @category Array
- * @sig (a -> Boolean) -> [a] -> a | Boolean
+ * @sig (a -> Boolean) -> [a] -> Maybe a
  * @description Find an item based on the function sent in and its list
  * @param  {Function} fn The function used/called during the find
  * @param  {Array} list The list we want to search through
- * @return {Any} Returns either the found item, or false if nothing is found
+ * @return {Any} Returns either the found item, or undefined if no item is found
  *
  * @example
  * find(v => v.val === 'test', [{val: 'test'}]) // => 'test'
