@@ -533,8 +533,11 @@ declare namespace K {
     path<T>(keys: ReadonlyArray<string>): (obj: { [key: string]: T }) => T;
 
     /**
-     * --Placeholder for pathOR function--
+     * A safe way to find an item within an object, will return the provided default if it's not found or the value itself if it is found
      */
+    pathOr<T>(a: any, keys: ReadonlyArray<string>, obj: { [key: string]: T }): T;
+    pathOr(a: any, keys: ReadonlyArray<string>): <T>(obj: { [key: string]: T }) => T;
+    pathOr(a: any): (keys: ReadonlyArray<string>) => <T>(obj: { [key: string]: T }) => T;
 
     /**
      * Applies a sequence of transformations over a value
