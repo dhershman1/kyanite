@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>object/prop.js - Kyanite</title>
+    <title>object/pathOr.js - Kyanite</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">object/prop.js</h1>
+    <h1 class="page-title">object/pathOr.js</h1>
     
 
     
@@ -49,34 +49,46 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
+            <pre class="prettyprint source linenums"><code>import _curry3 from '../_internals/_curry3'
+import isNil from '../function/isNil'
+import path from './path'
 
 /**
- * @name prop
+ * @name pathOr
  * @function
- * @since v0.1.0
+ * @since v0.10.2
  * @category Object
- * @sig k -> {k: v} -> v | Undefined
- * @description
- * Brings back the indicated property of an object if it exists
- * @param {Array} p The array path of the property we are looking for
- * @param {Object} obj The object to search through
- * @return {Any} The value that exists at 'obj.p'
- *
+ * @sig a -> [key] -> { key: a } -> a
+ * @description A safe way to find an item within an object, will return the provided default if it's not found or the value itself if it is found
+ * @param {Any} a The default value to return if the value isn't found
+ * @param {Array} keys The path to traverse the object with
+ * @param {Object} obj The object to traverse
+ * @return {Any} Either the found value or the provided default value
  * @example
- * prop('thing', { thing: 'test' }) // => 'test'
- * prop('thing', {}) // => undefined
- * map(prop('a'), [{ a: 1 }, { a: 2 }, { a: 3 }]) // => [1, 2, 3]
  *
- * // It is also curried
+ * pathOr('N/A', ['a', 'b'], { a: { b: 1 } }) // => 1
+ * pathOr('N/A', ['c', 'b'], { a: { b: 1 } }) // => 'N/A'
  *
- * const proper = prop('a')
+ * // It's also curried
+ * const fn = pathOr('N/A')
+ * const withKeys = fn(['a', 'b'])
  *
- * proper({ a: 1, b: 2 }) // => 1
+ * fn(['c', 'd'], { c: { d: 2 } }) // => 2
+ * withKeys({ a: { b: 1 } }) // => 1
+ * fn(['c', 'd'], { d: { c: 1 } }) // => 'N/A'
+ * withKeys({ b: { a: 1 } }) // => 'N/A'
  */
-const prop = (p, obj) => obj[p]
+const pathOr = (a, keys, obj) => {
+  const res = path(keys, obj)
 
-export default _curry2(prop)
+  if (isNil(res)) {
+    return a
+  }
+
+  return res
+}
+
+export default _curry3(pathOr)
 </code></pre>
         </article>
     </section>

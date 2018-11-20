@@ -908,6 +908,15 @@
   };
   var path$1 = _curry2(path);
 
+  var pathOr = function pathOr(a, keys, obj) {
+    var res = path$1(keys, obj);
+    if (isNil(res)) {
+      return a;
+    }
+    return res;
+  };
+  var pathOr$1 = _curry3(pathOr);
+
   var plan = function plan(schema, obj) {
     return Object.assign({}, obj, Object.keys(schema).reduce(function (acc, k) {
       return !obj.hasOwnProperty(k) ? acc : _assocǃ$1(acc, k, schema[k](obj[k]));
@@ -1103,6 +1112,7 @@
   exports.omit = omit$1;
   exports.over = over$1;
   exports.path = path$1;
+  exports.pathOr = pathOr$1;
   exports.plan = plan$1;
   exports.prop = prop$1;
   exports.props = props$1;
