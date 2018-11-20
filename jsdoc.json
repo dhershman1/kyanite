@@ -40,7 +40,6 @@
     "moduleName": "Kyanite",
     "disqus": "",
     "meta": {
-      "title": "Kyanite",
       "description": "A small library of pure functional utilities to make life easier and data better",
       "keyword": "functional, library, javascript, pure, helpers, utils"
     },
