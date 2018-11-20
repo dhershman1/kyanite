@@ -5,6 +5,12 @@
   "main": "dist/kyanite.min.js",
   "module": "src/index.js",
   "jsdelivr": "dist/kyanite.min.js",
+  "typings": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types",
+    "src"
+  ],
   "directories": {
     "test": "tests",
     "lib": "src"
