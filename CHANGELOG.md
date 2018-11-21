@@ -6,8 +6,9 @@
 
 - Enhanced documentation to give it a more natural feel, also hosted it on github pages for easier access
   - This should allow the documentation to keep pace with updates without cache delay or navigation issues
-- Added `pathOr` function which works like path but allows a value to be returned rather than just `undefined`
 - Added [TypeScript](https://www.typescriptlang.org/) Declarations file to bring in typings for functions
+- Added `pathOr` function which works like path but allows a value to be returned rather than just `undefined`
+- Added `test` functino which runs a regex test against a provided string
 
 ### Improved
 
