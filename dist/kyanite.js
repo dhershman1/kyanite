@@ -882,9 +882,9 @@
     return Object.values(obj).length;
   };
 
-  var omit = function omit(keys, x) {
-    return Object.keys(x).reduce(function (acc, prop) {
-      return !keys.includes(prop) ? _assocǃ$1(acc, prop, x[prop]) : acc;
+  var omit = function omit(keys, obj) {
+    return Object.keys(obj).reduce(function (acc, prop) {
+      return !keys.includes(prop) ? _assocǃ$1(acc, prop, obj[prop]) : acc;
     }, {});
   };
   var omit$1 = _curry2(omit);
@@ -982,6 +982,11 @@
   };
   var join$1 = _curry2(join);
 
+  var match = function match(reg, str) {
+    return str.match(reg);
+  };
+  var match$1 = _curry2(match);
+
   var replace = function replace(a, b, str) {
     return str.replace(a, b);
   };
@@ -991,6 +996,11 @@
     return str.split(char);
   };
   var split$1 = _curry2(split);
+
+  var test = function test(reg, str) {
+    return reg.test(str);
+  };
+  var test$1 = _curry2(test);
 
   var toLower = function toLower(a) {
     return a.toLowerCase();
@@ -1121,8 +1131,10 @@
   exports.capitalize = capitalize;
   exports.fuzzySearch = fuzzySearch$1;
   exports.join = join$1;
+  exports.match = match$1;
   exports.replace = replace$1;
   exports.split = split$1;
+  exports.test = test$1;
   exports.toLower = toLower;
   exports.toUpper = toUpper;
   exports.trim = trim;

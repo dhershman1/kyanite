@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>function/ascendBy.js - Documentation</title>
+    <title>string/test.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">function/ascendBy.js</h1>
+    <h1 class="page-title">string/test.js</h1>
     
 
     
@@ -49,43 +49,33 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import _curry3 from '../_internals/_curry3'
-import ascend from './ascend'
+            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
 
 /**
- * @name ascendBy
+ * @name test
+ * @since v0.10.2
  * @function
- * @since v0.2.1
- * @category Function
- * @sig Function -> Any -> Any -> Number
- * @description Can be used with sort to ascend an array based on the function passed in
- * @param {Function} fn The function to use on values within our array
- * @param {Any} a The first value to compare
- * @param {Any} b The second value to compare
- * @return {Number} A number based on where it falls when compared with the other value
- *
+ * @category String
+ * @sig RegExp -> String -> Boolean
+ * @description
+ * Tests regexp against a string value returns true if matches were found, false if not
+ * @param {RegExp} reg The regex to test the string against
+ * @param {String} str The string to test
+ * @return {Boolean} A boolean based on if the string passes the test or not
  * @example
- * [
- *  { name: 'bob' },
- *  { name: 'amanda' },
- *  { name: 'carl' },
- *  { name: 'amanda' }
- * ].sort(ascendBy(x => x.name)) // => [{ name: 'amanda' }, { name: 'amanda' }, { name: 'bob' }, { name: 'carl' }]
+ *
+ * test(/^a/, 'abc') // => true
+ * test(/^b/, 'abc') // => false
  *
  * // It's also curried
+ * const fn = test(/^a/)
  *
- * const desc = ascendBy(x => x.name)
- *
- * [
- *  { name: 'bob' },
- *  { name: 'amanda' },
- *  { name: 'carl' },
- *  { name: 'amanda' }
- * ].sort(desc) // => [{ name: 'amanda' }, { name: 'amanda' }, { name: 'bob' }, { name: 'carl' }]
+ * fn('abc') // => true
+ * fn('bca') // => false
  */
-const ascendBy = (fn, a, b) => ascend(fn(a), fn(b))
+const test = (reg, str) => reg.test(str)
 
-export default _curry3(ascendBy)
+export default _curry2(test)
 </code></pre>
         </article>
     </section>

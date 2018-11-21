@@ -8,7 +8,8 @@
   - This should allow the documentation to keep pace with updates without cache delay or navigation issues
 - Added [TypeScript](https://www.typescriptlang.org/) Declarations file to bring in typings for functions
 - Added `pathOr` function which works like path but allows a value to be returned rather than just `undefined`
-- Added `test` functino which runs a regex test against a provided string
+- Added `test` function which runs a regex test against a provided string
+- Added `match` function which will match a string against some regex and build an array of matching strings
 
 ### Improved
 
