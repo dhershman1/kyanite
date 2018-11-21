@@ -441,6 +441,12 @@ declare namespace K {
     map<T, U>(fn: (x: T) => U): (list: ReadonlyArray<T>) => U[];
 
     /**
+     * Matches a string against some regexp to build an array of matching strings
+     */
+    match(reg: RegExp, str: string): string[];
+    match(reg: RegExp): (str: string) => string[];
+
+    /**
      * Goes through an array of values and grabs the max value of the array
      */
     max<T extends Ord>(list: ReadonlyArray<T>): T;
@@ -712,6 +718,12 @@ declare namespace K {
      */
     takeWhile<T>(fn: (x: T) => boolean, list: ReadonlyArray<T>): T[];
     takeWhile<T>(fn: (x: T) => boolean): (list: ReadonlyArray<T>) => T[];
+
+    /**
+     * Tests regexp against a string value returns true if matches were found, false if not
+     */
+    test(reg: RegExp, str: string): boolean;
+    test(reg: RegExp): (str: string) => boolean;
 
     /**
      * Transform a provided string to lowercase letters
