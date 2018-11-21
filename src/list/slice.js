@@ -5,7 +5,9 @@ import _curry3 from '../_internals/_curry3'
  * @function
  * @since v0.1.0
  * @category List
- * @sig Number -> Number -> List a -> List a
+ * @sig
+ * Number -> Number -> Array a -> Array a
+ * Number -> Number -> String -> String
  * @description
  * Slices out items from a list type of data, like a list of characters or items
  * @param {Number} a The index at which to begin extraction

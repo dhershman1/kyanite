@@ -5,7 +5,9 @@ import _curry2 from '../_internals/_curry2'
  * @function
  * @since v0.1.0
  * @category List
- * @sig a -> List -> List
+ * @sig
+ * a -> Array -> Array
+ * String -> String -> String
  * @description Take a List and concats the values into a new List
  * @param {Any} val The value to concat into the List
  * @param {Array|String} list The list of items or characters we want to concat the value to

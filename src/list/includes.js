@@ -5,7 +5,9 @@ import _curry2 from '../_internals/_curry2'
  * @function
  * @since v0.1.0
  * @category List
- * @sig a → List a → Boolean
+ * @sig
+ * String | Number -> Array -> Boolean
+ * String -> String -> Boolean
  * @description
  * Checks to see if the provided list contains at least 1 of the provided value within it
  * @param {Any} value The value we want to search the list for

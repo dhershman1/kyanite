@@ -3997,7 +3997,8 @@ fn('100').then(console.log) // => '100123555'</code></pre>
       <ul class="dummy">
         
         <li>
-          a -> List -> List
+          a -> Array -> Array
+String -> String -> String
         </li>
         
       </ul>
@@ -7480,7 +7481,8 @@ en(a: {b: {c: 0}}}) // => 0</code></pre>
       <ul class="dummy">
         
         <li>
-          a -> List -> Boolean
+          a -> Array -> Boolean
+String -> String -> Boolean
         </li>
         
       </ul>
@@ -9371,6 +9373,10 @@ f([1, 2, 3, 4, 5, 6]) // => 5</code></pre>
         
         <li>
           [a] -> a | Undefined
+        </li>
+        
+        <li>
+          String -> String | Undefined
         </li>
         
       </ul>
@@ -11464,7 +11470,11 @@ g(3) // => false</code></pre>
       <ul class="dummy">
         
         <li>
-          a → List a → Boolean
+          String | Number -> Array -> Boolean
+        </li>
+        
+        <li>
+          String -> String -> Boolean
         </li>
         
       </ul>
@@ -13874,7 +13884,11 @@ j(['test', 'that', 'thing']) // => 'test that thing'</code></pre>
       <ul class="dummy">
         
         <li>
-          Array a -> Number
+          Array -> Number
+        </li>
+        
+        <li>
+          String -> Number
         </li>
         
       </ul>
@@ -21152,7 +21166,11 @@ with('foofoo') // => 'barfoo'</code></pre>
       <ul class="dummy">
         
         <li>
-          List a -> List a
+          Array -> Array
+        </li>
+        
+        <li>
+          String -> String
         </li>
         
       </ul>
@@ -21765,7 +21783,8 @@ with('foofoo') // => 'barfoo'</code></pre>
       <ul class="dummy">
         
         <li>
-          Number -> Number -> List a -> List a
+          Number -> Number -> Array a -> Array a
+Number -> Number -> String -> String
         </li>
         
       </ul>

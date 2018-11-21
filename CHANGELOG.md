@@ -22,6 +22,7 @@
 - Docs for `path` to correct the description
 - Docs for `or` to have the correct types associated with the values
 - Docs for `concat` to correct it's signature
+- `List` type docs to depict String & Array signatures or "List" signatures
 
 ## v0.10.1
 

@@ -420,7 +420,7 @@ declare namespace K {
     /**
      * Obtains the length of the passed array
      */
-    length(a: ReadonlyArray<any>): number;
+    length(a: string | ReadonlyArray<any>): number;
 
     /**
      * Checks if a value is less than the other
