@@ -72,7 +72,7 @@
 <li><a href="#credit">Credit</a></li>
 </ul>
 <h2 id="philosophy">Philosophy</h2>
-<p>The goal for the library is to be stripped down, light weight, and intuitive. With Kyanite, The idea is to be performant and easy to use in a functional setting, it's easy to build powerful and organized, yet small, algorithmic pipes into reusable functions for your codebase. The hope is that it will continue to bring functionality to the world of JavaScript with continued improvement as it grows!</p>
+<p>The goal for Kyanite is to be stripped down, light weight, and intuitive. The idea is to be performant and easy to use in a functional setting, making it simple to build reusable functions in your code base with powerful and organized algorithmic pipes. Ultimately, Kyanite’s continued growth and improvement will support the growth and improvement of the JavaScript community</p>
 <h2 id="key-features">Key Features</h2>
 <ul>
 <li>Purely Functional - This was a main focus for the project. I wanted it to be an easy to use, functional system while also being completely pure by making use of piping and transducers to boost performance.</li>
@@ -81,16 +81,7 @@
 <li>Data last ideaology</li>
 </ul>
 <h2 id="how-to">How To</h2>
-<p><code>npm i kyanite</code></p>
-<p>Standard module system</p>
-<pre class="prettyprint source lang-js"><code>// This will use the module path in the package.json (src/index.js)
-import K from 'kyanite'
-// However if you want to grab the dev version
-import K from 'kyanite/dist/kyanite.js'</code></pre><p>Common JS</p>
-<pre class="prettyprint source lang-js"><code>// For the prod minified version
-const K = require('kyanite')
-// For the dev/debug friendly version
-const K = require('kyanite/dist/kyanite.js')</code></pre><p>CDN</p>
+<p>With a CDN</p>
 <pre class="prettyprint source lang-html"><code>&lt;!-- It is recommended to replace the @latest with a strict version number for production -->
 &lt;script src=&quot;https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.min.js&quot;>&lt;/script>
 &lt;!-- To use the debug friendly kyanite simply remove .min from the filename -->
@@ -99,11 +90,20 @@ const K = require('kyanite/dist/kyanite.js')</code></pre><p>CDN</p>
   const K = kyanite
 
   K.isEmpty({})
-&lt;/script></code></pre><p>Local copy script tag</p>
+&lt;/script></code></pre><p>Or installing with <code>npm i kyanite</code> and then:</p>
+<p>Standard module system</p>
+<pre class="prettyprint source lang-js"><code>// This will use the module path in the package.json (src/index.js)
+import K from 'kyanite'
+// However if you want to grab the dev version
+import K from 'kyanite/dist/kyanite.js'</code></pre><p>Common JS</p>
+<pre class="prettyprint source lang-js"><code>// For the prod minified version
+const K = require('kyanite')
+// For the dev/debug friendly version
+const K = require('kyanite/dist/kyanite.js')</code></pre><p>Local copy script tag</p>
 <pre class="prettyprint source lang-html"><code>&lt;!-- To use the prod minified version -->
-&lt;script src=&quot;/path/to/kyanite.min.js&quot;>&lt;/script>
+&lt;script src=&quot;/path/to/dist/kyanite.min.js&quot;>&lt;/script>
 &lt;!-- To use the dev/debug friendly version -->
-&lt;script src=&quot;/path/to/kyanite.js&quot;>&lt;/script>
+&lt;script src=&quot;/path/to/dist/kyanite.js&quot;>&lt;/script>
 &lt;script>
   const K = kyanite
 

@@ -1,6 +1,7 @@
 // Type definitions for Kyanite v0.10.2
 // Project: Kyanite
 // Definitions by: Dustin Hershman <dustinh17@gmail.com>
+
 declare let K: K.Static
 
 declare namespace K {
