@@ -4,8 +4,6 @@
   "description": "A small library of pure functional utilities to make life easier and data better",
   "main": "dist/kyanite.min.js",
   "module": "src/index.js",
-  "jsdelivr": "dist/kyanite.min.js",
-  "unpkg": "dist/kyanite.min.js",
   "typings": "types/index.d.ts",
   "files": [
     "dist",
