@@ -6,10 +6,10 @@ import _curry2 from '../_internals/_curry2'
  * @since v0.5.0
  * @category Array
  * @description
- * Finds the max of an array by applying the provided function to the values provided and reducing it down
+ * Finds the maximum value in an array by applying a provided function to the value first before comparing it
  * @param {Function} fn The function to apply to each value of the array
- * @param {Array} list The Array to search through
- * @return {Any} The item that was deemed to be the max
+ * @param {Array} list The Array to iterate through
+ * @return {Any} The found or "deemed" maximum value of the array
  *
  * @example
  * maxBy(x => x.size, [{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 6 }

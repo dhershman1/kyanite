@@ -8,7 +8,9 @@ import slice from './slice'
  * @function
  * @since v0.10.0
  * @category List
- * @sig a -> List -> Boolean
+ * @sig
+ * a -> Array -> Boolean
+ * String -> String -> Boolean
  * @description Checks to see if the provided value is at the end of a given list
  * @param {String|Array} a The value to check for at the end of the list
  * @param {String|Array} list The list to check through

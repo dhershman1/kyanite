@@ -4,9 +4,9 @@
  * @since v0.1.0
  * @category Array
  * @description
- * Goes through an array of values and grabs the first value of the array when it's been sorted
- * @param {Array} list The Array to sort and grab from
- * @return {Any} Returns the item at the start of an array based on what's passed in
+ * Iterates through an array to find the min value
+ * @param {Array} list The Array to iterate through
+ * @return {Any} The found or "deemed" minimum value of the array
  *
  * @example
  * min([1, 3, 2, 5, 4]) // => 1

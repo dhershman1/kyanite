@@ -21,7 +21,7 @@ A light weight pure functional library with single type utility functions and it
 
 ## Philosophy
 
-The goal for the library is to be stripped down, light weight, and intuitive. With Kyanite, The idea is to be performant and easy to use in a functional setting, it's easy to build powerful and organized, yet small, algorithmic pipes into reusable functions for your codebase. The hope is that it will continue to bring functionality to the world of JavaScript with continued improvement as it grows!
+The goal for Kyanite is to be stripped down, light weight, and intuitive. The idea is to be performant and easy to use in a functional setting, making it simple to build reusable functions in your code base with powerful and organized algorithmic pipes. Ultimately, Kyanite’s continued growth and improvement will support the growth and improvement of the JavaScript community
 
 ## Key Features
 
@@ -32,7 +32,21 @@ The goal for the library is to be stripped down, light weight, and intuitive. Wi
 
 ## How To
 
-`npm i kyanite`
+With a CDN
+
+```html
+<!-- It is recommended to replace the @latest with a strict version number for production -->
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.min.js"></script>
+<!-- To use the debug friendly kyanite simply remove .min from the filename -->
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.js"></script>
+<script>
+  const K = kyanite
+
+  K.isEmpty({})
+</script>
+```
+
+Or installing with `npm i kyanite` and then:
 
 Standard module system
 
@@ -52,27 +66,13 @@ const K = require('kyanite')
 const K = require('kyanite/dist/kyanite.js')
 ```
 
-CDN
-
-```html
-<!-- It is recommended to replace the @latest with a strict version number for production -->
-<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.min.js"></script>
-<!-- To use the debug friendly kyanite simply remove .min from the filename -->
-<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.js"></script>
-<script>
-  const K = kyanite
-
-  K.isEmpty({})
-</script>
-```
-
 Local copy script tag
 
 ```html
 <!-- To use the prod minified version -->
-<script src="/path/to/kyanite.min.js"></script>
+<script src="/path/to/dist/kyanite.min.js"></script>
 <!-- To use the dev/debug friendly version -->
-<script src="/path/to/kyanite.js"></script>
+<script src="/path/to/dist/kyanite.js"></script>
 <script>
   const K = kyanite
 
