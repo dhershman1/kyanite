@@ -5,12 +5,12 @@ import _curry2 from '../_internals/_curry2'
  * @function
  * @since v0.1.0
  * @category Function
- * @sig Boolean -> Boolean -> Boolean
+ * @sig a -> b -> a | b
  * @description
  * Runs an or comparison on the two values passed in
- * @param {Boolean} a The first value to compare
- * @param {Boolean} b The second value to compare
- * @return {Boolean} The evaluated outcome of the parameters
+ * @param {Any} a The first value to check for a truthy value
+ * @param {Any} b The second value to check for a truthy value
+ * @return {Any} The value that returns truthy
  *
  * @example
  * or(true, true) // => true

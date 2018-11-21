@@ -7,11 +7,21 @@
 - Enhanced documentation to give it a more natural feel, also hosted it on github pages for easier access
   - This should allow the documentation to keep pace with updates without cache delay or navigation issues
 - Added `pathOr` function which works like path but allows a value to be returned rather than just `undefined`
+- Added [TypeScript](https://www.typescriptlang.org/) Declarations file to bring in typings for functions
+
+### Improved
+
+- README organization to help alleviate confusion
+- Documentation for `partition`, `max`, `min`, `maxBy`, and `minBy` to be a bit easier to understand
 
 ### Fixed
 
-- Added a common.js build to scripts this allows tools like esm and webpack to fallback to a main common.js
-- Fixed range showing up as a Function Category still
+- `range` will no longer show up under the `Function` category
+- Docs for `find` so that the return is accurate
+- Docs for `omit` so that the description is accurate and makes sense, also made the param more verbose
+- Docs for `path` to correct the description
+- Docs for `or` to have the correct types associated with the values
+- Docs for `concat` to correct it's signature
 
 ## v0.10.1
 

@@ -10,10 +10,10 @@ import reject from './reject'
  * @category Array
  * @sig Filterable f => (a -> Boolean) -> f a -> [f a, f a]
  * @description
- * Takes a predicate function and a list or filterable data object and returns the pair.
- * One contains the data which passed the predicate function, the other the values that did not.
- * @param {Function} fn The predicate function to determine which side an element belongs to
- * @param {Array} list The list or other filterable to partition through
+ * Takes a predicate function and an array of data and returns the pair
+ * One contains the data which passes the predicate function, the other is the values that did not
+ * @param {Function} fn The predicate function to check each of the values
+ * @param {Array} list The array to partition out
  * @return {Array} An array containing the first set of elements that passed the predicate function,
  * And a second that did not
  *

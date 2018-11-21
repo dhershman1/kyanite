@@ -6,11 +6,11 @@ import isNil from '../function/isNil'
  * @function
  * @since v0.1.0
  * @category Object
- * @sig (a -> Array) -> Object -> a | Boolean
+ * @sig [k] -> { k: a } -> a | Undefined
  * @description Safe way to find a value within an object will return the value if found, undefined if not
  * @param  {Array} keys The path to safely traverse the object with
  * @param  {Object} obj The object to traverse
- * @return {Any} Returns Maybe Data if found, undefined if not
+ * @return {Any} Returns the value if found, undefined if not
  *
  * @example
  *

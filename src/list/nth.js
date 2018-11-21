@@ -5,7 +5,9 @@ import _curry2 from '../_internals/_curry2'
  * @function
  * @since v0.1.0
  * @category List
- * @sig Number -> Array a -> Maybe a
+ * @sig
+ * Number -> Array a -> a | Undefined
+ * Number -> String -> String | Undefined
  * @description Returns the nth element of the given list
  * @param  {Number} o How much to offset the value
  * @param  {Array|String} list The Array or list to crawl through
