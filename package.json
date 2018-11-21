@@ -5,6 +5,7 @@
   "main": "dist/kyanite.min.js",
   "module": "src/index.js",
   "jsdelivr": "dist/kyanite.min.js",
+  "unpkg": "dist/kyanite.min.js",
   "typings": "types/index.d.ts",
   "files": [
     "dist",
@@ -46,6 +47,7 @@
     "check-cov": "nyc check-coverage --lines 95 --functions 100 --branches 95",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "cov": "nyc --reporter=html npm test",
+    "ts": "tsc -p types/tsconfig.json",
     "prepack": "npm-run-all --parallel create docs lint test --serial build"
   },
   "nyc": {
@@ -78,9 +80,15 @@
     "utils",
     "utilities",
     "utility",
-    "single type"
+    "single type",
+    "curried",
+    "partial"
   ],
-  "author": "Dustin Hershman <dustinh17@gmail.com>",
+  "author": {
+    "name": "Dustin Hershman",
+    "email": "dustinh17@gmail.com",
+    "url": "https://dusty.codes"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dhershman1/kyanite/issues",
