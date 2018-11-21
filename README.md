@@ -66,6 +66,20 @@ const K = require('kyanite')
 const K = require('kyanite/dist/kyanite.js')
 ```
 
+Local copy script tag
+
+```html
+<!-- To use the prod minified version -->
+<script src="/path/to/dist/kyanite.min.js"></script>
+<!-- To use the dev/debug friendly version -->
+<script src="/path/to/dist/kyanite.js"></script>
+<script>
+  const K = kyanite
+
+  K.isEmpty({})
+</script>
+```
+
 ## Credit
 
 A lot of the if not most of the inpiration for this library came from 2 libraries I follow closely, Primarily most of it stems from:
