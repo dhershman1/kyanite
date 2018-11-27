@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.10.3
+
+### Fixed
+
+- Updated **Dev** Dependency `npm-run-all` to fix the critical security vulnerability
+
 ## v0.10.2
 
 ### New
