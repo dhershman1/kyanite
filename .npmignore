@@ -12,3 +12,4 @@ coverage
 .babelrc
 docs
 jsdoc.json
+.DS_Store
