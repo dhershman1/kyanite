@@ -5,6 +5,7 @@
 ### Fixed
 
 - Updated **Dev** Dependency `npm-run-all` to fix the critical security vulnerability
+- Homepage url to point to https://kyanite.dusty.codes
 
 ## v0.10.2
 
