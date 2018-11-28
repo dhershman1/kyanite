@@ -3,7 +3,7 @@ node_js:
   - "8"
 install:
   - npm install esm
-  - npm install -g codecov standard tape tap-spec nyc
+  - npm install -g coveralls standard tape tap-spec nyc
 branches:
   only:
   - master
