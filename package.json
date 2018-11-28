@@ -44,6 +44,7 @@
     "test:cov": "nyc npm test",
     "check-cov": "nyc check-coverage --lines 95 --functions 100 --branches 95",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "report": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "cov": "nyc --reporter=html npm test",
     "ts": "tsc -p types/tsconfig.json",
     "prepack": "npm-run-all --parallel create docs lint test --serial build"
