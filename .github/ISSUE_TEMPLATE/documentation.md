@@ -12,6 +12,6 @@ Which Function(s) (if any) is in question?
 
 What is the documentation you want to change currently?
 
-**What you expect/want to see**
+**What it is expected to be**
 
 Give some context about what you'd expect or want to see instead

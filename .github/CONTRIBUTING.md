@@ -23,6 +23,7 @@ For any new functionality additions please follow the format of other functional
 ```
 /**
  * @name function name
+ * @function
  * @since version it was created in
  * @category what the function applies to
  * @sig the signature type of the function
@@ -39,13 +40,9 @@ If you are editing functionality and it requires api changes please be sure to c
 
 ## Developing
 
-- Any functionality is expected to work with a single type
-- All functionality should be pure functions
+- The library is Functional so all new functions should follow this pattern
 - Run unit tests with `npm test`
-- All unit tests are built using ava with babel so standard js is okay to use
-- Make sure the current babel setup is able to transpile your code for support of IE 10+
-- Please don't include the seperatly built function files in your request the main `kyanite.min.js` is okay
-- If you add new functionality make sure to run `node scripts/create-export.js` which generates a new `index.js` in src that `npm run build` will use to create a new `kyanite.min.js` file
+- Before opening a PR make sure you do `npm run scripts` to generate new documentation & build files
 
 ## Releasing
 

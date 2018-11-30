@@ -1,3 +1,5 @@
+> Delete any section you're not using and please delete this line too
+
 ## Breaking Changes
 
 - List of breaking changes if any
@@ -13,6 +15,3 @@
 ## Fixed
 
 - List of bug or functionality fixes if any
-
-
-Please delete this and any sections above that you are not using
