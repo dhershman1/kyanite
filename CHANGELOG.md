@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.11.0
+
+### Breaking Changes
+
+- `factors` output has changed to be inclusive, it also works with negative numbers now
+  - Example: `factors(-36) // => [1, 2, 3, 4, 6, 9, 12, 18, 36]`
+
+### Improved
+
+- Added import example onto each function, so it's visible within the examples
+- `factors` had some typos in its docs
+
 ## v0.10.3
 
 ### Fixed

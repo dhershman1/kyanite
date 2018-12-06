@@ -1,5 +1,6 @@
 import compose from '../function/compose'
 import filter from '../array/filter'
+import negate from './negate'
 import range from './range'
 import rem from './rem'
 
@@ -15,12 +16,19 @@ import rem from './rem'
  * @example
  * import { factors } from 'kyanite'
  *
- * factors(36) // => [ 1, 2, 3, 6, 17, 34, 51 ]
- * factors(102) // => [1, 2, 3, 6, 17, 34, 51]
+ * factors(36) // => [1, 2, 3, 4, 6, 9, 12, 18, 36]
+ * factors(-36) // => [1, 2, 3, 4, 6, 9, 12, 18, 36]
+ * factors(102) // => [1, 2, 3, 6, 17, 34, 51, 102]
+ * factors(-102) // => [1, 2, 3, 6, 17, 34, 51, 102]
+ * factors() // => []
  * factors(0) // => []
- * factors(-1) // => []
  * factors(NaN) // => []
  */
-const factors = (x = 0) => compose(filter(i => rem(i, x) === 0), range(0), x)
+
+const factors = (x = 0) => {
+  const val = x < 0 ? negate(x) : x
+
+  return x ? [...compose(filter(i => rem(i, val) === 0), range(0), val), val] : []
+}
 
 export default factors
