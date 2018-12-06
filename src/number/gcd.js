@@ -13,6 +13,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Number} The Greatest Common Denominator
  *
  * @example
+ * import { gcd } from 'kyanite'
+ *
  * gcd(80, 90) // => 10
  * gcd(20, 600) // => 20
  *

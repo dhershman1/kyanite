@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Number} The quotient of the two numbers
  *
  * @example
+ * import { divide } from 'kyanite'
+ *
  * divide(2, 1) // => 2
  *
  * // It's also curried

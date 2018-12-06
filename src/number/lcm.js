@@ -13,6 +13,7 @@ import gcd from './gcd'
  * @return {Number} The least common multiple of the two numbers
  *
  * @example
+ * import { lcm } from 'kyanite'
  *
  * lcm(90, 70) // => 630
  * lcm(91, 4) // => 364

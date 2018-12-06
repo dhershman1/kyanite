@@ -12,6 +12,7 @@ import _curry3 from '../_internals/_curry3'
  * @param {Number} val The number to clamp
  * @return {Number} The value if its inbetween min and max, min if its below and max if its above
  * @example
+ * import { clamp } from 'kyanite'
  *
  * clamp(1, 900, 23) // => 23
  * clamp(1, 900, 901) // => 900

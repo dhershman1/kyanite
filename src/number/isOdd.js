@@ -10,6 +10,8 @@ import eq from '../function/eq'
  * @param {Number} n The number to check against
  * @return {Boolean} Whether or not the number is odd
  * @example
+ * import { isOdd } from 'kyanite'
+ *
  * isOdd(1) // => true
  * isOdd(3) // => true
  * isOdd('h') // => false

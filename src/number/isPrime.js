@@ -10,6 +10,7 @@ import rem from './rem'
  * @param {Number} x The number to check if its prime or not
  * @return {Boolean} A boolean based on if the number is prime
  * @example
+ * import { isPrime } from 'kyanite'
  *
  * isPrime(5) // => true
  * isPrime(5009) // => true

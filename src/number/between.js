@@ -12,6 +12,8 @@ import _curry3 from '../_internals/_curry3'
  * @param {Number} n The value to compare with
  * @return {Boolean} Whether or not the provided number is between the other two numbers
  * @example
+ * import { between } from 'kyanite'
+ *
  * between(1, 3, 2) // => true
  * between(1, 10, 7) // => true
  * between(1, 10, 11) // => false

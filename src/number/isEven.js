@@ -11,6 +11,7 @@ import eq from '../function/eq'
  * @param {Number} n The number to check if its even
  * @return {Boolean} Whether or not the provided number is even
  * @example
+ * import { isEven } from 'kyanite'
  *
  * isEven(2) // => true
  * isEven(12) // => true
