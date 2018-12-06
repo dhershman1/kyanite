@@ -3,7 +3,7 @@
  * @function
  * @since v0.1.0
  * @category Function
- * @sig a -> Boolean
+ * @sig a -> String
  * @description Finds the type of the sent value
  * @param  {Any} x The value to test
  * @return {String} A string based on the type of the value passed in
