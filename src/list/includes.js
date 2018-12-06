@@ -14,6 +14,8 @@ import _curry2 from '../_internals/_curry2'
  * @param {Array|String} list The list of items or characters we want to search through
  * @return {Boolean} A Boolean based on if the value is found or not
  * @example
+ * import { includes } from 'kyanite'
+ *
  * includes(3, [1, 2, 3]) // => true
  * includes('yan', 'kyanite') // => true
  *

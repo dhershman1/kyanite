@@ -16,6 +16,7 @@ import slice from './slice'
  * @param {String|Array} list The list to check through
  * @return {Boolean} If the value is at the end of the provided list
  * @example
+ * import { endsWith } from 'kyanite'
  *
  * endsWith('c' , 'abc') // => true
  * endsWith(['c'], ['a', 'b', 'c']) // => true

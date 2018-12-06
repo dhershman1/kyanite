@@ -12,6 +12,8 @@
  * @return {Number} The length of the array
  *
  * @example
+ * import { length } from 'kyanite'
+ *
  * length([1, 2, 3, 4]) // => 4
  * length([]) // => 0
  */

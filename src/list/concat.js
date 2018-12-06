@@ -13,6 +13,8 @@ import _curry2 from '../_internals/_curry2'
  * @param {Array|String} list The list of items or characters we want to concat the value to
  * @return {Array} A newly created list with the value added
  * @example
+ * import { concat } from 'kyanite'
+ *
  * concat(4, [1, 2, 3]) // => [1, 2, 3, 4]
  * concat('bar', 'foo') // => 'foobar'
  */
