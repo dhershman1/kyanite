@@ -18,6 +18,7 @@ test('or -- Returns false when both params are false', t => {
 
 test('or -- gives back a value', t => {
   t.same(or(1, 0), 1)
+  t.same(or('truly', ''), 'truly')
   t.end()
 })
 
