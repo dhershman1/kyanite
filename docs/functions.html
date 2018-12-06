@@ -225,7 +225,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>add(1, 2) // => 3// It's also curriedconst adder = add(2)adder(3) // => 5adder(2) // => 4</code></pre>
+    <pre class="prettyprint"><code>import { add } from 'kyanite'add(1, 2) // => 3// It's also curriedconst adder = add(2)adder(3) // => 5adder(2) // => 4</code></pre>
 
 
 
@@ -435,7 +435,9 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>always(false, true) // => false
+    <pre class="prettyprint"><code>import { always } from 'kyanite'
+
+always(false, true) // => false
 always(true, true) // => true
 pipe([
   branch(always(isEmpty([])), concat(1), identity)
@@ -650,7 +652,9 @@ pipe([
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>amend({ b: 2 }, { a: 1 }) // => { a: 1, b: 2 }
+    <pre class="prettyprint"><code>import { amend } from 'kyanite'
+
+amend({ b: 2 }, { a: 1 }) // => { a: 1, b: 2 }
 
 // It's also curried
 const fn = amend({ b: 2 })
@@ -866,7 +870,9 @@ fn({ c: 3 }) // => { c: 3, b: 2 }</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>and(true, true) // => true
+    <pre class="prettyprint"><code>import { and } from 'kyanite'
+
+and(true, true) // => true
 and(true, false) // => false
 and(false, false) // => false</code></pre>
 
@@ -1078,7 +1084,7 @@ and(false, false) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const run = any({ a: x => x === 'foo', b: x => x !== 'bar'})run({ a: 'foo', b: 'xxx', x: 11, y: 19 }) // => truerun({ a: 'xxx', b: 'bar' }) // => false</code></pre>
+    <pre class="prettyprint"><code>import { any } from 'kyanite'const run = any({ a: x => x === 'foo', b: x => x !== 'bar'})run({ a: 'foo', b: 'xxx', x: 11, y: 19 }) // => truerun({ a: 'xxx', b: 'bar' }) // => false</code></pre>
 
 
 
@@ -1288,7 +1294,9 @@ and(false, false) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>ap([x => x + 1, x => x * 2], [1, 2, 3]) // => [2, 3, 4, 2, 4, 6]
+    <pre class="prettyprint"><code>import { ap } from 'kyanite'
+
+ap([x => x + 1, x => x * 2], [1, 2, 3]) // => [2, 3, 4, 2, 4, 6]
 
 // It's also curried
 
@@ -1505,7 +1513,9 @@ a([3, 4, 5]) // => [4, 5, 6, 6, 8, 10]</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>apply(x => x * 2, [2]) // => 4
+    <pre class="prettyprint"><code>import { apply } from 'kyanite'
+
+apply(x => x * 2, [2]) // => 4
 apply((a, b, c) => a + b + c, [1, 2, 3]) // => 6
 apply(Math.max, [1, 2, 3, -99, 42, 6, 7]) // => 42
 
@@ -1723,7 +1733,9 @@ fn(100) // => 200</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>[4, 10, 1, 6, 7, 12].sort(ascend) // => [1, 4, 6, 7, 10, 12]</code></pre>
+    <pre class="prettyprint"><code>import { ascend } from 'kyanite'
+
+[4, 10, 1, 6, 7, 12].sort(ascend) // => [1, 4, 6, 7, 10, 12]</code></pre>
 
 
 
@@ -1933,7 +1945,9 @@ fn(100) // => 200</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>[
+    <pre class="prettyprint"><code>import { ascendBy } from 'kyanite'
+
+[
  { name: 'bob' },
  { name: 'amanda' },
  { name: 'carl' },
@@ -2182,7 +2196,9 @@ const desc = ascendBy(x => x.name)
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>between(1, 3, 2) // => true
+    <pre class="prettyprint"><code>import { between } from 'kyanite'
+
+between(1, 3, 2) // => true
 between(1, 10, 7) // => true
 between(1, 10, 11) // => false
 
@@ -2430,7 +2446,9 @@ c(11) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>both(x => x > 10, x => x &lt; 20, 15) // => true
+    <pre class="prettyprint"><code>import { both } from 'kyanite'
+
+both(x => x > 10, x => x &lt; 20, 15) // => true
 
 // It's also curried
 
@@ -2670,7 +2688,9 @@ b(9) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>branch(
+    <pre class="prettyprint"><code>import { branch } from 'kyanite'
+
+branch(
   x => x &lt; 10,
   x => x + 1,
   x => x - 1,
@@ -2941,7 +2961,7 @@ b(12) // => 11</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>capitalize('test') // => 'Test'capitalize('small brown cow') // => 'Small brown cow'</code></pre>
+    <pre class="prettyprint"><code>import { capitalize } from 'kyanite'capitalize('test') // => 'Test'capitalize('small brown cow') // => 'Small brown cow'</code></pre>
 
 
 
@@ -3128,7 +3148,9 @@ b(12) // => 11</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>clamp(1, 900, 23) // => 23
+    <pre class="prettyprint"><code>import { clamp } from 'kyanite'
+
+clamp(1, 900, 23) // => 23
 clamp(1, 900, 901) // => 900
 clamp(1, 900, 0) // => 1
 
@@ -3358,7 +3380,7 @@ fn(0) // => 1</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const isNot = complement(is(String))isNot(1) // => trueisNot('test') // => false</code></pre>
+    <pre class="prettyprint"><code>import { complement } from 'kyanite'const isNot = complement(is(String))isNot(1) // => trueisNot('test') // => false</code></pre>
 
 
 
@@ -3568,7 +3590,9 @@ fn(0) // => 1</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>compose(Math.sqrt, x => x + 1, 99) // => 10
+    <pre class="prettyprint"><code>import { compose } from 'kyanite'
+
+compose(Math.sqrt, x => x + 1, 99) // => 10
 
 // It's also curried
 
@@ -3808,7 +3832,9 @@ comp(399) // => 20</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const foo = a => new Promise(resolve => resolve(a + '123'))
+    <pre class="prettyprint"><code>import { composeP } from 'kyanite'
+
+const foo = a => new Promise(resolve => resolve(a + '123'))
 const bar = a => new Promise(resolve => resolve(a + '555'))
 
 compose(bar, foo, '100').then(console.log) // => '100123555'
@@ -4050,7 +4076,9 @@ String -> String -> String
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>concat(4, [1, 2, 3]) // => [1, 2, 3, 4]
+    <pre class="prettyprint"><code>import { concat } from 'kyanite'
+
+concat(4, [1, 2, 3]) // => [1, 2, 3, 4]
 concat('bar', 'foo') // => 'foobar'</code></pre>
 
 
@@ -4264,7 +4292,9 @@ concat('bar', 'foo') // => 'foobar'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>concatMap(x => [x, x], [1, 2, 3]) // => [1, 1, 2, 2, 3, 3]
+    <pre class="prettyprint"><code>import { concatMap } from 'kyanite'
+
+concatMap(x => [x, x], [1, 2, 3]) // => [1, 1, 2, 2, 3, 3]
 concatMap(x => x, [[1, 2], [3, 4], [5, 6]]) // => [1, 2, 3, 4, 5, 6]
 
 // It's also curried
@@ -4481,7 +4511,9 @@ con([1, 2, 3]) // => [1, 1, 2, 2, 3, 3]</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const numbers = [1.0, 1.1, 1.2, 2.0, 3.0, 2.2]
+    <pre class="prettyprint"><code>import { countBy } from 'kyanite'
+
+const numbers = [1.0, 1.1, 1.2, 2.0, 3.0, 2.2]
 const letters = ['a', 'b', 'A', 'a', 'B', 'c']
 
 countBy(Math.floor, numbers) // => { '1': 3, '2': 2, '3': 1 }
@@ -4700,7 +4732,7 @@ fn(numbers) // => { '1': 3, '2': 2, '3': 1 }</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const add = curry((a, b) => a + b)add(1)(2) // => 3add(1, 2) // => 3const add1 = add(1)add1(2) // => 3// Possible gotchaconst foo = curry((a, b) => a)foo(1)() // => [Function]const bar = foo(1)bar() // => [Function]bar(null) // => 1</code></pre>
+    <pre class="prettyprint"><code>import { curry } from 'kyanite'const add = curry((a, b) => a + b)add(1)(2) // => 3add(1, 2) // => 3const add1 = add(1)add1(2) // => 3// Possible gotchaconst foo = curry((a, b) => a)foo(1)() // => [Function]const bar = foo(1)bar() // => [Function]bar(null) // => 1</code></pre>
 
 
 
@@ -4910,7 +4942,7 @@ fn(numbers) // => { '1': 3, '2': 2, '3': 1 }</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const add = curryN(2, (a, b) => a + b)add(1)(2) // => 3add(1, 2) // => 3const sum = add(1)sum(2) // => 3sum(4) // => 5const add2 = curryN(2, (a, b = 1) => a + b)const sum1 = add(1)sum1(4) // => 5sum1(undefined) // => 2// Possible gotchaconst foo = curryN(2, (a, b) => a)foo(1)() // => [Function]const bar = foo(1)bar() // => [Function]bar(null) // => 1</code></pre>
+    <pre class="prettyprint"><code>import { curryN } from 'kyanite'const add = curryN(2, (a, b) => a + b)add(1)(2) // => 3add(1, 2) // => 3const sum = add(1)sum(2) // => 3sum(4) // => 5const add2 = curryN(2, (a, b = 1) => a + b)const sum1 = add(1)sum1(4) // => 5sum1(undefined) // => 2// Possible gotchaconst foo = curryN(2, (a, b) => a)foo(1)() // => [Function]const bar = foo(1)bar() // => [Function]bar(null) // => 1</code></pre>
 
 
 
@@ -5143,7 +5175,7 @@ fn(numbers) // => { '1': 3, '2': 2, '3': 1 }</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const q = { a: 1 }deepEq({ a: 1 }, { a: 1 }) // => truedeepEq({ a: 1, b: 2 }, { b: 2, a: 1 }) // => truedeepEq(/[A-Z]/, new RegExp('[A-Z]') // => truedeepEq([1, 2], [1, 2]) // => truedeepEq(new Date(), new Date()) // => truedeepEq({ a: { q } }, { a: { q } }) // => truedeepEq('test', new String('test')) // => truedeepEq(false, new Boolean(false)) // => truedeepEq(5, new Number(5)) // => truedeepEq([1, 2], [2, 1]) // => falsedeepEq({ a: 1 }, { b: 1 }) // => falsedeepEq(new Date('11/14/1992'), new Date('11/14/2018')) // => falsedeepEq([], {}) // => false</code></pre>
+    <pre class="prettyprint"><code>import { deepEq } from 'kyanite'const q = { a: 1 }deepEq({ a: 1 }, { a: 1 }) // => truedeepEq({ a: 1, b: 2 }, { b: 2, a: 1 }) // => truedeepEq(/[A-Z]/, new RegExp('[A-Z]') // => truedeepEq([1, 2], [1, 2]) // => truedeepEq(new Date(), new Date()) // => truedeepEq({ a: { q } }, { a: { q } }) // => truedeepEq('test', new String('test')) // => truedeepEq(false, new Boolean(false)) // => truedeepEq(5, new Number(5)) // => truedeepEq([1, 2], [2, 1]) // => falsedeepEq({ a: 1 }, { b: 1 }) // => falsedeepEq(new Date('11/14/1992'), new Date('11/14/2018')) // => falsedeepEq([], {}) // => false</code></pre>
 
 
 
@@ -5353,7 +5385,9 @@ fn(numbers) // => { '1': 3, '2': 2, '3': 1 }</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>defaultTo('foo', null) // => 'foo'
+    <pre class="prettyprint"><code>import { defaultTo } from 'kyanite'
+
+defaultTo('foo', null) // => 'foo'
 defaultTo('foo', 'bar') // => 'bar'
 
 // It's also curried
@@ -5570,7 +5604,9 @@ fn('bar') // => 'bar'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>[4, 10, 1, 6, 7, 12].sort(descend) // => [12, 10, 7, 6, 4, 1]</code></pre>
+    <pre class="prettyprint"><code>import { descend } from 'kyanite'
+
+[4, 10, 1, 6, 7, 12].sort(descend) // => [12, 10, 7, 6, 4, 1]</code></pre>
 
 
 
@@ -5780,7 +5816,9 @@ fn('bar') // => 'bar'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>[
+    <pre class="prettyprint"><code>import { descendBy } from 'kyanite'
+
+[
  { name: 'bob' },
  { name: 'amanda' },
  { name: 'carl' },
@@ -6029,7 +6067,7 @@ const desc = descendBy(x => x.name)
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>difference([[1, 2, 3], [1]]) // => [2, 3]difference([[1], [1, 2, 3]]) // => [2, 3]</code></pre>
+    <pre class="prettyprint"><code>import { difference } from 'kyanite'difference([[1, 2, 3], [1]]) // => [2, 3]difference([[1], [1, 2, 3]]) // => [2, 3]</code></pre>
 
 
 
@@ -6216,7 +6254,7 @@ const desc = descendBy(x => x.name)
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>divide(2, 1) // => 2// It's also curriedconst div = divide(15)div(3) // => 5div(5) // => 3</code></pre>
+    <pre class="prettyprint"><code>import { divide } from 'kyanite'divide(2, 1) // => 2// It's also curriedconst div = divide(15)div(3) // => 5div(5) // => 3</code></pre>
 
 
 
@@ -6426,7 +6464,9 @@ const desc = descendBy(x => x.name)
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>draft(x => x * 2, { a: 1, b: 2, c: 3 }) // => { a: 2, b: 4, c: 6 }
+    <pre class="prettyprint"><code>import { draft } from 'kyanite'
+
+draft(x => x * 2, { a: 1, b: 2, c: 3 }) // => { a: 2, b: 4, c: 6 }
 
 // It's also curried
 
@@ -6642,7 +6682,9 @@ d({ a: 1, b: 2, c: 3 }) // => { a: 2, b: 4, c: 6 }</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>drop(3, [1, 2, 3, 4, 5]) // => [4, 5]
+    <pre class="prettyprint"><code>import { drop } from 'kyanite'
+
+drop(3, [1, 2, 3, 4, 5]) // => [4, 5]
 
 // It's also curried
 
@@ -6858,7 +6900,9 @@ d([1, 2, 3, 4, 5]) // => [4, 5]</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>dropWhile(x => x &lt;= 2, [1, 2, 3, 4, 3, 2, 1]) //=> [3, 4, 3, 2, 1]
+    <pre class="prettyprint"><code>import { dropWhile } from 'kyanite'
+
+dropWhile(x => x &lt;= 2, [1, 2, 3, 4, 3, 2, 1]) //=> [3, 4, 3, 2, 1]
 
 // It's also curried
 const fn = dropWhile(x => x &lt;= 2)
@@ -7074,7 +7118,9 @@ fn([-1, 0, 1, 2, 3]) // => [3]</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>either(x => x > 10, x => x &lt; 20, 21) // => true
+    <pre class="prettyprint"><code>import { either } from 'kyanite'
+
+either(x => x > 10, x => x &lt; 20, 21) // => true
 
 // It's also curried
 
@@ -7315,7 +7361,9 @@ e(11) // => true</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>encase(x => x.a.b.c, {a: 0}) // => undefined
+    <pre class="prettyprint"><code>import { encase } from 'kyanite'
+
+encase(x => x.a.b.c, {a: 0}) // => undefined
 encase(x => x.a.b.c, {a: {b: {c: 0}}}) // => 0
 
 // It's also curried
@@ -7534,7 +7582,9 @@ String -> String -> Boolean
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>endsWith('c' , 'abc') // => true
+    <pre class="prettyprint"><code>import { endsWith } from 'kyanite'
+
+endsWith('c' , 'abc') // => true
 endsWith(['c'], ['a', 'b', 'c']) // => true
 endsWith('b', 'abc') // => false
 endsWith(['b'], ['a', 'b', 'c']) // => false
@@ -7748,7 +7798,7 @@ fn('cba') // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>ensureArray(1) // => [1]ensureArray() // => []ensureArray(null) // => []ensureArray('test') // => ['test']</code></pre>
+    <pre class="prettyprint"><code>import { ensureArray } from 'kyanite'ensureArray(1) // => [1]ensureArray() // => []ensureArray(null) // => []ensureArray('test') // => ['test']</code></pre>
 
 
 
@@ -7935,7 +7985,7 @@ fn('cba') // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>eq(1, 1) // => trueeq(NaN, NaN) // => trueeq([1], [1]) // => falseconst o = {}eq({}, {}) // => falseeq(o, o) // => true// eq is also curriedconst test = eq(NaN)test(NaN) // => true</code></pre>
+    <pre class="prettyprint"><code>import { eq } from 'kyanite'eq(1, 1) // => trueeq(NaN, NaN) // => trueeq([1], [1]) // => falseconst o = {}eq({}, {}) // => falseeq(o, o) // => true// eq is also curriedconst test = eq(NaN)test(NaN) // => true</code></pre>
 
 
 
@@ -8145,7 +8195,9 @@ fn('cba') // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>eqBy(Math.abs, 5, -5) // => true
+    <pre class="prettyprint"><code>import { eqBy } from 'kyanite'
+
+eqBy(Math.abs, 5, -5) // => true
 eqBy(x => x[0], [1], [1]) // => true
 eqBy(x => x.length, 'ab', 'abc') // => false
 
@@ -8387,7 +8439,7 @@ fn(5, -1) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const data = [1, 2, 3, 4]every(x => x > 0, data) // => trueevery(x => x &lt; 3, data) // => false// It is also curriedconst run = every(x => x > 0)run([1, 2, 3]) // => truerun([-1, 0, 1]) // => false</code></pre>
+    <pre class="prettyprint"><code>import { every } from 'kyanite'const data = [1, 2, 3, 4]every(x => x > 0, data) // => trueevery(x => x &lt; 3, data) // => false// It is also curriedconst run = every(x => x > 0)run([1, 2, 3]) // => truerun([-1, 0, 1]) // => false</code></pre>
 
 
 
@@ -8597,8 +8649,10 @@ fn(5, -1) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>factor(36) // => [ 1, 2, 3, 6, 17, 34, 51 ]
-factor(102) // => [1, 2, 3, 6, 17, 34, 51]
+    <pre class="prettyprint"><code>import { factors } from 'kyanite'
+
+factors(36) // => [ 1, 2, 3, 6, 17, 34, 51 ]
+factors(102) // => [1, 2, 3, 6, 17, 34, 51]
 factors(0) // => []
 factors(-1) // => []
 factors(NaN) // => []</code></pre>
@@ -8788,7 +8842,7 @@ factors(NaN) // => []</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const isEven = n => n % 2 === 0filter(isEven, [1, 2, 3, 4]) // => [2, 4]// Is also curriedconst filterer = filter(isEven)filterer([1, 2, 3, 4]) // => [2, 4]</code></pre>
+    <pre class="prettyprint"><code>import { filter } from 'kyanite'const isEven = n => n % 2 === 0filter(isEven, [1, 2, 3, 4]) // => [2, 4]// Is also curriedconst filterer = filter(isEven)filterer([1, 2, 3, 4]) // => [2, 4]</code></pre>
 
 
 
@@ -8998,7 +9052,7 @@ factors(NaN) // => []</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>find(v => v.val === 'test', [{val: 'test'}]) // => 'test'find(v => v.val === 'none', [{val: 'test'}, {val: 'none'}]) // => { val: 'none' }find(v => v > 2, [1, 2, 3, 4, 5]) // => 3// find is also curriedconst finder = find(v => v.val === 'test')finder([{val: 'test'}]) // => 'test'finder([{val: 'test'}, {val: 'none'}]) // => { val: 'test' }</code></pre>
+    <pre class="prettyprint"><code>import { find } from 'kyanite'find(v => v.val === 'test', [{val: 'test'}]) // => 'test'find(v => v.val === 'none', [{val: 'test'}, {val: 'none'}]) // => { val: 'none' }find(v => v > 2, [1, 2, 3, 4, 5]) // => 3// find is also curriedconst finder = find(v => v.val === 'test')finder([{val: 'test'}]) // => 'test'finder([{val: 'test'}, {val: 'none'}]) // => { val: 'test' }</code></pre>
 
 
 
@@ -9208,7 +9262,9 @@ factors(NaN) // => []</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>findIndex(x => x > 5, [1, 3, 4, 5, 6]) // => 4
+    <pre class="prettyprint"><code>import { findIndex } from 'kyanite'
+
+findIndex(x => x > 5, [1, 3, 4, 5, 6]) // => 4
 findIndex(x => x &lt; 0, [1, 3, 4, 5, 6]) // => -1
 
 // It's also curried
@@ -9428,7 +9484,7 @@ f([1, 2, 3, 4, 5, 6]) // => 5</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const arr = first([1, 3]) // => 1const str = first('abc') // => 'a'</code></pre>
+    <pre class="prettyprint"><code>import { first } from 'kyanite'const arr = first([1, 3]) // => 1const str = first('abc') // => 'a'</code></pre>
 
 
 
@@ -9618,7 +9674,9 @@ f([1, 2, 3, 4, 5, 6]) // => 5</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>flip((a, b) => b > a, 2, 1) // => true
+    <pre class="prettyprint"><code>import { flip } from 'kyanite'
+
+flip((a, b) => b > a, 2, 1) // => true
 flip((a, b) => b > a, 1, 2) // => false
 
 // It's also curried
@@ -9858,7 +9916,9 @@ _gt(2, 1) // => true</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>fuzzySearch('te', 'test') // => true
+    <pre class="prettyprint"><code>import { fuzzySearch } from 'kyanite'
+
+fuzzySearch('te', 'test') // => true
 fuzzySearch('dog', 'testing') // => false
 
 // search is also curried
@@ -10074,7 +10134,7 @@ search('test') // => true</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>gcd(80, 90) // => 10gcd(20, 600) // => 20// It's also curriedconst a = gcd(80)a(90) // => 10a(93) // => 1</code></pre>
+    <pre class="prettyprint"><code>import { gcd } from 'kyanite'gcd(80, 90) // => 10gcd(20, 600) // => 20// It's also curriedconst a = gcd(80)a(90) // => 10a(93) // => 1</code></pre>
 
 
 
@@ -10284,7 +10344,9 @@ search('test') // => true</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>groupBy(Math.floor, [4.2, 6.1, 6.4]) // => { '4': [4.2], '6': [6.1, 6.4] }
+    <pre class="prettyprint"><code>import { groupBy } from 'kyanite'
+
+groupBy(Math.floor, [4.2, 6.1, 6.4]) // => { '4': [4.2], '6': [6.1, 6.4] }
 
 // It's also curried
 
@@ -10500,7 +10562,9 @@ g([4.2, 6.1, 6.4]) // => { '4': [4.2], '6': [6.1, 6.4] }</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>gt(2, 1) // => true
+    <pre class="prettyprint"><code>import { gt } from 'kyanite'
+
+gt(2, 1) // => true
 gt('b', 'a') // => true
 
 // It's also curried
@@ -10718,7 +10782,9 @@ g(2) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>gte(2, 1) // => true
+    <pre class="prettyprint"><code>import { gte } from 'kyanite'
+
+gte(2, 1) // => true
 gte(1, 1) // => true
 gte('b', 'a') // => true
 
@@ -10938,7 +11004,7 @@ g(3) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const obj = has('thing', { test: 1, thing: 2 }) // => true// has is also curriedconst propSet = has('thing')propSet({ test: 1, thing: 2 }) // => true</code></pre>
+    <pre class="prettyprint"><code>import { has } from 'kyanite'const obj = has('thing', { test: 1, thing: 2 }) // => true// has is also curriedconst propSet = has('thing')propSet({ test: 1, thing: 2 }) // => true</code></pre>
 
 
 
@@ -11148,7 +11214,9 @@ g(3) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>height({ a: 1, b: 2 }) // => 2</code></pre>
+    <pre class="prettyprint"><code>import { height } from 'kyanite'
+
+height({ a: 1, b: 2 }) // => 2</code></pre>
 
 
 
@@ -11335,7 +11403,7 @@ g(3) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>identity(10) // => 10const test = identity(10)console.log(typeof test.constructor) // => 'function'console.log(10.constructor) // => errorfilter(identity, [0, 'cool', null, 1]) // => ['cool', 1]</code></pre>
+    <pre class="prettyprint"><code>import { identity } from 'kyanite'identity(10) // => 10const test = identity(10)console.log(typeof test.constructor) // => 'function'console.log(10.constructor) // => errorfilter(identity, [0, 'cool', null, 1]) // => ['cool', 1]</code></pre>
 
 
 
@@ -11526,7 +11594,7 @@ g(3) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>includes(3, [1, 2, 3]) // => trueincludes('yan', 'kyanite') // => true// It is also curriedconst checker = includes(3)checker([1, 2, 3]) // => truechecker('123') // => true</code></pre>
+    <pre class="prettyprint"><code>import { includes } from 'kyanite'includes(3, [1, 2, 3]) // => trueincludes('yan', 'kyanite') // => true// It is also curriedconst checker = includes(3)checker([1, 2, 3]) // => truechecker('123') // => true</code></pre>
 
 
 
@@ -11739,7 +11807,7 @@ g(3) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>insert(2, 'x', [1, 2, 3, 4]) // => [1, 2, 'x', 3, 4]// It's also curriedconst ins = insert(2)ins('x', [1, 2, 3, 4]) // => [1, 2, 'x', 3, 4]</code></pre>
+    <pre class="prettyprint"><code>import { insert } from 'kyanite'insert(2, 'x', [1, 2, 3, 4]) // => [1, 2, 'x', 3, 4]// It's also curriedconst ins = insert(2)ins('x', [1, 2, 3, 4]) // => [1, 2, 'x', 3, 4]</code></pre>
 
 
 
@@ -11972,7 +12040,7 @@ g(3) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>intersection([1, 2, 3, 4], [3, 4, 5, 6]) // => [3, 4]// It's also curriedconst inter = intersection([1, 2, 3, 4])inter([3, 4, 5, 6]) // => [3, 4]</code></pre>
+    <pre class="prettyprint"><code>import { intersection } from 'kyanite'intersection([1, 2, 3, 4], [3, 4, 5, 6]) // => [3, 4]// It's also curriedconst inter = intersection([1, 2, 3, 4])inter([3, 4, 5, 6]) // => [3, 4]</code></pre>
 
 
 
@@ -12182,7 +12250,7 @@ g(3) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>isEmpty([]) // => trueisEmpty({}) // => trueisEmpty('') // => trueisEmpty(NaN) // => trueisEmpty(null) // => trueisEmpty(undefined) // => trueisEmpty(true) // => trueisEmpty(false) // => true</code></pre>
+    <pre class="prettyprint"><code>import { isEmpty } from 'kyanite'isEmpty([]) // => trueisEmpty({}) // => trueisEmpty('') // => trueisEmpty(NaN) // => trueisEmpty(null) // => trueisEmpty(undefined) // => trueisEmpty(true) // => trueisEmpty(false) // => true</code></pre>
 
 
 
@@ -12369,7 +12437,9 @@ g(3) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>isEven(2) // => true
+    <pre class="prettyprint"><code>import { isEven } from 'kyanite'
+
+isEven(2) // => true
 isEven(12) // => true
 isEven('h') // => false
 isEven(1) // => false
@@ -12560,7 +12630,7 @@ isEven(NaN) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>isNill(null) // => trueisNill() // => trueisNill(1) // => false</code></pre>
+    <pre class="prettyprint"><code>import { isNil } from 'kyanite'isNill(null) // => trueisNill() // => trueisNill(1) // => false</code></pre>
 
 
 
@@ -12747,7 +12817,9 @@ isEven(NaN) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>isOdd(1) // => true
+    <pre class="prettyprint"><code>import { isOdd } from 'kyanite'
+
+isOdd(1) // => true
 isOdd(3) // => true
 isOdd('h') // => false
 isOdd(2) // => false
@@ -12938,7 +13010,9 @@ isOdd(NaN) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>isPrime(5) // => true
+    <pre class="prettyprint"><code>import { isPrime } from 'kyanite'
+
+isPrime(5) // => true
 isPrime(5009) // => true
 isPrime(6) // => false
 isPrime(5010) // => false</code></pre>
@@ -13128,7 +13202,9 @@ isPrime(5010) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>join(' ', ['test', 'this', 'thing']) // => 'test this thing'
+    <pre class="prettyprint"><code>import { join } from 'kyanite'
+
+join(' ', ['test', 'this', 'thing']) // => 'test this thing'
 join('aaa', ['test', 'that', 'thing']) // => 'testaaathataaathing'
 
 // It's also curried
@@ -13345,7 +13421,7 @@ j(['test', 'that', 'thing']) // => 'test that thing'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const getRange = juxt([Math.min, Math.max])getRange(3, 4, 9, -3) // => [-3, 9]</code></pre>
+    <pre class="prettyprint"><code>import { juxt } from 'kyanite'const getRange = juxt([Math.min, Math.max])getRange(3, 4, 9, -3) // => [-3, 9]</code></pre>
 
 
 
@@ -13536,7 +13612,7 @@ j(['test', 'that', 'thing']) // => 'test that thing'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const arr = last([1, 3]) // => 3const str = last('abc') // => 'c'</code></pre>
+    <pre class="prettyprint"><code>import { last } from 'kyanite'const arr = last([1, 3]) // => 3const str = last('abc') // => 'c'</code></pre>
 
 
 
@@ -13726,7 +13802,7 @@ j(['test', 'that', 'thing']) // => 'test that thing'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>lcm(90, 70) // => 630lcm(91, 4) // => 364// It's also curriedconst a = lcm(90)a(70) // => 630a(4) // => 180</code></pre>
+    <pre class="prettyprint"><code>import { lcm } from 'kyanite'lcm(90, 70) // => 630lcm(91, 4) // => 364// It's also curriedconst a = lcm(90)a(70) // => 630a(4) // => 180</code></pre>
 
 
 
@@ -13940,7 +14016,7 @@ j(['test', 'that', 'thing']) // => 'test that thing'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>length([1, 2, 3, 4]) // => 4length([]) // => 0</code></pre>
+    <pre class="prettyprint"><code>import { length } from 'kyanite'length([1, 2, 3, 4]) // => 4length([]) // => 0</code></pre>
 
 
 
@@ -14127,7 +14203,9 @@ j(['test', 'that', 'thing']) // => 'test that thing'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>lt(1, 2) // => true
+    <pre class="prettyprint"><code>import { lt } from 'kyanite'
+
+lt(1, 2) // => true
 lt('a', 'b') // => true
 
 // It's also curried
@@ -14346,7 +14424,9 @@ g(3) // => true</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>lte(1, 2) // => true
+    <pre class="prettyprint"><code>import { lte } from 'kyanite'
+
+lte(1, 2) // => true
 lte(1, 1) // => true
 lte('a', 'b') // => true
 
@@ -14566,7 +14646,7 @@ g(3) // => true</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const dbl = n => n * 2map(dbl, [1, 2, 3]) // => [2, 4, 6]// It's also curriedconst dbler = map(dbl)dbler([1, 2, 3]) // => [2, 4, 6]</code></pre>
+    <pre class="prettyprint"><code>import { map } from 'kyanite'const dbl = n => n * 2map(dbl, [1, 2, 3]) // => [2, 4, 6]// It's also curriedconst dbler = map(dbl)dbler([1, 2, 3]) // => [2, 4, 6]</code></pre>
 
 
 
@@ -14782,7 +14862,9 @@ g(3) // => true</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>match(/([a-z]a)/g, 'bananas') //=> ['ba', 'na', 'na']
+    <pre class="prettyprint"><code>import { match } from 'kyanite'
+
+match(/([a-z]a)/g, 'bananas') //=> ['ba', 'na', 'na']
 match(/a/, 'b') // => null
 
 // It's also curried
@@ -14988,7 +15070,7 @@ fn('why') // => null</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>max([1, 3, 2, 5, 4]) // => 5max(['c', 'a', 'b', 'f']) // => 'f'</code></pre>
+    <pre class="prettyprint"><code>import { max } from 'kyanite'max([1, 3, 2, 5, 4]) // => 5max(['c', 'a', 'b', 'f']) // => 'f'</code></pre>
 
 
 
@@ -15164,7 +15246,9 @@ fn('why') // => null</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>maxBy(x => x.size, [{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 6 }
+    <pre class="prettyprint"><code>import { maxBy } from 'kyanite'
+
+maxBy(x => x.size, [{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 6 }
 maxBy(x => x.alpha, [{ alpha: 'b' }, { alpha: 'c' }, { alpha: 'a' }]) // => { alpha: 'c' }
 
 // It's also curried
@@ -15381,7 +15465,7 @@ m([{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 6 }</code>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>mean([1, 2, 3, 2]) // => 2mean([2]) // => 2mean([]) // => NaNmean() // => Ref Error</code></pre>
+    <pre class="prettyprint"><code>import { mean } from 'kyanite'mean([1, 2, 3, 2]) // => 2mean([2]) // => 2mean([]) // => NaNmean() // => Ref Error</code></pre>
 
 
 
@@ -15557,7 +15641,7 @@ m([{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 6 }</code>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>min([1, 3, 2, 5, 4]) // => 1min(['c', 'a', 'b', 'f']) // => 'a'</code></pre>
+    <pre class="prettyprint"><code>import { min } from 'kyanite'min([1, 3, 2, 5, 4]) // => 1min(['c', 'a', 'b', 'f']) // => 'a'</code></pre>
 
 
 
@@ -15733,7 +15817,9 @@ m([{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 6 }</code>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>minBy(x => x.size, [{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 2 }
+    <pre class="prettyprint"><code>import { minBy } from 'kyanite'
+
+minBy(x => x.size, [{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 2 }
 minBy(x => x.alpha, [{ alpha: 'b' }, { alpha: 'c' }, { alpha: 'a' }]) // => { alpha: 'a' }
 
 // It's also curried
@@ -15950,7 +16036,7 @@ m([{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 2 }</code>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>multiply(2, 1) // => 2// It's also curriedconst mul = multiply(5)mul(3) // => 15mul(2) // => 10</code></pre>
+    <pre class="prettyprint"><code>import { multiply } from 'kyanite'multiply(2, 1) // => 2// It's also curriedconst mul = multiply(5)mul(3) // => 15mul(2) // => 10</code></pre>
 
 
 
@@ -16160,7 +16246,9 @@ m([{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 2 }</code>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>negate(1) // => -1
+    <pre class="prettyprint"><code>import { negate } from 'kyanite'
+
+negate(1) // => -1
 negate(-1) // => 1</code></pre>
 
 
@@ -16348,7 +16436,7 @@ negate(-1) // => 1</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const reverse = not(true) // => false</code></pre>
+    <pre class="prettyprint"><code>import { not } from 'kyanite'const reverse = not(true) // => false</code></pre>
 
 
 
@@ -16539,7 +16627,7 @@ negate(-1) // => 1</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>nth(3, [1, 2, 3, 4, 5, 6, 7]) // => 4// nth is curriedconst third = nth(2)third([1, 2, 3, 4, 5]) // => 3</code></pre>
+    <pre class="prettyprint"><code>import { nth } from 'kyanite'nth(3, [1, 2, 3, 4, 5, 6, 7]) // => 4// nth is curriedconst third = nth(2)third([1, 2, 3, 4, 5]) // => 3</code></pre>
 
 
 
@@ -16752,7 +16840,7 @@ negate(-1) // => 1</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const obj = omit(['test'], { test: '3432', thing: 123 }) // => { thing: 123 }const arr = omit(['a', 'b'], { a: 1, b: 2, c: 3}) // => { c: 3 }// omit is curriedconst omitKeys = omit(['test'])omitKeys({ test: '3432', thing: 123 }) // => { thing: 123 }</code></pre>
+    <pre class="prettyprint"><code>import { omit } from 'kyanite'const obj = omit(['test'], { test: '3432', thing: 123 }) // => { thing: 123 }const arr = omit(['a', 'b'], { a: 1, b: 2, c: 3}) // => { c: 3 }// omit is curriedconst omitKeys = omit(['test'])omitKeys({ test: '3432', thing: 123 }) // => { thing: 123 }</code></pre>
 
 
 
@@ -16962,7 +17050,9 @@ negate(-1) // => 1</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>on((x, y) => x === y, x => x.length, 'you', 'are') // => true
+    <pre class="prettyprint"><code>import { on } from 'kyanite'
+
+on((x, y) => x === y, x => x.length, 'you', 'are') // => true
 
 // It's also curried
 
@@ -17232,7 +17322,9 @@ h('are') // => true</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>or(true, true) // => true
+    <pre class="prettyprint"><code>import { or } from 'kyanite'
+
+or(true, true) // => true
 or(true, false) // => true
 or(false, false) // => false</code></pre>
 
@@ -17444,7 +17536,9 @@ or(false, false) // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>over('b', x => x + 1, { a: 1, b: 1, c: 3 }) // => { a: 1, b: 2, c: 3 }
+    <pre class="prettyprint"><code>import { over } from 'kyanite'
+
+over('b', x => x + 1, { a: 1, b: 1, c: 3 }) // => { a: 1, b: 2, c: 3 }
 
 // It's also curried
 
@@ -17685,7 +17779,7 @@ withFn({ a: 1, b: 1 }) // => { a: 1, b: 2 }</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>partition(is(String), ['foo', 'bar', 100]) // => [ ['foo', 'bar'], [100] ]// Is curried as wellconst part = partition(is(String))part(['foo', 'bar', 100]) // => [ ['foo', 'bar'], [100] ]</code></pre>
+    <pre class="prettyprint"><code>import { partition } from 'kyanite'partition(is(String), ['foo', 'bar', 100]) // => [ ['foo', 'bar'], [100] ]// Is curried as wellconst part = partition(is(String))part(['foo', 'bar', 100]) // => [ ['foo', 'bar'], [100] ]</code></pre>
 
 
 
@@ -17895,7 +17989,9 @@ withFn({ a: 1, b: 1 }) // => { a: 1, b: 2 }</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>path(['a', 'b'], { a: { b: 3 } }) // => 3
+    <pre class="prettyprint"><code>import { path } from 'kyanite'
+
+path(['a', 'b'], { a: { b: 3 } }) // => 3
 path(['a', 'b', 'c'], { a: 3 }) // => undefined
 
 // Is also curried
@@ -18112,7 +18208,9 @@ safetyPath({ a: { b: 2 } }) // => 2</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>pathOr('N/A', ['a', 'b'], { a: { b: 1 } }) // => 1
+    <pre class="prettyprint"><code>import { pathOr } from 'kyanite'
+
+pathOr('N/A', ['a', 'b'], { a: { b: 1 } }) // => 1
 pathOr('N/A', ['c', 'b'], { a: { b: 1 } }) // => 'N/A'
 
 // It's also curried
@@ -18355,7 +18453,7 @@ withKeys({ b: { a: 1 } }) // => 'N/A'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>pipe([add(2), multiply(2)], 10) // => 24// It's also curriedconst piper = pipe([add(2), multiply(2)])piper(10) // => 24</code></pre>
+    <pre class="prettyprint"><code>import { pipe } from 'kyanite'pipe([add(2), multiply(2)], 10) // => 24// It's also curriedconst piper = pipe([add(2), multiply(2)])piper(10) // => 24</code></pre>
 
 
 
@@ -18565,7 +18663,9 @@ withKeys({ b: { a: 1 } }) // => 'N/A'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const foo = a => new Promise(resolve => resolve(a + '123'))
+    <pre class="prettyprint"><code>import { pipeP } from 'kyanite'
+
+const foo = a => new Promise(resolve => resolve(a + '123'))
 const bar = a => new Promise(resolve => resolve(a + '555'))
 
 pipeP([foo, bar], '0').then(console.log) // => '0123555'
@@ -18784,7 +18884,9 @@ fn('10').then(console.log) // => '10123555'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const testFns = {
+    <pre class="prettyprint"><code>import { plan } from 'kyanite'
+
+const testFns = {
     a: x => x * 2,
     b: x => x + 10
   }
@@ -19005,7 +19107,9 @@ p({ a: 5, b: 10 }) // => { a: 10, b: 20 }</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>pow(3, 7) // => 343
+    <pre class="prettyprint"><code>import { pow } from 'kyanite'
+
+pow(3, 7) // => 343
 pow(0.5, 4) // => 2
 
 // It's also curried
@@ -19221,7 +19325,9 @@ p(7) // => 343</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>prepend('testing', ['is', 'cool']) // => ['testing', 'is', 'cool']
+    <pre class="prettyprint"><code>import { prepend } from 'kyanite'
+
+prepend('testing', ['is', 'cool']) // => ['testing', 'is', 'cool']
 
 // It's curried
 
@@ -19437,7 +19543,7 @@ pender(['is', 'cool']) // => ['testing', 'is', 'cool']</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>prop('thing', { thing: 'test' }) // => 'test'prop('thing', {}) // => undefinedmap(prop('a'), [{ a: 1 }, { a: 2 }, { a: 3 }]) // => [1, 2, 3]// It is also curriedconst proper = prop('a')proper({ a: 1, b: 2 }) // => 1</code></pre>
+    <pre class="prettyprint"><code>import { prop } from 'kyanite'prop('thing', { thing: 'test' }) // => 'test'prop('thing', {}) // => undefinedmap(prop('a'), [{ a: 1 }, { a: 2 }, { a: 3 }]) // => [1, 2, 3]// It is also curriedconst proper = prop('a')proper({ a: 1, b: 2 }) // => 1</code></pre>
 
 
 
@@ -19647,7 +19753,9 @@ pender(['is', 'cool']) // => ['testing', 'is', 'cool']</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>props(['a', 'b'], { a: 1, b: 2, c: 3 }) // => [1, 2]
+    <pre class="prettyprint"><code>import { props } from 'kyanite'
+
+props(['a', 'b'], { a: 1, b: 2, c: 3 }) // => [1, 2]
 
 // It's also curried
 
@@ -19863,7 +19971,9 @@ g({ a: 1, b: 2, c: 3 }) // => [1, 2]</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>range(3, 7) // => [3, 4, 5, 6]
+    <pre class="prettyprint"><code>import { range } from 'kyanite'
+
+range(3, 7) // => [3, 4, 5, 6]
 range(0, 3) // => [0, 1, 2]
 range(0, 0) // => []
 range(NaN) // => []</code></pre>
@@ -20076,7 +20186,7 @@ range(NaN) // => []</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>reduce((n, acc) => acc + n, 0, [1, 2, 3, 4, 5]) // => 15reduce((n, acc) => {
+    <pre class="prettyprint"><code>import { reduce } from 'kyanite'reduce((n, acc) => acc + n, 0, [1, 2, 3, 4, 5]) // => 15reduce((n, acc) => {
     if (typeof n === 'number') {
       acc.push(n)
     }
@@ -20315,7 +20425,9 @@ range(NaN) // => []</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>reduceRight((n, acc) =>
+    <pre class="prettyprint"><code>import { reduceRight } from 'kyanite'
+
+reduceRight((n, acc) =>
   typeof n === 'number' ? acc.push(n) : acc, [], ['', 1, 2, '0', 3]) // => [3, 2, 1]
 
 // It's also curried
@@ -20554,7 +20666,7 @@ fn([], ['', 1, 2, '0', 3]) // => [3, 2, 1]</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const isEven = n => n % 2 === 0reject(isEven, [1, 2, 3, 4]) // => [1, 3]reject(x => x.val > 2, [{ val: 2 }, { val: 5 }, { val: 3 }]) // => [{ val: 2 }]// Is also curriedconst rejecter = reject(isEven)rejecter([1, 2, 3, 4]) // => [1, 3]</code></pre>
+    <pre class="prettyprint"><code>import { reject } from 'kyanite'const isEven = n => n % 2 === 0reject(isEven, [1, 2, 3, 4]) // => [1, 3]reject(x => x.val > 2, [{ val: 2 }, { val: 5 }, { val: 3 }]) // => [{ val: 2 }]// Is also curriedconst rejecter = reject(isEven)rejecter([1, 2, 3, 4]) // => [1, 3]</code></pre>
 
 
 
@@ -20764,7 +20876,9 @@ fn([], ['', 1, 2, '0', 3]) // => [3, 2, 1]</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>rem(5, 12) // => 2
+    <pre class="prettyprint"><code>import { rem } from 'kyanite'
+
+rem(5, 12) // => 2
 rem(2, -1) // => -1
 rem(2, NaN) // => NaN
 
@@ -20981,7 +21095,7 @@ r(12) // => 2</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const test = remove(2, [1, 2, 3, 4]) // => [1, 2, 4]// This is also a curried methodconst remover = remove(2)const test = remover([1, 2, 3, 4]) // => [1, 2, 4]</code></pre>
+    <pre class="prettyprint"><code>import { remove } from 'kyanite'const test = remove(2, [1, 2, 3, 4]) // => [1, 2, 4]// This is also a curried methodconst remover = remove(2)const test = remover([1, 2, 3, 4]) // => [1, 2, 4]</code></pre>
 
 
 
@@ -21191,7 +21305,9 @@ r(12) // => 2</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>replace('foo', 'bar', 'foofoo') // => 'barfoo'
+    <pre class="prettyprint"><code>import { replace } from 'kyanite'
+
+replace('foo', 'bar', 'foofoo') // => 'barfoo'
 replace(/foo/g, 'bar', 'foofoo') // => 'barbar'
 
 // It's also curried
@@ -21439,7 +21555,7 @@ with('foofoo') // => 'barfoo'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>reverse([1, 2, 3]) // => [3, 2, 1]reverse([]) // => []reverse('abc') // => 'cba'</code></pre>
+    <pre class="prettyprint"><code>import { reverse } from 'kyanite'reverse([1, 2, 3]) // => [3, 2, 1]reverse([]) // => []reverse('abc') // => 'cba'</code></pre>
 
 
 
@@ -21632,7 +21748,7 @@ with('foofoo') // => 'barfoo'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>round(2, 112.336) // => 112.34round(3, 112.3354) // => 112.335// It is curriedconst rounder = round(3)rounder(122.4456) // => 112.446rounder(122.332) // => 122.332</code></pre>
+    <pre class="prettyprint"><code>import { round } from 'kyanite'round(2, 112.336) // => 112.34round(3, 112.3354) // => 112.335// It is curriedconst rounder = round(3)rounder(122.4456) // => 112.446rounder(122.332) // => 122.332</code></pre>
 
 
 
@@ -21842,7 +21958,7 @@ with('foofoo') // => 'barfoo'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>sift(x => typeof x === 'string', {  id: 44,  thing: 'test',  other: 'cool'}) // => { thing: 'test', other: 'cool' }// It's also curriedconst sifter = sift(x => typeof x === 'string')sifter({ id: 44, thing: 'test', other: 'cool' }) // => { thing: 'test', other: 'cool' }</code></pre>
+    <pre class="prettyprint"><code>import { sift } from 'kyanite'sift(x => typeof x === 'string', {  id: 44,  thing: 'test',  other: 'cool'}) // => { thing: 'test', other: 'cool' }// It's also curriedconst sifter = sift(x => typeof x === 'string')sifter({ id: 44, thing: 'test', other: 'cool' }) // => { thing: 'test', other: 'cool' }</code></pre>
 
 
 
@@ -22053,7 +22169,9 @@ Number -> Number -> String -> String
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>slice(1, 3, [1, 2, 3, 4, 5]) // => [2, 3]
+    <pre class="prettyprint"><code>import { slice } from 'kyanite'
+
+slice(1, 3, [1, 2, 3, 4, 5]) // => [2, 3]
 slice(0, 4, 'kyanite') // => 'kyan'
 
 // It is curried
@@ -22300,7 +22418,7 @@ slicer('kyanite') // => 'yan'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const data = [1, 2, 3, 4]some(x => x > 0, data) // => truesome(x => x &lt; 3) // => truesome(x => x &lt; 0, data) // => false// It is also curriedconst run = some(x => x > 0)run([1, 2, 3]) // => truerun([-1, 0, 1]) // => truerun([-3, -2, -1]) // => false</code></pre>
+    <pre class="prettyprint"><code>import { some } from 'kyanite'const data = [1, 2, 3, 4]some(x => x > 0, data) // => truesome(x => x &lt; 3) // => truesome(x => x &lt; 0, data) // => false// It is also curriedconst run = some(x => x > 0)run([1, 2, 3]) // => truerun([-1, 0, 1]) // => truerun([-3, -2, -1]) // => false</code></pre>
 
 
 
@@ -22510,7 +22628,7 @@ slicer('kyanite') // => 'yan'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>sort((a, b) => a - b, [99, 23, 10, 53, 1]) // => [1, 10, 23, 53, 99]// It's also curriedconst sorter = sort((a, b) => a - b)sorter([99, 23, 10, 53, 1]) // => [1, 10, 23, 53, 99]sorter([5, 3, 4, 6, 2, 1]) // => [1, 2, 3, 4, 5, 6]</code></pre>
+    <pre class="prettyprint"><code>import { sort } from 'kyanite'sort((a, b) => a - b, [99, 23, 10, 53, 1]) // => [1, 10, 23, 53, 99]// It's also curriedconst sorter = sort((a, b) => a - b)sorter([99, 23, 10, 53, 1]) // => [1, 10, 23, 53, 99]sorter([5, 3, 4, 6, 2, 1]) // => [1, 2, 3, 4, 5, 6]</code></pre>
 
 
 
@@ -22720,7 +22838,9 @@ slicer('kyanite') // => 'yan'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>sortBy(x => x.name, [
+    <pre class="prettyprint"><code>import { sortBy } from 'kyanite'
+
+sortBy(x => x.name, [
  { name: 'bob' },
  { name: 'amanda' },
  { name: 'carl' },
@@ -22946,7 +23066,9 @@ sb([
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const data = [{name: 'alice', age: 40}, {name: 'bob', age: 30}, {name: 'clara', age: 40}]
+    <pre class="prettyprint"><code>import { sortWith } from 'kyanite'
+
+const data = [{name: 'alice', age: 40}, {name: 'bob', age: 30}, {name: 'clara', age: 40}]
 sortWith([
   descendBy(x => x.age),
   ascendBy(x => x.name)
@@ -23169,7 +23291,9 @@ ageNameSort(data) // =>[{name: 'alice', age: 40}, {name: 'clara', age: 40}, {nam
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>split('', 'abc') // => ['a', 'b', 'c']
+    <pre class="prettyprint"><code>import { split } from 'kyanite'
+
+split('', 'abc') // => ['a', 'b', 'c']
 split(':', '123:334') // => ['123', '334']
 
 const sp = split('')
@@ -23384,7 +23508,7 @@ sp('abc') // => ['a', 'b', 'c']</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>subtract(2, 1) // => 1// It's also curriedconst sub = subtract(5)sub(3) // => 2sub(2) // => 3</code></pre>
+    <pre class="prettyprint"><code>import { subtract } from 'kyanite'subtract(2, 1) // => 1// It's also curriedconst sub = subtract(5)sub(3) // => 2sub(2) // => 3</code></pre>
 
 
 
@@ -23594,7 +23718,9 @@ sp('abc') // => ['a', 'b', 'c']</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>take(3, [1, 2, 3, 4, 5]) // => [1, 2, 3]
+    <pre class="prettyprint"><code>import { take } from 'kyanite'
+
+take(3, [1, 2, 3, 4, 5]) // => [1, 2, 3]
 
 // It's also curried
 
@@ -23810,7 +23936,9 @@ t([1, 2, 3, 4, 5]) // => [1, 2, 3]</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>takeWhile(x => x &lt; 4, [1, 2, 3, 4, 5, 6]) // => [1, 2, 3]
+    <pre class="prettyprint"><code>import { takeWhile } from 'kyanite'
+
+takeWhile(x => x &lt; 4, [1, 2, 3, 4, 5, 6]) // => [1, 2, 3]
 
 // It's also curried
 const fn = takeWhile(x => x &lt; 4)
@@ -24026,7 +24154,9 @@ fn([3, 4, 5]) // => [3]</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>test(/^a/, 'abc') // => true
+    <pre class="prettyprint"><code>import { test } from 'kyanite'
+
+test(/^a/, 'abc') // => true
 test(/^b/, 'abc') // => false
 
 // It's also curried
@@ -24243,7 +24373,9 @@ fn('bca') // => false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>toLower('HI') // => 'hi'
+    <pre class="prettyprint"><code>import { toLower } from 'kyanite'
+
+toLower('HI') // => 'hi'
 toLower('TEST.123.HELLO') // => 'test.123.hello'</code></pre>
 
 
@@ -24431,7 +24563,9 @@ toLower('TEST.123.HELLO') // => 'test.123.hello'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>toUpper('hi') // => 'HI'
+    <pre class="prettyprint"><code>import { toUpper } from 'kyanite'
+
+toUpper('hi') // => 'HI'
 toUpper('test.123.hello') // => 'TEST.123.HELLO'</code></pre>
 
 
@@ -24619,7 +24753,7 @@ toUpper('test.123.hello') // => 'TEST.123.HELLO'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>trim('my new cow   ') // => 'my new cow'trim('   new things   ') // => 'new things'</code></pre>
+    <pre class="prettyprint"><code>import { trim } from 'kyanite'trim('my new cow   ') // => 'my new cow'trim('   new things   ') // => 'new things'</code></pre>
 
 
 
@@ -24806,7 +24940,7 @@ toUpper('test.123.hello') // => 'TEST.123.HELLO'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>type({}) // => 'Object'type([]) // => 'Array'type(null) // => 'Null'type(undefined) // => 'Undefined'type('hi') // => 'String'type(1) // => 'Number'type(/1/g) // => 'RegExp'type(new Date()) // => 'Date'type(true) // => 'Boolean'</code></pre>
+    <pre class="prettyprint"><code>import { type } from 'kyanite'type({}) // => 'Object'type([]) // => 'Array'type(null) // => 'Null'type(undefined) // => 'Undefined'type('hi') // => 'String'type(1) // => 'Number'type(/1/g) // => 'RegExp'type(new Date()) // => 'Date'type(true) // => 'Boolean'</code></pre>
 
 
 
@@ -24993,7 +25127,7 @@ toUpper('test.123.hello') // => 'TEST.123.HELLO'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>union([1, 2, 3], [3, 4, 5]) // => [1, 2, 3, 4, 5]union([1, 2, 3], [[3, 4, 5], [4, 5, 6]]) // => [1, 2, 3, 4, 5, 6]// It's also curriedconst un = union([1, 2, 3])un([3, 4, 5]) // => [1, 2, 3, 4, 5]un([[3, 4, 5], [4, 5, 6]]) // => [1, 2, 3, 4, 5, 6]</code></pre>
+    <pre class="prettyprint"><code>import { union } from 'kyanite'union([1, 2, 3], [3, 4, 5]) // => [1, 2, 3, 4, 5]union([1, 2, 3], [[3, 4, 5], [4, 5, 6]]) // => [1, 2, 3, 4, 5, 6]// It's also curriedconst un = union([1, 2, 3])un([3, 4, 5]) // => [1, 2, 3, 4, 5]un([[3, 4, 5], [4, 5, 6]]) // => [1, 2, 3, 4, 5, 6]</code></pre>
 
 
 
@@ -25203,7 +25337,7 @@ toUpper('test.123.hello') // => 'TEST.123.HELLO'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>uniq([1, 2, 2, 3, 3, 4, 5]) // => [1, 2, 3, 4, 5]</code></pre>
+    <pre class="prettyprint"><code>import { uniq } from 'kyanite'uniq([1, 2, 2, 3, 3, 4, 5]) // => [1, 2, 3, 4, 5]</code></pre>
 
 
 
@@ -25390,7 +25524,7 @@ toUpper('test.123.hello') // => 'TEST.123.HELLO'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>uniqBy(x => x > 2, [1, 2, 3, 4, 5]) // => [3, 4, 5]// It is also curriedconst uq = uniqBy(x => x > 2)uq([1, 2, 3, 4, 5]) // => [3, 4, 5]</code></pre>
+    <pre class="prettyprint"><code>import { uniqBy } from 'kyanite'uniqBy(x => x > 2, [1, 2, 3, 4, 5]) // => [3, 4, 5]// It is also curriedconst uq = uniqBy(x => x > 2)uq([1, 2, 3, 4, 5]) // => [3, 4, 5]</code></pre>
 
 
 
@@ -25600,7 +25734,9 @@ toUpper('test.123.hello') // => 'TEST.123.HELLO'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>unless(x => x > 2, x => x * 2, 5) // => 5
+    <pre class="prettyprint"><code>import { unless } from 'kyanite'
+
+unless(x => x > 2, x => x * 2, 5) // => 5
 unless(x => x > 5, x => x * 2, 5) // => 10
 
 // It's also curried
@@ -25841,7 +25977,7 @@ un(1) // => 2</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>update(2, 10, [1, 2, 3]) // => [1, 2, 10]// You can also use it as a curried methodconst updater = update(2, 10)updater([1, 2, 3]) // => [1, 2, 10]// This can be taken further like soconst index = update(2)const val = index(10)val([1, 2, 3]) // => [1, 2, 10]</code></pre>
+    <pre class="prettyprint"><code>import { update } from 'kyanite'update(2, 10, [1, 2, 3]) // => [1, 2, 10]// You can also use it as a curried methodconst updater = update(2, 10)updater([1, 2, 3]) // => [1, 2, 10]// This can be taken further like soconst index = update(2)const val = index(10)val([1, 2, 3]) // => [1, 2, 10]</code></pre>
 
 
 
@@ -26074,7 +26210,9 @@ un(1) // => 2</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>when(x => x > 2, x => x * 2, 5) // => 10
+    <pre class="prettyprint"><code>import { when } from 'kyanite'
+
+when(x => x > 2, x => x * 2, 5) // => 10
 when(x => x > 5, x => x * 2, 5) // => 5
 
 // It's also curried
@@ -26315,7 +26453,7 @@ w(1) // => 1</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const run = whole({ a: x => x === 'foo', b: x => x !== 'bar', x: x => x > 10, y: x => x &lt; 20 })run({ a: 'foo', b: 'xxx', x: 11, y: 19 }) // => truerun({ a: 'xxx', b: 'xxx', x: 11, y: 19 }) // => false</code></pre>
+    <pre class="prettyprint"><code>import { whole } from 'kyanite'const run = whole({ a: x => x === 'foo', b: x => x !== 'bar', x: x => x > 10, y: x => x &lt; 20 })run({ a: 'foo', b: 'xxx', x: 11, y: 19 }) // => truerun({ a: 'xxx', b: 'xxx', x: 11, y: 19 }) // => false</code></pre>
 
 
 
@@ -26525,7 +26663,9 @@ w(1) // => 1</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>zip(['a', 'b', 'c'], [1, 2, 3]) // => { a: 1, b: 2, c: 3 }
+    <pre class="prettyprint"><code>import { zip } from 'kyanite'
+
+zip(['a', 'b', 'c'], [1, 2, 3]) // => { a: 1, b: 2, c: 3 }
 zip(['a', 'b', 'c'], [1, 2, 3, 4]) // => { a: 1, b: 2, c: 3 }
 zip(['a', 'b', 'c'], [1, 2]) // => { a: 1, b: 2 }
 
