@@ -9,6 +9,8 @@
  * @return {Boolean}   Returns boolean back based on the results
  *
  * @example
+ * import { not } from 'kyanite'
+ *
  * const reverse = not(true) // => false
  */
 const not = x => !x

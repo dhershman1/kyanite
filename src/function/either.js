@@ -13,6 +13,7 @@ import _curry3 from '../_internals/_curry3'
  * @return {Boolean} Based on if either functions return a truthy value when ran
  *
  * @example
+ * import { either } from 'kyanite'
  *
  * either(x => x > 10, x => x < 20, 21) // => true
  *

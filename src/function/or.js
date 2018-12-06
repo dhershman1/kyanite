@@ -13,6 +13,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Any} The value that returns truthy
  *
  * @example
+ * import { or } from 'kyanite'
+ *
  * or(true, true) // => true
  * or(true, false) // => true
  * or(false, false) // => false

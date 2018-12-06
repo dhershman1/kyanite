@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Boolean} Returns a boolean based on the check
  *
  * @example
+ * import { eq } from 'kyanite'
+ *
  * eq(1, 1) // => true
  * eq(NaN, NaN) // => true
  * eq([1], [1]) // => false

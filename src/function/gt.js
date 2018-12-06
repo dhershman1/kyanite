@@ -11,6 +11,8 @@ import _curry2 from '../_internals/_curry2'
  * @param {Any} b Value to compare to see if it is less than the other
  * @return {Boolean} Based on the outcome of the logic a Boolean
  * @example
+ * import { gt } from 'kyanite'
+ *
  * gt(2, 1) // => true
  * gt('b', 'a') // => true
  *

@@ -13,6 +13,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Boolean} If all values passed will return true else false
  *
  * @example
+ * import { every } from 'kyanite'
+ *
  * const data = [1, 2, 3, 4]
  *
  * every(x => x > 0, data) // => true

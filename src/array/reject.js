@@ -14,6 +14,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Array} Returns a new Array of values that were not rejected
  *
  * @example
+ * import { reject } from 'kyanite'
+ *
  * const isEven = n => n % 2 === 0
  *
  * reject(isEven, [1, 2, 3, 4]) // => [1, 3]

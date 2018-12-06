@@ -12,6 +12,8 @@ import _curry3 from '../_internals/_curry3'
  * @param {Any} a The data to compose our functions on
  * @return {Any} The result of our function composition
  * @example
+ * import { compose } from 'kyanite'
+ *
  * compose(Math.sqrt, x => x + 1, 99) // => 10
  *
  * // It's also curried

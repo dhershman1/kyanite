@@ -13,6 +13,7 @@ import eq from './eq'
  * @param {Any} b The second value to compare
  * @return {Boolean} The result of the value comparison
  * @example
+ * import { eqBy } from 'kyanite'
  *
  * eqBy(Math.abs, 5, -5) // => true
  * eqBy(x => x[0], [1], [1]) // => true

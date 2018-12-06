@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Array} A new sorted array
  *
  * @example
+ * import { sort } from 'kyanite'
+ *
  * sort((a, b) => a - b, [99, 23, 10, 53, 1]) // => [1, 10, 23, 53, 99]
  *
  * // It's also curried

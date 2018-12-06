@@ -11,6 +11,8 @@ import _curry2 from '../_internals/_curry2'
  * @param {Array} list The filterable list to go through
  * @return {Array} Returns a new Array based on the type of list provided
  * @example
+ * import { filter } from 'kyanite'
+ *
  * const isEven = n => n % 2 === 0
  *
  * filter(isEven, [1, 2, 3, 4]) // => [2, 4]

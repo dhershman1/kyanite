@@ -14,6 +14,7 @@ import uniq from './uniq'
  * @return {Array} An array of elements that are not present in both arrays
  *
  * @example
+ * import { difference } from 'kyanite'
  *
  * difference([[1, 2, 3], [1]]) // => [2, 3]
  * difference([[1], [1, 2, 3]]) // => [2, 3]

@@ -11,6 +11,8 @@ import _curry2 from '../_internals/_curry2'
  * @param {Array} arr The array to take from
  * @return {Array} A new array of data that passed the param function
  * @example
+ * import { takeWhile } from 'kyanite'
+ *
  * takeWhile(x => x < 4, [1, 2, 3, 4, 5, 6]) // => [1, 2, 3]
  *
  * // It's also curried

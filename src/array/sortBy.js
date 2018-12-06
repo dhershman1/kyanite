@@ -15,6 +15,8 @@ import sort from './sort'
  * @return {Array} A newly sorted array
  *
  * @example
+ * import { sortBy } from 'kyanite'
+ *
  * sortBy(x => x.name, [
  *  { name: 'bob' },
  *  { name: 'amanda' },

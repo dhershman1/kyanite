@@ -11,6 +11,8 @@ import isNil from './isNil'
  * @return {Boolean} Returns the boolean after running our check
  *
  * @example
+ * import { isEmpty } from 'kyanite'
+ *
  * isEmpty([]) // => true
  * isEmpty({}) // => true
  * isEmpty('') // => true

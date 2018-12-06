@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @param {Any} _ The ignored parameter
  * @return {Any} The first parameter passed in
  * @example
+ * import { always } from 'kyanite'
+ *
  * always(false, true) // => false
  * always(true, true) // => true
  * pipe([

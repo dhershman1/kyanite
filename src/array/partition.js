@@ -18,6 +18,8 @@ import reject from './reject'
  * And a second that did not
  *
  * @example
+ * import { partition } from 'kyanite'
+ *
  * partition(is(String), ['foo', 'bar', 100]) // => [ ['foo', 'bar'], [100] ]
  *
  * // Is curried as well

@@ -14,6 +14,8 @@ import ascend from './ascend'
  * @return {Number} A number based on where it falls when compared with the other value
  *
  * @example
+ * import { ascendBy } from 'kyanite'
+ *
  * [
  *  { name: 'bob' },
  *  { name: 'amanda' },

@@ -16,6 +16,8 @@ import concat from '../list/concat'
  * @param {Array} list The array of data to run the functions on
  * @return {Array} A new array of data modified by the functions concated together
  * @example
+ * import { ap } from 'kyanite'
+ *
  * ap([x => x + 1, x => x * 2], [1, 2, 3]) // => [2, 3, 4, 2, 4, 6]
  *
  * // It's also curried

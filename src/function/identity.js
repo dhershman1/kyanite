@@ -9,6 +9,8 @@
  * @param {Any} a The value to identify
  * @return {Any} The identified value
  * @example
+ * import { identity } from 'kyanite'
+ *
  * identity(10) // => 10
  *
  * const test = identity(10)

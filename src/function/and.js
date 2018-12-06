@@ -13,6 +13,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Boolean} The evaluated outcome of the parameters
  *
  * @example
+ * import { and } from 'kyanite'
+ *
  * and(true, true) // => true
  * and(true, false) // => false
  * and(false, false) // => false

@@ -13,6 +13,8 @@ import _curry3 from '../_internals/_curry3'
  * @param {Any} b The param to become the 1st past into the function
  * @return {Any} The value returned by the passed in function
  * @example
+ * import { flip } from 'kyanite'
+ *
  * flip((a, b) => b > a, 2, 1) // => true
  * flip((a, b) => b > a, 1, 2) // => false
  *

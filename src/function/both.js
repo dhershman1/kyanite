@@ -13,6 +13,7 @@ import _curry3 from '../_internals/_curry3'
  * @return {Boolean} Based on if both functions return a truthy value when ran
  *
  * @example
+ * import { both } from 'kyanite'
  *
  * both(x => x > 10, x => x < 20, 15) // => true
  *

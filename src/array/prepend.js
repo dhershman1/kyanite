@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Array} A new array
  *
  * @example
+ * import { prepend } from 'kyanite'
+ *
  * prepend('testing', ['is', 'cool']) // => ['testing', 'is', 'cool']
  *
  * // It's curried

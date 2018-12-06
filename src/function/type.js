@@ -9,6 +9,8 @@
  * @return {String} A string based on the type of the value passed in
  *
  * @example
+ * import { type } from 'kyanite'
+ *
  * type({}) // => 'Object'
  * type([]) // => 'Array'
  * type(null) // => 'Null'

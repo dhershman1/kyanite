@@ -14,6 +14,8 @@ import _curry4 from '../_internals/_curry4'
  * @param {Any} a The data to pass long our functions
  * @return {Any} The result of the branch function used
  * @example
+ * import { branch } from 'kyanite'
+ *
  * branch(
  *   x => x < 10,
  *   x => x + 1,

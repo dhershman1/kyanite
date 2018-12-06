@@ -13,6 +13,8 @@ import not from './not'
  * @return {Function} Returns the opposite function back
  *
  * @example
+ * import { complement } from 'kyanite'
+ *
  * const isNot = complement(is(String))
  *
  * isNot(1) // => true

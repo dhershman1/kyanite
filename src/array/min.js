@@ -9,6 +9,8 @@
  * @return {Any} The found or "deemed" minimum value of the array
  *
  * @example
+ * import { min } from 'kyanite'
+ *
  * min([1, 3, 2, 5, 4]) // => 1
  * min(['c', 'a', 'b', 'f']) // => 'a'
  */

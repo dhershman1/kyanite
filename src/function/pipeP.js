@@ -11,6 +11,8 @@ import _curry2 from '../_internals/_curry2'
  * @param {Any} data The data to apply our functions to
  * @return {Promise} A promise that once fulfilled has the results from the pipe
  * @example
+ * import { pipeP } from 'kyanite'
+ *
  * const foo = a => new Promise(resolve => resolve(a + '123'))
  * const bar = a => new Promise(resolve => resolve(a + '555'))
  *

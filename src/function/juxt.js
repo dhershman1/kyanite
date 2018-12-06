@@ -11,6 +11,8 @@ import map from '../array/map'
  * @return {Function} The function you can use on your data value
  *
  * @example
+ * import { juxt } from 'kyanite'
+ *
  * const getRange = juxt([Math.min, Math.max])
  *
  * getRange(3, 4, 9, -3) // => [-3, 9]

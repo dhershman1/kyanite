@@ -10,6 +10,8 @@
  * @return {Any} Returns based on the function sent in
  *
  * @example
+ * import { curry } from 'kyanite'
+ *
  * const add = curry((a, b) => a + b)
  *
  * add(1)(2) // => 3

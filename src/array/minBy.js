@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Any} The found or "deemed" minimum value of the array
  *
  * @example
+ * import { minBy } from 'kyanite'
+ *
  * minBy(x => x.size, [{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 2 }
  * minBy(x => x.alpha, [{ alpha: 'b' }, { alpha: 'c' }, { alpha: 'a' }]) // => { alpha: 'a' }
  *

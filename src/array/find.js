@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Any} Returns either the found item, or undefined if no item is found
  *
  * @example
+ * import { find } from 'kyanite'
+ *
  * find(v => v.val === 'test', [{val: 'test'}]) // => 'test'
  * find(v => v.val === 'none', [{val: 'test'}, {val: 'none'}]) // => { val: 'none' }
  * find(v => v > 2, [1, 2, 3, 4, 5]) // => 3

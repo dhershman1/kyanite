@@ -11,6 +11,7 @@ import _curry2 from '../_internals/_curry2'
  * @param {Array} a The parameter(s) to call the function with
  * @return {Any} The result of whatever fn(a) will be
  * @example
+ * import { apply } from 'kyanite'
  *
  * apply(x => x * 2, [2]) // => 4
  * apply((a, b, c) => a + b + c, [1, 2, 3]) // => 6

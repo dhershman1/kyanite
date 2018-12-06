@@ -12,6 +12,7 @@ import uniqBy from './uniqBy'
  * @return {Array} An array of uniq values from the provided function
  *
  * @example
+ * import { uniq } from 'kyanite'
  *
  * uniq([1, 2, 2, 3, 3, 4, 5]) // => [1, 2, 3, 4, 5]
  */

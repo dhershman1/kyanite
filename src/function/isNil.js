@@ -9,6 +9,8 @@
  * @return {Boolean} Returns a boolean based on the check
  *
  * @example
+ * import { isNil } from 'kyanite'
+ *
  * isNill(null) // => true
  * isNill() // => true
  * isNill(1) // => false

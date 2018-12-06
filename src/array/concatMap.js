@@ -13,6 +13,8 @@ import reduce from './reduce'
  * @param {Array} arr The array to concat together
  * @return {Array} A newly created array of the concated values
  * @example
+ * import { concatMap } from 'kyanite'
+ *
  * concatMap(x => [x, x], [1, 2, 3]) // => [1, 1, 2, 2, 3, 3]
  * concatMap(x => x, [[1, 2], [3, 4], [5, 6]]) // => [1, 2, 3, 4, 5, 6]
  *
