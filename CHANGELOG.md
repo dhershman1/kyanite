@@ -12,6 +12,7 @@
 - Added import example onto each function, so it's visible within the examples
 - `factors` had some typos in its docs
 - Cleaned up `always` documentation
+- Cleaned up `identity` documentation examples
 
 ## v0.10.3
 
