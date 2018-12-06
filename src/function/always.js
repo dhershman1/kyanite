@@ -16,10 +16,12 @@ import _curry2 from '../_internals/_curry2'
  *
  * always(false, true) // => false
  * always(true, true) // => true
- * pipe([
- *   branch(always(isEmpty([])), concat(1), identity)
- *   length
- * ], []) // => 1
+ * always('dino', 'saur') // => 'dino'
+ *
+ * // It's also curried
+ * const fn = always('dino')
+ *
+ * fn('') // => 'dino'
  */
 const always = (a, _) => a
 
