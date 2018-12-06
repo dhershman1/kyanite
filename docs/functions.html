@@ -439,10 +439,12 @@
 
 always(false, true) // => false
 always(true, true) // => true
-pipe([
-  branch(always(isEmpty([])), concat(1), identity)
-  length
-], []) // => 1</code></pre>
+always('dino', 'saur') // => 'dino'
+
+// It's also curried
+const fn = always('dino')
+
+fn('') // => 'dino'</code></pre>
 
 
 
@@ -8569,7 +8571,7 @@ fn(5, -1) // => false</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="number_factors.js.html">number/factors.js</a>, <a href="number_factors.js.html#line6">line 6</a>
+        <a href="number_factors.js.html">number/factors.js</a>, <a href="number_factors.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -8651,10 +8653,12 @@ fn(5, -1) // => false</code></pre>
     
     <pre class="prettyprint"><code>import { factors } from 'kyanite'
 
-factors(36) // => [ 1, 2, 3, 6, 17, 34, 51 ]
-factors(102) // => [1, 2, 3, 6, 17, 34, 51]
+factors(36) // => [1, 2, 3, 4, 6, 9, 12, 18, 36]
+factors(-36) // => [1, 2, 3, 4, 6, 9, 12, 18, 36]
+factors(102) // => [1, 2, 3, 6, 17, 34, 51, 102]
+factors(-102) // => [1, 2, 3, 6, 17, 34, 51, 102]
+factors() // => []
 factors(0) // => []
-factors(-1) // => []
 factors(NaN) // => []</code></pre>
 
 
@@ -11403,7 +11407,7 @@ height({ a: 1, b: 2 }) // => 2</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>import { identity } from 'kyanite'identity(10) // => 10const test = identity(10)console.log(typeof test.constructor) // => 'function'console.log(10.constructor) // => errorfilter(identity, [0, 'cool', null, 1]) // => ['cool', 1]</code></pre>
+    <pre class="prettyprint"><code>import { identity } from 'kyanite'identity(10) // => 10[0, 'cool', null, 1].filter(identity) // => ['cool', 1]</code></pre>
 
 
 

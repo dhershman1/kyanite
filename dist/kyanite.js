@@ -777,6 +777,10 @@
   };
   var divide$1 = _curry2(divide);
 
+  var negate = function negate(n) {
+    return -n;
+  };
+
   var range = function range(from, to) {
     var result = [];
     for (var i = Number(from), len = Number(to); i < len; i++) {
@@ -793,9 +797,10 @@
 
   var factors = function factors() {
     var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    return compose$1(filter$1(function (i) {
-      return rem$1(i, x) === 0;
-    }), range$1(0), x);
+    var val = x < 0 ? negate(x) : x;
+    return x ? _toConsumableArray(compose$1(filter$1(function (i) {
+      return rem$1(i, val) === 0;
+    }), range$1(0), val)).concat([val]) : [];
   };
 
   var gcd = function gcd(a, b) {
@@ -839,10 +844,6 @@
     return a * b;
   };
   var multiply$1 = _curry2(multiply);
-
-  var negate = function negate(n) {
-    return -n;
-  };
 
   var pow = function pow(a, b) {
     return Math.pow(b, a);
