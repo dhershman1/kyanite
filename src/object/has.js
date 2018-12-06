@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Boolean} Returns based on if the prop is found or not
  *
  * @example
+ * import { has } from 'kyanite'
+ *
  * const obj = has('thing', { test: 1, thing: 2 }) // => true
  *
  * // has is also curried

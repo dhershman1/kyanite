@@ -12,6 +12,8 @@ import _assocǃ from '../_internals/_assocǃ'
  * @param {Object} obj The object to apply our functions too
  * @return {Object} A new object with the updated data from our applied functions
  * @example
+ * import { plan } from 'kyanite'
+ *
  * const testFns = {
     a: x => x * 2,
     b: x => x + 10

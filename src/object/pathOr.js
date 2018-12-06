@@ -14,6 +14,7 @@ import path from './path'
  * @param {Object} obj The object to traverse
  * @return {Any} Either the found value or the provided default value
  * @example
+ * import { pathOr } from 'kyanite'
  *
  * pathOr('N/A', ['a', 'b'], { a: { b: 1 } }) // => 1
  * pathOr('N/A', ['c', 'b'], { a: { b: 1 } }) // => 'N/A'

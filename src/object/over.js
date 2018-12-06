@@ -12,6 +12,8 @@ import _curry3 from '../_internals/_curry3'
  * @param {Object} acc The object accumulator
  * @return {Object} A new object with the applied value
  * @example
+ * import { over } from 'kyanite'
+ *
  * over('b', x => x + 1, { a: 1, b: 1, c: 3 }) // => { a: 1, b: 2, c: 3 }
  *
  * // It's also curried

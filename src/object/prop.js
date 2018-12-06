@@ -13,6 +13,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Any} The value that exists at 'obj.p'
  *
  * @example
+ * import { prop } from 'kyanite'
+ *
  * prop('thing', { thing: 'test' }) // => 'test'
  * prop('thing', {}) // => undefined
  * map(prop('a'), [{ a: 1 }, { a: 2 }, { a: 3 }]) // => [1, 2, 3]

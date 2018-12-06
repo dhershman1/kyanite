@@ -13,6 +13,7 @@ import isNil from '../function/isNil'
  * @return {Any} Returns the value if found, undefined if not
  *
  * @example
+ * import { path } from 'kyanite'
  *
  * path(['a', 'b'], { a: { b: 3 } }) // => 3
  * path(['a', 'b', 'c'], { a: 3 }) // => undefined

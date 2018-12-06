@@ -11,6 +11,7 @@ import _curry2 from '../_internals/_curry2'
  * @param {Object} b The object we want to amend/update
  * @return {Object} The newly amended object
  * @example
+ * import { amend } from 'kyanite'
  *
  * amend({ b: 2 }, { a: 1 }) // => { a: 1, b: 2 }
  *

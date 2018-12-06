@@ -14,6 +14,8 @@ import _assocǃ from '../_internals/_assocǃ'
  * @return {Object} Returns the newly created data without the omitted values
  *
  * @example
+ * import { omit } from 'kyanite'
+ *
  * const obj = omit(['test'], { test: '3432', thing: 123 }) // => { thing: 123 }
  * const arr = omit(['a', 'b'], { a: 1, b: 2, c: 3}) // => { c: 3 }
  *

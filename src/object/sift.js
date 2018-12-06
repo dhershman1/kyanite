@@ -14,6 +14,8 @@ import _assocǃ from '../_internals/_assocǃ'
  * @return {Object} A new filtered out object
  *
  * @example
+ * import { sift } from 'kyanite'
+ *
  * sift(x => typeof x === 'string', {
  *   id: 44,
  *   thing: 'test',

@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Boolean} A boolean dependent on whether or not any values passed
  *
  * @example
+ * import { any } from 'kyanite'
+ *
  * const run = any({
  *  a: x => x === 'foo',
  *  b: x => x !== 'bar'
