@@ -14,6 +14,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Boolean} Returns a boolean determined by if the value is found or not by the search
  *
  * @example
+ * import { fuzzySearch } from 'kyanite'
+ *
  * fuzzySearch('te', 'test') // => true
  * fuzzySearch('dog', 'testing') // => false
  *

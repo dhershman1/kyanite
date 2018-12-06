@@ -8,6 +8,8 @@
  * @param {String} a The string to lower case
  * @return {String} The string in lower case format
  * @example
+ * import { toLower } from 'kyanite'
+ *
  * toLower('HI') // => 'hi'
  * toLower('TEST.123.HELLO') // => 'test.123.hello'
  */

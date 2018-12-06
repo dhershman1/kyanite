@@ -12,6 +12,7 @@ import _curry2 from '../_internals/_curry2'
  * @param {String} str The string to test
  * @return {Boolean} A boolean based on if the string passes the test or not
  * @example
+ * import { test } from 'kyanite'
  *
  * test(/^a/, 'abc') // => true
  * test(/^b/, 'abc') // => false
