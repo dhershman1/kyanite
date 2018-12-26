@@ -9,6 +9,7 @@
 
 ### Improved
 
+- `partition` performance increase
 - Added import example onto each function, so it's visible within the examples
 - `factors` had some typos in its docs
 - Cleaned up `always` documentation
