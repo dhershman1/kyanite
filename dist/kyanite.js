@@ -214,17 +214,116 @@
   };
   var minBy$1 = _curry2(minBy);
 
-  var juxt = function juxt() {
-    var fns = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    return function () {
-      for (var _len = arguments.length, x = new Array(_len), _key = 0; _key < _len; _key++) {
-        x[_key] = arguments[_key];
+  function _typeof(obj) {
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+      _typeof = function (obj) {
+        return typeof obj;
+      };
+    } else {
+      _typeof = function (obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      };
+    }
+
+    return _typeof(obj);
+  }
+
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  }
+
+  function _slicedToArray(arr, i) {
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+  }
+
+  function _toArray(arr) {
+    return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest();
+  }
+
+  function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+  }
+
+  function _arrayWithoutHoles(arr) {
+    if (Array.isArray(arr)) {
+      for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+      return arr2;
+    }
+  }
+
+  function _arrayWithHoles(arr) {
+    if (Array.isArray(arr)) return arr;
+  }
+
+  function _iterableToArray(iter) {
+    if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+  }
+
+  function _iterableToArrayLimit(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
       }
-      return map$1(function (f) {
-        return f.apply(void 0, x);
-      }, fns);
-    };
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"] != null) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance");
+  }
+
+  function _nonIterableRest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance");
+  }
+
+  var partition = function partition(fn, list) {
+    return reduce$1(function (v, _ref) {
+      var _ref2 = _slicedToArray(_ref, 2),
+          pass = _ref2[0],
+          fail = _ref2[1];
+      return fn(v) ? [_appendǃ(pass, v), fail] : [pass, _appendǃ(fail, v)];
+    }, [[], []], list);
   };
+  var partition$1 = _curry2(partition);
+
+  var prepend = function prepend(x, list) {
+    return [].concat(x, list);
+  };
+  var prepend$1 = _curry2(prepend);
+
+  var reduceRight = function reduceRight(fn, init, arr) {
+    return arr.reduceRight(flip$1(fn), init);
+  };
+  var reduceRight$1 = _curry3(reduceRight);
 
   var not = function not(x) {
     return !x;
@@ -239,19 +338,6 @@
     return list.filter(complement$1(fn));
   };
   var reject$1 = _curry2(reject);
-
-  var partition = juxt([filter$1, reject$1]);
-  var partition$1 = _curry2(partition);
-
-  var prepend = function prepend(x, list) {
-    return [].concat(x, list);
-  };
-  var prepend$1 = _curry2(prepend);
-
-  var reduceRight = function reduceRight(fn, init, arr) {
-    return arr.reduceRight(flip$1(fn), init);
-  };
-  var reduceRight$1 = _curry3(reduceRight);
 
   var remove = function remove(i, x) {
     return concatMap$1(identity, [x.slice(0, i), x.slice(i + 1)]);
@@ -305,67 +391,6 @@
     return sort$1(on$1(ascend$1, fn), arr);
   };
   var sortBy$1 = _curry2(sortBy);
-
-  function _typeof(obj) {
-    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof = function (obj) {
-        return typeof obj;
-      };
-    } else {
-      _typeof = function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-      };
-    }
-
-    return _typeof(obj);
-  }
-
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-
-    return obj;
-  }
-
-  function _toArray(arr) {
-    return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest();
-  }
-
-  function _toConsumableArray(arr) {
-    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
-  }
-
-  function _arrayWithoutHoles(arr) {
-    if (Array.isArray(arr)) {
-      for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-
-      return arr2;
-    }
-  }
-
-  function _arrayWithHoles(arr) {
-    if (Array.isArray(arr)) return arr;
-  }
-
-  function _iterableToArray(iter) {
-    if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
-  }
-
-  function _nonIterableSpread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance");
-  }
-
-  function _nonIterableRest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance");
-  }
 
   var sortWith = function sortWith(fns, arr) {
     return _toConsumableArray(arr).sort(function (a, b) {
@@ -673,6 +698,18 @@
 
   var isEmpty = function isEmpty(x) {
     return isNil(x) || !Object.keys(x).length;
+  };
+
+  var juxt = function juxt() {
+    var fns = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    return function () {
+      for (var _len = arguments.length, x = new Array(_len), _key = 0; _key < _len; _key++) {
+        x[_key] = arguments[_key];
+      }
+      return map$1(function (f) {
+        return f.apply(void 0, x);
+      }, fns);
+    };
   };
 
   var lt = function lt(a, b) {
