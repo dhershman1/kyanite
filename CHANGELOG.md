@@ -1,6 +1,8 @@
 # Changelog
 
-## v0.11.0
+## v0.11.0 (Beta)
+
+**You can install the beta with** `npm i kyanite@beta`
 
 ### Breaking Changes
 
