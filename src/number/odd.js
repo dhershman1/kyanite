@@ -2,7 +2,6 @@ import eq from '../function/eq'
 
 /**
  * @name odd
- * @alias isOdd
  * @function
  * @since v0.7.0
  * @category Number

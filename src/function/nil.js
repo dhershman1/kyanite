@@ -1,6 +1,5 @@
 /**
  * @name nil
- * @alias isNil
  * @function
  * @since v0.11.0
  * @category Function

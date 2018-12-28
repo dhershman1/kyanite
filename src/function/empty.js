@@ -2,7 +2,6 @@ import nil from './nil'
 
 /**
  * @name empty
- * @alias isEmpty
  * @function
  * @since v0.1.0
  * @category Function
