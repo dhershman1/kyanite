@@ -1,7 +1,9 @@
-import rem from './rem'
+import prime from './prime'
 
 /**
  * @name isPrime
+ * @deprecated since v0.11.0 use prime
+ * @see prime
  * @function
  * @since v0.8.3
  * @category Number
@@ -17,17 +19,6 @@ import rem from './rem'
  * isPrime(6) // => false
  * isPrime(5010) // => false
  */
-const isPrime = x => {
-  const s = Math.sqrt(x)
-  let i = 2
-
-  for (i; i <= s; i++) {
-    if (!rem(i, x)) {
-      return false
-    }
-  }
-
-  return x && x !== 1
-}
+const isPrime = prime
 
 export default isPrime
