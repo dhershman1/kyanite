@@ -15,6 +15,7 @@
 
 - Added the `inc` Function which increases a number by 1
 - Added the `dec` Function which decreases a number by 1
+- Added the `zero` Function which checks if the number passed in is equal to the number zero
 
 ### Improved
 
