@@ -14,6 +14,7 @@
 ### Deprecated
 
 - `isEven` in favor of just `even`
+- `isOdd` in favor of just `odd`
 
 ### New
 

@@ -1,9 +1,8 @@
 import eq from '../function/eq'
 
 /**
- * @name isOdd
- * @deprecated since v0.11.0 use odd
- * @see odd
+ * @name odd
+ * @alias isOdd
  * @function
  * @since v0.7.0
  * @category Number
@@ -12,15 +11,15 @@ import eq from '../function/eq'
  * @param {Number} n The number to check against
  * @return {Boolean} Whether or not the number is odd
  * @example
- * import { isOdd } from 'kyanite'
+ * import { odd } from 'kyanite'
  *
- * isOdd(1) // => true
- * isOdd(3) // => true
- * isOdd('h') // => false
- * isOdd(2) // => false
- * isOdd(NaN) // => false
+ * odd(1) // => true
+ * odd(3) // => true
+ * odd('h') // => false
+ * odd(2) // => false
+ * odd(NaN) // => false
  */
-const isOdd = n => {
+const odd = n => {
   if (!eq(n, NaN)) {
     const _eq = eq(n % 2)
 
@@ -30,4 +29,4 @@ const isOdd = n => {
   return false
 }
 
-export default isOdd
+export default odd
