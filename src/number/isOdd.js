@@ -1,4 +1,4 @@
-import eq from '../function/eq'
+import odd from './odd'
 
 /**
  * @name isOdd
@@ -20,14 +20,6 @@ import eq from '../function/eq'
  * isOdd(2) // => false
  * isOdd(NaN) // => false
  */
-const isOdd = n => {
-  if (!eq(n, NaN)) {
-    const _eq = eq(n % 2)
-
-    return !_eq(NaN) && !_eq(0)
-  }
-
-  return false
-}
+const isOdd = odd
 
 export default isOdd
