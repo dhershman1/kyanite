@@ -11,6 +11,10 @@
   - You can easily get negative factors with `negate` and `map`
     - e.g: `map(negate, factors(-36)) // => [-1, -2, -3, -4, -6, -9, -12, -18, -36]`
 
+### Deprecated
+
+- `isEven` in favor of just `even`
+
 ### New
 
 - Added the `inc` Function which increases a number by 1

@@ -1,8 +1,9 @@
-import and from '../function/and'
-import eq from '../function/eq'
+import even from './even'
 
 /**
  * @name isEven
+ * @deprecated since v0.11.0 use even
+ * @see even
  * @function
  * @since v0.7.0
  * @category Number
@@ -19,6 +20,6 @@ import eq from '../function/eq'
  * isEven(1) // => false
  * isEven(NaN) // => false
  */
-const isEven = n => and(!eq(n, NaN), eq(n % 2, 0))
+const isEven = even
 
 export default isEven
