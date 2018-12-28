@@ -19,6 +19,8 @@ Deprecated functions may be removed in a future build
 - `isOdd` in favor of just `odd`
 - `isPrime` in favor of just `prime`
 - `isNil` in favor of just `nil`
+- `isEmpty` in favor of just `empty`
+  - This was a tough one since a lot of other libs have a seperate empty function, however I like this better in the long run
 
 ### New
 

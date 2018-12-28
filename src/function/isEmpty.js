@@ -1,7 +1,9 @@
-import nil from './nil'
+import empty from './empty'
 
 /**
  * @name isEmpty
+ * @deprecated since v0.11.0 use empty
+ * @see empty
  * @function
  * @since v0.1.0
  * @category Function
@@ -22,6 +24,6 @@ import nil from './nil'
  * isEmpty(true) // => true
  * isEmpty(false) // => true
  */
-const isEmpty = x => nil(x) || !Object.keys(x).length
+const isEmpty = empty
 
 export default isEmpty
