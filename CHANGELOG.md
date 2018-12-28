@@ -8,6 +8,8 @@
 
 - `factors` output has changed to be inclusive, it also works with negative numbers now
   - Example: `factors(-36) // => [1, 2, 3, 4, 6, 9, 12, 18, 36]`
+  - You can easily get negative factors with `negate` and `map`
+    - e.g: `map(negate, factors(-36)) // => [-1, -2, -3, -4, -6, -9, -12, -18, -36]`
 
 ### New
 
