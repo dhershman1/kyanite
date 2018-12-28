@@ -9,6 +9,11 @@
 - `factors` output has changed to be inclusive, it also works with negative numbers now
   - Example: `factors(-36) // => [1, 2, 3, 4, 6, 9, 12, 18, 36]`
 
+### New
+
+- Added the `inc` Function which increases a number by 1
+- Added the `dec` Function which decreases a number by 1
+
 ### Improved
 
 - `partition` performance increase
