@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>array/dropWhile.js - Documentation</title>
+    <title>number/inc.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">array/dropWhile.js</h1>
+    <h1 class="page-title">number/inc.js</h1>
     
 
     
@@ -49,36 +49,24 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
-
-/**
- * @name dropWhile
+            <pre class="prettyprint source linenums"><code>/**
+ * @name inc
+ * @since v0.11.0
  * @function
- * @since v0.9.0
- * @category Array
- * @sig (a -> Boolean) -> Array [a] -> Array [a]
- * @description Runs through an array and drops values so long as the function used returns true once the function returns false iteration will stop
- * @param {Function} fn The function to apply per iteration
- * @param {Array} arr The array of data to iterate through
- * @return {Array} A new array without the dropped values
+ * @category Number
+ * @sig Number -> Number
+ * @description Takes in a number and returns it incremented by 1
+ * @param {Number} n The number to increment
+ * @return {Number} The incremented number
  * @example
- * import { dropWhile } from 'kyanite'
+ * import { inc } from 'kyanite'
  *
- * dropWhile(x => x &lt;= 2, [1, 2, 3, 4, 3, 2, 1]) //=> [3, 4, 3, 2, 1]
- *
- * // It's also curried
- * const fn = dropWhile(x => x &lt;= 2)
- *
- * fn([1, 2, 3, 4, 3, 2, 1]) //=> [3, 4, 3, 2, 1]
- * fn([-1, 0, 1, 2, 3]) // => [3]
+ * inc(1) // => 2
+ * inc(inc(1)) // => 3
  */
-const dropWhile = (fn, arr) => {
-  const i = arr.findIndex(x => !fn(x))
+const inc = n => n + 1
 
-  return i &lt; 0 ? [] : arr.slice(i)
-}
-
-export default _curry2(dropWhile)
+export default inc
 </code></pre>
         </article>
     </section>

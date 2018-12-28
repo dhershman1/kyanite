@@ -809,6 +809,10 @@
   };
   var clamp$1 = _curry3(clamp);
 
+  var dec = function dec(n) {
+    return n - 1;
+  };
+
   var divide = function divide(a, b) {
     return b / a;
   };
@@ -844,6 +848,10 @@
     return b ? gcd(b, a % b) : a;
   };
   var gcd$1 = _curry2(gcd);
+
+  var inc = function inc(n) {
+    return n + 1;
+  };
 
   var isEven = function isEven(n) {
     return and$1(!eq$1(n, NaN), eq$1(n % 2, 0));
@@ -1137,9 +1145,11 @@
   exports.add = add$1;
   exports.between = between$1;
   exports.clamp = clamp$1;
+  exports.dec = dec;
   exports.divide = divide$1;
   exports.factors = factors;
   exports.gcd = gcd$1;
+  exports.inc = inc;
   exports.isEven = isEven;
   exports.isOdd = isOdd;
   exports.isPrime = isPrime;
