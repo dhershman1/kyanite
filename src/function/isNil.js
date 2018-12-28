@@ -1,5 +1,9 @@
+import nil from './nil'
+
 /**
  * @name isNil
+ * @deprecated since v0.11.0 use nil
+ * @see nil
  * @function
  * @since v0.1.0
  * @category Function
@@ -15,6 +19,6 @@
  * isNill() // => true
  * isNill(1) // => false
  */
-const isNil = x => x == null
+const isNil = nil
 
 export default isNil

@@ -18,6 +18,7 @@ Deprecated functions may be removed in a future build
 - `isEven` in favor of just `even`
 - `isOdd` in favor of just `odd`
 - `isPrime` in favor of just `prime`
+- `isNil` in favor of just `nil`
 
 ### New
 
