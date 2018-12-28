@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>number/round.js - Documentation</title>
+    <title>number/even.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">number/round.js</h1>
+    <h1 class="page-title">number/even.js</h1>
     
 
     
@@ -49,34 +49,30 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
+            <pre class="prettyprint source linenums"><code>import and from '../function/and'
+import eq from '../function/eq'
 
 /**
- * @name round
+ * @name even
  * @function
- * @since v0.1.0
+ * @since v0.11.0
  * @category Number
- * @sig Number -> Number -> Number
- * @description Round a number using exponent rounding to a desired precision
- * @param {Number} precision The precision we want the number to be rounded to
- * @param {Number} num The number we are going to round
- * @return {Number} The rounded number to the desired precision
- *
+ * @sig Number -> Boolean
+ * @description Checks if the provided number is even or not
+ * @param {Number} n The number to check if its even
+ * @return {Boolean} Whether or not the provided number is even
  * @example
- * import { round } from 'kyanite'
+ * import { even } from 'kyanite'
  *
- * round(2, 112.336) // => 112.34
- * round(3, 112.3354) // => 112.335
- *
- * // It is curried
- * const rounder = round(3)
- *
- * rounder(122.4456) // => 112.446
- * rounder(122.332) // => 122.332
+ * even(2) // => true
+ * even(12) // => true
+ * even('h') // => false
+ * even(1) // => false
+ * even(NaN) // => false
  */
-const round = (precision, num) => Number(`${Math.round(`${num}e${precision}`)}e-${precision}`)
+const even = n => and(!eq(n, NaN), eq(n % 2, 0))
 
-export default _curry2(round)
+export default even
 </code></pre>
         </article>
     </section>

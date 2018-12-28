@@ -128,7 +128,7 @@
   };
   var dropWhile$1 = _curry2(dropWhile);
 
-  var isNil = function isNil(x) {
+  var nil = function nil(x) {
     return x == null;
   };
 
@@ -136,7 +136,7 @@
     if (Array.isArray(x)) {
       return x;
     }
-    if (isNil(x)) {
+    if (nil(x)) {
       return [];
     }
     return [x];
@@ -653,7 +653,7 @@
   var deepEq$1 = _curry2(deepEq);
 
   var defaultTo = function defaultTo(def, val) {
-    return isNil(val) || eq$1(NaN, val) ? def : val;
+    return nil(val) || eq$1(NaN, val) ? def : val;
   };
   var defaultTo$1 = _curry2(defaultTo);
 
@@ -671,6 +671,10 @@
     return fn(a) || gn(a);
   };
   var either$1 = _curry3(either);
+
+  var empty = function empty(x) {
+    return nil(x) || !Object.keys(x).length;
+  };
 
   var encase = function encase(fn, a) {
     try {
@@ -696,9 +700,9 @@
   };
   var gte$1 = _curry2(gte);
 
-  var isEmpty = function isEmpty(x) {
-    return isNil(x) || !Object.keys(x).length;
-  };
+  var isEmpty = empty;
+
+  var isNil = nil;
 
   var juxt = function juxt() {
     var fns = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -818,6 +822,10 @@
   };
   var divide$1 = _curry2(divide);
 
+  var even = function even(n) {
+    return and$1(!eq$1(n, NaN), eq$1(n % 2, 0));
+  };
+
   var negate = function negate(n) {
     return -n;
   };
@@ -853,11 +861,9 @@
     return n + 1;
   };
 
-  var isEven = function isEven(n) {
-    return and$1(!eq$1(n, NaN), eq$1(n % 2, 0));
-  };
+  var isEven = even;
 
-  var isOdd = function isOdd(n) {
+  var odd = function odd(n) {
     if (!eq$1(n, NaN)) {
       var _eq = eq$1(n % 2);
       return !_eq(NaN) && !_eq(0);
@@ -865,7 +871,9 @@
     return false;
   };
 
-  var isPrime = function isPrime(x) {
+  var isOdd = odd;
+
+  var prime = function prime(x) {
     var s = Math.sqrt(x);
     var i = 2;
     for (i; i <= s; i++) {
@@ -875,6 +883,8 @@
     }
     return x && x !== 1;
   };
+
+  var isPrime = prime;
 
   var lcm = function lcm(a, b) {
     return Math.abs(Math.floor(a / gcd$1(a, b) * b));
@@ -904,6 +914,8 @@
     return b - a;
   };
   var subtract$1 = _curry2(subtract);
+
+  var zero = eq$1(0);
 
   var amend = function amend(a, b) {
     return Object.assign({}, b, a);
@@ -947,7 +959,7 @@
     if (!keys.length) {
       return obj[p];
     }
-    if (isNil(obj[p])) {
+    if (nil(obj[p])) {
       return undefined;
     }
     return path(keys, obj[p]);
@@ -956,7 +968,7 @@
 
   var pathOr = function pathOr(a, keys, obj) {
     var res = path$1(keys, obj);
-    if (isNil(res)) {
+    if (nil(res)) {
       return a;
     }
     return res;
@@ -1113,6 +1125,7 @@
   exports.descend = descend$1;
   exports.descendBy = descendBy$1;
   exports.either = either$1;
+  exports.empty = empty;
   exports.encase = encase$1;
   exports.eq = eq$1;
   exports.eqBy = eqBy$1;
@@ -1125,6 +1138,7 @@
   exports.juxt = juxt;
   exports.lt = lt$1;
   exports.lte = lte$1;
+  exports.nil = nil;
   exports.not = not;
   exports.on = on$1;
   exports.or = or$1;
@@ -1147,6 +1161,7 @@
   exports.clamp = clamp$1;
   exports.dec = dec;
   exports.divide = divide$1;
+  exports.even = even;
   exports.factors = factors;
   exports.gcd = gcd$1;
   exports.inc = inc;
@@ -1157,11 +1172,14 @@
   exports.mean = mean;
   exports.multiply = multiply$1;
   exports.negate = negate;
+  exports.odd = odd;
   exports.pow = pow$1;
+  exports.prime = prime;
   exports.range = range$1;
   exports.rem = rem$1;
   exports.round = round$1;
   exports.subtract = subtract$1;
+  exports.zero = zero;
   exports.amend = amend$1;
   exports.any = any$1;
   exports.draft = draft$1;
