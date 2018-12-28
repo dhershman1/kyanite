@@ -1,4 +1,4 @@
-import isNil from '../function/isNil'
+import nil from '../function/nil'
 
 /**
  * @name ensureArray
@@ -24,7 +24,7 @@ const ensureArray = x => {
     return x
   }
 
-  if (isNil(x)) {
+  if (nil(x)) {
     return []
   }
 

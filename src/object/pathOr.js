@@ -1,5 +1,5 @@
 import _curry3 from '../_internals/_curry3'
-import isNil from '../function/isNil'
+import nil from '../function/nil'
 import path from './path'
 
 /**
@@ -31,7 +31,7 @@ import path from './path'
 const pathOr = (a, keys, obj) => {
   const res = path(keys, obj)
 
-  if (isNil(res)) {
+  if (nil(res)) {
     return a
   }
 

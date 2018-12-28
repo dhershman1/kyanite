@@ -1,5 +1,5 @@
 import _curry2 from '../_internals/_curry2'
-import isNil from '../function/isNil'
+import nil from '../function/nil'
 
 /**
  * @name path
@@ -29,7 +29,7 @@ const path = ([p, ...keys], obj) => {
     return obj[p]
   }
 
-  if (isNil(obj[p])) {
+  if (nil(obj[p])) {
     return undefined
   }
 
