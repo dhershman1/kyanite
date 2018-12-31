@@ -479,19 +479,6 @@
   };
   var composeP$1 = _curry3(composeP);
 
-  var either = function either(fn, gn, a) {
-    return fn(a) || gn(a);
-  };
-  var either$1 = _curry3(either);
-
-  var eq = function eq(a, b) {
-    if (a === b) {
-      return a !== 0 || 1 / a === 1 / b;
-    }
-    return a !== a && b !== b;
-  };
-  var eq$1 = _curry2(eq);
-
   var height = function height(obj) {
     return Object.values(obj).length;
   };
@@ -499,13 +486,6 @@
   var length = function length(a) {
     return a.length;
   };
-
-  var pipe = function pipe(arr, init) {
-    return arr.reduce(function (acc, fn) {
-      return fn(acc);
-    }, init);
-  };
-  var pipe$1 = _curry2(pipe);
 
   var size = function size(x) {
     return x.size;
@@ -521,17 +501,20 @@
     return Object.prototype.toString.call(x).slice(8, -1);
   };
 
-  var when = function when(fn, act, x) {
-    return fn(x) ? act(x) : x;
-  };
-  var when$1 = _curry3(when);
-
   var count = function count(a) {
-    if (type(a) === 'Number') {
-      throw new TypeError('Count does not accept number types');
+    var match = {
+      Array: length,
+      String: length,
+      Object: height,
+      Map: size,
+      Set: size
+    };
+    var key = type(a);
+    var fn = match[key];
+    if (fn) {
+      return fn(a);
     }
-    var A = always$1(a);
-    return pipe$1([type, when$1(eq$1('Object'), compose$1(height, A)), when$1(either$1(eq$1('Array'), eq$1('String')), compose$1(length, A)), when$1(either$1(eq$1('Map'), eq$1('Set')), compose$1(size, A))], a);
+    throw new TypeError("Unexpected type given to count: ".concat(key));
   };
 
   var curry = function curry(f) {
@@ -563,6 +546,14 @@
       return curryN.apply(void 0, [n - rest.length, f].concat(args, rest));
     };
   };
+
+  var eq = function eq(a, b) {
+    if (a === b) {
+      return a !== 0 || 1 / a === 1 / b;
+    }
+    return a !== a && b !== b;
+  };
+  var eq$1 = _curry2(eq);
 
   var _functionName = function _functionName(f) {
     var match = String(f).match(/^function (\w*)/);
@@ -704,6 +695,11 @@
   };
   var descendBy$1 = _curry3(descendBy);
 
+  var either = function either(fn, gn, a) {
+    return fn(a) || gn(a);
+  };
+  var either$1 = _curry3(either);
+
   var empty = function empty(x) {
     return nil(x) || !Object.keys(x).length;
   };
@@ -763,6 +759,13 @@
   };
   var or$1 = _curry2(or);
 
+  var pipe = function pipe(arr, init) {
+    return arr.reduce(function (acc, fn) {
+      return fn(acc);
+    }, init);
+  };
+  var pipe$1 = _curry2(pipe);
+
   var pipeP = function pipeP(fns, data) {
     return fns.reduce(function (acc, f) {
       return acc.then(f);
@@ -774,6 +777,11 @@
     return fn(x) ? x : act(x);
   };
   var unless$1 = _curry3(unless);
+
+  var when = function when(fn, act, x) {
+    return fn(x) ? act(x) : x;
+  };
+  var when$1 = _curry3(when);
 
   var slice = function slice(a, b, list) {
     return list.slice(a, b);
