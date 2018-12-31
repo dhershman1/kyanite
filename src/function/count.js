@@ -33,6 +33,9 @@ import when from './when'
  * count(new Set()) // => 0
  */
 const count = a => {
+  if (type(a) === 'Number') {
+    throw new TypeError('Count does not accept number types')
+  }
   const A = always(a)
 
   return pipe([

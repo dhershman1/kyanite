@@ -37,7 +37,10 @@ test('count -- Counts Sets', t => {
 })
 
 test('count -- Handle numbers', t => {
-  console.log(count(3))
-
-  t.end()
+  try {
+    count(9)
+  } catch ({ message }) {
+    t.same(message, 'Count does not accept number types')
+    t.end()
+  }
 })
