@@ -93,9 +93,9 @@
 &lt;/script></code></pre><p>Or installing with <code>npm i kyanite</code> and then:</p>
 <p>Standard module system</p>
 <pre class="prettyprint source lang-js"><code>// This will use the module path in the package.json (src/index.js)
-import K from 'kyanite'
+import * as K from 'kyanite'
 // However if you want to grab the dev version
-import K from 'kyanite/dist/kyanite.js'</code></pre><p>Common JS</p>
+import * as K from 'kyanite/dist/kyanite.js'</code></pre><p>Common JS</p>
 <pre class="prettyprint source lang-js"><code>// For the prod minified version
 const K = require('kyanite')
 // For the dev/debug friendly version

@@ -1,13 +1,7 @@
-import always from './always'
-import compose from './compose'
-import either from './either'
-import eq from './eq'
 import height from '../object/height'
 import length from '../list/length'
-import pipe from './pipe'
 import size from './size'
 import type from './type'
-import when from './when'
 
 /**
  * @name count
@@ -33,17 +27,21 @@ import when from './when'
  * count(new Set()) // => 0
  */
 const count = a => {
-  if (type(a) === 'Number') {
-    throw new TypeError('Count does not accept number types')
+  const match = {
+    Array: length,
+    String: length,
+    Object: height,
+    Map: size,
+    Set: size
   }
-  const A = always(a)
+  const key = type(a)
+  const fn = match[key]
 
-  return pipe([
-    type,
-    when(eq('Object'), compose(height, A)),
-    when(either(eq('Array'), eq('String')), compose(length, A)),
-    when(either(eq('Map'), eq('Set')), compose(size, A))
-  ], a)
+  if (fn) {
+    return fn(a)
+  }
+
+  throw new TypeError(`Unexpected type given to count: ${key}`)
 }
 
 export default count
