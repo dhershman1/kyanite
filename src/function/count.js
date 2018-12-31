@@ -10,7 +10,7 @@ import type from './type'
  * @category Function
  * @sig a -> Number
  * @description Counts the number of values within a collection of data
- * @param {Any} a The data to count
+ * @param {Array|String|Object|Map|Set} a The data to count
  * @return {Number} The number of counted values within the provided data
  * @example
  * import { count } from 'kyanite'
