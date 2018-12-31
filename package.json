@@ -5,11 +5,6 @@
   "main": "dist/kyanite.min.js",
   "module": "src/index.js",
   "typings": "types/index.d.ts",
-  "files": [
-    "dist",
-    "types",
-    "src"
-  ],
   "directories": {
     "test": "tests",
     "lib": "src"
