@@ -52,9 +52,9 @@ Standard module system
 
 ```js
 // This will use the module path in the package.json (src/index.js)
-import K from 'kyanite'
+import * as K from 'kyanite'
 // However if you want to grab the dev version
-import K from 'kyanite/dist/kyanite.js'
+import * as K from 'kyanite/dist/kyanite.js'
 ```
 
 Common JS
