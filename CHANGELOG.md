@@ -30,7 +30,6 @@ Deprecated functions may be removed in a future build
 - Added the `size` Function which takes a map or set data type and returns its size
   - **Note**: It is currently categorized under `Function` which may change in the future as I add more Map|Set friendly functions
 - Added the `count` Function which takes any collection based data and counts the values within
-- Added the `includes` Function which takes a value and searches through a iterable like value for it
 
 ### Improved
 
