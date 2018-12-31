@@ -24,16 +24,22 @@ Deprecated functions may be removed in a future build
 
 ### New
 
-- Added the `inc` Function which increases a number by 1
-- Added the `dec` Function which decreases a number by 1
-- Added the `zero` Function which checks if the number passed in is equal to the number zero
-- Added the `size` Function which takes a map or set data type and returns its size
+- Added `inc` Function which increases a number by 1
+- Added `dec` Function which decreases a number by 1
+- Added `zero` Function which checks if the number passed in is equal to the number zero
+- Added `size` Function which takes a map or set data type and returns its size
   - **Note**: It is currently categorized under `Function` which may change in the future as I add more Map|Set friendly functions
-- Added the `count` Function which takes any collection based data and counts the values within
+- Added `count` Function which takes any collection based data and counts the values within
 
 ### Improved
 
-- `partition` performance increase
+#### Performance
+
+- Slight increase in `partition`
+- Slight increase in `omit`
+
+#### Documentation
+
 - Added import example onto each function, so it's visible within the examples
 - `factors` had some typos in its docs
 - Cleaned up `always` documentation
