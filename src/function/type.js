@@ -21,15 +21,7 @@
  * type(new Date()) // => 'Date'
  * type(true) // => 'Boolean'
  */
-const type = x => {
-  if (x === null) {
-    return 'Null'
-  }
-  if (x === undefined) {
-    return 'Undefined'
-  }
-
-  return Object.prototype.toString.call(x).slice(8, -1)
-}
+const type = x =>
+  Object.prototype.toString.call(x).slice(8, -1)
 
 export default type
