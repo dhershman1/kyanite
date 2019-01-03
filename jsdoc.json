@@ -11,7 +11,6 @@
   },
   "sourceType": "module",
   "plugins": [
-    "plugins/markdown",
     "scripts/custom-tags.js"
   ],
   "opts": {
@@ -23,7 +22,7 @@
   },
   "markdown": {
     "parser": "gfm",
-    "hardwrap": true,
+    "hardwrap": false,
     "idInHeadings": true
   },
   "templates": {
