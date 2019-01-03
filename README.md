@@ -1,12 +1,35 @@
-[![npm](https://img.shields.io/npm/v/kyanite.svg?style=flat-square)](https://www.npmjs.com/package/kyanite)
-[![David](https://img.shields.io/david/dhershman1/kyanite.svg?style=flat-square)](https://david-dm.org/dhershman1/kyanite)
-[![David](https://img.shields.io/david/dev/dhershman1/kyanite.svg?style=flat-square)](https://david-dm.org/dhershman1/kyanite?type=dev)
-[![Travis](https://img.shields.io/travis/dhershman1/kyanite.svg?style=flat-square)](https://travis-ci.org/dhershman1/kyanite)
-[![Coverage Status](https://img.shields.io/coveralls/github/dhershman1/kyanite.svg?style=flat-square)](https://coveralls.io/github/dhershman1/kyanite?branch=master)
-
-![kyanite-scaled](https://user-images.githubusercontent.com/8997380/48008308-69174500-e0e7-11e8-9a57-ebd558f094f8.png)
-
-A light weight pure functional library with single type utility functions and it only depends on itself.
+<h1 align=center>
+  <a href="https://kyanite.dusty.codes/" title="Kyanite Documentation">
+    <img alt="Kyanite Logo" src="https://user-images.githubusercontent.com/8997380/48008308-69174500-e0e7-11e8-9a57-ebd558f094f8.png">
+  </a>
+</h1>
+<br />
+<p align=center>
+  A light weight pure functional library with single type utility functions and it only depends on itself.
+</p>
+<p align=center>
+  <a href="./LICENSE">
+    <img
+      alt="license:mit"
+      src="https://img.shields.io/badge/license-mit-green.svg?style=flat-square"
+    />
+  </a>
+  <a href="https://www.npmjs.com/package/kyanite">
+    <img alt="Npm Version" src="https://img.shields.io/npm/v/kyanite.svg?style=flat-square">
+  </a>
+  <a href="https://david-dm.org/dhershman1/kyanite">
+    <img alt="Dependencies" src="https://img.shields.io/david/dhershman1/kyanite.svg?style=flat-square">
+  </a>
+  <a href="https://david-dm.org/dhershman1/kyanite?type=dev">
+    <img alt="Dev Dependencies" src="https://img.shields.io/david/dev/dhershman1/kyanite.svg?style=flat-square">
+  </a>
+  <a href="https://travis-ci.org/dhershman1/kyanite">
+    <img alt="Build Status" src="https://img.shields.io/travis/dhershman1/kyanite.svg?style=flat-square">
+  </a>
+  <a href="https://coveralls.io/github/dhershman1/kyanite?branch=master">
+    <img alt="Coverage" src="https://img.shields.io/coveralls/github/dhershman1/kyanite.svg?style=flat-square">
+  </a>
+</p>
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
