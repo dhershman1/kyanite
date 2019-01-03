@@ -30,8 +30,13 @@
     <img alt="Coverage" src="https://img.shields.io/coveralls/github/dhershman1/kyanite.svg?style=flat-square">
   </a>
 </p>
+<br />
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+<p align=center>
+  <a href="https://github.com/standard/standard">
+    <img alt="Standard JS" src="https://cdn.rawgit.com/standard/standard/master/badge.svg">
+  </a>
+</p>
 
 ## Contents
 
