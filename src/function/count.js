@@ -41,7 +41,7 @@ const count = a => {
     return fn(a)
   }
 
-  throw new TypeError(`Unexpected type given to count: ${key}`)
+  throw new TypeError(`Unsupported type: ${key}`)
 }
 
 export default count

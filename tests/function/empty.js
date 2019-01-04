@@ -24,21 +24,43 @@ test('empty -- empty Handles object values', t => {
   t.end()
 })
 
-test('empty -- empty Handles numeric values', t => {
-  t.true(empty(0), 'Returns true for 0')
-  t.true(empty(10), 'Returns true for any number')
-  t.end()
-})
-
-test('empty -- empty Handles falsy values', t => {
-  t.true(empty(NaN), 'Returns true for NaN')
+test('empty -- empty Handles nil values', t => {
   t.true(empty(undefined), 'Returns true for undefined')
   t.true(empty(null), 'Returns true for null')
   t.end()
 })
 
-test('empty -- empty Handles boolean values', t => {
-  t.true(empty(false), 'Returns true when passed false boolean')
-  t.true(empty(true), 'Returns true when passed true boolean')
+test('empty -- Handles Maps and Sets', t => {
+  t.same(empty(new Map()), true)
+  t.same(empty(new Set()), true)
+  t.same(empty(new Map([['a', 1]])), false)
+  t.same(empty(new Set([1, 2])), false)
   t.end()
+})
+
+test('empty -- empty Errors on numeric values', t => {
+  try {
+    empty(10)
+  } catch ({ message }) {
+    t.same(message, 'Unsupported type: Number')
+    t.end()
+  }
+})
+
+test('empty -- Errors on NaN', t => {
+  try {
+    empty(NaN)
+  } catch ({ message }) {
+    t.same(message, 'Unsupported type: Number')
+    t.end()
+  }
+})
+
+test('empty -- Errors on boolean', t => {
+  try {
+    empty(false)
+  } catch ({ message }) {
+    t.same(message, 'Unsupported type: Boolean')
+    t.end()
+  }
 })

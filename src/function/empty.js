@@ -1,4 +1,5 @@
 import nil from './nil'
+import count from './count'
 
 /**
  * @name empty
@@ -16,12 +17,14 @@ import nil from './nil'
  * empty([]) // => true
  * empty({}) // => true
  * empty('') // => true
- * empty(NaN) // => true
+ * empty(new Map()) // => true
+ * empty(new Set()) // => true
  * empty(null) // => true
  * empty(undefined) // => true
- * empty(true) // => true
- * empty(false) // => true
+ * empty(NaN) // => TypeError: Unsupported type: Number
+ * empty(true) // => TypeError: Unsupported type: Boolean
+ * empty(false) // => TypeError: Unsupported type: Boolean
  */
-const empty = x => nil(x) || !Object.keys(x).length
+const empty = x => nil(x) || !count(x)
 
 export default empty

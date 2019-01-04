@@ -10,6 +10,9 @@
   - Example: `factors(-36) // => [1, 2, 3, 4, 6, 9, 12, 18, 36]`
   - You can easily get negative factors with `negate` and `map`
     - e.g: `map(negate, factors(-36)) // => [-1, -2, -3, -4, -6, -9, -12, -18, -36]`
+- `empty` (and `isEmpty` until its removed) will now throw a type error for unsupported types
+  - `empty` supports the same types as `count` as well as `null` and `undefined`
+  - e.g: `empty(1) // => TypeError: Unsupported type: Number`
 
 ### Deprecated
 
@@ -34,6 +37,7 @@ Deprecated functions may be removed in a future build
 
 ### Improved
 
+- `empty` now supports `Maps` and `Sets`
 - Slight increase in `partition` performance
 - Slight increase in `omit` performance
 - Added import example onto each function, so it's visible within the examples

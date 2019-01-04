@@ -40,7 +40,7 @@ test('count -- Handle numbers', t => {
   try {
     count(9)
   } catch ({ message }) {
-    t.same(message, 'Unexpected type given to count: Number')
+    t.same(message, 'Unsupported type: Number')
     t.end()
   }
 })
@@ -49,7 +49,7 @@ test('count -- Handle dates', t => {
   try {
     count(new Date())
   } catch ({ message }) {
-    t.same(message, 'Unexpected type given to count: Date')
+    t.same(message, 'Unsupported type: Date')
     t.end()
   }
 })
@@ -58,7 +58,7 @@ test('count -- Handle Regex', t => {
   try {
     count(new RegExp())
   } catch ({ message }) {
-    t.same(message, 'Unexpected type given to count: RegExp')
+    t.same(message, 'Unsupported type: RegExp')
     t.end()
   }
 })
