@@ -42,13 +42,27 @@
     };
   }
 
-  var flip = function flip(fn, a, b) {
-    return fn(b, a);
+  var _xwrap = function _xwrap(fn) {
+    var res = {};
+    res['@@transducer/result'] = function (acc) {
+      return acc;
+    };
+    res['@@transducer/step'] = function (x, acc) {
+      return fn(x, acc);
+    };
+    return res;
   };
-  var flip$1 = _curry3(flip);
 
-  var reduce = function reduce(fn, init, list) {
-    return list.reduce(flip$1(fn), init);
+  var reduce = function reduce(fn, acc, list) {
+    var xf = _xwrap(fn);
+    for (var i = 0, len = list.length; i < len; i++) {
+      acc = xf['@@transducer/step'](list[i], acc);
+      if (acc && acc['@@transducer/reduced']) {
+        acc = acc['@@transducer/value'];
+        break;
+      }
+    }
+    return xf['@@transducer/result'](acc);
   };
   var reduce$1 = _curry3(reduce);
 
@@ -320,10 +334,25 @@
   };
   var prepend$1 = _curry2(prepend);
 
-  var reduceRight = function reduceRight(fn, init, arr) {
-    return arr.reduceRight(flip$1(fn), init);
+  var reduceRight = function reduceRight(fn, acc, arr) {
+    var xf = _xwrap(fn);
+    for (var i = arr.length - 1; i >= 0; i--) {
+      acc = xf['@@transducer/step'](arr[i], acc);
+      if (acc && acc['@@transducer/reduced']) {
+        acc = acc['@@transducer/value'];
+        break;
+      }
+    }
+    return xf['@@transducer/result'](acc);
   };
   var reduceRight$1 = _curry3(reduceRight);
+
+  var reduced = function reduced(x) {
+    return x && x['@@transducer/reduced'] ? x : {
+      '@@transducer/value': x,
+      '@@transducer/reduced': true
+    };
+  };
 
   var not = function not(x) {
     return !x;
@@ -492,12 +521,6 @@
   };
 
   var type = function type(x) {
-    if (x === null) {
-      return 'Null';
-    }
-    if (x === undefined) {
-      return 'Undefined';
-    }
     return Object.prototype.toString.call(x).slice(8, -1);
   };
 
@@ -717,6 +740,11 @@
     return eq$1(fn(a), fn(b));
   };
   var eqBy$1 = _curry3(eqBy);
+
+  var flip = function flip(fn, a, b) {
+    return fn(b, a);
+  };
+  var flip$1 = _curry3(flip);
 
   var gt = function gt(a, b) {
     return b > a;
@@ -1114,6 +1142,7 @@
   exports.prepend = prepend$1;
   exports.reduce = reduce$1;
   exports.reduceRight = reduceRight$1;
+  exports.reduced = reduced;
   exports.reject = reject$1;
   exports.remove = remove$1;
   exports.some = some$1;
