@@ -4,13 +4,9 @@
  * @param {Function} fn The function to wrap
  * @return {Object} The wrapped function
  */
-const _xwrap = fn => {
-  const res = {}
-
-  res['@@transducer/result'] = acc => acc
-  res['@@transducer/step'] = (x, acc) => fn(x, acc)
-
-  return res
-}
+const _xwrap = fn => ({
+  '@@transducer/result': acc => acc,
+  '@@transducer/step': (x, acc) => fn(x, acc)
+})
 
 export default _xwrap
