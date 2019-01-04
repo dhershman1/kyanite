@@ -6,7 +6,7 @@
  */
 const _xwrap = fn => ({
   '@@transducer/result': acc => acc,
-  '@@transducer/step': (x, acc) => fn(x, acc)
+  '@@transducer/step': fn
 })
 
 export default _xwrap
