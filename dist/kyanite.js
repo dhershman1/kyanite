@@ -156,18 +156,31 @@
     return [x];
   };
 
-  var every = function every(fn, x) {
-    return x.every(fn);
+  var reduced = function reduced(x) {
+    return x && x['@@transducer/reduced'] ? x : {
+      '@@transducer/value': x,
+      '@@transducer/reduced': true
+    };
+  };
+
+  var every = function every(fn, data) {
+    return reduce$1(function (val, acc) {
+      return fn(val) ? acc : reduced(false);
+    }, true, data);
   };
   var every$1 = _curry2(every);
 
-  var filter = function filter(fn, list) {
-    return list.filter(fn);
+  var filter = function filter(fn, arr) {
+    return reduce$1(function (val, acc) {
+      return fn(val) ? _appendǃ(acc, val) : acc;
+    }, [], arr);
   };
   var filter$1 = _curry2(filter);
 
-  var find = function find(fn, list) {
-    return list.find(fn);
+  var find = function find(fn, arr) {
+    return reduce$1(function (val, acc) {
+      return fn(val) ? reduced(val) : acc;
+    }, null, arr);
   };
   var find$1 = _curry2(find);
 
@@ -347,13 +360,6 @@
   };
   var reduceRight$1 = _curry3(reduceRight);
 
-  var reduced = function reduced(x) {
-    return x && x['@@transducer/reduced'] ? x : {
-      '@@transducer/value': x,
-      '@@transducer/reduced': true
-    };
-  };
-
   var not = function not(x) {
     return !x;
   };
@@ -363,8 +369,8 @@
   };
   var complement$1 = _curry2(complement);
 
-  var reject = function reject(fn, list) {
-    return list.filter(complement$1(fn));
+  var reject = function reject(fn, arr) {
+    return filter$1(complement$1(fn), arr);
   };
   var reject$1 = _curry2(reject);
 
@@ -373,8 +379,10 @@
   };
   var remove$1 = _curry2(remove);
 
-  var some = function some(fn, x) {
-    return x.some(fn);
+  var some = function some(fn, arr) {
+    return reduce$1(function (val, acc) {
+      return fn(val) ? reduced(true) : acc;
+    }, false, arr);
   };
   var some$1 = _curry2(some);
 
