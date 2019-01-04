@@ -24,6 +24,11 @@ declare namespace K {
     [index: string]: (...a: any[]) => any;
   }
 
+  interface Reduced<T> {
+    '@@transducer/value': T;
+    '@@transducer/reduced': true;
+  }
+
   type Pred = (...a: any[]) => boolean;
 
   interface Static {
@@ -616,18 +621,25 @@ declare namespace K {
      * The reducer function accepts the params flipped as compared
      * To the vanilla reduce counterpart.
      */
-    reduce<T, TResult>(fn: (a: T, acc: TResult) => TResult, init: TResult, list: ReadonlyArray<T>): TResult;
-    reduce<T, TResult>(fn: (a: T, acc: TResult) => TResult, init: TResult): (list: ReadonlyArray<T>) => TResult;
-    reduce<T, TResult>(fn: (a: T, acc: TResult) => TResult): (init: TResult) => (list: ReadonlyArray<T>) => TResult;
+    reduce<T, TResult>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult, list: ReadonlyArray<T>): TResult;
+    reduce<T, TResult>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult): (list: ReadonlyArray<T>) => TResult;
+    reduce<T, TResult>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>): (acc: TResult) => (list: ReadonlyArray<T>) => TResult;
+
+    /**
+     * Used to optimize reduce iterations, can be used to short circuit a reduce without needing to iterate an entire array
+     * The returned value should be considered as a black box
+     * This optimization only works with `reduce`, and `reduceRight` currently
+     */
+    reduced<T>(x: T): Reduced<T>;
 
     /**
      * Accepts an array and runs a reduce from right to left with the passed in values.
      * The reducer function accepts the params flipped as compared
      * To the vanilla reduceRight counterpart.
      */
-    reduceRight<T, TResult>(fn: (a: T, acc: TResult) => TResult, init: TResult, list: ReadonlyArray<T>): TResult;
-    reduceRight<T, TResult>(fn: (a: T, acc: TResult) => TResult, init: TResult): (list: ReadonlyArray<T>) => TResult;
-    reduceRight<T, TResult>(fn: (a: T, acc: TResult) => TResult): (init: TResult) => (list: ReadonlyArray<T>) => TResult;
+    reduceRight<T, TResult>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult, list: ReadonlyArray<T>): TResult;
+    reduceRight<T, TResult>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult): (list: ReadonlyArray<T>) => TResult;
+    reduceRight<T, TResult>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>): (acc: TResult) => (list: ReadonlyArray<T>) => TResult;
 
     /**
      * Iterate through a list and reject any value that does not pass the provided function
