@@ -1,4 +1,6 @@
 import _curry2 from '../_internals/_curry2'
+import reduce from './reduce'
+import reduced from './reduced'
 
 /**
  * @name some
@@ -9,7 +11,7 @@ import _curry2 from '../_internals/_curry2'
  * @description
  * Loops through a provided list verifying that at least some values evaluates to a truthy value.
  * @param {Function} fn The function to send our values to for validation
- * @param {Array} x The list we are to loop through
+ * @param {Array} arr The list we are to loop through
  * @return {Boolean} If any values passed will return true else false
  *
  * @example
@@ -29,6 +31,8 @@ import _curry2 from '../_internals/_curry2'
  * run([-1, 0, 1]) // => true
  * run([-3, -2, -1]) // => false
  */
-const some = (fn, x) => x.some(fn)
+const some = (fn, arr) =>
+  reduce((val, acc) =>
+    fn(val) ? reduced(true) : acc, false, arr)
 
 export default _curry2(some)

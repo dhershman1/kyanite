@@ -1,4 +1,6 @@
 import _curry2 from '../_internals/_curry2'
+import reduce from './reduce'
+import reduced from './reduced'
 
 /**
  * @name every
@@ -9,7 +11,7 @@ import _curry2 from '../_internals/_curry2'
  * @description
  * Loops through a provided list verifying that every value evaluates to a truthy value.
  * @param {Function} fn The function to send our values to for validation
- * @param {Array} x The list we are to loop through
+ * @param {Array} data The list we are to loop through
  * @return {Boolean} If all values passed will return true else false
  *
  * @example
@@ -27,6 +29,8 @@ import _curry2 from '../_internals/_curry2'
  * run([1, 2, 3]) // => true
  * run([-1, 0, 1]) // => false
  */
-const every = (fn, x) => x.every(fn)
+const every = (fn, data) =>
+  reduce((val, acc) =>
+    fn(val) ? acc : reduced(false), true, data)
 
 export default _curry2(every)
