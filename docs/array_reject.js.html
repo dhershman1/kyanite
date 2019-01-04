@@ -49,8 +49,9 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import complement from '../function/complement'
-import _curry2 from '../_internals/_curry2'
+            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
+import complement from '../function/complement'
+import filter from './filter'
 
 /**
  * @name reject
@@ -61,7 +62,7 @@ import _curry2 from '../_internals/_curry2'
  * @description
  * Iterate through a list and reject any value that does not pass the provided function
  * @param {Function} fn The predicate function to run on our values
- * @param {Array} list The filterable list to go through
+ * @param {Array} arr The filterable list to go through
  * @return {Array} Returns a new Array of values that were not rejected
  *
  * @example
@@ -78,8 +79,7 @@ import _curry2 from '../_internals/_curry2'
  *
  * rejecter([1, 2, 3, 4]) // => [1, 3]
  */
-const reject = (fn, list) =>
-  list.filter(complement(fn))
+const reject = (fn, arr) => filter(complement(fn), arr)
 
 export default _curry2(reject)
 </code></pre>
