@@ -50,8 +50,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import _curry3 from '../_internals/_curry3'
-import reduce from './reduce'
-import reverse from '../list/reverse'
+import _xwrap from '../_internals/_xwrap'
 
 /**
  * @name reduceRight
@@ -77,7 +76,20 @@ import reverse from '../list/reverse'
  *
  * fn([], ['', 1, 2, '0', 3]) // => [3, 2, 1]
  */
-const reduceRight = (fn, acc, arr) => reduce(fn, acc, reverse(arr))
+const reduceRight = (fn, acc, arr) => {
+  const xf = _xwrap(fn)
+
+  for (let i = arr.length - 1; i >= 0; i--) {
+    acc = xf['@@transducer/step'](arr[i], acc)
+
+    if (acc &amp;&amp; acc['@@transducer/reduced']) {
+      acc = acc['@@transducer/value']
+      break
+    }
+  }
+
+  return xf['@@transducer/result'](acc)
+}
 
 export default _curry3(reduceRight)
 </code></pre>
