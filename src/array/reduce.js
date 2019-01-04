@@ -1,5 +1,5 @@
 import _curry3 from '../_internals/_curry3'
-import flip from '../function/flip'
+import _xwrap from '../_internals/_xwrap'
 
 /**
  * @name reduce
@@ -12,7 +12,7 @@ import flip from '../function/flip'
  * The reducer function accepts the params a bit differently than the vanilla counterpart
  * As the reducer should expect the value first, and the accumulator second
  * @param {Function} fn The function to run with the reduce should expect the value first and the accumulator second: (a, acc) => {}
- * @param {Any} init The empty initial state of the reduce accumulator
+ * @param {Any} acc The empty initial state of the reduce accumulator
  * @param {Array} list The list to run our reduce against
  * @return {Any} Returns based on the original init parameter that is passed in
  *
@@ -28,7 +28,19 @@ import flip from '../function/flip'
     return acc
   }, [], ['', 1, 2, '0', 3]) // => [1, 2, 3]
  */
-const reduce = (fn, init, list) =>
-  list.reduce(flip(fn), init)
+const reduce = (fn, acc, list) => {
+  const xf = _xwrap(fn)
+
+  for (let i = 0, len = list.length; i < len; i++) {
+    acc = xf['@@transducer/step'](list[i], acc)
+
+    if (acc && acc['@@transducer/reduced']) {
+      acc = acc['@@transducer/value']
+      break
+    }
+  }
+
+  return xf['@@transducer/result'](acc)
+}
 
 export default _curry3(reduce)

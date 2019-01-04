@@ -1,5 +1,5 @@
 import _curry3 from '../_internals/_curry3'
-import flip from '../function/flip'
+import _xwrap from '../_internals/_xwrap'
 
 /**
  * @name reduceRight
@@ -11,7 +11,7 @@ import flip from '../function/flip'
  * The reducer function accepts the params a bit differently than the vanilla counterpart
  * As the reducer should expect the value first, and the accumulator second
  * @param {Function} fn The iterator function to call for the reduce
- * @param {Any} init The init value to start the accumulator at
+ * @param {Any} acc The init value to start the accumulator at
  * @param {Array} arr The Array to reduce
  * @return {Any} The new accumulated value
  * @example
@@ -25,7 +25,19 @@ import flip from '../function/flip'
  *
  * fn([], ['', 1, 2, '0', 3]) // => [3, 2, 1]
  */
-const reduceRight = (fn, init, arr) =>
-  arr.reduceRight(flip(fn), init)
+const reduceRight = (fn, acc, arr) => {
+  const xf = _xwrap(fn)
+
+  for (let i = arr.length - 1; i >= 0; i--) {
+    acc = xf['@@transducer/step'](arr[i], acc)
+
+    if (acc && acc['@@transducer/reduced']) {
+      acc = acc['@@transducer/value']
+      break
+    }
+  }
+
+  return xf['@@transducer/result'](acc)
+}
 
 export default _curry3(reduceRight)
