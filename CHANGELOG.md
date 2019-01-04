@@ -30,20 +30,23 @@ Deprecated functions may be removed in a future build
 - Added `size` Function which takes a map or set data type and returns its size
   - **Note**: It is currently categorized under `Function` which may change in the future as I add more Map|Set friendly functions
 - Added `count` Function which takes any collection based data and counts the values within
+- Added `reduced` Function which should be used with `reduce` or `reduceRight` as a short circuit for the function (see improved)
 
 ### Improved
 
-#### Performance
-
-- Slight increase in `partition`
-- Slight increase in `omit`
-
-#### Documentation
-
+- Slight increase in `partition` performance
+- Slight increase in `omit` performance
 - Added import example onto each function, so it's visible within the examples
 - `factors` had some typos in its docs
 - Cleaned up `always` documentation
 - Cleaned up `identity` documentation examples
+- Cleaned up `type` to be more lightweight
+- Completely re wrote `reduce` and `reduceRight`
+  - No breaking changes
+  - Both functions now support `reduced` which will short circuit out of the iteration and return the value
+  - This is a good strategy for performance boosts
+- `reduce`, `reduceRight`, and `reduced` are all using the `@@transducer` protocol
+- Moved `every`, `some`, `reject`, `filter`, and `find` to use this new flow giving them decent performance improvements
 
 ## v0.10.3
 
