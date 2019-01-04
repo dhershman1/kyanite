@@ -43,14 +43,12 @@
   }
 
   var _xwrap = function _xwrap(fn) {
-    var res = {};
-    res['@@transducer/result'] = function (acc) {
-      return acc;
+    return {
+      '@@transducer/result': function transducerResult(acc) {
+        return acc;
+      },
+      '@@transducer/step': fn
     };
-    res['@@transducer/step'] = function (x, acc) {
-      return fn(x, acc);
-    };
-    return res;
   };
 
   var reduce = function reduce(fn, acc, list) {
