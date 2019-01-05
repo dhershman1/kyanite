@@ -1,4 +1,3 @@
-import has from '../object/has'
 import type from '../function/type'
 import eq from '../function/eq'
 
@@ -146,7 +145,7 @@ const _equals = (a, b, stackA, stackB) => {
   for (let i = keysA.length - 1; i >= 0; i--) {
     const key = keysA[i]
 
-    if (!(has(key, b) && _equals(b[key], a[key], extendedStackA, extendedStackB))) {
+    if (!(Object.prototype.hasOwnProperty.call(b, key) && _equals(b[key], a[key], extendedStackA, extendedStackB))) {
       return false
     }
   }

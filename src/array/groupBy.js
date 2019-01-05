@@ -1,7 +1,7 @@
 import _curry2 from '../_internals/_curry2'
 import _appendǃ from '../_internals/_appendǃ'
 import _assocǃ from '../_internals/_assocǃ'
-import has from '../object/has'
+import has from '../function/has'
 
 /**
  * @name groupBy

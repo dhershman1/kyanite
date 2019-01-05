@@ -1,6 +1,6 @@
 import _curry2 from '../_internals/_curry2'
 import groupBy from './groupBy'
-import has from '../object/has'
+import has from '../function/has'
 import identity from '../function/identity'
 import uniq from './uniq'
 
