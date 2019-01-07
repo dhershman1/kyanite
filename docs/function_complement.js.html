@@ -66,10 +66,15 @@ import not from './not'
  * @example
  * import { complement } from 'kyanite'
  *
- * const isNot = complement(is(String))
+ * complement(x => x > 10, 11) // => false
+ * complement(x => x &lt; 10, 11) // => true
  *
- * isNot(1) // => true
- * isNot('test') // => false
+ * // It's also curried
+ *
+ * const notGtTen = complement(x => x > 10)
+ *
+ * notGtTen(11) // => false
+ * notGtTen(10) // => true
  */
 const complement = (fn, a) => not(fn(a))
 

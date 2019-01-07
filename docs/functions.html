@@ -3383,7 +3383,7 @@ fn(0) // => 1</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>import { complement } from 'kyanite'const isNot = complement(is(String))isNot(1) // => trueisNot('test') // => false</code></pre>
+    <pre class="prettyprint"><code>import { complement } from 'kyanite'complement(x => x > 10, 11) // => falsecomplement(x => x &lt; 10, 11) // => true// It's also curriedconst notGtTen = complement(x => x > 10)notGtTen(11) // => falsenotGtTen(10) // => true</code></pre>
 
 
 
@@ -4434,7 +4434,7 @@ con([1, 2, 3]) // => [1, 1, 2, 2, 3, 3]</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="function_count.js.html">function/count.js</a>, <a href="function_count.js.html#line6">line 6</a>
+        <a href="function_count.js.html">function/count.js</a>, <a href="function_count.js.html#line4">line 4</a>
     </li></ul></dd>
     
 
@@ -11970,7 +11970,7 @@ fn(['bar']) // => false</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="object_height.js.html">object/height.js</a>, <a href="object_height.js.html#line2">line 2</a>
+        <a href="object_height.js.html">object/height.js</a>, <a href="object_height.js.html#line4">line 4</a>
     </li></ul></dd>
     
 

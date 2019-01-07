@@ -531,32 +531,26 @@
   };
   var composeP$1 = _curry3(composeP);
 
-  var height = function height(obj) {
-    return Object.values(obj).length;
-  };
-
   var length = function length(a) {
     return a.length;
   };
 
-  var size = function size(x) {
-    return x.size;
-  };
+  var height = compose$1(length, Object.values);
 
   var count = function count(a) {
-    var match = {
-      Array: length,
-      String: length,
-      Object: height,
-      Map: size,
-      Set: size
-    };
     var key = type(a);
-    var fn = match[key];
-    if (fn) {
-      return fn(a);
+    switch (key) {
+      case 'Array':
+      case 'String':
+        return a.length;
+      case 'Object':
+        return height(a);
+      case 'Map':
+      case 'Set':
+        return a.size;
+      default:
+        throw new TypeError("Unsupported type: ".concat(key));
     }
-    throw new TypeError("Unsupported type: ".concat(key));
   };
 
   var curry = function curry(f) {
@@ -819,6 +813,10 @@
     }, Promise.resolve(data));
   };
   var pipeP$1 = _curry2(pipeP);
+
+  var size = function size(x) {
+    return x.size;
+  };
 
   var unless = function unless(fn, act, x) {
     return fn(x) ? x : act(x);
