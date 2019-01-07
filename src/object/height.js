@@ -1,3 +1,5 @@
+import compose from '../function/compose'
+import length from '../list/length'
 
 /**
  * @name height
@@ -13,6 +15,6 @@
  *
  * height({ a: 1, b: 2 }) // => 2
  */
-const height = obj => Object.values(obj).length
+const height = compose(length, Object.values)
 
 export default height
