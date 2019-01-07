@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>function/ascendBy.js - Documentation</title>
+    <title>function/has.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">function/ascendBy.js</h1>
+    <h1 class="page-title">function/has.js</h1>
     
 
     
@@ -49,45 +49,59 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import _curry3 from '../_internals/_curry3'
-import ascend from './ascend'
+            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
+import type from './type'
 
 /**
- * @name ascendBy
+ * @name has
  * @function
- * @since v0.2.1
+ * @since v0.11.0
  * @category Function
- * @sig Function -> Any -> Any -> Number
- * @description Can be used with sort to ascend an array based on the function passed in
- * @param {Function} fn The function to use on values within our array
- * @param {Any} a The first value to compare
- * @param {Any} b The second value to compare
- * @return {Number} A number based on where it falls when compared with the other value
- *
+ * @sig a -> Boolean
+ * @description
+ * Checks if the provided key/value exsists within the given data the data should be a supported type
+ * Supported types: Array, String, Object, Map, and Set
+ * @param {String} key The key or value to check for
+ * @param {Array|String|Object|Map|Set} data The data to search through
+ * @return {Any} The value found within the data
  * @example
- * import { ascendBy } from 'kyanite'
+ * import { has } from 'kyanite'
  *
- * [
- *  { name: 'bob' },
- *  { name: 'amanda' },
- *  { name: 'carl' },
- *  { name: 'amanda' }
- * ].sort(ascendBy(x => x.name)) // => [{ name: 'amanda' }, { name: 'amanda' }, { name: 'bob' }, { name: 'carl' }]
+ * has('foo', { foo: 1 }) // => true
+ * has('foo', ['bar', 'foo', 'baz']) // => true
+ * has('foo', 'barfoobaz') // => true
+ * has('foo', new Map([['foo', 1], ['bar', 2]])) // => true
+ * has('foo', new Set(['bar', 'foo', 'baz'])) // => true
+ *
+ * has('foo', 1) // => TypeError: Unsupported type: Number
+ * has('foo', /[foo]/g) // => TypeError: Unsupported type: RegExp
  *
  * // It's also curried
+ * const fn = has('foo')
  *
- * const desc = ascendBy(x => x.name)
- *
- * [
- *  { name: 'bob' },
- *  { name: 'amanda' },
- *  { name: 'carl' },
- *  { name: 'amanda' }
- * ].sort(desc) // => [{ name: 'amanda' }, { name: 'amanda' }, { name: 'bob' }, { name: 'carl' }]
+ * fn({ foo: 1 }) // => true
+ * fn(new Map([['foo', 1]]) // => true
+ * fn(['bar']) // => false
  */
-const ascendBy = (fn, a, b) => ascend(fn(a), fn(b))
+const has = (key, data) => {
+  const t = type(data)
 
-export default _curry3(ascendBy)
+  switch (t) {
+    case 'Array':
+    case 'String':
+      return data.includes(key)
+    case 'Object':
+    case 'Arguments':
+      return data.hasOwnProperty(key)
+    case 'Map':
+    case 'Set':
+      return data.has(key)
+    default:
+      throw new TypeError(`Unsupported type: ${t}`)
+  }
+}
+
+export default _curry2(has)
 </code></pre>
         </article>
     </section>
