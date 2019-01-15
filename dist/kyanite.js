@@ -91,28 +91,6 @@
     return acc;
   };
 
-  var type = function type(x) {
-    return Object.prototype.toString.call(x).slice(8, -1);
-  };
-
-  var has = function has(key, data) {
-    var t = type(data);
-    switch (t) {
-      case 'Array':
-      case 'String':
-        return data.includes(key);
-      case 'Object':
-      case 'Arguments':
-        return data.hasOwnProperty(key);
-      case 'Map':
-      case 'Set':
-        return data.has(key);
-      default:
-        throw new TypeError("Unsupported type: ".concat(t));
-    }
-  };
-  var has$1 = _curry2(has);
-
   var groupBy = function groupBy(fn, list) {
     return reduce$1(function (v, acc) {
       var k = fn(v);
@@ -573,7 +551,6 @@
       default:
         throw new TypeError("Unsupported type: ".concat(key));
     }
-    throw new TypeError("Unsupported type: ".concat(key));
   };
 
   var curry = function curry(f) {
