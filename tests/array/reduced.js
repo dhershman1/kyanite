@@ -9,3 +9,12 @@ test('reduced -- Basic functionality (mimiced from reduce)', t => {
   t.same(reduce((x, acc) => acc.length === 3 ? reduced(acc) : acc.concat(x * 2), [], tmp), [2, 4, 6])
   t.end()
 })
+
+test('reduced -- Test directly', t => {
+  const x = {
+    '@@transducer/reduced': true
+  }
+
+  t.same(reduced(x), x)
+  t.end()
+})
