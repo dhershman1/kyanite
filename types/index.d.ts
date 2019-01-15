@@ -88,7 +88,7 @@ declare namespace K {
     ascendBy<T>(fn: (obj: T) => any): (a: T, b: T) => number;
 
     /**
-     * See if a number is between two other provided numbers
+     * See if a number is between two other provided numbers (inclusive)
      */
     between(min: number, max: number, n: number): boolean;
     between(min: number, max: number): (n: number) => boolean;
@@ -820,6 +820,13 @@ declare namespace K {
      */
     whole<T, U>(schema: T, data: U): boolean;
     whole<T>(schema: T): <U>(data: U) => boolean;
+
+    /**
+     * Checks to see if a number is between two other numbers (exclusive)
+     */
+    within(min: number, max: number, n: number): boolean;
+    within(min: number, max: number): (n: number) => boolean;
+    within(min: number): (max: number) => (n: number) => boolean;
 
     /**
      * Checks if the provided number is equal to the number zero or not
