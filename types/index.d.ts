@@ -244,6 +244,11 @@ declare namespace K {
     either(fn: Pred): (gn: Pred) => (a: any) => boolean;
 
     /**
+     * Determines if the entered value is empty or not
+     */
+    empty(x: any): boolean;
+
+    /**
      * Wrap the provided function in a try catch which if the function errors will give back an undefined
      */
     encase<T>(fn: (data: T) => any, a: T): any | undefined;
@@ -274,6 +279,11 @@ declare namespace K {
     eqBy<T, U = T>(fn: (a: T) => U, a: T, b: T): boolean;
     eqBy<T, U = T>(fn: (a: T) => U, a: T): (b: T) => boolean;
     eqBy<T, U = T>(fn: (a: T) => U): (a: T) => (b: T) => boolean;
+
+    /**
+     * Checks if the provided number is even or not
+     */
+    even(n: number): boolean
 
     /**
      * Iterates through a provided list verifying that every value evaluates to a truthy value when applying a provided function
@@ -348,10 +358,10 @@ declare namespace K {
     gte(a: number): (b: number) => boolean;
 
     /**
-     * Determines if the object provided has a property
+     * Determines if the value provided has a property
      */
     has<T>(prop: string, obj: T): boolean;
-    has(s: string): <T>(obj: T) => boolean;
+    has(prop: string): <T>(obj: T) => boolean;
 
     /**
      * Allows you to get the length or "height" of a provided object
@@ -505,6 +515,11 @@ declare namespace K {
     negate(n: number): number;
 
     /**
+     * Checks if the value provided is null or undefined
+     */
+    nil(a: any): boolean
+
+    /**
      * Returns a boolean of not whatever the value given is
      */
     not(x: any): boolean;
@@ -514,6 +529,11 @@ declare namespace K {
      */
     nth<T>(o: number, list: ReadonlyArray<T>): T | undefined;
     nth(o: number): <T>(list: ReadonlyArray<T>) => T | undefined;
+
+    /**
+     * Checks if the provided number is odd or not
+     */
+    odd(n: number): boolean
 
     /**
      * Create a new object with certain keys omitted
@@ -589,6 +609,11 @@ declare namespace K {
      */
     pow(a: number, b: number): number;
     pow(a: number): (b: number) => number;
+
+    /**
+     * Determines if the number passed in is a prime number or not
+     */
+    prime(x: number): boolean;
 
     /**
      * Returns a new list with the provided value at the front of the given list
