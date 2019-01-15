@@ -91,8 +91,25 @@
     return acc;
   };
 
-  var has = function has(prop, obj) {
-    return Object.prototype.hasOwnProperty.call(obj, prop);
+  var type = function type(x) {
+    return Object.prototype.toString.call(x).slice(8, -1);
+  };
+
+  var has = function has(key, data) {
+    var t = type(data);
+    switch (t) {
+      case 'Array':
+      case 'String':
+        return data.includes(key);
+      case 'Object':
+      case 'Arguments':
+        return data.hasOwnProperty(key);
+      case 'Map':
+      case 'Set':
+        return data.has(key);
+      default:
+        throw new TypeError("Unsupported type: ".concat(t));
+    }
   };
   var has$1 = _curry2(has);
 
@@ -526,10 +543,6 @@
     return x.size;
   };
 
-  var type = function type(x) {
-    return Object.prototype.toString.call(x).slice(8, -1);
-  };
-
   var count = function count(a) {
     var match = {
       Array: length,
@@ -543,7 +556,7 @@
     if (fn) {
       return fn(a);
     }
-    throw new TypeError("Unexpected type given to count: ".concat(key));
+    throw new TypeError("Unsupported type: ".concat(key));
   };
 
   var curry = function curry(f) {
@@ -697,7 +710,7 @@
     var extendedStackB = stackB.concat([b]);
     for (var _i = keysA.length - 1; _i >= 0; _i--) {
       var key = keysA[_i];
-      if (!(has$1(key, b) && _equals(b[key], a[key], extendedStackA, extendedStackB))) {
+      if (!(Object.prototype.hasOwnProperty.call(b, key) && _equals(b[key], a[key], extendedStackA, extendedStackB))) {
         return false;
       }
     }
@@ -730,7 +743,7 @@
   var either$1 = _curry3(either);
 
   var empty = function empty(x) {
-    return nil(x) || !Object.keys(x).length;
+    return nil(x) || !count(x);
   };
 
   var encase = function encase(fn, a) {
@@ -973,6 +986,11 @@
   };
   var subtract$1 = _curry2(subtract);
 
+  var within = function within(min, max, n) {
+    return min < n && max > n;
+  };
+  var within$1 = _curry3(within);
+
   var zero = eq$1(0);
 
   var amend = function amend(a, b) {
@@ -1147,8 +1165,8 @@
   exports.partition = partition$1;
   exports.prepend = prepend$1;
   exports.reduce = reduce$1;
-  exports.reduceRight = reduceRight$1;
   exports.reduced = reduced;
+  exports.reduceRight = reduceRight$1;
   exports.reject = reject$1;
   exports.remove = remove$1;
   exports.some = some$1;
@@ -1188,6 +1206,7 @@
   exports.flip = flip$1;
   exports.gt = gt$1;
   exports.gte = gte$1;
+  exports.has = has$1;
   exports.identity = identity;
   exports.isEmpty = isEmpty;
   exports.isNil = isNil;
@@ -1236,11 +1255,11 @@
   exports.rem = rem$1;
   exports.round = round$1;
   exports.subtract = subtract$1;
+  exports.within = within$1;
   exports.zero = zero;
   exports.amend = amend$1;
   exports.any = any$1;
   exports.draft = draft$1;
-  exports.has = has$1;
   exports.height = height;
   exports.omit = omit$1;
   exports.over = over$1;
