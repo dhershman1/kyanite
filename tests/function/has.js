@@ -27,3 +27,21 @@ test('has -- Is curried', t => {
   t.same(fn(['bar']), false)
   t.end()
 })
+
+test('has -- Throws error for bad type (Number)', t => {
+  try {
+    has('foo', 1)
+  } catch (e) {
+    t.same(e.message, 'Unsupported type: Number')
+    t.end()
+  }
+})
+
+test('has -- Throws error for bad type (RegExp)', t => {
+  try {
+    has('foo', /[A-Z]/)
+  } catch (e) {
+    t.same(e.message, 'Unsupported type: RegExp')
+    t.end()
+  }
+})
