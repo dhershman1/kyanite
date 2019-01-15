@@ -1163,8 +1163,8 @@
   exports.partition = partition$1;
   exports.prepend = prepend$1;
   exports.reduce = reduce$1;
-  exports.reduced = reduced;
   exports.reduceRight = reduceRight$1;
+  exports.reduced = reduced;
   exports.reject = reject$1;
   exports.remove = remove$1;
   exports.some = some$1;
