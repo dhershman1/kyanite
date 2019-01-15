@@ -1,6 +1,4 @@
 import height from '../object/height'
-import length from '../list/length'
-import size from './size'
 import type from './type'
 
 /**
@@ -27,21 +25,20 @@ import type from './type'
  * count(new Set()) // => 0
  */
 const count = a => {
-  const match = {
-    Array: length,
-    String: length,
-    Object: height,
-    Map: size,
-    Set: size
-  }
   const key = type(a)
-  const fn = match[key]
 
-  if (fn) {
-    return fn(a)
+  switch (key) {
+    case 'Array':
+    case 'String':
+      return a.length
+    case 'Object':
+      return height(a)
+    case 'Map':
+    case 'Set':
+      return a.size
+    default:
+      throw new TypeError(`Unsupported type: ${key}`)
   }
-
-  throw new TypeError(`Unsupported type: ${key}`)
 }
 
 export default count

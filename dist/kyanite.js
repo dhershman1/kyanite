@@ -78,11 +78,11 @@
   var _assocǃ$1 = _curry3(_assocǃ);
 
   var countBy = function countBy(fn, arr) {
-    return arr.reduce(function (acc, a) {
+    return reduce$1(function (a, acc) {
       var k = fn(a);
       var _an = _assocǃ$1(acc, k);
       return acc.hasOwnProperty(k) ? _an(acc[k] + 1) : _an(1);
-    }, {});
+    }, {}, arr);
   };
   var countBy$1 = _curry2(countBy);
 
@@ -114,11 +114,11 @@
   var has$1 = _curry2(has);
 
   var groupBy = function groupBy(fn, list) {
-    return list.reduce(function (acc, v) {
+    return reduce$1(function (v, acc) {
       var k = fn(v);
       var _an = _assocǃ$1(acc, k);
-      return has$1(k, acc) ? _an(_appendǃ(acc[k], v)) : _an([v]);
-    }, {});
+      return acc.hasOwnProperty(k) ? _an(_appendǃ(acc[k], v)) : _an([v]);
+    }, {}, list);
   };
   var groupBy$1 = _curry2(groupBy);
 
@@ -136,12 +136,19 @@
 
   var uniq = uniqBy$1(identity);
 
+  var filter = function filter(fn, arr) {
+    return reduce$1(function (val, acc) {
+      return fn(val) ? _appendǃ(acc, val) : acc;
+    }, [], arr);
+  };
+  var filter$1 = _curry2(filter);
+
   var difference = function difference(arrs) {
     var arr = concatMap$1(uniq, arrs);
     var grouped = groupBy$1(identity, arr);
-    return arr.filter(function (x) {
+    return filter$1(function (x) {
       return grouped[x].length === 1;
-    });
+    }, arr);
   };
 
   var drop = function drop(i, list) {
@@ -185,13 +192,6 @@
   };
   var every$1 = _curry2(every);
 
-  var filter = function filter(fn, arr) {
-    return reduce$1(function (val, acc) {
-      return fn(val) ? _appendǃ(acc, val) : acc;
-    }, [], arr);
-  };
-  var filter$1 = _curry2(filter);
-
   var find = function find(fn, arr) {
     return reduce$1(function (val, acc) {
       return fn(val) ? reduced(val) : acc;
@@ -211,6 +211,28 @@
     return result;
   };
   var insert$1 = _curry3(insert);
+
+  var type = function type(x) {
+    return Object.prototype.toString.call(x).slice(8, -1);
+  };
+
+  var has = function has(key, data) {
+    var t = type(data);
+    switch (t) {
+      case 'Array':
+      case 'String':
+        return data.includes(key);
+      case 'Object':
+      case 'Arguments':
+        return data.hasOwnProperty(key);
+      case 'Map':
+      case 'Set':
+        return data.has(key);
+      default:
+        throw new TypeError("Unsupported type: ".concat(t));
+    }
+  };
+  var has$1 = _curry2(has);
 
   var intersection = function intersection(a, b) {
     var grouped = groupBy$1(identity, b);
@@ -531,30 +553,25 @@
   };
   var composeP$1 = _curry3(composeP);
 
-  var height = function height(obj) {
-    return Object.values(obj).length;
-  };
-
   var length = function length(a) {
     return a.length;
   };
 
-  var size = function size(x) {
-    return x.size;
-  };
+  var height = compose$1(length, Object.values);
 
   var count = function count(a) {
-    var match = {
-      Array: length,
-      String: length,
-      Object: height,
-      Map: size,
-      Set: size
-    };
     var key = type(a);
-    var fn = match[key];
-    if (fn) {
-      return fn(a);
+    switch (key) {
+      case 'Array':
+      case 'String':
+        return a.length;
+      case 'Object':
+        return height(a);
+      case 'Map':
+      case 'Set':
+        return a.size;
+      default:
+        throw new TypeError("Unsupported type: ".concat(key));
     }
     throw new TypeError("Unsupported type: ".concat(key));
   };
@@ -819,6 +836,10 @@
     }, Promise.resolve(data));
   };
   var pipeP$1 = _curry2(pipeP);
+
+  var size = function size(x) {
+    return x.size;
+  };
 
   var unless = function unless(fn, act, x) {
     return fn(x) ? x : act(x);

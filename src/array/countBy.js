@@ -1,5 +1,6 @@
 import _curry2 from '../_internals/_curry2'
 import _assocǃ from '../_internals/_assocǃ'
+import reduce from './reduce'
 
 /**
  * @name countBy
@@ -27,11 +28,11 @@ import _assocǃ from '../_internals/_assocǃ'
  * fn(numbers) // => { '1': 3, '2': 2, '3': 1 }
  */
 const countBy = (fn, arr) =>
-  arr.reduce((acc, a) => {
+  reduce((a, acc) => {
     const k = fn(a)
     const _an = _assocǃ(acc, k)
 
     return acc.hasOwnProperty(k) ? _an(acc[k] + 1) : _an(1)
-  }, {})
+  }, {}, arr)
 
 export default _curry2(countBy)

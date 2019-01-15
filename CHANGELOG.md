@@ -53,6 +53,7 @@ Deprecated functions may be removed in a future build
   - This is a good strategy for performance boosts
 - `reduce`, `reduceRight`, and `reduced` are all using the `@@transducer` protocol
 - Moved `every`, `some`, `reject`, `filter`, and `find` to use this new flow giving them decent performance improvements
+- Tweaked `height` function for a tiny performance boost
 
 ## v0.10.3
 
