@@ -34,7 +34,8 @@ Deprecated functions may be removed in a future build
   - **Note**: It is currently categorized under `Function` which may change in the future as I add more Map|Set friendly functions
 - Added `count` Function which takes any collection based data and counts the values within
 - Added `reduced` Function which should be used with `reduce` or `reduceRight` as a short circuit for the function (see improved)
-- Added `own` Function which is a generic `has` for `Array`, `String`, `Object`, `Map`, and `Set` data types
+- `has` is now generic for `Array`, `String`, `Object`, `Map`, and `Set` data types
+- Added `within` Function which acts like `between` but is exclusive of the numbers provided
 
 ### Improved
 
