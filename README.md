@@ -1,8 +1,8 @@
-<div align=center>
+<p align=center>
   <a href="https://kyanite.dusty.codes/" title="Kyanite Documentation">
     <img alt="Kyanite Logo" src="https://user-images.githubusercontent.com/8997380/48008308-69174500-e0e7-11e8-9a57-ebd558f094f8.png">
   </a>
-</div>
+</p>
 <br />
 <p align=center>
   A light weight pure functional library with single type utility functions and it only depends on itself.
