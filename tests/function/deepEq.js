@@ -149,6 +149,7 @@ test('deepEq -- Handles array types nicely', t => {
   t.same(deepEq([1, 2], [2, 1]), false, 'Out of order arrays are not equal')
   t.same(deepEq([1, 3], [1, 2]), false, 'Different valued arrays are not equal')
   t.same(deepEq([1], q), false, 'Single index array not equal to empty variable array')
+  t.same(deepEq([{ a: 1 }, { b: 2 }], [{ a: 1 }, { b: 2 }]), true, 'Array of objects are equal')
   t.end()
 })
 
