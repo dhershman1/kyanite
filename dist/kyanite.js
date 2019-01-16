@@ -636,6 +636,9 @@
     if (aType !== type(b) || a == null || b == null) {
       return false;
     }
+    if (typeof a.equals === 'function' || typeof b.equals === 'function') {
+      return typeof a.equals === 'function' && a.equals(b) && typeof b.equals === 'function' && b.equals(a);
+    }
     switch (aType) {
       case 'Arguments':
       case 'Array':
