@@ -11,6 +11,9 @@
 - `empty` (and `isEmpty` until its removed) will now throw a type error for unsupported types
   - `empty` supports the same types as `count` as well as `null` and `undefined`
   - e.g: `empty(1) // => TypeError: Unsupported type: Number`
+- `juxt` functionality changes. It's now a 2 param curried function that takes arrays for data
+  - e.g: `juxt([Math.min, Math.max], [3, 4, 9, -3]) // => [-3, 9]`
+  - Also moved it to be in the array category
 
 ### Deprecated
 
