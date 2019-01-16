@@ -33,7 +33,6 @@
     "test": "tape -r esm tests/**/*.js | tap-spec",
     "lint": "standard src/**/*.js",
     "build": "rollup -c",
-    "buildtst": "rollup -c rollup.tmp.js",
     "create": "node scripts/create-export.js && standard --fix src/index.js",
     "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
     "scripts": "npm-run-all create docs build",
