@@ -16,6 +16,7 @@
   - Also moved it to be in the array category
 - `ap` re written to be a proper S combinator function
   - e.g: `ap(x => y => x + y, z => z * 2, 2) // => 6`
+- Removed `amend` function since it's really just a limited `Object.assign` no real use for it
 
 ### Deprecated
 
