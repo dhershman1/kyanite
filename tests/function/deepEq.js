@@ -329,6 +329,31 @@ test('deepEq -- Dispatches to `deepEq` method recursively in Map', t => {
   t.end()
 })
 
+test('deepEq -- Dispatches to equals method recursively', t => {
+  function Left (x) { this.value = x }
+  Left.prototype.equals = function (x) {
+    return x instanceof Left && deepEq(x.value, this.value)
+  }
+
+  function Right (x) { this.value = x }
+  Right.prototype.equals = function (x) {
+    return x instanceof Right && deepEq(x.value, this.value)
+  }
+
+  t.same(deepEq(new Left([42]), new Left([42])), true)
+  t.same(deepEq(new Left([42]), new Left([43])), false)
+  t.same(deepEq(new Left(42), { value: 42 }), false)
+  t.same(deepEq({ value: 42 }, new Left(42)), false)
+  t.same(deepEq(new Left(42), new Right(42)), false)
+  t.same(deepEq(new Right(42), new Left(42)), false)
+
+  t.same(deepEq([new Left(42)], [new Left(42)]), true)
+  t.same(deepEq([new Left(42)], [new Right(42)]), false)
+  t.same(deepEq([new Right(42)], [new Left(42)]), false)
+  t.same(deepEq([new Right(42)], [new Right(42)]), true)
+  t.end()
+})
+
 test('deepEq -- Is commutative', t => {
   function Point (x, y) {
     this.x = x
@@ -360,5 +385,25 @@ test('deepEq -- Is curried', t => {
   const fn = deepEq([])
 
   t.same(fn([]), true)
+  t.end()
+})
+
+test('deepEq -- Promise testing', t => {
+  const p = {
+    constructor: function Promise () {}
+  }
+  const q = {
+    constructor: function Promise () {}
+  }
+
+  const r = {
+    constructor () {}
+  }
+  const s = {
+    constructor () {}
+  }
+
+  t.same(deepEq(p, q), false)
+  t.same(deepEq(r, s), false)
   t.end()
 })

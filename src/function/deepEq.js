@@ -85,6 +85,11 @@ const deepEq = (a, b, stackA = [], stackB = []) => {
     return false
   }
 
+  if (typeof a.equals === 'function' || typeof b.equals === 'function') {
+    return typeof a.equals === 'function' && a.equals(b) &&
+      typeof b.equals === 'function' && b.equals(a)
+  }
+
   // Using the types certain logic should be called and addressed
   switch (aType) {
     case 'Arguments':
