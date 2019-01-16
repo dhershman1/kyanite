@@ -1,8 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global.kyanite = {})));
-}(this, (function (exports) { 'use strict';
+  (global = global || self, factory(global.kyanite = {}));
+}(this, function (exports) { 'use strict';
 
   function _curry2(fn) {
     return function f2(a, b) {
@@ -220,42 +220,6 @@
   };
   var intersection$1 = _curry2(intersection);
 
-  var map = function map(fn, list) {
-    var len = list.length;
-    var result = Array(len);
-    for (var i = 0; i < len; i++) {
-      _assocǃ$1(result, i, fn(list[i]));
-    }
-    return result;
-  };
-  var map$1 = _curry2(map);
-
-  var max = function max(list) {
-    return list.reduce(function (a, b) {
-      return a >= b ? a : b;
-    });
-  };
-
-  var maxBy = function maxBy(fn, list) {
-    return list.reduce(function (a, b) {
-      return fn(a) >= fn(b) ? a : b;
-    });
-  };
-  var maxBy$1 = _curry2(maxBy);
-
-  var min = function min(list) {
-    return list.reduce(function (a, b) {
-      return a <= b ? a : b;
-    });
-  };
-
-  var minBy = function minBy(fn, list) {
-    return list.reduce(function (a, b) {
-      return fn(a) <= fn(b) ? a : b;
-    });
-  };
-  var minBy$1 = _curry2(minBy);
-
   function _typeof(obj) {
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
       _typeof = function (obj) {
@@ -346,6 +310,49 @@
   function _nonIterableRest() {
     throw new TypeError("Invalid attempt to destructure non-iterable instance");
   }
+
+  var map = function map(fn, list) {
+    var len = list.length;
+    var result = Array(len);
+    for (var i = 0; i < len; i++) {
+      _assocǃ$1(result, i, fn(list[i]));
+    }
+    return result;
+  };
+  var map$1 = _curry2(map);
+
+  var juxt = function juxt(fns, x) {
+    return map$1(function (f) {
+      return f.apply(void 0, _toConsumableArray(x));
+    }, fns);
+  };
+  var juxt$1 = _curry2(juxt);
+
+  var max = function max(list) {
+    return list.reduce(function (a, b) {
+      return a >= b ? a : b;
+    });
+  };
+
+  var maxBy = function maxBy(fn, list) {
+    return list.reduce(function (a, b) {
+      return fn(a) >= fn(b) ? a : b;
+    });
+  };
+  var maxBy$1 = _curry2(maxBy);
+
+  var min = function min(list) {
+    return list.reduce(function (a, b) {
+      return a <= b ? a : b;
+    });
+  };
+
+  var minBy = function minBy(fn, list) {
+    return list.reduce(function (a, b) {
+      return fn(a) <= fn(b) ? a : b;
+    });
+  };
+  var minBy$1 = _curry2(minBy);
 
   var partition = function partition(fn, list) {
     return reduce$1(function (v, _ref) {
@@ -494,12 +501,10 @@
   };
   var and$1 = _curry2(and);
 
-  var ap = function ap(fns, list) {
-    return reduce$1(function (f, acc) {
-      return concat$1(map$1(f, list), acc);
-    }, [], fns);
+  var ap = function ap(fn, gn, x) {
+    return fn(x)(gn(x));
   };
-  var ap$1 = _curry2(ap);
+  var ap$1 = _curry3(ap);
 
   var apply = function apply(fn, a) {
     return fn.apply(void 0, _toConsumableArray(a));
@@ -611,17 +616,19 @@
     }
     return list;
   };
-  function _uniqContentEquals(aIterator, bIterator, stackA, stackB) {
+  var _uniqContentEquals = function _uniqContentEquals(aIterator, bIterator, stackA, stackB) {
     var a = _arrFromIter(aIterator);
     var b = _arrFromIter(bIterator);
-    function eq(_a, _b) {
-      return _equals(_a, _b, stackA.slice(), stackB.slice());
+    function _eq(_a, _b) {
+      return deepEq(_a, _b, stackA.slice(), stackB.slice());
     }
     return !_containsWith(function (b, aItem) {
-      return !_containsWith(eq, aItem, b);
+      return !_containsWith(_eq, aItem, b);
     }, b, a);
-  }
-  var _equals = function _equals(a, b, stackA, stackB) {
+  };
+  var deepEq = function deepEq(a, b) {
+    var stackA = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    var stackB = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
     if (eq$1(a, b)) {
       return true;
     }
@@ -704,15 +711,11 @@
     var extendedStackB = stackB.concat([b]);
     for (var _i = keysA.length - 1; _i >= 0; _i--) {
       var key = keysA[_i];
-      if (!(Object.prototype.hasOwnProperty.call(b, key) && _equals(b[key], a[key], extendedStackA, extendedStackB))) {
+      if (!(Object.prototype.hasOwnProperty.call(b, key) && deepEq(b[key], a[key], extendedStackA, extendedStackB))) {
         return false;
       }
     }
     return true;
-  };
-
-  var deepEq = function deepEq(a, b) {
-    return _equals(a, b, [], []);
   };
   var deepEq$1 = _curry2(deepEq);
 
@@ -772,18 +775,6 @@
   var isEmpty = empty;
 
   var isNil = nil;
-
-  var juxt = function juxt() {
-    var fns = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    return function () {
-      for (var _len = arguments.length, x = new Array(_len), _key = 0; _key < _len; _key++) {
-        x[_key] = arguments[_key];
-      }
-      return map$1(function (f) {
-        return f.apply(void 0, x);
-      }, fns);
-    };
-  };
 
   var lt = function lt(a, b) {
     return b < a;
@@ -991,11 +982,6 @@
 
   var zero = eq$1(0);
 
-  var amend = function amend(a, b) {
-    return Object.assign({}, b, a);
-  };
-  var amend$1 = _curry2(amend);
-
   var any = function any(schema, obj) {
     return Object.keys(schema).some(function (key) {
       return schema[key](obj[key]);
@@ -1004,9 +990,9 @@
   var any$1 = _curry2(any);
 
   var draft = function draft(fn, obj) {
-    return Object.keys(obj).reduce(function (acc, key) {
+    return reduce$1(function (key, acc) {
       return _assocǃ$1(acc, key, fn(obj[key]));
-    }, {});
+    }, {}, Object.keys(obj));
   };
   var draft$1 = _curry2(draft);
 
@@ -1155,6 +1141,7 @@
   exports.groupBy = groupBy$1;
   exports.insert = insert$1;
   exports.intersection = intersection$1;
+  exports.juxt = juxt$1;
   exports.map = map$1;
   exports.max = max;
   exports.maxBy = maxBy$1;
@@ -1208,7 +1195,6 @@
   exports.identity = identity;
   exports.isEmpty = isEmpty;
   exports.isNil = isNil;
-  exports.juxt = juxt;
   exports.lt = lt$1;
   exports.lte = lte$1;
   exports.nil = nil;
@@ -1255,7 +1241,6 @@
   exports.subtract = subtract$1;
   exports.within = within$1;
   exports.zero = zero;
-  exports.amend = amend$1;
   exports.any = any$1;
   exports.draft = draft$1;
   exports.height = height;
@@ -1281,4 +1266,4 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));

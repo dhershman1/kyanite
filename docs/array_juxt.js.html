@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>function/on.js - Documentation</title>
+    <title>array/juxt.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">function/on.js</h1>
+    <h1 class="page-title">array/juxt.js</h1>
     
 
     
@@ -49,44 +49,33 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import _curry4 from '../_internals/_curry4'
+            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
+import map from './map'
 
 /**
- * @name on
+ * @name juxt
  * @function
- * @since v0.4.0
- * @category Function
- * @sig (c -> c -> d) -> (a -> b -> c) -> a -> b -> d
- * @description
- * Applies the second function to the values passed in, and then runs the first function against those new values,
- * also known as the P combinator
- * @param {Function} fn The first function being ran against the values from the second
- * @param {Function} gn The function to be applied to the two values passed in
- * @param {Any} a The first value to use
- * @param {Any} b The second value we want to use
- * @return {Any} A value based on the first functions return
+ * @since v0.1.0
+ * @category Array
+ * @sig (a, b, …, m) → n → ((a, b, …, m) → [n])
+ * @description Applies the provided function and turns them into a single function you can use on a value
+ * @param {Array} fns An array of functions to apply
+ * @param {Array} x The data to map our functions against
+ * @return {Array} An array of results from the ran functions
+ *
  * @example
- * import { on } from 'kyanite'
+ * import { juxt } from 'kyanite'
  *
- * on((x, y) => x === y, x => x.length, 'you', 'are') // => true
+ * juxt([Math.min, Math.max], [3, 6, -7, 1]) // => [-7, 6]
  *
- * // It's also curried
+ * // It's curried
+ * const getRange = juxt([Math.min, Math.max])
  *
- * const f = on((x, y) => x === y)
- *
- * f(x => x.length, 'you', 'are') // => true
- *
- * const g = f(x => x.length)
- *
- * g('you', 'are') // => true
- *
- * const h = f('you')
- *
- * h('are') // => true
+ * getRange([3, 4, 9, -3]) // => [-3, 9]
  */
-const on = (fn, gn, a, b) => fn(gn(a), gn(b))
+const juxt = (fns, x) => map(f => f(...x), fns)
 
-export default _curry4(on)
+export default _curry2(juxt)
 </code></pre>
         </article>
     </section>
