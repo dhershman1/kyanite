@@ -328,11 +328,9 @@
   };
   var juxt$1 = _curry2(juxt);
 
-  var max = function max(list) {
-    return list.reduce(function (a, b) {
-      return a >= b ? a : b;
-    });
-  };
+  var max = reduce$1(function (a, b) {
+    return a >= b ? a : b;
+  }, '');
 
   var maxBy = function maxBy(fn, list) {
     return list.reduce(function (a, b) {
@@ -1035,9 +1033,9 @@
   var pathOr$1 = _curry3(pathOr);
 
   var plan = function plan(schema, obj) {
-    return Object.assign({}, obj, Object.keys(schema).reduce(function (acc, k) {
+    return Object.assign({}, obj, reduce$1(function (k, acc) {
       return !obj.hasOwnProperty(k) ? acc : _assocǃ$1(acc, k, schema[k](obj[k]));
-    }, {}));
+    }, {}, Object.keys(schema)));
   };
   var plan$1 = _curry2(plan);
 
@@ -1054,9 +1052,9 @@
   var props$1 = _curry2(props);
 
   var sift = function sift(fn, obj) {
-    return Object.keys(obj).reduce(function (acc, k) {
+    return reduce$1(function (k, acc) {
       return fn(obj[k]) ? _assocǃ$1(acc, k, obj[k]) : acc;
-    }, {});
+    }, {}, Object.keys(obj));
   };
   var sift$1 = _curry2(sift);
 
