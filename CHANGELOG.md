@@ -14,6 +14,8 @@
 - `juxt` functionality changes. It's now a 2 param curried function that takes arrays for data
   - e.g: `juxt([Math.min, Math.max], [3, 4, 9, -3]) // => [-3, 9]`
   - Also moved it to be in the array category
+- `ap` re written to be a proper S combinator function
+  - e.g: `ap(x => y => x + y, z => z * 2, 2) // => 6`
 
 ### Deprecated
 
