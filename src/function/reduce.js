@@ -5,7 +5,7 @@ function _reduceIterable (xf, acc, iter) {
   for (const entry of iter) {
     acc = xf['@@transducer/step'](entry, acc)
 
-    if (acc && acc['@@transduce/reduced']) {
+    if (acc && acc['@@transducer/reduced']) {
       acc = acc['@@transducer/value']
       break
     }
@@ -43,16 +43,15 @@ function _reduceIterable (xf, acc, iter) {
  */
 const reduce = (fn, acc, list) => {
   const xf = _xwrap(fn)
-  const sym = typeof Symbol !== 'undefined' ? Symbol.iterator : '@@iterator'
 
-  if (typeof list.next === 'function' || list[sym] != null) {
+  if (typeof list.next === 'function' || list[Symbol.iterator] != null) {
     return _reduceIterable(xf, acc, list)
   }
 
   for (let i = 0, len = list.length; i < len; i++) {
     acc = xf['@@transducer/step'](list[i], acc)
 
-    if (acc && acc['@@transduce/reduced']) {
+    if (acc && acc['@@transducer/reduced']) {
       acc = acc['@@transducer/value']
       break
     }

@@ -12,7 +12,7 @@ test('reduced -- Basic functionality (mimiced from reduce)', t => {
 
 test('reduced -- Test directly', t => {
   const x = {
-    '@@transduce/reduced': true
+    '@@transducer/reduced': true
   }
 
   t.same(reduced(x), x)

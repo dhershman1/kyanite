@@ -31,7 +31,7 @@ const reduceRight = (fn, acc, arr) => {
   for (let i = arr.length - 1; i >= 0; i--) {
     acc = xf['@@transducer/step'](arr[i], acc)
 
-    if (acc && acc['@@transduce/reduced']) {
+    if (acc && acc['@@transducer/reduced']) {
       acc = acc['@@transducer/value']
       break
     }
