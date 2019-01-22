@@ -1,6 +1,6 @@
 import test from 'tape'
-import reduce from '../../src/array/reduce'
-import reduced from '../../src/array/reduced'
+import reduce from '../../src/function/reduce'
+import reduced from '../../src/function/reduced'
 
 test('reduced -- Basic functionality (mimiced from reduce)', t => {
   const tmp = [1, 2, 3, 4, 5]
@@ -12,7 +12,7 @@ test('reduced -- Basic functionality (mimiced from reduce)', t => {
 
 test('reduced -- Test directly', t => {
   const x = {
-    '@@transducer/reduced': true
+    '@@transduce/reduced': true
   }
 
   t.same(reduced(x), x)

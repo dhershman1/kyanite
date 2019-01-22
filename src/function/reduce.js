@@ -1,11 +1,24 @@
 import _curry3 from '../_internals/_curry3'
 import _xwrap from '../_internals/_xwrap'
 
+function _reduceIterable (xf, acc, iter) {
+  for (const entry of iter) {
+    acc = xf['@@transducer/step'](entry, acc)
+
+    if (acc && acc['@@transduce/reduced']) {
+      acc = acc['@@transducer/value']
+      break
+    }
+  }
+
+  return xf['@@transducer/result'](acc)
+}
+
 /**
  * @name reduce
  * @function
  * @since v0.1.0
- * @category Array
+ * @category Function
  * @sig (a -> b -> b) -> b -> Array a -> b
  * @description
  * Accepts an array and runs a reduce based on the passed values
@@ -13,7 +26,7 @@ import _xwrap from '../_internals/_xwrap'
  * As the reducer should expect the value first, and the accumulator second
  * @param {Function} fn The function to run with the reduce should expect the value first and the accumulator second: (a, acc) => {}
  * @param {Any} acc The empty initial state of the reduce accumulator
- * @param {Array} list The list to run our reduce against
+ * @param {Iterable} list The list to run our reduce against
  * @return {Any} Returns based on the original init parameter that is passed in
  *
  * @example
@@ -30,11 +43,16 @@ import _xwrap from '../_internals/_xwrap'
  */
 const reduce = (fn, acc, list) => {
   const xf = _xwrap(fn)
+  const sym = typeof Symbol !== 'undefined' ? Symbol.iterator : '@@iterator'
+
+  if (typeof list.next === 'function' || list[sym] != null) {
+    return _reduceIterable(xf, acc, list)
+  }
 
   for (let i = 0, len = list.length; i < len; i++) {
     acc = xf['@@transducer/step'](list[i], acc)
 
-    if (acc && acc['@@transducer/reduced']) {
+    if (acc && acc['@@transduce/reduced']) {
       acc = acc['@@transducer/value']
       break
     }

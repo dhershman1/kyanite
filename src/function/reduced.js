@@ -19,9 +19,9 @@
  *   acc.length === 3 ? reduced(acc) : acc.concat(item * 2), [], [1, 2, 3, 4, 5]) // => [2, 4, 6]
  */
 const reduced = x =>
-  x && x['@@transducer/reduced'] ? x : {
+  x && x['@@transduce/reduced'] ? x : {
     '@@transducer/value': x,
-    '@@transducer/reduced': true
+    '@@transduce/reduced': true
   }
 
 export default reduced

@@ -1,5 +1,5 @@
-import reduce from '../../src/array/reduce'
-import reduced from '../../src/array/reduced'
+import reduce from '../../src/function/reduce'
+import reduced from '../../src/function/reduced'
 import test from 'tape'
 
 test('reduce -- Basic Functionality', t => {
@@ -26,5 +26,19 @@ test('reduce -- Understands how to use reduced', t => {
 
   t.same(reduce((item, acc) => item > 3 ? reduced(acc) : acc.concat(item), [], tmp), [1, 2, 3])
   t.same(reduce((x, acc) => acc.length === 3 ? reduced(acc) : acc.concat(x * 2), [], tmp), [2, 4, 6])
+  t.end()
+})
+
+test('reduce -- Handling Set data types', t => {
+  const fn = reduce((x, acc) => x > 3 ? reduced(acc) : acc.concat(x), [])
+
+  t.same(fn(new Set([1, 2, 3, 4, 5])), [1, 2, 3])
+  t.end()
+})
+
+test('reduce -- Handling Map data types', t => {
+  const fn = reduce(([k, v], acc) => k === 'c' ? reduced(acc) : acc.concat(v), [])
+
+  t.same(fn(new Map([['a', 1], ['b', 2], ['c', 3], ['d', 4]])), [1, 2])
   t.end()
 })
