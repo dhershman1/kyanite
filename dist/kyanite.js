@@ -956,7 +956,7 @@
     return x && x !== 1;
   };
 
-  var zero = eq$1(0);
+  var isZero = eq$1(0);
 
   var lcm = function lcm(a, b) {
     return Math.abs(Math.floor(a / gcd$1(a, b) * b));
@@ -1235,7 +1235,7 @@
   exports.isEven = isEven;
   exports.isOdd = isOdd;
   exports.isPrime = isPrime;
-  exports.isZero = zero;
+  exports.isZero = isZero;
   exports.lcm = lcm$1;
   exports.mean = mean;
   exports.multiply = multiply$1;
