@@ -244,11 +244,6 @@ declare namespace K {
     either(fn: Pred): (gn: Pred) => (a: any) => boolean;
 
     /**
-     * Determines if the entered value is empty or not
-     */
-    empty(x: any): boolean;
-
-    /**
      * Wrap the provided function in a try catch which if the function errors will give back an undefined
      */
     encase<T>(fn: (data: T) => any, a: T): any | undefined;
@@ -279,11 +274,6 @@ declare namespace K {
     eqBy<T, U = T>(fn: (a: T) => U, a: T, b: T): boolean;
     eqBy<T, U = T>(fn: (a: T) => U, a: T): (b: T) => boolean;
     eqBy<T, U = T>(fn: (a: T) => U): (a: T) => (b: T) => boolean;
-
-    /**
-     * Checks if the provided number is even or not
-     */
-    even(n: number): boolean
 
     /**
      * Iterates through a provided list verifying that every value evaluates to a truthy value when applying a provided function
@@ -427,6 +417,11 @@ declare namespace K {
     isPrime(x: number): boolean;
 
     /**
+     * Checks if the provided number is equal to the number zero or not
+     */
+    isZero(n: number): boolean;
+
+    /**
      * Joins together an array of strings with whatever string is passed in
      */
     join(str: string, list: ReadonlyArray<string>): string;
@@ -515,11 +510,6 @@ declare namespace K {
     negate(n: number): number;
 
     /**
-     * Checks if the value provided is null or undefined
-     */
-    nil(a: any): boolean
-
-    /**
      * Returns a boolean of not whatever the value given is
      */
     not(x: any): boolean;
@@ -529,11 +519,6 @@ declare namespace K {
      */
     nth<T>(o: number, list: ReadonlyArray<T>): T | undefined;
     nth(o: number): <T>(list: ReadonlyArray<T>) => T | undefined;
-
-    /**
-     * Checks if the provided number is odd or not
-     */
-    odd(n: number): boolean
 
     /**
      * Create a new object with certain keys omitted
@@ -852,11 +837,6 @@ declare namespace K {
     within(min: number, max: number, n: number): boolean;
     within(min: number, max: number): (n: number) => boolean;
     within(min: number): (max: number) => (n: number) => boolean;
-
-    /**
-     * Checks if the provided number is equal to the number zero or not
-     */
-    zero(n: number): boolean
 
     /**
      * Takes two arrays and combines them into a key value pair object
