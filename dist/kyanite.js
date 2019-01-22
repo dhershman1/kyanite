@@ -53,11 +53,30 @@
 
   var reduce = function reduce(fn, acc, list) {
     var xf = _xwrap(fn);
-    for (var i = 0, len = list.length; i < len; i++) {
-      acc = xf['@@transducer/step'](list[i], acc);
-      if (acc && acc['@@transducer/reduced']) {
-        acc = acc['@@transducer/value'];
-        break;
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+    try {
+      for (var _iterator = list[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var entry = _step.value;
+        acc = xf['@@transducer/step'](entry, acc);
+        if (acc && acc['@@transducer/reduced']) {
+          acc = acc['@@transducer/value'];
+          break;
+        }
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
       }
     }
     return xf['@@transducer/result'](acc);
@@ -142,7 +161,7 @@
   };
   var dropWhile$1 = _curry2(dropWhile);
 
-  var nil = function nil(x) {
+  var isNil = function isNil(x) {
     return x == null;
   };
 
@@ -150,7 +169,7 @@
     if (Array.isArray(x)) {
       return x;
     }
-    if (nil(x)) {
+    if (isNil(x)) {
       return [];
     }
     return [x];
@@ -721,7 +740,7 @@
   var deepEq$1 = _curry2(deepEq);
 
   var defaultTo = function defaultTo(def, val) {
-    return nil(val) || eq$1(NaN, val) ? def : val;
+    return isNil(val) || eq$1(NaN, val) ? def : val;
   };
   var defaultTo$1 = _curry2(defaultTo);
 
@@ -739,10 +758,6 @@
     return fn(a) || gn(a);
   };
   var either$1 = _curry3(either);
-
-  var empty = function empty(x) {
-    return nil(x) || !count(x);
-  };
 
   var encase = function encase(fn, a) {
     try {
@@ -773,9 +788,9 @@
   };
   var gte$1 = _curry2(gte);
 
-  var isEmpty = empty;
-
-  var isNil = nil;
+  var isEmpty = function isEmpty(x) {
+    return isNil(x) || !count(x);
+  };
 
   var lt = function lt(a, b) {
     return b < a;
@@ -883,10 +898,6 @@
   };
   var divide$1 = _curry2(divide);
 
-  var even = function even(n) {
-    return and$1(!eq$1(n, NaN), eq$1(n % 2, 0));
-  };
-
   var negate = function negate(n) {
     return -n;
   };
@@ -922,9 +933,11 @@
     return n + 1;
   };
 
-  var isEven = even;
+  var isEven = function isEven(n) {
+    return and$1(!eq$1(n, NaN), eq$1(n % 2, 0));
+  };
 
-  var odd = function odd(n) {
+  var isOdd = function isOdd(n) {
     if (!eq$1(n, NaN)) {
       var _eq = eq$1(n % 2);
       return !_eq(NaN) && !_eq(0);
@@ -932,9 +945,7 @@
     return false;
   };
 
-  var isOdd = odd;
-
-  var prime = function prime(x) {
+  var isPrime = function isPrime(x) {
     var s = Math.sqrt(x);
     var i = 2;
     for (i; i <= s; i++) {
@@ -945,7 +956,7 @@
     return x && x !== 1;
   };
 
-  var isPrime = prime;
+  var zero = eq$1(0);
 
   var lcm = function lcm(a, b) {
     return Math.abs(Math.floor(a / gcd$1(a, b) * b));
@@ -981,8 +992,6 @@
   };
   var within$1 = _curry3(within);
 
-  var zero = eq$1(0);
-
   var any = function any(schema, obj) {
     return Object.keys(schema).some(function (key) {
       return schema[key](obj[key]);
@@ -1016,7 +1025,7 @@
     if (!keys.length) {
       return obj[p];
     }
-    if (nil(obj[p])) {
+    if (isNil(obj[p])) {
       return undefined;
     }
     return path(keys, obj[p]);
@@ -1025,7 +1034,7 @@
 
   var pathOr = function pathOr(a, keys, obj) {
     var res = path$1(keys, obj);
-    if (nil(res)) {
+    if (isNil(res)) {
       return a;
     }
     return res;
@@ -1150,9 +1159,7 @@
   exports.minBy = minBy$1;
   exports.partition = partition$1;
   exports.prepend = prepend$1;
-  exports.reduce = reduce$1;
   exports.reduceRight = reduceRight$1;
-  exports.reduced = reduced;
   exports.reject = reject$1;
   exports.remove = remove$1;
   exports.some = some$1;
@@ -1185,7 +1192,6 @@
   exports.descend = descend$1;
   exports.descendBy = descendBy$1;
   exports.either = either$1;
-  exports.empty = empty;
   exports.encase = encase$1;
   exports.eq = eq$1;
   exports.eqBy = eqBy$1;
@@ -1198,12 +1204,13 @@
   exports.isNil = isNil;
   exports.lt = lt$1;
   exports.lte = lte$1;
-  exports.nil = nil;
   exports.not = not;
   exports.on = on$1;
   exports.or = or$1;
   exports.pipe = pipe$1;
   exports.pipeP = pipeP$1;
+  exports.reduce = reduce$1;
+  exports.reduced = reduced;
   exports.size = size;
   exports.type = type;
   exports.unless = unless$1;
@@ -1222,26 +1229,23 @@
   exports.clamp = clamp$1;
   exports.dec = dec;
   exports.divide = divide$1;
-  exports.even = even;
   exports.factors = factors;
   exports.gcd = gcd$1;
   exports.inc = inc;
   exports.isEven = isEven;
   exports.isOdd = isOdd;
   exports.isPrime = isPrime;
+  exports.isZero = zero;
   exports.lcm = lcm$1;
   exports.mean = mean;
   exports.multiply = multiply$1;
   exports.negate = negate;
-  exports.odd = odd;
   exports.pow = pow$1;
-  exports.prime = prime;
   exports.range = range$1;
   exports.rem = rem$1;
   exports.round = round$1;
   exports.subtract = subtract$1;
   exports.within = within$1;
-  exports.zero = zero;
   exports.any = any$1;
   exports.draft = draft$1;
   exports.height = height;
