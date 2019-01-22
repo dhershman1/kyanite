@@ -1,7 +1,7 @@
 import add from './add'
 import divide from './divide'
 import length from '../list/length'
-import reduce from '../array/reduce'
+import reduce from '../function/reduce'
 
 /**
  * @name mean

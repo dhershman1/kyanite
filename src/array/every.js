@@ -1,6 +1,6 @@
 import _curry2 from '../_internals/_curry2'
-import reduce from './reduce'
-import reduced from './reduced'
+import reduce from '../function/reduce'
+import reduced from '../function/reduced'
 
 /**
  * @name every

@@ -1,6 +1,6 @@
 import _appendǃ from '../_internals/_appendǃ'
 import _curry2 from '../_internals/_curry2'
-import reduce from './reduce'
+import reduce from '../function/reduce'
 
 /**
  * @name filter

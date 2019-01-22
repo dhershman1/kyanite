@@ -1,5 +1,5 @@
 import reduceRight from '../../src/array/reduceRight'
-import reduced from '../../src/array/reduced'
+import reduced from '../../src/function/reduced'
 import test from 'tape'
 
 test('reduceRight -- Reduces an addition array', t => {

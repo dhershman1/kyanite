@@ -2,7 +2,7 @@ import _assocǃ from '../_internals/_assocǃ'
 import _curry2 from '../_internals/_curry2'
 import includes from '../list/includes'
 import not from '../function/not'
-import reduce from '../array/reduce'
+import reduce from '../function/reduce'
 
 /**
  * @name omit

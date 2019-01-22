@@ -1,4 +1,4 @@
-import reduce from './reduce'
+import reduce from '../function/reduce'
 
 /**
  * @name max
