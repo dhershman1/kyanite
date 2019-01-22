@@ -1,19 +1,6 @@
 import _curry3 from '../_internals/_curry3'
 import _xwrap from '../_internals/_xwrap'
 
-function _reduceIterable (xf, acc, iter) {
-  for (const entry of iter) {
-    acc = xf['@@transducer/step'](entry, acc)
-
-    if (acc && acc['@@transducer/reduced']) {
-      acc = acc['@@transducer/value']
-      break
-    }
-  }
-
-  return xf['@@transducer/result'](acc)
-}
-
 /**
  * @name reduce
  * @function
@@ -44,12 +31,8 @@ function _reduceIterable (xf, acc, iter) {
 const reduce = (fn, acc, list) => {
   const xf = _xwrap(fn)
 
-  if (typeof list.next === 'function' || list[Symbol.iterator] != null) {
-    return _reduceIterable(xf, acc, list)
-  }
-
-  for (let i = 0, len = list.length; i < len; i++) {
-    acc = xf['@@transducer/step'](list[i], acc)
+  for (const entry of list) {
+    acc = xf['@@transducer/step'](entry, acc)
 
     if (acc && acc['@@transducer/reduced']) {
       acc = acc['@@transducer/value']
