@@ -1,4 +1,5 @@
-import even from './even'
+import and from '../function/and'
+import eq from '../function/eq'
 
 /**
  * @name isEven
@@ -20,6 +21,6 @@ import even from './even'
  * isEven(1) // => false
  * isEven(NaN) // => false
  */
-const isEven = even
+const isEven = n => and(!eq(n, NaN), eq(n % 2, 0))
 
 export default isEven

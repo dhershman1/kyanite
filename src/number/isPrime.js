@@ -1,4 +1,4 @@
-import prime from './prime'
+import rem from './rem'
 
 /**
  * @name isPrime
@@ -19,6 +19,17 @@ import prime from './prime'
  * isPrime(6) // => false
  * isPrime(5010) // => false
  */
-const isPrime = prime
+const isPrime = x => {
+  const s = Math.sqrt(x)
+  let i = 2
+
+  for (i; i <= s; i++) {
+    if (!rem(i, x)) {
+      return false
+    }
+  }
+
+  return x && x !== 1
+}
 
 export default isPrime

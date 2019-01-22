@@ -18,22 +18,12 @@
   - e.g: `ap(x => y => x + y, z => z * 2, 2) // => 6`
 - Removed `amend` function since it's really just a limited `Object.assign` no real use for it
 
-### Deprecated
-
-Deprecated functions may be removed in a future build
-
-- `isEven` in favor of just `even`
-- `isOdd` in favor of just `odd`
-- `isPrime` in favor of just `prime`
-- `isNil` in favor of just `nil`
-- `isEmpty` in favor of just `empty`
-  - This was a tough one since a lot of other libs have a seperate empty function, however I like this better in the long run
-
 ### New
 
+- `reduce` now supports iterable types like `Map` and `Set`
 - Added `inc` Function which increases a number by 1
 - Added `dec` Function which decreases a number by 1
-- Added `zero` Function which checks if the number passed in is equal to the number zero
+- Added `isZero` Function which checks if the number passed in is equal to the number zero
 - Added `size` Function which takes a map or set data type and returns its size
   - **Note**: It is currently categorized under `Function` which may change in the future as I add more Map|Set friendly functions
 - Added `count` Function which takes any collection based data and counts the values within

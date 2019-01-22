@@ -1,6 +1,6 @@
 import _curry2 from '../_internals/_curry2'
 import eq from './eq'
-import nil from './nil'
+import isNil from './isNil'
 
 /**
  * @name defaultTo
@@ -24,6 +24,6 @@ import nil from './nil'
  * fn(null) // => 'foo'
  * fn('bar') // => 'bar'
  */
-const defaultTo = (def, val) => nil(val) || eq(NaN, val) ? def : val
+const defaultTo = (def, val) => isNil(val) || eq(NaN, val) ? def : val
 
 export default _curry2(defaultTo)

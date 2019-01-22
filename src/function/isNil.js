@@ -1,5 +1,3 @@
-import nil from './nil'
-
 /**
  * @name isNil
  * @deprecated since v0.11.0 use nil
@@ -19,6 +17,6 @@ import nil from './nil'
  * isNill() // => true
  * isNill(1) // => false
  */
-const isNil = nil
+const isNil = x => x == null
 
 export default isNil

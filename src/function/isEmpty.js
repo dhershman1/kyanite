@@ -1,4 +1,5 @@
-import empty from './empty'
+import isNil from './isNil'
+import count from './count'
 
 /**
  * @name isEmpty
@@ -24,6 +25,6 @@ import empty from './empty'
  * isEmpty(true) // => true
  * isEmpty(false) // => true
  */
-const isEmpty = empty
+const isEmpty = x => isNil(x) || !count(x)
 
 export default isEmpty
