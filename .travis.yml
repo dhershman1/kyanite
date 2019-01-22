@@ -2,8 +2,10 @@ language: node_js
 node_js:
   - "10"
 install:
-  - npm install esm
-  - npm install -g coveralls standard tape tap-spec nyc
+  - npm ci
+cache:
+  directories:
+  - "$HOME/.npm"
 branches:
   only:
   - master
