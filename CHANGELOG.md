@@ -33,7 +33,7 @@
 
 ### Improved
 
-- `empty` now supports `Maps` and `Sets`
+- `isEmpty` now supports `Maps` and `Sets`
 - Slight increase in `partition` performance
 - Slight increase in `omit` performance
 - Added import example onto each function, so it's visible within the examples
