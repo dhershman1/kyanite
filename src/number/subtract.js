@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Number} The difference of the numbers
  *
  * @example
+ * import { subtract } from 'kyanite'
+ *
  * subtract(2, 1) // => 1
  *
  * // It's also curried

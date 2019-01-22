@@ -13,6 +13,8 @@ import _curry3 from '../_internals/_curry3'
  * @return {Array} A new array with the inserted data
  *
  * @example
+ * import { insert } from 'kyanite'
+ *
  * insert(2, 'x', [1, 2, 3, 4]) // => [1, 2, 'x', 3, 4]
  *
  * // It's also curried

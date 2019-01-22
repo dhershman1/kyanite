@@ -9,14 +9,11 @@
  * @param {Any} a The value to identify
  * @return {Any} The identified value
  * @example
+ * import { identity } from 'kyanite'
+ *
  * identity(10) // => 10
  *
- * const test = identity(10)
- *
- * console.log(typeof test.constructor) // => 'function'
- * console.log(10.constructor) // => error
- *
- * filter(identity, [0, 'cool', null, 1]) // => ['cool', 1]
+ * [0, 'cool', null, 1].filter(identity) // => ['cool', 1]
  */
 const identity = a => a
 

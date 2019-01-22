@@ -12,6 +12,8 @@ import isNil from '../function/isNil'
  * @return {Array} Returns a new array
  *
  * @example
+ * import { ensureArray } from 'kyanite'
+ *
  * ensureArray(1) // => [1]
  * ensureArray() // => []
  * ensureArray(null) // => []

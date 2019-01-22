@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Array} An array with the indicated values removed from the array
  *
  * @example
+ * import { drop } from 'kyanite'
+ *
  * drop(3, [1, 2, 3, 4, 5]) // => [4, 5]
  *
  * // It's also curried

@@ -1,47 +1,26 @@
 import test from 'tape'
 import type from '../../src/function/type'
 
-test('type -- Array is given back when given array literal', t => {
+/* eslint-disable no-new-wrappers, no-new-object */
+
+test('type -- Handles data type literals', t => {
   t.is(type([]), 'Array')
-  t.end()
-})
-
-test('type -- Object is given back when given object literal', t => {
   t.is(type({}), 'Object')
-  t.end()
-})
-
-test('type -- RegExp is given back when given regexp literal', t => {
   t.is(type(/[A-z]/), 'RegExp')
-  t.end()
-})
-
-test('type -- Number is given back when given number value', t => {
   t.is(type(1), 'Number')
-  t.end()
-})
-
-test('type -- Number is given back when given NaN value', t => {
   t.is(type(NaN), 'Number')
-  t.end()
-})
-
-test('type -- String is given back when given string value', t => {
   t.is(type('testing'), 'String')
-  t.end()
-})
-
-test('type -- String given if given a String object', t => {
-  t.is(type(new String('I am a String object')), 'String')
-  t.end()
-})
-
-test('type -- Null if given the null value', t => {
   t.is(type(null), 'Null')
+  t.is(type(undefined), 'Undefined')
   t.end()
 })
 
-test('type -- Undefined if given the undefined value', t => {
-  t.is(type(undefined), 'Undefined')
+test('type -- Handles new keyword for data types', t => {
+  t.is(type(new String('I am a String object')), 'String')
+  t.is(type(new Number(2)), 'Number')
+  t.is(type(new Date('01-12-19')), 'Date')
+  t.is(type(new RegExp('[A-Z]')), 'RegExp')
+  t.is(type(new Array(3)), 'Array')
+  t.is(type(new Object({})), 'Object')
   t.end()
 })

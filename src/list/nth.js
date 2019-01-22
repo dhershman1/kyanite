@@ -14,6 +14,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Any} Returns the value found at the index
  *
  * @example
+ * import { nth } from 'kyanite'
+ *
  * nth(3, [1, 2, 3, 4, 5, 6, 7]) // => 4
  *
  * // nth is curried

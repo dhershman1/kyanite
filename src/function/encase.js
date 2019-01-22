@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Any} The return of the provided function or undefined if it errors
  *
  * @example
+ * import { encase } from 'kyanite'
+ *
  * encase(x => x.a.b.c, {a: 0}) // => undefined
  * encase(x => x.a.b.c, {a: {b: {c: 0}}}) // => 0
  *

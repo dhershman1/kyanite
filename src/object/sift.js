@@ -1,5 +1,6 @@
 import _curry2 from '../_internals/_curry2'
 import _assocǃ from '../_internals/_assocǃ'
+import reduce from '../function/reduce'
 
 /**
  * @name sift
@@ -14,6 +15,8 @@ import _assocǃ from '../_internals/_assocǃ'
  * @return {Object} A new filtered out object
  *
  * @example
+ * import { sift } from 'kyanite'
+ *
  * sift(x => typeof x === 'string', {
  *   id: 44,
  *   thing: 'test',
@@ -26,7 +29,7 @@ import _assocǃ from '../_internals/_assocǃ'
  *
  * sifter({ id: 44, thing: 'test', other: 'cool' }) // => { thing: 'test', other: 'cool' }
  */
-const sift = (fn, obj) => Object.keys(obj).reduce((acc, k) =>
-  fn(obj[k]) ? _assocǃ(acc, k, obj[k]) : acc, {})
+const sift = (fn, obj) => reduce((k, acc) =>
+  fn(obj[k]) ? _assocǃ(acc, k, obj[k]) : acc, {}, Object.keys(obj))
 
 export default _curry2(sift)

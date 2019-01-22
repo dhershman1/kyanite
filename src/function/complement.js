@@ -13,10 +13,17 @@ import not from './not'
  * @return {Function} Returns the opposite function back
  *
  * @example
- * const isNot = complement(is(String))
+ * import { complement } from 'kyanite'
  *
- * isNot(1) // => true
- * isNot('test') // => false
+ * complement(x => x > 10, 11) // => false
+ * complement(x => x < 10, 11) // => true
+ *
+ * // It's also curried
+ *
+ * const notGtTen = complement(x => x > 10)
+ *
+ * notGtTen(11) // => false
+ * notGtTen(10) // => true
  */
 const complement = (fn, a) => not(fn(a))
 

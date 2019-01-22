@@ -14,6 +14,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Array} A new and sorted array
  *
  * @example
+ * import { sortWith } from 'kyanite'
+ *
  * const data = [{name: 'alice', age: 40}, {name: 'bob', age: 30}, {name: 'clara', age: 40}]
  * sortWith([
  *   descendBy(x => x.age),

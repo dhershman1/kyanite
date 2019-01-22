@@ -1,3 +1,5 @@
+import compose from '../function/compose'
+import length from '../list/length'
 
 /**
  * @name height
@@ -9,8 +11,10 @@
  * @param {Object} obj The object we want to read the length of
  * @return {Number} The length of the object
  * @example
+ * import { height } from 'kyanite'
+ *
  * height({ a: 1, b: 2 }) // => 2
  */
-const height = obj => Object.values(obj).length
+const height = compose(length, Object.values)
 
 export default height

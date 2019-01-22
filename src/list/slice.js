@@ -16,6 +16,8 @@ import _curry3 from '../_internals/_curry3'
  * @return {Array|String} The newly created list
  *
  * @example
+ * import { slice } from 'kyanite'
+ *
  * slice(1, 3, [1, 2, 3, 4, 5]) // => [2, 3]
  * slice(0, 4, 'kyanite') // => 'kyan'
  *

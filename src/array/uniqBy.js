@@ -13,6 +13,7 @@ import _assocǃ from '../_internals/_assocǃ'
  * @return {Array} An array of unique values from the provided function
  *
  * @example
+ * import { uniqBy } from 'kyanite'
  *
  * uniqBy(x => x > 2, [1, 2, 3, 4, 5]) // => [3, 4, 5]
  *

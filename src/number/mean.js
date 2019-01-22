@@ -1,7 +1,7 @@
 import add from './add'
 import divide from './divide'
 import length from '../list/length'
-import reduce from '../array/reduce'
+import reduce from '../function/reduce'
 
 /**
  * @name mean
@@ -14,6 +14,8 @@ import reduce from '../array/reduce'
  * @return {Number} Returns the mean average of the numbers
  *
  * @example
+ * import { mean } from 'kyanite'
+ *
  * mean([1, 2, 3, 2]) // => 2
  * mean([2]) // => 2
  * mean([]) // => NaN

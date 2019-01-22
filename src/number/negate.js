@@ -9,6 +9,7 @@
  * @param {Number} n The number to negate
  * @returns {Number} The negated number
  * @example
+ * import { negate } from 'kyanite'
  *
  * negate(1) // => -1
  * negate(-1) // => 1

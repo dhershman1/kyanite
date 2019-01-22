@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Any} The transformed value
  *
  * @example
+ * import { pipe } from 'kyanite'
+ *
  * pipe([add(2), multiply(2)], 10) // => 24
  *
  * // It's also curried

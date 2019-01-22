@@ -1,21 +1,21 @@
 import isEmpty from '../../src/function/isEmpty'
 import test from 'tape'
 
-test('isEmpty -- isEmpty Handles String Values', t => {
+test('isEmpty -- empty Handles String Values', t => {
   t.true(isEmpty(''), 'Returns true for an empty string')
   t.false(isEmpty(' '), 'Returns false for string with only whitespace')
   t.false(isEmpty('hi'), 'Returns false for string with content')
   t.end()
 })
 
-test('isEmpty -- isEmpty Handles array values', t => {
+test('isEmpty -- empty Handles array values', t => {
   t.true(isEmpty([]), 'Returns true for empty array')
   t.false(isEmpty([[]]), 'Returns false when array has another empty array inside')
   t.false(isEmpty(['']), 'Returns false if array has empty string inside')
   t.end()
 })
 
-test('isEmpty -- isEmpty Handles object values', t => {
+test('isEmpty -- empty Handles object values', t => {
   const a = 'thing'
 
   t.true(isEmpty({}), 'Returns true for empty object')
@@ -24,21 +24,43 @@ test('isEmpty -- isEmpty Handles object values', t => {
   t.end()
 })
 
-test('isEmpty -- isEmpty Handles numeric values', t => {
-  t.true(isEmpty(0), 'Returns true for 0')
-  t.true(isEmpty(10), 'Returns true for any number')
-  t.end()
-})
-
-test('isEmpty -- isEmpty Handles falsy values', t => {
-  t.true(isEmpty(NaN), 'Returns true for NaN')
+test('isEmpty -- empty Handles nil values', t => {
   t.true(isEmpty(undefined), 'Returns true for undefined')
   t.true(isEmpty(null), 'Returns true for null')
   t.end()
 })
 
-test('isEmpty -- isEmpty Handles boolean values', t => {
-  t.true(isEmpty(false), 'Returns true when passed false boolean')
-  t.true(isEmpty(true), 'Returns true when passed true boolean')
+test('isEmpty -- Handles Maps and Sets', t => {
+  t.same(isEmpty(new Map()), true)
+  t.same(isEmpty(new Set()), true)
+  t.same(isEmpty(new Map([['a', 1]])), false)
+  t.same(isEmpty(new Set([1, 2])), false)
   t.end()
+})
+
+test('isEmpty -- empty Errors on numeric values', t => {
+  try {
+    isEmpty(10)
+  } catch ({ message }) {
+    t.same(message, 'Unsupported type: Number')
+    t.end()
+  }
+})
+
+test('isEmpty -- Errors on NaN', t => {
+  try {
+    isEmpty(NaN)
+  } catch ({ message }) {
+    t.same(message, 'Unsupported type: Number')
+    t.end()
+  }
+})
+
+test('isEmpty -- Errors on boolean', t => {
+  try {
+    isEmpty(false)
+  } catch ({ message }) {
+    t.same(message, 'Unsupported type: Boolean')
+    t.end()
+  }
 })

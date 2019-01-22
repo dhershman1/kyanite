@@ -2,6 +2,7 @@ import concatMap from './concatMap'
 import groupBy from './groupBy'
 import identity from '../function/identity'
 import uniq from './uniq'
+import filter from './filter'
 
 /**
  * @name difference
@@ -14,6 +15,7 @@ import uniq from './uniq'
  * @return {Array} An array of elements that are not present in both arrays
  *
  * @example
+ * import { difference } from 'kyanite'
  *
  * difference([[1, 2, 3], [1]]) // => [2, 3]
  * difference([[1], [1, 2, 3]]) // => [2, 3]
@@ -22,7 +24,7 @@ const difference = arrs => {
   const arr = concatMap(uniq, arrs)
   const grouped = groupBy(identity, arr)
 
-  return arr.filter(x => grouped[x].length === 1)
+  return filter(x => grouped[x].length === 1, arr)
 }
 
 export default difference

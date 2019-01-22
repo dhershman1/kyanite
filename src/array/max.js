@@ -1,3 +1,5 @@
+import reduce from '../function/reduce'
+
 /**
  * @name max
  * @function
@@ -9,9 +11,11 @@
  * @return {Any} The found or "deemed" maximum value of the array
  *
  * @example
+ * import { max } from 'kyanite'
+ *
  * max([1, 3, 2, 5, 4]) // => 5
  * max(['c', 'a', 'b', 'f']) // => 'f'
  */
-const max = list => list.reduce((a, b) => a >= b ? a : b)
+const max = reduce((a, b) => a >= b ? a : b, '')
 
 export default max

@@ -11,6 +11,8 @@
  * @return {Any} Returns whatever was the first piece of our list
  *
  * @example
+ * import { first } from 'kyanite'
+ *
  * const arr = first([1, 3]) // => 1
  * const str = first('abc') // => 'a'
  */

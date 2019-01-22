@@ -15,6 +15,8 @@ import _assocǃ from '../_internals/_assocǃ'
  * @return {Array|Object} The new Array or Object that was created
  *
  * @example
+ * import { map } from 'kyanite'
+ *
  * const dbl = n => n * 2
  *
  * map(dbl, [1, 2, 3]) // => [2, 4, 6]

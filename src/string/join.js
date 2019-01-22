@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @param {Array} list The array to join
  * @return {String} The joined string
  * @example
+ * import { join } from 'kyanite'
+ *
  * join(' ', ['test', 'this', 'thing']) // => 'test this thing'
  * join('aaa', ['test', 'that', 'thing']) // => 'testaaathataaathing'
  *

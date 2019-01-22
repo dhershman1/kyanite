@@ -11,6 +11,7 @@ import _curry2 from '../_internals/_curry2'
  * @param {Array} arr The array of data to iterate through
  * @return {Array} A new array without the dropped values
  * @example
+ * import { dropWhile } from 'kyanite'
  *
  * dropWhile(x => x <= 2, [1, 2, 3, 4, 3, 2, 1]) //=> [3, 4, 3, 2, 1]
  *

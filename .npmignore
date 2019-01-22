@@ -12,4 +12,6 @@ coverage
 .babelrc
 docs
 jsdoc.json
-.DS_Store
+.github
+benching.js
+tmp.js

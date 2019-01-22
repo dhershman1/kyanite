@@ -1,5 +1,7 @@
 /**
  * @name isNil
+ * @deprecated since v0.11.0 use nil
+ * @see nil
  * @function
  * @since v0.1.0
  * @category Function
@@ -9,6 +11,8 @@
  * @return {Boolean} Returns a boolean based on the check
  *
  * @example
+ * import { isNil } from 'kyanite'
+ *
  * isNill(null) // => true
  * isNill() // => true
  * isNill(1) // => false

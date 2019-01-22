@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Number} The rounded number to the desired precision
  *
  * @example
+ * import { round } from 'kyanite'
+ *
  * round(2, 112.336) // => 112.34
  * round(3, 112.3354) // => 112.335
  *

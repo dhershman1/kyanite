@@ -12,6 +12,8 @@ import _curry3 from '../_internals/_curry3'
  * @param {Any} a The data to apply the functions to
  * @return {Promise} Based on the functions given the result of the functional composition
  * @example
+ * import { composeP } from 'kyanite'
+ *
  * const foo = a => new Promise(resolve => resolve(a + '123'))
  * const bar = a => new Promise(resolve => resolve(a + '555'))
  *

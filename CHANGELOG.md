@@ -1,5 +1,54 @@
 # Changelog
 
+## v0.11.0
+
+### Breaking Changes
+
+- `factors` output has changed to be inclusive, it also works with negative numbers now
+  - Example: `factors(-36) // => [1, 2, 3, 4, 6, 9, 12, 18, 36]`
+  - You can easily get negative factors with `negate` and `map`
+    - e.g: `map(negate, factors(-36)) // => [-1, -2, -3, -4, -6, -9, -12, -18, -36]`
+- `empty` (and `isEmpty` until its removed) will now throw a type error for unsupported types
+  - `empty` supports the same types as `count` as well as `null` and `undefined`
+  - e.g: `empty(1) // => TypeError: Unsupported type: Number`
+- `juxt` functionality changes. It's now a 2 param curried function that takes arrays for data
+  - e.g: `juxt([Math.min, Math.max], [3, 4, 9, -3]) // => [-3, 9]`
+  - Also moved it to be in the array category
+- `ap` re written to be a proper S combinator function
+  - e.g: `ap(x => y => x + y, z => z * 2, 2) // => 6`
+- Removed `amend` function since it's really just a limited `Object.assign` no real use for it
+
+### New
+
+- `reduce` now supports iterable types like `Map` and `Set`
+- Added `inc` Function which increases a number by 1
+- Added `dec` Function which decreases a number by 1
+- Added `isZero` Function which checks if the number passed in is equal to the number zero
+- Added `size` Function which takes a map or set data type and returns its size
+  - **Note**: It is currently categorized under `Function` which may change in the future as I add more Map|Set friendly functions
+- Added `count` Function which takes any collection based data and counts the values within
+- Added `reduced` Function which should be used with `reduce` or `reduceRight` as a short circuit for the function (see improved)
+- `has` is now generic for `Array`, `String`, `Object`, `Map`, and `Set` data types
+- Added `within` Function which acts like `between` but is exclusive of the numbers provided
+
+### Improved
+
+- `isEmpty` now supports `Maps` and `Sets`
+- Slight increase in `partition` performance
+- Slight increase in `omit` performance
+- Added import example onto each function, so it's visible within the examples
+- `factors` had some typos in its docs
+- Cleaned up `always` documentation
+- Cleaned up `identity` documentation examples
+- Cleaned up `type` to be more lightweight
+- Completely re wrote `reduce` and `reduceRight`
+  - No breaking changes
+  - Both functions now support `reduced` which will short circuit out of the iteration and return the value
+  - This is a good strategy for performance boosts
+- `reduce`, `reduceRight`, and `reduced` are all using the `@@transducer` protocol
+- Moved `every`, `some`, `reject`, `filter`, and `find` to use this new flow giving them decent performance improvements
+- Tweaked `height` function for a tiny performance boost
+
 ## v0.10.3
 
 ### Fixed

@@ -1,5 +1,8 @@
-import _curry2 from '../_internals/_curry2'
 import _assocǃ from '../_internals/_assocǃ'
+import _curry2 from '../_internals/_curry2'
+import includes from '../list/includes'
+import not from '../function/not'
+import reduce from '../function/reduce'
 
 /**
  * @name omit
@@ -14,6 +17,8 @@ import _assocǃ from '../_internals/_assocǃ'
  * @return {Object} Returns the newly created data without the omitted values
  *
  * @example
+ * import { omit } from 'kyanite'
+ *
  * const obj = omit(['test'], { test: '3432', thing: 123 }) // => { thing: 123 }
  * const arr = omit(['a', 'b'], { a: 1, b: 2, c: 3}) // => { c: 3 }
  *
@@ -24,7 +29,7 @@ import _assocǃ from '../_internals/_assocǃ'
  * omitKeys({ test: '3432', thing: 123 }) // => { thing: 123 }
  */
 const omit = (keys, obj) =>
-  Object.keys(obj).reduce((acc, prop) =>
-    !keys.includes(prop) ? _assocǃ(acc, prop, obj[prop]) : acc, {})
+  reduce((prop, acc) =>
+    not(includes(prop, keys)) ? _assocǃ(acc, prop, obj[prop]) : acc, {}, Object.keys(obj))
 
 export default _curry2(omit)

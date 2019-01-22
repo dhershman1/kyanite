@@ -12,6 +12,7 @@ import _curry2 from '../_internals/_curry2'
  * @param {String} str The string to match
  * @return {Array} An array of matched strings
  * @example
+ * import { match } from 'kyanite'
  *
  * match(/([a-z]a)/g, 'bananas') //=> ['ba', 'na', 'na']
  * match(/a/, 'b') // => null

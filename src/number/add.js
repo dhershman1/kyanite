@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Number} The sum of the numbers
  *
  * @example
+ * import { add } from 'kyanite'
+ *
  * add(1, 2) // => 3
  *
  * // It's also curried

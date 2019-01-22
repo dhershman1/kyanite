@@ -16,6 +16,12 @@ test('or -- Returns false when both params are false', t => {
   t.end()
 })
 
+test('or -- gives back a value', t => {
+  t.same(or(1, 0), 1)
+  t.same(or('truly', ''), 'truly')
+  t.end()
+})
+
 test('or -- Is curried true', t => {
   const a = or(true)
 

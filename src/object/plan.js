@@ -1,5 +1,6 @@
 import _curry2 from '../_internals/_curry2'
 import _assocǃ from '../_internals/_assocǃ'
+import reduce from '../function/reduce'
 
 /**
  * @name plan
@@ -12,6 +13,8 @@ import _assocǃ from '../_internals/_assocǃ'
  * @param {Object} obj The object to apply our functions too
  * @return {Object} A new object with the updated data from our applied functions
  * @example
+ * import { plan } from 'kyanite'
+ *
  * const testFns = {
     a: x => x * 2,
     b: x => x + 10
@@ -26,7 +29,7 @@ import _assocǃ from '../_internals/_assocǃ'
  * p({ a: 5, b: 10 }) // => { a: 10, b: 20 }
  */
 const plan = (schema, obj) =>
-  Object.assign({}, obj, Object.keys(schema).reduce((acc, k) =>
-    !obj.hasOwnProperty(k) ? acc : _assocǃ(acc, k, schema[k](obj[k])), {}))
+  Object.assign({}, obj, reduce((k, acc) =>
+    !obj.hasOwnProperty(k) ? acc : _assocǃ(acc, k, schema[k](obj[k])), {}, Object.keys(schema)))
 
 export default _curry2(plan)

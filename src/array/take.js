@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Array} A new array of the values taken
  *
  * @example
+ * import { take } from 'kyanite'
+ *
  * take(3, [1, 2, 3, 4, 5]) // => [1, 2, 3]
  *
  * // It's also curried

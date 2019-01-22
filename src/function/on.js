@@ -15,6 +15,8 @@ import _curry4 from '../_internals/_curry4'
  * @param {Any} b The second value we want to use
  * @return {Any} A value based on the first functions return
  * @example
+ * import { on } from 'kyanite'
+ *
  * on((x, y) => x === y, x => x.length, 'you', 'are') // => true
  *
  * // It's also curried

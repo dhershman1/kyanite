@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Number} The product of the numbers
  *
  * @example
+ * import { multiply } from 'kyanite'
+ *
  * multiply(2, 1) // => 2
  *
  * // It's also curried

@@ -1,7 +1,10 @@
 import isNil from './isNil'
+import count from './count'
 
 /**
  * @name isEmpty
+ * @deprecated since v0.11.0 use empty
+ * @see empty
  * @function
  * @since v0.1.0
  * @category Function
@@ -11,6 +14,8 @@ import isNil from './isNil'
  * @return {Boolean} Returns the boolean after running our check
  *
  * @example
+ * import { isEmpty } from 'kyanite'
+ *
  * isEmpty([]) // => true
  * isEmpty({}) // => true
  * isEmpty('') // => true
@@ -20,6 +25,6 @@ import isNil from './isNil'
  * isEmpty(true) // => true
  * isEmpty(false) // => true
  */
-const isEmpty = x => isNil(x) || !Object.keys(x).length
+const isEmpty = x => isNil(x) || !count(x)
 
 export default isEmpty

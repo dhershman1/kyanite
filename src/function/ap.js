@@ -1,31 +1,38 @@
-import _curry2 from '../_internals/_curry2'
-import map from '../array/map'
-import reduce from '../array/reduce'
-import concat from '../list/concat'
+import _curry3 from '../_internals/_curry3'
 
 /**
  * @name ap
  * @function
  * @since v0.4.0
  * @category Function
- * @sig Array (a -> b) -> Array a -> Array b
+ * @sig (a -> b -> c) -> (a -> b) -> a -> c
  * @description
- * Takes an array of functions to be applied to an array of data, concating the results together
- * also known as the S combinator
- * @param {Array} fns The list of functions to apply
- * @param {Array} list The array of data to run the functions on
- * @return {Array} A new array of data modified by the functions concated together
+ * Takes a setter and getter function to transform provided data also known as the S combinator
+ * @param {Function} fn The setter function for ap x => y => z
+ * @param {Function} gn The getter function for ap x => y
+ * @param {Any} x The data that is given to the provided functions
+ * @return {Any} The results of running the S combinator functions
  * @example
- * ap([x => x + 1, x => x * 2], [1, 2, 3]) // => [2, 3, 4, 2, 4, 6]
+ * import { ap } from 'kyanite'
+ *
+ * const state = {
+ *   a: {
+ *     b: 2
+ *   }
+ * }
+ *
+ * ap(s => doubleB => ({
+ *   ...s,
+ *   a: { b: doubleB }
+ * }), s => s.a.b * 2, state) // => { a: { b: 4 } }
  *
  * // It's also curried
  *
- * const a = ap([x => x + 1, x => x * 2])
+ * const fn = ap(x => y => x + y, z => z * 2)
  *
- * a([1, 2, 3]) // => [2, 3, 4, 2, 4, 6]
- * a([3, 4, 5]) // => [4, 5, 6, 6, 8, 10]
+ * fn(2) // => 6
+ * fn(3) // => 9
  */
-const ap = (fns, list) =>
-  reduce((f, acc) => concat(map(f, list), acc), [], fns)
+const ap = (fn, gn, x) => fn(x)(gn(x))
 
-export default _curry2(ap)
+export default _curry3(ap)

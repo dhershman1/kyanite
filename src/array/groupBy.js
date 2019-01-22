@@ -1,7 +1,7 @@
 import _curry2 from '../_internals/_curry2'
 import _appendǃ from '../_internals/_appendǃ'
 import _assocǃ from '../_internals/_assocǃ'
-import has from '../object/has'
+import reduce from '../function/reduce'
 
 /**
  * @name groupBy
@@ -15,6 +15,8 @@ import has from '../object/has'
  * @return {Object} An object with the grouped values
  *
  * @example
+ * import { groupBy } from 'kyanite'
+ *
  * groupBy(Math.floor, [4.2, 6.1, 6.4]) // => { '4': [4.2], '6': [6.1, 6.4] }
  *
  * // It's also curried
@@ -24,11 +26,11 @@ import has from '../object/has'
  * g([4.2, 6.1, 6.4]) // => { '4': [4.2], '6': [6.1, 6.4] }
 */
 const groupBy = (fn, list) =>
-  list.reduce((acc, v) => {
+  reduce((v, acc) => {
     const k = fn(v)
     const _an = _assocǃ(acc, k)
 
-    return has(k, acc) ? _an(_appendǃ(acc[k], v)) : _an([v])
-  }, {})
+    return acc.hasOwnProperty(k) ? _an(_appendǃ(acc[k], v)) : _an([v])
+  }, {}, list)
 
 export default _curry2(groupBy)

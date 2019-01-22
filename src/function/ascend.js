@@ -12,6 +12,7 @@ import _curry2 from '../_internals/_curry2'
  * @return {Number} A number based on which value should ascend
  *
  * @example
+ * import { ascend } from 'kyanite'
  *
  * [4, 10, 1, 6, 7, 12].sort(ascend) // => [1, 4, 6, 7, 10, 12]
  */

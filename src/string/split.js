@@ -11,6 +11,8 @@ import _curry2 from '../_internals/_curry2'
  * @param {String} str The string we want to split
  * @return {Array} A new array of characters from the string
  * @example
+ * import { split } from 'kyanite'
+ *
  * split('', 'abc') // => ['a', 'b', 'c']
  * split(':', '123:334') // => ['123', '334']
  *

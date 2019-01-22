@@ -12,6 +12,8 @@ import _curry2 from '../_internals/_curry2'
  * @return {Boolean} A boolean dependent on whether or not all values passed
  *
  * @example
+ * import { whole } from 'kyanite'
+ *
  * const run = whole({ a: x => x === 'foo', b: x => x !== 'bar', x: x => x > 10, y: x => x < 20 })
  *
  * run({ a: 'foo', b: 'xxx', x: 11, y: 19 }) // => true

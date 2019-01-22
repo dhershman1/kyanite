@@ -15,6 +15,8 @@ import identity from '../function/identity'
  * @return {Array} Returns the modified array
  *
  * @example
+ * import { update } from 'kyanite'
+ *
  * update(2, 10, [1, 2, 3]) // => [1, 2, 10]
  *
  * // You can also use it as a curried method

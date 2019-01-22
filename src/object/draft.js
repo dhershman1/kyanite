@@ -1,5 +1,6 @@
 import _curry2 from '../_internals/_curry2'
 import _assocǃ from '../_internals/_assocǃ'
+import reduce from '../function/reduce'
 
 /**
  * @name draft
@@ -12,6 +13,8 @@ import _assocǃ from '../_internals/_assocǃ'
  * @param {Object} obj The object to apply our functions too
  * @return {Object} A new object with the updated data from our applied function
  * @example
+ * import { draft } from 'kyanite'
+ *
  * draft(x => x * 2, { a: 1, b: 2, c: 3 }) // => { a: 2, b: 4, c: 6 }
  *
  * // It's also curried
@@ -21,7 +24,7 @@ import _assocǃ from '../_internals/_assocǃ'
  * d({ a: 1, b: 2, c: 3 }) // => { a: 2, b: 4, c: 6 }
  */
 const draft = (fn, obj) =>
-  Object.keys(obj).reduce((acc, key) =>
-    _assocǃ(acc, key, fn(obj[key])), {})
+  reduce((key, acc) =>
+    _assocǃ(acc, key, fn(obj[key])), {}, Object.keys(obj))
 
 export default _curry2(draft)

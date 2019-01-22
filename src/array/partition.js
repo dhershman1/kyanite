@@ -1,7 +1,6 @@
 import _curry2 from '../_internals/_curry2'
-import juxt from '../function/juxt'
-import filter from './filter'
-import reject from './reject'
+import _appendǃ from '../_internals/_appendǃ'
+import reduce from '../function/reduce'
 
 /**
  * @name partition
@@ -18,6 +17,8 @@ import reject from './reject'
  * And a second that did not
  *
  * @example
+ * import { partition } from 'kyanite'
+ *
  * partition(is(String), ['foo', 'bar', 100]) // => [ ['foo', 'bar'], [100] ]
  *
  * // Is curried as well
@@ -26,6 +27,8 @@ import reject from './reject'
  *
  * part(['foo', 'bar', 100]) // => [ ['foo', 'bar'], [100] ]
  */
-const partition = juxt([filter, reject])
+const partition = (fn, list) =>
+  reduce((v, [pass, fail]) =>
+    fn(v) ? [_appendǃ(pass, v), fail] : [pass, _appendǃ(fail, v)], [[], []], list)
 
 export default _curry2(partition)
