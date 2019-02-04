@@ -1,6 +1,14 @@
 # Changelog
 
-## v0.11.0
+## v0.11.2
+
+### New
+
+- Added a `addIndex` function which can be used on `map`, `filter`, or `reduce` like functions to have them return the index and full list back to your callback function
+- Re added the `amend` function (for now?)
+- Added `memoizeWith` function
+
+## v0.11.0 (0.11.1)
 
 ### Breaking Changes
 
