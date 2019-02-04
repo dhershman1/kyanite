@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>function/gt.js - Documentation</title>
+    <title>function/memoizeWith.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">function/gt.js</h1>
+    <h1 class="page-title">function/memoizeWith.js</h1>
     
 
     
@@ -50,33 +50,48 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
+import has from './has'
 
 /**
- * @name gt
+ * @name memoizeWith
  * @function
- * @since v0.1.0
+ * @since v0.11.2
  * @category Function
- * @sig a -> a -> Boolean
- * @description Checks if a value is greater than the other
- * @param {Any} a Value to determine if it is greater than the other
- * @param {Any} b Value to compare to see if it is less than the other
- * @return {Boolean} Based on the outcome of the logic a Boolean
+ * @sig (* -> String) -> (* -> a) -> (* -> a)
+ * @description Creates a new function that, when invoked, caches the result of calling fn for a given argument set and returns the result. Subsequent calls to the memoized fn with the same argument set will not result in an additional call to fn; instead, the cached result for that set of arguments will be returned.
+ * @param {Function} mFn The function to generate the cache key.
+ * @param {Function} fn The function to memoize.
+ * @return {Function} The memoized version of `fn`
  * @example
- * import { gt } from 'kyanite'
+ * import { memoizeWith, range, identity } from 'kyanite'
  *
- * gt(2, 1) // => true
- * gt('b', 'a') // => true
+ * let count = 0
+ * const product = arr => arr.reduce((x, acc) => acc * x)
+ * const factorial = memoizeWith(identity, n => {
+ *   count += 1
  *
- * // It's also curried
+ *   return product(range(1, n + 1))
+ * }
  *
- * const g = gt(2)
- *
- * g(1) // => true
- * g(2) // => false
+ * factorial(5) // => 120
+ * factorial(5) // => 120
+ * console.log(count) // => 1
  */
-const gt = (a, b) => b > a
+const memoizeWith = (mFn, fn) => {
+  const cache = {}
 
-export default _curry2(gt)
+  return data => {
+    const key = mFn(data)
+
+    if (!has(key, cache)) {
+      cache[key] = fn(data)
+    }
+
+    return cache[key]
+  }
+}
+
+export default _curry2(memoizeWith)
 </code></pre>
         </article>
     </section>

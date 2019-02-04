@@ -508,6 +508,27 @@
   };
   var zip$1 = _curry2(zip);
 
+  var addIndex = function addIndex(fn) {
+    return function () {
+      var idx = 0;
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      var origFn = args[0];
+      var list = args[args.length - 1];
+      var copiedArgs = args.slice();
+      copiedArgs[0] = function () {
+        for (var _len2 = arguments.length, innerArgs = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          innerArgs[_key2] = arguments[_key2];
+        }
+        var result = origFn.apply(void 0, _toConsumableArray(concatMap$1(identity, [innerArgs, [idx, list]])));
+        idx += 1;
+        return result;
+      };
+      return fn.apply(void 0, _toConsumableArray(copiedArgs));
+    };
+  };
+
   var always = function always(a, _) {
     return a;
   };
@@ -802,6 +823,18 @@
   };
   var lte$1 = _curry2(lte);
 
+  var memoizeWith = function memoizeWith(mFn, fn) {
+    var cache = {};
+    return function (data) {
+      var key = mFn(data);
+      if (!has$1(key, cache)) {
+        cache[key] = fn(data);
+      }
+      return cache[key];
+    };
+  };
+  var memoizeWith$1 = _curry2(memoizeWith);
+
   var or = function or(a, b) {
     return a || b;
   };
@@ -992,6 +1025,11 @@
   };
   var within$1 = _curry3(within);
 
+  var amend = function amend(a, b) {
+    return Object.assign({}, a, b);
+  };
+  var amend$1 = _curry2(amend);
+
   var any = function any(schema, obj) {
     return Object.keys(schema).some(function (key) {
       return schema[key](obj[key]);
@@ -1173,6 +1211,7 @@
   exports.uniqBy = uniqBy$1;
   exports.update = update$1;
   exports.zip = zip$1;
+  exports.addIndex = addIndex;
   exports.always = always$1;
   exports.and = and$1;
   exports.ap = ap$1;
@@ -1204,6 +1243,7 @@
   exports.isNil = isNil;
   exports.lt = lt$1;
   exports.lte = lte$1;
+  exports.memoizeWith = memoizeWith$1;
   exports.not = not;
   exports.on = on$1;
   exports.or = or$1;
@@ -1246,6 +1286,7 @@
   exports.round = round$1;
   exports.subtract = subtract$1;
   exports.within = within$1;
+  exports.amend = amend$1;
   exports.any = any$1;
   exports.draft = draft$1;
   exports.height = height;

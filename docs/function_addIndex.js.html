@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>function/gt.js - Documentation</title>
+    <title>function/addIndex.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">function/gt.js</h1>
+    <h1 class="page-title">function/addIndex.js</h1>
     
 
     
@@ -49,34 +49,48 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
+            <pre class="prettyprint source linenums"><code>import concatMap from '../array/concatMap'
+import identity from './identity'
 
 /**
- * @name gt
+ * @name addIndex
  * @function
- * @since v0.1.0
+ * @since v0.11.2
  * @category Function
- * @sig a -> a -> Boolean
- * @description Checks if a value is greater than the other
- * @param {Any} a Value to determine if it is greater than the other
- * @param {Any} b Value to compare to see if it is less than the other
- * @return {Boolean} Based on the outcome of the logic a Boolean
+ * @sig
+ * ((a … → b) … → [a] → *) → ((a …, Int, [a] → b) … → [a] → *)
+ * @description Creates a new list iteration function from an existing one by adding two new parameters to its callback function: the current index, and the entire list. This will only work for functions in which the iteration callback function is the first parameter, and where the list is the last parameter. (This latter might be unimportant if the list parameter is not used.)
+ * @param {Function} fn The original function to add the index and list onto
+ * @return {Function} A new function that will come with the index and full list attached.
  * @example
- * import { gt } from 'kyanite'
+ * import { addIndex, map, filter } from 'kyanite'
+ * const m = addIndex(map)
+ * const f = addIndex(filter)
+ * const r = addIndex(reduce)
+ * const data = ['f', 'o', 'o', 'b', 'a', 'r']
  *
- * gt(2, 1) // => true
- * gt('b', 'a') // => true
- *
- * // It's also curried
- *
- * const g = gt(2)
- *
- * g(1) // => true
- * g(2) // => false
+ * m((x, i) => `${x}-${i}`, data) // => ['f-0', 'o-1', 'o-2', 'b-3', 'a-4', 'r-5']
+ * f((_, i) => i > 2, data) // => ['b', 'a', 'r']
+ * r((val, acc, i) => acc.concat(val + i), [], data) // => ['f0', 'o1', 'o2', 'b3', 'a4', 'r5']
  */
-const gt = (a, b) => b > a
+const addIndex = fn => (...args) => {
+  let idx = 0
+  const [origFn] = args
+  const list = args[args.length - 1]
+  const copiedArgs = args.slice()
 
-export default _curry2(gt)
+  copiedArgs[0] = (...innerArgs) => {
+    const result = origFn(...concatMap(identity, [innerArgs, [idx, list]]))
+
+    idx += 1
+
+    return result
+  }
+
+  return fn(...copiedArgs)
+}
+
+export default addIndex
 </code></pre>
         </article>
     </section>
