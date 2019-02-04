@@ -38,6 +38,12 @@ test('isEmpty -- Handles Maps and Sets', t => {
   t.end()
 })
 
+test('isEmpty -- Works with undefined and null', t => {
+  t.same(isEmpty(undefined), true)
+  t.same(isEmpty(null), true)
+  t.end()
+})
+
 test('isEmpty -- empty Errors on numeric values', t => {
   try {
     isEmpty(10)

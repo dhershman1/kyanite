@@ -2,7 +2,7 @@
  * @name reduced
  * @function
  * @since v0.11.0
- * @category Array
+ * @category Function
  * @sig (a -> a) -> a
  * @description
  * Used to optimize reduce iterations, can be used to short circuit a reduce without needing to iterate an entire array

@@ -18,7 +18,7 @@ import _curry2 from '../_internals/_curry2'
  * apply(Math.max, [1, 2, 3, -99, 42, 6, 7]) // => 42
  *
  * // It's also curried
- * const fn = apply(2)
+ * const fn = apply(x => x * 2)
  *
  * fn(2) // => 4
  * fn(100) // => 200
