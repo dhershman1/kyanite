@@ -6,7 +6,7 @@ import _curry2 from '../_internals/_curry2'
  * @since v0.11.2
  * @category Object
  * @sig Object -> Object -> Object
- * @description Updates an object by merging a newer one into the old
+ * @description Updates an object by amending from right to left
  * @param {Object} a The new object data or values
  * @param {Object} b The object we want to amend/update
  * @return {Object} The newly amended object (shallow copy)
