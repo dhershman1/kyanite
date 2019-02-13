@@ -1,4 +1,5 @@
 .travis.yml
+.circleci
 rollup.config.js
 rollup.split.js
 .eslintrc.js
