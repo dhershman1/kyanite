@@ -55,6 +55,7 @@ jobs:
       # send to codecov
       - codecov/upload:
           upload_name: k-tests
+          token: $CODECOV_TOKEN
           file: coverage.lcov
       # run coverage check
       - run:
