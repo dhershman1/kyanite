@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>string/split.js - Documentation</title>
+    <title>number/sum.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">string/split.js</h1>
+    <h1 class="page-title">number/sum.js</h1>
     
 
     
@@ -49,31 +49,28 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
+            <pre class="prettyprint source linenums"><code>import reduce from '../function/reduce'
+import add from './add'
 
 /**
- * @name split
+ * @name sum
+ * @since v0.11.3
  * @function
- * @since v0.9.0
- * @category String
- * @sig String -> String -> Array
- * @description Takes a string and splits it into an array based on the character passed in
- * @param {String} char The character to split the string by
- * @param {String} str The string we want to split
- * @return {Array} A new array of characters from the string
+ * @category Number
+ * @sig Array -> Number
+ * @description Takes an Array of numbers and adds all of them together
+ * @param {Array} arr The array of numbers to combine
+ * @return {Number} The sum of the numbers
+ *
  * @example
- * import { split } from 'kyanite'
+ * import { sum } from 'kyanite'
  *
- * split('', 'abc') // => ['a', 'b', 'c']
- * split(':', '123:334') // => ['123', '334']
- *
- * const sp = split('')
- *
- * sp('abc') // => ['a', 'b', 'c']
+ * sum([1, 2, 3]) // => 6
+ * sum([1, 2, -3]) // => 0
  */
-const split = (char, str) => str.split(char)
+const sum = reduce(add, 0)
 
-export default _curry2(split)
+export default sum
 </code></pre>
         </article>
     </section>
