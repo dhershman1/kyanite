@@ -42,7 +42,7 @@ jobs:
       # run tests!
       - run:
           name: test
-          command: npm test:cov
+          command: npm run test:cov
       # run coverage check
       - run:
           name: coverage
