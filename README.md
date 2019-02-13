@@ -26,8 +26,8 @@
   <a href="https://circleci.com/gh/dhershman1/kyanite/tree/master">
     <img alt="Build Status" src="https://circleci.com/gh/dhershman1/kyanite/tree/master.svg?style=svg">
   </a>
-  <a href="https://coveralls.io/github/dhershman1/kyanite?branch=master">
-    <img alt="Coverage" src="https://img.shields.io/coveralls/github/dhershman1/kyanite.svg?style=flat-square">
+  <a href="https://codecov.io/gh/dhershman1/kyanite">
+    <img alt="Coverage" src="https://codecov.io/gh/dhershman1/kyanite/branch/master/graph/badge.svg">
   </a>
 </p>
 <br />
