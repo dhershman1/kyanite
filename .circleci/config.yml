@@ -7,10 +7,6 @@ orbs:
   codecov: codecov/codecov@1.0.3
 jobs:
   build:
-    branches:
-      only:
-        - master
-        - development
     docker:
       # specify the version you desire here
       - image: circleci/node:10.5
@@ -63,3 +59,13 @@ jobs:
       - run:
           name: coverage
           command: npm run check-cov
+workflows:
+  version: 2
+  main:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+                - development
