@@ -3,6 +3,9 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2
+notify:
+  webhooks:
+    - url: https://coveralls.io/webhook?repo_token=XSn65nAeTRaqD09ruo4IOarOjGKJaisyT
 jobs:
   build:
     docker:
