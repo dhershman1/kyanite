@@ -37,7 +37,7 @@
     "create": "node scripts/create-export.js && standard --fix src/index.js",
     "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
     "scripts": "npm-run-all create docs build",
-    "test:cov": "nyc npm test",
+    "test:cov": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "check-cov": "nyc check-coverage --lines 95 --functions 100 --branches 95",
     "report": "nyc report --reporter=text-lcov | coveralls",
     "cov": "nyc --reporter=html npm test",

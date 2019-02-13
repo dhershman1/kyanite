@@ -42,7 +42,7 @@ jobs:
       - run:
           name: lint
           command: npm run lint
-      # run tests!
+      # run tests and report coverage
       - run:
           name: test
           command: npm run test:cov
@@ -50,7 +50,3 @@ jobs:
       - run:
           name: coverage
           command: npm run check-cov
-      # report coverage
-      - run:
-          name: report
-          command: npm run report
