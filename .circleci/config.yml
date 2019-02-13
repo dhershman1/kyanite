@@ -2,10 +2,12 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
+version: 2.1
 notify:
   webhooks:
     - url: https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN
+orbs:
+  codecov: codecov/codecov@1.0.3
 jobs:
   build:
     docker:
@@ -46,6 +48,9 @@ jobs:
       - run:
           name: test
           command: npm run test:cov
+      # send to codecov
+      - codecov/upload:
+          upload_name: k-tests
       # run coverage check
       - run:
           name: coverage
