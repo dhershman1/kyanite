@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.11.3
+
+### New
+
+- Added `sum` function which takes an array of numbers and adds them together
+
 ## v0.11.2
 
 ### New

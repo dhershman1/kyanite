@@ -952,9 +952,9 @@
   var factors = function factors() {
     var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
     var val = x < 0 ? negate(x) : x;
-    return x ? _toConsumableArray(compose$1(filter$1(function (i) {
+    return x ? [].concat(_toConsumableArray(compose$1(filter$1(function (i) {
       return rem$1(i, val) === 0;
-    }), range$1(0), val)).concat([val]) : [];
+    }), range$1(0), val)), [val]) : [];
   };
 
   var gcd = function gcd(a, b) {
@@ -1019,6 +1019,8 @@
     return b - a;
   };
   var subtract$1 = _curry2(subtract);
+
+  var sum = reduce$1(add$1, 0);
 
   var within = function within(min, max, n) {
     return min < n && max > n;
@@ -1285,6 +1287,7 @@
   exports.rem = rem$1;
   exports.round = round$1;
   exports.subtract = subtract$1;
+  exports.sum = sum;
   exports.within = within$1;
   exports.amend = amend$1;
   exports.any = any$1;
