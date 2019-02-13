@@ -57,6 +57,7 @@ jobs:
           upload_name: k-tests
           token: $CODECOV_TOKEN
           file: coverage.lcov
+          flags: unittests
       # run coverage check
       - run:
           name: coverage
