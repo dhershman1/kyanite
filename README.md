@@ -23,8 +23,8 @@
   <a href="https://david-dm.org/dhershman1/kyanite?type=dev">
     <img alt="Dev Dependencies" src="https://img.shields.io/david/dev/dhershman1/kyanite.svg?style=flat-square">
   </a>
-  <a href="https://travis-ci.org/dhershman1/kyanite">
-    <img alt="Build Status" src="https://img.shields.io/travis/dhershman1/kyanite.svg?style=flat-square">
+  <a href="https://circleci.com/gh/dhershman1/kyanite">
+    <img alt="Build Status" src="https://img.shields.io/circleci/project/github/dhershman1/kyanite.svg?style=flat-square">
   </a>
   <a href="https://coveralls.io/github/dhershman1/kyanite?branch=master">
     <img alt="Coverage" src="https://img.shields.io/coveralls/github/dhershman1/kyanite.svg?style=flat-square">
