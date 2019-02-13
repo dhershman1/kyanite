@@ -3,9 +3,6 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2.1
-notify:
-  webhooks:
-    - url: https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN
 orbs:
   codecov: codecov/codecov@1.0.3
 jobs:
