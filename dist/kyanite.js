@@ -1010,6 +1010,8 @@
   };
   var pow$1 = _curry2(pow);
 
+  var product = reduce$1(multiply$1, 1);
+
   var round = function round(precision, num) {
     return Number("".concat(Math.round("".concat(num, "e").concat(precision)), "e-").concat(precision));
   };
@@ -1283,6 +1285,7 @@
   exports.multiply = multiply$1;
   exports.negate = negate;
   exports.pow = pow$1;
+  exports.product = product;
   exports.range = range$1;
   exports.rem = rem$1;
   exports.round = round$1;
