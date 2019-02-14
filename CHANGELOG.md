@@ -15,6 +15,7 @@
 - TS types
   - Added `addIndex` type
   - Added `memoizeWith` type
+- `addIndex` Documentation
 
 ## v0.11.2
 
