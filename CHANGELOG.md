@@ -5,6 +5,15 @@
 ### New
 
 - Added `sum` function which takes an array of numbers and adds them together
+  - TS type added
+- Added `product` function which takes an array of numbers and multiplies them together
+  - TS type added
+
+### Fixed
+
+- TS types
+  - Added `addIndex` type
+  - Added `memoizeWith` type
 
 ## v0.11.2
 
