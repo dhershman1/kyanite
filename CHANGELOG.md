@@ -8,6 +8,7 @@
   - TS type added
 - Added `product` function which takes an array of numbers and multiplies them together
   - TS type added
+- Switched over to [Circleci](https://circleci.com/) and [Codecov](https://codecov.io/)
 
 ### Fixed
 
