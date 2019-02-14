@@ -16,6 +16,7 @@
   - Added `addIndex` type
   - Added `memoizeWith` type
 - `addIndex` Documentation
+- `slice` Documentation
 
 ## v0.11.2
 
