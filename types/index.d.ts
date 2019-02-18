@@ -39,6 +39,11 @@ declare namespace K {
     add(a: number): (b: number) => number;
 
     /**
+     * Creates a new list iteration function from an existing one by adding two new parameters to its callback function: the current index, and the entire list. This will only work for functions in which the iteration callback function is the first parameter, and where the list is the last parameter. (This latter might be unimportant if the list parameter is not used.)
+     */
+    addIndex(fn: Function): Function
+
+    /**
      * Always returns the first param sent to it, and ignores the 2nd also known as the K combinator
      */
     always<T>(val: T): () => T;
@@ -488,6 +493,12 @@ declare namespace K {
     mean(x: ReadonlyArray<number>): number;
 
     /**
+     * Creates a new function that, when invoked, caches the result of calling fn for a given argument set and returns the result. Subsequent calls to the memoized fn with the same argument set will not result in an additional call to fn; instead, the cached result for that set of arguments will be returned.
+     */
+    memoizeWith(mFn: Function, fn: Function): Function;
+    memoizeWith(mFn: Function): (fn: Function) => Function;
+
+    /**
      * Goes through an array of values and grabs the min value of the array
      */
     min<T extends Ord>(list: ReadonlyArray<T>): T;
@@ -605,6 +616,11 @@ declare namespace K {
      */
     prepend<T>(x: T, list: ReadonlyArray<T>): T[];
     prepend<T>(x: T): (list: ReadonlyArray<T>) => T[];
+
+    /**
+     * Takes an array of numbers and multiplies them together
+     */
+    product(arr: ReadonlyArray<number>): number
 
     /**
      * Brings back the indicated property of an object if it exists
@@ -748,6 +764,11 @@ declare namespace K {
      */
     subtract(a: number, b: number): number;
     subtract(a: number): (b: number) => number;
+
+    /**
+     * Takes an array of numbers and adds them together
+     */
+    sum(arr: ReadonlyArray<number>): number
 
     /**
      * Takes the values from an array up until the point specified

@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.11.3
+
+### New
+
+- Added `sum` function which takes an array of numbers and adds them together
+  - TS type added
+- Added `product` function which takes an array of numbers and multiplies them together
+  - TS type added
+- Switched over to [Circleci](https://circleci.com/) and [Codecov](https://codecov.io/)
+
+### Fixed
+
+- TS types
+  - Added `addIndex` type
+  - Added `memoizeWith` type
+- `addIndex` Documentation
+- `slice` Documentation
+
 ## v0.11.2
 
 ### New

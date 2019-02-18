@@ -11,7 +11,7 @@ import _curry3 from '../_internals/_curry3'
  * @description
  * Slices out items from a list type of data, like a list of characters or items
  * @param {Number} a The index at which to begin extraction
- * @param {Number} b The index for what the extraction goes to. However does not extract
+ * @param {Number} b The index for what the extraction goes to.
  * @param {Array|String} list The list of items or characters to slice
  * @return {Array|String} The newly created list
  *
