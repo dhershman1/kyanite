@@ -422,7 +422,7 @@
 
 
 <div class="description">
-    Creates a new list iteration function from an existing one by adding two new parameters to its callback function: the current index, and the entire list. This will only work for functions in which the iteration callback function is the first parameter, and where the list is the last parameter. (This latter might be unimportant if the list parameter is not used.)
+    Creates a new function to iterate through an array, the provided function should be one that accepts a higher order function (such as reduce, filter, or map). It will then attach the index to the provided function upon calling it.
 </div>
 
 
@@ -435,7 +435,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>import { addIndex, map, filter, reduce } from 'kyanite'
+    <pre class="prettyprint"><code>import { addIndex, filter, map, reduce } from 'kyanite'
 const m = addIndex(map)
 const f = addIndex(filter)
 const r = addIndex(reduce)
@@ -4469,7 +4469,7 @@ concat('bar', 'foo') // => 'foobar'</code></pre>
       <ul class="dummy">
         
         <li>
-          Function -> Array -> Array
+          (* -> b) -> [a] -> [b]
         </li>
         
       </ul>
@@ -4521,10 +4521,10 @@ concat('bar', 'foo') // => 'foobar'</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>import { concatMap } from 'kyanite'
+    <pre class="prettyprint"><code>import { concatMap, identity } from 'kyanite'
 
 concatMap(x => [x, x], [1, 2, 3]) // => [1, 1, 2, 2, 3, 3]
-concatMap(x => x, [[1, 2], [3, 4], [5, 6]]) // => [1, 2, 3, 4, 5, 6]
+concatMap(identity, [[1, 2], [3, 4], [5, 6]]) // => [1, 2, 3, 4, 5, 6]
 
 // It's also curried
 
@@ -6644,7 +6644,7 @@ const desc = descendBy(x => x.name)
       <ul class="dummy">
         
         <li>
-          Array [a] -> Array -> [b]
+          [*] -> [*] -> [*]
         </li>
         
       </ul>
@@ -7259,7 +7259,7 @@ d({ a: 1, b: 2, c: 3 }) // => { a: 2, b: 4, c: 6 }</code></pre>
       <ul class="dummy">
         
         <li>
-          Number -> Array -> Array
+          Number -> [a] -> [a]
         </li>
         
       </ul>
@@ -7477,7 +7477,7 @@ d([1, 2, 3, 4, 5]) // => [4, 5]</code></pre>
       <ul class="dummy">
         
         <li>
-          (a -> Boolean) -> Array [a] -> Array [a]
+          (a -> Boolean) -> [a] -> [a]
         </li>
         
       </ul>
@@ -8380,6 +8380,17 @@ fn('cba') // => false</code></pre>
     </dd>
     
 
+    
+    <dt class="tag-sig">Signature:</dt>
+    <dd class="tag-sig">
+      <ul class="dummy">
+        
+        <li>
+          * -> [*]
+        </li>
+        
+      </ul>
+    </dd>
     
 
     
@@ -9431,7 +9442,7 @@ negativeFactors(36) // => [-1, -2, -3, -4, -6, -9, -12, -18, -36]</code></pre>
       <ul class="dummy">
         
         <li>
-          Filterable f => (a → Boolean) → f a → f a
+          (a -> Boolean) -> [a] -> [a]
         </li>
         
       </ul>
@@ -9851,7 +9862,7 @@ negativeFactors(36) // => [-1, -2, -3, -4, -6, -9, -12, -18, -36]</code></pre>
       <ul class="dummy">
         
         <li>
-          Function -> Array -> Maybe
+          (a -> Boolean) -> [a] -> Maybe
         </li>
         
       </ul>
@@ -10934,7 +10945,7 @@ search('test') // => true</code></pre>
       <ul class="dummy">
         
         <li>
-          Function -> Array -> Object
+          (a -> String) -> [a] -> { String: [a] }
         </li>
         
       </ul>
@@ -12616,7 +12627,7 @@ inc(inc(1)) // => 3</code></pre>
       <ul class="dummy">
         
         <li>
-          Number -> a -> [b]
+          Number -> [a] -> [a]
         </li>
         
       </ul>
@@ -12849,7 +12860,7 @@ inc(inc(1)) // => 3</code></pre>
       <ul class="dummy">
         
         <li>
-          Array a -> Array a -> Array a
+          [*] -> [*] -> [*]
         </li>
         
       </ul>
@@ -14466,7 +14477,7 @@ j(['test', 'that', 'thing']) // => 'test that thing'</code></pre>
       <ul class="dummy">
         
         <li>
-          (a, b, …, m) → n → ((a, b, …, m) → [n])
+          [(a, b, ...) -> c] -> [a, b, ...] -> [[c]]
         </li>
         
       </ul>
@@ -16759,7 +16770,7 @@ m([{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 6 }</code>
 
 
 <div class="description">
-    Creates a new function that, when invoked, caches the result of calling fn for a given argument set and returns the result. Subsequent calls to the memoized fn with the same argument set will not result in an additional call to fn; instead, the cached result for that set of arguments will be returned.
+    Creates a new function that, when invoked, caches the result of calling fn for a given argument set and returns the result. Subsequent calls to the memoized fn with the same argument set will not result in an additional call to fn; instead, the cached result for that set of arguments will be returned. This is primarily based off the Ramda memoizeWith function. They really nailed down the aspect for this guy, you can find it here: https://ramdajs.com/docs/#memoizeWith
 </div>
 
 

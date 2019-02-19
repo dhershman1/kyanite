@@ -9,7 +9,7 @@ import uniq from './uniq'
  * @function
  * @since v0.1.0
  * @category Array
- * @sig Array a -> Array a -> Array a
+ * @sig [*] -> [*] -> [*]
  * @description Returns an array containing elements present in both arrays
  * @param {Array} a Our first array value to compare with
  * @param {Array} b Our second array value to compare with

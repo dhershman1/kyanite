@@ -5,7 +5,7 @@ import _curry3 from '../_internals/_curry3'
  * @function
  * @since v0.1.0
  * @category Array
- * @sig Number -> a -> [b]
+ * @sig Number -> [a] -> [a]
  * @description Insert an item in a certain index of an array
  * @param  {Number} i The index number to remove from
  * @param  {Any} d The data we are going to be inserting
