@@ -17,6 +17,7 @@
 
 ### Fixed
 
+- Fixed a lot of signature displays through out the docs
 - Documentation Fixes:
   - `addIndex` description tweaks
   - `memoizeWith` added [RamdaJs](https://ramdajs.com) credit since it's based mostly off their version
