@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>number/product.js - Documentation</title>
+    <title>number/median.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">number/product.js</h1>
+    <h1 class="page-title">number/median.js</h1>
     
 
     
@@ -49,28 +49,46 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import reduce from '../function/reduce'
-import multiply from './multiply'
+            <pre class="prettyprint source linenums"><code>import sort from '../array/sort'
+import ascend from '../function/ascend'
+import mean from './mean'
+import slice from '../list/slice'
+import pipe from '../function/pipe'
 
 /**
- * @name product
- * @since v0.11.3
+ * @name median
  * @function
+ * @since v0.12.0
  * @category Number
- * @sig Array -> Number
- * @description Takes an Array of numbers and multiplies all of them together
- * @param {Array} arr The array of numbers to combine
- * @return {Number} The product of the numbers
+ * @sig [Number] -> Number
+ * @description Takes an array of numbers and finds the median
+ * @param {Array} list The array of numbers to calculate
+ * @return {Number} The calculated median from the array
  *
  * @example
- * import { product } from 'kyanite'
+ * import { median } from 'kyanite'
  *
- * product([1, 2, 3]) // => 6
- * product([2, 3, 0]) // => 0
+ * median([3, 13, 7, 5, 21, 23, 39, 23, 40, 23, 14, 12, 56, 23, 29]) // => 23
+ * median([3, 13, 7, 5, 21, 23, 23, 40, 23, 14, 12, 56, 23, 29]) // => 22
  */
-const product = reduce(multiply, 1)
+const median = list => {
+  const len = list.length
 
-export default product
+  if (len === 0) {
+    return NaN
+  }
+
+  const width = 2 - len % 2
+  const idx = (len - width) / 2
+
+  return pipe([
+    sort(ascend),
+    slice(idx, idx + width),
+    mean
+  ], list)
+}
+
+export default median
 </code></pre>
         </article>
     </section>

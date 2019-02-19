@@ -433,7 +433,6 @@
   var ascend = function ascend(a, b) {
     return a < b ? -1 : a > b ? 1 : 0;
   };
-  var ascend$1 = _curry2(ascend);
 
   function _curry4(fn) {
     return function f4(a, b, c, d) {
@@ -464,7 +463,7 @@
   var on$1 = _curry4(on);
 
   var sortBy = function sortBy(fn, arr) {
-    return sort$1(on$1(ascend$1, fn), arr);
+    return sort$1(on$1(ascend, fn), arr);
   };
   var sortBy$1 = _curry2(sortBy);
 
@@ -550,7 +549,7 @@
   var apply$1 = _curry2(apply);
 
   var ascendBy = function ascendBy(fn, a, b) {
-    return ascend$1(fn(a), fn(b));
+    return ascend(fn(a), fn(b));
   };
   var ascendBy$1 = _curry3(ascendBy);
 
@@ -768,10 +767,9 @@
   var descend = function descend(a, b) {
     return a > b ? -1 : a < b ? 1 : 0;
   };
-  var descend$1 = _curry2(descend);
 
   var descendBy = function descendBy(fn, a, b) {
-    return descend$1(fn(a), fn(b));
+    return descend(fn(a), fn(b));
   };
   var descendBy$1 = _curry3(descendBy);
 
@@ -841,16 +839,16 @@
   var or$1 = _curry2(or);
 
   var pipe = function pipe(arr, init) {
-    return arr.reduce(function (acc, fn) {
+    return reduce$1(function (fn, acc) {
       return fn(acc);
-    }, init);
+    }, init, arr);
   };
   var pipe$1 = _curry2(pipe);
 
   var pipeP = function pipeP(fns, data) {
-    return fns.reduce(function (acc, f) {
+    return reduce$1(function (f, acc) {
       return acc.then(f);
-    }, Promise.resolve(data));
+    }, Promise.resolve(data), fns);
   };
   var pipeP$1 = _curry2(pipeP);
 
@@ -998,6 +996,16 @@
 
   var mean = function mean(x) {
     return divide$1(length(x), reduce$1(add$1, 0, x));
+  };
+
+  var median = function median(list) {
+    var len = list.length;
+    if (len === 0) {
+      return NaN;
+    }
+    var width = 2 - len % 2;
+    var idx = (len - width) / 2;
+    return pipe$1([sort$1(ascend), slice$1(idx, idx + width), mean], list);
   };
 
   var multiply = function multiply(a, b) {
@@ -1220,7 +1228,7 @@
   exports.and = and$1;
   exports.ap = ap$1;
   exports.apply = apply$1;
-  exports.ascend = ascend$1;
+  exports.ascend = ascend;
   exports.ascendBy = ascendBy$1;
   exports.both = both$1;
   exports.branch = branch$1;
@@ -1232,7 +1240,7 @@
   exports.curryN = curryN;
   exports.deepEq = deepEq$1;
   exports.defaultTo = defaultTo$1;
-  exports.descend = descend$1;
+  exports.descend = descend;
   exports.descendBy = descendBy$1;
   exports.either = either$1;
   exports.encase = encase$1;
@@ -1282,6 +1290,7 @@
   exports.isZero = isZero;
   exports.lcm = lcm$1;
   exports.mean = mean;
+  exports.median = median;
   exports.multiply = multiply$1;
   exports.negate = negate;
   exports.pow = pow$1;
