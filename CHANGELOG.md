@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.12.0
+
+### BREAKING CHANGES
+
+- `ascend` and `descend` are no longer curried since they're meant to be sort based functionality and will always be called with their 2 params
+  - *Note*: `ascendBy` and `descendBy` have kept their curried status
+
+### New
+
+- Added a `median` function which gets the median of an array of numbers
+
+### Improved
+
+- `pipe` & `pipeP` are now using the Kyanite reduce giving them a small performance boost
+
+### Fixed
+
+- Documentation Fixes:
+  - `addIndex` description tweaks
+  - `memoizeWith` added [RamdaJs](https://ramdajs.com) credit since it's based mostly off their version
+
 ## v0.11.3
 
 ### New
