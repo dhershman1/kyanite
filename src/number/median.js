@@ -10,7 +10,7 @@ import pipe from '../function/pipe'
  * @since v0.12.0
  * @category Number
  * @sig [Number] -> Number
- * @description Takes an array of numbers and finds the median
+ * @description Takes an array of numbers and calculates the median
  * @param {Array} list The array of numbers to calculate
  * @return {Number} The calculated median from the array
  *

@@ -10,6 +10,7 @@
 ### New
 
 - Added a `median` function which gets the median of an array of numbers
+  - Added onto the types definitions
 
 ### Improved
 
