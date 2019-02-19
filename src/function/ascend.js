@@ -1,5 +1,3 @@
-// import _curry2 from '../_internals/_curry2'
-
 /**
  * @name ascend
  * @function
