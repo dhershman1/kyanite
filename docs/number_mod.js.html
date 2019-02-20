@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>function/either.js - Documentation</title>
+    <title>number/mod.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">function/either.js</h1>
+    <h1 class="page-title">number/mod.js</h1>
     
 
     
@@ -49,36 +49,49 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import _curry3 from '../_internals/_curry3'
+            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
+import some from '../array/some'
+import identity from '../function/identity'
 
 /**
- * @name either
+ * @name mod
  * @function
- * @since v0.9.0
- * @category Function
- * @sig (a -> Boolean)-> (a -> Boolean) -> a -> Boolean
- * @description Validates that the value passes in either the provided functions
- * @param {Function} fn The first function to test the value in
- * @param {Function} gn The second function to test the value in
- * @param {Any} a The value to run in the two functions
- * @return {Boolean} Based on if either functions return a truthy value when ran
+ * @since v0.12.0
+ * @category Number
+ * @sig Number -> Number -> Boolean
+ * @description Behaves like the modulo operator should mathematically, unlike the `%` operator. The arguments are required to be integers and will return NaN when the modulus is zero or negative.
+ * @param {Number} a The the dividend
+ * @param {Number} b The modulus
+ * @return {Number} The result of `b mod a`
  *
  * @example
- * import { either } from 'kyanite'
+ * import { mod } from 'kyanite'
  *
- * either(x => x > 10, x => x &lt; 20, 21) // => true
+ * mod(17, 5) // => 2
+ * mod(-17, 5) // => 3
+ * mod(-5, 4) // => 3
+ * mod(17, 0) // => NaN
+ * mod(17, -5) // => NaN
+ * mod(17.2, 5) // => NaN
+ * mod(17, 5.3) // => NaN
  *
  * // It's also curried
+ * const fn = mod(17)
  *
- * const e = either(x => x &lt; 10, x => x === 11)
- *
- * e(20) // => false
- * e(9) // => true
- * e(11) // => true
+ * fn(5) // => 2
+ * fn(-5) // => NaN
+ * fn(0) // => NaN
+ * fn(5.3) // => NaN
  */
-const either = (fn, gn, a) => fn(a) || gn(a)
+const mod = (a, b) => {
+  if (some(identity, [!Number.isInteger(a), !Number.isInteger(b), b &lt; 1])) {
+    return NaN
+  }
 
-export default _curry3(either)
+  return ((a % b) + b) % b
+}
+
+export default _curry2(mod)
 </code></pre>
         </article>
     </section>

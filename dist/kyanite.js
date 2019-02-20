@@ -1008,6 +1008,14 @@
     return pipe$1([sort$1(ascend), slice$1(idx, idx + width), mean], list);
   };
 
+  var mod = function mod(a, b) {
+    if (some$1(identity, [!Number.isInteger(a), !Number.isInteger(b), b < 1])) {
+      return NaN;
+    }
+    return (a % b + b) % b;
+  };
+  var mod$1 = _curry2(mod);
+
   var multiply = function multiply(a, b) {
     return a * b;
   };
@@ -1291,6 +1299,7 @@
   exports.lcm = lcm$1;
   exports.mean = mean;
   exports.median = median;
+  exports.mod = mod$1;
   exports.multiply = multiply$1;
   exports.negate = negate;
   exports.pow = pow$1;
