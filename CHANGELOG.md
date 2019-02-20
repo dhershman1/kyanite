@@ -11,6 +11,8 @@
 
 - Added a `median` function which gets the median of an array of numbers
   - Added onto the types definitions
+- Added a `mod` function which behaves like a modulo would in actual mathematics
+  - Added onto the types definitions
 
 ### Improved
 

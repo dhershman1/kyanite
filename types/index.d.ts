@@ -515,6 +515,12 @@ declare namespace K {
     minBy<T>(fn: (a: T) => Ord): (a: ReadonlyArray<T>) => T;
 
     /**
+     * Behaves like the modulo operator should mathematically, unlike the `%` operator. The arguments are required to be integers and will return NaN when the modulus is zero or negative.
+     */
+    mod(a: number, b: number): number;
+    mod(a: number): (b: number) => number;
+
+    /**
      * Multiplies the provided numbers
      */
     multiply(a: number, b: number): number;
