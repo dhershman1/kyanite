@@ -11163,7 +11163,7 @@ g([4.2, 6.1, 6.4]) // => { '4': [4.2], '6': [6.1, 6.4] }</code></pre>
       <ul class="dummy">
         
         <li>
-          a -> a -> Boolean
+          a -> b -> Boolean
         </li>
         
       </ul>
@@ -11217,15 +11217,15 @@ g([4.2, 6.1, 6.4]) // => { '4': [4.2], '6': [6.1, 6.4] }</code></pre>
     
     <pre class="prettyprint"><code>import { gt } from 'kyanite'
 
-gt(2, 1) // => true
+gt(1, 2) // => true
 gt('b', 'a') // => true
 
 // It's also curried
 
-const g = gt(2)
+const fn = gt(2)
 
-g(1) // => true
-g(2) // => false</code></pre>
+fn(1) // => true
+fn(2) // => false</code></pre>
 
 
 
@@ -11383,7 +11383,7 @@ g(2) // => false</code></pre>
       <ul class="dummy">
         
         <li>
-          a -> a -> Boolean
+          a -> b -> Boolean
         </li>
         
       </ul>
@@ -11437,17 +11437,17 @@ g(2) // => false</code></pre>
     
     <pre class="prettyprint"><code>import { gte } from 'kyanite'
 
-gte(2, 1) // => true
+gte(1, 2) // => true
 gte(1, 1) // => true
-gte('b', 'a') // => true
+gte('a', 'b') // => true
 
 // It's also curried
 
-const g = gte(2)
+const fn = gte(2)
 
-g(1) // => true
-g(2) // => true
-g(3) // => false</code></pre>
+fn(1) // => true
+fn(2) // => true
+fn(3) // => false</code></pre>
 
 
 
@@ -15282,7 +15282,7 @@ j(['test', 'that', 'thing']) // => 'test that thing'</code></pre>
       <ul class="dummy">
         
         <li>
-          a -> a -> Boolean
+          a -> b -> Boolean
         </li>
         
       </ul>
@@ -15336,16 +15336,16 @@ j(['test', 'that', 'thing']) // => 'test that thing'</code></pre>
     
     <pre class="prettyprint"><code>import { lt } from 'kyanite'
 
-lt(1, 2) // => true
-lt('a', 'b') // => true
+lt(2, 1) // => true
+lt('b', 'a') // => true
 
 // It's also curried
 
-const g = lt(2)
+const fn = lt(2)
 
-g(1) // => false
-g(2) // => false
-g(3) // => true</code></pre>
+fn(1) // => false
+fn(2) // => false
+fn(3) // => true</code></pre>
 
 
 
@@ -15503,7 +15503,7 @@ g(3) // => true</code></pre>
       <ul class="dummy">
         
         <li>
-          a -> a -> Boolean
+          a -> b -> Boolean
         </li>
         
       </ul>
@@ -15557,17 +15557,17 @@ g(3) // => true</code></pre>
     
     <pre class="prettyprint"><code>import { lte } from 'kyanite'
 
-lte(1, 2) // => true
+lte(2, 1) // => true
 lte(1, 1) // => true
-lte('a', 'b') // => true
+lte('b', 'a') // => true
 
 // It's also curried
 
-const g = lte(2)
+const fn = lte(2)
 
-g(1) // => false
-g(2) // => true
-g(3) // => true</code></pre>
+fn(1) // => false
+fn(2) // => true
+fn(3) // => true</code></pre>
 
 
 

@@ -24,6 +24,7 @@
 - Documentation Fixes:
   - `addIndex` description tweaks
   - `memoizeWith` added [RamdaJs](https://ramdajs.com) credit since it's based mostly off their version
+  - `lt`, `lte`, `gt`, and `gte` all had invalid examples in their documentation. This is addressed now
 
 ## v0.11.3
 
