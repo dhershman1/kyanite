@@ -44,6 +44,7 @@
 - [Philosophy](#philosophy)
 - [Key Features](#key-features)
 - [How To](#how-to)
+- [Testing](#testing)
 - [Credit](#credit)
 
 ## Philosophy
@@ -106,6 +107,17 @@ Local copy script tag
   K.isEmpty({})
 </script>
 ```
+
+## Testing
+
+Kyanite follows the [tap](http://testanything.org/) setup using the [tape](https://github.com/substack/tape) testing suite.
+
+To run the tests:
+
+- `git clone` the repo
+- `cd` into the repo folder
+- Run `npm i`
+- Run `npm t`
 
 ## Credit
 
