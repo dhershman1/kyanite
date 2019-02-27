@@ -425,6 +425,13 @@
   };
   var some$1 = _curry2(some);
 
+  var somePass = function somePass(fns, data) {
+    return reduce$1(function (f, acc) {
+      return f(data) ? reduced(true) : acc;
+    }, false, fns);
+  };
+  var somePass$1 = _curry2(somePass);
+
   var sort = function sort(fn, a) {
     return a.slice().sort(fn);
   };
@@ -1221,6 +1228,7 @@
   exports.reject = reject$1;
   exports.remove = remove$1;
   exports.some = some$1;
+  exports.somePass = somePass$1;
   exports.sort = sort$1;
   exports.sortBy = sortBy$1;
   exports.sortWith = sortWith$1;
