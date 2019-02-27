@@ -4,3 +4,4 @@ coverage/
 .DS_Store
 tmp.js
 benching.js
+exp.js
