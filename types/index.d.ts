@@ -747,6 +747,12 @@ declare namespace K {
     some<T>(fn: (a: T) => boolean): (x: ReadonlyArray<T>) => boolean;
 
     /**
+     * Takes a value and passes it through an array of functions until a function returns true, or the end of the array is met
+     */
+    somePass<T>(fns: ReadonlyArray<(a: T) => boolean>, data: T): boolean;
+    somePass<T>(fns: ReadonlyArray<(a: T) => boolean>): (data: T) => boolean;
+
+    /**
      * Uses a comparison function to sort an array
      */
     sort<T>(fn: (a: T, b: T) => number, list: ReadonlyArray<T>): T[];

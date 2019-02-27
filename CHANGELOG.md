@@ -13,6 +13,8 @@
   - Added onto the types definitions
 - Added a `mod` function which behaves like a modulo would in actual mathematics
   - Added onto the types definitions
+- Added `somePass` function which takes an array of functions and passes a value through them until one passes or the end is reached
+  - Added into the types def
 
 ### Improved
 
