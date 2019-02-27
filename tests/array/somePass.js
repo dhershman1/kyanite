@@ -12,6 +12,7 @@ test('somePass -- Handles basic data', t => {
   t.same(somePass([x => x > 2, x => x < 4], 3), true)
   t.same(somePass([x => x > 0, x => x < 3], 5), true)
   t.same(somePass([x => x > 5, x => x < 8], 5), true)
+  t.same(somePass([x => x === 2, x => x === 4], 5), false)
   t.end()
 })
 
