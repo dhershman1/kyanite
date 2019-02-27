@@ -9,7 +9,7 @@ import identity from '../function/identity'
  * @category Number
  * @sig Number -> Number -> Number
  * @description Behaves like the modulo operator should mathematically, unlike the `%` operator. The arguments are required to be integers and will return NaN when the modulus is zero or negative.
- * @param {Number} a The the dividend
+ * @param {Number} a The dividend
  * @param {Number} b The modulus
  * @return {Number} The result of `b mod a`
  *

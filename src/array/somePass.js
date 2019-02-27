@@ -18,7 +18,8 @@ import reduced from '../function/reduced'
  * import { somePass } from 'kyanite'
  *
  * somePass([x => x > 2, x => x < 4], 3) // => true
- * somePass([x => x > 0, x => x < 3], 5) // => false
+ * somePass([x => x > 7, x => x < 3], 5) // => true
+ * somePass([x => x === 4, x => x === 6], 5) // => false
  *
  * // It is also curried
  *
