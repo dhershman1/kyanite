@@ -16,16 +16,14 @@ import reduced from '../function/reduced'
  * @example
  * import { find } from 'kyanite'
  *
- * find(v => v.val === 'test', [{val: 'test'}]) // => 'test'
  * find(v => v.val === 'none', [{val: 'test'}, {val: 'none'}]) // => { val: 'none' }
  * find(v => v > 2, [1, 2, 3, 4, 5]) // => 3
  *
  * // find is also curried
  *
- * const finder = find(v => v.val === 'test')
+ * const fn = find(v => v.val === 'test')
  *
- * finder([{val: 'test'}]) // => 'test'
- * finder([{val: 'test'}, {val: 'none'}]) // => { val: 'test' }
+ * fn([{val: 'test'}, {val: 'none'}]) // => { val: 'test' }
  */
 const find = (fn, arr) =>
   reduce((val, acc) =>
