@@ -189,6 +189,13 @@
   };
   var every$1 = _curry2(every);
 
+  var everyPass = function everyPass(fns, data) {
+    return reduce$1(function (f, acc) {
+      return !f(data) ? reduced(false) : acc;
+    }, true, fns);
+  };
+  var everyPass$1 = _curry2(everyPass);
+
   var find = function find(fn, arr) {
     return reduce$1(function (val, acc) {
       return fn(val) ? reduced(val) : acc;
@@ -1244,6 +1251,7 @@
   exports.eq = eq$1;
   exports.eqBy = eqBy$1;
   exports.every = every$1;
+  exports.everyPass = everyPass$1;
   exports.factors = factors;
   exports.filter = filter$1;
   exports.find = find$1;

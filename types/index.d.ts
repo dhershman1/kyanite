@@ -287,6 +287,12 @@ declare namespace K {
     every<T>(fn: (a: T) => boolean): (x: T[]) => boolean;
 
     /**
+     * Takes a value and passes it through an array of functions until the end of the array or one of the functions returns false
+     */
+    everyPass<T>(fns: ReadonlyArray<(a: T) => boolean>, data: T): boolean;
+    everyPass<T>(fns: ReadonlyArray<(a: T) => boolean>): (data: T) => boolean;
+
+    /**
      * Takes a number and builds an array of factors for that number
      */
     factors(n: number): number[];
