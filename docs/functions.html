@@ -5804,7 +5804,7 @@ dec(dec(3)) // => 1</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>import { deepEq } from 'kyanite'const q = { a: 1 }deepEq({ a: 1 }, { a: 1 }) // => truedeepEq({ a: 1, b: 2 }, { b: 2, a: 1 }) // => truedeepEq(/[A-Z]/, new RegExp('[A-Z]') // => truedeepEq([1, 2], [1, 2]) // => truedeepEq(new Date(), new Date()) // => truedeepEq({ a: { q } }, { a: { q } }) // => truedeepEq('test', new String('test')) // => truedeepEq(false, new Boolean(false)) // => truedeepEq(5, new Number(5)) // => truedeepEq([1, 2], [2, 1]) // => falsedeepEq({ a: 1 }, { b: 1 }) // => falsedeepEq(new Date('11/14/1992'), new Date('11/14/2018')) // => falsedeepEq([], {}) // => false</code></pre>
+    <pre class="prettyprint"><code>import { deepEq } from 'kyanite'const q = { a: 1 }deepEq({ a: 1 }, { a: 1 }) // => truedeepEq({ a: 1, b: 2 }, { b: 2, a: 1 }) // => truedeepEq(/[A-Z]/, new RegExp('[A-Z]') // => truedeepEq([1, 2], [1, 2]) // => truedeepEq(new Date(), new Date()) // => truedeepEq({ a: { q } }, { a: { q } }) // => truedeepEq('test', new String('test')) // => falsedeepEq(false, new Boolean(false)) // => falsedeepEq(5, new Number(5)) // => falsedeepEq([1, 2], [2, 1]) // => falsedeepEq({ a: 1 }, { b: 1 }) // => falsedeepEq(new Date('11/14/1992'), new Date('11/14/2018')) // => falsedeepEq([], {}) // => false</code></pre>
 
 
 
@@ -17549,7 +17549,7 @@ m([{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 2 }</code>
       <ul class="dummy">
         
         <li>
-          Number -> Number -> Boolean
+          Number -> Number -> Number
         </li>
         
       </ul>
@@ -17663,7 +17663,7 @@ fn(5.3) // => NaN</code></pre>
 
             
 
-            <td class="description last">The the dividend</td>
+            <td class="description last">The dividend</td>
         </tr>
 
     
@@ -25004,7 +25004,8 @@ slicer('kyanite') // => 'yan'</code></pre>
     <pre class="prettyprint"><code>import { somePass } from 'kyanite'
 
 somePass([x => x > 2, x => x &lt; 4], 3) // => true
-somePass([x => x > 0, x => x &lt; 3], 5) // => false
+somePass([x => x > 7, x => x &lt; 3], 5) // => true
+somePass([x => x === 4, x => x === 6], 5) // => false
 
 // It is also curried
 

@@ -65,10 +65,10 @@ const _uniqContentEquals = (aIterator, bIterator, stackA, stackB) => {
  * deepEq([1, 2], [1, 2]) // => true
  * deepEq(new Date(), new Date()) // => true
  * deepEq({ a: { q } }, { a: { q } }) // => true
- * deepEq('test', new String('test')) // => true
- * deepEq(false, new Boolean(false)) // => true
- * deepEq(5, new Number(5)) // => true
  *
+ * deepEq('test', new String('test')) // => false
+ * deepEq(false, new Boolean(false)) // => false
+ * deepEq(5, new Number(5)) // => false
  * deepEq([1, 2], [2, 1]) // => false
  * deepEq({ a: 1 }, { b: 1 }) // => false
  * deepEq(new Date('11/14/1992'), new Date('11/14/2018')) // => false

@@ -104,6 +104,7 @@
 <li><a href="#philosophy">Philosophy</a></li>
 <li><a href="#key-features">Key Features</a></li>
 <li><a href="#how-to">How To</a></li>
+<li><a href="#testing">Testing</a></li>
 <li><a href="#credit">Credit</a></li>
 </ul>
 <h2 id="philosophy">Philosophy</h2>
@@ -143,7 +144,16 @@ const K = require('kyanite/dist/kyanite.js')</code></pre><p>Local copy script ta
   const K = kyanite
 
   K.isEmpty({})
-&lt;/script></code></pre><h2 id="credit">Credit</h2>
+&lt;/script></code></pre><h2 id="testing">Testing</h2>
+<p>Kyanite follows the <a href="http://testanything.org/">tap</a> setup using the <a href="https://github.com/substack/tape">tape</a> testing suite.</p>
+<p>To run the tests:</p>
+<ul>
+<li><code>git clone</code> the repo</li>
+<li><code>cd</code> into the repo folder</li>
+<li>Run <code>npm i</code></li>
+<li>Run <code>npm t</code></li>
+</ul>
+<h2 id="credit">Credit</h2>
 <p>A lot of the if not most of the inpiration for this library came from 2 libraries I follow closely, Primarily most of it stems from:</p>
 <ul>
 <li><a href="https://github.com/abstract-tools/foreword">foreword</a> by <a href="https://github.com/abstract-tools">Abstract Tools</a> which is a very nice and easy to use library developed by a close friend. This is where a lot of functionality, AND the idea of a pure single data type system came from I can't recommend it enough.</li>
