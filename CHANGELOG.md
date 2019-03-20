@@ -5,6 +5,7 @@
 ### BREAKING CHANGES
 
 - `ascend` and `descend` are no longer curried since they're meant to be sort based functionality and will always be called with their 2 params
+  - The reasoning behind this is primarily performance, when using the function as intended there is a significant drop in performance
   - **Note**: `ascendBy` and `descendBy` have kept their curried status
 
 ### New
