@@ -120,6 +120,12 @@ declare namespace K {
     capitalize(str: string): string;
 
     /**
+     * Takes an array of data and chunks it into smaller arrays based on the size param passed in
+     */
+    chunk<T, U>(size: number, data: ReadonlyArray<T>): ReadonlyArray<ReadonlyArray<U>>;
+    chunk(size: number): <T, U>(data: ReadonlyArray<T>) => ReadonlyArray<ReadonlyArray<U>>;
+
+    /**
      * Restricts a number between two other provided numbers
      */
     clamp(min: number, max: number, n: number): number;

@@ -18,6 +18,8 @@
   - Added onto the types definitions
 - Added `everyPass` function which takes an array of functions and passes a value through until one fails or the end is reached
   - Added onto the types definitions
+- Added `chunk` function which chunks an array of data into smaller arrays
+  - Added onto the types definitions
 
 ### Improved
 
