@@ -1,3 +1,4 @@
+export { default as chunk } from './array/chunk.js'
 export { default as concatMap } from './array/concatMap.js'
 export { default as countBy } from './array/countBy.js'
 export { default as difference } from './array/difference.js'
