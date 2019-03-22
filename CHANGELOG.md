@@ -11,19 +11,14 @@
 ### New
 
 - Added a `median` function which gets the median of an array of numbers
-  - Added onto the types definitions
 - Added a `mod` function which behaves like a modulo would in actual mathematics
-  - Added onto the types definitions
 - Added `somePass` function which takes an array of functions and passes a value through them until one passes or the end is reached
-  - Added onto the types definitions
 - Added `everyPass` function which takes an array of functions and passes a value through until one fails or the end is reached
-  - Added onto the types definitions
 - Added `chunk` function which chunks an array of data into smaller arrays
-  - Added onto the types definitions
 
 ### Improved
 
-- `pipe` & `pipeP` are now using the Kyanite reduce giving them a small performance boost
+- `pipe` & `pipeP` are now using the Kyanite `reduce` giving them a small performance boost
 
 ### Fixed
 
