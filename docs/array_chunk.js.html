@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>string/split.js - Documentation</title>
+    <title>array/chunk.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">string/split.js</h1>
+    <h1 class="page-title">array/chunk.js</h1>
     
 
     
@@ -50,30 +50,36 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
+import _appendǃ from '../_internals/_appendǃ'
+import rem from '../number/rem'
 
 /**
- * @name split
+ * @name chunk
+ * @since v0.12.0
  * @function
- * @since v0.9.0
- * @category String
- * @sig String -> String -> Array
- * @description Takes a string and splits it into an array based on the character passed in
- * @param {String} char The character to split the string by
- * @param {String} str The string we want to split
- * @return {Array} A new array of characters from the string
+ * @category Array
+ * @sig Number -> Array -> Array
+ * @description Takes an array of data and chunks it into smaller arrays based on the size param passed in
+ * @param {Number} size The size the inner arrays should be
+ * @param {Array} data The array of data to chunk out
+ * @return {Array} A new array of arrays containing the chunked data
  * @example
- * import { split } from 'kyanite'
+ * import { chunk } from 'kyanite'
  *
- * split('', 'abc') // => ['a', 'b', 'c']
- * split(':', '123:334') // => ['123', '334']
+ * chunk(2, [1, 2, 3, 4, 5, 6]) // => [[1, 2], [3, 4], [5, 6]]
+ * chunk(2, [1, 2, 3, 4, 5]) // => [[1, 2], [3, 4], [5]]
  *
- * const sp = split('')
+ * // It's also curried
+ * const fn = chunk(2)
  *
- * sp('abc') // => ['a', 'b', 'c']
+ * fn([1, 2, 3, 4, 5, 6]) // => [[1, 2], [3, 4], [5, 6]]
+ * fn([1, 2, 3, 4, 5]) // => [[1, 2], [3, 4], [5]]
  */
-const split = (char, str) => str.split(char)
+const chunk = (size, data) =>
+  data.reduce((acc, _, i) =>
+    rem(size, i) ? acc : _appendǃ(acc, data.slice(i, i + size)), [])
 
-export default _curry2(split)
+export default _curry2(chunk)
 </code></pre>
         </article>
     </section>

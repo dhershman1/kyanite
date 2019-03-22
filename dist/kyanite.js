@@ -18,6 +18,23 @@
     };
   }
 
+  var _appendǃ = function _appendǃ(acc, value) {
+    acc.push(value);
+    return acc;
+  };
+
+  var rem = function rem(a, b) {
+    return b % a;
+  };
+  var rem$1 = _curry2(rem);
+
+  var chunk = function chunk(size, data) {
+    return data.reduce(function (acc, _, i) {
+      return rem$1(size, i) ? acc : _appendǃ(acc, data.slice(i, i + size));
+    }, []);
+  };
+  var chunk$1 = _curry2(chunk);
+
   var concat = function concat(val, list) {
     return list.concat(val);
   };
@@ -104,11 +121,6 @@
     }, {}, arr);
   };
   var countBy$1 = _curry2(countBy);
-
-  var _appendǃ = function _appendǃ(acc, value) {
-    acc.push(value);
-    return acc;
-  };
 
   var groupBy = function groupBy(fn, list) {
     return reduce$1(function (v, acc) {
@@ -956,11 +968,6 @@
   };
   var range$1 = _curry2(range);
 
-  var rem = function rem(a, b) {
-    return b % a;
-  };
-  var rem$1 = _curry2(rem);
-
   var factors = function factors() {
     var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
     var val = x < 0 ? negate(x) : x;
@@ -1224,6 +1231,7 @@
   exports.both = both$1;
   exports.branch = branch$1;
   exports.capitalize = capitalize;
+  exports.chunk = chunk$1;
   exports.clamp = clamp$1;
   exports.complement = complement$1;
   exports.compose = compose$1;
