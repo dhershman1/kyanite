@@ -1,4 +1,5 @@
 import _curry2 from '../_internals/_curry2'
+import reduce from './reduce'
 
 /**
  * @name pipe
@@ -23,6 +24,6 @@ import _curry2 from '../_internals/_curry2'
  * piper(10) // => 24
  */
 const pipe = (arr, init) =>
-  arr.reduce((acc, fn) => fn(acc), init)
+  reduce((fn, acc) => fn(acc), init, arr)
 
 export default _curry2(pipe)

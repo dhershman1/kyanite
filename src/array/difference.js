@@ -9,7 +9,7 @@ import filter from './filter'
  * @since v0.1.0
  * @function
  * @category Array
- * @sig Array [a] -> Array -> [b]
+ * @sig [*] -> [*] -> [*]
  * @description Returns a new array of values that are not contained within both arrays
  * @param {Array} arrs The array of arrays we want to get the difference of
  * @return {Array} An array of elements that are not present in both arrays

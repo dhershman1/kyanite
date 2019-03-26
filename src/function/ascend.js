@@ -1,5 +1,3 @@
-import _curry2 from '../_internals/_curry2'
-
 /**
  * @name ascend
  * @function
@@ -18,4 +16,4 @@ import _curry2 from '../_internals/_curry2'
  */
 const ascend = (a, b) => a < b ? -1 : a > b ? 1 : 0
 
-export default _curry2(ascend)
+export default ascend

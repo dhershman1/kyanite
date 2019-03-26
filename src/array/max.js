@@ -5,6 +5,7 @@ import reduce from '../function/reduce'
  * @function
  * @since v0.1.0
  * @category Array
+ * @sig [Number|String] -> Number|String
  * @description
  * Iterates through an array to find the max value
  * @param {Array} list The Array to iterate through

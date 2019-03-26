@@ -5,7 +5,7 @@ import _curry2 from '../_internals/_curry2'
  * @function
  * @since v0.2.2
  * @category Array
- * @sig Function -> Array -> Maybe
+ * @sig (a -> Boolean) -> [a] -> Maybe
  * @description Runs through an array of values, until it finds the index of one that passes the function, else returns -1
  * @param {Function} fn The function to test our value against
  * @param {Array} list The array to loop through

@@ -1,5 +1,34 @@
 # Changelog
 
+## v0.12.0
+
+### BREAKING CHANGES
+
+- `ascend` and `descend` are no longer curried since they're meant to be sort based functionality and will always be called with their 2 params
+  - The reasoning behind this is primarily performance, when using the function as intended there is a significant drop in performance
+  - **Note**: `ascendBy` and `descendBy` have kept their curried status
+
+### New
+
+- Added a `median` function which gets the median of an array of numbers
+- Added a `mod` function which behaves like a modulo would in actual mathematics
+- Added `somePass` function which takes an array of functions and passes a value through them until one passes or the end is reached
+- Added `everyPass` function which takes an array of functions and passes a value through until one fails or the end is reached
+- Added `chunk` function which chunks an array of data into smaller arrays
+
+### Improved
+
+- `pipe` & `pipeP` are now using the Kyanite `reduce` giving them a small performance boost
+
+### Fixed
+
+- Fixed a lot of signature displays through out the docs
+- Documentation Fixes:
+  - `addIndex` description tweaks
+  - `memoizeWith` added [RamdaJs](https://ramdajs.com) credit since it's based mostly off their version
+  - `lt`, `lte`, `gt`, and `gte` all had invalid examples in their documentation. This is addressed now
+  - `find` and `deepEq` examples were incorrect
+
 ## v0.11.3
 
 ### New

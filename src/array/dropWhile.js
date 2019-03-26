@@ -5,7 +5,7 @@ import _curry2 from '../_internals/_curry2'
  * @function
  * @since v0.9.0
  * @category Array
- * @sig (a -> Boolean) -> Array [a] -> Array [a]
+ * @sig (a -> Boolean) -> [a] -> [a]
  * @description Runs through an array and drops values so long as the function used returns true once the function returns false iteration will stop
  * @param {Function} fn The function to apply per iteration
  * @param {Array} arr The array of data to iterate through

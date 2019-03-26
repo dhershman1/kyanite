@@ -120,6 +120,12 @@ declare namespace K {
     capitalize(str: string): string;
 
     /**
+     * Takes an array of data and chunks it into smaller arrays based on the size param passed in
+     */
+    chunk<T, U>(size: number, data: ReadonlyArray<T>): ReadonlyArray<ReadonlyArray<U>>;
+    chunk(size: number): <T, U>(data: ReadonlyArray<T>) => ReadonlyArray<ReadonlyArray<U>>;
+
+    /**
      * Restricts a number between two other provided numbers
      */
     clamp(min: number, max: number, n: number): number;
@@ -285,6 +291,12 @@ declare namespace K {
      */
     every<T>(fn: (a: T) => boolean, x: T[]): boolean;
     every<T>(fn: (a: T) => boolean): (x: T[]) => boolean;
+
+    /**
+     * Takes a value and passes it through an array of functions until the end of the array or one of the functions returns false
+     */
+    everyPass<T>(fns: ReadonlyArray<(a: T) => boolean>, data: T): boolean;
+    everyPass<T>(fns: ReadonlyArray<(a: T) => boolean>): (data: T) => boolean;
 
     /**
      * Takes a number and builds an array of factors for that number
@@ -493,6 +505,11 @@ declare namespace K {
     mean(x: ReadonlyArray<number>): number;
 
     /**
+     * Takes an array of numbers and calculates the median
+     */
+    median(list: ReadonlyArray<number>): number;
+
+    /**
      * Creates a new function that, when invoked, caches the result of calling fn for a given argument set and returns the result. Subsequent calls to the memoized fn with the same argument set will not result in an additional call to fn; instead, the cached result for that set of arguments will be returned.
      */
     memoizeWith(mFn: Function, fn: Function): Function;
@@ -508,6 +525,12 @@ declare namespace K {
      */
     minBy<T>(fn: (a: T) => Ord, a: ReadonlyArray<T>): T;
     minBy<T>(fn: (a: T) => Ord): (a: ReadonlyArray<T>) => T;
+
+    /**
+     * Behaves like the modulo operator should mathematically, unlike the `%` operator. The arguments are required to be integers and will return NaN when the modulus is zero or negative.
+     */
+    mod(a: number, b: number): number;
+    mod(a: number): (b: number) => number;
 
     /**
      * Multiplies the provided numbers
@@ -734,6 +757,12 @@ declare namespace K {
      */
     some<T>(fn: (a: T) => boolean, x: ReadonlyArray<T>): boolean;
     some<T>(fn: (a: T) => boolean): (x: ReadonlyArray<T>) => boolean;
+
+    /**
+     * Takes a value and passes it through an array of functions until a function returns true, or the end of the array is met
+     */
+    somePass<T>(fns: ReadonlyArray<(a: T) => boolean>, data: T): boolean;
+    somePass<T>(fns: ReadonlyArray<(a: T) => boolean>): (data: T) => boolean;
 
     /**
      * Uses a comparison function to sort an array

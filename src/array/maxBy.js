@@ -5,6 +5,7 @@ import _curry2 from '../_internals/_curry2'
  * @function
  * @since v0.5.0
  * @category Array
+ * @sig (a -> b) -> [a] -> a
  * @description
  * Finds the maximum value in an array by applying a provided function to the value first before comparing it
  * @param {Function} fn The function to apply to each value of the array

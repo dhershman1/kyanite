@@ -18,6 +18,23 @@
     };
   }
 
+  var _appendǃ = function _appendǃ(acc, value) {
+    acc.push(value);
+    return acc;
+  };
+
+  var rem = function rem(a, b) {
+    return b % a;
+  };
+  var rem$1 = _curry2(rem);
+
+  var chunk = function chunk(size, data) {
+    return data.reduce(function (acc, _, i) {
+      return rem$1(size, i) ? acc : _appendǃ(acc, data.slice(i, i + size));
+    }, []);
+  };
+  var chunk$1 = _curry2(chunk);
+
   var concat = function concat(val, list) {
     return list.concat(val);
   };
@@ -105,11 +122,6 @@
   };
   var countBy$1 = _curry2(countBy);
 
-  var _appendǃ = function _appendǃ(acc, value) {
-    acc.push(value);
-    return acc;
-  };
-
   var groupBy = function groupBy(fn, list) {
     return reduce$1(function (v, acc) {
       var k = fn(v);
@@ -188,6 +200,13 @@
     }, true, data);
   };
   var every$1 = _curry2(every);
+
+  var everyPass = function everyPass(fns, data) {
+    return reduce$1(function (f, acc) {
+      return !f(data) ? reduced(false) : acc;
+    }, true, fns);
+  };
+  var everyPass$1 = _curry2(everyPass);
 
   var find = function find(fn, arr) {
     return reduce$1(function (val, acc) {
@@ -425,6 +444,13 @@
   };
   var some$1 = _curry2(some);
 
+  var somePass = function somePass(fns, data) {
+    return reduce$1(function (f, acc) {
+      return f(data) ? reduced(true) : acc;
+    }, false, fns);
+  };
+  var somePass$1 = _curry2(somePass);
+
   var sort = function sort(fn, a) {
     return a.slice().sort(fn);
   };
@@ -433,7 +459,6 @@
   var ascend = function ascend(a, b) {
     return a < b ? -1 : a > b ? 1 : 0;
   };
-  var ascend$1 = _curry2(ascend);
 
   function _curry4(fn) {
     return function f4(a, b, c, d) {
@@ -464,7 +489,7 @@
   var on$1 = _curry4(on);
 
   var sortBy = function sortBy(fn, arr) {
-    return sort$1(on$1(ascend$1, fn), arr);
+    return sort$1(on$1(ascend, fn), arr);
   };
   var sortBy$1 = _curry2(sortBy);
 
@@ -550,7 +575,7 @@
   var apply$1 = _curry2(apply);
 
   var ascendBy = function ascendBy(fn, a, b) {
-    return ascend$1(fn(a), fn(b));
+    return ascend(fn(a), fn(b));
   };
   var ascendBy$1 = _curry3(ascendBy);
 
@@ -768,10 +793,9 @@
   var descend = function descend(a, b) {
     return a > b ? -1 : a < b ? 1 : 0;
   };
-  var descend$1 = _curry2(descend);
 
   var descendBy = function descendBy(fn, a, b) {
-    return descend$1(fn(a), fn(b));
+    return descend(fn(a), fn(b));
   };
   var descendBy$1 = _curry3(descendBy);
 
@@ -841,16 +865,16 @@
   var or$1 = _curry2(or);
 
   var pipe = function pipe(arr, init) {
-    return arr.reduce(function (acc, fn) {
+    return reduce$1(function (fn, acc) {
       return fn(acc);
-    }, init);
+    }, init, arr);
   };
   var pipe$1 = _curry2(pipe);
 
   var pipeP = function pipeP(fns, data) {
-    return fns.reduce(function (acc, f) {
+    return reduce$1(function (f, acc) {
       return acc.then(f);
-    }, Promise.resolve(data));
+    }, Promise.resolve(data), fns);
   };
   var pipeP$1 = _curry2(pipeP);
 
@@ -944,11 +968,6 @@
   };
   var range$1 = _curry2(range);
 
-  var rem = function rem(a, b) {
-    return b % a;
-  };
-  var rem$1 = _curry2(rem);
-
   var factors = function factors() {
     var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
     var val = x < 0 ? negate(x) : x;
@@ -999,6 +1018,24 @@
   var mean = function mean(x) {
     return divide$1(length(x), reduce$1(add$1, 0, x));
   };
+
+  var median = function median(list) {
+    var len = list.length;
+    if (len === 0) {
+      return NaN;
+    }
+    var width = 2 - len % 2;
+    var idx = (len - width) / 2;
+    return pipe$1([sort$1(ascend), slice$1(idx, idx + width), mean], list);
+  };
+
+  var mod = function mod(a, b) {
+    if (some$1(identity, [!Number.isInteger(a), !Number.isInteger(b), b < 1])) {
+      return NaN;
+    }
+    return (a % b + b) % b;
+  };
+  var mod$1 = _curry2(mod);
 
   var multiply = function multiply(a, b) {
     return a * b;
@@ -1180,141 +1217,146 @@
     return str.trim();
   };
 
-  exports.concatMap = concatMap$1;
-  exports.countBy = countBy$1;
-  exports.difference = difference;
-  exports.drop = drop$1;
-  exports.dropWhile = dropWhile$1;
-  exports.ensureArray = ensureArray;
-  exports.every = every$1;
-  exports.filter = filter$1;
-  exports.find = find$1;
-  exports.findIndex = findIndex$1;
-  exports.groupBy = groupBy$1;
-  exports.insert = insert$1;
-  exports.intersection = intersection$1;
-  exports.juxt = juxt$1;
-  exports.map = map$1;
-  exports.max = max;
-  exports.maxBy = maxBy$1;
-  exports.min = min;
-  exports.minBy = minBy$1;
-  exports.partition = partition$1;
-  exports.prepend = prepend$1;
-  exports.reduceRight = reduceRight$1;
-  exports.reject = reject$1;
-  exports.remove = remove$1;
-  exports.some = some$1;
-  exports.sort = sort$1;
-  exports.sortBy = sortBy$1;
-  exports.sortWith = sortWith$1;
-  exports.take = take$1;
-  exports.takeWhile = takeWhile$1;
-  exports.union = union$1;
-  exports.uniq = uniq;
-  exports.uniqBy = uniqBy$1;
-  exports.update = update$1;
-  exports.zip = zip$1;
+  exports.add = add$1;
   exports.addIndex = addIndex;
   exports.always = always$1;
+  exports.amend = amend$1;
   exports.and = and$1;
+  exports.any = any$1;
   exports.ap = ap$1;
   exports.apply = apply$1;
-  exports.ascend = ascend$1;
+  exports.ascend = ascend;
   exports.ascendBy = ascendBy$1;
+  exports.between = between$1;
   exports.both = both$1;
   exports.branch = branch$1;
+  exports.capitalize = capitalize;
+  exports.chunk = chunk$1;
+  exports.clamp = clamp$1;
   exports.complement = complement$1;
   exports.compose = compose$1;
   exports.composeP = composeP$1;
+  exports.concat = concat$1;
+  exports.concatMap = concatMap$1;
   exports.count = count;
+  exports.countBy = countBy$1;
   exports.curry = curry;
   exports.curryN = curryN;
+  exports.dec = dec;
   exports.deepEq = deepEq$1;
   exports.defaultTo = defaultTo$1;
-  exports.descend = descend$1;
+  exports.descend = descend;
   exports.descendBy = descendBy$1;
+  exports.difference = difference;
+  exports.divide = divide$1;
+  exports.draft = draft$1;
+  exports.drop = drop$1;
+  exports.dropWhile = dropWhile$1;
   exports.either = either$1;
   exports.encase = encase$1;
+  exports.endsWith = endsWith$1;
+  exports.ensureArray = ensureArray;
   exports.eq = eq$1;
   exports.eqBy = eqBy$1;
+  exports.every = every$1;
+  exports.everyPass = everyPass$1;
+  exports.factors = factors;
+  exports.filter = filter$1;
+  exports.find = find$1;
+  exports.findIndex = findIndex$1;
+  exports.first = first;
   exports.flip = flip$1;
+  exports.fuzzySearch = fuzzySearch$1;
+  exports.gcd = gcd$1;
+  exports.groupBy = groupBy$1;
   exports.gt = gt$1;
   exports.gte = gte$1;
   exports.has = has$1;
+  exports.height = height;
   exports.identity = identity;
-  exports.isEmpty = isEmpty;
-  exports.isNil = isNil;
-  exports.lt = lt$1;
-  exports.lte = lte$1;
-  exports.memoizeWith = memoizeWith$1;
-  exports.not = not;
-  exports.on = on$1;
-  exports.or = or$1;
-  exports.pipe = pipe$1;
-  exports.pipeP = pipeP$1;
-  exports.reduce = reduce$1;
-  exports.reduced = reduced;
-  exports.size = size;
-  exports.type = type;
-  exports.unless = unless$1;
-  exports.when = when$1;
-  exports.concat = concat$1;
-  exports.endsWith = endsWith$1;
-  exports.first = first;
-  exports.includes = includes$1;
-  exports.last = last;
-  exports.length = length;
-  exports.nth = nth$1;
-  exports.reverse = reverse;
-  exports.slice = slice$1;
-  exports.add = add$1;
-  exports.between = between$1;
-  exports.clamp = clamp$1;
-  exports.dec = dec;
-  exports.divide = divide$1;
-  exports.factors = factors;
-  exports.gcd = gcd$1;
   exports.inc = inc;
+  exports.includes = includes$1;
+  exports.insert = insert$1;
+  exports.intersection = intersection$1;
+  exports.isEmpty = isEmpty;
   exports.isEven = isEven;
+  exports.isNil = isNil;
   exports.isOdd = isOdd;
   exports.isPrime = isPrime;
   exports.isZero = isZero;
+  exports.join = join$1;
+  exports.juxt = juxt$1;
+  exports.last = last;
   exports.lcm = lcm$1;
+  exports.length = length;
+  exports.lt = lt$1;
+  exports.lte = lte$1;
+  exports.map = map$1;
+  exports.match = match$1;
+  exports.max = max;
+  exports.maxBy = maxBy$1;
   exports.mean = mean;
+  exports.median = median;
+  exports.memoizeWith = memoizeWith$1;
+  exports.min = min;
+  exports.minBy = minBy$1;
+  exports.mod = mod$1;
   exports.multiply = multiply$1;
   exports.negate = negate;
-  exports.pow = pow$1;
-  exports.product = product;
-  exports.range = range$1;
-  exports.rem = rem$1;
-  exports.round = round$1;
-  exports.subtract = subtract$1;
-  exports.sum = sum;
-  exports.within = within$1;
-  exports.amend = amend$1;
-  exports.any = any$1;
-  exports.draft = draft$1;
-  exports.height = height;
+  exports.not = not;
+  exports.nth = nth$1;
   exports.omit = omit$1;
+  exports.on = on$1;
+  exports.or = or$1;
   exports.over = over$1;
+  exports.partition = partition$1;
   exports.path = path$1;
   exports.pathOr = pathOr$1;
+  exports.pipe = pipe$1;
+  exports.pipeP = pipeP$1;
   exports.plan = plan$1;
+  exports.pow = pow$1;
+  exports.prepend = prepend$1;
+  exports.product = product;
   exports.prop = prop$1;
   exports.props = props$1;
-  exports.sift = sift$1;
-  exports.whole = whole$1;
-  exports.capitalize = capitalize;
-  exports.fuzzySearch = fuzzySearch$1;
-  exports.join = join$1;
-  exports.match = match$1;
+  exports.range = range$1;
+  exports.reduce = reduce$1;
+  exports.reduceRight = reduceRight$1;
+  exports.reduced = reduced;
+  exports.reject = reject$1;
+  exports.rem = rem$1;
+  exports.remove = remove$1;
   exports.replace = replace$1;
+  exports.reverse = reverse;
+  exports.round = round$1;
+  exports.sift = sift$1;
+  exports.size = size;
+  exports.slice = slice$1;
+  exports.some = some$1;
+  exports.somePass = somePass$1;
+  exports.sort = sort$1;
+  exports.sortBy = sortBy$1;
+  exports.sortWith = sortWith$1;
   exports.split = split$1;
+  exports.subtract = subtract$1;
+  exports.sum = sum;
+  exports.take = take$1;
+  exports.takeWhile = takeWhile$1;
   exports.test = test$1;
   exports.toLower = toLower;
   exports.toUpper = toUpper;
   exports.trim = trim;
+  exports.type = type;
+  exports.union = union$1;
+  exports.uniq = uniq;
+  exports.uniqBy = uniqBy$1;
+  exports.unless = unless$1;
+  exports.update = update$1;
+  exports.when = when$1;
+  exports.whole = whole$1;
+  exports.within = within$1;
+  exports.zip = zip$1;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -8,11 +8,11 @@ import identity from './identity'
  * @category Function
  * @sig
  * ((a … → b) … → [a] → *) → ((a …, Int, [a] → b) … → [a] → *)
- * @description Creates a new list iteration function from an existing one by adding two new parameters to its callback function: the current index, and the entire list. This will only work for functions in which the iteration callback function is the first parameter, and where the list is the last parameter. (This latter might be unimportant if the list parameter is not used.)
+ * @description Creates a new function to iterate through an array, the provided function should be one that accepts a higher order function (such as reduce, filter, or map). It will then attach the index to the provided function upon calling it.
  * @param {Function} fn The original function to add the index and list onto
  * @return {Function} A new function that will come with the index and full list attached.
  * @example
- * import { addIndex, map, filter, reduce } from 'kyanite'
+ * import { addIndex, filter, map, reduce } from 'kyanite'
  * const m = addIndex(map)
  * const f = addIndex(filter)
  * const r = addIndex(reduce)

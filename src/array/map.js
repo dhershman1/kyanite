@@ -6,7 +6,7 @@ import _assocǃ from '../_internals/_assocǃ'
  * @function
  * @since v0.1.0
  * @category Array
- * @sig (a -> b) -> f a -> f b
+ * @sig (a -> b) -> [a] -> [b]
  * @description
  * Takes a function and applies it to all of the values within the provided list,
  * and brings back a new list of the same type.

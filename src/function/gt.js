@@ -5,7 +5,7 @@ import _curry2 from '../_internals/_curry2'
  * @function
  * @since v0.1.0
  * @category Function
- * @sig a -> a -> Boolean
+ * @sig a -> b -> Boolean
  * @description Checks if a value is greater than the other
  * @param {Any} a Value to determine if it is greater than the other
  * @param {Any} b Value to compare to see if it is less than the other
@@ -13,15 +13,15 @@ import _curry2 from '../_internals/_curry2'
  * @example
  * import { gt } from 'kyanite'
  *
- * gt(2, 1) // => true
+ * gt(1, 2) // => true
  * gt('b', 'a') // => true
  *
  * // It's also curried
  *
- * const g = gt(2)
+ * const fn = gt(2)
  *
- * g(1) // => true
- * g(2) // => false
+ * fn(1) // => true
+ * fn(2) // => false
  */
 const gt = (a, b) => b > a
 
