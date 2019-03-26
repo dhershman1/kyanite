@@ -30,7 +30,7 @@
     "tape": "4.10.1"
   },
   "scripts": {
-    "test": "tape -r esm tests/**/chunk.js | tap-spec",
+    "test": "tape -r esm tests/**/*.js | tap-spec",
     "lint": "standard src/**/*.js",
     "build": "rollup -c",
     "create": "node scripts/create-export.js && standard --fix src/index.js",
