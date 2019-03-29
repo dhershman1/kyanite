@@ -1,4 +1,4 @@
-// Type definitions for Kyanite v0.10.2
+// Type definitions for Kyanite v0.12.x
 // Project: Kyanite
 // Definitions by: Dustin Hershman <dustinh17@gmail.com>
 
