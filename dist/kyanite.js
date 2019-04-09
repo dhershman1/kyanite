@@ -1101,11 +1101,11 @@
     var _ref2 = _toArray(_ref),
         p = _ref2[0],
         keys = _ref2.slice(1);
+    if (isNil(obj) || isNil(obj[p])) {
+      return undefined;
+    }
     if (!keys.length) {
       return obj[p];
-    }
-    if (isNil(obj[p])) {
-      return undefined;
     }
     return path(keys, obj[p]);
   };

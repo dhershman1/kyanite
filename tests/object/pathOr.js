@@ -7,6 +7,12 @@ test('pathOr -- Handles basic functionality', t => {
   t.end()
 })
 
+test('pathOr -- Handles null/undefined', t => {
+  t.same(pathOr('N/A', ['foo'], null), 'N/A')
+  t.same(pathOr('N/A', ['foo'], undefined), 'N/A')
+  t.end()
+})
+
 test('pathOr -- Its curried', t => {
   const fn = pathOr('N/A')
   const withKeys = fn(['a', 'b'])

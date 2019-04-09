@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.12.1
+
+### Fixed
+
+- `pathOr` and `path` breaking on `null` value
+
 ## v0.12.0
 
 ### BREAKING CHANGES

@@ -21,3 +21,10 @@ test('path -- Navigates tricky broken objects', t => {
   t.notOk(result, 'Correctly did not find the value with the given path')
   t.end()
 })
+
+test('path -- Is curried', t => {
+  const fn = path(['foo', 'bar'])
+
+  t.same(fn({ foo: { bar: 1 } }), 1)
+  t.end()
+})
