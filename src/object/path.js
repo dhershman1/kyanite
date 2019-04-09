@@ -25,12 +25,12 @@ import isNil from '../function/isNil'
  * safetyPath({ a: { b: 2 } }) // => 2
  */
 const path = ([p, ...keys], obj) => {
-  if (!keys.length) {
-    return obj[p]
+  if (isNil(obj) || isNil(obj[p])) {
+    return undefined
   }
 
-  if (isNil(obj[p])) {
-    return undefined
+  if (!keys.length) {
+    return obj[p]
   }
 
   return path(keys, obj[p])
