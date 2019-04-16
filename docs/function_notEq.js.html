@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>object/sift.js - Documentation</title>
+    <title>function/notEq.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">object/sift.js</h1>
+    <h1 class="page-title">function/notEq.js</h1>
     
 
     
@@ -50,40 +50,37 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
-import _assocǃ from '../_internals/_assocǃ'
-import reduce from '../function/reduce'
+import complement from './complement'
+import eq from './eq'
 
 /**
- * @name sift
+ * @name notEq
  * @function
- * @since v0.1.0
- * @category Object
- * @sig (a -> Boolean) -> Object -> Object
- * @description Works a lot like an array filter, but for the object data type
- * Accepts a function and an object, it then runs the function against each value
- * @param {Function} fn A function to run against the values within the object
- * @param {Object} obj The object to sift through
- * @return {Object} A new filtered out object
- *
+ * @since v0.12.2
+ * @category Function
+ * @sig * -> * -> Boolean
+ * @description Takes in two values and checks to make sure they're not equal to each other
+ * @param {Any} a The first value to compare
+ * @param {Any} b The second value to compare
+ * @return {Boolean} Whether or not the values provided are equal
  * @example
- * import { sift } from 'kyanite'
+ * import { notEq } from 'kyanite'
  *
- * sift(x => typeof x === 'string', {
- *   id: 44,
- *   thing: 'test',
- *   other: 'cool'
- * }) // => { thing: 'test', other: 'cool' }
+ * notEq(1, '1') // => true
+ * notEq('test', 'Test') // => true
+ * notEq(2, 2) // => false
  *
  * // It's also curried
  *
- * const sifter = sift(x => typeof x === 'string')
+ * const fn = notEq(1)
  *
- * sifter({ id: 44, thing: 'test', other: 'cool' }) // => { thing: 'test', other: 'cool' }
+ * fn('1') // => true
+ * fn(2) // => true
+ * fn(1) // => false
  */
-const sift = (fn, obj) => reduce((k, acc) =>
-  fn(obj[k]) ? _assocǃ(acc, k, obj[k]) : acc, {}, Object.keys(obj))
+const notEq = (a, b) => complement(eq(a), b)
 
-export default _curry2(sift)
+export default _curry2(notEq)
 </code></pre>
         </article>
     </section>
