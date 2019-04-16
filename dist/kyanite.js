@@ -859,6 +859,11 @@
   };
   var memoizeWith$1 = _curry2(memoizeWith);
 
+  var notEq = function notEq(a, b) {
+    return complement$1(eq$1(a), b);
+  };
+  var notEq$1 = _curry2(notEq);
+
   var or = function or(a, b) {
     return a || b;
   };
@@ -1309,6 +1314,7 @@
   exports.multiply = multiply$1;
   exports.negate = negate;
   exports.not = not;
+  exports.notEq = notEq$1;
   exports.nth = nth$1;
   exports.omit = omit$1;
   exports.on = on$1;

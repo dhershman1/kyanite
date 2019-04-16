@@ -5,6 +5,7 @@
 ### New
 
 - Added `propEq` function which takes a object property value and compares it against a given value to see if it's equal
+- Added `notEq` function which checks if the provided values are not equal to each other
 
 ## v0.12.1
 

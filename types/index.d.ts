@@ -549,6 +549,12 @@ declare namespace K {
     not(x: any): boolean;
 
     /**
+     * Takes in two values and checks to make sure they're not equal to each other
+     */
+    notEq(a: any, b: any): boolean;
+    notEq(a: any): (b: any) => boolean;
+
+    /**
      * Returns the nth element of a given array
      */
     nth<T>(o: number, list: ReadonlyArray<T>): T | undefined;
