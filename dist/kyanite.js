@@ -1132,6 +1132,11 @@
   };
   var prop$1 = _curry2(prop);
 
+  var propEq = function propEq(key, val, obj) {
+    return compose$1(eq$1(val), prop$1(key), obj);
+  };
+  var propEq$1 = _curry3(propEq);
+
   var props = function props(keys, obj) {
     return map$1(function (k) {
       return obj[k];
@@ -1319,6 +1324,7 @@
   exports.prepend = prepend$1;
   exports.product = product;
   exports.prop = prop$1;
+  exports.propEq = propEq$1;
   exports.props = props$1;
   exports.range = range$1;
   exports.reduce = reduce$1;
