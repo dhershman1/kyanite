@@ -1,10 +1,8 @@
 import test from 'tape'
 import everyPass from '../../src/array/everyPass'
-import compose from '../../src/function/compose'
-import eq from '../../src/function/eq'
-import prop from '../../src/object/prop'
+import propEq from '../../src/object/propEq'
 
-const propEq = (p, v) => compose(eq(v), prop(p))
+// const propEq = (p, v) => compose(eq(v), prop(p))
 const isClub = propEq('suit', '♣')
 const isSpade = propEq('suit', '♠')
 

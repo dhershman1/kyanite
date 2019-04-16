@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.12.2
+
+### New
+
+- Added `propEq` function which takes a object property value and compares it against a given value to see if it's equal
+
 ## v0.12.1
 
 ### Fixed

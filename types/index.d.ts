@@ -653,6 +653,13 @@ declare namespace K {
     prop<P extends string, T>(p: P): (obj: Record<P, T>) => T;
 
     /**
+     * Takes a desired property from an object and compares the value against a provided value to make sure they're equal
+     */
+    propEq<P extends string, T>(key: P, val: T, obj: Record<P, T>): boolean;
+    propEq<P extends string, T>(key: P, val: T): (obj: Record<P, T>) => boolean;
+    propEq<P extends string>(key: P): <T>(val: T) => (obj: Record<P, T>) => boolean;
+
+    /**
      * Pulls a list of values from an object and returns them as an array
      */
     props<P extends string, T>(keys: ReadonlyArray<P>, obj: Record<P, T>): T[];
