@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>function/descendBy.js - Documentation</title>
+    <title>object/propEq.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">function/descendBy.js</h1>
+    <h1 class="page-title">object/propEq.js</h1>
     
 
     
@@ -50,44 +50,45 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import _curry3 from '../_internals/_curry3'
-import descend from './descend'
+import eq from '../function/eq'
+import compose from '../function/compose'
+import prop from './prop'
 
 /**
- * @name descendBy
+ * @name propEq
  * @function
- * @since v0.2.1
- * @category Function
- * @sig Function -> Any -> Any -> Number
- * @description Can be used with sort to descend an array based on the function passed in
- * @param {Function} fn The function to use on values within our array
- * @param {Any} a The first value to compare
- * @param {Any} b The second value to compare
- * @return {Number} A number based on where it falls when compared with the other value
- *
+ * @since v0.12.2
+ * @category Object
+ * @sig String -> * -> { k: * } -> Boolean
+ * @description Takes a desired property from an object and compares the value against a provided value to make sure they're equal
+ * @param {String} key The key to look for in the object
+ * @param {Any} val The value the property should equal
+ * @param {Object} obj The object to pull the property from to compare
+ * @return {Boolean} Whether or not the values are equal
  * @example
- * import { descendBy } from 'kyanite'
+ * import { propEq } from 'kyanite'
  *
- * [
- *  { name: 'bob' },
- *  { name: 'amanda' },
- *  { name: 'carl' },
- *  { name: 'amanda' }
- * ].sort(descendBy(x => x.name)) // => [{ name: 'carl' }, { name: 'bob' }, { name: 'amanda' }, { name: 'amanda' }]
+ * const abby = { name: 'Abby', age: 7, hair: 'blond' }
+ * const fred = { name: 'Fred', age: 12, hair: 'brown' }
+ * const rusty = { name: 'Rusty', age: 10, hair: 'brown' }
+ * const george = { name: 'george', age: 9 }
+ * const kids = [abby, fred, rusty, george]
+ *
+ * propEq('hair', 'brown', abby) // => false
+ * propEq('hair', 'brown', george) // => false
+ * propEq('hair', 'brown', rusty) // => true
  *
  * // It's also curried
  *
- * const desc = descendBy(x => x.name)
+ * const fn = propEq('hair')
+ * const gn = fn('brown')
  *
- * [
- *  { name: 'bob' },
- *  { name: 'amanda' },
- *  { name: 'carl' },
- *  { name: 'amanda' }
- * ].sort(desc) // => [{ name: 'carl' }, { name: 'bob' }, { name: 'amanda' }, { name: 'amanda' }]
+ * kids.filter(fn('blond')) // => [abby]
+ * kids.filter(gn) // => [fred, rusty]
  */
-const descendBy = (fn, a, b) => descend(fn(a), fn(b))
+const propEq = (key, val, obj) => compose(eq(val), prop(key), obj)
 
-export default _curry3(descendBy)
+export default _curry3(propEq)
 </code></pre>
         </article>
     </section>
