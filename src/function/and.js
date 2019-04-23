@@ -5,12 +5,12 @@ import _curry2 from '../_internals/_curry2'
  * @function
  * @since v0.1.0
  * @category Function
- * @sig Boolean -> Boolean -> Boolean
+ * @sig a -> b -> a | b
  * @description
  * Runs an and comparison on the two values passed in
- * @param {Boolean} a The first value to compare
- * @param {Boolean} b The second value to compare
- * @return {Boolean} The evaluated outcome of the parameters
+ * @param {Any} a The first value to compare
+ * @param {Any} b The second value to compare
+ * @return {Any} The evaluated outcome of the parameters
  *
  * @example
  * import { and } from 'kyanite'
