@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.12.2
+
+### New
+
+- Added `propEq` function which takes a object property value and compares it against a given value to see if it's equal
+- Added `notEq` function which checks if the provided values are not equal to each other
+
+### Fixed
+
+- The documentation for `and` should now reflect correctly on the return and params
+
 ## v0.12.1
 
 ### Fixed

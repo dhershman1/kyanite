@@ -859,6 +859,11 @@
   };
   var memoizeWith$1 = _curry2(memoizeWith);
 
+  var notEq = function notEq(a, b) {
+    return complement$1(eq$1(a), b);
+  };
+  var notEq$1 = _curry2(notEq);
+
   var or = function or(a, b) {
     return a || b;
   };
@@ -1132,6 +1137,11 @@
   };
   var prop$1 = _curry2(prop);
 
+  var propEq = function propEq(key, val, obj) {
+    return compose$1(eq$1(val), prop$1(key), obj);
+  };
+  var propEq$1 = _curry3(propEq);
+
   var props = function props(keys, obj) {
     return map$1(function (k) {
       return obj[k];
@@ -1304,6 +1314,7 @@
   exports.multiply = multiply$1;
   exports.negate = negate;
   exports.not = not;
+  exports.notEq = notEq$1;
   exports.nth = nth$1;
   exports.omit = omit$1;
   exports.on = on$1;
@@ -1319,6 +1330,7 @@
   exports.prepend = prepend$1;
   exports.product = product;
   exports.prop = prop$1;
+  exports.propEq = propEq$1;
   exports.props = props$1;
   exports.range = range$1;
   exports.reduce = reduce$1;

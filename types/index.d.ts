@@ -549,6 +549,12 @@ declare namespace K {
     not(x: any): boolean;
 
     /**
+     * Takes in two values and checks to make sure they're not equal to each other
+     */
+    notEq(a: any, b: any): boolean;
+    notEq(a: any): (b: any) => boolean;
+
+    /**
      * Returns the nth element of a given array
      */
     nth<T>(o: number, list: ReadonlyArray<T>): T | undefined;
@@ -651,6 +657,13 @@ declare namespace K {
     prop<P extends keyof T, T>(p: P, obj: T): T[P];
     prop<P extends string>(p: P): <T>(obj: Record<P, T>) => T;
     prop<P extends string, T>(p: P): (obj: Record<P, T>) => T;
+
+    /**
+     * Takes a desired property from an object and compares the value against a provided value to make sure they're equal
+     */
+    propEq<P extends string, T>(key: P, val: T, obj: Record<P, T>): boolean;
+    propEq<P extends string, T>(key: P, val: T): (obj: Record<P, T>) => boolean;
+    propEq<P extends string>(key: P): <T>(val: T) => (obj: Record<P, T>) => boolean;
 
     /**
      * Pulls a list of values from an object and returns them as an array

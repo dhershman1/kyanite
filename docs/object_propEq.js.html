@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>object/sift.js - Documentation</title>
+    <title>object/propEq.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">object/sift.js</h1>
+    <h1 class="page-title">object/propEq.js</h1>
     
 
     
@@ -49,41 +49,46 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
-import _assocǃ from '../_internals/_assocǃ'
-import reduce from '../function/reduce'
+            <pre class="prettyprint source linenums"><code>import _curry3 from '../_internals/_curry3'
+import eq from '../function/eq'
+import compose from '../function/compose'
+import prop from './prop'
 
 /**
- * @name sift
+ * @name propEq
  * @function
- * @since v0.1.0
+ * @since v0.12.2
  * @category Object
- * @sig (a -> Boolean) -> Object -> Object
- * @description Works a lot like an array filter, but for the object data type
- * Accepts a function and an object, it then runs the function against each value
- * @param {Function} fn A function to run against the values within the object
- * @param {Object} obj The object to sift through
- * @return {Object} A new filtered out object
- *
+ * @sig String -> * -> { k: * } -> Boolean
+ * @description Takes a desired property from an object and compares the value against a provided value to make sure they're equal
+ * @param {String} key The key to look for in the object
+ * @param {Any} val The value the property should equal
+ * @param {Object} obj The object to pull the property from to compare
+ * @return {Boolean} Whether or not the values are equal
  * @example
- * import { sift } from 'kyanite'
+ * import { propEq } from 'kyanite'
  *
- * sift(x => typeof x === 'string', {
- *   id: 44,
- *   thing: 'test',
- *   other: 'cool'
- * }) // => { thing: 'test', other: 'cool' }
+ * const abby = { name: 'Abby', age: 7, hair: 'blond' }
+ * const fred = { name: 'Fred', age: 12, hair: 'brown' }
+ * const rusty = { name: 'Rusty', age: 10, hair: 'brown' }
+ * const george = { name: 'george', age: 9 }
+ * const kids = [abby, fred, rusty, george]
+ *
+ * propEq('hair', 'brown', abby) // => false
+ * propEq('hair', 'brown', george) // => false
+ * propEq('hair', 'brown', rusty) // => true
  *
  * // It's also curried
  *
- * const sifter = sift(x => typeof x === 'string')
+ * const fn = propEq('hair')
+ * const gn = fn('brown')
  *
- * sifter({ id: 44, thing: 'test', other: 'cool' }) // => { thing: 'test', other: 'cool' }
+ * kids.filter(fn('blond')) // => [abby]
+ * kids.filter(gn) // => [fred, rusty]
  */
-const sift = (fn, obj) => reduce((k, acc) =>
-  fn(obj[k]) ? _assocǃ(acc, k, obj[k]) : acc, {}, Object.keys(obj))
+const propEq = (key, val, obj) => compose(eq(val), prop(key), obj)
 
-export default _curry2(sift)
+export default _curry3(propEq)
 </code></pre>
         </article>
     </section>
