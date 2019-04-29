@@ -4,7 +4,7 @@ import _curry2 from '../_internals/_curry2'
  * @name join
  * @function
  * @since v0.4.0
- * @category String
+ * @category Array
  * @sig String a -> Array String
  * @description
  * Joins together an array of strings with whatever string was passed in
@@ -20,7 +20,7 @@ import _curry2 from '../_internals/_curry2'
  * // It's also curried
  * const j = join(' ')
  *
- * j(['test', 'this', 'thing]) // => 'test this thing'
+ * j(['test', 'this', 'thing']) // => 'test this thing'
  * j(['test', 'that', 'thing']) // => 'test that thing'
  */
 const join = (str, list) => list.join(str)

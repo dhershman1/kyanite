@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>object/propEq.js - Documentation</title>
+    <title>array/join.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">object/propEq.js</h1>
+    <h1 class="page-title">array/join.js</h1>
     
 
     
@@ -49,46 +49,34 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import _curry3 from '../_internals/_curry3'
-import eq from '../function/eq'
-import compose from '../function/compose'
-import prop from './prop'
+            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
 
 /**
- * @name propEq
+ * @name join
  * @function
- * @since v0.12.2
- * @category Object
- * @sig String -> * -> { k: * } -> Boolean
- * @description Takes a desired property from an object and compares the value against a provided value to make sure they're equal
- * @param {String} key The key to look for in the object
- * @param {Any} val The value the property should equal
- * @param {Object} obj The object to pull the property from to compare
- * @return {Boolean} Whether or not the values are equal
+ * @since v0.4.0
+ * @category Array
+ * @sig String a -> Array String
+ * @description
+ * Joins together an array of strings with whatever string was passed in
+ * @param {String} str The string we want to use for the join
+ * @param {Array} list The array to join
+ * @return {String} The joined string
  * @example
- * import { propEq } from 'kyanite'
+ * import { join } from 'kyanite'
  *
- * const abby = { name: 'Abby', age: 7, hair: 'blond' }
- * const fred = { name: 'Fred', age: 12, hair: 'brown' }
- * const rusty = { name: 'Rusty', age: 10, hair: 'brown' }
- * const george = { name: 'george', age: 9 }
- * const kids = [abby, fred, rusty, george]
- *
- * propEq('hair', 'brown', abby) // => false
- * propEq('hair', 'brown', george) // => false
- * propEq('hair', 'brown', rusty) // => true
+ * join(' ', ['test', 'this', 'thing']) // => 'test this thing'
+ * join('aaa', ['test', 'that', 'thing']) // => 'testaaathataaathing'
  *
  * // It's also curried
+ * const j = join(' ')
  *
- * const fn = propEq('hair')
- * const gn = fn('brown')
- *
- * kids.filter(fn('blond')) // => [abby]
- * kids.filter(gn) // => [fred, rusty]
+ * j(['test', 'this', 'thing']) // => 'test this thing'
+ * j(['test', 'that', 'thing']) // => 'test that thing'
  */
-const propEq = (key, val, obj) => compose(eq(val), prop(key), obj)
+const join = (str, list) => list.join(str)
 
-export default _curry3(propEq)
+export default _curry2(join)
 </code></pre>
         </article>
     </section>

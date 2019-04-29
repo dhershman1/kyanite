@@ -1,4 +1,4 @@
-import join from '../../src/string/join'
+import join from '../../src/array/join'
 import test from 'tape'
 
 test('join -- Joins an array together', t => {

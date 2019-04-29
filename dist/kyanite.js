@@ -258,6 +258,11 @@
   };
   var intersection$1 = _curry2(intersection);
 
+  var join = function join(str, list) {
+    return list.join(str);
+  };
+  var join$1 = _curry2(join);
+
   function _typeof(obj) {
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
       _typeof = function (obj) {
@@ -1189,11 +1194,6 @@
     return true;
   };
   var fuzzySearch$1 = _curry2(fuzzySearch);
-
-  var join = function join(str, list) {
-    return list.join(str);
-  };
-  var join$1 = _curry2(join);
 
   var match = function match(reg, str) {
     return str.match(reg);
