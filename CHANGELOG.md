@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.12.3
+
+## Fixed
+
+- Documentation for `join` moved it to the `Array` Category, and fixed a typo in it's example
+- Documentation for `apply` showed incorrect curry examples
+
 ## v0.12.2
 
 ### New
