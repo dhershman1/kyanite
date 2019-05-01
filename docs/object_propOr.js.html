@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>number/median.js - Documentation</title>
+    <title>object/propOr.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">number/median.js</h1>
+    <h1 class="page-title">object/propOr.js</h1>
     
 
     
@@ -49,46 +49,47 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import sort from '../array/sort'
-import ascend from '../function/ascend'
-import mean from './mean'
-import slice from '../list/slice'
-import pipe from '../function/pipe'
+            <pre class="prettyprint source linenums"><code>import _curry3 from '../_internals/_curry3'
+import isNil from '../function/isNil'
+import prop from './prop'
 
 /**
- * @name median
+ * @name propOr
  * @function
- * @since v0.12.0
- * @category Number
- * @sig [Number] -> Number
- * @description Takes an array of numbers and calculates the median
- * @param {Array} list The array of numbers to calculate
- * @return {Number} The calculated median from the array
- *
+ * @since v0.12.3
+ * @category Object
+ * @sig a -> String -> Object -> a
+ * @description If the provided object contains it's own property with the specified name, that value is returned. Otherwise it will return the provided default value
+ * @param {Any} def The default value to fallback to if the prop returned null
+ * @param {String} key The property name within the provided object
+ * @param {Object} obj The object to pull the property from
+ * @return {Any} The value of the found prop, or the provided default value
  * @example
- * import { median } from 'kyanite'
+ * import { propOR } from 'kyanite'
  *
- * median([3, 13, 7, 5, 21, 23, 39, 23, 40, 23, 14, 12, 56, 23, 29]) // => 23
- * median([3, 13, 7, 5, 21, 23, 23, 40, 23, 14, 12, 56, 23, 29]) // => 22
+ * propOr('N/A', 'foo', { bar: 1, foo: 2 }) // => 2
+ * propOr('N/A', 'foo', { bar: 1 }) // => 'N/A'
+ *
+ * // It's also curried
+ * const fn = propOr('N/A')
+ * const gn = fn('foo')
+ *
+ * fn('bar', { bar: 1 }) // => 1
+ * fn('bar', { foo: 1 }) // => 'N/A'
+ * gn({ foo: 1 }) // => 1
+ * gn({ baz: 1 }) // => 'N/A'
  */
-const median = list => {
-  const len = list.length
+const propOr = (def, key, obj) => {
+  const val = prop(key, obj)
 
-  if (len === 0) {
-    return NaN
+  if (isNil(val)) {
+    return def
   }
 
-  const width = 2 - len % 2
-  const idx = (len - width) / 2
-
-  return pipe([
-    sort(ascend),
-    slice(idx, idx + width),
-    mean
-  ], list)
+  return val
 }
 
-export default median
+export default _curry3(propOr)
 </code></pre>
         </article>
     </section>

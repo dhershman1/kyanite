@@ -1147,6 +1147,15 @@
   };
   var propEq$1 = _curry3(propEq);
 
+  var propOr = function propOr(def, key, obj) {
+    var val = prop$1(key, obj);
+    if (isNil(val)) {
+      return def;
+    }
+    return val;
+  };
+  var propOr$1 = _curry3(propOr);
+
   var props = function props(keys, obj) {
     return map$1(function (k) {
       return obj[k];
@@ -1331,6 +1340,7 @@
   exports.product = product;
   exports.prop = prop$1;
   exports.propEq = propEq$1;
+  exports.propOr = propOr$1;
   exports.props = props$1;
   exports.range = range$1;
   exports.reduce = reduce$1;

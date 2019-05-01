@@ -2,6 +2,10 @@
 
 ## v0.12.3
 
+## New
+
+- Added the `propOr` Function which returns the value of a property from an object or the provided default value
+
 ## Fixed
 
 - Documentation for `join` moved it to the `Array` Category, and fixed a typo in it's example
