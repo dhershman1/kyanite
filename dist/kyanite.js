@@ -211,7 +211,7 @@
   var find = function find(fn, arr) {
     return reduce$1(function (val, acc) {
       return fn(val) ? reduced(val) : acc;
-    }, null, arr);
+    }, undefined, arr);
   };
   var find$1 = _curry2(find);
 
