@@ -11,7 +11,7 @@ import reduced from '../function/reduced'
  * @description Find an item based on the function sent in and its list
  * @param  {Function} fn The function used/called during the find
  * @param  {Array} arr The list we want to search through
- * @return {Any} Returns either the found item, or undefined if no item is found
+ * @return {Maybe} Returns either the found item, or undefined if no item is found
  *
  * @example
  * import { find } from 'kyanite'
@@ -27,6 +27,6 @@ import reduced from '../function/reduced'
  */
 const find = (fn, arr) =>
   reduce((val, acc) =>
-    fn(val) ? reduced(val) : acc, null, arr)
+    fn(val) ? reduced(val) : acc, undefined, arr)
 
 export default _curry2(find)

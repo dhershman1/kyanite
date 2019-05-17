@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.13.0
+
+## BREAKING CHANGES
+
+- `find` has gone back to returning `undefined` instead of `null` for not found values
+
 ## v0.12.3
 
 ## New
