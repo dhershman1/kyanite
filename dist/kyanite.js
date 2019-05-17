@@ -220,6 +220,16 @@
   };
   var findIndex$1 = _curry2(findIndex);
 
+  var flip = function flip(fn, a, b) {
+    return fn(b, a);
+  };
+  var flip$1 = _curry3(flip);
+
+  var fold = function fold(fn, arr) {
+    return arr.reduce(flip$1(fn));
+  };
+  var fold$1 = _curry2(fold);
+
   var insert = function insert(i, d, arr) {
     var idx = i < arr.length && i >= 0 ? i : arr.length;
     var result = arr.slice(0);
@@ -382,11 +392,9 @@
   };
   var maxBy$1 = _curry2(maxBy);
 
-  var min = function min(list) {
-    return list.reduce(function (a, b) {
-      return a <= b ? a : b;
-    });
-  };
+  var min = fold$1(function (a, b) {
+    return a <= b ? a : b;
+  });
 
   var minBy = function minBy(fn, list) {
     return list.reduce(function (a, b) {
@@ -822,11 +830,6 @@
     return eq$1(fn(a), fn(b));
   };
   var eqBy$1 = _curry3(eqBy);
-
-  var flip = function flip(fn, a, b) {
-    return fn(b, a);
-  };
-  var flip$1 = _curry3(flip);
 
   var gt = function gt(a, b) {
     return b > a;
@@ -1285,6 +1288,7 @@
   exports.findIndex = findIndex$1;
   exports.first = first;
   exports.flip = flip$1;
+  exports.fold = fold$1;
   exports.fuzzySearch = fuzzySearch$1;
   exports.gcd = gcd$1;
   exports.groupBy = groupBy$1;

@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>array/insert.js - Documentation</title>
+    <title>array/fold.js - Documentation</title>
     
     <meta name="description" content="A small library of pure functional utilities to make life easier and data better" />
     
@@ -39,7 +39,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">array/insert.js</h1>
+    <h1 class="page-title">array/fold.js</h1>
     
 
     
@@ -49,41 +49,36 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import _curry3 from '../_internals/_curry3'
+            <pre class="prettyprint source linenums"><code>import _curry2 from '../_internals/_curry2'
+import flip from '../function/flip'
 
 /**
- * @name insert
+ * @name fold
  * @function
- * @since v0.1.0
+ * @since v0.13.0
  * @category Array
- * @sig Number -> [a] -> [a]
- * @description Insert an item in a certain index of an array
- * @param  {Number} i The index number to remove from
- * @param  {Any} d The data we are going to be inserting
- * @param  {Array} arr The array to insert into
- * @return {Array} A new array with the inserted data
+ * @sig (a -> acc -> b) -> [a] -> b
+ * @description Takes an array and folds it using a function, basically a reduce without the need to send an initial accumulator value
+ * @param  {Function} fn The function used/called during the fold
+ * @param  {Array} arr The array we want to fold/reduce down
+ * @return {Any} A value based on the results of the function
  *
  * @example
- * import { insert } from 'kyanite'
+ * import { fold } from 'kyanite'
  *
- * insert(2, 'x', [1, 2, 3, 4]) // => [1, 2, 'x', 3, 4]
+ * fold((a, acc) => a &lt;= acc ? a : acc, [5, 6, 3, 9, 1]) // => 1
+ * fold((a, acc) => a + acc, [1, 2, 3, 4, 5]) // => 15
  *
- * // It's also curried
+ * // fold is also curried
  *
- * const ins = insert(2)
+ * const fn = fold((a, acc) => a &lt;= acc ? a : acc)
  *
- * ins('x', [1, 2, 3, 4]) // => [1, 2, 'x', 3, 4]
+ * fn([5, 4, 19, 20, 32, 1]) // => 1
+ * fn(['z', 'x', 'd', 'p']) // => 'd'
  */
-const insert = (i, d, arr) => {
-  const idx = i &lt; arr.length &amp;&amp; i >= 0 ? i : arr.length
-  const result = arr.slice(0)
+const fold = (fn, arr) => arr.reduce(flip(fn))
 
-  result.splice(idx, 0, d)
-
-  return result
-}
-
-export default _curry3(insert)
+export default _curry2(fold)
 </code></pre>
         </article>
     </section>
