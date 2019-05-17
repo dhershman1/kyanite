@@ -17,6 +17,10 @@ const buildRes = type =>
 
 // Build Exports
 // fs.writeFileSync('src/index.js', `module.exports = {\n${buildRes('cjs')}\n}`)
-fs.writeFileSync('src/index.js', `${buildRes('standard')}\n`)
+fs.writeFile('src/index.js', `${buildRes('standard')}\n`, err => {
+  if (err) {
+    throw err
+  }
 
-console.log('Finished Writing Exports...')
+  console.log('Finished Writing Exports...')
+})
