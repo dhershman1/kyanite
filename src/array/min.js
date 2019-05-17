@@ -1,3 +1,5 @@
+import fold from './fold'
+
 /**
  * @name min
  * @function
@@ -14,6 +16,7 @@
  * min([1, 3, 2, 5, 4]) // => 1
  * min(['c', 'a', 'b', 'f']) // => 'a'
  */
-const min = list => list.reduce((a, b) => a <= b ? a : b)
+// const min = list => list.reduce((a, b) => a <= b ? a : b)
+const min = fold((a, b) => a <= b ? a : b)
 
 export default min

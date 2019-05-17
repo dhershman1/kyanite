@@ -6,6 +6,14 @@
 
 - `find` has gone back to returning `undefined` instead of `null` for not found values
 
+## New
+
+- Added `fold` function which runs a `reduce` without an initial accumulator
+
+## Improved
+
+- `min` is now using the `fold` function
+
 ## v0.12.3
 
 ## New
