@@ -11,12 +11,22 @@
  * @param {Any} x The data that is considered reduced
  * @return {Any} The wrapped value
  * @example
- * import { reduce, reduced } from 'kyanite'
+ * import { compose, inc, dec, pipe, reduce, reduced, when } from 'kyanite'
  *
  * reduce((item, acc) =>
  *   item > 3 ? reduced(acc) : acc.concat(item), [], [1, 2, 3, 4, 5]) // => [1, 2, 3]
  * reduce((item, acc) =>
  *   acc.length === 3 ? reduced(acc) : acc.concat(item * 2), [], [1, 2, 3, 4, 5]) // => [2, 4, 6]
+ *
+ * // Using it with pipe is also do able
+ * const fn = pipe([
+ *   when(lt(10), compose(reduced, inc)),
+ *   when(gt(10), compose(reduced, dec))
+ * ])
+ *
+ * fn(1) // => 2
+ * fn(20) // => 19
+ * fn(10) // => 10
  */
 const reduced = x =>
   x && x['@@transducer/reduced'] ? x : {
