@@ -3,8 +3,6 @@ import eq from '../function/eq'
 
 /**
  * @name isEven
- * @deprecated since v0.11.0 use even
- * @see even
  * @function
  * @since v0.7.0
  * @category Number
