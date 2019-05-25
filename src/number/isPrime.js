@@ -2,8 +2,6 @@ import rem from './rem'
 
 /**
  * @name isPrime
- * @deprecated since v0.11.0 use prime
- * @see prime
  * @function
  * @since v0.8.3
  * @category Number

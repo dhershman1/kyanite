@@ -335,6 +335,12 @@ declare namespace K {
     flip<T, U, TResult>(fn: (arg1: U, arg0: T) => TResult): (a: T) => (b: U) => TResult;
 
     /**
+     * Takes an array and folds it using a function, basically a reduce without the need to send an initial accumulator value
+     */
+    fold<T, U, TResult>(fn: (a: T, acc: TResult) => TResult, arr: ReadonlyArray<T>): U;
+    fold<T, U, TResult>(fn: (a: T, acc: TResult) => TResult): (arr: ReadonlyArray<T>) => U;
+
+    /**
      * Takes a needle and searches the haystack for the matching string
      */
     fuzzySearch(needle: string, haystack: string): boolean;
@@ -664,6 +670,13 @@ declare namespace K {
     propEq<P extends string, T>(key: P, val: T, obj: Record<P, T>): boolean;
     propEq<P extends string, T>(key: P, val: T): (obj: Record<P, T>) => boolean;
     propEq<P extends string>(key: P): <T>(val: T) => (obj: Record<P, T>) => boolean;
+
+    /**
+     * If the provided object contains it's own property with the specified name, that value is returned. Otherwise it will return the provided default value
+     */
+    propOr<P extends string, U, T>(def: T, key: P, obj: Record<P, U>): U | T
+    propOr<P extends string, T>(def: T, key: P): <U>(obj: Record<P, U>) => U | T
+    propOr<T>(def: T): <P extends string>(key: P) => <U>(obj: Record<P, U>) => U | T
 
     /**
      * Pulls a list of values from an object and returns them as an array

@@ -1,7 +1,5 @@
 /**
  * @name isNil
- * @deprecated since v0.11.0 use nil
- * @see nil
  * @function
  * @since v0.1.0
  * @category Function

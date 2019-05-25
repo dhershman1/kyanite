@@ -18,7 +18,7 @@
     "template": "node_modules/@killparadise/docdash",
     "destination": "./docs/",
     "recurse": true,
-    "verbose": true
+    "verbose": false
   },
   "markdown": {
     "parser": "gfm",

@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.13.0
+
+### BREAKING CHANGES
+
+- `find` has gone back to returning `undefined` instead of `null` for not found values
+
+### New
+
+- Added `fold` function which runs a `reduce` without an initial accumulator
+- Added the `propOr` Function which returns the value of a property from an object or the provided default value
+- CircleCI will now handle publishing the documentation to the `gh-pages` branch
+
+### Fixed
+
+- Documentation for functions showing up `deprecated` when they were actually not
+- Documentation for `join` moved it to the `Array` Category, and fixed a typo in it's example
+- Documentation for `apply` showed incorrect curry examples
+
+### Improved
+
+- `min` is now using the `fold` function
+- Finally improved the documentation process so now documentation changes won't flood the PRs!
+
 ## v0.12.2
 
 ### New

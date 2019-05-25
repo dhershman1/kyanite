@@ -17,6 +17,13 @@ test('find -- Test array of objects functionality', t => {
   t.end()
 })
 
+test('find -- Test undefined not found', t => {
+  const results = find(x => x.val > 2, [{ val: 1 }, { val: 2 }])
+
+  t.same(results, undefined)
+  t.end()
+})
+
 test('find -- Stops at the first value to pass the function', t => {
   const results = find(x => x.val > 2, [{ val: 1 }, { val: 3 }, { val: 4 }])
 
