@@ -37,13 +37,13 @@
     "create": "node scripts/create-export.js && standard --fix src/index.js",
     "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
     "docs:deploy": "gh-pages --dist docs",
-    "scripts": "npm-run-all create docs build",
+    "scripts": "npm-run-all create build",
     "test:cov": "nyc npm test",
     "check-cov": "nyc check-coverage --lines 95 --functions 100 --branches 95",
     "report": "nyc report --reporter=text-lcov > coverage.lcov",
     "cov": "nyc --reporter=html npm test",
     "ts": "tsc -p types/tsconfig.json",
-    "prepack": "npm-run-all --parallel create docs lint test --serial build"
+    "prepack": "npm-run-all --parallel create lint test --serial build"
   },
   "nyc": {
     "include": [

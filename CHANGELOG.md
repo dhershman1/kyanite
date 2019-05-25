@@ -10,6 +10,7 @@
 
 - Added `fold` function which runs a `reduce` without an initial accumulator
 - Added the `propOr` Function which returns the value of a property from an object or the provided default value
+- CircleCI will now handle publishing the documentation to the `gh-pages` branch
 
 ### Fixed
 
@@ -20,6 +21,7 @@
 ### Improved
 
 - `min` is now using the `fold` function
+- Finally improved the documentation process so now documentation changes won't flood the PRs!
 
 ## v0.12.2
 

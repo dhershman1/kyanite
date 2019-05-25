@@ -101,10 +101,13 @@ workflows:
                 - development
   deploy_docs:
     jobs:
-      - docs
+      - docs:
+          filters:
+            branches:
+              only: master
       - docs-deploy:
           requires:
             - docs
           filters:
             branches:
-              only: development
+              only: master
