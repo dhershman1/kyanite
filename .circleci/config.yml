@@ -99,15 +99,18 @@ workflows:
               only:
                 - master
                 - development
+              ignore: gh-pages
   deploy_docs:
     jobs:
       - docs:
           filters:
             branches:
               only: master
+              ignore: gh-pages
       - docs-deploy:
           requires:
             - docs
           filters:
             branches:
               only: master
+              ignore: gh-pages
