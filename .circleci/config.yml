@@ -98,7 +98,7 @@ workflows:
                 - development
   deploy_docs:
     jobs:
-      - docs:
+      - docs
       - docs-deploy:
           requires:
             - docs
