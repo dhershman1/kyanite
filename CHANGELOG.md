@@ -2,15 +2,19 @@
 
 ## v0.13.0
 
-## BREAKING CHANGES
+### BREAKING CHANGES
 
 - `find` has gone back to returning `undefined` instead of `null` for not found values
 
-## New
+### New
 
 - Added `fold` function which runs a `reduce` without an initial accumulator
 
-## Improved
+### Fixed
+
+- Documentation for functions showing up `deprecated` when they were actually not
+
+### Improved
 
 - `min` is now using the `fold` function
 
