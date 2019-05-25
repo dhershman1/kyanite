@@ -83,12 +83,11 @@ jobs:
       - run:
           name: Install gh-pages and Configure
           command: |
-            npm install -g --silent gh-pages@2.0.1
             git config user.email "ci-build@dusty.codes"
             git config user.name "ci-build"
       - run:
           name: Deploy Docs
-          command: gh-pages --dist ~/kyanite/docs
+          command: npm run docs:deploy
 workflows:
   version: 2
   main:
