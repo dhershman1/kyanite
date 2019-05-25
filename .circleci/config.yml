@@ -47,6 +47,45 @@ jobs:
       - run:
           name: coverage
           command: npm run check-cov
+  docs:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:10.5
+    working_directory: ~/kyanite
+    steps:
+      - checkout
+
+      #Install deps
+      - run:
+          name: Install Dependencies
+          command: npm ci
+
+      # Build docs
+      - run:
+          name: Build docs
+          command: npm run docs
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - docs/*
+  docs-deploy:
+    docker:
+      - image: circleci/node:10.5
+    working_directory: ~/kyanite
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/kyanite
+      - run:
+          name: Install gh-pages and Configure
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "ci-build@dusty.codes"
+            git config user.name "ci-build"
+      - run:
+          name: Deploy Docs
+          command: gh-pages --dist ~/kyanite/docs
 workflows:
   version: 2
   main:
@@ -57,3 +96,12 @@ workflows:
               only:
                 - master
                 - development
+  deploy_docs:
+    jobs:
+      - docs:
+      - docs-deploy:
+          requires:
+            - docs
+          filters:
+            branches:
+              only: development
