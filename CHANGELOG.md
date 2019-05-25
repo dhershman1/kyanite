@@ -9,25 +9,17 @@
 ### New
 
 - Added `fold` function which runs a `reduce` without an initial accumulator
+- Added the `propOr` Function which returns the value of a property from an object or the provided default value
 
 ### Fixed
 
 - Documentation for functions showing up `deprecated` when they were actually not
+- Documentation for `join` moved it to the `Array` Category, and fixed a typo in it's example
+- Documentation for `apply` showed incorrect curry examples
 
 ### Improved
 
 - `min` is now using the `fold` function
-
-## v0.12.3
-
-## New
-
-- Added the `propOr` Function which returns the value of a property from an object or the provided default value
-
-## Fixed
-
-- Documentation for `join` moved it to the `Array` Category, and fixed a typo in it's example
-- Documentation for `apply` showed incorrect curry examples
 
 ## v0.12.2
 
