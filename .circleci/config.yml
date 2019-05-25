@@ -77,6 +77,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/kyanite
+      - add_ssh_keys:
+          fingerprints:
+            - "05:16:6f:2d:1d:63:40:9a:42:f2:e8:8f:90:22:da:15"
       - run:
           name: Install gh-pages and Configure
           command: |
