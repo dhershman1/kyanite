@@ -83,6 +83,7 @@ jobs:
       - run:
           name: Install gh-pages and Configure
           command: |
+            npm i -D gh-pages
             git config user.email "ci-build@dusty.codes"
             git config user.name "ci-build"
       - run:
