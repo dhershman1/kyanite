@@ -1222,6 +1222,16 @@
   };
   var split$1 = _curry2(split);
 
+  var startsWith = function startsWith(str1, str2) {
+    return str2.startsWith(str1);
+  };
+  var startsWith$1 = _curry2(startsWith);
+
+  var endsWith$2 = function endsWith(str1, str2) {
+    return str2.endsWith(str1);
+  };
+  var stringEndsWith = _curry2(endsWith$2);
+
   var test = function test(reg, str) {
     return reg.test(str);
   };
@@ -1365,6 +1375,8 @@
   exports.sortBy = sortBy$1;
   exports.sortWith = sortWith$1;
   exports.split = split$1;
+  exports.startsWith = startsWith$1;
+  exports.stringEndsWith = stringEndsWith;
   exports.subtract = subtract$1;
   exports.sum = sum;
   exports.take = take$1;
