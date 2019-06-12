@@ -9,7 +9,7 @@ import slice from './slice'
  * @since v0.10.0
  * @category List
  * @sig
- * a -> Array -> Boolean
+ * a -> List -> Boolean
  * String -> String -> Boolean
  * @description Checks to see if the provided value is at the end of a given list
  * @param {String|Array} a The value to check for at the end of the list

@@ -5,6 +5,7 @@
 ### Fixed
 
 - `isPrime` should handle edge cases like 0 a correctly now and return false instead of 0 (#121)
+- `endsWith` signature to reflect list instead of Array
 
 ## v0.13.0
 
