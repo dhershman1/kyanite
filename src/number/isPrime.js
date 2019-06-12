@@ -19,15 +19,14 @@ import rem from './rem'
  */
 const isPrime = x => {
   const s = Math.sqrt(x)
-  let i = 2
 
-  for (i; i <= s; i++) {
+  for (let i = 2; i <= s; i++) {
     if (!rem(i, x)) {
       return false
     }
   }
 
-  return x && x !== 1
+  return x > 1
 }
 
 export default isPrime

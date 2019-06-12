@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.13.1
+
+### Fixed
+
+- `isPrime` should handle edge cases like 0 a correctly now and return false instead of 0 (#121)
+
 ## v0.13.0
 
 ### BREAKING CHANGES
