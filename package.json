@@ -1,6 +1,6 @@
 {
   "name": "kyanite",
-  "version": "0.13.1",
+  "version": "0.13.0",
   "description": "A small library of pure functional utilities to make life easier and data better",
   "main": "dist/kyanite.min.js",
   "module": "src/index.js",
@@ -31,7 +31,7 @@
     "tape": "4.10.1"
   },
   "scripts": {
-    "test": "tape -r esm tests/**/isPrime.js | tap-spec",
+    "test": "tape -r esm tests/**/*.js | tap-spec",
     "lint": "standard src/**/*.js",
     "build": "rollup -c",
     "create": "node scripts/create-export.js && standard --fix src/index.js",
