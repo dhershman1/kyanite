@@ -37,6 +37,10 @@
   </a>
 </p>
 
+## Why Kyanite?
+
+Because I think mineral names are cool
+
 ## Contents
 
 - [View the Changelog](https://github.com/dhershman1/kyanite/blob/master/CHANGELOG.md)
@@ -118,10 +122,6 @@ To run the tests:
 - `cd` into the repo folder
 - Run `npm i`
 - Run `npm t`
-
-## Why Kyanite?
-
-The name Kyanite comes from the name of a mineral and I've always thought minerals had some pretty cool names, that's it. That's where the name originated from.
 
 ## Credit
 
