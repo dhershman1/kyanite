@@ -119,6 +119,10 @@ To run the tests:
 - Run `npm i`
 - Run `npm t`
 
+## Why Kyanite?
+
+The name Kyanite comes from the name of a mineral and I've always thought minerals had some pretty cool names, that's it. That's where the name originated from.
+
 ## Credit
 
 A lot of the if not most of the inpiration for this library came from 2 libraries I follow closely, Primarily most of it stems from:
