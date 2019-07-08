@@ -37,6 +37,10 @@
   </a>
 </p>
 
+## Why Kyanite?
+
+Because I think mineral names are cool
+
 ## Contents
 
 - [View the Changelog](https://github.com/dhershman1/kyanite/blob/master/CHANGELOG.md)
@@ -124,4 +128,4 @@ To run the tests:
 A lot of the if not most of the inpiration for this library came from 2 libraries I follow closely, Primarily most of it stems from:
 
 - [foreword](https://github.com/abstract-tools/foreword) by [Abstract Tools](https://github.com/abstract-tools) which is a very nice and easy to use library developed by a close friend and mentor. This is where a lot of functionality ideas came from I can't recommend it enough.
-- [Ramdajs](http://ramdajs.com/) by [Ramda](https://github.com/ramda) a large and fairly handy library where the original idea sparked
+- [Ramdajs](http://ramdajs.com/) by [Ramda](https://github.com/ramda) a beautiful and feature packed library where the original idea started

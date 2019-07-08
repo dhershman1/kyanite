@@ -1,6 +1,6 @@
 {
   "name": "kyanite",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "A small library of pure functional utilities to make life easier and data better",
   "main": "dist/kyanite.min.js",
   "module": "src/index.js",
@@ -36,7 +36,7 @@
     "build": "rollup -c",
     "create": "node scripts/create-export.js && standard --fix src/index.js",
     "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
-    "docs:deploy": "gh-pages --dist docs",
+    "docs:deploy": "gh-pages -m 'auto commit [ci skip]' --dist docs",
     "scripts": "npm-run-all create build",
     "test:cov": "nyc npm test",
     "check-cov": "nyc check-coverage --lines 95 --functions 100 --branches 95",

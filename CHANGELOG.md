@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.14.0
+
+### BREAKING CHANGES
+
+- Removed `memoizeWith` since it was more of a POC from ramda's code base
+  - I will most likely look into re adding it with my own code if the need is there right now I just don't see it
+
+### New
+
+- Added `startsWith` function, which should work just like `endsWith` but with the beginning of a list.
+
+### Fixed
+
+- `isPrime` should handle edge cases like 0 a correctly now and return false instead of 0 (#121)
+- `endsWith` signature to reflect list instead of Array
+
 ## v0.13.0
 
 ### BREAKING CHANGES

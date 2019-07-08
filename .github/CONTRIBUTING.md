@@ -16,11 +16,15 @@ All changes are expected to continue to pass the tests in place.
 
 If you are adding new functionality to the library you are expected to also unit test and create appropriate testing for your additions
 
+To run all tests use `npm t`
+
+If you want to test only your functionality feel free to change the test script to your `.js` file but **please** remember to change it back to `*.js` and re run `npm t` afterwards!
+
 ## Documentation
 
 For any new functionality additions please follow the format of other functionality in the form of jsdocs. The expected formatting should be:
 
-```
+```js
 /**
  * @name function name
  * @function

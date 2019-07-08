@@ -855,18 +855,6 @@
   };
   var lte$1 = _curry2(lte);
 
-  var memoizeWith = function memoizeWith(mFn, fn) {
-    var cache = {};
-    return function (data) {
-      var key = mFn(data);
-      if (!has$1(key, cache)) {
-        cache[key] = fn(data);
-      }
-      return cache[key];
-    };
-  };
-  var memoizeWith$1 = _curry2(memoizeWith);
-
   var notEq = function notEq(a, b) {
     return complement$1(eq$1(a), b);
   };
@@ -937,6 +925,11 @@
   var reverse = function reverse(list) {
     return Array.isArray(list) ? list.slice().reverse() : list.split('').reverse().join('');
   };
+
+  var startsWith = function startsWith(a, list) {
+    return compose$1(deepEq$1(a), slice$1(0, a.length), list);
+  };
+  var startsWith$1 = _curry2(startsWith);
 
   var add = function add(a, b) {
     return a + b;
@@ -1012,13 +1005,12 @@
 
   var isPrime = function isPrime(x) {
     var s = Math.sqrt(x);
-    var i = 2;
-    for (i; i <= s; i++) {
+    for (var i = 2; i <= s; i++) {
       if (!rem$1(i, x)) {
         return false;
       }
     }
-    return x && x !== 1;
+    return x > 1;
   };
 
   var isZero = eq$1(0);
@@ -1320,7 +1312,6 @@
   exports.maxBy = maxBy$1;
   exports.mean = mean;
   exports.median = median;
-  exports.memoizeWith = memoizeWith$1;
   exports.min = min;
   exports.minBy = minBy$1;
   exports.mod = mod$1;
@@ -1365,6 +1356,7 @@
   exports.sortBy = sortBy$1;
   exports.sortWith = sortWith$1;
   exports.split = split$1;
+  exports.startsWith = startsWith$1;
   exports.subtract = subtract$1;
   exports.sum = sum;
   exports.take = take$1;
