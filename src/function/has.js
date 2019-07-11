@@ -41,7 +41,7 @@ const has = (key, data) => {
       return data.includes(key)
     case 'Object':
     case 'Arguments':
-      return data.hasOwnProperty(key)
+      return Object.prototype.hasOwnProperty.call(data, key)
     case 'Map':
     case 'Set':
       return data.has(key)

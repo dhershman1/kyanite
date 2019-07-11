@@ -30,6 +30,6 @@ import reduce from '../function/reduce'
  */
 const plan = (schema, obj) =>
   Object.assign({}, obj, reduce((k, acc) =>
-    !obj.hasOwnProperty(k) ? acc : _assocǃ(acc, k, schema[k](obj[k])), {}, Object.keys(schema)))
+    !Object.prototype.hasOwnProperty.call(obj, k) ? acc : _assocǃ(acc, k, schema[k](obj[k])), {}, Object.keys(schema)))
 
 export default _curry2(plan)
