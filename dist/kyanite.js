@@ -117,7 +117,7 @@
     return reduce$1(function (a, acc) {
       var k = fn(a);
       var _an = _assocǃ$1(acc, k);
-      return acc.hasOwnProperty(k) ? _an(acc[k] + 1) : _an(1);
+      return Object.prototype.hasOwnProperty.call(acc, k) ? _an(acc[k] + 1) : _an(1);
     }, {}, arr);
   };
   var countBy$1 = _curry2(countBy);
@@ -126,7 +126,7 @@
     return reduce$1(function (v, acc) {
       var k = fn(v);
       var _an = _assocǃ$1(acc, k);
-      return acc.hasOwnProperty(k) ? _an(_appendǃ(acc[k], v)) : _an([v]);
+      return Object.prototype.hasOwnProperty.call(acc, k) ? _an(_appendǃ(acc[k], v)) : _an([v]);
     }, {}, list);
   };
   var groupBy$1 = _curry2(groupBy);
@@ -138,7 +138,7 @@
   var uniqBy = function uniqBy(fn, list) {
     return Object.values(list.reduce(function (acc, a) {
       var k = fn(a);
-      return !acc.hasOwnProperty(k) ? _assocǃ$1(acc, k, a) : acc;
+      return !Object.prototype.hasOwnProperty.call(acc, k) ? _assocǃ$1(acc, k, a) : acc;
     }, {}));
   };
   var uniqBy$1 = _curry2(uniqBy);
@@ -250,7 +250,7 @@
         return data.includes(key);
       case 'Object':
       case 'Arguments':
-        return data.hasOwnProperty(key);
+        return Object.prototype.hasOwnProperty.call(data, key);
       case 'Map':
       case 'Set':
         return data.has(key);
@@ -879,10 +879,6 @@
   };
   var pipeP$1 = _curry2(pipeP);
 
-  var size = function size(x) {
-    return x.size;
-  };
-
   var unless = function unless(fn, act, x) {
     return fn(x) ? x : act(x);
   };
@@ -1127,7 +1123,7 @@
 
   var plan = function plan(schema, obj) {
     return Object.assign({}, obj, reduce$1(function (k, acc) {
-      return !obj.hasOwnProperty(k) ? acc : _assocǃ$1(acc, k, schema[k](obj[k]));
+      return !Object.prototype.hasOwnProperty.call(obj, k) ? acc : _assocǃ$1(acc, k, schema[k](obj[k]));
     }, {}, Object.keys(schema)));
   };
   var plan$1 = _curry2(plan);
@@ -1348,7 +1344,6 @@
   exports.reverse = reverse;
   exports.round = round$1;
   exports.sift = sift$1;
-  exports.size = size;
   exports.slice = slice$1;
   exports.some = some$1;
   exports.somePass = somePass$1;
