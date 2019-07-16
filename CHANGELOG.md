@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.0.0
+
+### BREAKING CHANGES
+
+- `size` was removed you can use `count` instead
+
+### Improved
+
+- All dependencies upgraded and audit fixes added
+- Added some extra unit tests
+
 ## v0.14.0
 
 ### BREAKING CHANGES
