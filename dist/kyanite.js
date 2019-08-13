@@ -1168,6 +1168,13 @@
   };
   var whole$1 = _curry2(whole);
 
+  var withDefaults = function withDefaults(def, obj) {
+    return reduce$1(function (k, acc) {
+      return _assocǃ$1(acc, k, defaultTo$1(def[k], obj[k]));
+    }, {}, Object.keys(def));
+  };
+  var withDefaults$1 = _curry2(withDefaults);
+
   var capitalize = function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
@@ -1368,6 +1375,7 @@
   exports.update = update$1;
   exports.when = when$1;
   exports.whole = whole$1;
+  exports.withDefaults = withDefaults$1;
   exports.within = within$1;
   exports.zip = zip$1;
 
