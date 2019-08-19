@@ -10,6 +10,7 @@
 
 - All dependencies upgraded and audit fixes added
 - Added some extra unit tests
+- Slight optimization of `factors` to remove a unneeded wrapper
 
 ## v0.14.0
 
