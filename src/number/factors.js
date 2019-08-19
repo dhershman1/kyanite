@@ -1,4 +1,3 @@
-import compose from '../function/compose'
 import filter from '../array/filter'
 import negate from './negate'
 import range from './range'
@@ -38,7 +37,7 @@ import rem from './rem'
 const factors = (x = 0) => {
   const val = x < 0 ? negate(x) : x
 
-  return x ? [...compose(filter(i => rem(i, val) === 0), range(0), val), val] : []
+  return x ? [...filter(i => rem(i, val) === 0, range(0, val)), val] : []
 }
 
 export default factors
