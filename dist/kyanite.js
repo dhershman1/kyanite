@@ -508,9 +508,9 @@
 
   var sortWith = function sortWith(fns, arr) {
     return _toConsumableArray(arr).sort(function (a, b) {
-      return fns.reduce(function (acc, f) {
+      return reduce$1(function (f, acc) {
         return acc === 0 ? f(a, b) : acc;
-      }, 0);
+      }, 0, fns);
     });
   };
   var sortWith$1 = _curry2(sortWith);
