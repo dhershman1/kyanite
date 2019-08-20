@@ -957,25 +957,17 @@
   };
   var divide$1 = _curry2(divide);
 
-  var negate = function negate(n) {
-    return -n;
-  };
-
-  var range = function range(from, to) {
-    var result = [];
-    for (var i = Number(from), len = Number(to); i < len; i++) {
-      result.push(i);
-    }
-    return result;
-  };
-  var range$1 = _curry2(range);
-
   var factors = function factors() {
     var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    var val = x < 0 ? negate(x) : x;
-    return x ? [].concat(_toConsumableArray(compose$1(filter$1(function (i) {
-      return rem$1(i, val) === 0;
-    }), range$1(0), val)), [val]) : [];
+    var factors = [];
+    var quotient = 0;
+    for (var i = 1; i <= x; i++) {
+      quotient = x / i;
+      if (quotient === Math.floor(quotient)) {
+        _appendǃ(factors, i);
+      }
+    }
+    return factors;
   };
 
   var gcd = function gcd(a, b) {
@@ -1043,12 +1035,25 @@
   };
   var multiply$1 = _curry2(multiply);
 
+  var negate = function negate(n) {
+    return -n;
+  };
+
   var pow = function pow(a, b) {
     return Math.pow(b, a);
   };
   var pow$1 = _curry2(pow);
 
   var product = reduce$1(multiply$1, 1);
+
+  var range = function range(from, to) {
+    var result = [];
+    for (var i = Number(from), len = Number(to); i < len; i++) {
+      result.push(i);
+    }
+    return result;
+  };
+  var range$1 = _curry2(range);
 
   var round = function round(precision, num) {
     return Number("".concat(Math.round("".concat(num, "e").concat(precision)), "e-").concat(precision));
