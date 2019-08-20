@@ -5,12 +5,16 @@
 ### BREAKING CHANGES
 
 - `size` was removed you can use `count` instead
+- `factors` no longer handles negative numbers (see improved section)
+  - This can be accounted for with using the `negate` function
 
 ### Improved
 
 - All dependencies upgraded and audit fixes added
 - Added some extra unit tests
-- Slight optimization of `factors` to remove a unneeded wrapper
+- Large optimizations for `factors` re wrote the function and it should be able to handle extremely large numbers now
+  - You won't see a huge performance boost on normal numbers within the hundred thousands maybe a few miliseconds this change was mostly to enhance factors so it can handle big integers better
+  - Note: This does not mean the new `BigInt` data type
 
 ## v0.14.0
 

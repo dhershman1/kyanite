@@ -1,7 +1,4 @@
-import filter from '../array/filter'
-import negate from './negate'
-import range from './range'
-import rem from './rem'
+import _appendǃ from '../_internals/_appendǃ'
 
 /**
  * @name factors
@@ -35,9 +32,18 @@ import rem from './rem'
  */
 
 const factors = (x = 0) => {
-  const val = x < 0 ? negate(x) : x
+  const factors = []
+  let quotient = 0
 
-  return x ? [...filter(i => rem(i, val) === 0, range(0, val)), val] : []
+  for (let i = 1; i <= x; i++) {
+    quotient = x / i
+
+    if (quotient === Math.floor(quotient)) {
+      _appendǃ(factors, i)
+    }
+  }
+
+  return factors
 }
 
 export default factors
