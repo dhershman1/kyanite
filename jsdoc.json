@@ -12,7 +12,7 @@
   },
   "sourceType": "module",
   "plugins": [
-    "scripts/custom-tags.js"
+    "node_modules/pinet/tags.js"
   ],
   "opts": {
     "encoding": "utf8",
