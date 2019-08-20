@@ -262,9 +262,9 @@
 
   var intersection = function intersection(a, b) {
     var grouped = groupBy$1(identity, b);
-    return uniq(a.filter(function (x) {
+    return uniq(filter$1(function (x) {
       return has$1(x, grouped);
-    }));
+    }, a));
   };
   var intersection$1 = _curry2(intersection);
 
