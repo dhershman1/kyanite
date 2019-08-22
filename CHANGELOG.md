@@ -16,6 +16,7 @@
   - You won't see a huge performance boost on normal numbers within the hundred thousands maybe a few miliseconds this change was mostly to enhance factors so it can handle big integers better
   - Note: This does not mean the new `BigInt` data type
 - Switched over to use the [pinet](https://github.com/dhershman1/pinet#readme) engine for building the docs
+- Cleaned up `isPrime` slightly, debating if the trial division approach is still best or not
 
 ## v0.14.0
 
