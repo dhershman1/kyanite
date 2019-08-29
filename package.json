@@ -31,7 +31,7 @@
     "tape": "4.11.0"
   },
   "scripts": {
-    "test": "tape -r esm tests/**/isPrime.js | tap-spec",
+    "test": "tape -r esm tests/**/*.js | tap-spec",
     "lint": "standard src/**/*.js",
     "build": "rollup -c",
     "create": "node scripts/create-export.js && standard --fix src/index.js",
