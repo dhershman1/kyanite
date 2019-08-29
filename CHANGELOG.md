@@ -25,6 +25,10 @@
 - Switched over to use the [pinet](https://github.com/dhershman1/pinet#readme) engine for building the docs
 - Cleaned up `isPrime` slightly, debating if the trial division approach is still best or not
 
+### Fixed
+
+- CI breaking the CNAME definitions
+
 ## v0.14.0
 
 ### BREAKING CHANGES
