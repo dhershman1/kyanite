@@ -991,14 +991,13 @@
     return false;
   };
 
-  var isPrime = function isPrime(x) {
-    var s = Math.sqrt(x);
-    for (var i = 2; i <= s; i++) {
-      if (!rem$1(i, x)) {
+  var isPrime = function isPrime(n) {
+    for (var i = 2, s = Math.sqrt(n); i <= s; i++) {
+      if (!rem$1(i, n)) {
         return false;
       }
     }
-    return x > 1;
+    return n > 1;
   };
 
   var isZero = eq$1(0);
@@ -1029,6 +1028,19 @@
     return (a % b + b) % b;
   };
   var mod$1 = _curry2(mod);
+
+  var multiples = function multiples(limit, n) {
+    var m = [];
+    for (var i = 0; i < limit; i++) {
+      var result = i * n;
+      if (result > limit) {
+        return m;
+      }
+      m.push(result);
+    }
+    return m;
+  };
+  var multiples$1 = _curry2(multiples);
 
   var multiply = function multiply(a, b) {
     return a * b;
@@ -1323,6 +1335,7 @@
   exports.min = min;
   exports.minBy = minBy$1;
   exports.mod = mod$1;
+  exports.multiples = multiples$1;
   exports.multiply = multiply$1;
   exports.negate = negate;
   exports.not = not;
