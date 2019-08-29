@@ -77,8 +77,15 @@ declare namespace K {
      * Applies a function to a parameter/Argument. Useful for creating a fixed-arity function
      * Also known as the A Combinator
      */
-    apply<T, U, TResult>(fn: (arg0: T, ...args: T[]) => TResult, args: ReadonlyArray<U>): TResult;
-    apply<T, TResult>(fn: (arg0: T, ...args: T[]) => TResult): <U>(args: ReadonlyArray<U>) => TResult;
+    applyN<T, U, TResult>(fn: (arg0: T, ...args: T[]) => TResult, args: ReadonlyArray<U>): TResult;
+    applyN<T, TResult>(fn: (arg0: T, ...args: T[]) => TResult): <U>(args: ReadonlyArray<U>) => TResult;
+
+    /**
+     * Applies a function to a parameter/Argument. Useful for creating a fixed-arity function
+     * Also known as the A Combinator
+     */
+    apply<T, U, TResult>(fn: (arg0: T) => TResult, args: T): TResult;
+    apply<T, TResult>(fn: (arg0: T) => TResult): (args: T) => TResult;
 
     /**
      * Determines which of the given values should be ascended, useful for sort methods
