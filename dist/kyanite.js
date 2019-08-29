@@ -583,9 +583,14 @@
   var ap$1 = _curry3(ap);
 
   var apply = function apply(fn, a) {
-    return fn.apply(void 0, _toConsumableArray(a));
+    return fn(a);
   };
   var apply$1 = _curry2(apply);
+
+  var applyN = function applyN(fn, a) {
+    return fn.apply(void 0, _toConsumableArray(a));
+  };
+  var applyN$1 = _curry2(applyN);
 
   var ascendBy = function ascendBy(fn, a, b) {
     return ascend(fn(a), fn(b));
@@ -1036,7 +1041,7 @@
       if (result > limit) {
         return m;
       }
-      m.push(result);
+      _appendǃ(m, result);
     }
     return m;
   };
@@ -1259,6 +1264,7 @@
   exports.any = any$1;
   exports.ap = ap$1;
   exports.apply = apply$1;
+  exports.applyN = applyN$1;
   exports.ascend = ascend;
   exports.ascendBy = ascendBy$1;
   exports.between = between$1;
