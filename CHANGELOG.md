@@ -8,6 +8,12 @@
 - `factors` no longer handles negative numbers (see improved section)
   - This can be accounted for with using the `negate` function
 
+### New
+
+- Added a `multiples` function
+  - Stress testing seems to point that it can handle up to 300 million limits in about 1.4s, but anything 400mil+ breaks the stack heap
+  - If you need to go that high may be wise to look into an arithmatic library
+
 ### Improved
 
 - All dependencies upgraded and audit fixes added
