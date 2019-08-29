@@ -26,3 +26,12 @@ test('multiples -- larger limits', t => {
   t.same(res2[res2.length - 1], 10000000)
   t.end()
 })
+
+// test('timer', t => {
+//   console.time('multi')
+//   multiples(200000000, 5)
+//   console.timeEnd('multi')
+
+//   t.ok(true)
+//   t.end()
+// })

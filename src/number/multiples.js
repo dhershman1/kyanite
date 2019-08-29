@@ -1,4 +1,5 @@
 import _curry2 from '../_internals/_curry2'
+import _appendǃ from '../_internals/_appendǃ'
 
 const multiples = (limit, n) => {
   const m = []
@@ -10,7 +11,7 @@ const multiples = (limit, n) => {
       return m
     }
 
-    m.push(result)
+    _appendǃ(m, result)
   }
 
   return m
