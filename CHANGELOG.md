@@ -10,6 +10,7 @@
 
 ### New
 
+- Added a `withDefaults` function which will populate an object with default values if they don't exist within the data provided
 - Added a `multiples` function
   - Stress testing seems to point that it can handle up to 300 million limits in about 1.4s, but anything 400mil+ breaks the stack heap
   - If you need to go that high may be wise to look into an arithmatic library
