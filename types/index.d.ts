@@ -539,6 +539,12 @@ declare namespace K {
     mod(a: number): (b: number) => number;
 
     /**
+     * Finds all of the multiples of a number up until the limit provided
+     */
+    multiples(limit: number, n: number): number;
+    multiples(limit: number): (n: number) => number;
+
+    /**
      * Multiplies the provided numbers
      */
     multiply(a: number, b: number): number;
@@ -906,6 +912,12 @@ declare namespace K {
      */
     whole<T, U>(schema: T, data: U): boolean;
     whole<T>(schema: T): <U>(data: U) => boolean;
+
+    /**
+     * Fills in non exsistent property values (null, undefined, and NaN) with the provided defaults.
+     */
+    withDefaults<T, V>(def: KeyValuePair<T, V>, obj: KeyValuePair<T, V>): KeyValuePair<T, V>;
+    withDefaults<T, V>(def: KeyValuePair<T, V>): (obj: KeyValuePair<T, V>) => KeyValuePair<T, V>;
 
     /**
      * Checks to see if a number is between two other numbers (exclusive)
