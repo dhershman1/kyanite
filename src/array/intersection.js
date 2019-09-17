@@ -3,6 +3,7 @@ import groupBy from './groupBy'
 import has from '../function/has'
 import identity from '../function/identity'
 import uniq from './uniq'
+import filter from './filter'
 
 /**
  * @name intersection
@@ -29,7 +30,7 @@ import uniq from './uniq'
 const intersection = (a, b) => {
   const grouped = groupBy(identity, b)
 
-  return uniq(a.filter(x => has(x, grouped)))
+  return uniq(filter(x => has(x, grouped), a))
 }
 
 export default _curry2(intersection)

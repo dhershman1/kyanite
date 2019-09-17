@@ -77,8 +77,15 @@ declare namespace K {
      * Applies a function to a parameter/Argument. Useful for creating a fixed-arity function
      * Also known as the A Combinator
      */
-    apply<T, U, TResult>(fn: (arg0: T, ...args: T[]) => TResult, args: ReadonlyArray<U>): TResult;
-    apply<T, TResult>(fn: (arg0: T, ...args: T[]) => TResult): <U>(args: ReadonlyArray<U>) => TResult;
+    applyN<T, U, TResult>(fn: (arg0: T, ...args: T[]) => TResult, args: ReadonlyArray<U>): TResult;
+    applyN<T, TResult>(fn: (arg0: T, ...args: T[]) => TResult): <U>(args: ReadonlyArray<U>) => TResult;
+
+    /**
+     * Applies a function to a parameter/Argument. Useful for creating a fixed-arity function
+     * Also known as the A Combinator
+     */
+    apply<T, U, TResult>(fn: (arg0: T) => TResult, args: T): TResult;
+    apply<T, TResult>(fn: (arg0: T) => TResult): (args: T) => TResult;
 
     /**
      * Determines which of the given values should be ascended, useful for sort methods
@@ -539,6 +546,12 @@ declare namespace K {
     mod(a: number): (b: number) => number;
 
     /**
+     * Finds all of the multiples of a number up until the limit provided
+     */
+    multiples(limit: number, n: number): number;
+    multiples(limit: number): (n: number) => number;
+
+    /**
      * Multiplies the provided numbers
      */
     multiply(a: number, b: number): number;
@@ -906,6 +919,12 @@ declare namespace K {
      */
     whole<T, U>(schema: T, data: U): boolean;
     whole<T>(schema: T): <U>(data: U) => boolean;
+
+    /**
+     * Fills in non exsistent property values (null, undefined, and NaN) with the provided defaults.
+     */
+    withDefaults<T, V>(def: KeyValuePair<T, V>, obj: KeyValuePair<T, V>): KeyValuePair<T, V>;
+    withDefaults<T, V>(def: KeyValuePair<T, V>): (obj: KeyValuePair<T, V>) => KeyValuePair<T, V>;
 
     /**
      * Checks to see if a number is between two other numbers (exclusive)

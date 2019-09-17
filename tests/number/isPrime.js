@@ -16,6 +16,7 @@ test('isPrime -- Larger numbers', t => {
   t.same(isPrime(7877), true)
   t.same(isPrime(7878), false)
   t.same(isPrime(5010), false)
+  t.same(isPrime(10543000), false)
   t.end()
 })
 

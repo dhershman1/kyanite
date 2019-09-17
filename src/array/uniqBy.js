@@ -27,7 +27,7 @@ const uniqBy = (fn, list) =>
   Object.values(list.reduce((acc, a) => {
     const k = fn(a)
 
-    return !acc.hasOwnProperty(k) ? _assocǃ(acc, k, a) : acc
+    return !Object.prototype.hasOwnProperty.call(acc, k) ? _assocǃ(acc, k, a) : acc
   }, {}))
 
 export default _curry2(uniqBy)

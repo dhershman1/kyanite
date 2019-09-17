@@ -17,3 +17,13 @@ test('whole -- predicate is false', t => {
   t.is(result({ a: 'xxx', b: 'xxx', x: 11, y: 19 }), false)
   t.end()
 })
+
+test('whole -- validate all props exist', t => {
+  const fn = whole({
+    a: x => x,
+    b: x => x
+  })
+
+  t.same(fn({ a: 1 }), false)
+  t.end()
+})

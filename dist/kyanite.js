@@ -117,7 +117,7 @@
     return reduce$1(function (a, acc) {
       var k = fn(a);
       var _an = _assocǃ$1(acc, k);
-      return acc.hasOwnProperty(k) ? _an(acc[k] + 1) : _an(1);
+      return Object.prototype.hasOwnProperty.call(acc, k) ? _an(acc[k] + 1) : _an(1);
     }, {}, arr);
   };
   var countBy$1 = _curry2(countBy);
@@ -126,7 +126,7 @@
     return reduce$1(function (v, acc) {
       var k = fn(v);
       var _an = _assocǃ$1(acc, k);
-      return acc.hasOwnProperty(k) ? _an(_appendǃ(acc[k], v)) : _an([v]);
+      return Object.prototype.hasOwnProperty.call(acc, k) ? _an(_appendǃ(acc[k], v)) : _an([v]);
     }, {}, list);
   };
   var groupBy$1 = _curry2(groupBy);
@@ -138,7 +138,7 @@
   var uniqBy = function uniqBy(fn, list) {
     return Object.values(list.reduce(function (acc, a) {
       var k = fn(a);
-      return !acc.hasOwnProperty(k) ? _assocǃ$1(acc, k, a) : acc;
+      return !Object.prototype.hasOwnProperty.call(acc, k) ? _assocǃ$1(acc, k, a) : acc;
     }, {}));
   };
   var uniqBy$1 = _curry2(uniqBy);
@@ -250,7 +250,7 @@
         return data.includes(key);
       case 'Object':
       case 'Arguments':
-        return data.hasOwnProperty(key);
+        return Object.prototype.hasOwnProperty.call(data, key);
       case 'Map':
       case 'Set':
         return data.has(key);
@@ -262,9 +262,9 @@
 
   var intersection = function intersection(a, b) {
     var grouped = groupBy$1(identity, b);
-    return uniq(a.filter(function (x) {
+    return uniq(filter$1(function (x) {
       return has$1(x, grouped);
-    }));
+    }, a));
   };
   var intersection$1 = _curry2(intersection);
 
@@ -508,9 +508,9 @@
 
   var sortWith = function sortWith(fns, arr) {
     return _toConsumableArray(arr).sort(function (a, b) {
-      return fns.reduce(function (acc, f) {
+      return reduce$1(function (f, acc) {
         return acc === 0 ? f(a, b) : acc;
-      }, 0);
+      }, 0, fns);
     });
   };
   var sortWith$1 = _curry2(sortWith);
@@ -583,9 +583,14 @@
   var ap$1 = _curry3(ap);
 
   var apply = function apply(fn, a) {
-    return fn.apply(void 0, _toConsumableArray(a));
+    return fn(a);
   };
   var apply$1 = _curry2(apply);
+
+  var applyN = function applyN(fn, a) {
+    return fn.apply(void 0, _toConsumableArray(a));
+  };
+  var applyN$1 = _curry2(applyN);
 
   var ascendBy = function ascendBy(fn, a, b) {
     return ascend(fn(a), fn(b));
@@ -879,10 +884,6 @@
   };
   var pipeP$1 = _curry2(pipeP);
 
-  var size = function size(x) {
-    return x.size;
-  };
-
   var unless = function unless(fn, act, x) {
     return fn(x) ? x : act(x);
   };
@@ -961,25 +962,17 @@
   };
   var divide$1 = _curry2(divide);
 
-  var negate = function negate(n) {
-    return -n;
-  };
-
-  var range = function range(from, to) {
-    var result = [];
-    for (var i = Number(from), len = Number(to); i < len; i++) {
-      result.push(i);
-    }
-    return result;
-  };
-  var range$1 = _curry2(range);
-
   var factors = function factors() {
     var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-    var val = x < 0 ? negate(x) : x;
-    return x ? [].concat(_toConsumableArray(compose$1(filter$1(function (i) {
-      return rem$1(i, val) === 0;
-    }), range$1(0), val)), [val]) : [];
+    var factors = [];
+    var quotient = 0;
+    for (var i = 1; i <= x; i++) {
+      quotient = x / i;
+      if (quotient === Math.floor(quotient)) {
+        _appendǃ(factors, i);
+      }
+    }
+    return factors;
   };
 
   var gcd = function gcd(a, b) {
@@ -1003,14 +996,13 @@
     return false;
   };
 
-  var isPrime = function isPrime(x) {
-    var s = Math.sqrt(x);
-    for (var i = 2; i <= s; i++) {
-      if (!rem$1(i, x)) {
+  var isPrime = function isPrime(n) {
+    for (var i = 2, s = Math.sqrt(n); i <= s; i++) {
+      if (!rem$1(i, n)) {
         return false;
       }
     }
-    return x > 1;
+    return n > 1;
   };
 
   var isZero = eq$1(0);
@@ -1042,10 +1034,27 @@
   };
   var mod$1 = _curry2(mod);
 
+  var multiples = function multiples(limit, n) {
+    var m = [];
+    for (var i = 0; i < limit; i++) {
+      var result = i * n;
+      if (result > limit) {
+        return m;
+      }
+      _appendǃ(m, result);
+    }
+    return m;
+  };
+  var multiples$1 = _curry2(multiples);
+
   var multiply = function multiply(a, b) {
     return a * b;
   };
   var multiply$1 = _curry2(multiply);
+
+  var negate = function negate(n) {
+    return -n;
+  };
 
   var pow = function pow(a, b) {
     return Math.pow(b, a);
@@ -1053,6 +1062,15 @@
   var pow$1 = _curry2(pow);
 
   var product = reduce$1(multiply$1, 1);
+
+  var range = function range(from, to) {
+    var result = [];
+    for (var i = Number(from), len = Number(to); i < len; i++) {
+      result.push(i);
+    }
+    return result;
+  };
+  var range$1 = _curry2(range);
 
   var round = function round(precision, num) {
     return Number("".concat(Math.round("".concat(num, "e").concat(precision)), "e-").concat(precision));
@@ -1127,7 +1145,7 @@
 
   var plan = function plan(schema, obj) {
     return Object.assign({}, obj, reduce$1(function (k, acc) {
-      return !obj.hasOwnProperty(k) ? acc : _assocǃ$1(acc, k, schema[k](obj[k]));
+      return !Object.prototype.hasOwnProperty.call(obj, k) ? acc : _assocǃ$1(acc, k, schema[k](obj[k]));
     }, {}, Object.keys(schema)));
   };
   var plan$1 = _curry2(plan);
@@ -1171,6 +1189,13 @@
     });
   };
   var whole$1 = _curry2(whole);
+
+  var withDefaults = function withDefaults(def, obj) {
+    return reduce$1(function (k, acc) {
+      return _assocǃ$1(acc, k, defaultTo$1(def[k], obj[k]));
+    }, {}, Object.keys(def));
+  };
+  var withDefaults$1 = _curry2(withDefaults);
 
   var capitalize = function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -1239,6 +1264,7 @@
   exports.any = any$1;
   exports.ap = ap$1;
   exports.apply = apply$1;
+  exports.applyN = applyN$1;
   exports.ascend = ascend;
   exports.ascendBy = ascendBy$1;
   exports.between = between$1;
@@ -1315,6 +1341,7 @@
   exports.min = min;
   exports.minBy = minBy$1;
   exports.mod = mod$1;
+  exports.multiples = multiples$1;
   exports.multiply = multiply$1;
   exports.negate = negate;
   exports.not = not;
@@ -1348,7 +1375,6 @@
   exports.reverse = reverse;
   exports.round = round$1;
   exports.sift = sift$1;
-  exports.size = size;
   exports.slice = slice$1;
   exports.some = some$1;
   exports.somePass = somePass$1;
@@ -1373,6 +1399,7 @@
   exports.update = update$1;
   exports.when = when$1;
   exports.whole = whole$1;
+  exports.withDefaults = withDefaults$1;
   exports.within = within$1;
   exports.zip = zip$1;
 

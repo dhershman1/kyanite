@@ -1,4 +1,5 @@
 import _curry2 from '../_internals/_curry2'
+import reduce from '../function/reduce'
 
 /**
  * @name sortWith
@@ -33,6 +34,6 @@ import _curry2 from '../_internals/_curry2'
  */
 const sortWith = (fns, arr) =>
   [...arr].sort((a, b) =>
-    fns.reduce((acc, f) => acc === 0 ? f(a, b) : acc, 0))
+    reduce((f, acc) => acc === 0 ? f(a, b) : acc, 0, fns))
 
 export default _curry2(sortWith)
