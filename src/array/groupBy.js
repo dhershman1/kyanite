@@ -30,7 +30,7 @@ const groupBy = (fn, list) =>
     const k = fn(v)
     const _an = _assocǃ(acc, k)
 
-    return acc.hasOwnProperty(k) ? _an(_appendǃ(acc[k], v)) : _an([v])
+    return Object.prototype.hasOwnProperty.call(acc, k) ? _an(_appendǃ(acc[k], v)) : _an([v])
   }, {}, list)
 
 export default _curry2(groupBy)

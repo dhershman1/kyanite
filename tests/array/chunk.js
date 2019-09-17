@@ -14,3 +14,9 @@ test('chunk -- Is curried', t => {
   t.same(fn([1, 2, 3, 4, 5, 6]), [[1, 2], [3, 4], [5, 6]])
   t.end()
 })
+
+test('chunk -- Handles same length arrays', t => {
+  const fn = chunk(3)
+  t.same(fn([1, 2, 3]), [[1, 2, 3]])
+  t.end()
+})

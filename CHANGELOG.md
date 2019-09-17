@@ -1,5 +1,37 @@
 # Changelog
 
+## v1.0.0
+
+### BREAKING CHANGES
+
+- `size` was removed you can use `count` instead
+- `factors` no longer handles negative numbers (see improved section)
+  - This can be accounted for with using the `negate` function
+- `apply` only take a single param instead of an array of params now
+  - You can use `applyN` instead if you wish to use the old functionality
+
+### New
+
+- Added a `withDefaults` function which will populate an object with default values if they don't exist within the data provided
+- Added a `multiples` function
+  - Stress testing seems to point that it can handle up to 300 million limits in about 1.4s, but anything 400mil+ breaks the stack heap
+  - If you need to go that high may be wise to look into an arithmatic library
+- Added `applyN` which is taking over `apply`'s old functionality
+
+### Improved
+
+- All dependencies upgraded and audit fixes added
+- Added some extra unit tests
+- Large optimizations for `factors` re wrote the function and it should be able to handle extremely large numbers now
+  - You won't see a huge performance boost on normal numbers within the hundred thousands maybe a few miliseconds this change was mostly to enhance factors so it can handle big integers better
+  - Note: This does not mean the new `BigInt` data type
+- Switched over to use the [pinet](https://github.com/dhershman1/pinet#readme) engine for building the docs
+- Cleaned up `isPrime` slightly, debating if the trial division approach is still best or not
+
+### Fixed
+
+- CI breaking the CNAME definitions
+
 ## v0.14.0
 
 ### BREAKING CHANGES

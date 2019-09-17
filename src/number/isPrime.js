@@ -17,16 +17,14 @@ import rem from './rem'
  * isPrime(6) // => false
  * isPrime(5010) // => false
  */
-const isPrime = x => {
-  const s = Math.sqrt(x)
-
-  for (let i = 2; i <= s; i++) {
-    if (!rem(i, x)) {
+const isPrime = n => {
+  for (let i = 2, s = Math.sqrt(n); i <= s; i++) {
+    if (!rem(i, n)) {
       return false
     }
   }
 
-  return x > 1
+  return n > 1
 }
 
 export default isPrime

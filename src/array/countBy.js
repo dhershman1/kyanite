@@ -32,7 +32,7 @@ const countBy = (fn, arr) =>
     const k = fn(a)
     const _an = _assocǃ(acc, k)
 
-    return acc.hasOwnProperty(k) ? _an(acc[k] + 1) : _an(1)
+    return Object.prototype.hasOwnProperty.call(acc, k) ? _an(acc[k] + 1) : _an(1)
   }, {}, arr)
 
 export default _curry2(countBy)
