@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.1
+
+### Improved
+
+- Added more examples to `isNil`
+
+### Fixed
+
+- Typo in `isNil` examples
+
 ## v1.0.0
 
 ### BREAKING CHANGES
