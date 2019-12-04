@@ -11,9 +11,11 @@
  * @example
  * import { isNil } from 'kyanite'
  *
- * isNill(null) // => true
- * isNill() // => true
- * isNill(1) // => false
+ * isNil(null) // => true
+ * isNil() // => true
+ * isNil(1) // => false
+ * isNil(0) // => false
+ * isNil('') // => false
  */
 const isNil = x => x == null
 
