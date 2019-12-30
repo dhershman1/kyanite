@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = global || self, factory(global.kyanite = {}));
-}(this, function (exports) { 'use strict';
+}(this, (function (exports) { 'use strict';
 
   function _curry2(fn) {
     return function f2(a, b) {
@@ -1409,4 +1409,4 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));
