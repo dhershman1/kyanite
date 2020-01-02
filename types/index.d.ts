@@ -523,12 +523,6 @@ declare namespace K {
     median(list: ReadonlyArray<number>): number;
 
     /**
-     * Creates a new function that, when invoked, caches the result of calling fn for a given argument set and returns the result. Subsequent calls to the memoized fn with the same argument set will not result in an additional call to fn; instead, the cached result for that set of arguments will be returned.
-     */
-    memoizeWith(mFn: Function, fn: Function): Function;
-    memoizeWith(mFn: Function): (fn: Function) => Function;
-
-    /**
      * Goes through an array of values and grabs the min value of the array
      */
     min<T extends Ord>(list: ReadonlyArray<T>): T;
