@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.2
+
+### Improved
+
+- Improved some of the typings for functions
+
 ## v1.0.1
 
 ### Improved
