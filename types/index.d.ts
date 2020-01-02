@@ -1,4 +1,4 @@
-// Type definitions for Kyanite v0.12.x
+// Type definitions for Kyanite v1.0.2
 // Project: Kyanite
 // Definitions by: Dustin Hershman <dustinh17@gmail.com>
 
@@ -51,8 +51,8 @@ declare namespace K {
     /**
      * Updates an object by merging a newer item into the old one
      */
-    amend<T1, T2>(a: T1, b: T2): T1 & T2;
-    amend<T1, T2>(a: T1): (b: T2) => T1 & T2;
+    amend(a: object, b: object): object;
+    amend(a: object): (b: object) => object;
 
     /**
      * Does an `and` comparison of the two values given to it
@@ -63,22 +63,22 @@ declare namespace K {
     /**
      * Takes in a schema object of functions to apply to a given object of data, validates that any of them pass
      */
-    any<T, U>(schema: T, data: U): boolean;
-    any<T>(schema: T): <U>(data: U) => boolean;
+    any<T = any, U = any>(schema: T, data: U): boolean;
+    any<T = any>(schema: T): <U = any>(data: U) => boolean;
 
     /**
      * Takes an array of function to be applied to an array of data, concating the results together.
      * Also known as the S combinator
      */
-    ap<T, U>(fns: Array<((a: T) => U)>, list: ReadonlyArray<T>): U[];
-    ap<T, U>(fns: Array<((a: T) => U)>): (list: ReadonlyArray<T>) => U[];
+    ap<T = any, U = any>(fns: Array<((a: T) => U)>, list: ReadonlyArray<T>): U[];
+    ap<T = any, U = any>(fns: Array<((a: T) => U)>): (list: ReadonlyArray<T>) => U[];
 
     /**
      * Applies a function to a parameter/Argument. Useful for creating a fixed-arity function
      * Also known as the A Combinator
      */
-    applyN<T, U, TResult>(fn: (arg0: T, ...args: T[]) => TResult, args: ReadonlyArray<U>): TResult;
-    applyN<T, TResult>(fn: (arg0: T, ...args: T[]) => TResult): <U>(args: ReadonlyArray<U>) => TResult;
+    applyN<T = any, U = any, TResult = any>(fn: (arg0: T, ...args: T[]) => TResult, args: ReadonlyArray<U>): TResult;
+    applyN<T = any, TResult = any>(fn: (arg0: T, ...args: T[]) => TResult): <U = any>(args: ReadonlyArray<U>) => TResult;
 
     /**
      * Applies a function to a parameter/Argument. Useful for creating a fixed-arity function
@@ -523,12 +523,6 @@ declare namespace K {
     median(list: ReadonlyArray<number>): number;
 
     /**
-     * Creates a new function that, when invoked, caches the result of calling fn for a given argument set and returns the result. Subsequent calls to the memoized fn with the same argument set will not result in an additional call to fn; instead, the cached result for that set of arguments will be returned.
-     */
-    memoizeWith(mFn: Function, fn: Function): Function;
-    memoizeWith(mFn: Function): (fn: Function) => Function;
-
-    /**
      * Goes through an array of values and grabs the min value of the array
      */
     min<T extends Ord>(list: ReadonlyArray<T>): T;
@@ -620,15 +614,15 @@ declare namespace K {
     /**
      * Safely crawl through an object to get a value
      */
-    path<T>(keys: ReadonlyArray<string>, obj: { [key: string]: T }): T;
-    path<T>(keys: ReadonlyArray<string>): (obj: { [key: string]: T }) => T;
+    path(keys: ReadonlyArray<string>, obj: object): any;
+    path(keys: ReadonlyArray<string>): (obj: object) => any;
 
     /**
      * A safe way to find an item within an object, will return the provided default if it's not found or the value itself if it is found
      */
-    pathOr<T>(a: any, keys: ReadonlyArray<string>, obj: { [key: string]: T }): T;
-    pathOr(a: any, keys: ReadonlyArray<string>): <T>(obj: { [key: string]: T }) => T;
-    pathOr(a: any): (keys: ReadonlyArray<string>) => <T>(obj: { [key: string]: T }) => T;
+    pathOr<T = any>(a: any, keys: ReadonlyArray<string>, obj: object): T;
+    pathOr(a: any, keys: ReadonlyArray<string>): <T = any>(obj: object) => T;
+    pathOr(a: any): (keys: ReadonlyArray<string>) => <T = any>(obj: object) => T;
 
     /**
      * Applies a sequence of transformations over a value
@@ -903,28 +897,28 @@ declare namespace K {
     /**
      * Add an item to an array within a certain index of the array
      */
-    update<T>(index: number, val: any, list: ReadonlyArray<T>): T[];
-    update<T>(index: number, val: any): (list: ReadonlyArray<T>) => T[];
-    update<T>(index: number): (val: any) => (list: ReadonlyArray<T>) => T[];
+    update<T = any>(index: number, val: any, list: ReadonlyArray<T>): T[];
+    update<T = any>(index: number, val: any): (list: ReadonlyArray<T>) => T[];
+    update<T = any>(index: number): (val: any) => (list: ReadonlyArray<T>) => T[];
 
     /**
      * Takes a value and if it passes the given function check it will apply the action function, otherwise it will return the value
      */
-    when<T, U>(fn: (a: T) => boolean, act: (a: T) => U, x: T): U;
-    when<T, U>(fn: (a: T) => boolean, act: (a: T) => U): (x: T) => U;
-    when<T, U>(fn: (a: T) => boolean): (act: (a: T) => U) => (x: T) => U;
+    when<T = any, U = any>(fn: (a: T) => boolean, act: (a: T) => U, x: T): U;
+    when<T = any, U = any>(fn: (a: T) => boolean, act: (a: T) => U): (x: T) => U;
+    when<T = any, U = any>(fn: (a: T) => boolean): (act: (a: T) => U) => (x: T) => U;
 
     /**
      * Takes a schema of function to apply to an object, and makes sure all of them pass
      */
-    whole<T, U>(schema: T, data: U): boolean;
-    whole<T>(schema: T): <U>(data: U) => boolean;
+    whole(schema: object, data: object): boolean;
+    whole(schema: object): (data: object) => boolean;
 
     /**
      * Fills in non exsistent property values (null, undefined, and NaN) with the provided defaults.
      */
-    withDefaults<T, V>(def: KeyValuePair<T, V>, obj: KeyValuePair<T, V>): KeyValuePair<T, V>;
-    withDefaults<T, V>(def: KeyValuePair<T, V>): (obj: KeyValuePair<T, V>) => KeyValuePair<T, V>;
+    withDefaults<V = any>(def: { [key: string]: V }, obj: any): any;
+    withDefaults<V = any>(def: { [key: string]: V }): (obj: any) => any;
 
     /**
      * Checks to see if a number is between two other numbers (exclusive)
@@ -936,8 +930,8 @@ declare namespace K {
     /**
      * Takes two arrays and combines them into a key value pair object
      */
-    zip<T, V>(x: ReadonlyArray<T>, y: ReadonlyArray<V>): Array<KeyValuePair<T, V>>;
-    zip<T>(x: ReadonlyArray<T>): <V>(y: ReadonlyArray<V>) => Array<KeyValuePair<T, V>>;
+    zip<T, V>(x: ReadonlyArray<T>, y: ReadonlyArray<V>): Array<{ [key: string]: V }>;
+    zip<T>(x: ReadonlyArray<T>): <V>(y: ReadonlyArray<V>) => Array<{ [key: string]: V }>;
   }
 }
 
