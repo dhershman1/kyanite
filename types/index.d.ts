@@ -644,6 +644,12 @@ declare namespace K {
     plan(schema: Schema): (obj: { [key: string]: any }) => { [key: string]: any };
 
     /**
+     * Returns a new array by plucking the same named property off all objects in the array supplied
+     */
+    pluck<T = any>(p: string, list: ReadonlyArray<T>): T[];
+    pluck(p: string): <T = any>(list: ReadonlyArray<T>) => T[];
+
+    /**
      * Take a base number and brings it to the value of base^exponent
      */
     pow(a: number, b: number): number;
