@@ -5,10 +5,15 @@
 ### Improved
 
 - More typing improvements, most of the function params should now default to any, making the library easier to use in typescript lang
+- More tests and examples for `reduce`
 
 ### New
 
 - Added a `pluck` function which returns a new array by plucking the same named property off all objects in the array supplied
+
+## Fixed
+
+- Documentation types for `map`
 
 ## v1.0.2
 
