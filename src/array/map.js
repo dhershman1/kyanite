@@ -11,8 +11,8 @@ import _assocǃ from '../_internals/_assocǃ'
  * Takes a function and applies it to all of the values within the provided list,
  * and brings back a new list of the same type.
  * @param {Function} fn The function to run against the values in our functor
- * @param {Array|Object} list The list to iterate through
- * @return {Array|Object} The new Array or Object that was created
+ * @param {Array} list The list to iterate through
+ * @return {Array} The new Array or Object that was created
  *
  * @example
  * import { map } from 'kyanite'

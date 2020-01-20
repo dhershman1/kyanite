@@ -14,6 +14,26 @@ test('reduce -- Basic Functionality', t => {
   t.end()
 })
 
+test('reduce() with maps', t => {
+  const data = new Map([['a', 1], ['b', 2], ['c', 3]])
+  const results = reduce((val, acc) => {
+    acc.push(val)
+
+    return acc
+  }, [], data)
+
+  t.same(results, [['a', 1], ['b', 2], ['c', 3]])
+  t.end()
+})
+
+test('reduce() with Sets', t => {
+  const data = new Set([1, 2, 3, 4])
+  const results = reduce((val, acc) => acc.concat(val * 2), [], data)
+
+  t.same(results, [2, 4, 6, 8])
+  t.end()
+})
+
 test('reduce -- Is curried', t => {
   const r = reduce((n, acc) => acc + n, 0)
 

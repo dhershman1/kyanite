@@ -417,6 +417,16 @@
   };
   var partition$1 = _curry2(partition);
 
+  var prop = function prop(p, obj) {
+    return obj[p];
+  };
+  var prop$1 = _curry2(prop);
+
+  var pluck = function pluck(p, list) {
+    return map$1(prop$1(p), list);
+  };
+  var pluck$1 = _curry2(pluck);
+
   var prepend = function prepend(x, list) {
     return [].concat(x, list);
   };
@@ -1154,11 +1164,6 @@
   };
   var plan$1 = _curry2(plan);
 
-  var prop = function prop(p, obj) {
-    return obj[p];
-  };
-  var prop$1 = _curry2(prop);
-
   var propEq = function propEq(key, val, obj) {
     return compose$1(eq$1(val), prop$1(key), obj);
   };
@@ -1361,6 +1366,7 @@
   exports.pipe = pipe$1;
   exports.pipeP = pipeP$1;
   exports.plan = plan$1;
+  exports.pluck = pluck$1;
   exports.pow = pow$1;
   exports.prepend = prepend$1;
   exports.product = product;

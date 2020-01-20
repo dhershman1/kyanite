@@ -46,7 +46,7 @@ declare namespace K {
     /**
      * Always returns the first param sent to it, and ignores the 2nd also known as the K combinator
      */
-    always<T>(val: T): () => T;
+    always<T = any>(val: T): () => T;
 
     /**
      * Updates an object by merging a newer item into the old one
@@ -84,27 +84,27 @@ declare namespace K {
      * Applies a function to a parameter/Argument. Useful for creating a fixed-arity function
      * Also known as the A Combinator
      */
-    apply<T, U, TResult>(fn: (arg0: T) => TResult, args: T): TResult;
-    apply<T, TResult>(fn: (arg0: T) => TResult): (args: T) => TResult;
+    apply<T= any, TResult = any>(fn: (arg0: T) => TResult, args: T): TResult;
+    apply<T= any, TResult = any>(fn: (arg0: T) => TResult): (args: T) => TResult;
 
     /**
      * Determines which of the given values should be ascended, useful for sort methods
      */
-    ascend<T>(a: T, b: T): number;
-    ascend<T>(a: T): (b: T) => number;
+    ascend<T = any>(a: T, b: T): number;
+    ascend<T = any>(a: T): (b: T) => number;
 
     /**
      * Can be used with sort to ascend an array based on the function passed in
      */
-    ascendBy<T>(fn: (obj: T) => any, a: T, b: T): number;
-    ascendBy<T>(fn: (obj: T) => any): (a: T, b: T) => number;
+    ascendBy<T = any>(fn: (obj: T) => any, a: T, b: T): number;
+    ascendBy<T = any>(fn: (obj: T) => any): (a: T, b: T) => number;
 
     /**
      * See if a number is between two other provided numbers (inclusive)
      */
-    between(min: number, max: number, n: number): boolean;
-    between(min: number, max: number): (n: number) => boolean;
-    between(min: number): (max: number) => (n: number) => boolean;
+    between(min: number | Date, max: number | Date, n: number | Date): boolean;
+    between(min: number | Date, max: number | Date): (n: number | Date) => boolean;
+    between(min: number | Date): (max: number | Date) => (n: number | Date) => boolean;
 
     /**
      * Validates the same value when passed into two seperate functions
@@ -116,10 +116,10 @@ declare namespace K {
     /**
      * Takes 3 functions and a value, runs the functions in an if else setup, if the first function passes the second will run, otherwise the thrid will run
      */
-    branch<T, R1, R2>(p: (obj: T) => boolean, f: (obj: T) => R1, g: (obj: T) => R2, data: T): R1 | R2;
-    branch<T, R1, R2>(p: (obj: T) => boolean, f: (obj: T) => R1, g: (obj: T) => R2): (data: T) => R1 | R2;
-    branch<T, R1, R2>(p: (obj: T) => boolean, f: (obj: T) => R1): (g: (obj: T) => R2) => (data: T) => R1 | R2;
-    branch<T, R1, R2>(p: (obj: T) => boolean): (f: (obj: T) => R1) => (g: (obj: T) => R2) => (data: T) => R1 | R2;
+    branch<T= any, R1 = any, R2 = any>(p: (obj: T) => boolean, f: (obj: T) => R1, g: (obj: T) => R2, data: T): R1 | R2;
+    branch<T= any, R1 = any, R2 = any>(p: (obj: T) => boolean, f: (obj: T) => R1, g: (obj: T) => R2): (data: T) => R1 | R2;
+    branch<T= any, R1 = any, R2 = any>(p: (obj: T) => boolean, f: (obj: T) => R1): (g: (obj: T) => R2) => (data: T) => R1 | R2;
+    branch<T= any, R1 = any, R2 = any>(p: (obj: T) => boolean): (f: (obj: T) => R1) => (g: (obj: T) => R2) => (data: T) => R1 | R2;
 
     /**
      * Takes a string and capitalizes the first letter
@@ -129,8 +129,8 @@ declare namespace K {
     /**
      * Takes an array of data and chunks it into smaller arrays based on the size param passed in
      */
-    chunk<T, U>(size: number, data: ReadonlyArray<T>): ReadonlyArray<ReadonlyArray<U>>;
-    chunk(size: number): <T, U>(data: ReadonlyArray<T>) => ReadonlyArray<ReadonlyArray<U>>;
+    chunk<T = any, U = any>(size: number, data: ReadonlyArray<T>): ReadonlyArray<ReadonlyArray<U>>;
+    chunk(size: number): <T = any, U = any>(data: ReadonlyArray<T>) => ReadonlyArray<ReadonlyArray<U>>;
 
     /**
      * Restricts a number between two other provided numbers
@@ -142,23 +142,23 @@ declare namespace K {
     /**
      * Takes a function and returns the opposite boolean value of what the predicate returns
      */
-    complement<T>(fn: (data: T) => boolean, a: T): boolean;
-    complement<T>(fn: (data: T) => boolean): (a: T) => boolean;
+    complement<T = any>(fn: (data: T) => boolean, a: T): boolean;
+    complement<T = any>(fn: (data: T) => boolean): (a: T) => boolean;
 
     /**
      * Applies a value through two functions from right to left
      * Also known as the B combinator
      */
-    compose<T, R1, R2>(fn: (data: R1) => R2, gn: (data: T) => R1, data: T): R2;
-    compose<T, R1, R2>(fn: (data: R1) => R2, gn: (data: T) => R1): (data: T) => R2;
-    compose<T, R1, R2>(fn: (data: R1) => R2): (gn: (data: T) => R1) => (data: T) => R2;
+    compose<T= any, R1 = any, R2 = any>(fn: (data: R1) => R2, gn: (data: T) => R1, data: T): R2;
+    compose<T= any, R1 = any, R2 = any>(fn: (data: R1) => R2, gn: (data: T) => R1): (data: T) => R2;
+    compose<T= any, R1 = any, R2 = any>(fn: (data: R1) => R2): (gn: (data: T) => R1) => (data: T) => R2;
 
     /**
      * Applies async functions against a value from right to left and returns a Promise
      */
-    composeP<T, R1, R2>(fn: (data: R1) => Promise<R2>, gn: (data: T) => Promise<R1>, data: T): Promise<R2>;
-    composeP<T, R1, R2>(fn: (data: R1) => Promise<R2>, gn: (data: T) => Promise<R1>): (data: T) => Promise<R2>;
-    composeP<T, R1, R2>(fn: (data: R1) => Promise<R2>): (gn: (data: T) => Promise<R1>) => (data: T) => Promise<R2>;
+    composeP<T= any, R1 = any, R2 = any>(fn: (data: R1) => Promise<R2>, gn: (data: T) => Promise<R1>, data: T): Promise<R2>;
+    composeP<T= any, R1 = any, R2 = any>(fn: (data: R1) => Promise<R2>, gn: (data: T) => Promise<R1>): (data: T) => Promise<R2>;
+    composeP<T= any, R1 = any, R2 = any>(fn: (data: R1) => Promise<R2>): (gn: (data: T) => Promise<R1>) => (data: T) => Promise<R2>;
 
     /**
      * Takes a list and concats the values into a new List
@@ -177,13 +177,13 @@ declare namespace K {
     /**
      * Counts the number of values within a collection of data
      */
-    count<T, K, V>(a: string | ReadonlyArray<T> | Set<T> | Map<K, V> | object): number
+    count<T = any, K = any, V = any>(a: string | ReadonlyArray<T> | Set<T> | Map<K, V> | object): number
 
     /**
      * Counts the elements of a list according to how many match each value of a key generated by the supplied function
      */
-    countBy<T>(fn: (a: T) => string | number, arr: ReadonlyArray<T>): { [index: string]: number };
-    countBy<T>(fn: (a: T) => string | number): (arr: ReadonlyArray<T>) => { [index: string]: number };
+    countBy<T = any>(fn: (a: T) => string | number, arr: ReadonlyArray<T>): { [index: string]: number };
+    countBy<T = any>(fn: (a: T) => string | number): (arr: ReadonlyArray<T>) => { [index: string]: number };
 
     /**
      * Creates a curried (or partial) function
@@ -203,8 +203,8 @@ declare namespace K {
     /**
      * Takes and strictly compares two provided items, also able to handle cyclical data structures
      */
-    deepEq<T>(a: T, b: T): boolean;
-    deepEq<T>(a: T): (b: T) => boolean;
+    deepEq<T = any>(a: T, b: T): boolean;
+    deepEq<T = any>(a: T): (b: T) => boolean;
 
     /**
      * Returns the value if it isn't `null`, `NaN`, or `undefined`. Otherwise will give back the provided default
@@ -215,20 +215,20 @@ declare namespace K {
     /**
      * Determines which of the two passed in values should be descended, useful for sort methods
      */
-    descend<T>(a: T, b: T): number;
-    descend<T>(a: T): (b: T) => number;
+    descend<T = any>(a: T, b: T): number;
+    descend<T = any>(a: T): (b: T) => number;
 
     /**
      * Can be used with sort to descend an array bsed on the function given
      */
-    descendBy<T>(fn: (obj: T) => any, a: T, b: T): number;
-    descendBy<T>(fn: (obj: T) => any): (a: T, b: T) => number;
+    descendBy<T = any>(fn: (obj: T) => any, a: T, b: T): number;
+    descendBy<T = any>(fn: (obj: T) => any): (a: T, b: T) => number;
 
     /**
      * Returns a new array of values that are not contained within both given arrays
      * Note: Order of arrays does not matter here
      */
-    difference<T>(arrs: ReadonlyArray<T>): T[];
+    difference<T = any>(arrs: ReadonlyArray<T>): T[];
 
     /**
      * Divides the provided numbers
@@ -245,14 +245,14 @@ declare namespace K {
     /**
      * Starts at a desired index and pulls the values from that point until the end
      */
-    drop<T>(n: number, list: ReadonlyArray<T>): T[];
-    drop<T>(n: number): (list: ReadonlyArray<T>) => T[];
+    drop<T = any>(n: number, list: ReadonlyArray<T> | string): T[] | string;
+    drop<T = any>(n: number): (list: ReadonlyArray<T> | string) => T[] | string;
 
     /**
      * Runs through an array and drops values so long as the function used returns true once it returns false the iteration will stop
      */
-    dropWhile<T>(fn: (a: T) => boolean, arr: ReadonlyArray<T>): T[];
-    dropWhile<T>(fn: (a: T) => boolean): (arr: ReadonlyArray<T>) => T[];
+    dropWhile<T = any>(fn: (a: T) => boolean, arr: ReadonlyArray<T> | string): T[] | string;
+    dropWhile<T = any>(fn: (a: T) => boolean): (arr: ReadonlyArray<T> | string) => T[] | string;
 
     /**
      * Validates that the value passes either of the given functions
@@ -313,25 +313,25 @@ declare namespace K {
     /**
      * Filter through a filterable array of data using a provided function
      */
-    filter<T>(fn: (a: T) => boolean, list: ReadonlyArray<T>): T[];
-    filter<T>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => T[];
+    filter<T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>): T[];
+    filter<T = any>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => T[];
 
     /**
      * Find an item based on the applied function provided
      */
-    find<T>(fn: (a: T) => boolean, list: ReadonlyArray<T>): T | undefined;
-    find<T>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => T | undefined;
+    find<T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>): T | undefined;
+    find<T = any>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => T | undefined;
 
     /**
      * Iterates through an array of values until it finds the index of one that passes the provided function
      */
-    findIndex<T>(fn: (a: T) => boolean, list: ReadonlyArray<T>): number;
-    findIndex<T>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => number;
+    findIndex<T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>): number;
+    findIndex<T = any>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => number;
 
     /**
      * Grabs the first index of a list
      */
-    first<T>(x: string | ReadonlyArray<T>): string | T;
+    first<T = any>(x: string | ReadonlyArray<T>): string | T;
 
     /**
      * Takes a function and two parameters and flips them when calling the provided function
@@ -344,8 +344,8 @@ declare namespace K {
     /**
      * Takes an array and folds it using a function, basically a reduce without the need to send an initial accumulator value
      */
-    fold<T, U, TResult>(fn: (a: T, acc: TResult) => TResult, arr: ReadonlyArray<T>): U;
-    fold<T, U, TResult>(fn: (a: T, acc: TResult) => TResult): (arr: ReadonlyArray<T>) => U;
+    fold<T = any, U = any, TResult = any>(fn: (a: T, acc: TResult) => TResult, arr: ReadonlyArray<T>): U;
+    fold<T = any, U = any, TResult = any>(fn: (a: T, acc: TResult) => TResult): (arr: ReadonlyArray<T>) => U;
 
     /**
      * Takes a needle and searches the haystack for the matching string
@@ -380,27 +380,27 @@ declare namespace K {
     /**
      * Determines if the value provided has a property
      */
-    has<T>(prop: string, obj: T): boolean;
-    has(prop: string): <T>(obj: T) => boolean;
+    has<T = any>(prop: string, obj: T): boolean;
+    has(prop: string): <T = any>(obj: T) => boolean;
 
     /**
      * Allows you to get the length or "height" of a provided object
      */
-    height<T>(obj: T): number;
+    height<T = any>(obj: T): number;
 
     /**
      * A function that returns the value passed to it
      * Also known as the I combinator
      */
-    identity<T>(a: T): T;
+    identity(a: any): any;
 
     /**
      * Checks to see if the provided list contains at least 1 of the provided value within it
      */
     includes(value: string, list: string): boolean;
     includes(value: string): (list: string) => boolean;
-    includes<T>(a: T, list: ReadonlyArray<T>): boolean;
-    includes<T>(a: T): (list: ReadonlyArray<T>) => boolean;
+    includes<T = any>(a: T, list: ReadonlyArray<T>): boolean;
+    includes<T = any>(a: T): (list: ReadonlyArray<T>) => boolean;
 
     /**
      * Takes in a number and returns it incremented by 1
@@ -410,16 +410,16 @@ declare namespace K {
     /**
      * Insert an item into a certain index of an array
      */
-    insert<T>(i: number, d: T, arr: ReadonlyArray<T>): T[];
-    insert<T>(i: number, d: T): (arr: ReadonlyArray<T>) => T[];
-    insert<T>(i: number): (d: T) => (arr: ReadonlyArray<T>) => T[];
-    insert(i: number): <T>(d: T, arr: ReadonlyArray<T>) => T[];
+    insert<T = any>(i: number, d: T, arr: ReadonlyArray<T>): T[];
+    insert<T = any>(i: number, d: T): (arr: ReadonlyArray<T>) => T[];
+    insert<T = any>(i: number): (d: T) => (arr: ReadonlyArray<T>) => T[];
+    insert(i: number): <T = any>(d: T, arr: ReadonlyArray<T>) => T[];
 
     /**
      * Returns an array containing elements present in both arrays
      */
-    intersection<T>(a: ReadonlyArray<T>, b: ReadonlyArray<T>): T[];
-    intersection<T>(a: ReadonlyArray<T>): (b: ReadonlyArray<T>) => T[];
+    intersection<T = any>(a: ReadonlyArray<T>, b: ReadonlyArray<T>): T[];
+    intersection<T = any>(a: ReadonlyArray<T>): (b: ReadonlyArray<T>) => T[];
 
     /**
      * Determines if the entered value is empty or not
@@ -460,7 +460,8 @@ declare namespace K {
     /**
      * Applies the provided function and turns them into a single function you can use on a value
      */
-    juxt<T, U>(fns: Array<(...args: T[]) => U>): (...args: T[]) => U[];
+    juxt<T = any, U = any>(fns: ReadonlyArray<(...args: T[]) => any>, args: any[]): U[];
+    juxt<T = any>(fns: ReadonlyArray<(...args: T[]) => any>): <U = any>(args: any[]) => U[];
 
     /**
      * Grabs the last index of a list
@@ -492,8 +493,8 @@ declare namespace K {
     /**
      * Takes a function and applies it to all of the values within the provided array
      */
-    map<T, U>(fn: (x: T) => U, list: ReadonlyArray<T>): U[];
-    map<T, U>(fn: (x: T) => U): (list: ReadonlyArray<T>) => U[];
+    map<T = any, U = any>(fn: (x: T) => U, list: ReadonlyArray<T>): U[];
+    map<T = any, U = any>(fn: (x: T) => U): (list: ReadonlyArray<T>) => U[];
 
     /**
      * Matches a string against some regexp to build an array of matching strings
@@ -509,8 +510,8 @@ declare namespace K {
     /**
      * Finds the maximum from an array of data by applying a function to each value
      */
-    maxBy<T>(fn: (a: T) => Ord, a: ReadonlyArray<T>): T;
-    maxBy<T>(fn: (a: T) => Ord): (a: ReadonlyArray<T>) => T;
+    maxBy<T = any>(fn: (a: T) => Ord, a: ReadonlyArray<T>): T;
+    maxBy<T = any>(fn: (a: T) => Ord): (a: ReadonlyArray<T>) => T;
 
     /**
      * Gets the average from a given array of numbers
@@ -530,8 +531,8 @@ declare namespace K {
     /**
      * Finds the minimum from an array of data by applying a function to each value
      */
-    minBy<T>(fn: (a: T) => Ord, a: ReadonlyArray<T>): T;
-    minBy<T>(fn: (a: T) => Ord): (a: ReadonlyArray<T>) => T;
+    minBy<T = any>(fn: (a: T) => Ord, a: ReadonlyArray<T>): T;
+    minBy<T = any>(fn: (a: T) => Ord): (a: ReadonlyArray<T>) => T;
 
     /**
      * Behaves like the modulo operator should mathematically, unlike the `%` operator. The arguments are required to be integers and will return NaN when the modulus is zero or negative.
@@ -570,8 +571,8 @@ declare namespace K {
     /**
      * Returns the nth element of a given array
      */
-    nth<T>(o: number, list: ReadonlyArray<T>): T | undefined;
-    nth(o: number): <T>(list: ReadonlyArray<T>) => T | undefined;
+    nth<T = any>(o: number, list: ReadonlyArray<T>): T | undefined;
+    nth(o: number): <T = any>(list: ReadonlyArray<T>) => T | undefined;
 
     /**
      * Create a new object with certain keys omitted
@@ -593,23 +594,23 @@ declare namespace K {
     /**
      * Runs an "or" comparison against two values passed in
      */
-    or<T, U>(a: T, b: U): T | U;
-    or<T>(a: T): <U>(b: U) => T | U;
+    or(a: any, b: any): any;
+    or(a: any): (b: any) => any;
 
     /**
      * Applies a function to a value within an object
      */
-    over<T>(key: string, fn: Arity1Fn, acc: T): T;
-    over<T>(key: string, fn: Arity1Fn): (acc: T) => T;
-    over<T>(key: string): (fn: Arity1Fn) => (acc: T) => T;
-    over<T>(key: string): (fn: Arity1Fn, acc: T) => T;
+    over<T = any>(key: string, fn: Arity1Fn, acc: T): T;
+    over<T = any>(key: string, fn: Arity1Fn): (acc: T) => T;
+    over<T = any>(key: string): (fn: Arity1Fn) => (acc: T) => T;
+    over<T = any>(key: string): (fn: Arity1Fn, acc: T) => T;
 
     /**
      * Takes a predicate function and an array of data and returns the pair
      * One contains the data which passes the predicate function, the other is the values that did not
      */
-    partition<T>(fn: (a: T) => boolean, list: ReadonlyArray<T>): [T[], T[]];
-    partition<T>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => [T[], T[]];
+    partition<T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>): [T[], T[]];
+    partition<T = any>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => [T[], T[]];
 
     /**
      * Safely crawl through an object to get a value
@@ -627,20 +628,26 @@ declare namespace K {
     /**
      * Applies a sequence of transformations over a value
      */
-    pipe<T, U>(fns: ReadonlyArray<(a: T) => U>, init: any): U;
-    pipe<T, U>(fns: ReadonlyArray<(a: T) => U>): (init: any) => U;
+    pipe<T = any, U = any>(fns: ReadonlyArray<(a: T) => U>, init: any): U;
+    pipe<T = any, U = any>(fns: ReadonlyArray<(a: T) => U>): (init: any) => U;
 
     /**
      * Runs a pipe of promise based functions against a provided value
      */
-    pipeP<T, U>(fns: ReadonlyArray<(a: T) => Promise<U>>, init: any): Promise<U>;
-    pipeP<T, U>(fns: ReadonlyArray<(a: T) => Promise<U>>): (init: any) => Promise<U>;
+    pipeP<T = any, U = any>(fns: ReadonlyArray<(a: T) => Promise<U>>, init: any): Promise<U>;
+    pipeP<T = any, U = any>(fns: ReadonlyArray<(a: T) => Promise<U>>): (init: any) => Promise<U>;
 
     /**
      * Uses a schema of functions to apply against a provided object of data
      */
     plan(schema: Schema, obj: { [key: string]: any }): { [key: string]: any };
     plan(schema: Schema): (obj: { [key: string]: any }) => { [key: string]: any };
+
+    /**
+     * Returns a new array by plucking the same named property off all objects in the array supplied
+     */
+    pluck<T = any>(p: string, list: ReadonlyArray<T>): T[];
+    pluck(p: string): <T = any>(list: ReadonlyArray<T>) => T[];
 
     /**
      * Take a base number and brings it to the value of base^exponent
@@ -656,8 +663,8 @@ declare namespace K {
     /**
      * Returns a new list with the provided value at the front of the given list
      */
-    prepend<T>(x: T, list: ReadonlyArray<T>): T[];
-    prepend<T>(x: T): (list: ReadonlyArray<T>) => T[];
+    prepend<T = any>(x: T, list: ReadonlyArray<T>): T[];
+    prepend<T = any>(x: T): (list: ReadonlyArray<T>) => T[];
 
     /**
      * Takes an array of numbers and multiplies them together
@@ -703,31 +710,31 @@ declare namespace K {
      * The reducer function accepts the params flipped as compared
      * To the vanilla reduce counterpart.
      */
-    reduce<T, TResult>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult, list: ReadonlyArray<T>): TResult;
-    reduce<T, TResult>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult): (list: ReadonlyArray<T>) => TResult;
-    reduce<T, TResult>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>): (acc: TResult) => (list: ReadonlyArray<T>) => TResult;
+    reduce<T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult, list: ReadonlyArray<T>): TResult;
+    reduce<T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult): (list: ReadonlyArray<T>) => TResult;
+    reduce<T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>): (acc: TResult) => (list: ReadonlyArray<T>) => TResult;
 
     /**
      * Used to optimize reduce iterations, can be used to short circuit a reduce without needing to iterate an entire array
      * The returned value should be considered as a black box
      * This optimization only works with `reduce`, and `reduceRight` currently
      */
-    reduced<T>(x: T): Reduced<T>;
+    reduced<T = any>(x: T): Reduced<T>;
 
     /**
      * Accepts an array and runs a reduce from right to left with the passed in values.
      * The reducer function accepts the params flipped as compared
      * To the vanilla reduceRight counterpart.
      */
-    reduceRight<T, TResult>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult, list: ReadonlyArray<T>): TResult;
-    reduceRight<T, TResult>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult): (list: ReadonlyArray<T>) => TResult;
-    reduceRight<T, TResult>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>): (acc: TResult) => (list: ReadonlyArray<T>) => TResult;
+    reduceRight<T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult, list: ReadonlyArray<T>): TResult;
+    reduceRight<T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult): (list: ReadonlyArray<T>) => TResult;
+    reduceRight<T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>): (acc: TResult) => (list: ReadonlyArray<T>) => TResult;
 
     /**
      * Iterate through a list and reject any value that does not pass the provided function
      */
-    reject<T>(fn: (a: T) => boolean, list: ReadonlyArray<T>): T[];
-    reject<T>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => T[];
+    reject<T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>): T[];
+    reject<T = any>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => T[];
 
     /**
      * Takes two numbers and gets the remainder from the division
@@ -738,8 +745,8 @@ declare namespace K {
     /**
      * Remove an item from a certin index of an array
      */
-    remove<T>(i: number, x: ReadonlyArray<T>): T[];
-    remove(i: number): <T>(x: ReadonlyArray<T>) => T[];
+    remove<T = any>(i: number, x: ReadonlyArray<T>): T[];
+    remove(i: number): <T = any>(x: ReadonlyArray<T>) => T[];
 
     /**
      * Replaces a substring or regex match in a string with a provided value
@@ -751,7 +758,7 @@ declare namespace K {
     /**
      * Returns a new list with the same elements as the original list, just in the reverse order.
      */
-    reverse<T>(list: ReadonlyArray<T>): T[];
+    reverse<T = any>(list: ReadonlyArray<T>): T[];
     /**
      * Returns a new string with the characters in reverse order.
      */
@@ -767,20 +774,20 @@ declare namespace K {
      * Works like an array filter but for objects
      * Accepts a function and an object, it then runs the function against each value in the object
      */
-    sift<T>(fn: (a: T) => boolean, obj: { [key: string]: T }): { [key: string]: T };
-    sift<T>(fn: (a: T) => boolean): (obj: { [key: string]: T }) => { [key: string]: T };
+    sift<T = any>(fn: (a: T) => boolean, obj: { [key: string]: T }): { [key: string]: T };
+    sift<T = any>(fn: (a: T) => boolean): (obj: { [key: string]: T }) => { [key: string]: T };
 
     /**
      * Gets the size of a given map or set data type
      */
-    size<K, V, T>(x: Set<T> | Map<K, V>): number
+    size<K = any, V = any, T = any>(x: Set<T> | Map<K, V>): number
 
     /**
      * Slices out items from a list
      */
-    slice<T>(a: number, b: number, list: ReadonlyArray<T>): T[];
-    slice<T>(a: number, b: number): (list: ReadonlyArray<T>) => T[];
-    slice<T>(a: number): (b: number) => (list: ReadonlyArray<T>) => T[];
+    slice<T = any>(a: number, b: number, list: ReadonlyArray<T>): T[];
+    slice<T = any>(a: number, b: number): (list: ReadonlyArray<T>) => T[];
+    slice<T = any>(a: number): (b: number) => (list: ReadonlyArray<T>) => T[];
     slice(a: number, b: number, list: string): string;
     slice(a: number, b: number): (list: string) => string;
     slice(a: number): (b: number) => (list: string) => string;
@@ -788,32 +795,32 @@ declare namespace K {
     /**
      * Iterates through a provided list verifying that at least one of the values passes the provided function
      */
-    some<T>(fn: (a: T) => boolean, x: ReadonlyArray<T>): boolean;
-    some<T>(fn: (a: T) => boolean): (x: ReadonlyArray<T>) => boolean;
+    some<T = any>(fn: (a: T) => boolean, x: ReadonlyArray<T>): boolean;
+    some<T = any>(fn: (a: T) => boolean): (x: ReadonlyArray<T>) => boolean;
 
     /**
      * Takes a value and passes it through an array of functions until a function returns true, or the end of the array is met
      */
-    somePass<T>(fns: ReadonlyArray<(a: T) => boolean>, data: T): boolean;
-    somePass<T>(fns: ReadonlyArray<(a: T) => boolean>): (data: T) => boolean;
+    somePass<T = any>(fns: ReadonlyArray<(a: T) => boolean>, data: T): boolean;
+    somePass<T = any>(fns: ReadonlyArray<(a: T) => boolean>): (data: T) => boolean;
 
     /**
      * Uses a comparison function to sort an array
      */
-    sort<T>(fn: (a: T, b: T) => number, list: ReadonlyArray<T>): T[];
-    sort<T>(fn: (a: T, b: T) => number): (list: ReadonlyArray<T>) => T[];
+    sort<T = any>(fn: (a: T, b: T) => number, list: ReadonlyArray<T>): T[];
+    sort<T = any>(fn: (a: T, b: T) => number): (list: ReadonlyArray<T>) => T[];
 
     /**
      * Sorts through an array of values using the provided function on each value
      */
-    sortBy<T>(fn: (a: T) => any, list: ReadonlyArray<T>): T[];
-    sortBy<T>(fn: (a: T) => any): (list: ReadonlyArray<T>) => T[];
+    sortBy<T = any>(fn: (a: T) => any, list: ReadonlyArray<T>): T[];
+    sortBy<T = any>(fn: (a: T) => any): (list: ReadonlyArray<T>) => T[];
 
     /**
      * Sorts an array based on the functions passed to it. Uses excess functions as tie breakers
      */
-    sortWith<T>(fns: ReadonlyArray<(a: T, b: T) => number>, arr: ReadonlyArray<T>): T[];
-    sortWith<T>(fns: ReadonlyArray<(a: T, b: T) => number>): (arr: ReadonlyArray<T>) => T[];
+    sortWith<T = any>(fns: ReadonlyArray<(a: T, b: T) => number>, arr: ReadonlyArray<T>): T[];
+    sortWith<T = any>(fns: ReadonlyArray<(a: T, b: T) => number>): (arr: ReadonlyArray<T>) => T[];
 
     /**
      * Takes a string and splits it into an array based on the character passed in
@@ -835,14 +842,14 @@ declare namespace K {
     /**
      * Takes the values from an array up until the point specified
      */
-    take<T>(i: number, list: ReadonlyArray<T>): T[];
-    take<T>(i: number): (list: ReadonlyArray<T>) => T[];
+    take<T = any>(i: number, list: ReadonlyArray<T> | string): T[] | string;
+    take<T = any>(i: number): (list: ReadonlyArray<T> | string) => T[] | string;
 
     /**
      * Takes values from an array so long as the predicate function continues to return true
      */
-    takeWhile<T>(fn: (x: T) => boolean, list: ReadonlyArray<T>): T[];
-    takeWhile<T>(fn: (x: T) => boolean): (list: ReadonlyArray<T>) => T[];
+    takeWhile<T = any>(fn: (x: T) => boolean, list: ReadonlyArray<T> | string): T[] | string;
+    takeWhile<T = any>(fn: (x: T) => boolean): (list: ReadonlyArray<T> | string) => T[] | string;
 
     /**
      * Tests regexp against a string value returns true if matches were found, false if not
@@ -873,26 +880,26 @@ declare namespace K {
     /**
      * Creates a union between two arrays, removing duplicates from each
      */
-    union<T>(a: ReadonlyArray<T>, b: ReadonlyArray<T>): T[];
-    union<T>(a: ReadonlyArray<T>): (b: ReadonlyArray<T>) => T[];
+    union<T = any>(a: ReadonlyArray<T>, b: ReadonlyArray<T>): T[];
+    union<T = any>(a: ReadonlyArray<T>): (b: ReadonlyArray<T>) => T[];
 
     /**
      * Removes the duplicate values from a provided array
      */
-    uniq<T>(list: ReadonlyArray<T>): T[];
+    uniq<T = any>(list: ReadonlyArray<T>): T[];
 
     /**
      * Creates an array of unique values after applying a function to each value
      */
-    uniqBy<T, U>(fn: (a: T) => U, list: ReadonlyArray<T>): T[];
-    uniqBy<T, U>(fn: (a: T) => U): (list: ReadonlyArray<T>) => T[];
+    uniqBy<T = any, U = any>(fn: (a: T) => U, list: ReadonlyArray<T>): T[];
+    uniqBy<T = any, U = any>(fn: (a: T) => U): (list: ReadonlyArray<T>) => T[];
 
     /**
      * Takes a value and if it fails the function check then it will apply the provided function, otherwise it will return the value
      */
-    unless<T, U>(fn: (a: T) => boolean, act: (a: T) => U, x: T): U;
-    unless<T, U>(fn: (a: T) => boolean, act: (a: T) => U): (x: T) => U;
-    unless<T, U>(fn: (a: T) => boolean): (act: (a: T) => U) => (x: T) => U;
+    unless<T = any, U = any>(fn: (a: T) => boolean, act: (a: T) => U, x: T): U;
+    unless<T = any, U = any>(fn: (a: T) => boolean, act: (a: T) => U): (x: T) => U;
+    unless<T = any, U = any>(fn: (a: T) => boolean): (act: (a: T) => U) => (x: T) => U;
 
     /**
      * Add an item to an array within a certain index of the array
@@ -930,8 +937,8 @@ declare namespace K {
     /**
      * Takes two arrays and combines them into a key value pair object
      */
-    zip<T, V>(x: ReadonlyArray<T>, y: ReadonlyArray<V>): Array<{ [key: string]: V }>;
-    zip<T>(x: ReadonlyArray<T>): <V>(y: ReadonlyArray<V>) => Array<{ [key: string]: V }>;
+    zip<T = any, V = any>(x: ReadonlyArray<T>, y: ReadonlyArray<V>): Array<{ [key: string]: V }>;
+    zip<T = any>(x: ReadonlyArray<T>): <V = any>(y: ReadonlyArray<V>) => Array<{ [key: string]: V }>;
   }
 }
 
