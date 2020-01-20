@@ -21,12 +21,14 @@ import _xwrap from '../_internals/_xwrap'
  *
  * reduce((n, acc) => acc + n, 0, [1, 2, 3, 4, 5]) // => 15
  * reduce((n, acc) => {
-    if (typeof n === 'number') {
-      acc.push(n)
-    }
-
-    return acc
-  }, [], ['', 1, 2, '0', 3]) // => [1, 2, 3]
+ *  if (typeof n === 'number') {
+ *    acc.push(n)
+ *  }
+ *
+ *  return acc
+ * }, [], ['', 1, 2, '0', 3]) // => [1, 2, 3]
+ *
+ * reduce((val, acc) => acc.concat(val * 2), [], new Set([1, 2, 3, 4])) // => [2, 4, 6, 8]
  */
 const reduce = (fn, acc, list) => {
   const xf = _xwrap(fn)
