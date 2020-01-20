@@ -460,7 +460,8 @@ declare namespace K {
     /**
      * Applies the provided function and turns them into a single function you can use on a value
      */
-    juxt<T = any, U = any>(fns: Array<(...args: T[]) => U>): (...args: T[]) => U[];
+    juxt<T = any, U = any>(fns: ReadonlyArray<(...args: T[]) => any>, args: any[]): U[];
+    juxt<T = any>(fns: ReadonlyArray<(...args: T[]) => any>): <U = any>(args: any[]) => U[];
 
     /**
      * Grabs the last index of a list

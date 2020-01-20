@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.1.0
+
+### Improved
+
+- More typing improvements, most of the function params should now default to any, making the library easier to use in typescript lang
+
+### New
+
+- Added a `pluck` function which returns a new array by plucking the same named property off all objects in the array supplied
+
 ## v1.0.2
 
 ### Improved
