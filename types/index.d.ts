@@ -331,7 +331,9 @@ declare namespace K {
     /**
      * Grabs the first index of a list
      */
-    first<T = any>(x: string | ReadonlyArray<T>): string | T;
+    first(x: string): string;
+    first(x: readonly []): undefined;
+    first<T = any>(x: readonly T[]): T | undefined
 
     /**
      * Takes a function and two parameters and flips them when calling the provided function
@@ -466,7 +468,9 @@ declare namespace K {
     /**
      * Grabs the last index of a list
      */
-    last<T>(x: string | ReadonlyArray<T>): string | T;
+    last(x: string): string;
+    last(x: readonly []): undefined;
+    last<T = any>(x: readonly T[]): T | undefined;
 
     /**
      * Find the least common multiple of the provided numbers
