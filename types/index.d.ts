@@ -175,6 +175,12 @@ declare namespace K {
     concatMap<T, T1>(fn: (data: T) => T1): (arr: T[]) => T1[];
 
     /**
+     * Runs an array of predicate functions as a series of logic, once one of the predicate functions passes it will then call the action function provided
+     */
+    cond(preds: Array<[Pred, (...a: readonly any[]) => any]>, value: any): any
+    cond(preds: Array<[Pred, (...a: readonly any[]) => any]>): (value: any) => any
+
+    /**
      * Counts the number of values within a collection of data
      */
     count<T = any, K = any, V = any>(a: string | ReadonlyArray<T> | Set<T> | Map<K, V> | object): number
@@ -306,6 +312,11 @@ declare namespace K {
     everyPass<T>(fns: ReadonlyArray<(a: T) => boolean>): (data: T) => boolean;
 
     /**
+     * A Function that will always return false, any given parameters are ignored
+     */
+    F(): boolean;
+
+    /**
      * Takes a number and builds an array of factors for that number
      */
     factors(n: number): number[];
@@ -331,7 +342,9 @@ declare namespace K {
     /**
      * Grabs the first index of a list
      */
-    first<T = any>(x: string | ReadonlyArray<T>): string | T;
+    first(x: string): string;
+    first(x: readonly []): undefined;
+    first<T = any>(x: readonly T[]): T | undefined
 
     /**
      * Takes a function and two parameters and flips them when calling the provided function
@@ -466,7 +479,9 @@ declare namespace K {
     /**
      * Grabs the last index of a list
      */
-    last<T>(x: string | ReadonlyArray<T>): string | T;
+    last(x: string): string;
+    last(x: readonly []): undefined;
+    last<T = any>(x: readonly T[]): T | undefined;
 
     /**
      * Find the least common multiple of the provided numbers
@@ -838,6 +853,16 @@ declare namespace K {
      * Takes an array of numbers and adds them together
      */
     sum(arr: ReadonlyArray<number>): number
+
+    /**
+     * A Function that will always return true, any given parameters are ignored
+     */
+    T(): boolean;
+
+    /**
+     * Drops the first value of an array and returns the rest as a tail array
+     */
+    tail<T = any>(list: ReadonlyArray<T>): T[]
 
     /**
      * Takes the values from an array up until the point specified
