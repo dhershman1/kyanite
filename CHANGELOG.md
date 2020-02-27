@@ -1,5 +1,17 @@
 # Changelog
 
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.2.0](https://github.com/dhershman1/kyanite/compare/v1.0.0...v1.2.0) (2020-02-27)
+
+
+### Features
+
+* **functions:** added T and F Functions ([22a300d](https://github.com/dhershman1/kyanite/commit/22a300d6861fa5d86dcd7c6cbe345519809b9d67))
+* **types:** added new functions to types file ([b0a9a98](https://github.com/dhershman1/kyanite/commit/b0a9a9881c00d83145c789453719381243abf967))
+
+# Changelog
+
 ## v1.1.0
 
 ### Improved
