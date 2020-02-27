@@ -46,7 +46,8 @@
     "ts": "tsc -p types/tsconfig.json",
     "prepack": "npm-run-all --parallel create lint test --serial build",
     "ac": "git add . && npx git-cz",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "release": "npx standard-version"
   },
   "nyc": {
     "include": [
