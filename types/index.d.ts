@@ -175,6 +175,12 @@ declare namespace K {
     concatMap<T, T1>(fn: (data: T) => T1): (arr: T[]) => T1[];
 
     /**
+     * Runs an array of predicate functions as a series of logic, once one of the predicate functions passes it will then call the action function provided
+     */
+    cond(preds: Array<[Pred, (...a: readonly any[]) => any]>, value: any): any
+    cond(preds: Array<[Pred, (...a: readonly any[]) => any]>): (value: any) => any
+
+    /**
      * Counts the number of values within a collection of data
      */
     count<T = any, K = any, V = any>(a: string | ReadonlyArray<T> | Set<T> | Map<K, V> | object): number
@@ -304,6 +310,11 @@ declare namespace K {
      */
     everyPass<T>(fns: ReadonlyArray<(a: T) => boolean>, data: T): boolean;
     everyPass<T>(fns: ReadonlyArray<(a: T) => boolean>): (data: T) => boolean;
+
+    /**
+     * A Function that will always return false, any given parameters are ignored
+     */
+    F(): boolean;
 
     /**
      * Takes a number and builds an array of factors for that number
@@ -837,6 +848,11 @@ declare namespace K {
      */
     subtract(a: number, b: number): number;
     subtract(a: number): (b: number) => number;
+
+    /**
+     * A Function that will always return true, any given parameters are ignored
+     */
+    T(): boolean;
 
     /**
      * Takes an array of numbers and adds them together

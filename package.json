@@ -45,7 +45,8 @@
     "cov": "nyc --reporter=html npm test",
     "ts": "tsc -p types/tsconfig.json",
     "prepack": "npm-run-all --parallel create lint test --serial build",
-    "commit": "git add . && npx git-cz"
+    "ac": "git add . && npx git-cz",
+    "commit": "npx git-cz"
   },
   "nyc": {
     "include": [
