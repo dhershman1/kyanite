@@ -850,14 +850,19 @@ declare namespace K {
     subtract(a: number): (b: number) => number;
 
     /**
+     * Takes an array of numbers and adds them together
+     */
+    sum(arr: ReadonlyArray<number>): number
+
+    /**
      * A Function that will always return true, any given parameters are ignored
      */
     T(): boolean;
 
     /**
-     * Takes an array of numbers and adds them together
+     * Drops the first value of an array and returns the rest as a tail array
      */
-    sum(arr: ReadonlyArray<number>): number
+    tail<T = any>(list: ReadonlyArray<T>): T[]
 
     /**
      * Takes the values from an array up until the point specified
