@@ -274,6 +274,8 @@
   var join$1 = _curry2(join);
 
   function _typeof(obj) {
+    "@babel/helpers - typeof";
+
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
       _typeof = function (obj) {
         return typeof obj;
@@ -560,6 +562,14 @@
   };
   var zip$1 = _curry2(zip);
 
+  var F = function F() {
+    return false;
+  };
+
+  var T = function T() {
+    return true;
+  };
+
   var addIndex = function addIndex(fn) {
     return function () {
       var idx = 0;
@@ -630,6 +640,19 @@
     return gn(a).then(fn);
   };
   var composeP$1 = _curry3(composeP);
+
+  var cond = function cond(preds, value) {
+    return reduce$1(function (_ref, acc) {
+      var _ref2 = _slicedToArray(_ref, 2),
+          check = _ref2[0],
+          act = _ref2[1];
+      if (check(value)) {
+        return reduced(act(value));
+      }
+      return acc;
+    }, null, preds);
+  };
+  var cond$1 = _curry2(cond);
 
   var length = function length(a) {
     return a.length;
@@ -945,6 +968,12 @@
     return compose$1(deepEq$1(a), slice$1(0, a.length), list);
   };
   var startsWith$1 = _curry2(startsWith);
+
+  var tail = function tail(_ref) {
+    var _ref2 = _toArray(_ref),
+        rest = _ref2.slice(1);
+    return rest;
+  };
 
   var add = function add(a, b) {
     return a + b;
@@ -1265,6 +1294,8 @@
     return str.trim();
   };
 
+  exports.F = F;
+  exports.T = T;
   exports.add = add$1;
   exports.addIndex = addIndex;
   exports.always = always$1;
@@ -1287,6 +1318,7 @@
   exports.composeP = composeP$1;
   exports.concat = concat$1;
   exports.concatMap = concatMap$1;
+  exports.cond = cond$1;
   exports.count = count;
   exports.countBy = countBy$1;
   exports.curry = curry;
@@ -1395,6 +1427,7 @@
   exports.startsWith = startsWith$1;
   exports.subtract = subtract$1;
   exports.sum = sum;
+  exports.tail = tail;
   exports.take = take$1;
   exports.takeWhile = takeWhile$1;
   exports.test = test$1;
