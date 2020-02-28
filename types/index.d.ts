@@ -181,6 +181,13 @@ declare namespace K {
     cond(preds: Array<[Pred, (...a: readonly any[]) => any]>): (value: any) => any
 
     /**
+     * Takes a converging function, a list of data functions, and the data itself. Runs the data through each data function individually, and then passes the array of values to the converging function.
+     */
+    converge<T = any, T1 = any, T2 = any, U = any>(convFn: (...b: readonly T[]) => U, fns: readonly [(a: T1) => T], data: T2): U
+    converge<T = any, T1 = any, T2 = any, U = any>(convFn: (...b: readonly T[]) => U, fns:readonly [(a: T1) => T]): (data: T2) => U
+    converge<T = any, U = any>(convFn: (...b: readonly T[]) => U): <T1 = any>(fns:readonly [(a: T1) => T]) => <T2 = any>(data: T2) => U
+
+    /**
      * Counts the number of values within a collection of data
      */
     count<T = any, K = any, V = any>(a: string | ReadonlyArray<T> | Set<T> | Map<K, V> | object): number
