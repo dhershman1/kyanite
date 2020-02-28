@@ -960,6 +960,12 @@ declare namespace K {
     within(min: number): (max: number) => (n: number) => boolean;
 
     /**
+     * Exclusive or logical operation, returns true if one of the arguments is truthy and the other is falsy, otherwise it returns false
+     */
+    xor<T = any, U = any>(a: T, b: U): boolean;
+    xor<T = any>(a: T): <U = any>(b: U) => boolean;
+
+    /**
      * Takes two arrays and combines them into a key value pair object
      */
     zip<T = any, V = any>(x: ReadonlyArray<T>, y: ReadonlyArray<V>): Array<{ [key: string]: V }>;
