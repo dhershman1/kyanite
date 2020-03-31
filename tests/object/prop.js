@@ -24,6 +24,6 @@ test('prop -- Returns undefined for empty value', t => {
 })
 
 test('prop -- Returns null when object does not exist', t => {
-  t.is(prop('x', null), null)
+  t.is(prop('x', null), undefined)
   t.end()
 })
