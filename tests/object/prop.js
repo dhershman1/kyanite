@@ -18,12 +18,8 @@ test('prop -- Use it as a function for mapping', t => {
   t.end()
 })
 
-test('prop -- Returns undefined for empty value', t => {
+test('prop -- Returns undefined for empty value or if object does not exist', t => {
   t.is(prop('x', {}), undefined)
-  t.end()
-})
-
-test('prop -- Returns null when object does not exist', t => {
-  t.is(prop('x', null), null)
+  t.is(prop('x', null), undefined)
   t.end()
 })
