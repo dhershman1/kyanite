@@ -25,6 +25,6 @@ import _curry2 from '../_internals/_curry2'
  *
  * proper({ a: 1, b: 2 }) // => 1
  */
-const prop = (p, obj) => obj[p]
+const prop = (p, obj) => obj ? obj[p] : null
 
 export default _curry2(prop)
