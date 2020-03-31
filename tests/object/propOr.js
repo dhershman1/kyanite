@@ -7,6 +7,11 @@ test('propOr -- Basic functionality', t => {
   t.end()
 })
 
+test('propOr -- Handles null objects', t => {
+  t.same(propOr('N/A', 'foo', null), 'N/A')
+  t.end()
+})
+
 test('propOr -- Is curried', t => {
   const fn = propOr('N/A')
   const gn = fn('foo')
