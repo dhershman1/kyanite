@@ -12,12 +12,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **tail:** added new tail function ([9dba3be](https://github.com/dhershman1/kyanite/commit/9dba3bea581b4cf603bb5dcc47e5540c2b062a74))
 * **xor:** added new xor function ([8c4a4fb](https://github.com/dhershman1/kyanite/commit/8c4a4fb01f643f9b1950431d0403a1b928666d33))
 
-## [1.1.0](https://github.com/dhershman1/kyanite/compare/v1.0.2...v1.1.0) (2020-01-20)
-
-### [1.0.2](https://github.com/dhershman1/kyanite/compare/v1.0.1...v1.0.2) (2020-01-02)
-
-### [1.0.1](https://github.com/dhershman1/kyanite/compare/v1.0.0...v1.0.1) (2019-12-04)
-
 ## [1.2.0](https://github.com/dhershman1/kyanite/compare/v1.0.0...v1.2.0) (2020-02-27)
 
 
