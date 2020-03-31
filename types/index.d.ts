@@ -181,6 +181,13 @@ declare namespace K {
     cond(preds: Array<[Pred, (...a: readonly any[]) => any]>): (value: any) => any
 
     /**
+     * Takes a converging function, a list of data functions, and the data itself. Runs the data through each data function individually, and then passes the array of values to the converging function.
+     */
+    converge<T = any, T1 = any, T2 = any, U = any>(convFn: (...b: readonly T[]) => U, fns: readonly [(a: T1) => T], data: T2): U
+    converge<T = any, T1 = any, T2 = any, U = any>(convFn: (...b: readonly T[]) => U, fns: readonly [(a: T1) => T]): (data: T2) => U
+    converge<T = any, U = any>(convFn: (...b: readonly T[]) => U): <T1 = any>(fns: readonly [(a: T1) => T]) => <T2 = any>(data: T2) => U
+
+    /**
      * Counts the number of values within a collection of data
      */
     count<T = any, K = any, V = any>(a: string | ReadonlyArray<T> | Set<T> | Map<K, V> | object): number
@@ -689,9 +696,9 @@ declare namespace K {
     /**
      * Brings back the indicated property of an object if it exists
      */
-    prop<P extends keyof T, T>(p: P, obj: T): T[P];
-    prop<P extends string>(p: P): <T>(obj: Record<P, T>) => T;
-    prop<P extends string, T>(p: P): (obj: Record<P, T>) => T;
+    prop<P extends keyof T, T = any>(p: P, obj: T): T[P];
+    prop<P extends string>(p: P): <T = any>(obj: Record<P, T>) => T;
+    prop<P extends string, T = any>(p: P): (obj: Record<P, T>) => T;
 
     /**
      * Takes a desired property from an object and compares the value against a provided value to make sure they're equal
@@ -703,16 +710,16 @@ declare namespace K {
     /**
      * If the provided object contains it's own property with the specified name, that value is returned. Otherwise it will return the provided default value
      */
-    propOr<P extends string, U, T>(def: T, key: P, obj: Record<P, U>): U | T
-    propOr<P extends string, T>(def: T, key: P): <U>(obj: Record<P, U>) => U | T
-    propOr<T>(def: T): <P extends string>(key: P) => <U>(obj: Record<P, U>) => U | T
+    propOr<P extends string, U, T = any>(def: T, key: P, obj: Record<P, U>): U | T
+    propOr<P extends string, T = any>(def: T, key: P): <U>(obj: Record<P, U>) => U | T
+    propOr<T = any>(def: T): <P extends string>(key: P) => <U>(obj: Record<P, U>) => U | T
 
     /**
      * Pulls a list of values from an object and returns them as an array
      */
-    props<P extends string, T>(keys: ReadonlyArray<P>, obj: Record<P, T>): T[];
-    props<P extends string>(keys: ReadonlyArray<P>): <T>(obj: Record<P, T>) => T[];
-    props<P extends string, T>(keys: ReadonlyArray<P>): (obj: Record<P, T>) => T[];
+    props<P extends string, T = any>(keys: ReadonlyArray<P>, obj: Record<P, T>): T[];
+    props<P extends string>(keys: ReadonlyArray<P>): <T = any>(obj: Record<P, T>) => T[];
+    props<P extends string, T = any>(keys: ReadonlyArray<P>): (obj: Record<P, T>) => T[];
 
     /**
      * Creates an array of numbers ranging from the starting number (inclusive) to the ending number (exclusive)
@@ -958,6 +965,12 @@ declare namespace K {
     within(min: number, max: number, n: number): boolean;
     within(min: number, max: number): (n: number) => boolean;
     within(min: number): (max: number) => (n: number) => boolean;
+
+    /**
+     * Exclusive or logical operation, returns true if one of the arguments is truthy and the other is falsy, otherwise it returns false
+     */
+    xor<T = any, U = any>(a: T, b: U): boolean;
+    xor<T = any>(a: T): <U = any>(b: U) => boolean;
 
     /**
      * Takes two arrays and combines them into a key value pair object

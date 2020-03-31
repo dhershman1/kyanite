@@ -8,7 +8,10 @@ Please make sure all PRs are pointed at and processed through the main Developme
 
 ## Commit Messages
 
-Please write and use meaningful and helpful commit messages for your contributions and changes.
+Kyanite is now following the [commitizen](https://www.npmjs.com/package/commitizen) setup but don't worry, I wrote some scripts that you can use that take advantage of `npx` for this process!
+
+- `npm run ac`: This command will run a `git add .` and then npx commitizen, use this if you want all unstagged changes added to a commit
+- `npm run commit`: This runs a npx commit only, so you can cherry pick and break up your commits if you forget to do so and want to
 
 ## Testing
 

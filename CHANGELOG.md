@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/dhershman1/kyanite/compare/v1.2.0...v1.3.0) (2020-03-31)
+
+
+### Features
+
+* **converge:** added a converge function ([6d61d84](https://github.com/dhershman1/kyanite/commit/6d61d8429c08ce57dc5c1e9e04cd993d51aaea20))
+* **function:** prop and propOr can now handle null values ([c46091d](https://github.com/dhershman1/kyanite/commit/c46091d1c1b9ff0a3e465e12d0018caf5126e9c6)), closes [#144](https://github.com/dhershman1/kyanite/issues/144)
+* **tail:** added new tail function ([9dba3be](https://github.com/dhershman1/kyanite/commit/9dba3bea581b4cf603bb5dcc47e5540c2b062a74))
+* **xor:** added new xor function ([8c4a4fb](https://github.com/dhershman1/kyanite/commit/8c4a4fb01f643f9b1950431d0403a1b928666d33))
+
 ## [1.2.0](https://github.com/dhershman1/kyanite/compare/v1.0.0...v1.2.0) (2020-02-27)
 
 
