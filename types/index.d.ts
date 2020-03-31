@@ -696,9 +696,9 @@ declare namespace K {
     /**
      * Brings back the indicated property of an object if it exists
      */
-    prop<P extends keyof T, T>(p: P, obj: T): T[P];
-    prop<P extends string>(p: P): <T>(obj: Record<P, T>) => T;
-    prop<P extends string, T>(p: P): (obj: Record<P, T>) => T;
+    prop<P extends keyof T, T = any>(p: P, obj: T): T[P];
+    prop<P extends string>(p: P): <T = any>(obj: Record<P, T>) => T;
+    prop<P extends string, T = any>(p: P): (obj: Record<P, T>) => T;
 
     /**
      * Takes a desired property from an object and compares the value against a provided value to make sure they're equal
@@ -710,16 +710,16 @@ declare namespace K {
     /**
      * If the provided object contains it's own property with the specified name, that value is returned. Otherwise it will return the provided default value
      */
-    propOr<P extends string, U, T>(def: T, key: P, obj: Record<P, U>): U | T
-    propOr<P extends string, T>(def: T, key: P): <U>(obj: Record<P, U>) => U | T
-    propOr<T>(def: T): <P extends string>(key: P) => <U>(obj: Record<P, U>) => U | T
+    propOr<P extends string, U, T = any>(def: T, key: P, obj: Record<P, U>): U | T
+    propOr<P extends string, T = any>(def: T, key: P): <U>(obj: Record<P, U>) => U | T
+    propOr<T = any>(def: T): <P extends string>(key: P) => <U>(obj: Record<P, U>) => U | T
 
     /**
      * Pulls a list of values from an object and returns them as an array
      */
-    props<P extends string, T>(keys: ReadonlyArray<P>, obj: Record<P, T>): T[];
-    props<P extends string>(keys: ReadonlyArray<P>): <T>(obj: Record<P, T>) => T[];
-    props<P extends string, T>(keys: ReadonlyArray<P>): (obj: Record<P, T>) => T[];
+    props<P extends string, T = any>(keys: ReadonlyArray<P>, obj: Record<P, T>): T[];
+    props<P extends string>(keys: ReadonlyArray<P>): <T = any>(obj: Record<P, T>) => T[];
+    props<P extends string, T = any>(keys: ReadonlyArray<P>): (obj: Record<P, T>) => T[];
 
     /**
      * Creates an array of numbers ranging from the starting number (inclusive) to the ending number (exclusive)
