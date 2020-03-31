@@ -709,6 +709,13 @@
   };
   var cond$1 = _curry2(cond);
 
+  var converge = function converge(convFn, fns, data) {
+    return convFn.apply(void 0, _toConsumableArray(map$1(function (f) {
+      return f(data);
+    }, fns)));
+  };
+  var converge$1 = _curry3(converge);
+
   var length = function length(a) {
     return a.length;
   };
@@ -1379,6 +1386,7 @@
   exports.concat = concat$1;
   exports.concatMap = concatMap$1;
   exports.cond = cond$1;
+  exports.converge = converge$1;
   exports.count = count;
   exports.countBy = countBy$1;
   exports.curry = curry;
