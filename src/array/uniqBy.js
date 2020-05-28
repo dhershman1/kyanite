@@ -1,5 +1,6 @@
 import _curry2 from '../_internals/_curry2'
 import _assocǃ from '../_internals/_assocǃ'
+import values from '../object/values'
 
 /**
  * @name uniqBy
@@ -24,7 +25,7 @@ import _assocǃ from '../_internals/_assocǃ'
  * uq([1, 2, 3, 4, 5]) // => [3, 4, 5]
  */
 const uniqBy = (fn, list) =>
-  Object.values(list.reduce((acc, a) => {
+  values(list.reduce((acc, a) => {
     const k = fn(a)
 
     return !Object.prototype.hasOwnProperty.call(acc, k) ? _assocǃ(acc, k, a) : acc

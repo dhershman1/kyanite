@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/dhershman1/kyanite/compare/v1.3.0...v1.4.0) (2020-05-28)
+
+
+### Features
+
+* **findindex:** made findindex IE 11 compatible and switched to using it ([0ec2cac](https://github.com/dhershman1/kyanite/commit/0ec2cac5bed48ba450a02edf7ec929cea70315f2)), closes [#149](https://github.com/dhershman1/kyanite/issues/149)
+* **ie11:** added compatibility for IE11 ([0cc33db](https://github.com/dhershman1/kyanite/commit/0cc33dbc012bce41b22c53809be0cb7a79d52e92)), closes [#149](https://github.com/dhershman1/kyanite/issues/149)
+* **ie11:** converted functions using Object.values over to just values ([71d5512](https://github.com/dhershman1/kyanite/commit/71d5512751b6cdf114293e9e1eb93ea777263ede)), closes [#149](https://github.com/dhershman1/kyanite/issues/149)
+* **values:** created new values function ([c540b11](https://github.com/dhershman1/kyanite/commit/c540b11881be238fcb1d8c69aab4788518ab31b1)), closes [#149](https://github.com/dhershman1/kyanite/issues/149)
+
 ## [1.3.0](https://github.com/dhershman1/kyanite/compare/v1.2.0...v1.3.0) (2020-03-31)
 
 

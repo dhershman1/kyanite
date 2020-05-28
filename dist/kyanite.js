@@ -71,6 +71,24 @@
     return obj;
   }
 
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
   function _slicedToArray(arr, i) {
     return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
   }
@@ -127,7 +145,7 @@
     if (typeof o === "string") return _arrayLikeToArray(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
     if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Map" || n === "Set") return Array.from(o);
     if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
   }
 
@@ -147,9 +165,12 @@
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
-  function _createForOfIteratorHelper(o) {
+  function _createForOfIteratorHelper(o, allowArrayLike) {
+    var it;
+
     if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
-      if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {
+      if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+        if (it) o = it;
         var i = 0;
 
         var F = function () {};
@@ -175,8 +196,7 @@
       throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }
 
-    var it,
-        normalCompletion = true,
+    var normalCompletion = true,
         didErr = false,
         err;
     return {
@@ -287,8 +307,14 @@
     return a;
   };
 
+  var values = function values(obj) {
+    return reduce$1(function (k, acc) {
+      return _appendǃ(acc, obj[k]);
+    }, [], Object.keys(obj));
+  };
+
   var uniqBy = function uniqBy(fn, list) {
-    return Object.values(list.reduce(function (acc, a) {
+    return values(list.reduce(function (acc, a) {
       var k = fn(a);
       return !Object.prototype.hasOwnProperty.call(acc, k) ? _assocǃ$1(acc, k, a) : acc;
     }, {}));
@@ -317,10 +343,20 @@
   };
   var drop$1 = _curry2(drop);
 
+  var findIndex = function findIndex(fn, list) {
+    for (var i = 0, len = list.length; i < len; i++) {
+      if (fn(list[i])) {
+        return i;
+      }
+    }
+    return -1;
+  };
+  var findIndex$1 = _curry2(findIndex);
+
   var dropWhile = function dropWhile(fn, arr) {
-    var i = arr.findIndex(function (x) {
+    var i = findIndex$1(function (x) {
       return !fn(x);
-    });
+    }, arr);
     return i < 0 ? [] : arr.slice(i);
   };
   var dropWhile$1 = _curry2(dropWhile);
@@ -366,11 +402,6 @@
     }, undefined, arr);
   };
   var find$1 = _curry2(find);
-
-  var findIndex = function findIndex(fn, list) {
-    return list.findIndex(fn);
-  };
-  var findIndex$1 = _curry2(findIndex);
 
   var flip = function flip(fn, a, b) {
     return fn(b, a);
@@ -592,9 +623,9 @@
   var take$1 = _curry2(take);
 
   var takeWhile = function takeWhile(fn, arr) {
-    var i = arr.findIndex(function (x) {
+    var i = findIndex$1(function (x) {
       return !fn(x);
-    });
+    }, arr);
     return i < 0 ? arr : arr.slice(0, i);
   };
   var takeWhile$1 = _curry2(takeWhile);
@@ -616,14 +647,6 @@
     }, {});
   };
   var zip$1 = _curry2(zip);
-
-  var F = function F() {
-    return false;
-  };
-
-  var T = function T() {
-    return true;
-  };
 
   var addIndex = function addIndex(fn) {
     return function () {
@@ -720,7 +743,7 @@
     return a.length;
   };
 
-  var height = compose$1(length, Object.values);
+  var height = compose$1(length, values);
 
   var count = function count(a) {
     var key = type(a);
@@ -887,7 +910,7 @@
         return false;
     }
     var keysA = Object.keys(a);
-    if (keysA.length !== Object.values(b).length) {
+    if (keysA.length !== values(b).length) {
       return false;
     }
     var extendedStackA = stackA.concat([a]);
@@ -934,6 +957,10 @@
     return eq$1(fn(a), fn(b));
   };
   var eqBy$1 = _curry3(eqBy);
+
+  var F = function F() {
+    return false;
+  };
 
   var gt = function gt(a, b) {
     return b > a;
@@ -982,6 +1009,10 @@
     }, Promise.resolve(data), fns);
   };
   var pipeP$1 = _curry2(pipeP);
+
+  var T = function T() {
+    return true;
+  };
 
   var unless = function unless(fn, act, x) {
     return fn(x) ? x : act(x);
@@ -1200,7 +1231,7 @@
   var within$1 = _curry3(within);
 
   var amend = function amend(a, b) {
-    return Object.assign({}, a, b);
+    return _extends({}, a, b);
   };
   var amend$1 = _curry2(amend);
 
@@ -1226,7 +1257,7 @@
   var omit$1 = _curry2(omit);
 
   var over = function over(key, fn, acc) {
-    return Object.assign({}, acc, _defineProperty({}, key, fn(acc[key])));
+    return _extends({}, acc, _defineProperty({}, key, fn(acc[key])));
   };
   var over$1 = _curry3(over);
 
@@ -1254,7 +1285,7 @@
   var pathOr$1 = _curry3(pathOr);
 
   var plan = function plan(schema, obj) {
-    return Object.assign({}, obj, reduce$1(function (k, acc) {
+    return _extends({}, obj, reduce$1(function (k, acc) {
       return !Object.prototype.hasOwnProperty.call(obj, k) ? acc : _assocǃ$1(acc, k, schema[k](obj[k]));
     }, {}, Object.keys(schema)));
   };
@@ -1508,6 +1539,7 @@
   exports.uniqBy = uniqBy$1;
   exports.unless = unless$1;
   exports.update = update$1;
+  exports.values = values;
   exports.when = when$1;
   exports.whole = whole$1;
   exports.withDefaults = withDefaults$1;

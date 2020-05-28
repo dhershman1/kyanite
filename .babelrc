@@ -1,11 +1,13 @@
 {
+  "plugins": ["@babel/plugin-transform-object-assign"],
   "presets": [
     [
       "@babel/preset-env",
       {
         "targets": {
           "browsers": [
-            "last 1 versions"
+            "ie 11",
+            "last 2 versions"
           ]
         },
         "modules": false
