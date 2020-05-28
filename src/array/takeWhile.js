@@ -1,4 +1,5 @@
 import _curry2 from '../_internals/_curry2'
+import findIndex from './findIndex'
 
 /**
  * @name takeWhile
@@ -22,7 +23,7 @@ import _curry2 from '../_internals/_curry2'
  * fn([3, 4, 5]) // => [3]
  */
 const takeWhile = (fn, arr) => {
-  const i = arr.findIndex(x => !fn(x))
+  const i = findIndex(x => !fn(x), arr)
 
   return i < 0 ? arr : arr.slice(0, i)
 }
