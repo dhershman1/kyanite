@@ -1,4 +1,5 @@
 import _curry2 from '../_internals/_curry2'
+import values from '../object/values'
 import eq from './eq'
 import type from './type'
 
@@ -171,7 +172,7 @@ const deepEq = (a, b, stackA = [], stackB = []) => {
 
   const keysA = Object.keys(a)
 
-  if (keysA.length !== Object.values(b).length) {
+  if (keysA.length !== values(b).length) {
     return false
   }
 
