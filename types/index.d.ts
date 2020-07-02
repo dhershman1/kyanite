@@ -941,6 +941,11 @@ declare namespace K {
     update<T = any>(index: number): (val: any) => (list: ReadonlyArray<T>) => T[];
 
     /**
+     * Takes an object and returns a list of the object values
+     */
+    values<T = any>(obj: { [key: string]: T }): T[];
+
+    /**
      * Takes a value and if it passes the given function check it will apply the action function, otherwise it will return the value
      */
     when<T = any, U = any>(fn: (a: T) => boolean, act: (a: T) => U, x: T): U;

@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.1](https://github.com/dhershman1/kyanite/compare/v1.4.0...v1.4.1) (2020-07-02)
+
+### Fixed
+
+* Removed module property from `package.json` so webpack should bundle it properly using the ie compatible build
+
+### Features
+
+* 🎸 Added values type definition ([80ad6aa](https://github.com/dhershman1/kyanite/commit/80ad6aa26e079c4fa9b9ce087b78b2d5214ffba7))
+
 ## [1.4.0](https://github.com/dhershman1/kyanite/compare/v1.3.0...v1.4.0) (2020-05-28)
 
 
