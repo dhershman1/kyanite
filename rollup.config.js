@@ -1,4 +1,4 @@
-import babel from 'rollup-plugin-babel'
+import babel from '@rollup/plugin-babel'
 import cleanup from 'rollup-plugin-cleanup'
 import filesize from 'rollup-plugin-filesize'
 import { terser } from 'rollup-plugin-terser'
@@ -7,7 +7,7 @@ export default [
   {
     input: './src/index.js',
     plugins: [
-      babel(),
+      babel({ babelHelpers: 'bundled' }),
       terser(),
       filesize({
         showMinifiedSize: false
@@ -22,7 +22,7 @@ export default [
   }, {
     input: './src/index.js',
     plugins: [
-      babel(),
+      babel({ babelHelpers: 'bundled' }),
       cleanup(),
       filesize({
         showMinifiedSize: false
