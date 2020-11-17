@@ -32,7 +32,7 @@
   },
   "scripts": {
     "test": "tape -r esm tests/**/*.js | tap-spec",
-    "lint": "standard src/**/*.js",
+    "lint": "standard --fix src/**/*.js",
     "build": "rollup -c",
     "create": "node scripts/create-export.js && standard --fix src/index.js",
     "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
@@ -44,10 +44,7 @@
     "report": "nyc report --reporter=text-lcov > coverage.lcov",
     "cov": "nyc --reporter=html npm test",
     "ts": "tsc -p types/tsconfig.json",
-    "prepack": "npm-run-all --parallel create lint test --serial build",
-    "ac": "git add . && npx git-cz",
-    "commit": "npx git-cz",
-    "release": "npx standard-version"
+    "prepack": "npm-run-all --parallel create lint test --serial build"
   },
   "nyc": {
     "include": [

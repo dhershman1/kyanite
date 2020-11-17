@@ -8,7 +8,10 @@
 - Updated all dev dependencies
 - Removed david-dm badges because it doesn't seem like david-dm is ever coming back
 
+### Fixed
 
+- Some linting errors with new version of standardjs
+- Dropped unused scripts
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
