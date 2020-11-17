@@ -29,9 +29,11 @@
  * fn(10) // => 10
  */
 const reduced = x =>
-  x && x['@@transducer/reduced'] ? x : {
-    '@@transducer/value': x,
-    '@@transducer/reduced': true
-  }
+  x && x['@@transducer/reduced']
+    ? x
+    : {
+        '@@transducer/value': x,
+        '@@transducer/reduced': true
+      }
 
 export default reduced
