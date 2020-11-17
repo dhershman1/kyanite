@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = global || self, factory(global.kyanite = {}));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.kyanite = {}));
 }(this, (function (exports) { 'use strict';
 
   function _curry2(fn) {
@@ -648,6 +648,14 @@
   };
   var zip$1 = _curry2(zip);
 
+  var F = function F() {
+    return false;
+  };
+
+  var T = function T() {
+    return true;
+  };
+
   var addIndex = function addIndex(fn) {
     return function () {
       var idx = 0;
@@ -958,10 +966,6 @@
   };
   var eqBy$1 = _curry3(eqBy);
 
-  var F = function F() {
-    return false;
-  };
-
   var gt = function gt(a, b) {
     return b > a;
   };
@@ -1009,10 +1013,6 @@
     }, Promise.resolve(data), fns);
   };
   var pipeP$1 = _curry2(pipeP);
-
-  var T = function T() {
-    return true;
-  };
 
   var unless = function unless(fn, act, x) {
     return fn(x) ? x : act(x);
