@@ -17,12 +17,6 @@
   <a href="https://www.npmjs.com/package/kyanite">
     <img alt="Npm Version" src="https://img.shields.io/npm/v/kyanite.svg?style=flat-square">
   </a>
-  <a href="https://david-dm.org/dhershman1/kyanite">
-    <img alt="Dependencies" src="https://img.shields.io/david/dhershman1/kyanite.svg?style=flat-square">
-  </a>
-  <a href="https://david-dm.org/dhershman1/kyanite?type=dev">
-    <img alt="Dev Dependencies" src="https://img.shields.io/david/dev/dhershman1/kyanite.svg?style=flat-square">
-  </a>
   <a href="https://circleci.com/gh/dhershman1/kyanite/tree/master">
     <img alt="Build Status" src="https://circleci.com/gh/dhershman1/kyanite/tree/master.svg?style=svg">
   </a>

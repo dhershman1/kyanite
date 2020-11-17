@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.4.2
+
+### Enhanced
+
+- Removed commitizen and standard-version (It just wasn't working out with how far along this project already is and how I usually do changes/logs)
+- Updated all dev dependencies
+- Removed david-dm badges because it doesn't seem like david-dm is ever coming back
+
+
+
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ## [1.4.1](https://github.com/dhershman1/kyanite/compare/v1.4.0...v1.4.1) (2020-07-02)
