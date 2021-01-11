@@ -7,10 +7,10 @@ import reduce from '../function/reduce'
  * @function
  * @since v1.5.0
  * @category Object
- * @sig (a -> Boolean) -> { k: v } -> { k: v }
+ * @sig ((v, k) -> Boolean) -> { k: v } -> { k: v }
  * @description
  * Builds out a new object but omits the key values from the new object that do NOT pass the object
- * @param  {Function} fn The function to run our values through
+ * @param  {Function} fn The function to run our values through the key is also provided to this function as the 2nd param
  * @param  {Object} obj The object to search through and filter
  * @return {Object} Returns the newly created data without the omitted values
  *
@@ -27,6 +27,6 @@ import reduce from '../function/reduce'
  * omitKeys({ test: '3432', thing: 123 }) // => { thing: 123 }
  */
 const omitBy = (fn, obj) =>
-  reduce((k, acc) => fn(obj[k]) ? _assocǃ(acc, k, obj[k]) : acc, {}, Object.keys(obj))
+  reduce((k, acc) => fn(obj[k], k) ? _assocǃ(acc, k, obj[k]) : acc, {}, Object.keys(obj))
 
 export default _curry2(omitBy)
