@@ -1256,6 +1256,13 @@
   };
   var omit$1 = _curry2(omit);
 
+  var omitBy = function omitBy(fn, obj) {
+    return reduce$1(function (k, acc) {
+      return fn(obj[k]) ? _assocǃ$1(acc, k, obj[k]) : acc;
+    }, {}, Object.keys(obj));
+  };
+  var omitBy$1 = _curry2(omitBy);
+
   var over = function over(key, fn, acc) {
     return _extends({}, acc, _defineProperty({}, key, fn(acc[key])));
   };
@@ -1488,6 +1495,7 @@
   exports.notEq = notEq$1;
   exports.nth = nth$1;
   exports.omit = omit$1;
+  exports.omitBy = omitBy$1;
   exports.on = on$1;
   exports.or = or$1;
   exports.over = over$1;
