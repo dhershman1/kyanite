@@ -9,10 +9,7 @@ declare namespace K {
 
   type Ord = number | string | boolean | Date;
 
-  interface KeyValuePair<K, V> extends Array<K | V> {
-    0: K;
-    1: V;
-  }
+  type KeyValuePair<K, V> = [K, V];
 
   interface Schema {
     [key: string]: ((value: any) => any) | Schema;
@@ -366,6 +363,12 @@ declare namespace K {
      */
     fold<T = any, U = any, TResult = any>(fn: (a: T, acc: TResult) => TResult, arr: ReadonlyArray<T>): U;
     fold<T = any, U = any, TResult = any>(fn: (a: T, acc: TResult) => TResult): (arr: ReadonlyArray<T>) => U;
+
+    /**
+     * Takes an array of arrays which contain key value pairs and builds a new object
+     */
+    fromPairs<V>(pairs: Array<KeyValuePair<string, V>>): { [index: string]: V };
+    fromPairs<V>(pairs: Array<KeyValuePair<number, V>>): { [index: number]: V };
 
     /**
      * Takes a needle and searches the haystack for the matching string

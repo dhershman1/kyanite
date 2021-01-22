@@ -413,6 +413,18 @@
   };
   var fold$1 = _curry2(fold);
 
+  var fromPairs = function fromPairs(pairs) {
+    return reduce$1(function (_ref, acc) {
+      var _ref2 = _slicedToArray(_ref, 2),
+          key = _ref2[0],
+          value = _ref2[1];
+      if (!key) {
+        return acc;
+      }
+      return _assocǃ$1(acc, key, value);
+    }, {}, pairs);
+  };
+
   var insert = function insert(i, d, arr) {
     var idx = i < arr.length && i >= 0 ? i : arr.length;
     var result = arr.slice(0);
@@ -1258,7 +1270,7 @@
 
   var omitBy = function omitBy(fn, obj) {
     return reduce$1(function (k, acc) {
-      return fn(obj[k]) ? _assocǃ$1(acc, k, obj[k]) : acc;
+      return fn(obj[k], k) ? _assocǃ$1(acc, k, obj[k]) : acc;
     }, {}, Object.keys(obj));
   };
   var omitBy$1 = _curry2(omitBy);
@@ -1454,6 +1466,7 @@
   exports.first = first;
   exports.flip = flip$1;
   exports.fold = fold$1;
+  exports.fromPairs = fromPairs;
   exports.fuzzySearch = fuzzySearch$1;
   exports.gcd = gcd$1;
   exports.groupBy = groupBy$1;

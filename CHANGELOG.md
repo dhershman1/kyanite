@@ -5,6 +5,7 @@
 ### New
 
 - Added new `omitBy` function which works like omit but uses a `function` instead of a key list
+- Added new `fromPairs` function which takes an array of arrays that contain key value pairs
 
 ### Enhanced
 
