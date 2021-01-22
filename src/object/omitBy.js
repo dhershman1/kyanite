@@ -9,7 +9,7 @@ import reduce from '../function/reduce'
  * @category Object
  * @sig ((v, k) -> Boolean) -> { k: v } -> { k: v }
  * @description
- * Builds out a new object but omits the key values from the new object that do NOT pass the object
+ * Builds out a new object but omits the key values from the new object that do NOT pass the predicate function
  * @param  {Function} fn The function to run our values through the key is also provided to this function as the 2nd param
  * @param  {Object} obj The object to search through and filter
  * @return {Object} Returns the newly created data without the omitted values

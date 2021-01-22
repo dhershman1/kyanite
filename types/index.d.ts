@@ -1,4 +1,4 @@
-// Type definitions for Kyanite v1.0.2
+// Type definitions for Kyanite v1.5.0
 // Project: Kyanite
 // Definitions by: Dustin Hershman <dustinh17@gmail.com>
 
@@ -109,9 +109,9 @@ declare namespace K {
     /**
      * Validates the same value when passed into two seperate functions
      */
-    both(pred1: Pred, pred2: Pred, data: any): boolean;
-    both(pred1: Pred, pred2: Pred): (data: any) => boolean;
-    both(pred1: Pred): (pred2: Pred) => (data: any) => boolean;
+    both<T = any>(pred1: Pred, pred2: Pred, data: T): boolean;
+    both(pred1: Pred, pred2: Pred): <T = any>(data: T) => boolean;
+    both(pred1: Pred): (pred2: Pred) => <T = any>(data: T) => boolean;
 
     /**
      * Takes 3 functions and a value, runs the functions in an if else setup, if the first function passes the second will run, otherwise the thrid will run
@@ -601,6 +601,12 @@ declare namespace K {
      */
     omit<T, E extends string>(keys: ReadonlyArray<E>, obj: T): Omit<T, E>;
     omit<E extends string>(keys: ReadonlyArray<E>): <T>(obj: T) => Omit<T, E>;
+
+    /**
+     * Builds out a new object but omits the key values from the new object that do NOT pass the predicate function
+     */
+    omitBy<T, E extends string>(fn: Pred, obj: T): Omit<T, E>;
+    omitBy<E extends string>(fn: Pred): <T>(obj: T) => Omit<T, E>;
 
     /**
      * Applies the second function to the values passed in, and then runs the first function against those new values,
