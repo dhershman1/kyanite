@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.5.0
+
+### New
+
+- Added new `omitBy` function which works like omit but uses a `function` instead of a key list
+
+### Enhanced
+
+- Updated to pinet v1.1.0 adding search enter key functionality!
+- Tweaked a bit of the typings to allow more strict control
+
 ## v1.4.2
 
 ### Enhanced
