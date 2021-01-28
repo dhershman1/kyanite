@@ -12,6 +12,7 @@
 - Tweaked a bit of the typings to allow more strict control
 - Updated [pinet](https://github.com/dhershman1/pinet) to v1.1.1 for improved documantation functionality
   - You can use the enter key with search now to find the function!
+- The dist folder is no longer located on Github but it STILL exists with npm (it's built on upload to npm)
 
 ## v1.4.2
 
