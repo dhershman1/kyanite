@@ -21,7 +21,7 @@
     "jsdoc": "3.6.6",
     "npm-run-all": "4.1.5",
     "nyc": "15.1.0",
-    "pinet": "1.1.0",
+    "pinet": "1.1.1",
     "rollup": "2.38.0",
     "rollup-plugin-cleanup": "3.2.1",
     "rollup-plugin-filesize": "9.1.0",
@@ -31,7 +31,7 @@
     "tape": "5.1.1"
   },
   "scripts": {
-    "test": "tape -r esm tests/**/*.js | tap-spec",
+    "test": "tape -r esm tests/**/fromPairs.js | tap-spec",
     "lint": "standard --fix src/**/*.js",
     "build": "rollup -c",
     "create": "node scripts/create-export.js && standard --fix src/index.js",
