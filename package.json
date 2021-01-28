@@ -31,7 +31,7 @@
     "tape": "5.1.1"
   },
   "scripts": {
-    "test": "tape -r esm tests/**/fromPairs.js | tap-spec",
+    "test": "tape -r esm tests/**/*.js | tap-spec",
     "lint": "standard --fix src/**/*.js",
     "build": "rollup -c",
     "create": "node scripts/create-export.js && standard --fix src/index.js",
