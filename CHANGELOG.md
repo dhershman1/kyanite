@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.5.0
+
+### New
+
+- Added new `omitBy` function which works like omit but uses a predicate `function` instead of a key list
+- Added new `fromPairs` function which takes an array of arrays that contain key value pairs
+
+### Enhanced
+
+- Tweaked a bit of the typings to allow more strict control
+- Updated [pinet](https://github.com/dhershman1/pinet) to v1.1.1 for improved documantation functionality
+  - You can use the enter key with search now to find the function!
+- The dist folder is no longer located on Github but it STILL exists with npm (it's built on upload to npm)
+
 ## v1.4.2
 
 ### Enhanced
