@@ -9,8 +9,9 @@
 
 ### Enhanced
 
-- Updated to pinet v1.1.0 adding search enter key functionality!
 - Tweaked a bit of the typings to allow more strict control
+- Updated [pinet](https://github.com/dhershman1/pinet) to v1.1.1 for improved documantation functionality
+  - You can use the enter key with search now to find the function!
 
 ## v1.4.2
 
