@@ -1,4 +1,4 @@
-import reduce from '../function/reduce'
+import _reduce from '../_internals/_reduce'
 import _appendǃ from '../_internals/_appendǃ'
 
 /**
@@ -16,6 +16,6 @@ import _appendǃ from '../_internals/_appendǃ'
  * values({ a: 1, b: 2, c: 3 }) // => [1, 2, 3]
  */
 const values = obj =>
-  reduce((k, acc) => _appendǃ(acc, obj[k]), [], Object.keys(obj))
+  _reduce((k, acc) => _appendǃ(acc, obj[k]), [], Object.keys(obj))
 
 export default values

@@ -1,6 +1,6 @@
 import _curry2 from '../_internals/_curry2'
 import _assocǃ from '../_internals/_assocǃ'
-import reduce from '../function/reduce'
+import _reduce from '../_internals/_reduce'
 import defaultTo from '../function/defaultTo'
 
 /**
@@ -28,7 +28,7 @@ import defaultTo from '../function/defaultTo'
  * fn({}) // => { a: 1, b: 2, c: 3 }
  */
 const withDefaults = (def, obj) =>
-  reduce((k, acc) =>
+  _reduce((k, acc) =>
     _assocǃ(acc, k, defaultTo(def[k], obj[k])), {}, Object.keys(def))
 
 export default _curry2(withDefaults)

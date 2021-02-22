@@ -1,4 +1,4 @@
-import reduce from '../function/reduce'
+import _reduce from '../_internals/_reduce'
 import add from './add'
 
 /**
@@ -17,6 +17,6 @@ import add from './add'
  * sum([1, 2, 3]) // => 6
  * sum([1, 2, -3]) // => 0
  */
-const sum = reduce(add, 0)
+const sum = _reduce(add, 0)
 
 export default sum

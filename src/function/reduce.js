@@ -1,5 +1,5 @@
 import _curry3 from '../_internals/_curry3'
-import _xwrap from '../_internals/_xwrap'
+import _reduce from '../_internals/_reduce'
 
 /**
  * @name reduce
@@ -30,19 +30,4 @@ import _xwrap from '../_internals/_xwrap'
  *
  * reduce((val, acc) => acc.concat(val * 2), [], new Set([1, 2, 3, 4])) // => [2, 4, 6, 8]
  */
-const reduce = (fn, acc, list) => {
-  const xf = _xwrap(fn)
-
-  for (const entry of list) {
-    acc = xf['@@transducer/step'](entry, acc)
-
-    if (acc && acc['@@transducer/reduced']) {
-      acc = acc['@@transducer/value']
-      break
-    }
-  }
-
-  return xf['@@transducer/result'](acc)
-}
-
-export default _curry3(reduce)
+export default _curry3(_reduce)

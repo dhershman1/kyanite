@@ -1,3 +1,5 @@
+import _reduced from '../_internals/_reduced'
+
 /**
  * @name reduced
  * @function
@@ -28,12 +30,4 @@
  * fn(20) // => 19
  * fn(10) // => 10
  */
-const reduced = x =>
-  x && x['@@transducer/reduced']
-    ? x
-    : {
-        '@@transducer/value': x,
-        '@@transducer/reduced': true
-      }
-
-export default reduced
+export default _reduced

@@ -1,6 +1,6 @@
 import _curry2 from '../_internals/_curry2'
 import _assocǃ from '../_internals/_assocǃ'
-import reduce from '../function/reduce'
+import _reduce from '../_internals/_reduce'
 
 /**
  * @name draft
@@ -24,7 +24,7 @@ import reduce from '../function/reduce'
  * d({ a: 1, b: 2, c: 3 }) // => { a: 2, b: 4, c: 6 }
  */
 const draft = (fn, obj) =>
-  reduce((key, acc) =>
+  _reduce((key, acc) =>
     _assocǃ(acc, key, fn(obj[key])), {}, Object.keys(obj))
 
 export default _curry2(draft)

@@ -1,4 +1,4 @@
-import reduce from '../function/reduce'
+import _reduce from '../_internals/_reduce'
 
 /**
  * @name max
@@ -17,6 +17,6 @@ import reduce from '../function/reduce'
  * max([1, 3, 2, 5, 4]) // => 5
  * max(['c', 'a', 'b', 'f']) // => 'f'
  */
-const max = reduce((a, b) => a >= b ? a : b, '')
+const max = _reduce((a, b) => a >= b ? a : b, '')
 
 export default max

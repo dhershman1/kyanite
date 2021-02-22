@@ -1,6 +1,6 @@
 import _curry2 from '../_internals/_curry2'
-import reduce from './reduce'
-import reduced from './reduced'
+import _reduce from '../_internals/_reduce'
+import _reduced from '../_internals/_reduced'
 
 /**
  * @name cond
@@ -35,9 +35,9 @@ import reduced from './reduced'
  * fn(3) // => 'It was nothing special'
  */
 const cond = (preds, value) => {
-  return reduce(([check, act], acc) => {
+  return _reduce(([check, act], acc) => {
     if (check(value)) {
-      return reduced(act(value))
+      return _reduced(act(value))
     }
 
     return acc

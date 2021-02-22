@@ -1,7 +1,7 @@
 import _curry2 from '../_internals/_curry2'
 import _appendǃ from '../_internals/_appendǃ'
 import _assocǃ from '../_internals/_assocǃ'
-import reduce from '../function/reduce'
+import _reduce from '../_internals/_reduce'
 
 /**
  * @name groupBy
@@ -26,7 +26,7 @@ import reduce from '../function/reduce'
  * g([4.2, 6.1, 6.4]) // => { '4': [4.2], '6': [6.1, 6.4] }
 */
 const groupBy = (fn, list) =>
-  reduce((v, acc) => {
+  _reduce((v, acc) => {
     const k = fn(v)
     const _an = _assocǃ(acc, k)
 

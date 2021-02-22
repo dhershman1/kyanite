@@ -1,6 +1,6 @@
 import _curry2 from '../_internals/_curry2'
 import _appendǃ from '../_internals/_appendǃ'
-import reduce from '../function/reduce'
+import _reduce from '../_internals/_reduce'
 
 /**
  * @name partition
@@ -28,7 +28,7 @@ import reduce from '../function/reduce'
  * part(['foo', 'bar', 100]) // => [ ['foo', 'bar'], [100] ]
  */
 const partition = (fn, list) =>
-  reduce((v, [pass, fail]) =>
+  _reduce((v, [pass, fail]) =>
     fn(v) ? [_appendǃ(pass, v), fail] : [pass, _appendǃ(fail, v)], [[], []], list)
 
 export default _curry2(partition)

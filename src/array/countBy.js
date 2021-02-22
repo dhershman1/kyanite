@@ -1,6 +1,6 @@
 import _curry2 from '../_internals/_curry2'
 import _assocǃ from '../_internals/_assocǃ'
-import reduce from '../function/reduce'
+import _reduce from '../_internals/_reduce'
 
 /**
  * @name countBy
@@ -28,7 +28,7 @@ import reduce from '../function/reduce'
  * fn(numbers) // => { '1': 3, '2': 2, '3': 1 }
  */
 const countBy = (fn, arr) =>
-  reduce((a, acc) => {
+  _reduce((a, acc) => {
     const k = fn(a)
     const _an = _assocǃ(acc, k)
 

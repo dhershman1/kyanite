@@ -1,4 +1,4 @@
-import reduce from '../function/reduce'
+import _reduce from '../_internals/_reduce'
 import _assocǃ from '../_internals/_assocǃ'
 
 /**
@@ -19,7 +19,7 @@ import _assocǃ from '../_internals/_assocǃ'
  * fromPairs([[]]) // => {}
  */
 const fromPairs = pairs =>
-  reduce(([key, value], acc) => {
+  _reduce(([key, value], acc) => {
     if (!key) {
       return acc
     }

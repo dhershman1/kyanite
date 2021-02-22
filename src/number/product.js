@@ -1,4 +1,4 @@
-import reduce from '../function/reduce'
+import _reduce from '../_internals/_reduce'
 import multiply from './multiply'
 
 /**
@@ -17,6 +17,6 @@ import multiply from './multiply'
  * product([1, 2, 3]) // => 6
  * product([2, 3, 0]) // => 0
  */
-const product = reduce(multiply, 1)
+const product = _reduce(multiply, 1)
 
 export default product
