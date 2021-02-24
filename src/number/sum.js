@@ -17,6 +17,6 @@ import add from './add'
  * sum([1, 2, 3]) // => 6
  * sum([1, 2, -3]) // => 0
  */
-const sum = _reduce(add, 0)
+const sum = list => _reduce(add, 0, list)
 
 export default sum

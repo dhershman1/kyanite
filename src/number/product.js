@@ -17,6 +17,6 @@ import multiply from './multiply'
  * product([1, 2, 3]) // => 6
  * product([2, 3, 0]) // => 0
  */
-const product = _reduce(multiply, 1)
+const product = list => _reduce(multiply, 1, list)
 
 export default product

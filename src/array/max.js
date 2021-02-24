@@ -17,6 +17,6 @@ import _reduce from '../_internals/_reduce'
  * max([1, 3, 2, 5, 4]) // => 5
  * max(['c', 'a', 'b', 'f']) // => 'f'
  */
-const max = _reduce((a, b) => a >= b ? a : b, '')
+const max = list => _reduce((a, b) => a >= b ? a : b, '', list)
 
 export default max

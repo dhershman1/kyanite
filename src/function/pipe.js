@@ -1,5 +1,5 @@
 import _curry2 from '../_internals/_curry2'
-import _reduce from '../_internals/_reduced'
+import _reduce from '../_internals/_reduce'
 
 /**
  * @name pipe
