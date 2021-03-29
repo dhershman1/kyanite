@@ -10,15 +10,16 @@ import filter from './filter'
  * @function
  * @category Array
  * @sig [*] -> [*] -> [*]
- * @description Returns a new array of values that are not contained within both arrays
+ * @description Returns a new array of values that are not contained within any of the arrays
  * @param {Array} arrs The array of arrays we want to get the difference of
- * @return {Array} An array of elements that are not present in both arrays
+ * @return {Array} An array of elements that are not present in all of the arrays
  *
  * @example
  * import { difference } from 'kyanite'
  *
  * difference([[1, 2, 3], [1]]) // => [2, 3]
  * difference([[1], [1, 2, 3]]) // => [2, 3]
+ * difference([[1], [1, 2, 3], [2, 4]]) // => [3, 4]
  */
 const difference = arrs => {
   const arr = concatMap(uniq, arrs)
