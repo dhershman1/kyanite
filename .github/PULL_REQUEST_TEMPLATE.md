@@ -8,9 +8,9 @@
 
 - List of new changes if any
 
-## Improved
+## Enhanced
 
-- List of improved changes if any
+- List of enhanced changes if any
 
 ## Fixed
 
