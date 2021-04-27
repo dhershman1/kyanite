@@ -1,6 +1,6 @@
 import _curry2 from '../_internals/_curry2'
-import reduce from '../function/reduce'
-import reduced from '../function/reduced'
+import _reduce from '../_internals/_reduce'
+import _reduced from '../_internals/_reduced'
 
 /**
  * @name every
@@ -30,7 +30,7 @@ import reduced from '../function/reduced'
  * run([-1, 0, 1]) // => false
  */
 const every = (fn, data) =>
-  reduce((val, acc) =>
-    fn(val) ? acc : reduced(false), true, data)
+  _reduce((val, acc) =>
+    fn(val) ? acc : _reduced(false), true, data)
 
 export default _curry2(every)

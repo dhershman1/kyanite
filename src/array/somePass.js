@@ -1,6 +1,6 @@
 import _curry2 from '../_internals/_curry2'
-import reduce from '../function/reduce'
-import reduced from '../function/reduced'
+import _reduce from '../_internals/_reduce'
+import _reduced from '../_internals/_reduced'
 
 /**
  * @name somePass
@@ -29,6 +29,6 @@ import reduced from '../function/reduced'
  * fn(2) // => true
  * fn(0) // => false
  */
-const somePass = (fns, data) => reduce((f, acc) => f(data) ? reduced(true) : acc, false, fns)
+const somePass = (fns, data) => _reduce((f, acc) => f(data) ? _reduced(true) : acc, false, fns)
 
 export default _curry2(somePass)

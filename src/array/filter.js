@@ -1,6 +1,6 @@
 import _appendǃ from '../_internals/_appendǃ'
 import _curry2 from '../_internals/_curry2'
-import reduce from '../function/reduce'
+import _reduce from '../_internals/_reduce'
 
 /**
  * @name filter
@@ -26,6 +26,6 @@ import reduce from '../function/reduce'
  * filterer([1, 2, 3, 4]) // => [2, 4]
  */
 const filter = (fn, arr) =>
-  reduce((val, acc) => fn(val) ? _appendǃ(acc, val) : acc, [], arr)
+  _reduce((val, acc) => fn(val) ? _appendǃ(acc, val) : acc, [], arr)
 
 export default _curry2(filter)

@@ -11,6 +11,8 @@ declare namespace K {
 
   type KeyValuePair<K, V> = [K, V];
 
+  type Path = Array<(number | string)>;
+
   interface Schema {
     [key: string]: ((value: any) => any) | Schema;
   }
@@ -646,15 +648,22 @@ declare namespace K {
     /**
      * Safely crawl through an object to get a value
      */
-    path(keys: ReadonlyArray<string>, obj: object): any;
-    path(keys: ReadonlyArray<string>): (obj: object) => any;
+    path(keys:Path, obj: object): any;
+    path(keys:Path): (obj: object) => any;
 
     /**
      * A safe way to find an item within an object, will return the provided default if it's not found or the value itself if it is found
      */
-    pathOr<T = any>(a: any, keys: ReadonlyArray<string>, obj: object): T;
-    pathOr(a: any, keys: ReadonlyArray<string>): <T = any>(obj: object) => T;
-    pathOr(a: any): (keys: ReadonlyArray<string>) => <T = any>(obj: object) => T;
+    pathOr<T = any>(a: any, keys: Path, obj: object): T;
+    pathOr(a: any, keys: Path): <T = any>(obj: object) => T;
+    pathOr(a: any): (keys: Path) => <T = any>(obj: object) => T;
+
+    /**
+     * Runs a path check on a given object and then runs a predicate function on the result
+     */
+    pathSatisfies<T = any, U = any>(pred: (val: T) => boolean, keys: Path, obj: U): boolean;
+    pathSatisfies<T = any, U = any>(pred: (val: T) => boolean, keys: Path): (obj: U) => boolean;
+    pathSatisfies<T = any, U = any>(pred: (val: T) => boolean): (keys: Path) => (obj: U) => boolean;
 
     /**
      * Applies a sequence of transformations over a value

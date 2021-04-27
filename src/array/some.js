@@ -1,6 +1,6 @@
 import _curry2 from '../_internals/_curry2'
-import reduce from '../function/reduce'
-import reduced from '../function/reduced'
+import _reduce from '../_internals/_reduce'
+import _reduced from '../_internals/_reduced'
 
 /**
  * @name some
@@ -32,7 +32,7 @@ import reduced from '../function/reduced'
  * run([-3, -2, -1]) // => false
  */
 const some = (fn, arr) =>
-  reduce((val, acc) =>
-    fn(val) ? reduced(true) : acc, false, arr)
+  _reduce((val, acc) =>
+    fn(val) ? _reduced(true) : acc, false, arr)
 
 export default _curry2(some)

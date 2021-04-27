@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.6.0
+
+### New
+
+- Added new `pathSatisfies` function, which runs a path to a value which is then passed through a function to see if it satisfies that condition and returns value of predicate
+- Added new `propSatisfies` function, which pulls a prop from an object and runs a function on it, returns value of predicate
+
+### Enhanced
+
+- Created an internal `reducer` that is used by other functions, this should help reduce any circular dependencies with that function
+- Created an internal `reduced` that should help reduce any circular dependencies issues internally
+- Tweaked typings for `path` function to use a new `Path` type
+
+### Fixed
+
+- The documentation for `difference` was outdated and incorrect
+
 ## v1.5.0
 
 ### New

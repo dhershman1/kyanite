@@ -4,7 +4,10 @@ import pipe from '../../src/function/pipe'
 import test from 'tape'
 
 test('pipe -- Returns value after running pipe', t => {
-  t.is(pipe([add(2), multiply(2)], 10), 24)
+  t.is(pipe([
+    add(2),
+    multiply(2)
+  ], 10), 24)
   t.end()
 })
 

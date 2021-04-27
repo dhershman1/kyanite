@@ -9,6 +9,11 @@ test('difference -- Returns the difference in arrays', t => {
   t.end()
 })
 
+test('difference -- More than two arrays', t => {
+  t.same(difference([[1], [1, 2, 3], [2, 4]]), [3, 4])
+  t.end()
+})
+
 test('difference -- Complex tests', t => {
   t.same(difference([[1, 4, 13, 'test'], [1, 4, 13]]), ['test'])
   t.same(difference([[1, 4, 13, 'test'], ['test', 1, 3]]), [4, 13, 3])

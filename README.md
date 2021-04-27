@@ -31,7 +31,7 @@
   </a>
 </p>
 
-## Why Kyanite?
+## Why The Name Kyanite?
 
 Because I think mineral names are cool
 

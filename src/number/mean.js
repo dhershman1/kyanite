@@ -1,7 +1,7 @@
 import add from './add'
 import divide from './divide'
 import length from '../list/length'
-import reduce from '../function/reduce'
+import _reduce from '../_internals/_reduce'
 
 /**
  * @name mean
@@ -21,6 +21,6 @@ import reduce from '../function/reduce'
  * mean([]) // => NaN
  * mean() // => Ref Error
  */
-const mean = x => divide(length(x), reduce(add, 0, x))
+const mean = x => divide(length(x), _reduce(add, 0, x))
 
 export default mean

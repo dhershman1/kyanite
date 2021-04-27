@@ -36,6 +36,7 @@
   },
   "pinet": {
     "title": "Kyanite - Documentation",
+    "genSources": true,
     "links": [
       {
         "name": "Github",

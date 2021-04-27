@@ -1,5 +1,5 @@
 import _curry2 from '../_internals/_curry2'
-import reduce from './reduce'
+import _reduce from '../_internals/_reduce'
 
 /**
  * @name pipeP
@@ -27,7 +27,7 @@ import reduce from './reduce'
  *
  */
 const pipeP = (fns, data) =>
-  reduce((f, acc) =>
+  _reduce((f, acc) =>
     acc.then(f), Promise.resolve(data), fns)
 
 export default _curry2(pipeP)

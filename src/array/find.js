@@ -1,6 +1,6 @@
 import _curry2 from '../_internals/_curry2'
-import reduce from '../function/reduce'
-import reduced from '../function/reduced'
+import _reduce from '../_internals/_reduce'
+import _reduced from '../_internals/_reduced'
 
 /**
  * @name find
@@ -26,7 +26,7 @@ import reduced from '../function/reduced'
  * fn([{val: 'test'}, {val: 'none'}]) // => { val: 'test' }
  */
 const find = (fn, arr) =>
-  reduce((val, acc) =>
-    fn(val) ? reduced(val) : acc, undefined, arr)
+  _reduce((val, acc) =>
+    fn(val) ? _reduced(val) : acc, undefined, arr)
 
 export default _curry2(find)
