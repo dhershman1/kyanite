@@ -7,28 +7,18 @@ on:
     branches: [ master ]
 
 jobs:
-  # setup:
-
-  #   runs-on: ubuntu-latest
-
-  #   # If we want to run a matrix, this will probably have to live inside each step
-  #   # strategy:
-  #   #   matrix:
-  #   #     node-version: [12.x, 14.x]
-
-  #   steps:
-  #   - name: Checkout
-  #     uses: actions/checkout@v2
-  #   # - name: Use Node.js ${{ matrix.node-version }}
-  #   - name: Use Node.js 14.x
-  #     uses: actions/setup-node@v2
-  #     with:
-  #       node-version: 14.x
-  #       # node-version: ${{ matrix.node-version }}
+  # In the future if we want to run linting/tests using the node matrix to cover multiple node versions we can add this to each job.
+  # If we want to run a matrix, this will probably have to live inside each job:
+  # strategy:
+  #   matrix:
+  #     node-version: [12.x, 14.x]
+  # - name: Use Node.js ${{ matrix.node-version }}
+  #   uses: actions/setup-node@v2
+  #   with:
+  #     node-version: ${{ matrix.node-version }}
 
   test:
     runs-on: ubuntu-latest
-    # needs: [setup]
 
     steps:
     - uses: actions/checkout@v2
@@ -57,7 +47,6 @@ jobs:
         flags: unittests
   lint:
     runs-on: ubuntu-latest
-    # needs: [setup]
 
     steps:
     - uses: actions/checkout@v2
