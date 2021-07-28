@@ -7,22 +7,19 @@ on:
     branches: [ master ]
 
 jobs:
-  # In the future if we want to run linting/tests using the node matrix to cover multiple node versions we can add this to each job.
-  # If we want to run a matrix, this will probably have to live inside each job:
-  # strategy:
-  #   matrix:
-  #     node-version: [12.x, 14.x]
-  # - name: Use Node.js ${{ matrix.node-version }}
-  #   uses: actions/setup-node@v2
-  #   with:
-  #     node-version: ${{ matrix.node-version }}
-  # TODO: Maybe it's worth setting up a repo for composite actions? We can move reusable/bulk jobs to this repo and use them in all our other actions
 
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
 
     steps:
     - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
     - name: Check node_module Cache
       id: node-module-cache
       uses: actions/cache@v2
@@ -48,9 +45,16 @@ jobs:
         flags: unittests
   lint:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
 
     steps:
     - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
     - name: Check node_module Cache
       id: node-module-cache
       uses: actions/cache@v2
