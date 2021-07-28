@@ -10,6 +10,8 @@
 ### Improved
 
 - Replaced `tap-spec` with `tap-on`
+- Replaced CircleCI with github Actions
+- Replaced README badge
 
 ## v1.6.0
 
