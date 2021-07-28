@@ -39,7 +39,18 @@ jobs:
     needs: [setup]
 
     steps:
-    - uses: setup
+    - uses: actions/checkout@v2
+    - name: Check node_module Cache
+      id: node-module-cache
+      uses: actions/cache@v2
+      with:
+          path: |
+              node_modules
+              */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+    - name: Install dependencies
+      if: steps.node-module-cache.outputs.cache-hit != 'true'
+      run: npm ci
     - name: Test
       run: npm run test:cov
     - name: Run Report
@@ -57,6 +68,17 @@ jobs:
     needs: [setup]
 
     steps:
-    - uses: setup
+    - uses: actions/checkout@v2
+    - name: Check node_module Cache
+      id: node-module-cache
+      uses: actions/cache@v2
+      with:
+          path: |
+              node_modules
+              */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+    - name: Install dependencies
+      if: steps.node-module-cache.outputs.cache-hit != 'true'
+      run: npm ci
     - name: Lint
       run: npm run lint
