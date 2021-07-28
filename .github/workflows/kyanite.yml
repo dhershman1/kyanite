@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: dhershman1/composite/install@alpha1
+    - uses: dhershman1/composite/install@alpha2
     - name: Test
       run: npm run test:cov
     - name: Run Report
@@ -39,6 +39,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: dhershman1/composite/install@alpha1
+    - uses: dhershman1/composite/install@alpha2
     - name: Lint
       run: npm run lint
