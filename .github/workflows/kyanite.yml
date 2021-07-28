@@ -1,0 +1,61 @@
+name: Kyanite CI
+
+on:
+  push:
+    branches: [ master, development ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  setup:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x, 15.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Check node_module Cache
+      id: node-module-cache
+      uses: actions/cache@v2
+      with:
+          path: |
+              node_modules
+              */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+    - name: Install dependencies
+      if: steps.node-module-cache.outputs.cache-hit != 'true'
+      run: npm ci
+
+  test:
+    runs-on: ubuntu-latest
+    needs: [setup]
+
+    steps:
+    - name: Test
+      run: npm run test:cov
+    - name: Run Report
+      run: npm run report
+    - name: Check Coverage
+      run: npm run check-cov
+    - name: Upload Coverage
+      uses: codecov/codecov-action@v1
+      with:
+        files: ./coverage.lcov
+        name: pf-tests
+        flags: unittests
+  lint:
+    runs-on: ubuntu-latest
+    needs: [setup]
+
+    steps:
+    - name: Lint
+      run: npm run lint
