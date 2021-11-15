@@ -8,10 +8,17 @@ Please make sure all PRs are pointed at and processed through the main Developme
 
 ## Commit Messages
 
-Kyanite is now following the [commitizen](https://www.npmjs.com/package/commitizen) setup but don't worry, I wrote some scripts that you can use that take advantage of `npx` for this process!
+I'd love it if your commit messages were in the format of `Type: summary` for example: `Updated: Changed var names to make more sense`
 
-- `npm run ac`: This command will run a `git add .` and then npx commitizen, use this if you want all unstagged changes added to a commit
-- `npm run commit`: This runs a npx commit only, so you can cherry pick and break up your commits if you forget to do so and want to
+The types I'd like to stick to are:
+
+- `Chore` -- A chore task like documentation/readme tweaks/dependency updates/etc
+- `Updated` -- Updating something minor
+- `Fixed` -- Fixing bugs/typos etc
+- `Added` -- For changes that are adding new features/functionality/etc
+- `Breaking` -- For changes that might be a breaking change
+
+I know this format looks similar to something like [commitizen](https://www.npmjs.com/package/commitizen) but that changelog is too far gone to fully commit to it
 
 ## Testing
 

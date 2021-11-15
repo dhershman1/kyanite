@@ -437,8 +437,8 @@ declare namespace K {
      */
     insert<T = any>(i: number, d: T, arr: ReadonlyArray<T>): T[];
     insert<T = any>(i: number, d: T): (arr: ReadonlyArray<T>) => T[];
-    insert<T = any>(i: number): (d: T) => (arr: ReadonlyArray<T>) => T[];
     insert(i: number): <T = any>(d: T, arr: ReadonlyArray<T>) => T[];
+    insert<T = any>(i: number): (d: T) => (arr: ReadonlyArray<T>) => T[];
 
     /**
      * Returns an array containing elements present in both arrays
@@ -828,9 +828,6 @@ declare namespace K {
     slice<T = any>(a: number, b: number, list: ReadonlyArray<T>): T[];
     slice<T = any>(a: number, b: number): (list: ReadonlyArray<T>) => T[];
     slice<T = any>(a: number): (b: number) => (list: ReadonlyArray<T>) => T[];
-    slice(a: number, b: number, list: string): string;
-    slice(a: number, b: number): (list: string) => string;
-    slice(a: number): (b: number) => (list: string) => string;
 
     /**
      * Iterates through a provided list verifying that at least one of the values passes the provided function

@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.6.1
+
+### Fixed
+
+- Unreachable overloads in types
+- Removed duplicated overloads in types
+
+### Improved
+
+- Replaced `tap-spec` with `tap-on`
+- Replaced CircleCI with github Actions
+- Replaced README badge
+
 ## v1.6.0
 
 ### New
