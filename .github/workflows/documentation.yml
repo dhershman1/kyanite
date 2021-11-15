@@ -26,6 +26,8 @@ jobs:
     - name: Install dependencies
       if: steps.node-module-cache.outputs.cache-hit != 'true'
       run: npm ci
+    - name: Generate Docs
+      run: npm run docs
     - name: Install gh-pages and Configure
       run: |
         npm i -D gh-pages
