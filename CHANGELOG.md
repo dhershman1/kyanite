@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.6.2
+
+### Fixed
+
+- `reject` was in the wrong category
+
+### Chore
+
+- Updated dev dependencies
+
 ## v1.6.1
 
 ### Fixed

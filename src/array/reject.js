@@ -6,7 +6,7 @@ import filter from './filter'
  * @name reject
  * @function
  * @since v0.1.0
- * @category Function
+ * @category Array
  * @sig (a -> Boolean) -> Array [a] -> Array [a]
  * @description
  * Iterate through a list and reject any value that does not pass the provided function
