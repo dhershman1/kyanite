@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.6.3
+
+### Chore
+
+- Dev dependency updates
+
 ## v1.6.2
 
 ### Fixed
