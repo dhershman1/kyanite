@@ -18,12 +18,3 @@ test('mean -- Returns NaN for empty lists', t => {
   t.same(Number.isNaN(mean([])), true)
   t.end()
 })
-
-test('mean -- Errors when provided nothing', t => {
-  try {
-    mean()
-  } catch (err) {
-    t.is(err.message, 'Cannot read property \'length\' of undefined')
-    t.end()
-  }
-})
