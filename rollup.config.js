@@ -7,7 +7,7 @@ export default [
   {
     input: './src/index.js',
     plugins: [
-      babel({ babelHelpers: 'bundled' }),
+      babel({ babelHelpers: 'bundled', presets: [['@babel/preset-env', { targets: { ie: '11' } }]] }),
       terser(),
       filesize({
         showMinifiedSize: false
@@ -22,7 +22,7 @@ export default [
   }, {
     input: './src/index.js',
     plugins: [
-      babel({ babelHelpers: 'bundled' }),
+      babel({ babelHelpers: 'bundled', presets: [['@babel/preset-env', { targets: { ie: '11' } }]] }),
       cleanup(),
       filesize({
         showMinifiedSize: false
