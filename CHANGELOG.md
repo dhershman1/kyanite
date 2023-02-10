@@ -2,6 +2,12 @@
 
 ## v1.6.3
 
+### Changed
+
+- Removed LGTM badge
+- Fixed build badge
+- Added preset to babel compiler
+
 ### Chore
 
 - Dev dependency updates
