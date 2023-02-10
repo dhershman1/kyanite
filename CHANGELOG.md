@@ -5,6 +5,7 @@
 ### Chore
 
 - Dev dependency updates
+- Removed unused dependency
 - Removed `mean` type error test since this isn't really needed
 
 ## v1.6.2
