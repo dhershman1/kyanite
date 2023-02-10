@@ -18,13 +18,10 @@
     <img alt="Npm Version" src="https://img.shields.io/npm/v/kyanite.svg?style=flat-square">
   </a>
   <a href="https://github.com/dhershman1/kyanite/actions/workflows/kyanite.yml">
-    <img alt="Build Status" src="https://img.shields.io/github/workflow/status/dhershman1/kyanite/Kyanite%20CI?style=flat-square">
+    <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/dhershman1/kyanite/kyanite.yml?style=flat-square">
   </a>
   <a href="https://codecov.io/gh/dhershman1/kyanite">
     <img alt="Coverage" src="https://codecov.io/gh/dhershman1/kyanite/branch/master/graph/badge.svg">
-  </a>
-  <a href="https://lgtm.com/projects/g/dhershman1/kyanite/context:javascript">
-    <img alt="Coverage" src="https://img.shields.io/lgtm/grade/javascript/g/dhershman1/kyanite.svg?style=flat-square&logo=lgtm&logoWidth=18">
   </a>
 </p>
 <br />
