@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.6.3
+
+### Changed
+
+- Removed LGTM badge
+- Fixed build badge
+- Added preset to babel compiler
+
+### Chore
+
+- Dev dependency updates
+- Removed unused dependency
+- Removed `mean` type error test since this isn't really needed
+
 ## v1.6.2
 
 ### Fixed
