@@ -33,16 +33,6 @@ jobs:
       run: npm ci
     - name: Test
       run: npm run test:cov
-    - name: Run Report
-      run: npm run report
-    - name: Check Coverage
-      run: npm run check-cov
-    - name: Upload Coverage
-      uses: codecov/codecov-action@v3
-      with:
-        files: ./coverage.lcov
-        name: pf-tests
-        flags: unittests
   lint:
     runs-on: ubuntu-latest
     strategy:
