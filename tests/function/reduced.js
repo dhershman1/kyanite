@@ -1,6 +1,6 @@
 import test from 'tape'
-import reduce from '../../src/function/reduce'
-import reduced from '../../src/function/reduced'
+import reduce from '../../src/function/reduce.js'
+import reduced from '../../src/function/reduced.js'
 
 test('reduced -- Basic functionality (mimiced from reduce)', t => {
   const tmp = [1, 2, 3, 4, 5]

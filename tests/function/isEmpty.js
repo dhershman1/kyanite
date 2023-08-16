@@ -1,4 +1,4 @@
-import isEmpty from '../../src/function/isEmpty'
+import isEmpty from '../../src/function/isEmpty.js'
 import test from 'tape'
 
 test('isEmpty -- empty Handles String Values', t => {

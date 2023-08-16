@@ -1,4 +1,4 @@
-import not from '../../src/function/not'
+import not from '../../src/function/not.js'
 import test from 'tape'
 
 test('not -- Test not() functionality', t => {

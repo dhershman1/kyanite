@@ -1,4 +1,4 @@
-import lt from '../../src/function/lt'
+import lt from '../../src/function/lt.js'
 import test from 'tape'
 
 test('lt -- Determines if the numbers are lt', t => {

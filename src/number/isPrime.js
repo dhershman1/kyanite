@@ -1,4 +1,4 @@
-import rem from './rem'
+import rem from './rem.js'
 
 /**
  * @name isPrime

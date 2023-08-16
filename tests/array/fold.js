@@ -1,5 +1,5 @@
 import test from 'tape'
-import fold from '../../src/array/fold'
+import fold from '../../src/array/fold.js'
 
 test('fold -- Basic functionality', t => {
   const results = fold((a, acc) => a <= acc ? a : acc, [5, 6, 3, 9, 1])

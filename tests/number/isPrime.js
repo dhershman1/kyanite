@@ -1,4 +1,4 @@
-import isPrime from '../../src/number/isPrime'
+import isPrime from '../../src/number/isPrime.js'
 import test from 'tape'
 
 test('isPrime -- Basic functionality', t => {

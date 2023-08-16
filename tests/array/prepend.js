@@ -1,4 +1,4 @@
-import prepend from '../../src/array/prepend'
+import prepend from '../../src/array/prepend.js'
 import test from 'tape'
 
 test('prepend -- Returns array with added element at start', t => {

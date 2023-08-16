@@ -1,5 +1,5 @@
 import test from 'tape'
-import over from '../../src/object/over'
+import over from '../../src/object/over.js'
 
 test('over -- Basic functionality', t => {
   t.same(over('b', x => x + 1, { a: 1, b: 1, c: 3 }), { a: 1, b: 2, c: 3 })

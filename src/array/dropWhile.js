@@ -1,5 +1,5 @@
-import _curry2 from '../_internals/_curry2'
-import findIndex from './findIndex'
+import _curry2 from '../_internals/_curry2.js'
+import findIndex from './findIndex.js'
 
 /**
  * @name dropWhile

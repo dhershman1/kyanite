@@ -1,4 +1,4 @@
-import endsWith from '../../src/list/endsWith'
+import endsWith from '../../src/list/endsWith.js'
 import test from 'tape'
 
 test('endsWith -- Basic Usage on lists', t => {

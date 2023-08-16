@@ -1,5 +1,5 @@
-import _curry2 from '../_internals/_curry2'
-import isNil from '../function/isNil'
+import _curry2 from '../_internals/_curry2.js'
+import isNil from '../function/isNil.js'
 
 /**
  * @name path

@@ -19,10 +19,14 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "./index.d.ts"
+    "./index.d.ts",
+    "./index.d.cts"
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "docs",
+    ".nyc_output",
+    "scripts"
   ]
 }

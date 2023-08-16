@@ -1,4 +1,4 @@
-import max from '../../src/array/max'
+import max from '../../src/array/max.js'
 import test from 'tape'
 
 test('max -- Returns max for numbers', t => {

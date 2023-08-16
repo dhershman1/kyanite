@@ -1,8 +1,8 @@
-import concatMap from './concatMap'
-import groupBy from './groupBy'
-import identity from '../function/identity'
-import uniq from './uniq'
-import filter from './filter'
+import concatMap from './concatMap.js'
+import groupBy from './groupBy.js'
+import identity from '../function/identity.js'
+import uniq from './uniq.js'
+import filter from './filter.js'
 
 /**
  * @name difference

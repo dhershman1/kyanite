@@ -1,5 +1,5 @@
 import test from 'tape'
-import zip from '../../src/array/zip'
+import zip from '../../src/array/zip.js'
 
 test('zip -- Zipped even arrays', t => {
   const result = zip(['a', 'b', 'c'], [1, 2, 3])

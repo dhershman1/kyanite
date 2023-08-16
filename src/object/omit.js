@@ -1,8 +1,8 @@
-import _assocǃ from '../_internals/_assocǃ'
-import _curry2 from '../_internals/_curry2'
-import includes from '../list/includes'
-import not from '../function/not'
-import _reduce from '../_internals/_reduce'
+import _assocǃ from '../_internals/_assocǃ.js'
+import _curry2 from '../_internals/_curry2.js'
+import includes from '../list/includes.js'
+import not from '../function/not.js'
+import _reduce from '../_internals/_reduce.js'
 
 /**
  * @name omit

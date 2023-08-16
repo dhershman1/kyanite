@@ -1,4 +1,4 @@
-import reverse from '../../src/list/reverse'
+import reverse from '../../src/list/reverse.js'
 import test from 'tape'
 
 test('reverse -- Returns reversed array', t => {

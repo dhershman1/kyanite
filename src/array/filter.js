@@ -1,6 +1,6 @@
-import _appendǃ from '../_internals/_appendǃ'
-import _curry2 from '../_internals/_curry2'
-import _reduce from '../_internals/_reduce'
+import _appendǃ from '../_internals/_appendǃ.js'
+import _curry2 from '../_internals/_curry2.js'
+import _reduce from '../_internals/_reduce.js'
 
 /**
  * @name filter

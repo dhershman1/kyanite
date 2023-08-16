@@ -1,4 +1,4 @@
-import omit from '../../src/object/omit'
+import omit from '../../src/object/omit.js'
 import test from 'tape'
 
 test('omit -- Test omit()', t => {

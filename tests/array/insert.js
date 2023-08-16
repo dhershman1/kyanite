@@ -1,4 +1,4 @@
-import insert from '../../src/array/insert'
+import insert from '../../src/array/insert.js'
 import test from 'tape'
 
 test('insert -- Inserts the desired value into the array', t => {

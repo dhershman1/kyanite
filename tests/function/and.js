@@ -1,4 +1,4 @@
-import and from '../../src/function/and'
+import and from '../../src/function/and.js'
 import test from 'tape'
 
 test('and -- Returns true when both params are true', t => {

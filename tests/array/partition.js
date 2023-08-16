@@ -1,5 +1,5 @@
-import type from '../../src/function/type'
-import partition from '../../src/array/partition'
+import type from '../../src/function/type.js'
+import partition from '../../src/array/partition.js'
 import test from 'tape'
 
 const check = x => type(x) === 'String'

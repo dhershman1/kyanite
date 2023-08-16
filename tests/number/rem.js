@@ -1,4 +1,4 @@
-import rem from '../../src/number/rem'
+import rem from '../../src/number/rem.js'
 import test from 'tape'
 
 test('rem -- Handles obtaining remainders', t => {

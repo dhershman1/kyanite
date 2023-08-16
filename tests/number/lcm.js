@@ -1,4 +1,4 @@
-import lcm from '../../src/number/lcm'
+import lcm from '../../src/number/lcm.js'
 import test from 'tape'
 
 test('lcm -- Gets the lcm of two numbers', t => {

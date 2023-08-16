@@ -1,8 +1,8 @@
 import test from 'tape'
-import somePass from '../../src/array/somePass'
-import compose from '../../src/function/compose'
-import eq from '../../src/function/eq'
-import prop from '../../src/object/prop'
+import somePass from '../../src/array/somePass.js'
+import compose from '../../src/function/compose.js'
+import eq from '../../src/function/eq.js'
+import prop from '../../src/object/prop.js'
 
 const propEq = (p, v) => compose(eq(v), prop(p))
 const isClub = propEq('suit', '♣')

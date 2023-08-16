@@ -1,4 +1,4 @@
-import sift from '../../src/object/sift'
+import sift from '../../src/object/sift.js'
 import test from 'tape'
 
 test('sift -- Properly filters out desired properties', t => {

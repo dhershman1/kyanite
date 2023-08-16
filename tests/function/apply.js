@@ -1,4 +1,4 @@
-import apply from '../../src/function/apply'
+import apply from '../../src/function/apply.js'
 import test from 'tape'
 
 test('apply -- Basic usage', t => {

@@ -1,4 +1,4 @@
-import filter from '../../src/array/filter'
+import filter from '../../src/array/filter.js'
 import test from 'tape'
 
 test('filter -- Basic functionality', t => {

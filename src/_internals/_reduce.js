@@ -1,4 +1,4 @@
-import _xwrap from './_xwrap'
+import _xwrap from './_xwrap.js'
 
 const _reduce = (fn, acc, list) => {
   const xf = _xwrap(fn)

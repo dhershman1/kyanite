@@ -1,4 +1,4 @@
-import dropWhile from '../../src/array/dropWhile'
+import dropWhile from '../../src/array/dropWhile.js'
 import test from 'tape'
 
 test('dropWhile -- Basic usage tests', t => {

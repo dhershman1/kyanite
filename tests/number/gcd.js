@@ -1,4 +1,4 @@
-import gcd from '../../src/number/gcd'
+import gcd from '../../src/number/gcd.js'
 import test from 'tape'
 
 test('gcd -- Returns the gcd of two numbers', t => {

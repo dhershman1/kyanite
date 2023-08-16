@@ -1,5 +1,5 @@
-import reduce from '../../src/function/reduce'
-import reduced from '../../src/function/reduced'
+import reduce from '../../src/function/reduce.js'
+import reduced from '../../src/function/reduced.js'
 import test from 'tape'
 
 test('reduce -- Basic Functionality', t => {

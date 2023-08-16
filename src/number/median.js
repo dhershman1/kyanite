@@ -1,8 +1,8 @@
-import sort from '../array/sort'
-import ascend from '../function/ascend'
-import mean from './mean'
-import slice from '../list/slice'
-import pipe from '../function/pipe'
+import sort from '../array/sort.js'
+import ascend from '../function/ascend.js'
+import mean from './mean.js'
+import slice from '../list/slice.js'
+import pipe from '../function/pipe.js'
 
 /**
  * @name median

@@ -1,5 +1,5 @@
-import _curry3 from '../_internals/_curry3'
-import map from '../array/map'
+import _curry3 from '../_internals/_curry3.js'
+import map from '../array/map.js'
 
 /**
  * @name converge

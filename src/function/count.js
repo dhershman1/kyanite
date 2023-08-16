@@ -1,5 +1,5 @@
-import height from '../object/height'
-import type from './type'
+import height from '../object/height.js'
+import type from './type.js'
 
 /**
  * @name count

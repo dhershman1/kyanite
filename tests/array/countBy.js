@@ -1,5 +1,5 @@
 import test from 'tape'
-import countBy from '../../src/array/countBy'
+import countBy from '../../src/array/countBy.js'
 
 const numbers = [1.0, 1.1, 1.2, 2.0, 3.0, 2.2]
 const letters = ['a', 'b', 'A', 'a', 'B', 'c']

@@ -1,5 +1,5 @@
-import _reduce from '../_internals/_reduce'
-import _appendǃ from '../_internals/_appendǃ'
+import _reduce from '../_internals/_reduce.js'
+import _appendǃ from '../_internals/_appendǃ.js'
 
 /**
  * @name values

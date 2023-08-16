@@ -1,5 +1,5 @@
-import _curry2 from '../_internals/_curry2'
-import _appendǃ from '../_internals/_appendǃ'
+import _curry2 from '../_internals/_curry2.js'
+import _appendǃ from '../_internals/_appendǃ.js'
 
 /**
  * @name multiples

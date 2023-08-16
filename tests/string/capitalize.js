@@ -1,4 +1,4 @@
-import capitalize from '../../src/string/capitalize'
+import capitalize from '../../src/string/capitalize.js'
 import test from 'tape'
 
 test('capitalize -- Capitalizes first letter of string', t => {

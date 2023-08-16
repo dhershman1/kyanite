@@ -1,5 +1,5 @@
 import test from 'tape'
-import omitBy from '../../src/object/omitBy'
+import omitBy from '../../src/object/omitBy.js'
 
 test('Basic Omit', t => {
   const original = {

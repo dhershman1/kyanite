@@ -1,5 +1,5 @@
 import test from 'tape'
-import uniq from '../../src/array/uniq'
+import uniq from '../../src/array/uniq.js'
 
 test('uniq -- Removes duplicates', t => {
   t.deepEqual(uniq([1, 2, 2, 3, 3, 4, 5]), [1, 2, 3, 4, 5])

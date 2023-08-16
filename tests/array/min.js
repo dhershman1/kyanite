@@ -1,4 +1,4 @@
-import min from '../../src/array/min'
+import min from '../../src/array/min.js'
 import test from 'tape'
 
 test('min -- Returns min for numbers', t => {

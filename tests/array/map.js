@@ -1,4 +1,4 @@
-import map from '../../src/array/map'
+import map from '../../src/array/map.js'
 import test from 'tape'
 
 const dbl = n => n * 2

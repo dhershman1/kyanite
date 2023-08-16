@@ -1,5 +1,5 @@
 import test from 'tape'
-import toLower from '../../src/string/toLower'
+import toLower from '../../src/string/toLower.js'
 
 test('toLower -- Transforms provided string', t => {
   t.is(toLower('HI'), 'hi')

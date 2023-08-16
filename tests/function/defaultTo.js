@@ -1,5 +1,5 @@
 import test from 'tape'
-import defaultTo from '../../src/function/defaultTo'
+import defaultTo from '../../src/function/defaultTo.js'
 
 test('defaultTo -- Basic functionality', t => {
   t.same(defaultTo('foo', null), 'foo')

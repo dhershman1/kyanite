@@ -1,4 +1,4 @@
-import ensureArray from '../../src/array/ensureArray'
+import ensureArray from '../../src/array/ensureArray.js'
 import test from 'tape'
 
 test('ensureArray -- Basic functionality', t => {

@@ -1,4 +1,4 @@
-import _reduce from '../_internals/_reduce'
+import _reduce from '../_internals/_reduce.js'
 
 /**
  * @name max

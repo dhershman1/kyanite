@@ -1,5 +1,5 @@
-import both from '../../src/function/both'
-import prop from '../../src/object/prop'
+import both from '../../src/function/both.js'
+import prop from '../../src/object/prop.js'
 import test from 'tape'
 
 test('both -- Handles normal functionality', t => {

@@ -1,5 +1,5 @@
-import _reduce from '../_internals/_reduce'
-import add from './add'
+import _reduce from '../_internals/_reduce.js'
+import add from './add.js'
 
 /**
  * @name sum

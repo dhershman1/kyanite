@@ -1,4 +1,4 @@
-import divide from '../../src/number/divide'
+import divide from '../../src/number/divide.js'
 import test from 'tape'
 
 test('divide -- Divides the numbers', t => {

@@ -1,5 +1,5 @@
 import test from 'tape'
-import multiples from '../../src/number/multiples'
+import multiples from '../../src/number/multiples.js'
 
 test('multiples -- Basic math', t => {
   t.same(multiples(100, 6), [0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96])

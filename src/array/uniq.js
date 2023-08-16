@@ -1,5 +1,5 @@
-import identity from '../function/identity'
-import uniqBy from './uniqBy'
+import identity from '../function/identity.js'
+import uniqBy from './uniqBy.js'
 
 /**
  * @name uniq

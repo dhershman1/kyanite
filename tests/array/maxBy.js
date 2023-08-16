@@ -1,4 +1,4 @@
-import maxBy from '../../src/array/maxBy'
+import maxBy from '../../src/array/maxBy.js'
 import test from 'tape'
 
 test('maxBy -- Grabs the max number', t => {

@@ -1,4 +1,4 @@
-import range from '../../src/number/range'
+import range from '../../src/number/range.js'
 import test from 'tape'
 
 test('range -- Create basic range array', t => {

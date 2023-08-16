@@ -1,4 +1,4 @@
-import reject from '../../src/array/reject'
+import reject from '../../src/array/reject.js'
 import test from 'tape'
 
 const even = x => x % 2 === 0

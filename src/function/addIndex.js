@@ -1,5 +1,5 @@
-import concatMap from '../array/concatMap'
-import identity from './identity'
+import concatMap from '../array/concatMap.js'
+import identity from './identity.js'
 
 /**
  * @name addIndex
