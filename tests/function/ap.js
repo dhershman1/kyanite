@@ -1,4 +1,4 @@
-import ap from '../../src/function/ap'
+import ap from '../../src/function/ap.js'
 import test from 'tape'
 
 test('ap -- Applies the provided list over our array of data', t => {

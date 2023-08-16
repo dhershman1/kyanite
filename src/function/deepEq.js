@@ -1,7 +1,7 @@
-import _curry2 from '../_internals/_curry2'
-import values from '../object/values'
-import eq from './eq'
-import type from './type'
+import _curry2 from '../_internals/_curry2.js'
+import values from '../object/values.js'
+import eq from './eq.js'
+import type from './type.js'
 
 const _functionName = f => {
   const match = String(f).match(/^function (\w*)/)

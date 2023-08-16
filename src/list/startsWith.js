@@ -1,7 +1,7 @@
-import compose from '../function/compose'
-import _curry2 from '../_internals/_curry2'
-import deepEq from '../function/deepEq'
-import slice from './slice'
+import compose from '../function/compose.js'
+import _curry2 from '../_internals/_curry2.js'
+import deepEq from '../function/deepEq.js'
+import slice from './slice.js'
 
 /**
  * @name startsWith

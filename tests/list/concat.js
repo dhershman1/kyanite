@@ -1,4 +1,4 @@
-import concat from '../../src/list/concat'
+import concat from '../../src/list/concat.js'
 import test from 'tape'
 
 test('concat -- Concated items together', t => {

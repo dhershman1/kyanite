@@ -1,4 +1,4 @@
-import _reduced from '../_internals/_reduced'
+import _reduced from '../_internals/_reduced.js'
 
 /**
  * @name reduced

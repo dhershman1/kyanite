@@ -1,5 +1,5 @@
 import test from 'tape'
-import whole from '../../src/object/whole'
+import whole from '../../src/object/whole.js'
 
 const result = whole({
   a: x => x === 'foo',

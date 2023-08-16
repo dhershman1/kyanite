@@ -1,4 +1,4 @@
-import complement from '../../src/function/complement'
+import complement from '../../src/function/complement.js'
 import test from 'tape'
 
 test('complement -- Basic functionality', t => {

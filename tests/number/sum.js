@@ -1,5 +1,5 @@
 import test from 'tape'
-import sum from '../../src/number/sum'
+import sum from '../../src/number/sum.js'
 
 test('sum -- Adds array of numbers', t => {
   t.same(sum([1, 2, 3]), 6)

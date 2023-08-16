@@ -1,5 +1,5 @@
-import isNil from './isNil'
-import count from './count'
+import isNil from './isNil.js'
+import count from './count.js'
 
 /**
  * @name isEmpty

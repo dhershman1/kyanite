@@ -1,5 +1,5 @@
 import test from 'tape'
-import notEq from '../../src/function/notEq'
+import notEq from '../../src/function/notEq.js'
 
 test('notEq -- Basics', t => {
   t.same(notEq(1, 2), true)

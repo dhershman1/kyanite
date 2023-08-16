@@ -1,4 +1,4 @@
-import encase from '../../src/function/encase'
+import encase from '../../src/function/encase.js'
 import test from 'tape'
 
 const getter = x => x.a.b.c

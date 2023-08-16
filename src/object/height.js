@@ -1,6 +1,6 @@
-import compose from '../function/compose'
-import length from '../list/length'
-import values from './values'
+import compose from '../function/compose.js'
+import length from '../list/length.js'
+import values from './values.js'
 
 /**
  * @name height

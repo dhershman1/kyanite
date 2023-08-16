@@ -1,4 +1,4 @@
-import isNil from '../../src/function/isNil'
+import isNil from '../../src/function/isNil.js'
 import test from 'tape'
 
 test('isNil -- Basic functionality', t => {

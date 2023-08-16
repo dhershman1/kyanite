@@ -1,6 +1,6 @@
-import _curry2 from '../_internals/_curry2'
-import map from './map'
-import prop from '../object/prop'
+import _curry2 from '../_internals/_curry2.js'
+import map from './map.js'
+import prop from '../object/prop.js'
 
 /**
  * @name pluck

@@ -1,4 +1,4 @@
-import difference from '../../src/array/difference'
+import difference from '../../src/array/difference.js'
 import test from 'tape'
 
 test('difference -- Returns the difference in arrays', t => {

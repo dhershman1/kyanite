@@ -1,4 +1,4 @@
-import or from '../../src/function/or'
+import or from '../../src/function/or.js'
 import test from 'tape'
 
 test('or -- Returns true when both params are true', t => {

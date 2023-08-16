@@ -1,4 +1,4 @@
-import ascend from '../../src/function/ascend'
+import ascend from '../../src/function/ascend.js'
 import test from 'tape'
 
 test('ascend -- Sorts in ascending order', t => {

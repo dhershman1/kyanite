@@ -1,5 +1,5 @@
-import filter from '../../src/array/filter'
-import identity from '../../src/function/identity'
+import filter from '../../src/array/filter.js'
+import identity from '../../src/function/identity.js'
 import test from 'tape'
 
 test('identity -- Returns value given to it', t => {

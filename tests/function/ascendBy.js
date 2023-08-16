@@ -1,4 +1,4 @@
-import ascendBy from '../../src/function/ascendBy'
+import ascendBy from '../../src/function/ascendBy.js'
 import test from 'tape'
 
 test('ascendBy -- Properly decends using the desired function', t => {

@@ -1,4 +1,4 @@
-import eq from '../../src/function/eq'
+import eq from '../../src/function/eq.js'
 import test from 'tape'
 
 test('eq -- Test base functionality', t => {

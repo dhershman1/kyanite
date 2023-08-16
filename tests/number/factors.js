@@ -1,4 +1,4 @@
-import factors from '../../src/number/factors'
+import factors from '../../src/number/factors.js'
 import test from 'tape'
 
 test('factors -- Find the factors of the provided numbers', t => {

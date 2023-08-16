@@ -1,4 +1,4 @@
-import isEven from '../../src/number/isEven'
+import isEven from '../../src/number/isEven.js'
 import test from 'tape'
 
 test('isEven -- Handles checking for even numbers', t => {

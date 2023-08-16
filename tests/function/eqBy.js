@@ -1,4 +1,4 @@
-import eqBy from '../../src/function/eqBy'
+import eqBy from '../../src/function/eqBy.js'
 import test from 'tape'
 
 test('eqBy -- Compares basic values', t => {

@@ -1,7 +1,7 @@
-import ascend from '../function/ascend'
-import _curry2 from '../_internals/_curry2'
-import on from '../function/on'
-import sort from './sort'
+import ascend from '../function/ascend.js'
+import _curry2 from '../_internals/_curry2.js'
+import on from '../function/on.js'
+import sort from './sort.js'
 
 /**
  * @name sortBy

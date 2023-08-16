@@ -1,4 +1,4 @@
-import any from '../../src/object/any'
+import any from '../../src/object/any.js'
 import test from 'tape'
 
 const result = any({

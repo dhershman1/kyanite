@@ -1,4 +1,4 @@
-import _curry2 from './_curry2'
+import _curry2 from './_curry2.js'
 
 /**
  * This is an optimized internal curry function for 3 param functions

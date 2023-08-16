@@ -1,4 +1,4 @@
-import _curry3 from './_curry3'
+import _curry3 from './_curry3.js'
 
 /**
  * A contained dangerous setter direct mutation

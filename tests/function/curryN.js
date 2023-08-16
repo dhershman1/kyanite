@@ -1,4 +1,4 @@
-import curryN from '../../src/function/curryN'
+import curryN from '../../src/function/curryN.js'
 import test from 'tape'
 
 test('curryN -- Curries as expected', t => {

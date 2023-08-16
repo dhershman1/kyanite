@@ -1,4 +1,4 @@
-import flip from '../../src/function/flip'
+import flip from '../../src/function/flip.js'
 import test from 'tape'
 
 test('flip -- Basic functionlity', t => {

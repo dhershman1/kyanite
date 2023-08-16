@@ -1,4 +1,4 @@
-import sort from '../../src/array/sort'
+import sort from '../../src/array/sort.js'
 import test from 'tape'
 
 test('sort -- Sorts basic array', t => {

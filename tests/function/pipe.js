@@ -1,6 +1,6 @@
-import add from '../../src/number/add'
-import multiply from '../../src/number/multiply'
-import pipe from '../../src/function/pipe'
+import add from '../../src/number/add.js'
+import multiply from '../../src/number/multiply.js'
+import pipe from '../../src/function/pipe.js'
 import test from 'tape'
 
 test('pipe -- Returns value after running pipe', t => {

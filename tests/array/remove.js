@@ -1,4 +1,4 @@
-import remove from '../../src/array/remove'
+import remove from '../../src/array/remove.js'
 import test from 'tape'
 
 test('remove -- Removes from appointed index', t => {

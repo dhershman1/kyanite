@@ -1,4 +1,4 @@
-import applyN from '../../src/function/applyN'
+import applyN from '../../src/function/applyN.js'
 import test from 'tape'
 
 test('applyN -- Basic usage', t => {

@@ -1,4 +1,4 @@
-import lte from '../../src/function/lte'
+import lte from '../../src/function/lte.js'
 import test from 'tape'
 
 test('lte -- Value is greater than', t => {

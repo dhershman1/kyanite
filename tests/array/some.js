@@ -1,4 +1,4 @@
-import some from '../../src/array/some'
+import some from '../../src/array/some.js'
 import test from 'tape'
 
 test('some -- Basic functionality', t => {

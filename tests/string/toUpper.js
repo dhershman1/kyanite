@@ -1,5 +1,5 @@
 import test from 'tape'
-import toUpper from '../../src/string/toUpper'
+import toUpper from '../../src/string/toUpper.js'
 
 test('toUpper -- Transforms provided string', t => {
   t.is(toUpper('hi'), 'HI')

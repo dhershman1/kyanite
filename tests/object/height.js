@@ -1,4 +1,4 @@
-import height from '../../src/object/height'
+import height from '../../src/object/height.js'
 import test from 'tape'
 
 test('height -- Basic functionality', t => {

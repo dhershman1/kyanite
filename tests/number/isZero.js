@@ -1,5 +1,5 @@
 import test from 'tape'
-import isZero from '../../src/number/isZero'
+import isZero from '../../src/number/isZero.js'
 
 test('isZero -- Basic functionality', t => {
   t.same(isZero(1), false)

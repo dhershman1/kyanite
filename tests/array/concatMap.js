@@ -1,4 +1,4 @@
-import concatMap from '../../src/array/concatMap'
+import concatMap from '../../src/array/concatMap.js'
 import test from 'tape'
 
 test('concatMap -- Apples function to values and merges arrays', t => {

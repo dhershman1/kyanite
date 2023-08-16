@@ -1,5 +1,5 @@
-import and from '../function/and'
-import eq from '../function/eq'
+import and from '../function/and.js'
+import eq from '../function/eq.js'
 
 /**
  * @name isEven

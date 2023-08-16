@@ -1,4 +1,4 @@
-import fuzzySearch from '../../src/string/fuzzySearch'
+import fuzzySearch from '../../src/string/fuzzySearch.js'
 import test from 'tape'
 
 test('fuzzySearch -- Basic Functionality', t => {

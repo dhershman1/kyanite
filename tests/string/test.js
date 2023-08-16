@@ -1,5 +1,5 @@
 import test from 'tape'
-import fn from '../../src/string/test'
+import fn from '../../src/string/test.js'
 
 test('test -- Basic functionality works', t => {
   t.same(fn(/^a/, 'abc'), true)

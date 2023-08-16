@@ -1,4 +1,4 @@
-import length from '../../src/list/length'
+import length from '../../src/list/length.js'
 import test from 'tape'
 
 test('length -- Returns the length', t => {

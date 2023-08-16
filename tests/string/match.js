@@ -1,5 +1,5 @@
 import test from 'tape'
-import match from '../../src/string/match'
+import match from '../../src/string/match.js'
 
 test('match -- Matches strings', t => {
   t.same(match(/([a-z]a)/g, 'bananas'), ['ba', 'na', 'na'])

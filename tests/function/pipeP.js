@@ -1,5 +1,5 @@
 import test from 'tape'
-import pipeP from '../../src/function/pipeP'
+import pipeP from '../../src/function/pipeP.js'
 
 const foo = a => new Promise(resolve => resolve(a + '123'))
 const bar = a => new Promise(resolve => resolve(a + '555'))

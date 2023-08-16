@@ -1,4 +1,3 @@
-
 /**
  * @name identity
  * @function

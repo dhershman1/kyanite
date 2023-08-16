@@ -1,5 +1,5 @@
 import test from 'tape'
-import pathSatisfies from '../../src/object/pathSatisfies'
+import pathSatisfies from '../../src/object/pathSatisfies.js'
 
 test('pathSatisfies -- Handles objects', t => {
   t.same(pathSatisfies(y => y > 0, ['x', 'y'], { x: { y: 2 } }), true)

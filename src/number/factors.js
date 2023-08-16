@@ -1,4 +1,4 @@
-import _appendǃ from '../_internals/_appendǃ'
+import _appendǃ from '../_internals/_appendǃ.js'
 
 /**
  * @name factors

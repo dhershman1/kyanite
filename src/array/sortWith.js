@@ -1,5 +1,5 @@
-import _curry2 from '../_internals/_curry2'
-import _reduce from '../_internals/_reduce'
+import _curry2 from '../_internals/_curry2.js'
+import _reduce from '../_internals/_reduce.js'
 
 /**
  * @name sortWith

@@ -1,5 +1,5 @@
-import _curry2 from '../_internals/_curry2'
-import not from './not'
+import _curry2 from '../_internals/_curry2.js'
+import not from './not.js'
 
 /**
  * @name complement

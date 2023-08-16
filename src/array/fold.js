@@ -1,5 +1,5 @@
-import _curry2 from '../_internals/_curry2'
-import flip from '../function/flip'
+import _curry2 from '../_internals/_curry2.js'
+import flip from '../function/flip.js'
 
 /**
  * @name fold

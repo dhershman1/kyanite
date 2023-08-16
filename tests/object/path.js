@@ -1,4 +1,4 @@
-import path from '../../src/object/path'
+import path from '../../src/object/path.js'
 import test from 'tape'
 
 test('path -- Returns back value when found', t => {

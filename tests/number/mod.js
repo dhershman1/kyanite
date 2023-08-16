@@ -1,5 +1,5 @@
 import test from 'tape'
-import mod from '../../src/number/mod'
+import mod from '../../src/number/mod.js'
 
 test('mod -- Basic functionality', t => {
   t.same(mod(-5, 4), 3)

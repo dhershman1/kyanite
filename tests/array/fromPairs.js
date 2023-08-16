@@ -1,5 +1,5 @@
 import test from 'tape'
-import fromPairs from '../../src/array/fromPairs'
+import fromPairs from '../../src/array/fromPairs.js'
 
 test('Basic Pairing', t => {
   t.same(fromPairs([['a', 1], ['b', 2], ['c', 3]]), { a: 1, b: 2, c: 3 })

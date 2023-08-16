@@ -1,5 +1,5 @@
 import test from 'tape'
-import withDefaults from '../../src/object/withDefaults'
+import withDefaults from '../../src/object/withDefaults.js'
 
 test('withDefaults -- Fills in nil values with defaults', t => {
   t.same(withDefaults({ a: 1, b: 2, c: 3 }, { b: 2, c: 3 }), { a: 1, b: 2, c: 3 })

@@ -1,4 +1,4 @@
-import findIndex from '../../src/array/findIndex'
+import findIndex from '../../src/array/findIndex.js'
 import test from 'tape'
 
 test('findIndex -- Returns the index number of the given value', t => {

@@ -1,5 +1,5 @@
-import _reduce from '../_internals/_reduce'
-import _assocǃ from '../_internals/_assocǃ'
+import _reduce from '../_internals/_reduce.js'
+import _assocǃ from '../_internals/_assocǃ.js'
 
 /**
  * @name fromPairs

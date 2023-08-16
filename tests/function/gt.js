@@ -1,4 +1,4 @@
-import gt from '../../src/function/gt'
+import gt from '../../src/function/gt.js'
 import test from 'tape'
 
 test('gt -- Determines if the numbers are gt', t => {

@@ -20,9 +20,6 @@
   <a href="https://github.com/dhershman1/kyanite/actions/workflows/kyanite.yml">
     <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/dhershman1/kyanite/kyanite.yml?style=flat-square">
   </a>
-  <a href="https://codecov.io/gh/dhershman1/kyanite">
-    <img alt="Coverage" src="https://codecov.io/gh/dhershman1/kyanite/branch/master/graph/badge.svg">
-  </a>
 </p>
 <br />
 <p align=center>
@@ -58,16 +55,16 @@ The goal for Kyanite is to be stripped down, light weight, and intuitive. The id
 
 ## How To
 
+> **Note:** As of `v2.0.0` the module should be imported as just `K` instead of `kyanite`
+> The unminified version of the library is no longer available as of 2.0.0
+
 With a CDN
 
 ```html
 <!-- It is recommended to replace the @latest with a strict version number for production -->
-<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.min.js"></script>
-<!-- To use the debug friendly kyanite simply remove .min from the filename -->
-<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.js"></script>
-<script>
-  const K = kyanite
+<script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.iife.min.js"></script>
 
+<script>
   K.isEmpty({})
 </script>
 ```
@@ -79,8 +76,6 @@ Standard module system
 ```js
 // This will use the module path in the package.json (src/index.js)
 import * as K from 'kyanite'
-// However if you want to grab the dev version
-import * as K from 'kyanite/dist/kyanite.js'
 ```
 
 Common JS
@@ -88,22 +83,6 @@ Common JS
 ```js
 // For the prod minified version
 const K = require('kyanite')
-// For the dev/debug friendly version
-const K = require('kyanite/dist/kyanite.js')
-```
-
-Local copy script tag
-
-```html
-<!-- To use the prod minified version -->
-<script src="/path/to/dist/kyanite.min.js"></script>
-<!-- To use the dev/debug friendly version -->
-<script src="/path/to/dist/kyanite.js"></script>
-<script>
-  const K = kyanite
-
-  K.isEmpty({})
-</script>
 ```
 
 ## Testing

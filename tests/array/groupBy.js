@@ -1,4 +1,4 @@
-import groupBy from '../../src/array/groupBy'
+import groupBy from '../../src/array/groupBy.js'
 import test from 'tape'
 
 test('groupBy -- Grouped similar number values', t => {

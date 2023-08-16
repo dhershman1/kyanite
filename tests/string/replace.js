@@ -1,5 +1,5 @@
 import test from 'tape'
-import replace from '../../src/string/replace'
+import replace from '../../src/string/replace.js'
 
 test('replace -- Replaces a string value', t => {
   t.is(replace('foo', 'bar', 'foofoo'), 'barfoo')

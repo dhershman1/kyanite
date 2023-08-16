@@ -1,5 +1,26 @@
 # Changelog
 
+## v2.0.0
+
+### Breaking Changes
+
+- Converted kyanite to a full blown javascript module
+  - This may cause support issues for IE 11
+- Converted from UMD to CJS support
+  - This may cause support issues for IE 11
+- The minified scripts now use `K` instead of `kyanite` as the TS files specificy
+- Removed unminified version of the library in favor of breaking down supporting of multiple formats
+- Removed "local copy" future support for direct html script tags
+
+### Chore
+
+- Export script completely re written
+- Updated all dev dependencies
+
+### Fixed
+
+- Rollup build stuff to be easier to use on my end and offer more stable support when I run builds
+
 ## v1.6.3
 
 ### Changed

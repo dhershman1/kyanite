@@ -1,5 +1,5 @@
-import _curry3 from '../_internals/_curry3'
-import descend from './descend'
+import _curry3 from '../_internals/_curry3.js'
+import descend from './descend.js'
 
 /**
  * @name descendBy

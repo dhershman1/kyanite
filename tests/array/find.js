@@ -1,4 +1,4 @@
-import find from '../../src/array/find'
+import find from '../../src/array/find.js'
 import test from 'tape'
 
 test('find -- Test base functionality', t => {

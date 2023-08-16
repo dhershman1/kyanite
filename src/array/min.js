@@ -1,4 +1,4 @@
-import fold from './fold'
+import fold from './fold.js'
 
 /**
  * @name min

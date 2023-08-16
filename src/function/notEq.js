@@ -1,6 +1,6 @@
-import _curry2 from '../_internals/_curry2'
-import complement from './complement'
-import eq from './eq'
+import _curry2 from '../_internals/_curry2.js'
+import complement from './complement.js'
+import eq from './eq.js'
 
 /**
  * @name notEq

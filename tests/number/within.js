@@ -1,5 +1,5 @@
 import test from 'tape'
-import within from '../../src/number/within'
+import within from '../../src/number/within.js'
 
 test('within -- Handles within main numbers', t => {
   t.true(within(1, 10, 9))

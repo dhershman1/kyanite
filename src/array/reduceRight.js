@@ -1,5 +1,5 @@
-import _curry3 from '../_internals/_curry3'
-import _xwrap from '../_internals/_xwrap'
+import _curry3 from '../_internals/_curry3.js'
+import _xwrap from '../_internals/_xwrap.js'
 
 /**
  * @name reduceRight

@@ -1,4 +1,4 @@
-import props from '../../src/object/props'
+import props from '../../src/object/props.js'
 import test from 'tape'
 
 test('props -- Grabs the requested values from the object', t => {

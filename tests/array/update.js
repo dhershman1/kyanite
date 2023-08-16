@@ -1,4 +1,4 @@
-import update from '../../src/array/update'
+import update from '../../src/array/update.js'
 import test from 'tape'
 
 test('update -- updates value at index', t => {

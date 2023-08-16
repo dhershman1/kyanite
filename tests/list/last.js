@@ -1,4 +1,4 @@
-import last from '../../src/list/last'
+import last from '../../src/list/last.js'
 import test from 'tape'
 
 test('last -- Array functionality', t => {

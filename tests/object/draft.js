@@ -1,4 +1,4 @@
-import draft from '../../src/object/draft'
+import draft from '../../src/object/draft.js'
 import test from 'tape'
 
 test('draft -- Applies the function to all object values', t => {

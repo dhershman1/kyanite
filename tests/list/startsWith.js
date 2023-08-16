@@ -1,4 +1,4 @@
-import startsWith from '../../src/list/startsWith'
+import startsWith from '../../src/list/startsWith.js'
 import test from 'tape'
 
 test('startsWith -- Basic Usage on lists', t => {

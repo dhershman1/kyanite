@@ -1,5 +1,5 @@
 import test from 'tape'
-import uniqBy from '../../src/array/uniqBy'
+import uniqBy from '../../src/array/uniqBy.js'
 
 test('uniqBy -- Creates a unique array', t => {
   const results = uniqBy(x => x.length, ['and', 'here', 'are', 'some', 'words'])
