@@ -20,9 +20,6 @@
   <a href="https://github.com/dhershman1/kyanite/actions/workflows/kyanite.yml">
     <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/dhershman1/kyanite/kyanite.yml?style=flat-square">
   </a>
-  <a href="https://codecov.io/gh/dhershman1/kyanite">
-    <img alt="Coverage" src="https://codecov.io/gh/dhershman1/kyanite/branch/master/graph/badge.svg">
-  </a>
 </p>
 <br />
 <p align=center>
