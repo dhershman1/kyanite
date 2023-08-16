@@ -15,7 +15,7 @@
   "exports": {
     ".": {
       "require": {
-        "types": "./types/index.d.ts",
+        "types": "./types/index.d.cts",
         "default": "./dist/kyanite.min.cjs"
       },
       "import": {
