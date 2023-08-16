@@ -1,4 +1,4 @@
-import clamp from '../../src/number/clamp'
+import clamp from '../../src/number/clamp.js'
 import test from 'tape'
 
 test('clamp -- Basic functionality', t => {

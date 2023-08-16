@@ -1,5 +1,5 @@
 import test from 'tape'
-import when from '../../src/function/when'
+import when from '../../src/function/when.js'
 
 test('when -- Handles simple types', t => {
   const testFn = when(x => x > 3, x => x * 2)

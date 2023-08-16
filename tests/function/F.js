@@ -1,5 +1,5 @@
 import test from 'tape'
-import F from '../../src/function/F'
+import F from '../../src/function/F.js'
 
 test('F Basic Tests', t => {
   t.same(F(), false, 'Returns false')

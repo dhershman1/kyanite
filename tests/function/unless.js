@@ -1,5 +1,5 @@
 import test from 'tape'
-import unless from '../../src/function/unless'
+import unless from '../../src/function/unless.js'
 
 test('unless -- Basic usage', t => {
   t.same(unless(x => x > 2, x => x * 2, 5), 5)

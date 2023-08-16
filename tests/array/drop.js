@@ -1,4 +1,4 @@
-import drop from '../../src/array/drop'
+import drop from '../../src/array/drop.js'
 import test from 'tape'
 
 test('drop -- Handles dropping values', t => {

@@ -1,4 +1,4 @@
-import compose from '../../src/function/compose'
+import compose from '../../src/function/compose.js'
 import test from 'tape'
 
 test('compose -- Handles basic data', t => {

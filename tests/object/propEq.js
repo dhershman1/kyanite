@@ -1,5 +1,5 @@
 import test from 'tape'
-import propEq from '../../src/object/propEq'
+import propEq from '../../src/object/propEq.js'
 
 const abby = { name: 'Abby', age: 7, hair: 'blond' }
 const fred = { name: 'Fred', age: 12, hair: 'brown' }

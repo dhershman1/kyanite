@@ -1,4 +1,4 @@
-import slice from '../../src/list/slice'
+import slice from '../../src/list/slice.js'
 import test from 'tape'
 
 test('slice -- Handles basic lists', t => {

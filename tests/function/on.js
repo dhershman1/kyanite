@@ -1,4 +1,4 @@
-import on from '../../src/function/on'
+import on from '../../src/function/on.js'
 import test from 'tape'
 
 test('on -- Returns value based on return of the first function', t => {

@@ -1,5 +1,5 @@
 import test from 'tape'
-import union from '../../src/array/union'
+import union from '../../src/array/union.js'
 
 test('union -- Combines two arrays together without dupes', t => {
   const result = union([1, 2, 3, 4, 5], [4, 5, 6, 7])

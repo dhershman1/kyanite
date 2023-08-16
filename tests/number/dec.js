@@ -1,5 +1,5 @@
 import test from 'tape'
-import dec from '../../src/number/dec'
+import dec from '../../src/number/dec.js'
 
 test('dec -- Decrements a number', t => {
   t.same(dec(1), 0)

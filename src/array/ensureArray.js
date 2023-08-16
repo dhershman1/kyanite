@@ -1,4 +1,4 @@
-import isNil from '../function/isNil'
+import isNil from '../function/isNil.js'
 
 /**
  * @name ensureArray

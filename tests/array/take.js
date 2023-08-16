@@ -1,4 +1,4 @@
-import take from '../../src/array/take'
+import take from '../../src/array/take.js'
 import test from 'tape'
 
 test('take -- Handles taking values from an array', t => {

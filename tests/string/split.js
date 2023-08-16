@@ -1,4 +1,4 @@
-import split from '../../src/string/split'
+import split from '../../src/string/split.js'
 import test from 'tape'
 
 test('split -- Basic capabilities', t => {

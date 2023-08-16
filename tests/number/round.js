@@ -1,4 +1,4 @@
-import round from '../../src/number/round'
+import round from '../../src/number/round.js'
 import test from 'tape'
 
 test('round -- Returns value with no round up or down', t => {

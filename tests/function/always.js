@@ -1,10 +1,10 @@
-import always from '../../src/function/always'
-import branch from '../../src/function/branch'
-import concat from '../../src/list/concat'
-import identity from '../../src/function/identity'
-import isEmpty from '../../src/function/isEmpty'
-import length from '../../src/list/length'
-import pipe from '../../src/function/pipe'
+import always from '../../src/function/always.js'
+import branch from '../../src/function/branch.js'
+import concat from '../../src/list/concat.js'
+import identity from '../../src/function/identity.js'
+import isEmpty from '../../src/function/isEmpty.js'
+import length from '../../src/list/length.js'
+import pipe from '../../src/function/pipe.js'
 import test from 'tape'
 
 test('always -- Basic tests', t => {

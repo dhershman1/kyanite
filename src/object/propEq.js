@@ -1,7 +1,7 @@
-import _curry3 from '../_internals/_curry3'
-import eq from '../function/eq'
-import compose from '../function/compose'
-import prop from './prop'
+import _curry3 from '../_internals/_curry3.js'
+import eq from '../function/eq.js'
+import compose from '../function/compose.js'
+import prop from './prop.js'
 
 /**
  * @name propEq

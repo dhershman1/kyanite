@@ -1,4 +1,4 @@
-import takeWhile from '../../src/array/takeWhile'
+import takeWhile from '../../src/array/takeWhile.js'
 import test from 'tape'
 
 test('takeWhile -- Basic usage', t => {

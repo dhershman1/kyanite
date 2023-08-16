@@ -1,4 +1,4 @@
-import join from '../../src/array/join'
+import join from '../../src/array/join.js'
 import test from 'tape'
 
 test('join -- Joins an array together', t => {

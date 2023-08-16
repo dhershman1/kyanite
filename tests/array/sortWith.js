@@ -1,6 +1,6 @@
-import ascendBy from '../../src/function/ascendBy'
-import descendBy from '../../src/function/descendBy'
-import sortWith from '../../src/array/sortWith'
+import ascendBy from '../../src/function/ascendBy.js'
+import descendBy from '../../src/function/descendBy.js'
+import sortWith from '../../src/array/sortWith.js'
 import test from 'tape'
 
 test('sortWith -- Falls back to secondary functions to break ties', t => {

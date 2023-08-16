@@ -1,4 +1,4 @@
-import eq from '../function/eq'
+import eq from '../function/eq.js'
 
 /**
  * @name isOdd

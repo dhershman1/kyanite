@@ -1,6 +1,6 @@
-import _curry2 from '../_internals/_curry2'
-import _reduce from '../_internals/_reduce'
-import _reduced from '../_internals/_reduced'
+import _curry2 from '../_internals/_curry2.js'
+import _reduce from '../_internals/_reduce.js'
+import _reduced from '../_internals/_reduced.js'
 
 /**
  * @name find

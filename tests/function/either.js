@@ -1,5 +1,5 @@
-import either from '../../src/function/either'
-import prop from '../../src/object/prop'
+import either from '../../src/function/either.js'
+import prop from '../../src/object/prop.js'
 import test from 'tape'
 
 test('either -- Basic functionality', t => {

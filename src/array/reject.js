@@ -1,6 +1,6 @@
-import _curry2 from '../_internals/_curry2'
-import complement from '../function/complement'
-import filter from './filter'
+import _curry2 from '../_internals/_curry2.js'
+import complement from '../function/complement.js'
+import filter from './filter.js'
 
 /**
  * @name reject

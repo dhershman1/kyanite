@@ -1,8 +1,8 @@
 import test from 'tape'
-import addIndex from '../../src/function/addIndex'
-import map from '../../src/array/map'
-import filter from '../../src/array/filter'
-import reduce from '../../src/function/reduce'
+import addIndex from '../../src/function/addIndex.js'
+import map from '../../src/array/map.js'
+import filter from '../../src/array/filter.js'
+import reduce from '../../src/function/reduce.js'
 
 const data = ['f', 'o', 'o', 'b', 'a', 'r']
 

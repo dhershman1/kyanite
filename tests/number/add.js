@@ -1,4 +1,4 @@
-import add from '../../src/number/add'
+import add from '../../src/number/add.js'
 import test from 'tape'
 
 test('add -- Adds two numbers together', t => {

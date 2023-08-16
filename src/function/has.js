@@ -1,5 +1,5 @@
-import _curry2 from '../_internals/_curry2'
-import type from './type'
+import _curry2 from '../_internals/_curry2.js'
+import type from './type.js'
 
 /**
  * @name has

@@ -1,6 +1,6 @@
-import _curry3 from '../_internals/_curry3'
-import isNil from '../function/isNil'
-import prop from './prop'
+import _curry3 from '../_internals/_curry3.js'
+import isNil from '../function/isNil.js'
+import prop from './prop.js'
 
 /**
  * @name propOr

@@ -1,4 +1,4 @@
-import plan from '../../src/object/plan'
+import plan from '../../src/object/plan.js'
 import test from 'tape'
 
 const testFns = {

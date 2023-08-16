@@ -1,4 +1,4 @@
-import minBy from '../../src/array/minBy'
+import minBy from '../../src/array/minBy.js'
 import test from 'tape'
 
 test('minBy -- Grabs the max number', t => {

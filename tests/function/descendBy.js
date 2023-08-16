@@ -1,4 +1,4 @@
-import descendBy from '../../src/function/descendBy'
+import descendBy from '../../src/function/descendBy.js'
 import test from 'tape'
 
 test('descendBy -- Properly decends using the desired function', t => {

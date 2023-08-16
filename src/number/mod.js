@@ -1,6 +1,6 @@
-import _curry2 from '../_internals/_curry2'
-import some from '../array/some'
-import identity from '../function/identity'
+import _curry2 from '../_internals/_curry2.js'
+import some from '../array/some.js'
+import identity from '../function/identity.js'
 
 /**
  * @name mod

@@ -1,5 +1,5 @@
 import test from 'tape'
-import median from '../../src/number/median'
+import median from '../../src/number/median.js'
 
 test('median -- Gets the median of a number array', t => {
   t.same(median([2, 9, 7]), 7)

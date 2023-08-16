@@ -1,4 +1,4 @@
-import sortBy from '../../src/array/sortBy'
+import sortBy from '../../src/array/sortBy.js'
 import test from 'tape'
 
 test('sortBy -- Sorts using provided function', t => {

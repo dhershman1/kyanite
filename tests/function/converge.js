@@ -1,5 +1,5 @@
 import test from 'tape'
-import converge from '../../src/function/converge'
+import converge from '../../src/function/converge.js'
 
 function sum (nums) {
   return nums.reduce((acc, v) => acc + v, 0)

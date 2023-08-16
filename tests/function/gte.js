@@ -1,4 +1,4 @@
-import gte from '../../src/function/gte'
+import gte from '../../src/function/gte.js'
 import test from 'tape'
 
 test('gte -- Value is greater than', t => {

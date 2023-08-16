@@ -1,4 +1,4 @@
-import descend from '../../src/function/descend'
+import descend from '../../src/function/descend.js'
 import test from 'tape'
 
 test('descend -- Sorts in descending order', t => {

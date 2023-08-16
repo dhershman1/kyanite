@@ -1,5 +1,5 @@
 import test from 'tape'
-import propOr from '../../src/object/propOr'
+import propOr from '../../src/object/propOr.js'
 
 test('propOr -- Basic functionality', t => {
   t.same(propOr('N/A', 'foo', { bar: 1, foo: 2 }), 2)

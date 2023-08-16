@@ -1,6 +1,6 @@
-import _curry2 from '../_internals/_curry2'
-import eq from './eq'
-import isNil from './isNil'
+import _curry2 from '../_internals/_curry2.js'
+import eq from './eq.js'
+import isNil from './isNil.js'
 
 /**
  * @name defaultTo

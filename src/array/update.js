@@ -1,6 +1,6 @@
-import concatMap from './concatMap'
-import _curry3 from '../_internals/_curry3'
-import identity from '../function/identity'
+import concatMap from './concatMap.js'
+import _curry3 from '../_internals/_curry3.js'
+import identity from '../function/identity.js'
 
 /**
  * @name update

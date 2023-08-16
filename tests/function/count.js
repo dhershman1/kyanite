@@ -1,5 +1,5 @@
 import test from 'tape'
-import count from '../../src/function/count'
+import count from '../../src/function/count.js'
 
 test('count -- Counts Array', t => {
   t.same(count([1, 2, 3]), 3)

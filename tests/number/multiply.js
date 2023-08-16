@@ -1,4 +1,4 @@
-import mul from '../../src/number/multiply'
+import mul from '../../src/number/multiply.js'
 import test from 'tape'
 
 test('mul -- Multiplies numbers', t => {

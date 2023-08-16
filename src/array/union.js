@@ -1,5 +1,5 @@
-import _curry2 from '../_internals/_curry2'
-import uniq from './uniq'
+import _curry2 from '../_internals/_curry2.js'
+import uniq from './uniq.js'
 
 /**
  * @name union

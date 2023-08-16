@@ -1,4 +1,4 @@
-import mean from '../../src/number/mean'
+import mean from '../../src/number/mean.js'
 import test from 'tape'
 
 test('mean -- Test base functionality', t => {

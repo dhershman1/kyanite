@@ -1,5 +1,5 @@
 import test from 'tape'
-import cond from '../../src/function/cond'
+import cond from '../../src/function/cond.js'
 
 function eq (a) {
   return b => a === b

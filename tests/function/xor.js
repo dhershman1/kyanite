@@ -1,5 +1,5 @@
 import test from 'tape'
-import xor from '../../src/function/xor'
+import xor from '../../src/function/xor.js'
 
 test('xor -- Returns true when both params are true', t => {
   t.same(xor(true, true), false, 'Returns false when both params are true')

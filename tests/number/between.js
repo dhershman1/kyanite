@@ -1,4 +1,4 @@
-import between from '../../src/number/between'
+import between from '../../src/number/between.js'
 import test from 'tape'
 
 test('between -- Handles between main numbers', t => {

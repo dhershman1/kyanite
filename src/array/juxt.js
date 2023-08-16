@@ -1,5 +1,5 @@
-import _curry2 from '../_internals/_curry2'
-import map from './map'
+import _curry2 from '../_internals/_curry2.js'
+import map from './map.js'
 
 /**
  * @name juxt

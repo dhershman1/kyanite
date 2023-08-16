@@ -1,4 +1,4 @@
-import deepEq from '../../src/function/deepEq'
+import deepEq from '../../src/function/deepEq.js'
 import test from 'tape'
 
 /* eslint-disable no-new-wrappers */

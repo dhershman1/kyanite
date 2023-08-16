@@ -1,6 +1,6 @@
-import _curry2 from '../_internals/_curry2'
-import _appendǃ from '../_internals/_appendǃ'
-import rem from '../number/rem'
+import _curry2 from '../_internals/_curry2.js'
+import _appendǃ from '../_internals/_appendǃ.js'
+import rem from '../number/rem.js'
 
 /**
  * @name chunk

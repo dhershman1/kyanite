@@ -1,5 +1,5 @@
-import _curry3 from '../_internals/_curry3'
-import eq from './eq'
+import _curry3 from '../_internals/_curry3.js'
+import eq from './eq.js'
 
 /**
  * @name eqBy

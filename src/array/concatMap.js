@@ -1,6 +1,6 @@
-import _curry2 from '../_internals/_curry2'
-import concat from '../list/concat'
-import _reduce from '../_internals/_reduce'
+import _curry2 from '../_internals/_curry2.js'
+import concat from '../list/concat.js'
+import _reduce from '../_internals/_reduce.js'
 
 /**
  * @name concatMap

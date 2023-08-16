@@ -1,4 +1,4 @@
-import every from '../../src/array/every'
+import every from '../../src/array/every.js'
 import test from 'tape'
 
 test('every -- Basic Functionality', t => {

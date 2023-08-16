@@ -1,9 +1,9 @@
-import _curry2 from '../_internals/_curry2'
-import groupBy from './groupBy'
-import has from '../function/has'
-import identity from '../function/identity'
-import uniq from './uniq'
-import filter from './filter'
+import _curry2 from '../_internals/_curry2.js'
+import groupBy from './groupBy.js'
+import has from '../function/has.js'
+import identity from '../function/identity.js'
+import uniq from './uniq.js'
+import filter from './filter.js'
 
 /**
  * @name intersection

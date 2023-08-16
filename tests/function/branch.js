@@ -1,4 +1,4 @@
-import branch from '../../src/function/branch'
+import branch from '../../src/function/branch.js'
 import test from 'tape'
 
 test('branch -- Branches truthy', t => {

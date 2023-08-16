@@ -1,4 +1,4 @@
-import pow from '../../src/number/pow'
+import pow from '../../src/number/pow.js'
 import test from 'tape'
 
 test('pow -- Takes a number and brings its value to the exponent', t => {

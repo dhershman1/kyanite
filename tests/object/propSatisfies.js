@@ -1,5 +1,5 @@
 import test from 'tape'
-import propSatisfies from '../../src/object/propSatisfies'
+import propSatisfies from '../../src/object/propSatisfies.js'
 
 test('propSatisfies -- Basic', t => {
   t.same(propSatisfies(x => x > 0, 'x', { x: 1, y: 2 }), true)

@@ -1,4 +1,4 @@
-import _curry4 from '../_internals/_curry4'
+import _curry4 from '../_internals/_curry4.js'
 
 /**
  * @name on

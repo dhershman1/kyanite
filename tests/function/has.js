@@ -1,5 +1,5 @@
 import test from 'tape'
-import has from '../../src/function/has'
+import has from '../../src/function/has.js'
 
 test('has -- Basic functionality', t => {
   t.same(has('foo', { foo: 1 }), true, 'Object has key provided')

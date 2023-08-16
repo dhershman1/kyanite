@@ -1,5 +1,5 @@
 import test from 'tape'
-import pathOr from '../../src/object/pathOr'
+import pathOr from '../../src/object/pathOr.js'
 
 test('pathOr -- Handles basic functionality', t => {
   t.same(pathOr('N/A', ['a', 'b'], { a: { b: 1 } }), 1)

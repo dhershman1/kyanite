@@ -1,5 +1,5 @@
-import _curry2 from '../_internals/_curry2'
-import gcd from './gcd'
+import _curry2 from '../_internals/_curry2.js'
+import gcd from './gcd.js'
 
 /**
  * @name lcm

@@ -1,5 +1,5 @@
 import test from 'tape'
-import type from '../../src/function/type'
+import type from '../../src/function/type.js'
 
 /* eslint-disable no-new-wrappers, no-new-object */
 

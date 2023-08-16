@@ -1,5 +1,5 @@
 import test from 'tape'
-import composeP from '../../src/function/composeP'
+import composeP from '../../src/function/composeP.js'
 
 const foo = a => new Promise(resolve => resolve(a + '123'))
 const bar = a => new Promise(resolve => resolve(a + '555'))

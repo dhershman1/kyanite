@@ -1,4 +1,4 @@
-import isOdd from '../../src/number/isOdd'
+import isOdd from '../../src/number/isOdd.js'
 import test from 'tape'
 
 test('isOdd -- Checks numbers for odds', t => {

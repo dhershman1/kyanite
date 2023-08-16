@@ -1,4 +1,4 @@
-import juxt from '../../src/array/juxt'
+import juxt from '../../src/array/juxt.js'
 import test from 'tape'
 
 test('juxt -- Test basic functionality', t => {

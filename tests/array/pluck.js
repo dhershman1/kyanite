@@ -1,5 +1,5 @@
 import test from 'tape'
-import pluck from '../../src/array/pluck'
+import pluck from '../../src/array/pluck.js'
 
 test('pluck()', t => {
   const results = pluck('age', [{ name: 'george', age: 19 }, { name: 'gavin', age: 26 }])

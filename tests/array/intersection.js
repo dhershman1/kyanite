@@ -1,4 +1,4 @@
-import intersection from '../../src/array/intersection'
+import intersection from '../../src/array/intersection.js'
 import test from 'tape'
 
 test('intersection -- Returns an array with items from both arrays', t => {

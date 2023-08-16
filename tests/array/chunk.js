@@ -1,5 +1,5 @@
 import test from 'tape'
-import chunk from '../../src/array/chunk'
+import chunk from '../../src/array/chunk.js'
 
 test('chunk -- Basics', t => {
   t.same(chunk(2, [1, 2, 3, 4, 5]), [[1, 2], [3, 4], [5]])

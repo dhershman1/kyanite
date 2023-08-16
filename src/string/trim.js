@@ -1,4 +1,3 @@
-
 /**
  * @name trim
  * @function

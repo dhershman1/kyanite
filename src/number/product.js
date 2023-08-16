@@ -1,5 +1,5 @@
-import _reduce from '../_internals/_reduce'
-import multiply from './multiply'
+import _reduce from '../_internals/_reduce.js'
+import multiply from './multiply.js'
 
 /**
  * @name product

@@ -1,5 +1,5 @@
 import test from 'tape'
-import amend from '../../src/object/amend'
+import amend from '../../src/object/amend.js'
 
 test('amend -- Basic Functionality', t => {
   t.same(amend({ b: 2 }, { a: 1 }), { a: 1, b: 2 })

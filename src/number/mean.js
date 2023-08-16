@@ -1,7 +1,7 @@
-import add from './add'
-import divide from './divide'
-import length from '../list/length'
-import _reduce from '../_internals/_reduce'
+import add from './add.js'
+import divide from './divide.js'
+import length from '../list/length.js'
+import _reduce from '../_internals/_reduce.js'
 
 /**
  * @name mean
