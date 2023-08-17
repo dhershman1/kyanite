@@ -14,6 +14,9 @@
       src="https://img.shields.io/badge/license-mit-green.svg?style=flat-square"
     />
   </a>
+  <a href="https://kyanite.dusty.codes/">
+    <img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/fc0f65da-107d-43d4-9cb3-d74f46f2b472/deploy-status">
+  </a>
   <a href="https://www.npmjs.com/package/kyanite">
     <img alt="Npm Version" src="https://img.shields.io/npm/v/kyanite.svg?style=flat-square">
   </a>
