@@ -22,6 +22,6 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * d([1, 2, 3, 4, 5]) // => [4, 5]
  */
-const drop = (i, list) => list.slice(i, Infinity)
+const drop = (i, list) => list.slice(Math.max(0, i), Infinity)
 
 export default _curry2(drop)
