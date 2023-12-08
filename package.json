@@ -1,6 +1,6 @@
 {
   "name": "kyanite",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A small library of pure functional utilities to make life easier and data better",
   "main": "dist/kyanite.min.cjs",
   "type": "module",

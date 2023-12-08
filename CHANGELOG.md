@@ -1,5 +1,20 @@
 # Changelog
 
+## v2.1.0
+
+### New
+
+- Added new `takeLast` function
+  - Which takes from the end of an array instead of the beginning
+- Added new `dropLast` function
+  - Returns a list containing all but the last n elements of the given list
+
+### Fixed
+
+- Updated `drop` to use `Math.max` when deciding a starting index
+  - This shouldn't affect the output of `drop` which is why its not a breaking change
+  - It does however allow usage in other functions to work as expected
+
 ## v2.0.0
 
 ### Breaking Changes
