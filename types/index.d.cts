@@ -261,6 +261,12 @@ declare namespace K {
     drop<T = any>(n: number): (list: ReadonlyArray<T> | string) => T[] | string;
 
     /**
+     * Returns a list containing all but the last n elements of the given list.
+     */
+    dropLast<T = any>(n: number, list: ReadonlyArray<T> | string): T[] | string;
+    dropLast<T = any>(n: number): (list: ReadonlyArray<T> | string) => T[] | string;
+
+    /**
      * Runs through an array and drops values so long as the function used returns true once it returns false the iteration will stop
      */
     dropWhile<T = any>(fn: (a: T) => boolean, arr: ReadonlyArray<T> | string): T[] | string;
@@ -891,6 +897,12 @@ declare namespace K {
      */
     take<T = any>(i: number, list: ReadonlyArray<T> | string): T[] | string;
     take<T = any>(i: number): (list: ReadonlyArray<T> | string) => T[] | string;
+
+    /**
+     * Returns a new list containing the last n elements of the given list. If n > list.length, returns a list of list.length elements.
+     */
+    takeLast<T = any>(n: number, list: ReadonlyArray<T> | string): T[] | string;
+    takeLast<T = any>(n: number): (list: ReadonlyArray<T> | string) => T[] | string;
 
     /**
      * Takes values from an array so long as the predicate function continues to return true
