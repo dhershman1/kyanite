@@ -8,6 +8,13 @@ test('takeLast -- Handles taking values from an array', t => {
   t.end()
 })
 
+test('takeLast -- Handles values if the number is bigger than the length', t => {
+  const results = takeLast(7, [1, 2, 3, 4, 5])
+
+  t.same(results, [1, 2, 3, 4, 5])
+  t.end()
+})
+
 test('takeLast -- Handles taking values from a string', t => {
   const results = takeLast(3, '12345')
 

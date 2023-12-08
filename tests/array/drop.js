@@ -8,6 +8,13 @@ test('drop -- Handles dropping values', t => {
   t.end()
 })
 
+test('drop -- Handles dropping values when number is larger than length', t => {
+  const results = drop(6, [1, 2, 3, 4, 5])
+
+  t.same(results, [])
+  t.end()
+})
+
 test('drop -- Handles invalid data sets', t => {
   const results = drop(3, [])
 
