@@ -6,7 +6,7 @@ const globFiles = ['src/**/*.js', '!src/index.js', '!src/common.js', '!src/_inte
 const files = await globby(globFiles)
 
 const buildRes = type =>
-  files.map(f => {
+  files.sort().map(f => {
     const { dir, base, name } = path.parse(f)
     const src = `./${dir.replace('src/', '')}/${base}`
 
