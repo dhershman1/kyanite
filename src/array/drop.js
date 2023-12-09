@@ -15,6 +15,7 @@ import _curry2 from '../_internals/_curry2.js'
  * import { drop } from 'kyanite'
  *
  * drop(3, [1, 2, 3, 4, 5]) // => [4, 5]
+ * drop(6, [1, 2, 3, 4, 5]) // => []
  *
  * // It's also curried
  *
