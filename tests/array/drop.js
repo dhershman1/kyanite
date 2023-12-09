@@ -22,6 +22,13 @@ test('drop -- Handles invalid data sets', t => {
   t.end()
 })
 
+test('drop -- Handles negative index', t => {
+  const results = drop(-1, [1, 2, 3, 4, 5])
+
+  t.same(results, [1, 2, 3, 4, 5])
+  t.end()
+})
+
 test('drop -- Is curried', t => {
   const d = drop(3)
 
