@@ -660,9 +660,9 @@ declare namespace K {
     /**
      * A safe way to find an item within an object, will return the provided default if it's not found or the value itself if it is found
      */
-    pathOr<T = any>(a: any, keys: Path, obj: object): T;
-    pathOr(a: any, keys: Path): <T = any>(obj: object) => T;
-    pathOr(a: any): (keys: Path) => <T = any>(obj: object) => T;
+    pathOr<T = any, U = any>(a: U, keys: Path, obj: object): T;
+    pathOr<U = any>(a: U, keys: Path): <T = any>(obj: object) => T;
+    pathOr<U = any>(a: U): (keys: Path) => <T = any>(obj: object) => T;
 
     /**
      * Runs a path check on a given object and then runs a predicate function on the result
@@ -670,6 +670,12 @@ declare namespace K {
     pathSatisfies<T = any, U = any>(pred: (val: T) => boolean, keys: Path, obj: U): boolean;
     pathSatisfies<T = any, U = any>(pred: (val: T) => boolean, keys: Path): (obj: U) => boolean;
     pathSatisfies<T = any, U = any>(pred: (val: T) => boolean): (keys: Path) => (obj: U) => boolean;
+
+    /**
+     * Picks only the requested keys from a provided object
+     */
+    pick<U = any>(keys: ReadonlyArray<string>, obj: U): U;
+    pick<U = any>(keys: ReadonlyArray<string>): (obj: U) => U;
 
     /**
      * Applies a sequence of transformations over a value
