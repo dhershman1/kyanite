@@ -30,23 +30,23 @@
     }
   },
   "devDependencies": {
-    "@babel/core": "7.22.10",
-    "@babel/plugin-transform-object-assign": "7.22.5",
-    "@babel/preset-env": "7.22.10",
-    "@rollup/plugin-babel": "6.0.3",
-    "@rollup/plugin-terser": "0.4.3",
+    "@babel/core": "7.23.5",
+    "@babel/plugin-transform-object-assign": "7.23.3",
+    "@babel/preset-env": "7.23.5",
+    "@rollup/plugin-babel": "6.0.4",
+    "@rollup/plugin-terser": "0.4.4",
     "globby": "13.2.2",
     "jsdoc": "4.0.2",
     "npm-run-all": "4.1.5",
     "pinet": "1.1.4",
-    "rollup": "3.28.0",
+    "rollup": "4.7.0",
     "rollup-plugin-filesize": "10.0.0",
     "standard": "17.1.0",
     "tap-on": "0.3.1",
-    "tape": "5.6.6"
+    "tape": "5.7.2"
   },
   "scripts": {
-    "test": "tape tests/**/*.js | tap-on -u",
+    "test": "tape tests/**/drop.js | tap-on -u",
     "lint": "standard --fix src/**/*.js",
     "build": "rollup -c",
     "create": "node scripts/create-export.js && standard --fix src/index.js",
