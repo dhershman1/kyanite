@@ -1,5 +1,30 @@
 # Changelog
 
+## v2.1.0
+
+### New
+
+- Added new `takeLast` function
+  - Which takes from the end of an array instead of the beginning
+- Added new `dropLast` function
+  - Returns a list containing all but the last n elements of the given list
+- Added new `pick` function
+  - Picks only the requested keys from a provided object
+
+### Improved
+
+- Updated `types` for `pathOr` so that it can be specified if needed (still defaults to `any`)
+
+### Fixed
+
+- Updated `drop` to use `Math.max` when deciding a starting index
+  - This shouldn't affect the output of `drop` which is why its not a breaking change
+  - It does however allow usage in other functions to work as expected
+
+### Chore
+
+- Updated Dependencies
+
 ## v2.0.0
 
 ### Breaking Changes
