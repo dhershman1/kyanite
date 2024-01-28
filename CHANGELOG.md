@@ -21,6 +21,10 @@
   - This shouldn't affect the output of `drop` which is why its not a breaking change
   - It does however allow usage in other functions to work as expected
 
+### Chore
+
+- Updated Dependencies
+
 ## v2.0.0
 
 ### Breaking Changes
