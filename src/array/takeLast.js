@@ -4,7 +4,7 @@ import drop from './drop.js'
 /**
  * @name takeLast
  * @function
- * @since v3.0.0
+ * @since v2.1.0
  * @category Array
  * @sig Number -> Array -> Array
  * @description Returns a new list containing the last n elements of the given list. If n > list.length, returns a list of list.length elements.
