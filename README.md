@@ -23,6 +23,9 @@
   <a href="https://github.com/dhershman1/kyanite/actions/workflows/kyanite.yml">
     <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/dhershman1/kyanite/kyanite.yml?style=flat-square">
   </a>
+  <a href="https://codebeat.co/projects/github-com-dhershman1-kyanite-master">
+    <img alt="codebeat badge" src="https://codebeat.co/badges/4eeb4e32-dfe2-4d12-ac1a-bd13cf31ee55" />
+  </a>
 </p>
 <br />
 <p align=center>
