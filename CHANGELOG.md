@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.1
+
+### New
+
+- Added some a new test to `find` to test Set Data types
+
 ## v2.1.0
 
 ### New

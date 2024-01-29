@@ -67,3 +67,11 @@ test('find -- Returns false if value not found', t => {
   t.notOk(find(runner, [1, 2, 3, 4]), 'Value not found')
   t.end()
 })
+
+test('find -- Works on Set data types', t => {
+  const data = new Set([1, 200, 4, 5, 0])
+  const runner = x => x > 100
+
+  t.is(find(runner, data), 200, 'return 200 back')
+  t.end()
+})
