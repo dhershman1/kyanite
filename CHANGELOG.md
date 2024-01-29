@@ -1,10 +1,11 @@
 # Changelog
 
-## v2.1.1
+## v2.2.0
 
 ### New
 
 - Added some a new test to `find` to test Set Data types
+- Added new `adjust` function which applies a function to a supplied array data at a provided index
 
 ## v2.1.0
 
