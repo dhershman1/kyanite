@@ -1,6 +1,6 @@
-import concatMap from './concatMap.js'
 import _curry3 from '../_internals/_curry3.js'
-import identity from '../function/identity.js'
+import adjust from './adjust.js'
+import always from '../function/always.js'
 
 /**
  * @name update
@@ -9,7 +9,7 @@ import identity from '../function/identity.js'
  * @category Array
  * @sig Number -> a -> [b] -> [c]
  * @description Add an item to an array within a certain index of the array
- * @param  {Number} index The index number to add at
+ * @param  {Number} idx The index number to add at
  * @param  {Any} val What we want to add to our array
  * @param  {Array} list The array in question
  * @return {Array} Returns the modified array
@@ -31,7 +31,6 @@ import identity from '../function/identity.js'
  * const val = index(10)
  * val([1, 2, 3]) // => [1, 2, 10]
  */
-const update = (index, val, list) =>
-  concatMap(identity, [list.slice(0, index), val, list.slice(index + 1)])
+const update = (idx, val, list) => adjust(idx, always(val), list)
 
 export default _curry3(update)
