@@ -38,7 +38,7 @@ Because I think mineral names are cool
 ## Contents
 
 - [View the Changelog](https://github.com/dhershman1/kyanite/blob/master/CHANGELOG.md)
-- [View the Documentation](https://dhershman1.github.io/kyanite/)
+- [View the Documentation](https://kyanite.dusty.codes)
 - [Philosophy](#philosophy)
 - [Key Features](#key-features)
 - [How To](#how-to)
