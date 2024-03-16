@@ -4,7 +4,7 @@
 
 ### Breaking Changes
 
-- `update` now uses `adjust under the hood which gives it all the same rules
+- `update` now uses `adjust` under the hood which gives it all the same rules
   - Meaning it will also return the list back with an out of bounds index
 
 ### New
