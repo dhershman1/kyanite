@@ -13,6 +13,11 @@
 - Added new `adjust` function which applies a function to a supplied array data at a provided index
 - Added new `keys` function which takes the keys of a provided object and gives them back as an array
 
+### Improved
+
+- `values` now uses the built in `keys` function instead of `Object.keys`
+- Greatly expanded the unit testing around `values`
+
 ### Fixed
 
 - Documentation link in readme now goes to kyanites website instead of 404ing
