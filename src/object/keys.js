@@ -28,7 +28,7 @@ const keys = obj => {
 
   for (const prop in obj) {
     if (has(prop, obj) && prop !== 'length') {
-      ks[ks.length] = prop
+      ks.push(prop)
     }
   }
 
