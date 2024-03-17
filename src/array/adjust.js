@@ -2,7 +2,7 @@ import _curry3 from '../_internals/_curry3.js'
 
 /**
  * @name adjust
- * @since v2.2.0
+ * @since v3.0.0
  * @function
  * @category Array
  * @sig Number -> (a -> a) -> [a] -> [a]
