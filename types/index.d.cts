@@ -502,6 +502,11 @@ declare namespace K {
     juxt<T = any>(fns: ReadonlyArray<(...args: T[]) => any>): <U = any>(args: any[]) => U[];
 
     /**
+     * Returns a list of all the own properties of an object
+     */
+    keys<T extends object>(obj: T): Array<keyof T>;
+
+    /**
      * Grabs the last index of a list
      */
     last(x: string): string;

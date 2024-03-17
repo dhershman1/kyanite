@@ -11,6 +11,7 @@
 
 - Added some a new test to `find` to test Set Data types
 - Added new `adjust` function which applies a function to a supplied array data at a provided index
+- Added new `keys` function which takes the keys of a provided object and gives them back as an array
 
 ## v2.1.0
 
