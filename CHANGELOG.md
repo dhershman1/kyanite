@@ -13,6 +13,10 @@
 - Added new `adjust` function which applies a function to a supplied array data at a provided index
 - Added new `keys` function which takes the keys of a provided object and gives them back as an array
 
+### Fixed
+
+- Documentation link in readme now goes to kyanites website instead of 404ing
+
 ## v2.1.0
 
 ### New
