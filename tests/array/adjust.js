@@ -22,6 +22,16 @@ test('adjust -- offsets negative indexes from the end of the array', t => {
   t.end()
 })
 
+test('adjust -- Basic usage strings', t => {
+  t.same(adjust(
+    1,
+    x => x.toUpperCase(),
+    'abcd'
+  ), ['a', 'B', 'c', 'd'])
+
+  t.end()
+})
+
 test('adjust -- returns the original array if the supplied index is out of bounds', t => {
   const list = [0, 1, 2, 3]
   adjust(4, x => x + 1, list)
