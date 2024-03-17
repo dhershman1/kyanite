@@ -17,7 +17,8 @@ import always from '../function/always.js'
  * @example
  * import { update } from 'kyanite'
  *
- * update(2, 10, [1, 2, 3]) // => [1, 2, 10]
+ * update(1, 10, [1, 2, 3]) // => [1, 10, 3]
+ * update(-1, 10, [1, 2, 3]) // => [1, 2, 10]
  *
  * // You can also use it as a curried method
  *
