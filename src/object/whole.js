@@ -1,4 +1,5 @@
 import _curry2 from '../_internals/_curry2.js'
+import keys from './keys.js'
 
 /**
  * @name whole
@@ -20,7 +21,7 @@ import _curry2 from '../_internals/_curry2.js'
  * run({ a: 'xxx', b: 'xxx', x: 11, y: 19 }) // => false
  */
 const whole = (schema, obj) =>
-  Object.keys(schema).every(key =>
+  keys(schema).every(key =>
     schema[key](obj[key]))
 
 export default _curry2(whole)

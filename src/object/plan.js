@@ -1,6 +1,7 @@
 import _curry2 from '../_internals/_curry2.js'
 import _assocǃ from '../_internals/_assocǃ.js'
 import _reduce from '../_internals/_reduce.js'
+import keys from './keys.js'
 
 /**
  * @name plan
@@ -30,6 +31,6 @@ import _reduce from '../_internals/_reduce.js'
  */
 const plan = (schema, obj) =>
   Object.assign({}, obj, _reduce((k, acc) =>
-    !Object.prototype.hasOwnProperty.call(obj, k) ? acc : _assocǃ(acc, k, schema[k](obj[k])), {}, Object.keys(schema)))
+    !Object.prototype.hasOwnProperty.call(obj, k) ? acc : _assocǃ(acc, k, schema[k](obj[k])), {}, keys(schema)))
 
 export default _curry2(plan)

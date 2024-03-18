@@ -1,6 +1,7 @@
 import _curry2 from '../_internals/_curry2.js'
 import _assocǃ from '../_internals/_assocǃ.js'
 import _reduce from '../_internals/_reduce.js'
+import keys from './keys.js'
 
 /**
  * @name omitBy
@@ -27,6 +28,6 @@ import _reduce from '../_internals/_reduce.js'
  * omitKeys({ test: '3432', thing: 123 }) // => { thing: 123 }
  */
 const omitBy = (fn, obj) =>
-  _reduce((k, acc) => fn(obj[k], k) ? _assocǃ(acc, k, obj[k]) : acc, {}, Object.keys(obj))
+  _reduce((k, acc) => fn(obj[k], k) ? _assocǃ(acc, k, obj[k]) : acc, {}, keys(obj))
 
 export default _curry2(omitBy)

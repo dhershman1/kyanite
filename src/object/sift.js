@@ -1,6 +1,7 @@
 import _curry2 from '../_internals/_curry2.js'
 import _assocǃ from '../_internals/_assocǃ.js'
 import _reduce from '../_internals/_reduce.js'
+import keys from './keys.js'
 
 /**
  * @name sift
@@ -30,6 +31,6 @@ import _reduce from '../_internals/_reduce.js'
  * sifter({ id: 44, thing: 'test', other: 'cool' }) // => { thing: 'test', other: 'cool' }
  */
 const sift = (fn, obj) => _reduce((k, acc) =>
-  fn(obj[k]) ? _assocǃ(acc, k, obj[k]) : acc, {}, Object.keys(obj))
+  fn(obj[k]) ? _assocǃ(acc, k, obj[k]) : acc, {}, keys(obj))
 
 export default _curry2(sift)
