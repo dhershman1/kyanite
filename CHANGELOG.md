@@ -17,6 +17,7 @@
 
 - `values` now uses the built in `keys` function instead of `Object.keys`
 - `draft` now uses the built in `keys` function instead of `Object.keys`
+- Converted `any`, `omit`, `omitBy`, `plan`, `sift`, `whole`, and `withDefaults` to use `keys` instead of `Object.keys`
 - Greatly expanded the unit testing around `values`
 - Expanded the unit tests for `groupBy`
 - Expanded the unit tests for `gt` and `gte`
