@@ -1,4 +1,6 @@
-import has from '../function/has.js'
+const _has = function (prop, obj) {
+  return Object.prototype.hasOwnProperty.call(obj, prop)
+}
 
 /**
  * @name keys
@@ -27,7 +29,7 @@ const keys = obj => {
   const ks = []
 
   for (const prop in obj) {
-    if (has(prop, obj) && prop !== 'length') {
+    if (_has(prop, obj) && prop !== 'length') {
       ks.push(prop)
     }
   }
