@@ -1,7 +1,3 @@
-const _has = function (prop, obj) {
-  return Object.prototype.hasOwnProperty.call(obj, prop)
-}
-
 /**
  * @name keys
  * @function
@@ -29,7 +25,7 @@ const keys = obj => {
   const ks = []
 
   for (const prop in obj) {
-    if (_has(prop, obj) && prop !== 'length') {
+    if (Object.prototype.hasOwnProperty.call(obj, prop) && prop !== 'length') {
       ks.push(prop)
     }
   }
