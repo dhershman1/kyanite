@@ -16,7 +16,7 @@ test('any -- returns true for passing objects with some passing props', t => {
   t.end()
 })
 
-test('any -- returns true for passing objects with no passing props', t => {
+test('any -- returns false for passing objects with no passing props', t => {
   t.false(result({ x: 9, y: 26 }))
   t.end()
 })

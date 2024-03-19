@@ -1,5 +1,33 @@
 # Changelog
 
+## v3.0.0
+
+### Breaking Changes
+
+- `update` now uses `adjust` under the hood which gives it all the same rules
+  - Meaning it will also return the list back with an out of bounds index
+
+### New
+
+- Added some a new test to `find` to test Set Data types
+- Added new `adjust` function which applies a function to a supplied array data at a provided index
+- Added new `keys` function which takes the keys of a provided object and gives them back as an array
+
+### Improved
+
+- `values` now uses the built in `keys` function instead of `Object.keys`
+- `draft` now uses the built in `keys` function instead of `Object.keys`
+- Converted `any`, `omit`, `omitBy`, `plan`, `sift`, `whole`, and `withDefaults` to use `keys` instead of `Object.keys`
+- Greatly expanded the unit testing around `values`
+- Expanded the unit tests for `groupBy`
+- Expanded the unit tests for `gt` and `gte`
+- Expanded the unit tests for `difference`
+- Added an extra unit test for `plan`
+
+### Fixed
+
+- Documentation link in readme now goes to kyanites website instead of 404ing
+
 ## v2.1.0
 
 ### New

@@ -4,6 +4,8 @@ import test from 'tape'
 test('gte -- Value is greater than', t => {
   t.true(gte(1, 2))
   t.true(gte(2, 2))
+  t.false(gte('xyz', 'abc'))
+  t.true(gte('abc', 'abcd'))
   t.end()
 })
 

@@ -2,6 +2,7 @@ import _curry2 from '../_internals/_curry2.js'
 import _assocǃ from '../_internals/_assocǃ.js'
 import _reduce from '../_internals/_reduce.js'
 import defaultTo from '../function/defaultTo.js'
+import keys from './keys.js'
 
 /**
  * @name withDefaults
@@ -29,6 +30,6 @@ import defaultTo from '../function/defaultTo.js'
  */
 const withDefaults = (def, obj) =>
   _reduce((k, acc) =>
-    _assocǃ(acc, k, defaultTo(def[k], obj[k])), {}, Object.keys(def))
+    _assocǃ(acc, k, defaultTo(def[k], obj[k])), {}, keys(def))
 
 export default _curry2(withDefaults)

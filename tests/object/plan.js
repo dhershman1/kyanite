@@ -28,6 +28,7 @@ test('plan -- Handles missing properties', t => {
   const results = plan(testFns, { a: 5 })
 
   t.deepEqual(results, { a: 10 })
+  t.same(plan(testFns, { a: 5, c: 10 }), { a: 10, c: 10 })
   t.end()
 })
 

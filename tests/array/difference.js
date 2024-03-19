@@ -26,3 +26,8 @@ test('difference -- Handles dupes in both arrays', t => {
   t.same(difference([[1, 2, 3, 3, 4, 2], [2, 2, 22, 44, 1]]), [3, 4, 22, 44])
   t.end()
 })
+
+test('difference -- Handles odd edge cases', t => {
+  t.same(difference([[NaN], [NaN]]).length, 0)
+  t.end()
+})

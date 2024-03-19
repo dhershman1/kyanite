@@ -43,6 +43,13 @@ declare namespace K {
     addIndex(fn: Function): Function
 
     /**
+     * Applies a function to the value at the given index of an array, returning a new copy of the array with the element at the given index replaced with the result of the function application.
+     */
+    adjust<T = any>(idx: number, fn: (a: T) => T, list: T[]): T[];
+    adjust<T = any>(idx: number, fn: (a: T) => T): (list: T[]) => T[];
+    adjust(idx: number): <T = any>(fn: (a: T) => T) => (list: T[]) => T[];
+
+    /**
      * Always returns the first param sent to it, and ignores the 2nd also known as the K combinator
      */
     always<T = any>(val: T): () => T;
@@ -493,6 +500,11 @@ declare namespace K {
      */
     juxt<T = any, U = any>(fns: ReadonlyArray<(...args: T[]) => any>, args: any[]): U[];
     juxt<T = any>(fns: ReadonlyArray<(...args: T[]) => any>): <U = any>(args: any[]) => U[];
+
+    /**
+     * Returns a list of all the own properties of an object
+     */
+    keys<T extends object>(obj: T): Array<keyof T>;
 
     /**
      * Grabs the last index of a list
