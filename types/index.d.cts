@@ -569,6 +569,15 @@ declare namespace K {
     median(list: ReadonlyArray<number>): number;
 
     /**
+     * Wraps a function with a memoization layer to cache the results of the function
+     */
+    memoizeWith<T extends (...args: readonly any[]) => any>(
+      keyFn: (...v: Parameters<T>) => string,
+      fn: T
+    ): T;
+
+
+    /**
      * Goes through an array of values and grabs the min value of the array
      */
     min<T extends Ord>(list: ReadonlyArray<T>): T;
