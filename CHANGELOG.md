@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.1.0
+
+### New
+
+- Added new `memoizeWith` function
+- Added new types for `memoizeWith`
+- Added new unit tests for `memoizeWith`
+
 ## v3.0.0
 
 ### Breaking Changes
