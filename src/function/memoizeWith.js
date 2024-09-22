@@ -12,17 +12,11 @@ import _curry2 from '../_internals/_curry2.js'
  * @example
  * import { memoizeWith } from 'kyanite'
  *
- * const withAge = memoizeWith(o => `${o.birth}/${o.death}`, ({birth, death}) => {
- *  console.log(`Calculating age for ${birth} and ${death}`)
- *  return ({ birth, death, age: death - birth })
- * })
+ * const add = (a, b) => a + b
+ * const memoizedAdd = memoizeWith((a, b) => `${a}-${b}`, add)
  *
- * withAge({birth: 1921, death: 1999});
- * //=> LOG: computing age for 1921/1999
- * //=> {birth: 1921, death: 1999, age: 78} (returned from fn)
- *
- * withAge({birth: 1921, death: 1999});
- * //=> {birth: 1921, death: 1999, age: 78} (returned from cache)
+ * memoizedAdd(1, 2) // => 3
+ * memoizedAdd(1, 2) // => 3 (cached)
  */
 const memoizeWith = (keyFn, fn) => {
   const cache = {}
