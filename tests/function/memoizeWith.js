@@ -31,6 +31,24 @@ test('memoizeWith - cache functionality', (t) => {
   t.end()
 })
 
+test('memoizeWith - is curried', t => {
+  let callCount = 0
+  const add = (a, b) => {
+    callCount++
+    return a + b
+  }
+  const memoizedAdd = memoizeWith((a, b) => `${a}-${b}`)(add)
+
+  memoizedAdd(1, 2)
+  memoizedAdd(1, 2)
+  memoizedAdd(2, 3)
+  memoizedAdd(2, 3)
+
+  t.equal(callCount, 2, 'Function should be called twice due to caching')
+
+  t.end()
+})
+
 test('memoizeWith - calculates the value for a given input only once', t => {
   let callCount = 0
   const add = (a, b) => {
