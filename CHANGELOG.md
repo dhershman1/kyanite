@@ -1,5 +1,18 @@
 # Changelog
 
+## v3.2.0
+
+### New
+
+- Added `objOf` function
+  - Creates a new object based on the key value pair provided
+
+### Improved
+
+- `amend` now uses Object spread rather than `Object.assign` for that small performance boost
+  - When using `Object.assign` with an empty object, Object spread is consistently faster
+- Converted map to use a `while` loop assoc combo
+
 ## v3.1.0
 
 ### New

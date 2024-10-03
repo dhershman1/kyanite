@@ -1,6 +1,6 @@
 {
   "name": "kyanite",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "A small library of pure functional utilities to make life easier and data better",
   "main": "dist/kyanite.min.cjs",
   "type": "module",
@@ -87,5 +87,11 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "standard": {
+    "ignore": [
+      "dist",
+      "types"
+    ]
   }
 }
