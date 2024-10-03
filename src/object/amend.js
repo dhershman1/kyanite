@@ -21,6 +21,6 @@ import _curry2 from '../_internals/_curry2.js'
  * fn({ a: 1 }) // => { a: 1, b: 2 }
  * fn({ c: 3 }) // => { c: 3, b: 2 }
  */
-const amend = (a, b) => Object.assign({}, a, b)
+const amend = (a, b) => ({ ...b, ...a })
 
 export default _curry2(amend)
