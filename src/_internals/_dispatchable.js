@@ -10,8 +10,6 @@ import _isTransformer from './_isTransformer.js'
  * (transducer case).
  * Otherwise, it will default to executing [fn].
  *
- * Taken from Ramda.js
- *
  * @private
  * @param {Array} methodNames properties to check for a custom implementation
  * @param {Function} transducerCreator transducer factory if object is transformer
