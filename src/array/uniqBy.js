@@ -1,6 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
+import _dispatchable from '../_internals/_dispatchable.js'
 import _assocǃ from '../_internals/_assocǃ.js'
 import values from '../object/values.js'
+import _xuniqBy from '../_internals/_xuniqBy.js'
 
 /**
  * @name uniqBy
@@ -31,4 +33,4 @@ const uniqBy = (fn, list) =>
     return !Object.prototype.hasOwnProperty.call(acc, k) ? _assocǃ(acc, k, a) : acc
   }, {}))
 
-export default _curry2(uniqBy)
+export default _curry2(_dispatchable([], _xuniqBy, uniqBy))
