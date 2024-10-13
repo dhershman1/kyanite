@@ -32,7 +32,17 @@ jobs:
       if: steps.node-module-cache.outputs.cache-hit != 'true'
       run: npm ci
     - name: Test
-      run: npm test
+      run: npm run test:cov
+    - name: Run Report
+      run: npm run report
+    - name: Check Coverage
+      run: npm run coverage
+    - name: Upload Coverage
+      uses: codecov/codecov-action@v3
+      with:
+        files: ./coverage.lcov
+        name: kyanite-tests
+        flags: unittests
   lint:
     runs-on: ubuntu-latest
     strategy:
