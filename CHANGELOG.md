@@ -6,6 +6,7 @@
 
 - Added `objOf` function
   - Creates a new object based on the key value pair provided
+- `fuzzySearch` has been `Deprecated` as of this version and will be removed in `v4.0.0`
 
 ### Improved
 
