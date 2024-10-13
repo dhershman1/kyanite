@@ -14,6 +14,7 @@
   - When using `Object.assign` with an empty object, Object spread is consistently faster
 - Converted map to use a `while` loop assoc combo
 - Moved `*.js` -> `*.spec.js` for unit tests
+- Expanded upon some more tests to get to 100% coverage
 
 ## v3.1.0
 
