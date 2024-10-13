@@ -29,6 +29,13 @@ test('takeLast -- Handles empty arrays passed in', t => {
   t.end()
 })
 
+test('takeLast -- Handles being passed -1', t => {
+  const results = takeLast(-1, [1, 2, 3, 4, 5])
+
+  t.same(results, [1, 2, 3, 4, 5])
+  t.end()
+})
+
 test('takeLast -- Is curried', t => {
   const ta = takeLast(3)
 
