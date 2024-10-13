@@ -12,6 +12,7 @@
 - `amend` now uses Object spread rather than `Object.assign` for that small performance boost
   - When using `Object.assign` with an empty object, Object spread is consistently faster
 - Converted map to use a `while` loop assoc combo
+- Moved `*.js` -> `*.spec.js` for unit tests
 
 ## v3.1.0
 
