@@ -34,10 +34,10 @@
     "@babel/preset-env": "7.25.8",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-terser": "0.4.4",
+    "c8": "10.1.2",
     "globby": "14.0.2",
     "jsdoc": "4.0.3",
     "npm-run-all": "4.1.5",
-    "nyc": "17.1.0",
     "pinet": "1.2.1",
     "rollup": "4.24.0",
     "rollup-plugin-filesize": "10.0.0",
@@ -47,6 +47,8 @@
   },
   "scripts": {
     "test": "tape tests/**/*.spec.js | tap-on -u",
+    "test:tap": "tape tests/**/*.spec.js",
+    "coverage": "c8 --lines 95 --functions 95 --branches 95 tape tests/**/*.spec.js",
     "lint": "standard --fix src/**/*.js",
     "build": "rollup -c",
     "create": "node scripts/create-export.js && standard --fix src/index.js",
@@ -83,11 +85,6 @@
     "email": "dustinh17@gmail.com"
   },
   "homepage": "https://kyanite.dusty.codes",
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "standard": {
     "ignore": [
       "dist",
