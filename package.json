@@ -47,8 +47,9 @@
   },
   "scripts": {
     "test": "tape tests/**/*.spec.js | tap-on -u",
-    "test:tap": "tape tests/**/*.spec.js",
-    "coverage": "c8 --lines 95 --functions 95 --branches 95 tape tests/**/*.spec.js",
+    "test:cov": "c8 tape tests/**/*.spec.js",
+    "coverage": "c8 check-coverage --lines 100 --branches 100 --functions 100 --statements 100",
+    "report": "c8 report --reporter=text-lcov > coverage.lcov",
     "lint": "standard --fix src/**/*.js",
     "build": "rollup -c",
     "create": "node scripts/create-export.js && standard --fix src/index.js",
