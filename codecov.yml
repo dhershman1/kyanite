@@ -1,0 +1,18 @@
+codecov:
+  token: 983a4b7b-9b87-4a9b-8a00-9483e1868426
+  notify:
+    require_ci_to_pass: yes
+    after_n_builds: 1
+
+coverage:
+  status:
+    project:
+      default:
+        target: 80%
+    patch:
+      default:
+        target: 80%
+
+comment:
+  layout: "reach, diff, flags, files"
+  behavior: default
