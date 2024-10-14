@@ -17,6 +17,7 @@ jsdoc.json
 benching.js
 tmp.js
 exp.js
+codecov.yml
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,node
