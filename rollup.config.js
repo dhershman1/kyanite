@@ -1,6 +1,8 @@
+import 'dotenv/config'
 import babel from '@rollup/plugin-babel'
 import filesize from 'rollup-plugin-filesize'
 import terser from '@rollup/plugin-terser'
+import { codecovRollupPlugin } from '@codecov/rollup-plugin'
 
 export default [
   {
@@ -10,6 +12,11 @@ export default [
       terser(),
       filesize({
         showMinifiedSize: false
+      }),
+      codecovRollupPlugin({
+        enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
+        bundleName: 'kyanite',
+        uploadToken: process.env.CODECOV_TOKEN
       })
     ],
     output: {
