@@ -15,14 +15,14 @@ jobs:
         node-version: [18.x, 20.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
     - name: Check node_module Cache
       id: node-module-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
           path: |
               node_modules
@@ -32,7 +32,13 @@ jobs:
       if: steps.node-module-cache.outputs.cache-hit != 'true'
       run: npm ci
     - name: Test
-      run: npm test
+      run: npm run test:cov
+    - name: Run Report
+      run: npm run report
+    - name: Check Coverage
+      run: npm run coverage
+    - name: Upload Coverage
+      uses: codecov/codecov-action@v4
   lint:
     runs-on: ubuntu-latest
     strategy:
@@ -40,14 +46,14 @@ jobs:
         node-version: [18.x, 20.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
     - name: Check node_module Cache
       id: node-module-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
           path: |
               node_modules

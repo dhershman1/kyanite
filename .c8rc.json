@@ -1,0 +1,9 @@
+{
+  "exclude": [
+    "src/_internals",
+    "tests"
+  ],
+  "reporter": [
+    "lcov"
+  ]
+}

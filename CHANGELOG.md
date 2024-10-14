@@ -1,5 +1,21 @@
 # Changelog
 
+## v3.2.0
+
+### New
+
+- Added `objOf` function
+  - Creates a new object based on the key value pair provided
+- `fuzzySearch` has been `Deprecated` as of this version and will be removed in `v4.0.0`
+
+### Improved
+
+- `amend` now uses Object spread rather than `Object.assign` for that small performance boost
+  - When using `Object.assign` with an empty object, Object spread is consistently faster
+- Converted map to use a `while` loop assoc combo
+- Moved `*.js` -> `*.spec.js` for unit tests
+- Expanded upon some more tests to get to 100% coverage
+
 ## v3.1.0
 
 ### New

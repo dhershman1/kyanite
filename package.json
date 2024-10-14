@@ -1,6 +1,6 @@
 {
   "name": "kyanite",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "A small library of pure functional utilities to make life easier and data better",
   "main": "dist/kyanite.min.cjs",
   "type": "module",
@@ -26,27 +26,32 @@
         "types": "./types/index.d.ts",
         "default": "./dist/kyanite.iife.min.js"
       }
-
     }
   },
   "devDependencies": {
-    "@babel/core": "7.24.0",
-    "@babel/plugin-transform-object-assign": "7.23.3",
-    "@babel/preset-env": "7.24.0",
+    "@babel/core": "7.25.8",
+    "@babel/plugin-transform-object-assign": "7.25.7",
+    "@babel/preset-env": "7.25.8",
+    "@codecov/rollup-plugin": "^1.2.0",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-terser": "0.4.4",
-    "globby": "13.2.2",
-    "jsdoc": "4.0.2",
+    "c8": "10.1.2",
+    "dotenv": "^16.4.5",
+    "globby": "14.0.2",
+    "jsdoc": "4.0.3",
     "npm-run-all": "4.1.5",
-    "pinet": "1.1.5",
-    "rollup": "4.13.0",
+    "pinet": "1.2.1",
+    "rollup": "4.24.0",
     "rollup-plugin-filesize": "10.0.0",
-    "standard": "17.1.0",
+    "standard": "17.1.2",
     "tap-on": "1.0.0",
-    "tape": "5.7.5"
+    "tape": "5.9.0"
   },
   "scripts": {
-    "test": "tape tests/**/*.js | tap-on -u",
+    "test": "tape tests/**/*.spec.js | tap-on -u",
+    "test:cov": "c8 tape tests/**/*.spec.js",
+    "coverage": "c8 check-coverage --lines 100 --branches 100 --functions 100 --statements 100",
+    "report": "c8 report --reporter=text-lcov > coverage.lcov",
     "lint": "standard --fix src/**/*.js",
     "build": "rollup -c",
     "create": "node scripts/create-export.js && standard --fix src/index.js",
@@ -83,9 +88,10 @@
     "email": "dustinh17@gmail.com"
   },
   "homepage": "https://kyanite.dusty.codes",
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "standard": {
+    "ignore": [
+      "dist",
+      "types"
+    ]
   }
 }

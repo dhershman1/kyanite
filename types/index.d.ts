@@ -629,6 +629,12 @@ declare namespace K {
     nth(o: number): <T = any>(list: ReadonlyArray<T>) => T | undefined;
 
     /**
+     * Creates an object containing a single key:value pair.
+     */
+    objOf<T = any>(key: string, val: T): { [index: string]: T };
+    objOf<T = any>(key: string): (val: T) => { [index: string]: T };
+
+    /**
      * Create a new object with certain keys omitted
      */
     omit<T, E extends string>(keys: ReadonlyArray<E>, obj: T): Omit<T, E>;

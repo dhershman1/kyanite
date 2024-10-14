@@ -4,6 +4,7 @@ import _curry2 from '../_internals/_curry2.js'
 
 /**
  * @name fuzzySearch
+ * @deprecated since v3.2.0
  * @function
  * @since v0.1.0
  * @sig a -> Boolean

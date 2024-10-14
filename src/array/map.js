@@ -28,11 +28,13 @@ import _assocǃ from '../_internals/_assocǃ.js'
  * dbler([1, 2, 3]) // => [2, 4, 6]
  */
 const map = (fn, list) => {
+  let idx = 0
   const len = list.length
   const result = Array(len)
 
-  for (let i = 0; i < len; i++) {
-    _assocǃ(result, i, fn(list[i]))
+  while (idx < len) {
+    _assocǃ(result, idx, fn(list[idx]))
+    idx += 1
   }
 
   return result
