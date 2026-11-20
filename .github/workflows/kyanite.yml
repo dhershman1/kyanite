@@ -27,6 +27,8 @@ jobs:
         run: npm ci
       - name: Test
         run: npm run test:cov
+      - name: Test Types
+        run: npm run test:types
       - name: Check Coverage
         run: npm run coverage
       - name: Build
