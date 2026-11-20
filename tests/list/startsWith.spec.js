@@ -1,18 +1,17 @@
 import startsWith from '../../src/list/startsWith.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('startsWith -- Basic Usage on lists', t => {
-  t.true(startsWith('c', 'cab'))
-  t.true(startsWith(['a'], ['a', 'b', 'c']))
-  t.false(startsWith('b', 'abc'))
-  t.end()
+test('startsWith -- Basic Usage on lists', () => {
+  assert.ok(startsWith('c', 'cab'))
+  assert.ok(startsWith(['a'], ['a', 'b', 'c']))
+  assert.ok(!startsWith('b', 'abc'))
 })
 
-test('startsWith -- Is curried', t => {
+test('startsWith -- Is curried', () => {
   const fn = startsWith('c')
 
-  t.true(fn('cab'))
-  t.true(fn('c'))
-  t.false(fn('a'))
-  t.end()
+  assert.ok(fn('cab'))
+  assert.ok(fn('c'))
+  assert.ok(!fn('a'))
 })

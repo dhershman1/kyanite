@@ -1,20 +1,19 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import defaultTo from '../../src/function/defaultTo.js'
 
-test('defaultTo -- Basic functionality', t => {
-  t.same(defaultTo('foo', null), 'foo')
-  t.same(defaultTo('foo', NaN), 'foo')
-  t.same(defaultTo('foo', 'bar'), 'bar')
-  t.same(defaultTo('foo', undefined), 'foo')
-  t.end()
+test('defaultTo -- Basic functionality', () => {
+  assert.deepEqual(defaultTo('foo', null), 'foo')
+  assert.deepEqual(defaultTo('foo', NaN), 'foo')
+  assert.deepEqual(defaultTo('foo', 'bar'), 'bar')
+  assert.deepEqual(defaultTo('foo', undefined), 'foo')
 })
 
-test('defaultTo -- Is curried', t => {
+test('defaultTo -- Is curried', () => {
   const fn = defaultTo('foo')
 
-  t.same(fn(null), 'foo')
-  t.same(fn(NaN), 'foo')
-  t.same(fn(undefined), 'foo')
-  t.same(fn('bar'), 'bar')
-  t.end()
+  assert.deepEqual(fn(null), 'foo')
+  assert.deepEqual(fn(NaN), 'foo')
+  assert.deepEqual(fn(undefined), 'foo')
+  assert.deepEqual(fn('bar'), 'bar')
 })

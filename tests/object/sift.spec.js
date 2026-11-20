@@ -1,39 +1,38 @@
 import sift from '../../src/object/sift.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('sift -- Properly filters out desired properties', t => {
+test('sift -- Properly filters out desired properties', () => {
   const results = sift(x => typeof x === 'string', {
     id: 4,
     thing: 'test',
     other: 'cool'
   })
 
-  t.deepEqual(results, {
+  assert.deepEqual(results, {
     other: 'cool',
     thing: 'test'
   })
-  t.end()
 })
 
-test('sift -- Properly removes emptied values based on function', t => {
+test('sift -- Properly removes emptied values based on function', () => {
   const results = sift(x => x.length, {
-    'h422dcr4': [],
-    'frtcsq1231': ['hello'],
-    'dyuem009': [],
+    h422dcr4: [],
+    frtcsq1231: ['hello'],
+    dyuem009: [],
     '098ikdnsh': ['test']
   })
 
-  t.deepEqual(results, {
-    'frtcsq1231': ['hello'],
+  assert.deepEqual(results, {
+    frtcsq1231: ['hello'],
     '098ikdnsh': ['test']
   })
-  t.end()
 })
 
-test('sift -- Is Curried', t => {
+test('sift -- Is Curried', () => {
   const sifter = sift(x => typeof x === 'string')
 
-  t.deepEqual(sifter({
+  assert.deepEqual(sifter({
     id: 4,
     thing: 'test',
     other: 'cool'
@@ -41,5 +40,4 @@ test('sift -- Is Curried', t => {
     other: 'cool',
     thing: 'test'
   })
-  t.end()
 })

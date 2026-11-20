@@ -1,24 +1,21 @@
 import lt from '../../src/function/lt.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('lt -- Determines if the numbers are lt', t => {
-  t.true(lt(2, 1))
-  t.end()
+test('lt -- Determines if the numbers are lt', () => {
+  assert.ok(lt(2, 1))
 })
 
-test('lt -- Determines if the letters are lt', t => {
-  t.true(lt('b', 'a'))
-  t.end()
+test('lt -- Determines if the letters are lt', () => {
+  assert.ok(lt('b', 'a'))
 })
 
-test('lt -- It is curried', t => {
+test('lt -- It is curried', () => {
   const g = lt(2)
 
-  t.true(g(1))
-  t.end()
+  assert.ok(g(1))
 })
 
-test('lt -- Compares equal values', t => {
-  t.false(lt(1, 1))
-  t.end()
+test('lt -- Compares equal values', () => {
+  assert.ok(!lt(1, 1))
 })

@@ -1,27 +1,25 @@
 import encase from '../../src/function/encase.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
 const getter = x => x.a.b.c
 
-test('encase -- Encases the function and returns undefined if fails', t => {
+test('encase -- Encases the function and returns undefined if fails', () => {
   const results = encase(getter, { a: 0 })
 
-  t.notOk(results)
-  t.same(results, undefined)
-  t.end()
+  assert.ok(!results)
+  assert.deepEqual(results, undefined)
 })
 
-test('encase -- Encases the function and returns the functions returned value', t => {
+test('encase -- Encases the function and returns the functions returned value', () => {
   const results = encase(getter, { a: { b: { c: 0 } } })
 
-  t.same(results, 0)
-  t.end()
+  assert.deepEqual(results, 0)
 })
 
-test('encase -- Is curried', t => {
+test('encase -- Is curried', () => {
   const en = encase(getter)
 
-  t.same(en({ a: 0 }), undefined)
-  t.same(en({ a: { b: { c: 0 } } }), 0)
-  t.end()
+  assert.deepEqual(en({ a: 0 }), undefined)
+  assert.deepEqual(en({ a: { b: { c: 0 } } }), 0)
 })

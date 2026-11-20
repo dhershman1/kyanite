@@ -1,19 +1,18 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import notEq from '../../src/function/notEq.js'
 
-test('notEq -- Basics', t => {
-  t.same(notEq(1, 2), true)
-  t.same(notEq('test', 'Test'), true)
-  t.same(notEq(NaN, NaN), false)
-  t.same(notEq(1, 1), false)
-  t.end()
+test('notEq -- Basics', () => {
+  assert.deepEqual(notEq(1, 2), true)
+  assert.deepEqual(notEq('test', 'Test'), true)
+  assert.deepEqual(notEq(NaN, NaN), false)
+  assert.deepEqual(notEq(1, 1), false)
 })
 
-test('notEq -- Is curried', t => {
+test('notEq -- Is curried', () => {
   const fn = notEq('1')
 
-  t.same(fn(1), true)
-  t.same(fn(NaN), true)
-  t.same(fn('1'), false)
-  t.end()
+  assert.deepEqual(fn(1), true)
+  assert.deepEqual(fn(NaN), true)
+  assert.deepEqual(fn('1'), false)
 })

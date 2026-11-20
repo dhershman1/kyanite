@@ -1,23 +1,21 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import union from '../../src/array/union.js'
 
-test('union -- Combines two arrays together without dupes', t => {
+test('union -- Combines two arrays together without dupes', () => {
   const result = union([1, 2, 3, 4, 5], [4, 5, 6, 7])
 
-  t.deepEqual(result, [1, 2, 3, 4, 5, 6, 7])
-  t.end()
+  assert.deepEqual(result, [1, 2, 3, 4, 5, 6, 7])
 })
 
-test('union -- Handles multiple arrays being sent in', t => {
+test('union -- Handles multiple arrays being sent in', () => {
   const result = union([1, 2, 3, 4, 5], [[4, 5, 6, 7], [6, 7, 8, 9]])
 
-  t.deepEqual(result, [1, 2, 3, 4, 5, [4, 5, 6, 7], [6, 7, 8, 9]])
-  t.end()
+  assert.deepEqual(result, [1, 2, 3, 4, 5, [4, 5, 6, 7], [6, 7, 8, 9]])
 })
 
-test('union -- Is curried', t => {
+test('union -- Is curried', () => {
   const un = union([1, 2, 3, 4, 5])
 
-  t.deepEqual(un([4, 5, 6, 7]), [1, 2, 3, 4, 5, 6, 7])
-  t.end()
+  assert.deepEqual(un([4, 5, 6, 7]), [1, 2, 3, 4, 5, 6, 7])
 })

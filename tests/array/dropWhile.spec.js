@@ -1,16 +1,15 @@
 import dropWhile from '../../src/array/dropWhile.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('dropWhile -- Basic usage tests', t => {
-  t.same(dropWhile(x => x <= 2, [1, 2, 3, 4, 3, 2, 1]), [3, 4, 3, 2, 1])
-  t.same(dropWhile(x => x !== 2, [0, 1, 9]), [])
-  t.end()
+test('dropWhile -- Basic usage tests', () => {
+  assert.deepEqual(dropWhile(x => x <= 2, [1, 2, 3, 4, 3, 2, 1]), [3, 4, 3, 2, 1])
+  assert.deepEqual(dropWhile(x => x !== 2, [0, 1, 9]), [])
 })
 
-test('dropWhile -- Is curried', t => {
+test('dropWhile -- Is curried', () => {
   const fn = dropWhile(x => x <= 2)
 
-  t.same(fn([1, 2, 3, 4, 3, 2, 1]), [3, 4, 3, 2, 1])
-  t.same(fn([-1, 0, 1, 2, 3]), [3])
-  t.end()
+  assert.deepEqual(fn([1, 2, 3, 4, 3, 2, 1]), [3, 4, 3, 2, 1])
+  assert.deepEqual(fn([-1, 0, 1, 2, 3]), [3])
 })

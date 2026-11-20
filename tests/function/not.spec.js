@@ -1,10 +1,10 @@
 import not from '../../src/function/not.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('not -- Test not() functionality', t => {
-  t.notOk(not(true))
-  t.ok(not(false))
-  t.notOk(not(1))
-  t.ok(not(0))
-  t.end()
+test('not -- Test not() functionality', () => {
+  assert.ok(!not(true))
+  assert.ok(not(false))
+  assert.ok(!not(1))
+  assert.ok(not(0))
 })

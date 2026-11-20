@@ -1,26 +1,25 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import type from '../../src/function/type.js'
 
-/* eslint-disable no-new-wrappers, no-new-object */
+/* eslint-disable no-new-wrappers */
 
-test('type -- Handles data type literals', t => {
-  t.is(type([]), 'Array')
-  t.is(type({}), 'Object')
-  t.is(type(/[A-z]/), 'RegExp')
-  t.is(type(1), 'Number')
-  t.is(type(NaN), 'Number')
-  t.is(type('testing'), 'String')
-  t.is(type(null), 'Null')
-  t.is(type(undefined), 'Undefined')
-  t.end()
+test('type -- Handles data type literals', () => {
+  assert.equal(type([]), 'Array')
+  assert.equal(type({}), 'Object')
+  assert.equal(type(/[A-z]/), 'RegExp')
+  assert.equal(type(1), 'Number')
+  assert.equal(type(NaN), 'Number')
+  assert.equal(type('testing'), 'String')
+  assert.equal(type(null), 'Null')
+  assert.equal(type(undefined), 'Undefined')
 })
 
-test('type -- Handles new keyword for data types', t => {
-  t.is(type(new String('I am a String object')), 'String')
-  t.is(type(new Number(2)), 'Number')
-  t.is(type(new Date('01-12-19')), 'Date')
-  t.is(type(new RegExp('[A-Z]')), 'RegExp')
-  t.is(type(new Array(3)), 'Array')
-  t.is(type(new Object({})), 'Object')
-  t.end()
+test('type -- Handles new keyword for data types', () => {
+  assert.equal(type(new String('I am a String object')), 'String')
+  assert.equal(type(new Number(2)), 'Number')
+  assert.equal(type(new Date('01-12-19')), 'Date')
+  assert.equal(type(new RegExp('[A-Z]')), 'RegExp') // eslint-disable-line prefer-regex-literals
+  assert.equal(type(new Array(3)), 'Array')
+  assert.equal(type(new Object({})), 'Object')
 })

@@ -1,16 +1,15 @@
 import last from '../../src/list/last.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('last -- Array functionality', t => {
+test('last -- Array functionality', () => {
   const list = [1, 2, 3, 4]
 
-  t.is(last(list), 4)
-  t.end()
+  assert.equal(last(list), 4)
 })
 
-test('last -- String functionality', t => {
+test('last -- String functionality', () => {
   const str = 'abcd'
 
-  t.is(last(str), 'd')
-  t.end()
+  assert.equal(last(str), 'd')
 })

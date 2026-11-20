@@ -1,18 +1,17 @@
 import endsWith from '../../src/list/endsWith.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('endsWith -- Basic Usage on lists', t => {
-  t.true(endsWith('c', 'abc'))
-  t.true(endsWith(['a'], ['c', 'b', 'a']))
-  t.false(endsWith('b', 'abc'))
-  t.end()
+test('endsWith -- Basic Usage on lists', () => {
+  assert.ok(endsWith('c', 'abc'))
+  assert.ok(endsWith(['a'], ['c', 'b', 'a']))
+  assert.ok(!endsWith('b', 'abc'))
 })
 
-test('endsWith -- Is curried', t => {
+test('endsWith -- Is curried', () => {
   const fn = endsWith('c')
 
-  t.true(fn('abc'))
-  t.true(fn('c'))
-  t.false(fn('a'))
-  t.end()
+  assert.ok(fn('abc'))
+  assert.ok(fn('c'))
+  assert.ok(!fn('a'))
 })

@@ -1,4 +1,5 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import whole from '../../src/object/whole.js'
 
 const result = whole({
@@ -8,22 +9,19 @@ const result = whole({
   y: x => x < 20
 })
 
-test('whole -- predicate is true', t => {
-  t.is(result({ a: 'foo', b: 'xxx', x: 11, y: 19 }), true)
-  t.end()
+test('whole -- predicate is true', () => {
+  assert.equal(result({ a: 'foo', b: 'xxx', x: 11, y: 19 }), true)
 })
 
-test('whole -- predicate is false', t => {
-  t.is(result({ a: 'xxx', b: 'xxx', x: 11, y: 19 }), false)
-  t.end()
+test('whole -- predicate is false', () => {
+  assert.equal(result({ a: 'xxx', b: 'xxx', x: 11, y: 19 }), false)
 })
 
-test('whole -- validate all props exist', t => {
+test('whole -- validate all props exist', () => {
   const fn = whole({
     a: x => x,
     b: x => x
   })
 
-  t.same(fn({ a: 1 }), false)
-  t.end()
+  assert.deepEqual(fn({ a: 1 }), false)
 })

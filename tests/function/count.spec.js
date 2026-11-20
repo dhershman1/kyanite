@@ -1,64 +1,57 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import count from '../../src/function/count.js'
 
-test('count -- Counts Array', t => {
-  t.same(count([1, 2, 3]), 3)
-  t.same(count([1]), 1)
-  t.same(count([]), 0)
-  t.end()
+test('count -- Counts Array', () => {
+  assert.deepEqual(count([1, 2, 3]), 3)
+  assert.deepEqual(count([1]), 1)
+  assert.deepEqual(count([]), 0)
 })
 
-test('count -- Counts Objects', t => {
-  t.same(count({ a: 1, b: 2, c: 3 }), 3)
-  t.same(count({ a: 1 }), 1)
-  t.same(count({}), 0)
-  t.end()
+test('count -- Counts Objects', () => {
+  assert.deepEqual(count({ a: 1, b: 2, c: 3 }), 3)
+  assert.deepEqual(count({ a: 1 }), 1)
+  assert.deepEqual(count({}), 0)
 })
 
-test('count -- Counts Strings', t => {
-  t.same(count('coolkid'), 7)
-  t.same(count('quick brown fox'), 15)
-  t.same(count(''), 0)
-  t.end()
+test('count -- Counts Strings', () => {
+  assert.deepEqual(count('coolkid'), 7)
+  assert.deepEqual(count('quick brown fox'), 15)
+  assert.deepEqual(count(''), 0)
 })
 
-test('count -- Counts Maps', t => {
-  t.same(count(new Map([['a', 1], ['b', 2], ['c', 3]])), 3)
-  t.same(count(new Map([['a', 1]])), 1)
-  t.same(count(new Map()), 0)
-  t.end()
+test('count -- Counts Maps', () => {
+  assert.deepEqual(count(new Map([['a', 1], ['b', 2], ['c', 3]])), 3)
+  assert.deepEqual(count(new Map([['a', 1]])), 1)
+  assert.deepEqual(count(new Map()), 0)
 })
 
-test('count -- Counts Sets', t => {
-  t.same(count(new Set([1, 2, 3])), 3)
-  t.same(count(new Set([1])), 1)
-  t.same(count(new Set()), 0)
-  t.end()
+test('count -- Counts Sets', () => {
+  assert.deepEqual(count(new Set([1, 2, 3])), 3)
+  assert.deepEqual(count(new Set([1])), 1)
+  assert.deepEqual(count(new Set()), 0)
 })
 
-test('count -- Handle numbers', t => {
+test('count -- Handle numbers', () => {
   try {
     count(9)
   } catch ({ message }) {
-    t.same(message, 'Unsupported type: Number')
-    t.end()
+    assert.deepEqual(message, 'Unsupported type: Number')
   }
 })
 
-test('count -- Handle dates', t => {
+test('count -- Handle dates', () => {
   try {
     count(new Date())
   } catch ({ message }) {
-    t.same(message, 'Unsupported type: Date')
-    t.end()
+    assert.deepEqual(message, 'Unsupported type: Date')
   }
 })
 
-test('count -- Handle Regex', t => {
+test('count -- Handle Regex', () => {
   try {
     count(new RegExp())
   } catch ({ message }) {
-    t.same(message, 'Unsupported type: RegExp')
-    t.end()
+    assert.deepEqual(message, 'Unsupported type: RegExp')
   }
 })

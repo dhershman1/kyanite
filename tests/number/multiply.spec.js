@@ -1,25 +1,22 @@
 import mul from '../../src/number/multiply.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('mul -- Multiplies numbers', t => {
-  t.is(mul(5, 5), 25)
-  t.end()
+test('mul -- Multiplies numbers', () => {
+  assert.equal(mul(5, 5), 25)
 })
 
-test('mul -- Converts string and multiplies anyway', t => {
-  t.is(mul(1, '2'), 2)
-  t.end()
+test('mul -- Converts string and multiplies anyway', () => {
+  assert.equal(mul(1, '2'), 2)
 })
 
-test('mul -- Converts number to negative if a passed value is negative', t => {
-  t.is(mul(3, -1), -3)
-  t.end()
+test('mul -- Converts number to negative if a passed value is negative', () => {
+  assert.equal(mul(3, -1), -3)
 })
 
-test('mul -- Is curried', t => {
+test('mul -- Is curried', () => {
   const multiply = mul(5)
 
-  t.is(multiply(3), 15)
-  t.is(multiply('4'), 20)
-  t.end()
+  assert.equal(multiply(3), 15)
+  assert.equal(multiply('4'), 20)
 })

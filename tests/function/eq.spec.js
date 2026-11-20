@@ -1,47 +1,42 @@
 import eq from '../../src/function/eq.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('eq -- Test base functionality', t => {
-  t.ok(eq(0, 0))
-  t.ok(eq('t', 't'))
-  t.end()
+test('eq -- Test base functionality', () => {
+  assert.ok(eq(0, 0))
+  assert.ok(eq('t', 't'))
 })
 
-test('eq -- Test boolean types', t => {
-  t.ok(eq(false, false))
-  t.ok(eq(true, true))
-  t.notOk(eq(true, false))
-  t.end()
+test('eq -- Test boolean types', () => {
+  assert.ok(eq(false, false))
+  assert.ok(eq(true, true))
+  assert.ok(!eq(true, false))
 })
 
-test('eq -- Test object types', t => {
+test('eq -- Test object types', () => {
   const o = {}
 
-  t.ok(eq(o, o))
-  t.notOk(eq({ test: 1 }, { test: 1 }))
-  t.notOk(eq({}, {}))
-  t.notOk(eq({ test: 1 }, { test: 2 }))
-  t.end()
+  assert.ok(eq(o, o))
+  assert.ok(!eq({ test: 1 }, { test: 1 }))
+  assert.ok(!eq({}, {}))
+  assert.ok(!eq({ test: 1 }, { test: 2 }))
 })
 
-test('eq -- Test array types', t => {
-  t.notOk(eq([], []))
-  t.notOk(eq([1], [1]))
-  t.notOk(eq([1], [2]))
-  t.end()
+test('eq -- Test array types', () => {
+  assert.ok(!eq([], []))
+  assert.ok(!eq([1], [1]))
+  assert.ok(!eq([1], [2]))
 })
 
-test('eq -- Test edge case type', t => {
-  t.notOk(eq(0, -0))
-  t.ok(eq(NaN, NaN))
-  t.end()
+test('eq -- Test edge case type', () => {
+  assert.ok(!eq(0, -0))
+  assert.ok(eq(NaN, NaN))
 })
 
-test('eq -- Test curried eq', t => {
+test('eq -- Test curried eq', () => {
   const i = eq(NaN)
 
-  t.ok(i(NaN))
-  t.notOk(i({}))
-  t.notOk(i(0))
-  t.end()
+  assert.ok(i(NaN))
+  assert.ok(!i({}))
+  assert.ok(!i(0))
 })

@@ -1,8 +1,8 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import trim from '../../src/string/trim.js'
 
-test('trim -- Returns a trimmed string', t => {
-  t.is(trim('my brown cow   '), 'my brown cow')
-  t.is(trim('   new things   '), 'new things')
-  t.end()
+test('trim -- Returns a trimmed string', () => {
+  assert.equal(trim('my brown cow   '), 'my brown cow')
+  assert.equal(trim('   new things   '), 'new things')
 })

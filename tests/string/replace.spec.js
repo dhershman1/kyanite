@@ -1,17 +1,16 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import replace from '../../src/string/replace.js'
 
-test('replace -- Replaces a string value', t => {
-  t.is(replace('foo', 'bar', 'foofoo'), 'barfoo')
-  t.is(replace(/foo/g, 'bar', 'foofoo'), 'barbar')
-  t.end()
+test('replace -- Replaces a string value', () => {
+  assert.equal(replace('foo', 'bar', 'foofoo'), 'barfoo')
+  assert.equal(replace(/foo/g, 'bar', 'foofoo'), 'barbar')
 })
 
-test('replace -- Is curried', t => {
+test('replace -- Is curried', () => {
   const fn = replace('foo')
   const fn2 = fn('bar')
 
-  t.is(fn2('foofoo'), 'barfoo')
-  t.is(fn('baz', 'foofoo'), 'bazfoo')
-  t.end()
+  assert.equal(fn2('foofoo'), 'barfoo')
+  assert.equal(fn('baz', 'foofoo'), 'bazfoo')
 })

@@ -1,4 +1,5 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import objOf from '../../src/object/objOf.js'
 
 test('objOf -- creates an object with the specified key and value', (t) => {
@@ -8,8 +9,7 @@ test('objOf -- creates an object with the specified key and value', (t) => {
 
   const result = objOf(key, value)
 
-  t.same(result, expected, 'The object should have the correct key and value')
-  t.end()
+  assert.deepEqual(result, expected, 'The object should have the correct key and value')
 })
 
 test('objOf -- handles non-string keys', (t) => {
@@ -19,8 +19,7 @@ test('objOf -- handles non-string keys', (t) => {
 
   const result = objOf(key, value)
 
-  t.same(result, expected, 'The object should handle non-string keys correctly')
-  t.end()
+  assert.deepEqual(result, expected, 'The object should handle non-string keys correctly')
 })
 
 test('objOf -- handles undefined values', (t) => {
@@ -30,6 +29,5 @@ test('objOf -- handles undefined values', (t) => {
 
   const result = objOf(key, value)
 
-  t.same(result, expected, 'The object should handle undefined values correctly')
-  t.end()
+  assert.deepEqual(result, expected, 'The object should handle undefined values correctly')
 })

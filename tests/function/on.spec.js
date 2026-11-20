@@ -1,24 +1,22 @@
 import on from '../../src/function/on.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('on -- Returns value based on return of the first function', t => {
+test('on -- Returns value based on return of the first function', () => {
   const results = on((x, y) => x === y, x => x.length, 'you', 'are')
 
-  t.same(results, true)
-  t.end()
+  assert.deepEqual(results, true)
 })
 
-test('on -- Returns based on the first functions result', t => {
+test('on -- Returns based on the first functions result', () => {
   const results = on((x, y) => x === y, x => x.length, '', 'are')
 
-  t.same(results, false)
-  t.end()
+  assert.deepEqual(results, false)
 })
 
-test('on -- Is curried', t => {
+test('on -- Is curried', () => {
   const f = on((x, y) => x === y, x => x.length)
 
-  t.same(f('you', 'are'), true)
-  t.same(f('', 'a'), false)
-  t.end()
+  assert.deepEqual(f('you', 'are'), true)
+  assert.deepEqual(f('', 'a'), false)
 })

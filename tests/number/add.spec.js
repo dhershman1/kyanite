@@ -1,22 +1,18 @@
 import add from '../../src/number/add.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('add -- Adds two numbers together', t => {
-  t.is(add(1, 2), 3)
-
-  t.end()
+test('add -- Adds two numbers together', () => {
+  assert.equal(add(1, 2), 3)
 })
 
-test('add -- Acts like a normal concat if value is a string', t => {
-  t.is(add(1, '2'), '12')
-  t.is(add('1', '10'), '110')
-
-  t.end()
+test('add -- Acts like a normal concat if value is a string', () => {
+  assert.equal(add(1, '2'), '12')
+  assert.equal(add('1', '10'), '110')
 })
 
-test('add -- Is curried', t => {
+test('add -- Is curried', () => {
   const adder = add(3)
 
-  t.is(adder(4), 7)
-  t.end()
+  assert.equal(adder(4), 7)
 })

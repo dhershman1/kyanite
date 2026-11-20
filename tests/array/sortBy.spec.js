@@ -1,7 +1,8 @@
 import sortBy from '../../src/array/sortBy.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('sortBy -- Sorts using provided function', t => {
+test('sortBy -- Sorts using provided function', () => {
   const results = sortBy(x => x.name, [
     { name: 'bob' },
     { name: 'amanda' },
@@ -9,16 +10,15 @@ test('sortBy -- Sorts using provided function', t => {
     { name: 'amanda' }
   ])
 
-  t.same(results, [
+  assert.deepEqual(results, [
     { name: 'amanda' },
     { name: 'amanda' },
     { name: 'bob' },
     { name: 'carl' }
   ])
-  t.end()
 })
 
-test('sortBy -- Is curried', t => {
+test('sortBy -- Is curried', () => {
   const sb = sortBy(x => x.name)
   const results = sb([
     { name: 'bob' },
@@ -27,6 +27,5 @@ test('sortBy -- Is curried', t => {
     { name: 'amanda' }
   ])
 
-  t.same(results, [{ name: 'amanda' }, { name: 'amanda' }, { name: 'bob' }, { name: 'carl' }])
-  t.end()
+  assert.deepEqual(results, [{ name: 'amanda' }, { name: 'amanda' }, { name: 'bob' }, { name: 'carl' }])
 })

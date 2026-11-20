@@ -1,20 +1,18 @@
 import prepend from '../../src/array/prepend.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('prepend -- Returns array with added element at start', t => {
-  t.deepEqual(prepend('testing', ['is', 'cool']), ['testing', 'is', 'cool'])
-  t.end()
+test('prepend -- Returns array with added element at start', () => {
+  assert.deepEqual(prepend('testing', ['is', 'cool']), ['testing', 'is', 'cool'])
 })
 
-test('prepend -- Works with empty arrays', t => {
-  t.deepEqual(prepend(1, []), [1])
-  t.end()
+test('prepend -- Works with empty arrays', () => {
+  assert.deepEqual(prepend(1, []), [1])
 })
 
-test('prepend -- Is curried', t => {
+test('prepend -- Is curried', () => {
   const pender = prepend('testing')
 
-  t.is(typeof pender, 'function')
-  t.deepEqual(pender(['is', 'cool']), ['testing', 'is', 'cool'])
-  t.end()
+  assert.equal(typeof pender, 'function')
+  assert.deepEqual(pender(['is', 'cool']), ['testing', 'is', 'cool'])
 })

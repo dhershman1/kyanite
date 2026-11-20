@@ -1,26 +1,24 @@
 import curryN from '../../src/function/curryN.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('curryN -- Curries as expected', t => {
+test('curryN -- Curries as expected', () => {
   const add = curryN(2, (a, b) => a + b)
   const sum = add(2)
 
-  t.is(sum(3), 5)
-  t.end()
+  assert.equal(sum(3), 5)
 })
 
-test('curryN -- Curry works with default params', t => {
+test('curryN -- Curry works with default params', () => {
   const add = curryN(2, (a, b = 1) => a + b)
   const sum = add(1)
 
-  t.is(sum(3), 4)
-  t.is(sum(undefined), 2)
-  t.end()
+  assert.equal(sum(3), 4)
+  assert.equal(sum(undefined), 2)
 })
 
-test('curryN -- Curry throws out extra params', t => {
+test('curryN -- Curry throws out extra params', () => {
   const add = curryN(2, (a, b) => a + b)
 
-  t.is(add(1, 2, 3), 3)
-  t.end()
+  assert.equal(add(1, 2, 3), 3)
 })

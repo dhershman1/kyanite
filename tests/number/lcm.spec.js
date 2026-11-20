@@ -1,14 +1,13 @@
 import lcm from '../../src/number/lcm.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('lcm -- Gets the lcm of two numbers', t => {
-  t.is(lcm(90, 70), 630)
-  t.end()
+test('lcm -- Gets the lcm of two numbers', () => {
+  assert.equal(lcm(90, 70), 630)
 })
 
-test('lcm -- Is curried', t => {
+test('lcm -- Is curried', () => {
   const x = lcm(90)
 
-  t.is(x(4), 180)
-  t.end()
+  assert.equal(x(4), 180)
 })

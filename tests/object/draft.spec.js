@@ -1,7 +1,8 @@
 import draft from '../../src/object/draft.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('draft -- Applies the function to all object values', t => {
+test('draft -- Applies the function to all object values', () => {
   const results = draft(x => x * 2, {
     a: 1,
     b: 2,
@@ -9,16 +10,15 @@ test('draft -- Applies the function to all object values', t => {
     d: 4
   })
 
-  t.deepEqual(results, {
+  assert.deepEqual(results, {
     a: 2,
     b: 4,
     c: 6,
     d: 8
   })
-  t.end()
 })
 
-test('draft -- Is curried', t => {
+test('draft -- Is curried', () => {
   const p = draft(x => x * 2)
   const results = p({
     a: 1,
@@ -27,11 +27,10 @@ test('draft -- Is curried', t => {
     d: 4
   })
 
-  t.deepEqual(results, {
+  assert.deepEqual(results, {
     a: 2,
     b: 4,
     c: 6,
     d: 8
   })
-  t.end()
 })

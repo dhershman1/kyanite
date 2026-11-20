@@ -1,9 +1,9 @@
 import ascend from '../../src/function/ascend.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('ascend -- Sorts in ascending order', t => {
+test('ascend -- Sorts in ascending order', () => {
   const result = [4, 10, 1, 6, 7, 12].sort(ascend)
 
-  t.same(result, [1, 4, 6, 7, 10, 12])
-  t.end()
+  assert.deepEqual(result, [1, 4, 6, 7, 10, 12])
 })

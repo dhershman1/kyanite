@@ -1,13 +1,13 @@
 import isEven from '../../src/number/isEven.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('isEven -- Handles checking for even numbers', t => {
-  t.true(isEven(2))
-  t.true(isEven(12))
-  t.true(isEven(4))
-  t.false(isEven(1))
-  t.false(isEven(-1))
-  t.false(isEven(NaN))
-  t.false(isEven('h'))
-  t.end()
+test('isEven -- Handles checking for even numbers', () => {
+  assert.ok(isEven(2))
+  assert.ok(isEven(12))
+  assert.ok(isEven(4))
+  assert.ok(!isEven(1))
+  assert.ok(!isEven(-1))
+  assert.ok(!isEven(NaN))
+  assert.ok(!isEven('h'))
 })

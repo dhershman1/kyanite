@@ -1,15 +1,15 @@
 import ap from '../../src/function/ap.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('ap -- Applies the provided list over our array of data', t => {
+test('ap -- Applies the provided list over our array of data', () => {
   const res = ap(x => y => x + y, z => z * 2, 2)
 
-  t.same(res, 6)
-  t.same(ap(x => y => x + y, z => z * 2, 3), 9)
-  t.end()
+  assert.deepEqual(res, 6)
+  assert.deepEqual(ap(x => y => x + y, z => z * 2, 3), 9)
 })
 
-test('ap -- State setter and getter', t => {
+test('ap -- State setter and getter', () => {
   const state = {
     a: {
       b: 2
@@ -20,14 +20,12 @@ test('ap -- State setter and getter', t => {
     a: { b: doubleB }
   }), s => s.a.b * 2, state)
 
-  t.deepEqual(res, { a: { b: 4 } })
-  t.end()
+  assert.deepEqual(res, { a: { b: 4 } })
 })
 
-// test('ap -- Is curried', t => {
+// test('ap -- Is curried', () => {
 //   const a = ap([x => x + 1, x => x * 2])
 
-//   t.same(a([1, 2, 3]), [2, 3, 4, 2, 4, 6])
-//   t.same(a([3, 4, 5]), [4, 5, 6, 6, 8, 10])
-//   t.end()
+//   assert.deepEqual(a([1, 2, 3]), [2, 3, 4, 2, 4, 6])
+//   assert.deepEqual(a([3, 4, 5]), [4, 5, 6, 6, 8, 10])
 // })

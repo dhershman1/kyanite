@@ -1,13 +1,13 @@
 import isOdd from '../../src/number/isOdd.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('isOdd -- Checks numbers for odds', t => {
-  t.true(isOdd(1))
-  t.true(isOdd(3))
-  t.true(isOdd(15))
-  t.false(isOdd(2))
-  t.false(isOdd(4))
-  t.false(isOdd(NaN))
-  t.false(isOdd('h'))
-  t.end()
+test('isOdd -- Checks numbers for odds', () => {
+  assert.ok(isOdd(1))
+  assert.ok(isOdd(3))
+  assert.ok(isOdd(15))
+  assert.ok(!isOdd(2))
+  assert.ok(!isOdd(4))
+  assert.ok(!isOdd(NaN))
+  assert.ok(!isOdd('h'))
 })

@@ -1,14 +1,13 @@
 import split from '../../src/string/split.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('split -- Basic capabilities', t => {
-  t.same(split('', 'abc'), ['a', 'b', 'c'])
-  t.end()
+test('split -- Basic capabilities', () => {
+  assert.deepEqual(split('', 'abc'), ['a', 'b', 'c'])
 })
 
-test('split -- Is curried', t => {
+test('split -- Is curried', () => {
   const sp = split('')
 
-  t.same(sp('abc'), ['a', 'b', 'c'])
-  t.end()
+  assert.deepEqual(sp('abc'), ['a', 'b', 'c'])
 })

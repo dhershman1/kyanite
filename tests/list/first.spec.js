@@ -1,16 +1,15 @@
 import first from '../../src/list/first.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('first -- test first() Array functionality', t => {
+test('first -- test first() Array functionality', () => {
   const list = [1, 2, 3, 4]
 
-  t.is(first(list), 1)
-  t.end()
+  assert.equal(first(list), 1)
 })
 
-test('first -- test first() String functionality', t => {
+test('first -- test first() String functionality', () => {
   const str = 'abcd'
 
-  t.is(first(str), 'a')
-  t.end()
+  assert.equal(first(str), 'a')
 })

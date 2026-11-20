@@ -5,30 +5,28 @@ import identity from '../../src/function/identity.js'
 import isEmpty from '../../src/function/isEmpty.js'
 import length from '../../src/list/length.js'
 import pipe from '../../src/function/pipe.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('always -- Basic tests', t => {
-  t.same(always([1, 2, 3], 1), [1, 2, 3])
-  t.same(always({ a: 1 }, true), { a: 1 })
-  t.same(always(12, false), 12)
-  t.same(always('test', 'thing'), 'test')
-  t.end()
+test('always -- Basic tests', () => {
+  assert.deepEqual(always([1, 2, 3], 1), [1, 2, 3])
+  assert.deepEqual(always({ a: 1 }, true), { a: 1 })
+  assert.deepEqual(always(12, false), 12)
+  assert.deepEqual(always('test', 'thing'), 'test')
 })
 
-test('always -- Is curried', t => {
+test('always -- Is curried', () => {
   const a = always(1)
 
-  t.is(a(2), 1)
-  t.is(a(null), 1)
-  t.end()
+  assert.equal(a(2), 1)
+  assert.equal(a(null), 1)
 })
 
-test('always -- Pipe handling', t => {
+test('always -- Pipe handling', () => {
   const results = pipe([
     branch(always(isEmpty([])), concat(1), identity),
     length
   ], [])
 
-  t.is(results, 1)
-  t.end()
+  assert.equal(results, 1)
 })

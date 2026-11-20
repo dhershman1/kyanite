@@ -1,23 +1,21 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import amend from '../../src/object/amend.js'
 
-test('amend -- Basic Functionality', t => {
-  t.same(amend({ b: 2 }, { a: 1 }), { a: 1, b: 2 })
-  t.end()
+test('amend -- Basic Functionality', () => {
+  assert.deepEqual(amend({ b: 2 }, { a: 1 }), { a: 1, b: 2 })
 })
 
-test('amend -- No ref mutation', t => {
+test('amend -- No ref mutation', () => {
   const tmp = { a: 1, b: 2 }
 
-  t.same(amend(tmp, { c: 3 }), { a: 1, b: 2, c: 3 })
-  t.same(tmp, { a: 1, b: 2 })
-  t.end()
+  assert.deepEqual(amend(tmp, { c: 3 }), { a: 1, b: 2, c: 3 })
+  assert.deepEqual(tmp, { a: 1, b: 2 })
 })
 
-test('amend -- Is curried', t => {
+test('amend -- Is curried', () => {
   const fn = amend({ b: 2 })
 
-  t.same(fn({ a: 1 }), { a: 1, b: 2 })
-  t.same(fn({ c: 3 }), { c: 3, b: 2 })
-  t.end()
+  assert.deepEqual(fn({ a: 1 }), { a: 1, b: 2 })
+  assert.deepEqual(fn({ c: 3 }), { c: 3, b: 2 })
 })

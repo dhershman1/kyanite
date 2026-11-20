@@ -1,4 +1,5 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import propEq from '../../src/object/propEq.js'
 
 const abby = { name: 'Abby', age: 7, hair: 'blond' }
@@ -7,18 +8,16 @@ const rusty = { name: 'Rusty', age: 10, hair: 'brown' }
 const alois = { name: 'Alois', age: 15, disposition: 'surly' }
 const kids = [abby, fred, rusty, alois]
 
-test('propEq -- Basics', t => {
-  t.same(propEq('hair', 'blond', abby), true)
-  t.same(kids.filter(propEq('hair', 'brown')), [fred, rusty])
-  t.same(kids.filter(propEq('age', 10)), [rusty])
-  t.end()
+test('propEq -- Basics', () => {
+  assert.deepEqual(propEq('hair', 'blond', abby), true)
+  assert.deepEqual(kids.filter(propEq('hair', 'brown')), [fred, rusty])
+  assert.deepEqual(kids.filter(propEq('age', 10)), [rusty])
 })
 
-test('propEq -- Is curried', t => {
+test('propEq -- Is curried', () => {
   const fn = propEq('hair', 'brown')
   const gn = propEq('age')
 
-  t.same(kids.filter(fn), [fred, rusty])
-  t.same(kids.filter(gn(10)), [rusty])
-  t.end()
+  assert.deepEqual(kids.filter(fn), [fred, rusty])
+  assert.deepEqual(kids.filter(gn(10)), [rusty])
 })

@@ -1,31 +1,29 @@
 import clamp from '../../src/number/clamp.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('clamp -- Basic functionality', t => {
-  t.same(clamp(1, 900, 23), 23)
-  t.same(clamp(1, 900, 901), 900)
-  t.same(clamp(1, 900, 0), 1)
-  t.same(clamp(1, 900, 900), 900)
-  t.same(clamp(1, 900, 1), 1)
-  t.end()
+test('clamp -- Basic functionality', () => {
+  assert.deepEqual(clamp(1, 900, 23), 23)
+  assert.deepEqual(clamp(1, 900, 901), 900)
+  assert.deepEqual(clamp(1, 900, 0), 1)
+  assert.deepEqual(clamp(1, 900, 900), 900)
+  assert.deepEqual(clamp(1, 900, 1), 1)
 })
 
-test('clamp -- Is curried', t => {
+test('clamp -- Is curried', () => {
   const fn = clamp(1, 900)
 
-  t.same(fn(23), 23)
-  t.same(fn(901), 900)
-  t.same(fn(0), 1)
-  t.same(fn(900), 900)
-  t.same(fn(1), 1)
-  t.end()
+  assert.deepEqual(fn(23), 23)
+  assert.deepEqual(fn(901), 900)
+  assert.deepEqual(fn(0), 1)
+  assert.deepEqual(fn(900), 900)
+  assert.deepEqual(fn(1), 1)
 })
 
-test('clamp -- Throws error', t => {
+test('clamp -- Throws error', () => {
   try {
     clamp(900, 1, 30)
   } catch (err) {
-    t.is(err.message, 'Min cannot be greater than max in clamp')
-    t.end()
+    assert.equal(err.message, 'Min cannot be greater than max in clamp')
   }
 })
