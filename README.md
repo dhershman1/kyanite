@@ -30,12 +30,6 @@
     <img alt="codebeat badge" src="https://codebeat.co/badges/4eeb4e32-dfe2-4d12-ac1a-bd13cf31ee55" />
   </a>
 </p>
-<br />
-<p align=center>
-  <a href="https://github.com/standard/standard">
-    <img alt="Standard JS" src="https://cdn.rawgit.com/standard/standard/master/badge.svg">
-  </a>
-</p>
 
 ## Why The Name Kyanite?
 
@@ -83,20 +77,21 @@ Or installing with `npm i kyanite` and then:
 Standard module system
 
 ```js
-// This will use the module path in the package.json (src/index.js)
 import * as K from 'kyanite'
+
+// Or just the functions you need
+import { map, pipe } from 'kyanite'
 ```
 
 Common JS
 
 ```js
-// For the prod minified version
 const K = require('kyanite')
 ```
 
 ## Testing
 
-Kyanite follows the [tap](http://testanything.org/) setup using the [tape](https://github.com/substack/tape) testing suite.
+Kyanite uses the built in [Node.js test runner](https://nodejs.org/api/test.html) (`node:test`) with `node:assert`
 
 To run the tests:
 
