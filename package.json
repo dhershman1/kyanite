@@ -37,13 +37,14 @@
     "typescript": "^7.0.2"
   },
   "scripts": {
-    "prepack": "npm run create && npm run lint && npm test && npm run build",
+    "prepack": "npm run create && npm run lint && npm test && npm run test:types && npm run build",
     "create": "node scripts/create-export.js",
     "docs": "jsdoc -c jsdoc.json",
     "build": "npm run build:types && rollup -c",
     "lint": "eslint",
     "test": "node --test \"tests/**/*.spec.js\"",
     "test:cov": "c8 node --test \"tests/**/*.spec.js\"",
+    "test:types": "node node_modules/typescript/bin/tsc -p tests/types/tsconfig.json",
     "coverage": "c8 check-coverage --lines 100 --branches 100 --functions 100 --statements 100",
     "report": "c8 report --reporter=text-lcov > coverage.lcov",
     "build:types": "node node_modules/typescript/bin/tsc -p tsconfig.json"
