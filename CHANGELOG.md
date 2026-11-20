@@ -1,5 +1,31 @@
 # Changelog
 
+## v4.0.0
+
+### Breaking Changes
+
+- Kyanite is no longer transpiled down to ES5 with Babel
+  - The bundles in `dist/` now ship modern JavaScript
+  - Internet Explorer and other legacy browsers are no longer supported out of the box. If you still need them, transpile `kyanite` as part of your own build
+- The fallback `default` condition in `exports` now points at the ESM build instead of the IIFE build, which has no exports
+- The published package now only contains `dist/`, `types/`, the README, and the license
+  - `src/` is no longer shipped, it was never reachable through `exports` anyway
+
+### Changed
+
+- Simplified the build: one Rollup config now produces the ESM, CommonJS, and IIFE bundles
+  - The minified ESM bundle went from 19.9 KB (6.2 KB gzip) to 12.7 KB (4.7 KB gzip)
+- Bundle sizes are now reported by a small inline Rollup plugin instead of `rollup-plugin-filesize`
+- `scripts/create-export.js` now uses `node:fs` instead of `globby`
+- Replaced `tape` and `tap-on` with the built in `node:test` runner and `node:assert/strict`
+  - Promise based tests now `await` their results, so a failed assertion inside a `.then` can no longer be missed
+- Swapped `standard` for `neostandard`, using ESLint's flat config. Tests are now linted along with `src/`
+- Removed `@babel/*`, `@codecov/rollup-plugin`, `dotenv`, `globby`, `npm-run-all`, and `rollup-plugin-filesize`
+- Moved to `pinet` 2.0.0, and the docs now render markdown in descriptions via jsdoc's `plugins/markdown`
+- CI now runs on Node.js 22 and 24 with the latest GitHub Actions
+- All files now use LF line endings, enforced through `.gitattributes`
+- Replaced `.npmignore` with a `files` list in `package.json`
+
 ## v3.2.0
 
 ### New
