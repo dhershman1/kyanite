@@ -1,23 +1,15 @@
-import fs from 'fs/promises'
-import path from 'path'
-import { globby } from 'globby'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
-const globFiles = ['src/**/*.js', '!src/index.js', '!src/common.js', '!src/_internals']
-const files = await globby(globFiles)
+// Every public function lives at src/<category>/<name>.js, src/_internals holds private helpers
+const files = (await fs.readdir('src', { recursive: true }))
+  .map(f => f.split(path.sep).join('/'))
+  .filter(f => f.endsWith('.js') && f.includes('/') && !f.startsWith('_internals/'))
+  .sort()
 
-const buildRes = type =>
-  files.sort().map(f => {
-    const { dir, base, name } = path.parse(f)
-    const src = `./${dir.replace('src/', '')}/${base}`
+const exportsList = files
+  .map(f => `export { default as ${path.posix.parse(f).name} } from './${f}'`)
+  .join('\n')
 
-    if (type === 'standard') {
-      return `export { default as ${name} } from '${src}'`
-    }
-
-    return `  ${name}: require('${src}'),`
-  }).join('\n')
-
-// Build Exports
-fs.writeFile('src/index.js', `${buildRes('standard')}\n`)
-  .then(() => console.log('Finished Writing Exports... Wrapping up...'))
-  .catch(console.error)
+await fs.writeFile('src/index.js', `${exportsList}\n`)
+console.log('Finished Writing Exports... Wrapping up...')
