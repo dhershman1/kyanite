@@ -1,13 +1,13 @@
 /**
  * A transformer wrapper for transducers
  * @private
- * @param {Function} fn The function to wrap
- * @return {Object} The wrapped function
+ * @param {(a: any, b: any) => any} fn The function to wrap
+ * @return {any} The wrapped function
  */
 export default function _xwrap (fn) {
   return {
     '@@transducer/init': () => { throw new Error('init not implemented on XWrap') },
-    '@@transducer/result': acc => acc,
-    '@@transducer/step': (acc, x) => fn(acc, x)
+    '@@transducer/result': (/** @type {any} */ acc) => acc,
+    '@@transducer/step': (/** @type {any} */ acc, /** @type {any} */ x) => fn(acc, x)
   }
 }
