@@ -17,7 +17,8 @@
   "sourceType": "module",
   "plugins": [
     "plugins/markdown",
-    "node_modules/pinet/tags.js"
+    "node_modules/pinet/tags.js",
+    "scripts/jsdoc-strip-types.cjs"
   ],
   "opts": {
     "encoding": "utf8",
