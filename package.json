@@ -5,45 +5,48 @@
   "main": "dist/kyanite.min.cjs",
   "type": "module",
   "module": "dist/kyanite.min.js",
+  "types": "dist/kyanite.d.ts",
   "unpkg": "dist/kyanite.iife.min.js",
   "jsdelivr": "dist/kyanite.iife.min.js",
-  "typings": "types/index.d.ts",
   "exports": {
     ".": {
       "require": {
-        "types": "./types/index.d.cts",
+        "types": "./dist/kyanite.d.cts",
         "default": "./dist/kyanite.min.cjs"
       },
       "import": {
-        "types": "./types/index.d.ts",
+        "types": "./dist/kyanite.d.ts",
         "default": "./dist/kyanite.min.js"
       },
       "default": {
-        "types": "./types/index.d.ts",
+        "types": "./dist/kyanite.d.ts",
         "default": "./dist/kyanite.min.js"
       }
     }
   },
   "devDependencies": {
     "@rollup/plugin-terser": "1.0.2",
+    "@typescript/typescript6": "^6.0.2",
     "c8": "^12.0.0",
     "eslint": "10.15.0",
     "jsdoc": "4.0.5",
     "neostandard": "0.14.1",
     "pinet": "2.0.0",
-    "rollup": "4.68.5"
+    "rollup": "4.68.5",
+    "rollup-plugin-dts": "^6.5.1",
+    "typescript": "^7.0.2"
   },
   "scripts": {
     "prepack": "npm run create && npm run lint && npm test && npm run build",
     "create": "node scripts/create-export.js",
     "docs": "jsdoc -c jsdoc.json",
-    "build": "rollup -c",
+    "build": "npm run build:types && rollup -c",
     "lint": "eslint",
     "test": "node --test \"tests/**/*.spec.js\"",
     "test:cov": "c8 node --test \"tests/**/*.spec.js\"",
     "coverage": "c8 check-coverage --lines 100 --branches 100 --functions 100 --statements 100",
     "report": "c8 report --reporter=text-lcov > coverage.lcov",
-    "ts": "tsc -p types/tsconfig.json"
+    "build:types": "node node_modules/typescript/bin/tsc -p tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -74,9 +77,7 @@
   },
   "homepage": "https://kyanite.dusty.codes",
   "files": [
-    "dist/",
-    "types/index.d.ts",
-    "types/index.d.cts"
+    "dist/"
   ],
   "overrides": {
     "test-exclude": {
