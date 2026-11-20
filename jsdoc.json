@@ -8,10 +8,15 @@
       "src/",
       "package.json",
       "./README.md"
+    ],
+    "exclude": [
+      "src/_internals",
+      "src/index.js"
     ]
   },
   "sourceType": "module",
   "plugins": [
+    "plugins/markdown",
     "node_modules/pinet/tags.js"
   ],
   "opts": {
