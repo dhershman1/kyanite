@@ -73,7 +73,8 @@
   - Run a list through several steps in a single pass, without building a new list for each step, and stop as soon as there's nothing left to do
   - Added `transduce(xf, fn, acc, list)`. `xf` is an array of transducers that each value goes through in order (like `pipe`), `fn` is a reducer like the one `reduce` takes
   - Added `into(acc, xf, list)`, which collects the results into a copy of an array, a string, or an object (from `[key, value]` pairs) without writing a reducer
-  - `map`, `filter`, and `take` work as transducers when used in `transduce` or `into`, with their list left off: `into([], [map(inc), filter(isEven), take(3)], list)`
+  - `map`, `filter`, `reject`, `take`, `takeWhile`, `drop`, `dropWhile`, `uniq`, `uniqBy`, `concatMap`, and `pluck` work as transducers when used in `transduce` or `into`, with their list left off: `into([], [map(inc), filter(isEven), take(3)], list)`
+    - `uniq` already takes just the list, so it goes in as is: `into([], [map(f), uniq], list)`
   - Both work with any iterable, including generators that never end, since `take` stops reading once it has enough
   - Kyanite follows the standard transducer protocol (`@@transducer/init`, `step`, and `result`), so transducers and transformers from other libraries that follow it work with `transduce`, and Kyanite's work with theirs
   - `reduced` can stop a `transduce` early from the reducer, the same way it stops `reduce`
@@ -107,6 +108,7 @@
 - Performance! With the introduction of the transducer flows, overall performance for things like `reduce`, `reduceRight` which can call reducer directly isntead of going through the wrapper object
   - Measured on a 1000 item list, `filter` is about 40% faster, `find` about 4.5x, and `pipe` about 6x
   - `map` sets each value directly instead of through an internal curried helper, making it about twice as fast
+  - `concatMap` adds to one result array instead of copying the whole result for every value, which made it slower the longer the list got. It's about 25x faster on a 100 item list, and 65x on a 1000 item list
 - `eq` now uses `Object.is`, which is the same SameValue comparison it implemented by hand (`+0` and `-0` are different, `NaN` equals `NaN`)
 
 ### Fixed
@@ -125,6 +127,7 @@
   - `on` called its partial form with a string where it expected a function
   - `omitBy` passed a list of keys instead of a predicate function
   - `adjust` had a missing quote
+  - `uniqBy` showed `[3, 4, 5]` as the result of `uniqBy(x => x > 2, [1, 2, 3, 4, 5])`, it's `[1, 3]`, the first value for `false` and the first for `true`
   - `isEmpty` claimed `NaN`, `true`, and `false` return `true`. Like `count`, it throws a `TypeError` for types that aren't collections, and the docs now say so
 - `concat`'s docs now show that an array value is joined in, the same way `Array.prototype.concat` works
 - The tests for `isEmpty` and `count` throwing on unsupported types now use `assert.throws`. Before, they would also have passed if nothing was thrown
