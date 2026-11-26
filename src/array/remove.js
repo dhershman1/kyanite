@@ -2,6 +2,10 @@ import concatMap from './concatMap.js'
 import _curry2 from '../_internals/_curry2.js'
 import identity from '../function/identity.js'
 
+/** @private @type {<T = any>(i: number, x: ReadonlyArray<T>) => T[]} */
+const remove = (i, x) =>
+  concatMap(identity, [x.slice(0, i), x.slice(i + 1)])
+
 /**
  * @name remove
  * @function
@@ -23,7 +27,7 @@ import identity from '../function/identity.js'
  * const remover = remove(2)
  * const test = remover([1, 2, 3, 4]) // => [1, 2, 4]
  */
-const remove = (i, x) =>
-  concatMap(identity, [x.slice(0, i), x.slice(i + 1)])
-
-export default _curry2(remove)
+export default /** @type {{
+  (i: number): <T = any>(x: ReadonlyArray<T>) => T[]
+  <T = any>(i: number, x: ReadonlyArray<T>): T[]
+}} */ (_curry2(remove))

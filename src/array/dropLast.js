@@ -1,6 +1,9 @@
 import _curry2 from '../_internals/_curry2.js'
 import take from './take.js'
 
+/** @private @type {<T = any>(n: number, list: ReadonlyArray<T> | string) => T[] | string} */
+const dropLast = (n, list) => take(n < list.length ? list.length - n : 0, list)
+
 /**
  * @name dropLast
  * @since v2.1.0
@@ -23,6 +26,7 @@ import take from './take.js'
  *
  * d([1, 2, 3, 4, 5]) // => [1, 2]
  */
-const dropLast = (n, list) => take(n < list.length ? list.length - n : 0, list)
-
-export default _curry2(dropLast)
+export default /** @type {{
+  <T = any>(n: number): (list: ReadonlyArray<T> | string) => T[] | string
+  <T = any>(n: number, list: ReadonlyArray<T> | string): T[] | string
+}} */ (_curry2(dropLast))

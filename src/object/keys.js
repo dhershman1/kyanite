@@ -1,3 +1,25 @@
+/** @private @type {(obj: unknown) => string[]} */
+const keys = obj => {
+  if (typeof Object.keys === 'function') {
+    return Object(obj) !== obj ? [] : Object.keys(/** @type {object} */ (obj))
+  }
+
+  if (Object(obj) !== obj) {
+    return []
+  }
+
+  /** @type {string[]} */
+  const ks = []
+
+  for (const prop in /** @type {object} */ (obj)) {
+    if (Object.prototype.hasOwnProperty.call(obj, prop) && prop !== 'length') {
+      ks.push(prop)
+    }
+  }
+
+  return ks
+}
+
 /**
  * @name keys
  * @function
@@ -13,24 +35,6 @@
  *
  * keys({ a: 1, b: 2, c: 3, d: { x: 100, y: 200 } }) // => ['a', 'b', 'c', 'd']
  */
-const keys = obj => {
-  if (typeof Object.keys === 'function') {
-    return Object(obj) !== obj ? [] : Object.keys(obj)
-  }
-
-  if (Object(obj) !== obj) {
-    return []
-  }
-
-  const ks = []
-
-  for (const prop in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, prop) && prop !== 'length') {
-      ks.push(prop)
-    }
-  }
-
-  return ks
-}
-
-export default keys
+export default /** @type {{
+  (obj: unknown): string[]
+}} */ (keys)

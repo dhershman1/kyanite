@@ -1,3 +1,6 @@
+/** @private @type {(x: any) => boolean} */
+const not = x => !x
+
 /**
  * @name not
  * @function
@@ -13,6 +16,6 @@
  *
  * const reverse = not(true) // => false
  */
-const not = x => !x
-
-export default not
+export default /** @type {{
+  (x: any): boolean
+}} */ (not)

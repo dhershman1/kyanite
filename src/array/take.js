@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T = any>(i: number, list: ReadonlyArray<T> | string) => T[] | string} */
+const take = (i, list) => list.slice(0, i)
+
 /**
  * @name take
  * @function
@@ -22,6 +25,7 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * t([1, 2, 3, 4, 5]) // => [1, 2, 3]
  */
-const take = (i, list) => list.slice(0, i)
-
-export default _curry2(take)
+export default /** @type {{
+  <T = any>(i: number): (list: ReadonlyArray<T> | string) => T[] | string
+  <T = any>(i: number, list: ReadonlyArray<T> | string): T[] | string
+}} */ (_curry2(take))

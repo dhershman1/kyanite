@@ -1,5 +1,22 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {<T = any>(idx: number, fn: (a: T) => T, list: ReadonlyArray<T>) => T[]} */
+const adjust = (idx, fn, list) => {
+  const len = list.length
+
+  if (idx >= len || idx < -len) {
+    // Out of bounds hands back the list it was given
+    return /** @type {any} */ (list)
+  }
+
+  const _idx = (len + idx) % len
+  const _list = [...list]
+
+  _list[_idx] = fn(_list[_idx])
+
+  return _list
+}
+
 /**
  * @name adjust
  * @since v3.0.0
@@ -23,19 +40,11 @@ import _curry3 from '../_internals/_curry3.js'
  *
  * fn(toUpper, ['a', 'b', 'c']) // => ['a', 'B', 'c]
  */
-const adjust = (idx, fn, list) => {
-  const len = list.length
-
-  if (idx >= len || idx < -len) {
-    return list
+export default /** @type {{
+  (idx: number): {
+    <T = any>(fn: (a: T) => T): (list: ReadonlyArray<T>) => T[]
+    <T = any>(fn: (a: T) => T, list: ReadonlyArray<T>): T[]
   }
-
-  const _idx = (len + idx) % len
-  const _list = [...list]
-
-  _list[_idx] = fn(_list[_idx])
-
-  return _list
-}
-
-export default _curry3(adjust)
+  <T = any>(idx: number, fn: (a: T) => T): (list: ReadonlyArray<T>) => T[]
+  <T = any>(idx: number, fn: (a: T) => T, list: ReadonlyArray<T>): T[]
+}} */ (_curry3(adjust))

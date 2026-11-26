@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(a: number, b: number) => boolean} */
+const gt = (a, b) => b > a
+
 /**
  * @name gt
  * @function
@@ -23,6 +26,7 @@ import _curry2 from '../_internals/_curry2.js'
  * fn(1) // => true
  * fn(2) // => false
  */
-const gt = (a, b) => b > a
-
-export default _curry2(gt)
+export default /** @type {{
+  (a: number): (b: number) => boolean
+  (a: number, b: number): boolean
+}} */ (_curry2(gt))

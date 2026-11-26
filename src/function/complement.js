@@ -1,6 +1,9 @@
 import _curry2 from '../_internals/_curry2.js'
 import not from './not.js'
 
+/** @private @type {<T = any>(fn: (data: T) => boolean, a: T) => boolean} */
+const complement = (fn, a) => not(fn(a))
+
 /**
  * @name complement
  * @function
@@ -25,6 +28,7 @@ import not from './not.js'
  * notGtTen(11) // => false
  * notGtTen(10) // => true
  */
-const complement = (fn, a) => not(fn(a))
-
-export default _curry2(complement)
+export default /** @type {{
+  <T = any>(fn: (data: T) => boolean): (a: T) => boolean
+  <T = any>(fn: (data: T) => boolean, a: T): boolean
+}} */ (_curry2(complement))

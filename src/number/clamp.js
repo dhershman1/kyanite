@@ -1,5 +1,18 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {(min: number, max: number, n: number) => number} */
+const clamp = (min, max, val) => {
+  if (min > max) {
+    throw new Error('Min cannot be greater than max in clamp')
+  }
+
+  if (val > min && val < max) {
+    return val
+  }
+
+  return val <= min ? min : max
+}
+
 /**
  * @name clamp
  * @function
@@ -24,16 +37,11 @@ import _curry3 from '../_internals/_curry3.js'
  * fn(901) // => 900
  * fn(0) // => 1
  */
-const clamp = (min, max, val) => {
-  if (min > max) {
-    throw new Error('Min cannot be greater than max in clamp')
+export default /** @type {{
+  (min: number): {
+    (max: number): (n: number) => number
+    (max: number, n: number): number
   }
-
-  if (val > min && val < max) {
-    return val
-  }
-
-  return val <= min ? min : max
-}
-
-export default _curry3(clamp)
+  (min: number, max: number): (n: number) => number
+  (min: number, max: number, n: number): number
+}} */ (_curry3(clamp))

@@ -1,3 +1,6 @@
+/** @private @type {(str: string) => string} */
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
+
 /**
  * @name capitalize
  * @function
@@ -14,6 +17,6 @@
  * capitalize('test') // => 'Test'
  * capitalize('small brown cow') // => 'Small brown cow'
  */
-const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
-
-export default capitalize
+export default /** @type {{
+  (str: string): string
+}} */ (capitalize)

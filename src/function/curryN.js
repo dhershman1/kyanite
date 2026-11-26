@@ -1,3 +1,12 @@
+/** @private @type {(n: number, fn: (...args: any[]) => any, ...args: any[]) => any} */
+const curryN = (n, f, ...args) => {
+  if (n <= 0) {
+    return f(...args)
+  }
+
+  return (/** @type {any[]} */ ...rest) => curryN(n - rest.length, f, ...args, ...rest)
+}
+
 /**
  * @name curryN
  * @function
@@ -38,12 +47,6 @@
  * bar() // => [Function]
  * bar(null) // => 1
  */
-const curryN = (n, f, ...args) => {
-  if (n <= 0) {
-    return f(...args)
-  }
-
-  return (...rest) => curryN(n - rest.length, f, ...args, ...rest)
-}
-
-export default curryN
+export default /** @type {{
+  (n: number, fn: (...args: any[]) => any): (...a: any[]) => any
+}} */ (curryN)

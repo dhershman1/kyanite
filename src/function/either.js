@@ -1,4 +1,8 @@
 import _curry3 from '../_internals/_curry3.js'
+/** @import { Pred } from '../_internals/_types.js' */
+
+/** @private @type {(fn: Pred, gn: Pred, a: any) => boolean} */
+const either = (fn, gn, a) => fn(a) || gn(a)
 
 /**
  * @name either
@@ -25,6 +29,11 @@ import _curry3 from '../_internals/_curry3.js'
  * e(9) // => true
  * e(11) // => true
  */
-const either = (fn, gn, a) => fn(a) || gn(a)
-
-export default _curry3(either)
+export default /** @type {{
+  (fn: Pred): {
+    (gn: Pred): (a: any) => boolean
+    (gn: Pred, a: any): boolean
+  }
+  (fn: Pred, gn: Pred): (a: any) => boolean
+  (fn: Pred, gn: Pred, a: any): boolean
+}} */ (_curry3(either))

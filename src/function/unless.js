@@ -1,5 +1,9 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {<T = any, U = any>(fn: (a: T) => boolean, act: (a: T) => U, x: T) => T | U} */
+const unless = (fn, act, x) =>
+  fn(x) ? x : act(x)
+
 /**
  * @name unless
  * @function
@@ -24,7 +28,11 @@ import _curry3 from '../_internals/_curry3.js'
  * un(5) // => 5
  * un(1) // => 2
  */
-const unless = (fn, act, x) =>
-  fn(x) ? x : act(x)
-
-export default _curry3(unless)
+export default /** @type {{
+  <T = any>(fn: (a: T) => boolean): {
+    <U = any>(act: (a: T) => U): (x: T) => T | U
+    <U = any>(act: (a: T) => U, x: T): T | U
+  }
+  <T = any, U = any>(fn: (a: T) => boolean, act: (a: T) => U): (x: T) => T | U
+  <T = any, U = any>(fn: (a: T) => boolean, act: (a: T) => U, x: T): T | U
+}} */ (_curry3(unless))

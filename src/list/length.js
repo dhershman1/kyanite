@@ -1,3 +1,6 @@
+/** @private @type {(a: string | ReadonlyArray<any>) => number} */
+const length = a => a.length
+
 /**
  * @name length
  * @function
@@ -16,6 +19,6 @@
  * length([1, 2, 3, 4]) // => 4
  * length([]) // => 0
  */
-const length = a => a.length
-
-export default length
+export default /** @type {{
+  (a: string | ReadonlyArray<any>): number
+}} */ (length)

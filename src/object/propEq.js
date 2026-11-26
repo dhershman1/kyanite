@@ -3,6 +3,9 @@ import eq from '../function/eq.js'
 import compose from '../function/compose.js'
 import prop from './prop.js'
 
+/** @private @type {<T = any>(key: PropertyKey, val: T, obj: object) => boolean} */
+const propEq = (key, val, obj) => compose(eq(val), /** @type {(a: any) => any} */ (prop(key)), obj)
+
 /**
  * @name propEq
  * @function
@@ -35,6 +38,11 @@ import prop from './prop.js'
  * kids.filter(fn('blond')) // => [abby]
  * kids.filter(gn) // => [fred, rusty]
  */
-const propEq = (key, val, obj) => compose(eq(val), prop(key), obj)
-
-export default _curry3(propEq)
+export default /** @type {{
+  (key: PropertyKey): {
+    <T = any>(val: T): (obj: object) => boolean
+    <T = any>(val: T, obj: object): boolean
+  }
+  <T = any>(key: PropertyKey, val: T): (obj: object) => boolean
+  <T = any>(key: PropertyKey, val: T, obj: object): boolean
+}} */ (_curry3(propEq))

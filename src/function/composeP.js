@@ -1,5 +1,9 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {<T = any, R1 = any, R2 = any>(fn: (data: R1) => Promise<R2>, gn: (data: T) => Promise<R1>, data: T) => Promise<R2>} */
+const composeP = (fn, gn, a) =>
+  gn(a).then(fn)
+
 /**
  * @name composeP
  * @function
@@ -25,7 +29,11 @@ import _curry3 from '../_internals/_curry3.js'
  * fn('100').then(console.log) // => '100123555'
  *
  */
-const composeP = (fn, gn, a) =>
-  gn(a).then(fn)
-
-export default _curry3(composeP)
+export default /** @type {{
+  <R1 = any, R2 = any>(fn: (data: R1) => Promise<R2>): {
+    <T = any>(gn: (data: T) => Promise<R1>): (data: T) => Promise<R2>
+    <T = any>(gn: (data: T) => Promise<R1>, data: T): Promise<R2>
+  }
+  <T = any, R1 = any, R2 = any>(fn: (data: R1) => Promise<R2>, gn: (data: T) => Promise<R1>): (data: T) => Promise<R2>
+  <T = any, R1 = any, R2 = any>(fn: (data: R1) => Promise<R2>, gn: (data: T) => Promise<R1>, data: T): Promise<R2>
+}} */ (_curry3(composeP))

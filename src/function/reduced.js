@@ -1,4 +1,5 @@
 import _reduced from '../_internals/_reduced.js'
+/** @import { Reduced } from '../_internals/_types.js' */
 
 /**
  * @name reduced
@@ -30,4 +31,6 @@ import _reduced from '../_internals/_reduced.js'
  * fn(20) // => 19
  * fn(10) // => 10
  */
-export default _reduced
+export default /** @type {{
+  <T = any>(x: T): Reduced<T>
+}} */ (_reduced)

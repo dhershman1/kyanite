@@ -1,6 +1,13 @@
 import _curry2 from '../_internals/_curry2.js'
 import _assocǃ from '../_internals/_assocǃ.js'
 
+/** @private @type {<V = any>(x: ReadonlyArray<PropertyKey>, y: ReadonlyArray<V>) => { [key: string]: V }} */
+const zip = (x, y) => {
+  const arr = x.length < y.length ? x : y
+
+  return arr.reduce((acc, _, i) => _assocǃ(acc, x[i], y[i]), {})
+}
+
 /**
  * @name zip
  * @function
@@ -26,10 +33,7 @@ import _assocǃ from '../_internals/_assocǃ.js'
  * z([1, 2, 3, 4]) // => { a: 1, b: 2, c: 3 }
  * z([1, 2]) // => { a: 1, b: 2 }
  */
-const zip = (x, y) => {
-  const arr = x.length < y.length ? x : y
-
-  return arr.reduce((acc, _, i) => _assocǃ(acc, x[i], y[i]), {})
-}
-
-export default _curry2(zip)
+export default /** @type {{
+  (x: ReadonlyArray<PropertyKey>): <V = any>(y: ReadonlyArray<V>) => { [key: string]: V }
+  <V = any>(x: ReadonlyArray<PropertyKey>, y: ReadonlyArray<V>): { [key: string]: V }
+}} */ (_curry2(zip))

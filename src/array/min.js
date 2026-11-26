@@ -1,4 +1,8 @@
 import fold from './fold.js'
+/** @import { Ord } from '../_internals/_types.js' */
+
+// const min = list => list.reduce((a, b) => a <= b ? a : b)
+const min = fold((a, b) => a <= b ? a : b)
 
 /**
  * @name min
@@ -16,7 +20,6 @@ import fold from './fold.js'
  * min([1, 3, 2, 5, 4]) // => 1
  * min(['c', 'a', 'b', 'f']) // => 'a'
  */
-// const min = list => list.reduce((a, b) => a <= b ? a : b)
-const min = fold((a, b) => a <= b ? a : b)
-
-export default min
+export default /** @type {{
+  <T extends Ord>(list: ReadonlyArray<T>): T
+}} */ (min)

@@ -1,5 +1,22 @@
 import _reduce from '../_internals/_reduce.js'
 import _assocǃ from '../_internals/_assocǃ.js'
+/** @import { KeyValuePair } from '../_internals/_types.js' */
+
+/**
+ * @private
+ * @type {{
+ *   <V>(pairs: Array<KeyValuePair<string, V>>): { [index: string]: V }
+ *   <V>(pairs: Array<KeyValuePair<number, V>>): { [index: number]: V }
+ * }}
+ */
+const fromPairs = pairs =>
+  _reduce(([key, value], acc) => {
+    if (!key) {
+      return acc
+    }
+
+    return _assocǃ(acc, key, value)
+  }, {}, pairs)
 
 /**
  * @name fromPairs
@@ -18,13 +35,7 @@ import _assocǃ from '../_internals/_assocǃ.js'
  * fromPairs([]) // => {}
  * fromPairs([[]]) // => {}
  */
-const fromPairs = pairs =>
-  _reduce(([key, value], acc) => {
-    if (!key) {
-      return acc
-    }
-
-    return _assocǃ(acc, key, value)
-  }, {}, pairs)
-
-export default fromPairs
+export default /** @type {{
+  <V>(pairs: Array<KeyValuePair<string, V>>): { [index: string]: V }
+  <V>(pairs: Array<KeyValuePair<number, V>>): { [index: number]: V }
+}} */ (fromPairs)

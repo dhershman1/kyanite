@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(a: number, b: number) => number} */
+const add = (a, b) => a + b
+
 /**
  * @name add
  * @since v0.1.0
@@ -23,6 +26,7 @@ import _curry2 from '../_internals/_curry2.js'
  * adder(3) // => 5
  * adder(2) // => 4
  */
-const add = (a, b) => a + b
-
-export default _curry2(add)
+export default /** @type {{
+  (a: number): (b: number) => number
+  (a: number, b: number): number
+}} */ (_curry2(add))

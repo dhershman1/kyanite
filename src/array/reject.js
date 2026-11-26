@@ -2,6 +2,9 @@ import _curry2 from '../_internals/_curry2.js'
 import complement from '../function/complement.js'
 import filter from './filter.js'
 
+/** @private @type {<T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>) => T[]} */
+const reject = (fn, arr) => filter(complement(fn), arr)
+
 /**
  * @name reject
  * @function
@@ -28,6 +31,7 @@ import filter from './filter.js'
  *
  * rejecter([1, 2, 3, 4]) // => [1, 3]
  */
-const reject = (fn, arr) => filter(complement(fn), arr)
-
-export default _curry2(reject)
+export default /** @type {{
+  <T = any>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => T[]
+  <T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>): T[]
+}} */ (_curry2(reject))

@@ -1,5 +1,16 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T = any>(fn: (a: T) => boolean, list: ArrayLike<T>) => number} */
+const findIndex = (fn, list) => {
+  for (let i = 0, len = list.length; i < len; i++) {
+    if (fn(list[i])) {
+      return i
+    }
+  }
+
+  return -1
+}
+
 /**
  * @name findIndex
  * @function
@@ -21,14 +32,7 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * f([1, 2, 3, 4, 5, 6]) // => 5
  */
-const findIndex = (fn, list) => {
-  for (let i = 0, len = list.length; i < len; i++) {
-    if (fn(list[i])) {
-      return i
-    }
-  }
-
-  return -1
-}
-
-export default _curry2(findIndex)
+export default /** @type {{
+  <T = any>(fn: (a: T) => boolean): (list: ArrayLike<T>) => number
+  <T = any>(fn: (a: T) => boolean, list: ArrayLike<T>): number
+}} */ (_curry2(findIndex))

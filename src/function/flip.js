@@ -1,5 +1,8 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {<T, U, TResult>(fn: (arg1: U, arg0: T) => TResult, a: T, b: U) => TResult} */
+const flip = (fn, a, b) => fn(b, a)
+
 /**
  * @name flip
  * @function
@@ -24,6 +27,11 @@ import _curry3 from '../_internals/_curry3.js'
  * _gt(1, 2) // => false
  * _gt(2, 1) // => true
  */
-const flip = (fn, a, b) => fn(b, a)
-
-export default _curry3(flip)
+export default /** @type {{
+  <T, U, TResult>(fn: (arg1: U, arg0: T) => TResult): {
+    (a: T): (b: U) => TResult
+    (a: T, b: U): TResult
+  }
+  <T, U, TResult>(fn: (arg1: U, arg0: T) => TResult, a: T): (b: U) => TResult
+  <T, U, TResult>(fn: (arg1: U, arg0: T) => TResult, a: T, b: U): TResult
+}} */ (_curry3(flip))

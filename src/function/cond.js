@@ -1,6 +1,18 @@
 import _curry2 from '../_internals/_curry2.js'
 import _reduce from '../_internals/_reduce.js'
 import _reduced from '../_internals/_reduced.js'
+/** @import { Pred } from '../_internals/_types.js' */
+
+/** @private @type {(preds: Array<[Pred, (...a: readonly any[]) => any]>, value: any) => any} */
+const cond = (preds, value) => {
+  return _reduce(([check, act], acc) => {
+    if (check(value)) {
+      return _reduced(act(value))
+    }
+
+    return acc
+  }, null, preds)
+}
 
 /**
  * @name cond
@@ -34,14 +46,7 @@ import _reduced from '../_internals/_reduced.js'
  * fn(2) // => 'It is a two!'
  * fn(3) // => 'It was nothing special'
  */
-const cond = (preds, value) => {
-  return _reduce(([check, act], acc) => {
-    if (check(value)) {
-      return _reduced(act(value))
-    }
-
-    return acc
-  }, null, preds)
-}
-
-export default _curry2(cond)
+export default /** @type {{
+  (preds: Array<[Pred, (...a: readonly any[]) => any]>): (value: any) => any
+  (preds: Array<[Pred, (...a: readonly any[]) => any]>, value: any): any
+}} */ (_curry2(cond))

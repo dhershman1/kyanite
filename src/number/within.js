@@ -1,5 +1,8 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {(min: number, max: number, n: number) => boolean} */
+const within = (min, max, n) => min < n && max > n
+
 /**
  * @name within
  * @since v0.11.0
@@ -24,6 +27,11 @@ import _curry3 from '../_internals/_curry3.js'
  * fn(10) // => false
  * fn(1) // => false
  */
-const within = (min, max, n) => min < n && max > n
-
-export default _curry3(within)
+export default /** @type {{
+  (min: number): {
+    (max: number): (n: number) => boolean
+    (max: number, n: number): boolean
+  }
+  (min: number, max: number): (n: number) => boolean
+  (min: number, max: number, n: number): boolean
+}} */ (_curry3(within))

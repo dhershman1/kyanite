@@ -1,6 +1,13 @@
 import _curry2 from '../_internals/_curry2.js'
 import findIndex from './findIndex.js'
 
+/** @private @type {<T = any>(fn: (x: T) => boolean, list: ReadonlyArray<T> | string) => T[] | string} */
+const takeWhile = (fn, arr) => {
+  const i = findIndex(x => !fn(x), /** @type {ArrayLike<any>} */ (arr))
+
+  return /** @type {any} */ (i < 0 ? arr : arr.slice(0, i))
+}
+
 /**
  * @name takeWhile
  * @function
@@ -22,10 +29,7 @@ import findIndex from './findIndex.js'
  * fn([1, 2, 3, 4, 5]) // => [1, 2, 3]
  * fn([3, 4, 5]) // => [3]
  */
-const takeWhile = (fn, arr) => {
-  const i = findIndex(x => !fn(x), arr)
-
-  return i < 0 ? arr : arr.slice(0, i)
-}
-
-export default _curry2(takeWhile)
+export default /** @type {{
+  <T = any>(fn: (x: T) => boolean): (list: ReadonlyArray<T> | string) => T[] | string
+  <T = any>(fn: (x: T) => boolean, list: ReadonlyArray<T> | string): T[] | string
+}} */ (_curry2(takeWhile))

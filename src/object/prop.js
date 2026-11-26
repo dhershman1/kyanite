@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<P extends PropertyKey, T>(p: P, obj: T) => P extends keyof NonNullable<T> ? NonNullable<T>[P] | (T extends null | undefined ? undefined : never) : undefined} */
+const prop = (p, obj) => obj ? /** @type {any} */ (obj)[p] : undefined
+
 /**
  * @name prop
  * @function
@@ -25,6 +28,7 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * proper({ a: 1, b: 2 }) // => 1
  */
-const prop = (p, obj) => obj ? obj[p] : undefined
-
-export default _curry2(prop)
+export default /** @type {{
+  <P extends PropertyKey>(p: P): <T>(obj: T) => P extends keyof NonNullable<T> ? NonNullable<T>[P] | (T extends null | undefined ? undefined : never) : undefined
+  <P extends PropertyKey, T>(p: P, obj: T): P extends keyof NonNullable<T> ? NonNullable<T>[P] | (T extends null | undefined ? undefined : never) : undefined
+}} */ (_curry2(prop))

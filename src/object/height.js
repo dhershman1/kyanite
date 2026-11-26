@@ -2,6 +2,8 @@ import compose from '../function/compose.js'
 import length from '../list/length.js'
 import values from './values.js'
 
+const height = compose(length, values)
+
 /**
  * @name height
  * @function
@@ -16,6 +18,6 @@ import values from './values.js'
  *
  * height({ a: 1, b: 2 }) // => 2
  */
-const height = compose(length, values)
-
-export default height
+export default /** @type {{
+  <T = any>(obj: T): number
+}} */ (height)

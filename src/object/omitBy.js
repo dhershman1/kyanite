@@ -3,6 +3,10 @@ import _assocǃ from '../_internals/_assocǃ.js'
 import _reduce from '../_internals/_reduce.js'
 import keys from './keys.js'
 
+/** @private @type {<T extends object>(fn: (value: any, key: string) => boolean, obj: T) => Partial<T>} */
+const omitBy = (fn, obj) =>
+  _reduce((k, acc) => fn(/** @type {any} */ (obj)[k], k) ? _assocǃ(acc, k, /** @type {any} */ (obj)[k]) : acc, {}, keys(obj))
+
 /**
  * @name omitBy
  * @function
@@ -27,7 +31,7 @@ import keys from './keys.js'
  *
  * omitKeys({ test: '3432', thing: 123 }) // => { thing: 123 }
  */
-const omitBy = (fn, obj) =>
-  _reduce((k, acc) => fn(obj[k], k) ? _assocǃ(acc, k, obj[k]) : acc, {}, keys(obj))
-
-export default _curry2(omitBy)
+export default /** @type {{
+  (fn: (value: any, key: string) => boolean): <T extends object>(obj: T) => Partial<T>
+  <T extends object>(fn: (value: any, key: string) => boolean, obj: T): Partial<T>
+}} */ (_curry2(omitBy))

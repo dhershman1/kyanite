@@ -1,3 +1,6 @@
+/** @private @type {(a: string) => string} */
+const toUpper = a => a.toUpperCase()
+
 /**
  * @name toUpper
  * @function
@@ -13,6 +16,6 @@
  * toUpper('hi') // => 'HI'
  * toUpper('test.123.hello') // => 'TEST.123.HELLO'
  */
-const toUpper = a => a.toUpperCase()
-
-export default toUpper
+export default /** @type {{
+  (a: string): string
+}} */ (toUpper)

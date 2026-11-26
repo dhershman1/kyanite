@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(reg: RegExp, str: string) => boolean} */
+const test = (reg, str) => reg.test(str)
+
 /**
  * @name test
  * @since v0.10.2
@@ -23,6 +26,7 @@ import _curry2 from '../_internals/_curry2.js'
  * fn('abc') // => true
  * fn('bca') // => false
  */
-const test = (reg, str) => reg.test(str)
-
-export default _curry2(test)
+export default /** @type {{
+  (reg: RegExp): (str: string) => boolean
+  (reg: RegExp, str: string): boolean
+}} */ (_curry2(test))

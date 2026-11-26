@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(a: number, b: number) => number} */
+const pow = (a, b) => b ** a
+
 /**
  * @name pow
  * @function
@@ -21,6 +24,7 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * p(7) // => 343
  */
-const pow = (a, b) => b ** a
-
-export default _curry2(pow)
+export default /** @type {{
+  (a: number): (b: number) => number
+  (a: number, b: number): number
+}} */ (_curry2(pow))

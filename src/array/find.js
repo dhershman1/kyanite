@@ -2,6 +2,11 @@ import _curry2 from '../_internals/_curry2.js'
 import _reduce from '../_internals/_reduce.js'
 import _reduced from '../_internals/_reduced.js'
 
+/** @private @type {<T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>) => T | undefined} */
+const find = (fn, arr) =>
+  _reduce((val, acc) =>
+    fn(val) ? _reduced(val) : acc, undefined, arr)
+
 /**
  * @name find
  * @function
@@ -25,8 +30,7 @@ import _reduced from '../_internals/_reduced.js'
  *
  * fn([{val: 'test'}, {val: 'none'}]) // => { val: 'test' }
  */
-const find = (fn, arr) =>
-  _reduce((val, acc) =>
-    fn(val) ? _reduced(val) : acc, undefined, arr)
-
-export default _curry2(find)
+export default /** @type {{
+  <T = any>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => T | undefined
+  <T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>): T | undefined
+}} */ (_curry2(find))

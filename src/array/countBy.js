@@ -2,6 +2,15 @@ import _curry2 from '../_internals/_curry2.js'
 import _assocǃ from '../_internals/_assocǃ.js'
 import _reduce from '../_internals/_reduce.js'
 
+/** @private @type {<T = any>(fn: (a: T) => string | number, arr: ReadonlyArray<T>) => { [index: string]: number }} */
+const countBy = (fn, arr) =>
+  _reduce((a, acc) => {
+    const k = fn(a)
+    const _an = _assocǃ(acc, k)
+
+    return Object.prototype.hasOwnProperty.call(acc, k) ? _an(acc[k] + 1) : _an(1)
+  }, {}, arr)
+
 /**
  * @name countBy
  * @function
@@ -27,12 +36,7 @@ import _reduce from '../_internals/_reduce.js'
  *
  * fn(numbers) // => { '1': 3, '2': 2, '3': 1 }
  */
-const countBy = (fn, arr) =>
-  _reduce((a, acc) => {
-    const k = fn(a)
-    const _an = _assocǃ(acc, k)
-
-    return Object.prototype.hasOwnProperty.call(acc, k) ? _an(acc[k] + 1) : _an(1)
-  }, {}, arr)
-
-export default _curry2(countBy)
+export default /** @type {{
+  <T = any>(fn: (a: T) => string | number): (arr: ReadonlyArray<T>) => { [index: string]: number }
+  <T = any>(fn: (a: T) => string | number, arr: ReadonlyArray<T>): { [index: string]: number }
+}} */ (_curry2(countBy))

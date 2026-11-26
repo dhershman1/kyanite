@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(a: number, b: number) => number} */
+const subtract = (a, b) => b - a
+
 /**
  * @name subtract
  * @function
@@ -23,6 +26,7 @@ import _curry2 from '../_internals/_curry2.js'
  * sub(3) // => 2
  * sub(2) // => 3
  */
-const subtract = (a, b) => b - a
-
-export default _curry2(subtract)
+export default /** @type {{
+  (a: number): (b: number) => number
+  (a: number, b: number): number
+}} */ (_curry2(subtract))

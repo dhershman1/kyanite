@@ -1,5 +1,7 @@
 import eq from '../function/eq.js'
 
+const isZero = eq(0)
+
 /**
  * @name isZero
  * @function
@@ -16,6 +18,6 @@ import eq from '../function/eq.js'
  * isZero('0') // => false
  * isZero(0) // => true
  */
-const isZero = eq(0)
-
-export default isZero
+export default /** @type {{
+  (n: number): boolean
+}} */ (isZero)

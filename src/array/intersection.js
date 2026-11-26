@@ -5,6 +5,13 @@ import identity from '../function/identity.js'
 import uniq from './uniq.js'
 import filter from './filter.js'
 
+/** @private @type {<T = any>(a: ReadonlyArray<T>, b: ReadonlyArray<T>) => T[]} */
+const intersection = (a, b) => {
+  const grouped = groupBy(identity, b)
+
+  return uniq(filter(x => has(x, grouped), a))
+}
+
 /**
  * @name intersection
  * @function
@@ -27,10 +34,7 @@ import filter from './filter.js'
  *
  * inter([3, 4, 5, 6]) // => [3, 4]
  */
-const intersection = (a, b) => {
-  const grouped = groupBy(identity, b)
-
-  return uniq(filter(x => has(x, grouped), a))
-}
-
-export default _curry2(intersection)
+export default /** @type {{
+  <T = any>(a: ReadonlyArray<T>): (b: ReadonlyArray<T>) => T[]
+  <T = any>(a: ReadonlyArray<T>, b: ReadonlyArray<T>): T[]
+}} */ (_curry2(intersection))

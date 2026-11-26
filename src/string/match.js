@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(reg: RegExp | string, str: string) => RegExpMatchArray | null} */
+const match = (reg, str) => str.match(reg)
+
 /**
  * @name match
  * @since v0.10.2
@@ -23,6 +26,7 @@ import _curry2 from '../_internals/_curry2.js'
  * fn('bananas') // => ['ba', 'na', 'na']
  * fn('why') // => null
  */
-const match = (reg, str) => str.match(reg)
-
-export default _curry2(match)
+export default /** @type {{
+  (reg: RegExp | string): (str: string) => RegExpMatchArray | null
+  (reg: RegExp | string, str: string): RegExpMatchArray | null
+}} */ (_curry2(match))

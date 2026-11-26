@@ -1,6 +1,9 @@
 import isNil from './isNil.js'
 import count from './count.js'
 
+/** @private @type {(x: any) => boolean} */
+const isEmpty = x => isNil(x) || !count(x)
+
 /**
  * @name isEmpty
  * @function
@@ -23,6 +26,6 @@ import count from './count.js'
  * isEmpty(true) // => true
  * isEmpty(false) // => true
  */
-const isEmpty = x => isNil(x) || !count(x)
-
-export default isEmpty
+export default /** @type {{
+  (x: any): boolean
+}} */ (isEmpty)

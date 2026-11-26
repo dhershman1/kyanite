@@ -1,5 +1,9 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(value: any, list: ReadonlyArray<any> | string) => boolean} */
+const includes = (value, list) =>
+  list.indexOf(value) !== -1
+
 /**
  * @name includes
  * @function
@@ -26,7 +30,9 @@ import _curry2 from '../_internals/_curry2.js'
  * checker([1, 2, 3]) // => true
  * checker('123') // => true
  */
-const includes = (value, list) =>
-  list.indexOf(value) !== -1
-
-export default _curry2(includes)
+export default /** @type {{
+  (value: string): (list: string) => boolean
+  <T = any>(a: T): (list: ReadonlyArray<T>) => boolean
+  (value: string, list: string): boolean
+  <T = any>(a: T, list: ReadonlyArray<T>): boolean
+}} */ (_curry2(includes))

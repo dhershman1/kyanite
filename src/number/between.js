@@ -1,5 +1,8 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {(min: number | Date, max: number | Date, n: number | Date) => boolean} */
+const between = (min, max, n) => min <= n && max >= n
+
 /**
  * @name between
  * @since v0.7.0
@@ -31,6 +34,11 @@ import _curry3 from '../_internals/_curry3.js'
  * c(9) // => true
  * c(11) // => false
  */
-const between = (min, max, n) => min <= n && max >= n
-
-export default _curry3(between)
+export default /** @type {{
+  (min: number | Date): {
+    (max: number | Date): (n: number | Date) => boolean
+    (max: number | Date, n: number | Date): boolean
+  }
+  (min: number | Date, max: number | Date): (n: number | Date) => boolean
+  (min: number | Date, max: number | Date, n: number | Date): boolean
+}} */ (_curry3(between))

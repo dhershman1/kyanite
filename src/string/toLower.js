@@ -1,3 +1,6 @@
+/** @private @type {(a: string) => string} */
+const toLower = a => a.toLowerCase()
+
 /**
  * @name toLower
  * @function
@@ -13,6 +16,6 @@
  * toLower('HI') // => 'hi'
  * toLower('TEST.123.HELLO') // => 'test.123.hello'
  */
-const toLower = a => a.toLowerCase()
-
-export default toLower
+export default /** @type {{
+  (a: string): string
+}} */ (toLower)

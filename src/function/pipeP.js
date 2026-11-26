@@ -1,6 +1,11 @@
 import _curry2 from '../_internals/_curry2.js'
 import _reduce from '../_internals/_reduce.js'
 
+/** @private @type {<R = any>(fns: ReadonlyArray<(a: any) => any>, init: any) => Promise<R>} */
+const pipeP = (fns, data) =>
+  _reduce((f, acc) =>
+    acc.then(f), Promise.resolve(data), fns)
+
 /**
  * @name pipeP
  * @function
@@ -26,8 +31,7 @@ import _reduce from '../_internals/_reduce.js'
  * fn('10').then(console.log) // => '10123555'
  *
  */
-const pipeP = (fns, data) =>
-  _reduce((f, acc) =>
-    acc.then(f), Promise.resolve(data), fns)
-
-export default _curry2(pipeP)
+export default /** @type {{
+  <R = any>(fns: ReadonlyArray<(a: any) => any>): (init: any) => Promise<R>
+  <R = any>(fns: ReadonlyArray<(a: any) => any>, init: any): Promise<R>
+}} */ (_curry2(pipeP))

@@ -2,29 +2,7 @@ import _curry2 from '../_internals/_curry2.js'
 
 /* eslint-disable no-labels */
 
-/**
- * @name fuzzySearch
- * @deprecated since v3.2.0
- * @function
- * @since v0.1.0
- * @sig a -> Boolean
- * @category String
- * @description Fuzzy search setup to look find things fast, effective, and probably the most out of place function here. But it works well so it's hard to get rid of
- * @param  {String} needle The Item to search
- * @param  {String} haystack The value to search for
- * @return {Boolean} Returns a boolean determined by if the value is found or not by the search
- *
- * @example
- * import { fuzzySearch } from 'kyanite'
- *
- * fuzzySearch('te', 'test') // => true
- * fuzzySearch('dog', 'testing') // => false
- *
- * // search is also curried
- *
- * const search = fuzzySearch('te')
- * search('test') // => true
- */
+/** @private @type {(needle: string, haystack: string) => boolean} */
 const fuzzySearch = (needle, haystack) => {
   const hLen = haystack.length
   const nLen = needle.length
@@ -53,4 +31,30 @@ const fuzzySearch = (needle, haystack) => {
   return true
 }
 
-export default _curry2(fuzzySearch)
+/**
+ * @name fuzzySearch
+ * @deprecated since v3.2.0
+ * @function
+ * @since v0.1.0
+ * @sig a -> Boolean
+ * @category String
+ * @description Fuzzy search setup to look find things fast, effective, and probably the most out of place function here. But it works well so it's hard to get rid of
+ * @param  {String} needle The Item to search
+ * @param  {String} haystack The value to search for
+ * @return {Boolean} Returns a boolean determined by if the value is found or not by the search
+ *
+ * @example
+ * import { fuzzySearch } from 'kyanite'
+ *
+ * fuzzySearch('te', 'test') // => true
+ * fuzzySearch('dog', 'testing') // => false
+ *
+ * // search is also curried
+ *
+ * const search = fuzzySearch('te')
+ * search('test') // => true
+ */
+export default /** @type {{
+  (needle: string): (haystack: string) => boolean
+  (needle: string, haystack: string): boolean
+}} */ (_curry2(fuzzySearch))

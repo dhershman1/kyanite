@@ -1,5 +1,8 @@
 import _curry4 from '../_internals/_curry4.js'
 
+/** @private @type {<T, T1, TResult>(fn: (a: T1, b: T1) => TResult, gn: (x: T) => T1, a: T, b: T) => TResult} */
+const on = (fn, gn, a, b) => fn(gn(a), gn(b))
+
 /**
  * @name on
  * @function
@@ -33,6 +36,19 @@ import _curry4 from '../_internals/_curry4.js'
  *
  * h('are') // => true
  */
-const on = (fn, gn, a, b) => fn(gn(a), gn(b))
-
-export default _curry4(on)
+export default /** @type {{
+  <T1, TResult>(fn: (a: T1, b: T1) => TResult): {
+    <T>(gn: (x: T) => T1): {
+      (a: T): (b: T) => TResult
+      (a: T, b: T): TResult
+    }
+    <T>(gn: (x: T) => T1, a: T): (b: T) => TResult
+    <T>(gn: (x: T) => T1, a: T, b: T): TResult
+  }
+  <T, T1, TResult>(fn: (a: T1, b: T1) => TResult, gn: (x: T) => T1): {
+    (a: T): (b: T) => TResult
+    (a: T, b: T): TResult
+  }
+  <T, T1, TResult>(fn: (a: T1, b: T1) => TResult, gn: (x: T) => T1, a: T): (b: T) => TResult
+  <T, T1, TResult>(fn: (a: T1, b: T1) => TResult, gn: (x: T) => T1, a: T, b: T): TResult
+}} */ (_curry4(on))

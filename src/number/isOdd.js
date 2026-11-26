@@ -1,5 +1,16 @@
 import eq from '../function/eq.js'
 
+/** @private @type {(x: number) => boolean} */
+const isOdd = n => {
+  if (!eq(n, NaN)) {
+    const _eq = eq(n % 2)
+
+    return !_eq(NaN) && !_eq(0)
+  }
+
+  return false
+}
+
 /**
  * @name isOdd
  * @function
@@ -18,14 +29,6 @@ import eq from '../function/eq.js'
  * isOdd(2) // => false
  * isOdd(NaN) // => false
  */
-const isOdd = n => {
-  if (!eq(n, NaN)) {
-    const _eq = eq(n % 2)
-
-    return !_eq(NaN) && !_eq(0)
-  }
-
-  return false
-}
-
-export default isOdd
+export default /** @type {{
+  (x: number): boolean
+}} */ (isOdd)

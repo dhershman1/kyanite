@@ -1,3 +1,6 @@
+/** @private @type {(x: ArrayLike<any>) => any} */
+const first = x => x[0]
+
 /**
  * @name first
  * @function
@@ -16,6 +19,8 @@
  * const arr = first([1, 3]) // => 1
  * const str = first('abc') // => 'a'
  */
-const first = x => x[0]
-
-export default first
+export default /** @type {{
+  (x: string): string
+  (x: readonly []): undefined
+  <T = any>(x: readonly T[]): T | undefined
+}} */ (first)

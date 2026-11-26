@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T= any, TResult = any>(fn: (arg0: T) => TResult, args: T) => TResult} */
+const apply = (fn, a) => fn(a)
+
 /**
  * @name apply
  * @function
@@ -21,6 +24,7 @@ import _curry2 from '../_internals/_curry2.js'
  * fn(2) // => 4
  * fn(100) // => 200
  */
-const apply = (fn, a) => fn(a)
-
-export default _curry2(apply)
+export default /** @type {{
+  <T= any, TResult = any>(fn: (arg0: T) => TResult): (args: T) => TResult
+  <T= any, TResult = any>(fn: (arg0: T) => TResult, args: T): TResult
+}} */ (_curry2(apply))

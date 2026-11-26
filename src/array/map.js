@@ -1,6 +1,20 @@
 import _curry2 from '../_internals/_curry2.js'
 import _assocǃ from '../_internals/_assocǃ.js'
 
+/** @private @type {<T = any, U = any>(fn: (x: T) => U, list: ReadonlyArray<T>) => U[]} */
+const map = (fn, list) => {
+  let idx = 0
+  const len = list.length
+  const result = Array(len)
+
+  while (idx < len) {
+    _assocǃ(result, idx, fn(list[idx]))
+    idx += 1
+  }
+
+  return result
+}
+
 /**
  * @name map
  * @function
@@ -27,17 +41,7 @@ import _assocǃ from '../_internals/_assocǃ.js'
  *
  * dbler([1, 2, 3]) // => [2, 4, 6]
  */
-const map = (fn, list) => {
-  let idx = 0
-  const len = list.length
-  const result = Array(len)
-
-  while (idx < len) {
-    _assocǃ(result, idx, fn(list[idx]))
-    idx += 1
-  }
-
-  return result
-}
-
-export default _curry2(map)
+export default /** @type {{
+  <T = any, U = any>(fn: (x: T) => U): (list: ReadonlyArray<T>) => U[]
+  <T = any, U = any>(fn: (x: T) => U, list: ReadonlyArray<T>): U[]
+}} */ (_curry2(map))

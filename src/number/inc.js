@@ -1,3 +1,6 @@
+/** @private @type {(n: number) => number} */
+const inc = n => n + 1
+
 /**
  * @name inc
  * @since v0.11.0
@@ -13,6 +16,6 @@
  * inc(1) // => 2
  * inc(inc(1)) // => 3
  */
-const inc = n => n + 1
-
-export default inc
+export default /** @type {{
+  (n: number): number
+}} */ (inc)

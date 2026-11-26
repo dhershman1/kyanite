@@ -1,4 +1,8 @@
 import _curry3 from '../_internals/_curry3.js'
+/** @import { Pred } from '../_internals/_types.js' */
+
+/** @private @type {<T = any>(pred1: Pred, pred2: Pred, data: T) => boolean} */
+const both = (f, g, a) => f(a) && g(a)
 
 /**
  * @name both
@@ -24,6 +28,11 @@ import _curry3 from '../_internals/_curry3.js'
  * b(15) // => true
  * b(9) // => false
  */
-const both = (f, g, a) => f(a) && g(a)
-
-export default _curry3(both)
+export default /** @type {{
+  (pred1: Pred): {
+    (pred2: Pred): <T = any>(data: T) => boolean
+    <T = any>(pred2: Pred, data: T): boolean
+  }
+  (pred1: Pred, pred2: Pred): <T = any>(data: T) => boolean
+  <T = any>(pred1: Pred, pred2: Pred, data: T): boolean
+}} */ (_curry3(both))

@@ -1,5 +1,18 @@
 import isNil from '../function/isNil.js'
 
+/** @private @type {(a: any) => any[]} */
+const ensureArray = x => {
+  if (Array.isArray(x)) {
+    return x
+  }
+
+  if (isNil(x)) {
+    return []
+  }
+
+  return [x]
+}
+
 /**
  * @name ensureArray
  * @function
@@ -20,16 +33,6 @@ import isNil from '../function/isNil.js'
  * ensureArray(null) // => []
  * ensureArray('test') // => ['test']
  */
-const ensureArray = x => {
-  if (Array.isArray(x)) {
-    return x
-  }
-
-  if (isNil(x)) {
-    return []
-  }
-
-  return [x]
-}
-
-export default ensureArray
+export default /** @type {{
+  (a: any): any[]
+}} */ (ensureArray)

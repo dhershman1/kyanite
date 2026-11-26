@@ -1,6 +1,8 @@
 import identity from '../function/identity.js'
 import uniqBy from './uniqBy.js'
 
+const uniq = uniqBy(identity)
+
 /**
  * @name uniq
  * @function
@@ -16,6 +18,6 @@ import uniqBy from './uniqBy.js'
  *
  * uniq([1, 2, 2, 3, 3, 4, 5]) // => [1, 2, 3, 4, 5]
  */
-const uniq = uniqBy(identity)
-
-export default uniq
+export default /** @type {{
+  <T = any>(list: ReadonlyArray<T>): T[]
+}} */ (uniq)

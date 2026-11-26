@@ -1,3 +1,6 @@
+/** @private @type {(n: number) => number} */
+const negate = n => -n
+
 /**
  * @name negate
  * @function
@@ -13,6 +16,6 @@
  * negate(1) // => -1
  * negate(-1) // => 1
  */
-const negate = n => -n
-
-export default negate
+export default /** @type {{
+  (n: number): number
+}} */ (negate)

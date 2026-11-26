@@ -3,12 +3,14 @@ import values from '../object/values.js'
 import eq from './eq.js'
 import type from './type.js'
 
+/** @private @type {(f: Function) => string} */
 const _functionName = f => {
   const match = String(f).match(/^function (\w*)/)
 
   return match == null ? '' : match[1]
 }
 
+/** @private @type {(pred: (a: any, b: any) => boolean, x: any, list: ArrayLike<any>) => boolean} */
 const _containsWith = (pred, x, list) => {
   for (let i = 0, len = list.length; i < len; i++) {
     if (pred(x, list[i])) {
@@ -19,9 +21,12 @@ const _containsWith = (pred, x, list) => {
   return false
 }
 
+/** @private @type {(iter: Iterator<any>) => any[]} */
 const _arrFromIter = iter => {
+  /** @type {any[]} */
   const list = []
-  let next = null
+  /** @type {IteratorResult<any>} */
+  let next
 
   while (!(next = iter.next()).done) {
     list.push(next.value)
@@ -30,51 +35,22 @@ const _arrFromIter = iter => {
   return list
 }
 
+/** @private @type {(aIterator: Iterator<any>, bIterator: Iterator<any>, stackA: any[], stackB: any[]) => boolean} */
 const _uniqContentEquals = (aIterator, bIterator, stackA, stackB) => {
   const a = _arrFromIter(aIterator)
   const b = _arrFromIter(bIterator)
 
-  function _eq (_a, _b) {
+  /** @type {(a: any, b: any) => boolean} */
+  const _eq = (_a, _b) => {
     return deepEq(_a, _b, stackA.slice(), stackB.slice())
   }
 
   // if *a* array contains any element that is not included in *b*
-  return !_containsWith(function (b, aItem) {
-    return !_containsWith(_eq, aItem, b)
-  }, b, a)
+  return !_containsWith((b, aItem) => !_containsWith(_eq, aItem, b), b, a)
 }
 
-/**
- * @name deepEq
- * @function
- * @since v0.1.0
- * @category Function
- * @sig a -> b -> Boolean
- * @description Takes and compares two items. Capable of handling cyclical data structures
- * @param {Any} a First item to compare
- * @param {Any} b Second item to compare
- * @return {Boolean} Returns the boolean after running our comparison check
- *
- * @example
- * import { deepEq } from 'kyanite'
- *
- * const q = { a: 1 }
- *
- * deepEq({ a: 1 }, { a: 1 }) // => true
- * deepEq({ a: 1, b: 2 }, { b: 2, a: 1 }) // => true
- * deepEq(/[A-Z]/, new RegExp('[A-Z]') // => true
- * deepEq([1, 2], [1, 2]) // => true
- * deepEq(new Date(), new Date()) // => true
- * deepEq({ a: { q } }, { a: { q } }) // => true
- *
- * deepEq('test', new String('test')) // => false
- * deepEq(false, new Boolean(false)) // => false
- * deepEq(5, new Number(5)) // => false
- * deepEq([1, 2], [2, 1]) // => false
- * deepEq({ a: 1 }, { b: 1 }) // => false
- * deepEq(new Date('11/14/1992'), new Date('11/14/2018')) // => false
- * deepEq([], {}) // => false
- */
+// Values of any type are compared here, the export keeps the public <T>(a: T, b: T) => boolean
+/** @private @type {(a: any, b: any, stackA?: any[], stackB?: any[]) => boolean} */
 const deepEq = (a, b, stackA = [], stackB = []) => {
   if (eq(a, b)) {
     return true
@@ -190,4 +166,38 @@ const deepEq = (a, b, stackA = [], stackB = []) => {
   return true
 }
 
-export default _curry2(deepEq)
+/**
+ * @name deepEq
+ * @function
+ * @since v0.1.0
+ * @category Function
+ * @sig a -> b -> Boolean
+ * @description Takes and compares two items. Capable of handling cyclical data structures
+ * @param {Any} a First item to compare
+ * @param {Any} b Second item to compare
+ * @return {Boolean} Returns the boolean after running our comparison check
+ *
+ * @example
+ * import { deepEq } from 'kyanite'
+ *
+ * const q = { a: 1 }
+ *
+ * deepEq({ a: 1 }, { a: 1 }) // => true
+ * deepEq({ a: 1, b: 2 }, { b: 2, a: 1 }) // => true
+ * deepEq(/[A-Z]/, new RegExp('[A-Z]') // => true
+ * deepEq([1, 2], [1, 2]) // => true
+ * deepEq(new Date(), new Date()) // => true
+ * deepEq({ a: { q } }, { a: { q } }) // => true
+ *
+ * deepEq('test', new String('test')) // => false
+ * deepEq(false, new Boolean(false)) // => false
+ * deepEq(5, new Number(5)) // => false
+ * deepEq([1, 2], [2, 1]) // => false
+ * deepEq({ a: 1 }, { b: 1 }) // => false
+ * deepEq(new Date('11/14/1992'), new Date('11/14/2018')) // => false
+ * deepEq([], {}) // => false
+ */
+export default /** @type {{
+  <T = any>(a: T): (b: T) => boolean
+  <T = any>(a: T, b: T): boolean
+}} */ (_curry2(deepEq))

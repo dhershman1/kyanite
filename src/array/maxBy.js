@@ -1,4 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
+/** @import { Ord } from '../_internals/_types.js' */
+
+/** @private @type {<T = any>(fn: (a: T) => Ord, a: ReadonlyArray<T>) => T} */
+const maxBy = (fn, list) => list.reduce((a, b) => fn(a) >= fn(b) ? a : b)
 
 /**
  * @name maxBy
@@ -24,6 +28,7 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * m([{ size: 4 }, { size: 2 }, { size: 6 }, { size: 3 }]) // => { size: 6 }
  */
-const maxBy = (fn, list) => list.reduce((a, b) => fn(a) >= fn(b) ? a : b)
-
-export default _curry2(maxBy)
+export default /** @type {{
+  <T = any>(fn: (a: T) => Ord): (a: ReadonlyArray<T>) => T
+  <T = any>(fn: (a: T) => Ord, a: ReadonlyArray<T>): T
+}} */ (_curry2(maxBy))

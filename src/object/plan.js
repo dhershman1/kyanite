@@ -2,6 +2,12 @@ import _curry2 from '../_internals/_curry2.js'
 import _assocǃ from '../_internals/_assocǃ.js'
 import _reduce from '../_internals/_reduce.js'
 import keys from './keys.js'
+/** @import { Schema } from '../_internals/_types.js' */
+
+/** @private @type {(schema: Schema, obj: { [key: string]: any }) => { [key: string]: any }} */
+const plan = (schema, obj) =>
+  Object.assign({}, obj, _reduce((k, acc) =>
+    !Object.prototype.hasOwnProperty.call(obj, k) ? acc : _assocǃ(acc, k, schema[k](obj[k])), {}, keys(schema)))
 
 /**
  * @name plan
@@ -29,8 +35,7 @@ import keys from './keys.js'
  *
  * p({ a: 5, b: 10 }) // => { a: 10, b: 20 }
  */
-const plan = (schema, obj) =>
-  Object.assign({}, obj, _reduce((k, acc) =>
-    !Object.prototype.hasOwnProperty.call(obj, k) ? acc : _assocǃ(acc, k, schema[k](obj[k])), {}, keys(schema)))
-
-export default _curry2(plan)
+export default /** @type {{
+  (schema: Schema): (obj: { [key: string]: any }) => { [key: string]: any }
+  (schema: Schema, obj: { [key: string]: any }): { [key: string]: any }
+}} */ (_curry2(plan))

@@ -1,6 +1,18 @@
 import _curry3 from '../_internals/_curry3.js'
 import isNil from '../function/isNil.js'
 import path from './path.js'
+/** @import { Path } from '../_internals/_types.js' */
+
+/** @private @type {<T = any, U = any>(a: U, keys: Path, obj: object) => T} */
+const pathOr = (a, keys, obj) => {
+  const res = path(keys, obj)
+
+  if (isNil(res)) {
+    return a
+  }
+
+  return res
+}
 
 /**
  * @name pathOr
@@ -28,14 +40,11 @@ import path from './path.js'
  * fn(['c', 'd'], { d: { c: 1 } }) // => 'N/A'
  * withKeys({ b: { a: 1 } }) // => 'N/A'
  */
-const pathOr = (a, keys, obj) => {
-  const res = path(keys, obj)
-
-  if (isNil(res)) {
-    return a
+export default /** @type {{
+  <T = any, U = any>(a: U): {
+    (keys: Path): (obj: object) => T
+    (keys: Path, obj: object): T
   }
-
-  return res
-}
-
-export default _curry3(pathOr)
+  <T = any, U = any>(a: U, keys: Path): (obj: object) => T
+  <T = any, U = any>(a: U, keys: Path, obj: object): T
+}} */ (_curry3(pathOr))

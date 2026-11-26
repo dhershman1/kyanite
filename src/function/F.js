@@ -1,3 +1,6 @@
+/** @private @type {() => boolean} */
+const F = () => false
+
 /**
  * @name F
  * @function
@@ -12,6 +15,6 @@
  *
  * F() // => false
  */
-const F = () => false
-
-export default F
+export default /** @type {{
+  (): boolean
+}} */ (F)

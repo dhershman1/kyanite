@@ -3,6 +3,10 @@ import _assocǃ from '../_internals/_assocǃ.js'
 import _reduce from '../_internals/_reduce.js'
 import keys from './keys.js'
 
+/** @private @type {<T = any>(fn: (a: T) => boolean, obj: { [key: string]: T }) => { [key: string]: T }} */
+const sift = (fn, obj) => _reduce((k, acc) =>
+  fn(obj[k]) ? _assocǃ(acc, k, obj[k]) : acc, {}, keys(obj))
+
 /**
  * @name sift
  * @function
@@ -30,7 +34,7 @@ import keys from './keys.js'
  *
  * sifter({ id: 44, thing: 'test', other: 'cool' }) // => { thing: 'test', other: 'cool' }
  */
-const sift = (fn, obj) => _reduce((k, acc) =>
-  fn(obj[k]) ? _assocǃ(acc, k, obj[k]) : acc, {}, keys(obj))
-
-export default _curry2(sift)
+export default /** @type {{
+  <T = any>(fn: (a: T) => boolean): (obj: { [key: string]: T }) => { [key: string]: T }
+  <T = any>(fn: (a: T) => boolean, obj: { [key: string]: T }): { [key: string]: T }
+}} */ (_curry2(sift))

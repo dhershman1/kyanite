@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T = any>(n: number, list: ReadonlyArray<T> | string) => T[] | string} */
+const drop = (i, list) => list.slice(Math.max(0, i), Infinity)
+
 /**
  * @name drop
  * @since v0.2.2
@@ -24,6 +27,7 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * d([1, 2, 3, 4, 5]) // => [4, 5]
  */
-const drop = (i, list) => list.slice(Math.max(0, i), Infinity)
-
-export default _curry2(drop)
+export default /** @type {{
+  <T = any>(n: number): (list: ReadonlyArray<T> | string) => T[] | string
+  <T = any>(n: number, list: ReadonlyArray<T> | string): T[] | string
+}} */ (_curry2(drop))

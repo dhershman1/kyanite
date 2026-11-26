@@ -2,6 +2,10 @@ import _curry2 from '../_internals/_curry2.js'
 import concat from '../list/concat.js'
 import _reduce from '../_internals/_reduce.js'
 
+/** @private @type {<T, T1>(fn: (data: T) => T1 | ReadonlyArray<T1>, arr: ReadonlyArray<T>) => T1[]} */
+const concatMap = (fn, arr) =>
+  _reduce((v, acc) => concat(fn(v), acc), [], arr)
+
 /**
  * @name concatMap
  * @since v0.1.0
@@ -24,7 +28,7 @@ import _reduce from '../_internals/_reduce.js'
  *
  * con([1, 2, 3]) // => [1, 1, 2, 2, 3, 3]
  */
-const concatMap = (fn, arr) =>
-  _reduce((v, acc) => concat(fn(v), acc), [], arr)
-
-export default _curry2(concatMap)
+export default /** @type {{
+  <T, T1>(fn: (data: T) => T1 | ReadonlyArray<T1>): (arr: ReadonlyArray<T>) => T1[]
+  <T, T1>(fn: (data: T) => T1 | ReadonlyArray<T1>, arr: ReadonlyArray<T>): T1[]
+}} */ (_curry2(concatMap))

@@ -2,6 +2,10 @@ import _curry2 from '../_internals/_curry2.js'
 import map from './map.js'
 import prop from '../object/prop.js'
 
+/** @private @type {<K extends PropertyKey, T extends { [P in K]?: any }>(p: K, list: ReadonlyArray<T>) => Array<T[K]>} */
+const pluck = (p, list) =>
+  map(/** @type {(a: any) => any} */ (prop(p)), list)
+
 /**
  * @name pluck
  * @since v1.1.0
@@ -23,7 +27,7 @@ import prop from '../object/prop.js'
  *
  * fn([{ name: 'george', age: 19 }, { name: 'gavin', age: 26 }]) // => [19, 26]
  */
-const pluck = (p, list) =>
-  map(prop(p), list)
-
-export default _curry2(pluck)
+export default /** @type {{
+  <K extends PropertyKey>(p: K): <T extends { [P in K]?: any }>(list: ReadonlyArray<T>) => Array<T[K]>
+  <K extends PropertyKey, T extends { [P in K]?: any }>(p: K, list: ReadonlyArray<T>): Array<T[K]>
+}} */ (_curry2(pluck))

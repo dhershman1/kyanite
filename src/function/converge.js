@@ -1,6 +1,10 @@
 import _curry3 from '../_internals/_curry3.js'
 import map from '../array/map.js'
 
+/** @private @type {<T = any, R = any>(convFn: (...args: any[]) => R, fns: ReadonlyArray<(a: T) => any>, data: T) => R} */
+const converge = (convFn, fns, data) =>
+  convFn(...map(f => f(data), fns))
+
 /**
  * @name converge
  * @since v1.3.0
@@ -23,7 +27,11 @@ import map from '../array/map.js'
  * fn([1, 2, 3, 4, 5, 6, 7]) // => 4
  * fn([1, 2, 3]) // => 2
  */
-const converge = (convFn, fns, data) =>
-  convFn(...map(f => f(data), fns))
-
-export default _curry3(converge)
+export default /** @type {{
+  <R = any>(convFn: (...args: any[]) => R): {
+    <T = any>(fns: ReadonlyArray<(a: T) => any>): (data: T) => R
+    <T = any>(fns: ReadonlyArray<(a: T) => any>, data: T): R
+  }
+  <T = any, R = any>(convFn: (...args: any[]) => R, fns: ReadonlyArray<(a: T) => any>): (data: T) => R
+  <T = any, R = any>(convFn: (...args: any[]) => R, fns: ReadonlyArray<(a: T) => any>, data: T): R
+}} */ (_curry3(converge))

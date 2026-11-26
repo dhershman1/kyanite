@@ -1,5 +1,6 @@
 import _curry3 from '../_internals/_curry3.js'
 import _reduce from '../_internals/_reduce.js'
+/** @import { Reduced } from '../_internals/_types.js' */
 
 /**
  * @name reduce
@@ -30,4 +31,11 @@ import _reduce from '../_internals/_reduce.js'
  *
  * reduce((val, acc) => acc.concat(val * 2), [], new Set([1, 2, 3, 4])) // => [2, 4, 6, 8]
  */
-export default _curry3(_reduce)
+export default /** @type {{
+  <T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>): {
+    (acc: TResult): (list: ReadonlyArray<T>) => TResult
+    (acc: TResult, list: ReadonlyArray<T>): TResult
+  }
+  <T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult): (list: ReadonlyArray<T>) => TResult
+  <T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult, list: ReadonlyArray<T>): TResult
+}} */ (_curry3(_reduce))

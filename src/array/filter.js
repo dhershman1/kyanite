@@ -2,6 +2,10 @@ import _appendǃ from '../_internals/_appendǃ.js'
 import _curry2 from '../_internals/_curry2.js'
 import _reduce from '../_internals/_reduce.js'
 
+/** @private @type {<T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>) => T[]} */
+const filter = (fn, arr) =>
+  _reduce((val, acc) => fn(val) ? _appendǃ(acc, val) : acc, [], arr)
+
 /**
  * @name filter
  * @function
@@ -25,7 +29,7 @@ import _reduce from '../_internals/_reduce.js'
  *
  * filterer([1, 2, 3, 4]) // => [2, 4]
  */
-const filter = (fn, arr) =>
-  _reduce((val, acc) => fn(val) ? _appendǃ(acc, val) : acc, [], arr)
-
-export default _curry2(filter)
+export default /** @type {{
+  <T = any>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => T[]
+  <T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>): T[]
+}} */ (_curry2(filter))

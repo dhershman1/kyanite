@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(a: number, b: number) => number} */
+const divide = (a, b) => b / a
+
 /**
  * @name divide
  * @function
@@ -23,6 +26,7 @@ import _curry2 from '../_internals/_curry2.js'
  * div(3) // => 5
  * div(5) // => 3
  */
-const divide = (a, b) => b / a
-
-export default _curry2(divide)
+export default /** @type {{
+  (a: number): (b: number) => number
+  (a: number, b: number): number
+}} */ (_curry2(divide))

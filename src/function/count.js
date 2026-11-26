@@ -1,6 +1,26 @@
 import height from '../object/height.js'
 import type from './type.js'
 
+/** @private @type {<T = any, K = any, V = any>(a: string | ReadonlyArray<T> | Set<T> | Map<K, V> | object) => number} */
+const count = a => {
+  const key = type(a)
+  // type() already told us what a is, TypeScript can't narrow from it
+  const x = /** @type {any} */ (a)
+
+  switch (key) {
+    case 'Array':
+    case 'String':
+      return x.length
+    case 'Object':
+      return height(x)
+    case 'Map':
+    case 'Set':
+      return x.size
+    default:
+      throw new TypeError(`Unsupported type: ${key}`)
+  }
+}
+
 /**
  * @name count
  * @function
@@ -24,21 +44,6 @@ import type from './type.js'
  * count(new Map()) // => 0
  * count(new Set()) // => 0
  */
-const count = a => {
-  const key = type(a)
-
-  switch (key) {
-    case 'Array':
-    case 'String':
-      return a.length
-    case 'Object':
-      return height(a)
-    case 'Map':
-    case 'Set':
-      return a.size
-    default:
-      throw new TypeError(`Unsupported type: ${key}`)
-  }
-}
-
-export default count
+export default /** @type {{
+  <T = any, K = any, V = any>(a: string | ReadonlyArray<T> | Set<T> | Map<K, V> | object): number
+}} */ (count)

@@ -1,6 +1,9 @@
 import _curry2 from '../_internals/_curry2.js'
 import map from './map.js'
 
+/** @private @type {<T = any, U = any>(fns: ReadonlyArray<(...args: T[]) => any>, args: any[]) => U[]} */
+const juxt = (fns, x) => map(f => f(...x), fns)
+
 /**
  * @name juxt
  * @function
@@ -22,6 +25,7 @@ import map from './map.js'
  *
  * getRange([3, 4, 9, -3]) // => [-3, 9]
  */
-const juxt = (fns, x) => map(f => f(...x), fns)
-
-export default _curry2(juxt)
+export default /** @type {{
+  <T = any>(fns: ReadonlyArray<(...args: T[]) => any>): <U = any>(args: any[]) => U[]
+  <T = any, U = any>(fns: ReadonlyArray<(...args: T[]) => any>, args: any[]): U[]
+}} */ (_curry2(juxt))

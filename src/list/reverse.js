@@ -1,3 +1,7 @@
+/** @private @type {(list: ReadonlyArray<any> | string) => any[] | string} */
+const reverse = list =>
+  Array.isArray(list) ? list.slice().reverse() : /** @type {string} */ (list).split('').reverse().join('')
+
 /**
  * @name reverse
  * @function
@@ -16,7 +20,7 @@
  * reverse([]) // => []
  * reverse('abc') // => 'cba'
  */
-const reverse = list =>
-  Array.isArray(list) ? list.slice().reverse() : list.split('').reverse().join('')
-
-export default reverse
+export default /** @type {{
+  <T = any>(list: ReadonlyArray<T>): T[]
+  (str: string): string
+}} */ (reverse)

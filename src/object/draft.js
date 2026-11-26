@@ -3,6 +3,11 @@ import _assocǃ from '../_internals/_assocǃ.js'
 import _reduce from '../_internals/_reduce.js'
 import keys from './keys.js'
 
+/** @private @type {<T, R1>(fn: (val: T) => R1, data: { [key: string]: T }) => { [key: string]: R1 }} */
+const draft = (fn, obj) =>
+  _reduce((key, acc) =>
+    _assocǃ(acc, key, fn(obj[key])), {}, keys(obj))
+
 /**
  * @name draft
  * @function
@@ -24,8 +29,7 @@ import keys from './keys.js'
  *
  * d({ a: 1, b: 2, c: 3 }) // => { a: 2, b: 4, c: 6 }
  */
-const draft = (fn, obj) =>
-  _reduce((key, acc) =>
-    _assocǃ(acc, key, fn(obj[key])), {}, keys(obj))
-
-export default _curry2(draft)
+export default /** @type {{
+  <T, R1>(fn: (val: T) => R1): (data: { [key: string]: T }) => { [key: string]: R1 }
+  <T, R1>(fn: (val: T) => R1, data: { [key: string]: T }): { [key: string]: R1 }
+}} */ (_curry2(draft))

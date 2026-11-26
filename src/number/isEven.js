@@ -1,6 +1,9 @@
 import and from '../function/and.js'
 import eq from '../function/eq.js'
 
+/** @private @type {(n: number) => boolean} */
+const isEven = n => and(!eq(n, NaN), eq(n % 2, 0))
+
 /**
  * @name isEven
  * @function
@@ -19,6 +22,6 @@ import eq from '../function/eq.js'
  * isEven(1) // => false
  * isEven(NaN) // => false
  */
-const isEven = n => and(!eq(n, NaN), eq(n % 2, 0))
-
-export default isEven
+export default /** @type {{
+  (n: number): boolean
+}} */ (isEven)

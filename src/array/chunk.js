@@ -2,6 +2,11 @@ import _curry2 from '../_internals/_curry2.js'
 import _appendǃ from '../_internals/_appendǃ.js'
 import rem from '../number/rem.js'
 
+/** @private @type {<T = any>(size: number, data: ReadonlyArray<T>) => T[][]} */
+const chunk = (size, data) =>
+  data.reduce((acc, _, i) =>
+    rem(size, i) ? acc : _appendǃ(acc, data.slice(i, i + size)), /** @type {any[]} */ ([]))
+
 /**
  * @name chunk
  * @since v0.12.0
@@ -24,8 +29,7 @@ import rem from '../number/rem.js'
  * fn([1, 2, 3, 4, 5, 6]) // => [[1, 2], [3, 4], [5, 6]]
  * fn([1, 2, 3, 4, 5]) // => [[1, 2], [3, 4], [5]]
  */
-const chunk = (size, data) =>
-  data.reduce((acc, _, i) =>
-    rem(size, i) ? acc : _appendǃ(acc, data.slice(i, i + size)), [])
-
-export default _curry2(chunk)
+export default /** @type {{
+  (size: number): <T = any>(data: ReadonlyArray<T>) => T[][]
+  <T = any>(size: number, data: ReadonlyArray<T>): T[][]
+}} */ (_curry2(chunk))

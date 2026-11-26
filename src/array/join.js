@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(str: string, list: ReadonlyArray<string>) => string} */
+const join = (str, list) => list.join(str)
+
 /**
  * @name join
  * @function
@@ -23,6 +26,7 @@ import _curry2 from '../_internals/_curry2.js'
  * j(['test', 'this', 'thing']) // => 'test this thing'
  * j(['test', 'that', 'thing']) // => 'test that thing'
  */
-const join = (str, list) => list.join(str)
-
-export default _curry2(join)
+export default /** @type {{
+  (str: string): (list: ReadonlyArray<string>) => string
+  (str: string, list: ReadonlyArray<string>): string
+}} */ (_curry2(join))

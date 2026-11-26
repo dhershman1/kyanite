@@ -1,5 +1,22 @@
 import _appendǃ from '../_internals/_appendǃ.js'
 
+/** @private @type {(n: number) => number[]} */
+const factors = (x = 0) => {
+  /** @type {number[]} */
+  const factors = []
+  let quotient = 0
+
+  for (let i = 1; i <= x; i++) {
+    quotient = x / i
+
+    if (quotient === Math.floor(quotient)) {
+      _appendǃ(factors, i)
+    }
+  }
+
+  return factors
+}
+
 /**
  * @name factors
  * @function
@@ -30,20 +47,6 @@ import _appendǃ from '../_internals/_appendǃ.js'
  * negativeFactors(-36) // => [-1, -2, -3, -4, -6, -9, -12, -18, -36]
  * negativeFactors(36) // => [-1, -2, -3, -4, -6, -9, -12, -18, -36]
  */
-
-const factors = (x = 0) => {
-  const factors = []
-  let quotient = 0
-
-  for (let i = 1; i <= x; i++) {
-    quotient = x / i
-
-    if (quotient === Math.floor(quotient)) {
-      _appendǃ(factors, i)
-    }
-  }
-
-  return factors
-}
-
-export default factors
+export default /** @type {{
+  (n: number): number[]
+}} */ (factors)

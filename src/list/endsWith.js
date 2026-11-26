@@ -3,6 +3,9 @@ import _curry2 from '../_internals/_curry2.js'
 import deepEq from '../function/deepEq.js'
 import slice from './slice.js'
 
+/** @private @type {(a: ReadonlyArray<any> | string, list: ReadonlyArray<any> | string) => boolean} */
+const endsWith = (a, list) => compose(deepEq(a), slice(-a.length, Infinity), list)
+
 /**
  * @name endsWith
  * @function
@@ -29,6 +32,9 @@ import slice from './slice.js'
  * fn('abc') // => true
  * fn('cba') // => false
  */
-const endsWith = (a, list) => compose(deepEq(a), slice(-a.length, Infinity), list)
-
-export default _curry2(endsWith)
+export default /** @type {{
+  (a: string): (list: string) => boolean
+  <T>(a: ReadonlyArray<T>): (list: ReadonlyArray<T>) => boolean
+  (a: string, list: string): boolean
+  <T>(a: ReadonlyArray<T>, list: ReadonlyArray<T>): boolean
+}} */ (_curry2(endsWith))

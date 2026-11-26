@@ -3,6 +3,9 @@ import divide from './divide.js'
 import length from '../list/length.js'
 import _reduce from '../_internals/_reduce.js'
 
+/** @private @type {(x: ReadonlyArray<number>) => number} */
+const mean = x => divide(length(x), _reduce(add, 0, x))
+
 /**
  * @name mean
  * @function
@@ -21,6 +24,6 @@ import _reduce from '../_internals/_reduce.js'
  * mean([]) // => NaN
  * mean() // => Ref Error
  */
-const mean = x => divide(length(x), _reduce(add, 0, x))
-
-export default mean
+export default /** @type {{
+  (x: ReadonlyArray<number>): number
+}} */ (mean)

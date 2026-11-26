@@ -3,6 +3,15 @@ import _appendǃ from '../_internals/_appendǃ.js'
 import _assocǃ from '../_internals/_assocǃ.js'
 import _reduce from '../_internals/_reduce.js'
 
+/** @private @type {<T>(fn: (a: T) => string, list: ReadonlyArray<T>) => { [index: string]: T[] }} */
+const groupBy = (fn, list) =>
+  _reduce((v, acc) => {
+    const k = fn(v)
+    const _an = _assocǃ(acc, k)
+
+    return Object.prototype.hasOwnProperty.call(acc, k) ? _an(_appendǃ(acc[k], v)) : _an([v])
+  }, {}, list)
+
 /**
  * @name groupBy
  * @function
@@ -25,12 +34,7 @@ import _reduce from '../_internals/_reduce.js'
  *
  * g([4.2, 6.1, 6.4]) // => { '4': [4.2], '6': [6.1, 6.4] }
 */
-const groupBy = (fn, list) =>
-  _reduce((v, acc) => {
-    const k = fn(v)
-    const _an = _assocǃ(acc, k)
-
-    return Object.prototype.hasOwnProperty.call(acc, k) ? _an(_appendǃ(acc[k], v)) : _an([v])
-  }, {}, list)
-
-export default _curry2(groupBy)
+export default /** @type {{
+  <T>(fn: (a: T) => string): (list: ReadonlyArray<T>) => { [index: string]: T[] }
+  <T>(fn: (a: T) => string, list: ReadonlyArray<T>): { [index: string]: T[] }
+}} */ (_curry2(groupBy))

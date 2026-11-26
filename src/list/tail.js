@@ -1,3 +1,6 @@
+/** @private @type {<T = any>(list: ReadonlyArray<T>) => T[]} */
+const tail = ([, ...rest]) => rest
+
 /**
  * @name tail
  * @since v1.2.0
@@ -12,6 +15,6 @@
  *
  * tail([1, 2, 3, 4, 5]) // => [2, 3, 4, 5]
  */
-const tail = ([, ...rest]) => rest
-
-export default tail
+export default /** @type {{
+  <T = any>(list: ReadonlyArray<T>): T[]
+}} */ (tail)

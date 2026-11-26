@@ -1,5 +1,16 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(from: number, tp: number) => number[]} */
+const range = (from, to) => {
+  const result = []
+
+  for (let i = Number(from), len = Number(to); i < len; i++) {
+    result.push(i)
+  }
+
+  return result
+}
+
 /**
  * @name range
  * @function
@@ -19,14 +30,7 @@ import _curry2 from '../_internals/_curry2.js'
  * range(0, 0) // => []
  * range(NaN) // => []
  */
-const range = (from, to) => {
-  const result = []
-
-  for (let i = Number(from), len = Number(to); i < len; i++) {
-    result.push(i)
-  }
-
-  return result
-}
-
-export default _curry2(range)
+export default /** @type {{
+  (from: number): (to: number) => number[]
+  (from: number, tp: number): number[]
+}} */ (_curry2(range))

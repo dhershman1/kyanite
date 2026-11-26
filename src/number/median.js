@@ -4,22 +4,7 @@ import mean from './mean.js'
 import slice from '../list/slice.js'
 import pipe from '../function/pipe.js'
 
-/**
- * @name median
- * @function
- * @since v0.12.0
- * @category Number
- * @sig [Number] -> Number
- * @description Takes an array of numbers and calculates the median
- * @param {Array} list The array of numbers to calculate
- * @return {Number} The calculated median from the array
- *
- * @example
- * import { median } from 'kyanite'
- *
- * median([3, 13, 7, 5, 21, 23, 39, 23, 40, 23, 14, 12, 56, 23, 29]) // => 23
- * median([3, 13, 7, 5, 21, 23, 23, 40, 23, 14, 12, 56, 23, 29]) // => 22
- */
+/** @private @type {(list: ReadonlyArray<number>) => number} */
 const median = list => {
   const len = list.length
 
@@ -37,4 +22,22 @@ const median = list => {
   ], list)
 }
 
-export default median
+/**
+ * @name median
+ * @function
+ * @since v0.12.0
+ * @category Number
+ * @sig [Number] -> Number
+ * @description Takes an array of numbers and calculates the median
+ * @param {Array} list The array of numbers to calculate
+ * @return {Number} The calculated median from the array
+ *
+ * @example
+ * import { median } from 'kyanite'
+ *
+ * median([3, 13, 7, 5, 21, 23, 39, 23, 40, 23, 14, 12, 56, 23, 29]) // => 23
+ * median([3, 13, 7, 5, 21, 23, 23, 40, 23, 14, 12, 56, 23, 29]) // => 22
+ */
+export default /** @type {{
+  (list: ReadonlyArray<number>): number
+}} */ (median)

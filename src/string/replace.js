@@ -1,5 +1,8 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {(a: RegExp | string, b: string, str: string) => string} */
+const replace = (a, b, str) => str.replace(a, b)
+
 /**
  * @name replace
  * @function
@@ -24,6 +27,11 @@ import _curry3 from '../_internals/_curry3.js'
  * rep('baz', 'foofoo') // => 'bazfoo'
  * with('foofoo') // => 'barfoo'
  */
-const replace = (a, b, str) => str.replace(a, b)
-
-export default _curry3(replace)
+export default /** @type {{
+  (a: RegExp | string): {
+    (b: string): (str: string) => string
+    (b: string, str: string): string
+  }
+  (a: RegExp | string, b: string): (str: string) => string
+  (a: RegExp | string, b: string, str: string): string
+}} */ (_curry3(replace))

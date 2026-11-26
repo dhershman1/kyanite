@@ -1,4 +1,8 @@
 import _reduce from '../_internals/_reduce.js'
+/** @import { Ord } from '../_internals/_types.js' */
+
+/** @private @type {<T extends Ord>(list: ReadonlyArray<T>) => T} */
+const max = list => _reduce((a, b) => a >= b ? a : b, '', list)
 
 /**
  * @name max
@@ -17,6 +21,6 @@ import _reduce from '../_internals/_reduce.js'
  * max([1, 3, 2, 5, 4]) // => 5
  * max(['c', 'a', 'b', 'f']) // => 'f'
  */
-const max = list => _reduce((a, b) => a >= b ? a : b, '', list)
-
-export default max
+export default /** @type {{
+  <T extends Ord>(list: ReadonlyArray<T>): T
+}} */ (max)

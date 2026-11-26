@@ -3,6 +3,9 @@ import _curry2 from '../_internals/_curry2.js'
 import on from '../function/on.js'
 import sort from './sort.js'
 
+/** @private @type {<T = any>(fn: (a: T) => any, list: ReadonlyArray<T>) => T[]} */
+const sortBy = (fn, arr) => sort(on(ascend, fn), arr)
+
 /**
  * @name sortBy
  * @function
@@ -35,6 +38,7 @@ import sort from './sort.js'
  *  { name: 'amanda' }
  * ]) // => [{ name: 'amanda' }, { name: 'amanda' }, { name: 'bob' }, { name: 'carl' }]
  */
-const sortBy = (fn, arr) => sort(on(ascend, fn), arr)
-
-export default _curry2(sortBy)
+export default /** @type {{
+  <T = any>(fn: (a: T) => any): (list: ReadonlyArray<T>) => T[]
+  <T = any>(fn: (a: T) => any, list: ReadonlyArray<T>): T[]
+}} */ (_curry2(sortBy))

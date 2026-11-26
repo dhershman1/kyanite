@@ -1,6 +1,9 @@
 import _curry3 from '../_internals/_curry3.js'
 import ascend from './ascend.js'
 
+/** @private @type {<T = any>(fn: (obj: T) => any, a: T, b: T) => number} */
+const ascendBy = (fn, a, b) => ascend(fn(a), fn(b))
+
 /**
  * @name ascendBy
  * @function
@@ -34,6 +37,11 @@ import ascend from './ascend.js'
  *  { name: 'amanda' }
  * ].sort(desc) // => [{ name: 'amanda' }, { name: 'amanda' }, { name: 'bob' }, { name: 'carl' }]
  */
-const ascendBy = (fn, a, b) => ascend(fn(a), fn(b))
-
-export default _curry3(ascendBy)
+export default /** @type {{
+  <T = any>(fn: (obj: T) => any): {
+    (a: T): (b: T) => number
+    (a: T, b: T): number
+  }
+  <T = any>(fn: (obj: T) => any, a: T): (b: T) => number
+  <T = any>(fn: (obj: T) => any, a: T, b: T): number
+}} */ (_curry3(ascendBy))

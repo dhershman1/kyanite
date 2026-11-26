@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T = any>(x: T, list: ReadonlyArray<T>) => T[]} */
+const prepend = (x, list) => /** @type {any[]} */ ([]).concat(x, list)
+
 /**
  * @name prepend
  * @since v0.1.0
@@ -22,6 +25,7 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * pender(['is', 'cool']) // => ['testing', 'is', 'cool']
  */
-const prepend = (x, list) => [].concat(x, list)
-
-export default _curry2(prepend)
+export default /** @type {{
+  <T = any>(x: T): (list: ReadonlyArray<T>) => T[]
+  <T = any>(x: T, list: ReadonlyArray<T>): T[]
+}} */ (_curry2(prepend))

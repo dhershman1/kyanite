@@ -1,6 +1,9 @@
 import _reduce from '../_internals/_reduce.js'
 import add from './add.js'
 
+/** @private @type {(arr: ReadonlyArray<number>) => number} */
+const sum = list => _reduce(add, 0, list)
+
 /**
  * @name sum
  * @since v0.11.3
@@ -17,6 +20,6 @@ import add from './add.js'
  * sum([1, 2, 3]) // => 6
  * sum([1, 2, -3]) // => 0
  */
-const sum = list => _reduce(add, 0, list)
-
-export default sum
+export default /** @type {{
+  (arr: ReadonlyArray<number>): number
+}} */ (sum)

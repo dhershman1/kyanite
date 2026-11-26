@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(a: number, b: number) => number} */
+const gcd = (a, b) => b ? gcd(b, a % b) : a
+
 /**
  * @name gcd
  * @function
@@ -25,6 +28,7 @@ import _curry2 from '../_internals/_curry2.js'
  * a(90) // => 10
  * a(93) // => 1
 */
-const gcd = (a, b) => b ? gcd(b, a % b) : a
-
-export default _curry2(gcd)
+export default /** @type {{
+  (a: number): (b: number) => number
+  (a: number, b: number): number
+}} */ (_curry2(gcd))

@@ -3,6 +3,9 @@ import _curry2 from '../_internals/_curry2.js'
 import deepEq from '../function/deepEq.js'
 import slice from './slice.js'
 
+/** @private @type {(a: ReadonlyArray<any> | string, list: ReadonlyArray<any> | string) => boolean} */
+const startsWith = (a, list) => compose(deepEq(a), slice(0, a.length), list)
+
 /**
  * @name startsWith
  * @function
@@ -29,6 +32,9 @@ import slice from './slice.js'
  * fn('cab') // => true
  * fn('abc') // => false
  */
-const startsWith = (a, list) => compose(deepEq(a), slice(0, a.length), list)
-
-export default _curry2(startsWith)
+export default /** @type {{
+  (a: string): (list: string) => boolean
+  <T>(a: ReadonlyArray<T>): (list: ReadonlyArray<T>) => boolean
+  (a: string, list: string): boolean
+  <T>(a: ReadonlyArray<T>, list: ReadonlyArray<T>): boolean
+}} */ (_curry2(startsWith))

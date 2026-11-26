@@ -1,4 +1,9 @@
 import _curry3 from '../_internals/_curry3.js'
+/** @import { Arity1Fn } from '../_internals/_types.js' */
+
+/** @private @type {<T = any>(key: string, fn: Arity1Fn, acc: T) => T} */
+const over = (key, fn, acc) =>
+  Object.assign({}, acc, { [key]: fn(/** @type {any} */ (acc)[key]) })
 
 /**
  * @name over
@@ -24,7 +29,11 @@ import _curry3 from '../_internals/_curry3.js'
  * o(x => x - 1, { a: 1, b: 3 }) // => { a: 1, b: 2 }
  * withFn({ a: 1, b: 1 }) // => { a: 1, b: 2 }
  */
-const over = (key, fn, acc) =>
-  Object.assign({}, acc, { [key]: fn(acc[key]) })
-
-export default _curry3(over)
+export default /** @type {{
+  (key: string): {
+    (fn: Arity1Fn): <T = any>(acc: T) => T
+    <T = any>(fn: Arity1Fn, acc: T): T
+  }
+  (key: string, fn: Arity1Fn): <T = any>(acc: T) => T
+  <T = any>(key: string, fn: Arity1Fn, acc: T): T
+}} */ (_curry3(over))

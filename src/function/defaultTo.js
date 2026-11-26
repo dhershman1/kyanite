@@ -2,6 +2,9 @@ import _curry2 from '../_internals/_curry2.js'
 import eq from './eq.js'
 import isNil from './isNil.js'
 
+/** @private @type {<T, U>(a: T, b: U | null | undefined) => T | U} */
+const defaultTo = (def, val) => isNil(val) || eq(NaN, /** @type {any} */ (val)) ? def : val
+
 /**
  * @name defaultTo
  * @function
@@ -24,6 +27,7 @@ import isNil from './isNil.js'
  * fn(null) // => 'foo'
  * fn('bar') // => 'bar'
  */
-const defaultTo = (def, val) => isNil(val) || eq(NaN, val) ? def : val
-
-export default _curry2(defaultTo)
+export default /** @type {{
+  <T>(a: T): <U>(b: U | null | undefined) => T | U
+  <T, U>(a: T, b: U | null | undefined): T | U
+}} */ (_curry2(defaultTo))

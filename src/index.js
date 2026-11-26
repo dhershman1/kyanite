@@ -1,3 +1,17 @@
+/** @typedef {import('./_internals/_types.js').Ord} Ord */
+/** @typedef {import('./_internals/_types.js').Path} Path */
+/** @typedef {import('./_internals/_types.js').Schema} Schema */
+/** @typedef {import('./_internals/_types.js').Arity1Fn} Arity1Fn */
+/** @typedef {import('./_internals/_types.js').Pred} Pred */
+/**
+ * @template K, V
+ * @typedef {import('./_internals/_types.js').KeyValuePair<K, V>} KeyValuePair
+ */
+/**
+ * @template T
+ * @typedef {import('./_internals/_types.js').Reduced<T>} Reduced
+ */
+
 export { default as adjust } from './array/adjust.js'
 export { default as chunk } from './array/chunk.js'
 export { default as concatMap } from './array/concatMap.js'
