@@ -57,3 +57,11 @@ test('groupBy -- Complex grouping', () => {
     }
   )
 })
+
+test('groupBy -- Keeps a __proto__ group as its own key', () => {
+  const results = groupBy(x => x, ['__proto__', 'a', '__proto__'])
+
+  assert.deepEqual(Object.keys(results), ['__proto__', 'a'])
+  assert.deepEqual(results.__proto__, ['__proto__', '__proto__']) // eslint-disable-line no-proto
+  assert.equal(Object.getPrototypeOf(results), Object.prototype, 'The prototype is untouched')
+})

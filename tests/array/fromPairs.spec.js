@@ -17,3 +17,14 @@ test('Handles invalid array', () => {
   assert.deepEqual(fromPairs([[]]), {})
   assert.deepEqual(fromPairs([[], []]), {})
 })
+
+test('Keeps falsy keys', () => {
+  assert.deepEqual(fromPairs([[0, 'a'], ['', 'b'], ['c', 1]]), { 0: 'a', '': 'b', c: 1 })
+})
+
+test('Keeps a __proto__ key without changing the prototype', () => {
+  const results = fromPairs([['__proto__', 1]])
+
+  assert.deepEqual(Object.keys(results), ['__proto__'])
+  assert.equal(Object.getPrototypeOf(results), Object.prototype)
+})

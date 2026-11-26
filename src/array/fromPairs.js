@@ -11,7 +11,8 @@ import _assocǃ from '../_internals/_assocǃ.js'
  */
 const fromPairs = pairs =>
   _reduce(([key, value], acc) => {
-    if (!key) {
+    // Skips empty pairs like [], but keeps falsy keys like 0 and ''
+    if (key == null) {
       return acc
     }
 
