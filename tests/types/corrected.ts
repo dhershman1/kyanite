@@ -1,7 +1,7 @@
 // Type tests for public types that were corrected to match what the functions return at runtime
 import {
   adjust, any, applyN, chunk, difference, findIndex, fold, has, isNil, keys, match, multiples,
-  omitBy, path, pluck, plan, prop, unless, when, whole, zip
+  omitBy, path, pickBy, pluck, plan, prop, unless, when, whole, zip
 } from '../../src/index.js'
 import { expectType } from './helpers.js'
 
@@ -65,8 +65,9 @@ expectType<undefined>()(prop('hair', user))
 expectType<string | undefined>()(prop('name', user as typeof user | null))
 expectType<number>()(prop(0, [1, 2, 3]))
 
-// omitBy keeps the entries that pass, so any key may be missing
+// omitBy and pickBy can drop any entry, so any key may be missing
 expectType<Partial<{ a: number, b: number }>>()(omitBy((v: number) => v > 1, { a: 1, b: 2 }))
+expectType<Partial<{ a: number, b: number }>>()(pickBy((v: number) => v > 1)({ a: 1, b: 2 }))
 
 // any, whole, and plan take a flat object of functions
 const schema = { a: (x: number) => x > 1, b: (x: number) => x < 1 }
