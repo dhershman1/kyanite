@@ -1,9 +1,5 @@
-/**
- * Shared types used across Kyanite's public signatures, they're re-exported from the package
- * so they can be imported with `import type { Reduced } from 'kyanite'`
- * @module _types
- * @private
- */
+// Shared types used across Kyanite's public signatures, they're re-exported from the package
+// so they can be imported with `import type { Reduced } from 'kyanite'`
 
 /**
  * A value that can be ordered with `<` and `>`
@@ -22,8 +18,8 @@
  */
 
 /**
- * An object of functions, applied against the matching keys of another object
- * @typedef {{ [key: string]: ((value: any) => any) | Schema }} Schema
+ * An object of functions, each one is applied to the value at the same key of another object
+ * @typedef {{ [key: string]: (value: any) => any }} Schema
  */
 
 /**
