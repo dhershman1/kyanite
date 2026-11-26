@@ -1,4 +1,6 @@
 import takeWhile from '../../src/array/takeWhile.js'
+import into from '../../src/function/into.js'
+import map from '../../src/array/map.js'
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 
@@ -21,4 +23,22 @@ test('takeWhile -- Returns a copy when every value passes', () => {
 
   assert.deepEqual(results, list)
   assert.notEqual(results, list)
+})
+
+test('takeWhile -- Works as a transducer', () => {
+  assert.deepEqual(into([], [takeWhile(x => x < 3)], [1, 2, 3, 4, 1]), [1, 2], 'Stops at the first failure, even if later values pass')
+  assert.deepEqual(into([], [takeWhile(() => true)], [1, 2]), [1, 2])
+  assert.deepEqual(into([], [takeWhile(() => false)], [1, 2]), [])
+  assert.equal(into('', [takeWhile(c => c !== ' ')], 'hello world'), 'hello')
+})
+
+test('takeWhile -- As a transducer, stops reading at the first failure', () => {
+  let calls = 0
+  const count = map(x => {
+    calls++
+    return x
+  })
+
+  into([], [count, takeWhile(x => x < 2)], [1, 2, 3, 4])
+  assert.equal(calls, 2)
 })
