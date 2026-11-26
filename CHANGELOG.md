@@ -69,6 +69,15 @@
 - Hovering any function in your editor now shows its full documentation and examples
 - `startsWith` and `propSatisfies` now have types
 - Added `pickBy`, the opposite of `omitBy`: It builds a new object with only the keys whose values pass the predicate, which is given the value and the key
+- Transducers! Finally a fully fledged transducer flow built right into Kyanite! We finally made it Ma!
+  - Run a list through several steps in a single pass, without building a new list for each step, and stop as soon as there's nothing left to do
+  - Added `transduce(xf, fn, acc, list)`. `xf` is an array of transducers that each value goes through in order (like `pipe`), `fn` is a reducer like the one `reduce` takes
+  - Added `into(acc, xf, list)`, which collects the results into a copy of an array, a string, or an object (from `[key, value]` pairs) without writing a reducer
+  - `map`, `filter`, and `take` work as transducers when used in `transduce` or `into`, with their list left off: `into([], [map(inc), filter(isEven), take(3)], list)`
+  - Both work with any iterable, including generators that never end, since `take` stops reading once it has enough
+  - Kyanite follows the standard transducer protocol (`@@transducer/init`, `step`, and `result`), so transducers and transformers from other libraries that follow it work with `transduce`, and Kyanite's work with theirs
+  - `reduced` can stop a `transduce` early from the reducer, the same way it stops `reduce`
+  - The `Transformer` and `Transducer` types can be imported: `import type { Transformer, Transducer } from 'kyanite'`
 
 ### Changed
 
@@ -94,6 +103,10 @@
 - `xor` and `round` were rewritten to pass type checking, they behave exactly the same
   - `xor` uses `!a !== !b` instead of `Boolean(!a ^ !b)`
   - `round` converts its string to a number with `Number()` before calling `Math.round`, which did that conversion implicitly before
+- `reduce`, `reduceRight`, and the functions built on them call your reducer directly instead of going through a transducer wrapper object, which makes them faster. 
+- Performance! With the introduction of the transducer flows, overall performance for things like `reduce`, `reduceRight` which can call reducer directly isntead of going through the wrapper object
+  - Measured on a 1000 item list, `filter` is about 40% faster, `find` about 4.5x, and `pipe` about 6x
+  - `map` sets each value directly instead of through an internal curried helper, making it about twice as fast
 - `eq` now uses `Object.is`, which is the same SameValue comparison it implemented by hand (`+0` and `-0` are different, `NaN` equals `NaN`)
 
 ### Fixed
