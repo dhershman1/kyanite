@@ -32,7 +32,7 @@ const on = (fn, gn, a, b) => fn(gn(a), gn(b))
  *
  * g('you', 'are') // => true
  *
- * const h = f('you')
+ * const h = g('you')
  *
  * h('are') // => true
  */

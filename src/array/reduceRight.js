@@ -36,10 +36,10 @@ const reduceRight = (fn, acc, arr) => {
  * import { reduceRight } from 'kyanite'
  *
  * reduceRight((n, acc) =>
- *   typeof n === 'number' ? acc.push(n) : acc, [], ['', 1, 2, '0', 3]) // => [3, 2, 1]
+ *   typeof n === 'number' ? [...acc, n] : acc, [], ['', 1, 2, '0', 3]) // => [3, 2, 1]
  *
  * // It's also curried
- * const fn = reduceRight((x, acc) => typeof n === 'number' ? acc.push(n) : acc)
+ * const fn = reduceRight((n, acc) => typeof n === 'number' ? [...acc, n] : acc)
  *
  * fn([], ['', 1, 2, '0', 3]) // => [3, 2, 1]
  */

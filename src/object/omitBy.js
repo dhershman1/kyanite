@@ -22,14 +22,14 @@ const omitBy = (fn, obj) =>
  * @example
  * import { omitBy } from 'kyanite'
  *
- * const obj = omitBy(['test'], { test: '3432', thing: 123 }) // => { thing: 123 }
- * const arr = omitBy(['a', 'b'], { a: 1, b: 2, c: 3}) // => { c: 3 }
+ * omitBy(x => typeof x === 'number', { test: '3432', thing: 123 }) // => { thing: 123 }
+ * omitBy((_, k) => k === 'c', { a: 1, b: 2, c: 3 }) // => { c: 3 }
  *
  * // omitBy is curried
  *
- * const omitKeys = omitBy(['test'])
+ * const onlyNumbers = omitBy(x => typeof x === 'number')
  *
- * omitKeys({ test: '3432', thing: 123 }) // => { thing: 123 }
+ * onlyNumbers({ test: '3432', thing: 123 }) // => { thing: 123 }
  */
 export default /** @type {{
   (fn: (value: any, key: string) => boolean): <T extends object>(obj: T) => Partial<T>

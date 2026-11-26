@@ -32,26 +32,8 @@ test('count -- Counts Sets', () => {
   assert.deepEqual(count(new Set()), 0)
 })
 
-test('count -- Handle numbers', () => {
-  try {
-    count(9)
-  } catch ({ message }) {
-    assert.deepEqual(message, 'Unsupported type: Number')
-  }
-})
-
-test('count -- Handle dates', () => {
-  try {
-    count(new Date())
-  } catch ({ message }) {
-    assert.deepEqual(message, 'Unsupported type: Date')
-  }
-})
-
-test('count -- Handle Regex', () => {
-  try {
-    count(new RegExp())
-  } catch ({ message }) {
-    assert.deepEqual(message, 'Unsupported type: RegExp')
-  }
+test('count -- Throws on unsupported types', () => {
+  assert.throws(() => count(9), { name: 'TypeError', message: 'Unsupported type: Number' })
+  assert.throws(() => count(new Date()), { name: 'TypeError', message: 'Unsupported type: Date' })
+  assert.throws(() => count(/a/), { name: 'TypeError', message: 'Unsupported type: RegExp' })
 })

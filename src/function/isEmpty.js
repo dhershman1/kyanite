@@ -11,6 +11,7 @@ const isEmpty = x => isNil(x) || !count(x)
  * @category Function
  * @sig a -> Boolean
  * @description Determines if the entered value is empty or not
+ * Supports arrays, strings, objects, Maps, Sets, null, and undefined. Any other type throws a TypeError
  * @param  {Any} x Value to check against
  * @return {Boolean} Returns the boolean after running our check
  *
@@ -20,11 +21,13 @@ const isEmpty = x => isNil(x) || !count(x)
  * isEmpty([]) // => true
  * isEmpty({}) // => true
  * isEmpty('') // => true
- * isEmpty(NaN) // => true
+ * isEmpty(new Map()) // => true
+ * isEmpty(new Set()) // => true
  * isEmpty(null) // => true
  * isEmpty(undefined) // => true
- * isEmpty(true) // => true
- * isEmpty(false) // => true
+ * isEmpty([1]) // => false
+ * isEmpty(0) // => TypeError: Unsupported type: Number
+ * isEmpty(true) // => TypeError: Unsupported type: Boolean
  */
 export default /** @type {{
   (x: any): boolean

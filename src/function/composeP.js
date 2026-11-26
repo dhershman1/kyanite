@@ -21,10 +21,10 @@ const composeP = (fn, gn, a) =>
  * const foo = a => new Promise(resolve => resolve(a + '123'))
  * const bar = a => new Promise(resolve => resolve(a + '555'))
  *
- * compose(bar, foo, '100').then(console.log) // => '100123555'
+ * composeP(bar, foo, '100').then(console.log) // => '100123555'
  *
  * // It's also curried
- * const fn = compose(bar, foo)
+ * const fn = composeP(bar, foo)
  *
  * fn('100').then(console.log) // => '100123555'
  *

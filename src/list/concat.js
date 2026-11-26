@@ -20,6 +20,9 @@ const concat = (val, list) =>
  * import { concat } from 'kyanite'
  *
  * concat(4, [1, 2, 3]) // => [1, 2, 3, 4]
+ * // Like Array.prototype.concat, an array value is joined in rather than added as one item
+ * concat([4, 5], [1, 2, 3]) // => [1, 2, 3, 4, 5]
+ * concat([[4]], [1, 2, 3]) // => [1, 2, 3, [4]]
  * concat('bar', 'foo') // => 'foobar'
  */
 export default /** @type {{

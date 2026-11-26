@@ -39,26 +39,13 @@ test('isEmpty -- Works with undefined and null', () => {
   assert.deepEqual(isEmpty(null), true)
 })
 
-test('isEmpty -- empty Errors on numeric values', () => {
-  try {
-    isEmpty(10)
-  } catch ({ message }) {
-    assert.deepEqual(message, 'Unsupported type: Number')
-  }
-})
+test('isEmpty -- Throws on unsupported types', () => {
+  const unsupported = { message: /^Unsupported type: / }
 
-test('isEmpty -- Errors on NaN', () => {
-  try {
-    isEmpty(NaN)
-  } catch ({ message }) {
-    assert.deepEqual(message, 'Unsupported type: Number')
-  }
-})
-
-test('isEmpty -- Errors on boolean', () => {
-  try {
-    isEmpty(false)
-  } catch ({ message }) {
-    assert.deepEqual(message, 'Unsupported type: Boolean')
-  }
+  assert.throws(() => isEmpty(10), { name: 'TypeError', message: 'Unsupported type: Number' })
+  assert.throws(() => isEmpty(0), unsupported)
+  assert.throws(() => isEmpty(NaN), unsupported)
+  assert.throws(() => isEmpty(false), { name: 'TypeError', message: 'Unsupported type: Boolean' })
+  assert.throws(() => isEmpty(true), unsupported)
+  assert.throws(() => isEmpty(() => {}), unsupported)
 })

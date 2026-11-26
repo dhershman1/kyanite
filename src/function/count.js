@@ -28,6 +28,7 @@ const count = a => {
  * @category Function
  * @sig a -> Number
  * @description Counts the number of values within a collection of data
+ * Supports arrays, strings, objects, Maps, and Sets. Any other type throws a TypeError
  * @param {Array|String|Object|Map|Set} a The data to count
  * @return {Number} The number of counted values within the provided data
  * @example
@@ -43,6 +44,7 @@ const count = a => {
  * count('') // => 0
  * count(new Map()) // => 0
  * count(new Set()) // => 0
+ * count(5) // => TypeError: Unsupported type: Number
  */
 export default /** @type {{
   <T = any, K = any, V = any>(a: string | ReadonlyArray<T> | Set<T> | Map<K, V> | object): number

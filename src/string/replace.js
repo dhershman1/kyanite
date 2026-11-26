@@ -22,10 +22,10 @@ const replace = (a, b, str) => str.replace(a, b)
  *
  * // It's also curried
  * const rep = replace('foo')
- * const with = rep('bar')
+ * const withBar = rep('bar')
  *
  * rep('baz', 'foofoo') // => 'bazfoo'
- * with('foofoo') // => 'barfoo'
+ * withBar('foofoo') // => 'barfoo'
  */
 export default /** @type {{
   (a: RegExp | string): {
