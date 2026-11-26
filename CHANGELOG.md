@@ -19,7 +19,7 @@
 - TypeScript types are now generated from the source and describe the real exports
   - They're built into `dist/kyanite.d.ts` (ESM) and `dist/kyanite.d.cts` (CommonJS), replacing the `types/` folder
   - The types no longer use `export =`, so `import K from 'kyanite'` is now a type error. There has never been a default export at runtime, use `import * as K from 'kyanite'` or named imports instead. `const K = require('kyanite')` still works
-  - Shared types can be imported directly: `import type { Reduced, Ord, Path, Pred, Schema, KeyValuePair, Arity1Fn } from 'kyanite'`
+  - Shared types can be imported directly: `import type { Reduced, Ord, Path, Pred, Schema, KeyValuePair, Arity1Fn, Transformer, Transducer } from 'kyanite'`
   - `Omit` and `ObjFunc` are no longer exported. `Omit` shadowed TypeScript's built in `Omit`, which works the same way, and `ObjFunc` wasn't used by anything
   - `Schema` no longer allows nested schemas. `plan` calls every value in its schema as a function, so a nested schema threw at runtime. `any` and `whole` now use `Schema` too, instead of a plain `object`
   - Removed the types for `prime` and `size`, these functions don't exist in Kyanite
@@ -83,7 +83,7 @@
 ### Changed
 
 - Simplified the build: one Rollup config now produces the ESM, CommonJS, and IIFE bundles
-  - The minified ESM bundle went from 19.9 KB (6.2 KB gzip) to 12.7 KB (4.7 KB gzip)
+  - The minified ESM bundle went from 19.9 KB (6.2 KB gzip) to 14.4 KB (5.1 KB gzip), even with transducers added
 - Bundle sizes are now reported by a small inline Rollup plugin instead of `rollup-plugin-filesize`
 - `scripts/create-export.js` now uses `node:fs` instead of `globby`
 - Replaced `tape` and `tap-on` with the built in `node:test` runner and `node:assert/strict`
@@ -94,6 +94,7 @@
 - CI now runs on Node.js 22 and 24 with the latest GitHub Actions
 - All files now use LF line endings, enforced through `.gitattributes`
 - Replaced `.npmignore` with a `files` list in `package.json`
+- `kyanite/package.json` can now be imported or required, for tools that read a package's version
 - Type definitions are generated from the JSDoc in `src/` instead of being written by hand
   - Each function's public types sit right on its `export default`, so they live next to the code they describe
   - Each function's implementation is typed with its full signature too, and the source is checked with TypeScript's `strict` mode. This is what caught most of the corrected types above
@@ -104,8 +105,7 @@
 - `xor` and `round` were rewritten to pass type checking, they behave exactly the same
   - `xor` uses `!a !== !b` instead of `Boolean(!a ^ !b)`
   - `round` converts its string to a number with `Number()` before calling `Math.round`, which did that conversion implicitly before
-- `reduce`, `reduceRight`, and the functions built on them call your reducer directly instead of going through a transducer wrapper object, which makes them faster. 
-- Performance! With the introduction of the transducer flows, overall performance for things like `reduce`, `reduceRight` which can call reducer directly isntead of going through the wrapper object
+- Performance! With the introduction of the transducer flows, `reduce`, `reduceRight`, and the functions built on them now call your reducer directly instead of going through a wrapper object
   - Measured on a 1000 item list, `filter` is about 40% faster, `find` about 4.5x, and `pipe` about 6x
   - `map` sets each value directly instead of through an internal curried helper, making it about twice as fast
   - `concatMap` adds to one result array instead of copying the whole result for every value, which made it slower the longer the list got. It's about 25x faster on a 100 item list, and 65x on a 1000 item list
@@ -117,6 +117,7 @@
 - `groupBy`, `countBy`, and `fromPairs` now keep a `__proto__` key as a normal key. Before, it replaced the result's prototype and the data was lost
 - `fromPairs` no longer drops the falsy keys `0` and `''`. Empty pairs like `[]` are still skipped
 - `memoizeWith` caches falsy results (`0`, `false`, `''`, `null`) instead of calling the function again every time, and keys like `'constructor'` or `'toString'` no longer hit values inherited from `Object.prototype`
+- `min` works with any iterable, like `max` always has. Before, it threw on a `Set`
 - `isOdd` returns `false` for decimals, `isOdd(1.5)` returned `true`
 - `test` gives the same answer every time it's called with a global (`/g`) or sticky (`/y`) regex. It used `reg.test`, which continues from the regex's `lastIndex`, so calling it twice with the same string could return `true` then `false`
 - Removed `keys`'s fallback for environments without `Object.keys`, which every supported environment has
