@@ -5,6 +5,10 @@
 ### Breaking Changes
 
 - Removed `fuzzySearch`, it was deprecated in `v3.2.0`
+- Removed `deepEq`. It was by far the largest function in Kyanite (about 2 KB of the minified bundle), slow on large `Set`s and `Map`s, and gave wrong answers for some types
+  - If you need deep equality, use a library built for it. Node has `isDeepStrictEqual` built into `node:util`, and `dequal`, lodash's `isEqual`, and Ramda's `equals` all work in the browser
+- `startsWith` and `endsWith` compare array items with SameValueZero (like `includes`) instead of deep equality, so objects only match if they're the same object. `startsWith([{ a: 1 }], [{ a: 1 }, 2])` is now `false`
+  - Strings work the same as before, they use `String.prototype.startsWith` and `endsWith`
 - `omitBy` now omits the keys whose values pass the predicate, matching its name. Before, it kept them and dropped the rest
   - For the old behavior use the new `pickBy`, it takes the same arguments: `omitBy(fn, obj)` becomes `pickBy(fn, obj)`
 - Kyanite is no longer transpiled down to ES5 with Babel
@@ -83,7 +87,7 @@
 ### Changed
 
 - Simplified the build: one Rollup config now produces the ESM, CommonJS, and IIFE bundles
-  - The minified ESM bundle went from 19.9 KB (6.2 KB gzip) to 14.4 KB (5.1 KB gzip), even with transducers added
+  - The minified ESM bundle went from 19.9 KB (6.2 KB gzip) to 12.8 KB (4.6 KB gzip), even with transducers added
 - Bundle sizes are now reported by a small inline Rollup plugin instead of `rollup-plugin-filesize`
 - `scripts/create-export.js` now uses `node:fs` instead of `globby`
 - Replaced `tape` and `tap-on` with the built in `node:test` runner and `node:assert/strict`
@@ -118,6 +122,7 @@
 - `fromPairs` no longer drops the falsy keys `0` and `''`. Empty pairs like `[]` are still skipped
 - `memoizeWith` caches falsy results (`0`, `false`, `''`, `null`) instead of calling the function again every time, and keys like `'constructor'` or `'toString'` no longer hit values inherited from `Object.prototype`
 - `min` works with any iterable, like `max` always has. Before, it threw on a `Set`
+- `endsWith` with an empty value returns `true`, like `String.prototype.endsWith` and Kyanite's own `startsWith`. `endsWith('', 'abc')` and `endsWith([], [1, 2])` returned `false`
 - `isOdd` returns `false` for decimals, `isOdd(1.5)` returned `true`
 - `test` gives the same answer every time it's called with a global (`/g`) or sticky (`/y`) regex. It used `reg.test`, which continues from the regex's `lastIndex`, so calling it twice with the same string could return `true` then `false`
 - Removed `keys`'s fallback for environments without `Object.keys`, which every supported environment has
