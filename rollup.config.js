@@ -21,8 +21,8 @@ function filesize () {
   }
 }
 
-// Also declares the global `K` for the IIFE build loaded with a script tag
-const typesFooter = 'export as namespace K'
+// Also declares the global `kyanite` for the IIFE build loaded with a script tag
+const typesFooter = 'export as namespace kyanite'
 
 export default [{
   input: './src/index.js',
@@ -30,7 +30,7 @@ export default [{
   output: [
     { file: 'dist/kyanite.min.js', format: 'es' },
     { file: 'dist/kyanite.min.cjs', format: 'cjs' },
-    { file: 'dist/kyanite.iife.min.js', format: 'iife', name: 'K' }
+    { file: 'dist/kyanite.iife.min.js', format: 'iife', name: 'kyanite' }
   ]
 }, {
   // Bundles the declarations tsc generates from our JSDoc (see tsconfig.json) into one file per module format
