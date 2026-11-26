@@ -42,6 +42,7 @@ Because I think mineral names are cool
 - [Philosophy](#philosophy)
 - [Key Features](#key-features)
 - [How To](#how-to)
+- [Transducers](#transducers)
 - [Testing](#testing)
 - [Credit](#credit)
 
@@ -90,6 +91,30 @@ Common JS
 ```js
 const K = require('kyanite')
 ```
+
+## Transducers
+
+A chain like `pipe([map(inc), filter(isEven), take(3)], list)` builds a whole new array at every step, even though `take` only needs the first few values. Transducers run the same steps in a single pass instead: each value goes through every step before the next one is read, no in between arrays are built, and once `take` has enough nothing else in the list is looked at.
+
+Leave the list off a list function and hand it to `transduce` or `into`. The steps go in an array and run first to last, just like `pipe`:
+
+```js
+import { filter, into, map, take, transduce } from 'kyanite'
+
+const isEven = n => n % 2 === 0
+
+// into collects the results into an array, string, or object
+into([], [map(n => n + 1), filter(isEven), take(3)], [1, 2, 3, 4, 5, 6, 7, 8]) // => [2, 4, 6]
+
+// transduce takes a reducer, the same kind reduce does
+transduce([filter(isEven), take(3)], (n, acc) => acc + n, 0, [1, 2, 3, 4, 5, 6, 7, 8]) // => 12
+```
+
+They work with any iterable, even a generator that never ends, since `take` stops reading once it has enough.
+
+These work as transducers: `map`, `filter`, `reject`, `take`, `takeWhile`, `drop`, `dropWhile`, `uniq`, `uniqBy`, `concatMap`, and `pluck`. You can stop early from your own reducer with `reduced`.
+
+Kyanite follows the [standard transducer protocol](https://github.com/cognitect-labs/transducers-js#transformer-protocol), so transducers and transformers from other libraries that follow it work with `transduce`, and Kyanite's work with theirs.
 
 ## Testing
 
