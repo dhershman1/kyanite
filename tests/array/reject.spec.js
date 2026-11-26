@@ -1,4 +1,6 @@
 import reject from '../../src/array/reject.js'
+import into from '../../src/function/into.js'
+import map from '../../src/array/map.js'
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 
@@ -20,4 +22,9 @@ test('reject -- Is curried', () => {
   const rejecter = reject(even)
 
   assert.deepEqual(rejecter([1, 2, 3, 4, 5]), [1, 3, 5])
+})
+
+test('reject -- Works as a transducer', () => {
+  assert.deepEqual(into([], [reject(n => n % 2 === 0)], [1, 2, 3, 4]), [1, 3])
+  assert.deepEqual(into([], [reject(n => n % 2 === 0), map(n => n * 10)], [1, 2, 3, 4]), [10, 30])
 })
