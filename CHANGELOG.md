@@ -7,13 +7,15 @@
 - Kyanite is no longer transpiled down to ES5 with Babel
   - The bundles in `dist/` now ship modern JavaScript
   - Internet Explorer and other legacy browsers are no longer supported out of the box. If you still need them, transpile `kyanite` as part of your own build
+- The IIFE (script tag) build now adds a global named `kyanite` instead of `K`, this is to avoid collisions with other scripts or globals when using the IIFE
+  - Use `kyanite.map(...)`, or keep the short name with `const K = kyanite`
+  - The types declare the global as `kyanite` to match
 - The fallback `default` condition in `exports` now points at the ESM build instead of the IIFE build, which has no exports
 - The published package now only contains `dist/`, the README, and the license
   - `src/` is no longer shipped, it was never reachable through `exports` anyway
 - TypeScript types are now generated from the source and describe the real exports
   - They're built into `dist/kyanite.d.ts` (ESM) and `dist/kyanite.d.cts` (CommonJS), replacing the `types/` folder
   - The types no longer use `export =`, so `import K from 'kyanite'` is now a type error. There has never been a default export at runtime, use `import * as K from 'kyanite'` or named imports instead. `const K = require('kyanite')` still works
-  - The `K` global for the IIFE (script tag) build is still declared
   - Shared types can be imported directly: `import type { Reduced, Ord, Path, Pred, Schema, KeyValuePair, Arity1Fn } from 'kyanite'`
   - `Omit` and `ObjFunc` are no longer exported. `Omit` shadowed TypeScript's built in `Omit`, which works the same way, and `ObjFunc` wasn't used by anything
   - `Schema` no longer allows nested schemas. `plan` calls every value in its schema as a function, so a nested schema threw at runtime. `any` and `whole` now use `Schema` too, instead of a plain `object`
