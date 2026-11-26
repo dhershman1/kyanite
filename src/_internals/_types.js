@@ -34,6 +34,19 @@
  */
 
 /**
+ * An object that follows the transducer protocol, the standard shared by transducer libraries.
+ * `step` adds one value to the accumulator, `result` finishes the accumulator once the input
+ * runs out, and `init` makes a starting accumulator when none is given
+ * @typedef {{ '@@transducer/init': () => any, '@@transducer/step': (acc: any, value: any) => any, '@@transducer/result': (acc: any) => any }} Transformer
+ */
+
+/**
+ * A function that takes a transformer and returns a new one with an extra step built in,
+ * like `map(inc)` or `take(3)` when they're used with `transduce`
+ * @typedef {(xf: Transformer) => Transformer} Transducer
+ */
+
+/**
  * A predicate function
  * @typedef {(...a: any[]) => boolean} Pred
  */

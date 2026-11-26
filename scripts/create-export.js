@@ -18,6 +18,8 @@ const typeExports = [
   "/** @typedef {import('./_internals/_types.js').Schema} Schema */",
   "/** @typedef {import('./_internals/_types.js').Arity1Fn} Arity1Fn */",
   "/** @typedef {import('./_internals/_types.js').Pred} Pred */",
+  "/** @typedef {import('./_internals/_types.js').Transformer} Transformer */",
+  "/** @typedef {import('./_internals/_types.js').Transducer} Transducer */",
   "/**\n * @template K, V\n * @typedef {import('./_internals/_types.js').KeyValuePair<K, V>} KeyValuePair\n */",
   "/**\n * @template T\n * @typedef {import('./_internals/_types.js').Reduced<T>} Reduced\n */"
 ].join('\n')
