@@ -1,24 +1,5 @@
 /** @private @type {(obj: unknown) => string[]} */
-const keys = obj => {
-  if (typeof Object.keys === 'function') {
-    return Object(obj) !== obj ? [] : Object.keys(/** @type {object} */ (obj))
-  }
-
-  if (Object(obj) !== obj) {
-    return []
-  }
-
-  /** @type {string[]} */
-  const ks = []
-
-  for (const prop in /** @type {object} */ (obj)) {
-    if (Object.prototype.hasOwnProperty.call(obj, prop) && prop !== 'length') {
-      ks.push(prop)
-    }
-  }
-
-  return ks
-}
+const keys = obj => Object(obj) !== obj ? [] : Object.keys(/** @type {object} */ (obj))
 
 /**
  * @name keys

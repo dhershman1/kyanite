@@ -2,9 +2,6 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import keys from '../../src/object/keys.js'
 
-// Mock Object.keys to test the fallback logic
-const originalObjectKeys = Object.keys
-
 test('keys -- Basic usage', () => {
   const obj = { a: 1, b: 2, c: 3, d: { x: 100, y: 200 } }
   assert.deepEqual(keys(
@@ -45,31 +42,4 @@ test('keys -- Should not pick up prototypes', () => {
 test('keys -- Object with no own properties', () => {
   const obj = Object.create({ a: 1 })
   assert.deepEqual(keys(obj), [])
-})
-
-test('keys -- Fallback logic when Object.keys is not available', () => {
-  Object.keys = undefined
-
-  const obj = { a: 1, b: 2, c: 3 }
-  assert.deepEqual(keys(obj), ['a', 'b', 'c'])
-
-  Object.keys = originalObjectKeys
-})
-
-test('keys -- Fallback logic with no own properties', () => {
-  Object.keys = undefined
-
-  const obj = Object.create({ a: 1 })
-  assert.deepEqual(keys(obj), [])
-
-  Object.keys = originalObjectKeys
-})
-
-test('keys -- Test NaN not equal to NaN', () => {
-  Object.keys = undefined
-
-  const obj = NaN
-  assert.deepEqual(keys(obj), [])
-
-  Object.keys = originalObjectKeys
 })
