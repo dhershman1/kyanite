@@ -28,3 +28,8 @@ test('test -- A sticky regex gives the same answer every call', () => {
   assert.equal(fn(reg, 'a'), true)
   assert.equal(fn(reg, 'a'), true)
 })
+
+test('test -- Turns a non string value into a string, like RegExp.prototype.test', () => {
+  assert.equal(fn(/1/, 123), true)
+  assert.equal(fn(/null/, null), true)
+})

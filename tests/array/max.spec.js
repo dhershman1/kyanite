@@ -34,3 +34,9 @@ test('max -- Handles lists of only negative numbers', () => {
 test('max -- Returns undefined for an empty list', () => {
   assert.equal(max([]), undefined)
 })
+
+test('max -- Works with any iterable', () => {
+  assert.equal(max(new Set([1, 3, 2])), 3)
+  assert.equal(max(new Set()), undefined)
+  assert.equal(max('abc'), 'c')
+})

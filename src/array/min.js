@@ -2,7 +2,13 @@ import _reduce from '../_internals/_reduce.js'
 /** @import { Ord } from '../_internals/_types.js' */
 
 /** @private @type {<T extends Ord>(list: ReadonlyArray<T>) => T | undefined} */
-const min = list => list.length ? _reduce((a, b) => a <= b ? a : b, list[0], list) : undefined
+const min = list => {
+  // A marker for "nothing seen yet", so an empty iterable (array, Set, string) gives back undefined
+  const none = {}
+  const result = _reduce((x, acc) => acc === none || x <= acc ? x : acc, none, list)
+
+  return result === none ? undefined : result
+}
 
 /**
  * @name min

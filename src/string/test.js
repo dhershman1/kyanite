@@ -1,9 +1,9 @@
 import _curry2 from '../_internals/_curry2.js'
 
-/** @private @type {(reg: RegExp, str: string) => boolean} */
 // search ignores the g and y flags and leaves lastIndex alone, so the same regex
 // gives the same answer every time (reg.test would continue from the last match)
-const test = (reg, str) => str.search(reg) !== -1
+/** @private @type {(reg: RegExp, str: string) => boolean} */
+const test = (reg, str) => String(str).search(reg) !== -1
 
 /**
  * @name test

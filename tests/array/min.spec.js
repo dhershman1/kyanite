@@ -33,3 +33,13 @@ test('min -- Returns undefined for an empty list', () => {
 test('min -- Handles a single value', () => {
   assert.equal(min([7]), 7)
 })
+
+test('min -- Works with any iterable', () => {
+  assert.equal(min(new Set([3, 1, 2])), 1)
+  assert.equal(min(new Set()), undefined)
+  assert.equal(min('cab'), 'a')
+})
+
+test('min -- Handles negative numbers', () => {
+  assert.equal(min([-1, -2]), -2)
+})

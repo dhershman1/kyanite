@@ -4,8 +4,17 @@ import uniq from './uniq.js'
 /** @private @type {<T = any>(a: ReadonlyArray<T>, b: ReadonlyArray<T>) => T[]} */
 const intersection = (a, b) => {
   const inB = new Set(b)
+  /** @type {any[]} */
+  const both = []
 
-  return uniq(a.filter(x => inB.has(x)))
+  // for...of so any iterable works, not just arrays
+  for (const x of a) {
+    if (inB.has(x)) {
+      both.push(x)
+    }
+  }
+
+  return uniq(both)
 }
 
 /**

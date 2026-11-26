@@ -30,3 +30,8 @@ test('intersection -- Compares with SameValueZero instead of string keys', () =>
   assert.deepEqual(intersection([1, 2, a], ['1', 2, { a: 1 }, a]), [2, a])
   assert.deepEqual(intersection([3, 1], [1, 3]), [3, 1], 'Keeps the order of the first list')
 })
+
+test('intersection -- Works with any iterable', () => {
+  assert.deepEqual(intersection('abc', 'bcd'), ['b', 'c'])
+  assert.deepEqual(intersection(new Set([1, 2, 3]), new Set([3, 2])), [2, 3])
+})
