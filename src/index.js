@@ -3,6 +3,8 @@
 /** @typedef {import('./_internals/_types.js').Schema} Schema */
 /** @typedef {import('./_internals/_types.js').Arity1Fn} Arity1Fn */
 /** @typedef {import('./_internals/_types.js').Pred} Pred */
+/** @typedef {import('./_internals/_types.js').Transformer} Transformer */
+/** @typedef {import('./_internals/_types.js').Transducer} Transducer */
 /**
  * @template K, V
  * @typedef {import('./_internals/_types.js').KeyValuePair<K, V>} KeyValuePair
@@ -90,6 +92,7 @@ export { default as gt } from './function/gt.js'
 export { default as gte } from './function/gte.js'
 export { default as has } from './function/has.js'
 export { default as identity } from './function/identity.js'
+export { default as into } from './function/into.js'
 export { default as isEmpty } from './function/isEmpty.js'
 export { default as isNil } from './function/isNil.js'
 export { default as lt } from './function/lt.js'
@@ -103,6 +106,7 @@ export { default as pipe } from './function/pipe.js'
 export { default as pipeP } from './function/pipeP.js'
 export { default as reduce } from './function/reduce.js'
 export { default as reduced } from './function/reduced.js'
+export { default as transduce } from './function/transduce.js'
 export { default as type } from './function/type.js'
 export { default as unless } from './function/unless.js'
 export { default as when } from './function/when.js'
