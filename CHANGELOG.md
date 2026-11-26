@@ -49,6 +49,17 @@
   - `applyN` types the list as the function's arguments, `applyN(fn: (...args: A) => R, args: A): R`
   - `has` accepts any key, since it checks array values and `Map`/`Set` entries as well as object keys
 - Overloads are now listed fewest arguments first. When a function is passed as a callback TypeScript reads its last overload, so curried functions like `add` and `ascend` now work in `reduce(add, 0, list)` or `on(ascend, fn)` instead of being read as their partial form
+- Fixed bugs that change what some functions return
+  - `uniq`, `uniqBy`, `intersection`, and `difference` now compare values with `SameValueZero` (the same as `Set`) instead of turning them into object keys
+    - Numbers keep their original order. Before, they came back sorted, `uniq([3, 1, 2])` gave `[1, 2, 3]`
+    - `1` and `'1'` are no longer treated as the same value
+    - Objects are compared by reference. Before, every object became `'[object Object]'`, so `uniq([{ a: 1 }, { b: 2 }])` kept only the first
+  - `max` of a list of only negative numbers now returns the largest number instead of `''`, and `max([])` returns `undefined` instead of `''`
+  - `min([])` returns `undefined` instead of throwing. `max` and `min` are typed as returning `T | undefined`
+  - `prepend` always adds its value as a single item. Before, an array value was flattened in, so `prepend([1], [[2]])` gave `[1, [2]]` instead of `[[1], [2]]`
+  - `path` returns `null` when the value at the end of the path is `null`, instead of `undefined`
+  - `dropWhile` on a string returns `''` when every character matches, instead of `[]`
+  - `adjust` with an out of bounds index, and `takeWhile` when every value passes, return a copy of the list instead of the list itself
 
 ### New
 
@@ -84,6 +95,22 @@
 ### Fixed
 
 - The `encase` docs example was missing its opening brace
+- `groupBy`, `countBy`, and `fromPairs` now keep a `__proto__` key as a normal key. Before, it replaced the result's prototype and the data was lost
+- `fromPairs` no longer drops the falsy keys `0` and `''`. Empty pairs like `[]` are still skipped
+- `memoizeWith` caches falsy results (`0`, `false`, `''`, `null`) instead of calling the function again every time, and keys like `'constructor'` or `'toString'` no longer hit values inherited from `Object.prototype`
+- `isOdd` returns `false` for decimals, `isOdd(1.5)` returned `true`
+- `test` gives the same answer every time it's called with a global (`/g`) or sticky (`/y`) regex. It used `reg.test`, which continues from the regex's `lastIndex`, so calling it twice with the same string could return `true` then `false`
+- Removed `keys`'s fallback for environments without `Object.keys`, which every supported environment has
+- Docs examples that didn't work
+  - `composeP` called `compose`
+  - `reduceRight` used `acc.push`, which returns a number instead of the list
+  - `replace` named a variable `with`, which is a reserved word
+  - `on` called its partial form with a string where it expected a function
+  - `omitBy` passed a list of keys instead of a predicate function
+  - `adjust` had a missing quote
+  - `isEmpty` claimed `NaN`, `true`, and `false` return `true`. Like `count`, it throws a `TypeError` for types that aren't collections, and the docs now say so
+- `concat`'s docs now show that an array value is joined in, the same way `Array.prototype.concat` works
+- The tests for `isEmpty` and `count` throwing on unsupported types now use `assert.throws`. Before, they would also have passed if nothing was thrown
 
 ## v3.2.0
 
