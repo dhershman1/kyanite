@@ -1,13 +1,19 @@
+/** @import { Transformer } from './_types.js' */
+
 /**
- * A transformer wrapper for transducers
+ * Wraps one of Kyanite's reducers as a transformer, so it can sit at the end of a transducer chain
+ * Kyanite's reducers take the value first and the accumulator second, the transducer protocol's
+ * step takes the accumulator first, so the wrapper swaps them
  * @private
- * @param {(a: any, b: any) => any} fn The function to wrap
- * @return {any} The wrapped function
+ * @param {(value: any, acc: any) => any} fn The reducer to wrap
+ * @return {Transformer} The reducer as a transformer
  */
 export default function _xwrap (fn) {
   return {
-    '@@transducer/init': () => { throw new Error('init not implemented on XWrap') },
-    '@@transducer/result': (/** @type {any} */ acc) => acc,
-    '@@transducer/step': (/** @type {any} */ acc, /** @type {any} */ x) => fn(acc, x)
+    '@@transducer/init': () => {
+      throw new Error('Kyanite reducers have no starting value of their own, pass one to transduce')
+    },
+    '@@transducer/step': (acc, value) => fn(value, acc),
+    '@@transducer/result': acc => acc
   }
 }
