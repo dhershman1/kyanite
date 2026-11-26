@@ -25,3 +25,12 @@ test('max -- Returns the max of a date list', () => {
   assert.equal(max([d1, d2]), d2)
   assert.equal(max([d2, d1]), d2)
 })
+
+test('max -- Handles lists of only negative numbers', () => {
+  assert.equal(max([-1, -2]), -1)
+  assert.equal(max([-5]), -5)
+})
+
+test('max -- Returns undefined for an empty list', () => {
+  assert.equal(max([]), undefined)
+})

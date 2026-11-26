@@ -5,7 +5,8 @@ import findIndex from './findIndex.js'
 const dropWhile = (fn, arr) => {
   const i = findIndex(x => !fn(x), /** @type {ArrayLike<any>} */ (arr))
 
-  return i < 0 ? [] : arr.slice(i)
+  // Everything matching drops the whole list, keeping it a string if it was one
+  return arr.slice(i < 0 ? arr.length : i)
 }
 
 /**

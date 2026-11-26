@@ -5,7 +5,7 @@ import findIndex from './findIndex.js'
 const takeWhile = (fn, arr) => {
   const i = findIndex(x => !fn(x), /** @type {ArrayLike<any>} */ (arr))
 
-  return /** @type {any} */ (i < 0 ? arr : arr.slice(0, i))
+  return /** @type {any} */ (i < 0 ? arr.slice() : arr.slice(0, i))
 }
 
 /**

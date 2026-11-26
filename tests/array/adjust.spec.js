@@ -42,3 +42,10 @@ test('adjust -- Does not mutate original array', () => {
   assert.deepEqual(adjust(2, x => x + 1, list), [0, 1, 3, 3], 'List updated as expected')
   assert.deepEqual(list, [0, 1, 2, 3], 'Original list was not mutated')
 })
+
+test('adjust -- Returns a copy when the index is out of bounds', () => {
+  const list = [0, 1, 2, 3]
+
+  assert.notEqual(adjust(4, x => x + 1, list), list)
+  assert.notEqual(adjust(-6, x => x + 1, list), list)
+})

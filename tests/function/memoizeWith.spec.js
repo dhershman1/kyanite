@@ -105,3 +105,25 @@ test('memoizeWith - can be applied to a function with optional arguments', () =>
 
   assert.equal(callCount, 2, 'Function should be called twice due to caching')
 })
+
+test('memoizeWith - caches falsy results', () => {
+  let callCount = 0
+  const isZero = x => {
+    callCount++
+    return x === 0
+  }
+  const memoized = memoizeWith(String, isZero)
+
+  memoized(1)
+  memoized(1)
+  assert.equal(memoized(1), false)
+  assert.equal(callCount, 1, 'false was cached instead of being recomputed')
+})
+
+test('memoizeWith - keys that exist on Object.prototype are not cache hits', () => {
+  const memoized = memoizeWith(x => x, x => x.toUpperCase())
+
+  assert.equal(memoized('constructor'), 'CONSTRUCTOR')
+  assert.equal(memoized('toString'), 'TOSTRING')
+  assert.equal(memoized('__proto__'), '__PROTO__')
+})

@@ -1,14 +1,17 @@
 import _curry2 from '../_internals/_curry2.js'
 /** @private @type {<T extends (...args: readonly any[]) => any>(keyFn: (...v: Parameters<T>) => string, fn: T ) => T} */
 const memoizeWith = (keyFn, fn) => {
-  /** @type {{ [key: string]: any }} */
-  const cache = {}
+  /** @type {Map<string, any>} */
+  const cache = new Map()
 
   return /** @type {any} */ ((/** @type {any} */ ...args) => {
     const key = keyFn(...args)
-    const result = cache[key] = cache[key] || fn(...args)
 
-    return result
+    if (!cache.has(key)) {
+      cache.set(key, fn(...args))
+    }
+
+    return cache.get(key)
   })
 }
 

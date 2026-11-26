@@ -25,3 +25,17 @@ test('path -- Is curried', () => {
 
   assert.deepEqual(fn({ foo: { bar: 1 } }), 1)
 })
+
+test('path -- Returns a null value instead of undefined', () => {
+  assert.equal(path(['a', 'b'], { a: { b: null } }), null)
+  assert.equal(path(['a'], { a: null }), null)
+})
+
+test('path -- Returns undefined when the path goes through null', () => {
+  assert.equal(path(['a', 'b'], { a: null }), undefined)
+})
+
+test('path -- Returns falsy values', () => {
+  assert.equal(path(['a', 'b'], { a: { b: 0 } }), 0)
+  assert.equal(path(['a'], { a: false }), false)
+})

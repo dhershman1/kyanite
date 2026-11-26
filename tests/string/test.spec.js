@@ -13,3 +13,18 @@ test('test -- Is curried', () => {
   assert.deepEqual(f('abc'), true)
   assert.deepEqual(f('bca'), false)
 })
+
+test('test -- A global regex gives the same answer every call', () => {
+  const reg = /a/g
+
+  assert.equal(fn(reg, 'a'), true)
+  assert.equal(fn(reg, 'a'), true)
+  assert.equal(reg.lastIndex, 0, 'The regex lastIndex is left alone')
+})
+
+test('test -- A sticky regex gives the same answer every call', () => {
+  const reg = /a/y
+
+  assert.equal(fn(reg, 'a'), true)
+  assert.equal(fn(reg, 'a'), true)
+})

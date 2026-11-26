@@ -5,8 +5,8 @@ const adjust = (idx, fn, list) => {
   const len = list.length
 
   if (idx >= len || idx < -len) {
-    // Out of bounds hands back the list it was given
-    return /** @type {any} */ (list)
+    // Out of bounds hands back an unchanged copy
+    return [...list]
   }
 
   const _idx = (len + idx) % len
@@ -38,7 +38,7 @@ const adjust = (idx, fn, list) => {
  *
  * const fn = adjust(1)
  *
- * fn(toUpper, ['a', 'b', 'c']) // => ['a', 'B', 'c]
+ * fn(toUpper, ['a', 'b', 'c']) // => ['a', 'B', 'c']
  */
 export default /** @type {{
   (idx: number): {

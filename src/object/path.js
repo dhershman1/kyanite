@@ -4,7 +4,7 @@ import isNil from '../function/isNil.js'
 
 /** @private @type {(keys: Path, obj: any) => any} */
 const path = ([p, ...keys], obj) => {
-  if (isNil(obj) || isNil(obj[p])) {
+  if (isNil(obj)) {
     return undefined
   }
 

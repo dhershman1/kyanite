@@ -13,3 +13,8 @@ test('dropWhile -- Is curried', () => {
   assert.deepEqual(fn([1, 2, 3, 4, 3, 2, 1]), [3, 4, 3, 2, 1])
   assert.deepEqual(fn([-1, 0, 1, 2, 3]), [3])
 })
+
+test('dropWhile -- Works with strings', () => {
+  assert.equal(dropWhile(x => x === 'a', 'aabc'), 'bc')
+  assert.equal(dropWhile(x => x === 'a', 'aaa'), '', 'Returns an empty string when every character matches')
+})

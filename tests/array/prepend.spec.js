@@ -16,3 +16,8 @@ test('prepend -- Is curried', () => {
   assert.equal(typeof pender, 'function')
   assert.deepEqual(pender(['is', 'cool']), ['testing', 'is', 'cool'])
 })
+
+test('prepend -- Adds an array as a single value', () => {
+  assert.deepEqual(prepend([1], [[2], [3]]), [[1], [2], [3]])
+  assert.deepEqual(prepend([1, 2], [3]), [[1, 2], 3])
+})

@@ -25,3 +25,11 @@ test('min -- Returns the min of a date list', () => {
   assert.equal(min([d1, d2]), d1)
   assert.equal(min([d2, d1]), d1)
 })
+
+test('min -- Returns undefined for an empty list', () => {
+  assert.equal(min([]), undefined)
+})
+
+test('min -- Handles a single value', () => {
+  assert.equal(min([7]), 7)
+})

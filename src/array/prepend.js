@@ -1,7 +1,7 @@
 import _curry2 from '../_internals/_curry2.js'
 
 /** @private @type {<T = any>(x: T, list: ReadonlyArray<T>) => T[]} */
-const prepend = (x, list) => /** @type {any[]} */ ([]).concat(x, list)
+const prepend = (x, list) => [x, ...list]
 
 /**
  * @name prepend
@@ -18,6 +18,7 @@ const prepend = (x, list) => /** @type {any[]} */ ([]).concat(x, list)
  * import { prepend } from 'kyanite'
  *
  * prepend('testing', ['is', 'cool']) // => ['testing', 'is', 'cool']
+ * prepend([1], [[2], [3]]) // => [[1], [2], [3]]
  *
  * // It's curried
  *
