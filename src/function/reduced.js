@@ -10,7 +10,7 @@ import _reduced from '../_internals/_reduced.js'
  * @description
  * Used to optimize reduce iterations, can be used to short circuit a reduce without needing to iterate an entire array
  * The returned value should be considered as a black box, it is not guaranteed to be stable
- * This optimization only works with `reduce`, and `reduceRight` currently
+ * This optimization works with `reduce`, `reduceRight`, and `transduce` (including inside a transducer chain)
  * @param {Any} x The data that is considered reduced
  * @return {Any} The wrapped value
  * @example

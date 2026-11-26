@@ -1,22 +1,19 @@
 import _curry3 from '../_internals/_curry3.js'
-import _xwrap from '../_internals/_xwrap.js'
 /** @import { Reduced } from '../_internals/_types.js' */
 
 /** @private @type {<T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult, list: ReadonlyArray<T>) => TResult} */
 const reduceRight = (fn, acc, arr) => {
-  const xf = _xwrap(fn)
-
   for (let i = arr.length - 1; i >= 0; i--) {
-    acc = xf['@@transducer/step'](arr[i], acc)
-    const step = /** @type {any} */ (acc)
+    const step = /** @type {any} */ (fn(arr[i], acc))
 
     if (step && step['@@transducer/reduced']) {
-      acc = step['@@transducer/value']
-      break
+      return step['@@transducer/value']
     }
+
+    acc = step
   }
 
-  return xf['@@transducer/result'](acc)
+  return acc
 }
 
 /**

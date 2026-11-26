@@ -4,8 +4,9 @@ import {
   add, adjust, ap, ascend, ascendBy, sortWith, between, both, branch, clamp, compose, composeP, converge, descendBy,
   either, eqBy, flip, inc, insert, length, on, over, pathOr, pathSatisfies, propEq, propOr,
   propSatisfies, reduce, reduceRight, reduced, replace, slice, sum, toUpper, unless, update,
-  when, within, divide
+  when, within, divide, transduce, into, map, filter, take
 } from '../../src/index.js'
+import type { Transformer, Transducer } from '../../src/index.js'
 import { expectType } from './helpers.js'
 
 // adjust
@@ -253,3 +254,51 @@ expectType<string[]>()(sortWith([ascendBy(len)], ['aa', 'b']))
 declare const leaked: any
 // @ts-expect-error any is not exactly number
 expectType<number>()(leaked)
+
+// transduce
+const isEven = (n: number) => n % 2 === 0
+const total = (n: number, acc: number) => acc + n
+const xfs = [map((n: number) => n + 1), filter(isEven), take(3)]
+expectType<number>()(transduce(xfs, total, 0, [1, 2, 3, 4]))
+expectType<number>()(transduce(xfs, total, 0)([1, 2, 3, 4]))
+expectType<number>()(transduce(xfs, total)(0, [1, 2, 3, 4]))
+expectType<number>()(transduce(xfs, total)(0)([1, 2, 3, 4]))
+expectType<number>()(transduce(xfs)(total, 0, [1, 2, 3, 4]))
+expectType<number>()(transduce(xfs)(total, 0)([1, 2, 3, 4]))
+expectType<number>()(transduce(xfs)(total)(0, [1, 2, 3, 4]))
+expectType<number>()(transduce(xfs)(total)(0)([1, 2, 3, 4]))
+expectType<number[]>()(transduce(map((n: number) => n * 2), (n: number, acc: number[]) => acc.concat(n), [], new Set([1, 2])))
+expectType<number>()(transduce([take(2)], (n: number, acc: number) => acc > 1 ? reduced(acc) : acc + n, 0, [1, 2, 3]))
+const collect: Transformer = {
+  '@@transducer/init': () => [],
+  '@@transducer/step': (acc: number[], x: number) => [...acc, x],
+  '@@transducer/result': (acc: number[]) => acc.join('-')
+}
+transduce([take(2)], collect, [], [1, 2, 3])
+const protocolDouble: Transducer = xf => ({ ...xf, '@@transducer/step': (acc, x) => xf['@@transducer/step'](acc, x * 2) })
+expectType<number>()(transduce([protocolDouble, take(1)], total, 0, [1, 2]))
+// @ts-expect-error the accumulator has to match what the reducer returns
+transduce(xfs, total, '', [1, 2, 3])
+
+// into
+expectType<any[]>()(into([], xfs, [1, 2, 3, 4]))
+expectType<number[]>()(into<number>([], xfs, [1, 2, 3, 4]))
+expectType<number[]>()(into<number>([], xfs)([1, 2, 3, 4]))
+expectType<number[]>()(into<number>([])(xfs, [1, 2, 3, 4]))
+expectType<number[]>()(into<number>([])(xfs)([1, 2, 3, 4]))
+expectType<string>()(into('', [map((c: string) => c.toUpperCase())], 'abc'))
+expectType<string>()(into('', [take(2)])('abc'))
+expectType<string>()(into('')([take(2)], 'abc'))
+expectType<string>()(into('')([take(2)])('abc'))
+expectType<{ [key: string]: string }>()(into<string>({}, [map((n: number) => [n, String(n)])], [1, 2]))
+expectType<{ [key: string]: any }>()(into({}, [map((n: number) => [n, n])])([1, 2]))
+// @ts-expect-error into only collects into arrays, strings, and objects
+into(5, xfs, [1, 2, 3])
+
+// map, filter, and take still work on lists the same way
+expectType<number[]>()(map((n: number) => n + 1)([1, 2]))
+expectType<number[]>()(filter(isEven)([1, 2]))
+expectType<number[] | string>()(take<number>(1)([1, 2]))
+expectType<number[]>()(compose(map((n: number) => n + 1), filter(isEven))([1, 2]))
+// and as transducers
+expectType<Transformer>()(map((n: number) => n + 1)(collect))
