@@ -4,6 +4,9 @@
 
 ### Breaking Changes
 
+- Removed `fuzzySearch`, it was deprecated in `v3.2.0`
+- `omitBy` now omits the keys whose values pass the predicate, matching its name. Before, it kept them and dropped the rest
+  - For the old behavior use the new `pickBy`, it takes the same arguments: `omitBy(fn, obj)` becomes `pickBy(fn, obj)`
 - Kyanite is no longer transpiled down to ES5 with Babel
   - The bundles in `dist/` now ship modern JavaScript
   - Internet Explorer and other legacy browsers are no longer supported out of the box. If you still need them, transpile `kyanite` as part of your own build
@@ -65,6 +68,7 @@
 
 - Hovering any function in your editor now shows its full documentation and examples
 - `startsWith` and `propSatisfies` now have types
+- Added `pickBy`, the opposite of `omitBy`: It builds a new object with only the keys whose values pass the predicate, which is given the value and the key
 
 ### Changed
 
