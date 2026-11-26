@@ -58,8 +58,7 @@ The goal for Kyanite is to be stripped down, light weight, and intuitive. The id
 
 ## How To
 
-> **Note:** As of `v2.0.0` the module should be imported as just `K` instead of `kyanite`
-> The unminified version of the library is no longer available as of 2.0.0
+> **Note:** As of `v4.0.0` the script tag build adds a global named `kyanite` instead of `K`
 
 With a CDN
 
@@ -68,7 +67,10 @@ With a CDN
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.iife.min.js"></script>
 
 <script>
-  K.isEmpty({})
+  kyanite.isEmpty({})
+
+  // Or give it a shorter name
+  const K = kyanite
 </script>
 ```
 
