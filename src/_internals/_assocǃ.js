@@ -9,7 +9,12 @@ import _curry3 from './_curry3.js'
  * @return {any} The Object with the changed value
  */
 const _assocǃ = (acc, key, val) => {
-  acc[key] = val
+  if (key === '__proto__') {
+    // Assigning to __proto__ replaces the object's prototype instead of setting a key
+    Object.defineProperty(acc, key, { value: val, writable: true, enumerable: true, configurable: true })
+  } else {
+    acc[key] = val
+  }
 
   return acc
 }
