@@ -15,3 +15,26 @@ test('startsWith -- Is curried', () => {
   assert.ok(fn('c'))
   assert.ok(!fn('a'))
 })
+
+test('startsWith -- An empty value is at the start of everything', () => {
+  assert.ok(startsWith('', 'abc'))
+  assert.ok(startsWith([], [1, 2]))
+  assert.ok(startsWith([], []))
+})
+
+test('startsWith -- Checks every item, and a longer value never matches', () => {
+  assert.ok(startsWith([1, 2], [1, 2, 3]))
+  assert.ok(!startsWith([1, 3], [1, 2, 3]))
+  assert.ok(!startsWith([1, 2, 3, 4], [1, 2, 3]))
+  assert.ok(!startsWith('abcd', 'abc'))
+})
+
+test('startsWith -- Compares items with SameValueZero', () => {
+  const obj = { a: 1 }
+
+  assert.ok(startsWith([NaN], [NaN, 1]), 'NaN matches NaN')
+  assert.ok(startsWith([0], [-0]), '0 matches -0')
+  assert.ok(startsWith([obj], [obj, 2]), 'The same object matches')
+  assert.ok(!startsWith([{ a: 1 }], [{ a: 1 }, 2]), 'An object that looks the same does not')
+  assert.ok(!startsWith(['1'], [1]))
+})

@@ -1,10 +1,10 @@
-import compose from '../function/compose.js'
 import _curry2 from '../_internals/_curry2.js'
-import deepEq from '../function/deepEq.js'
-import slice from './slice.js'
+import _matchesAt from '../_internals/_matchesAt.js'
 
 /** @private @type {(a: ReadonlyArray<any> | string, list: ReadonlyArray<any> | string) => boolean} */
-const endsWith = (a, list) => compose(deepEq(a), slice(-a.length, Infinity), list)
+const endsWith = (a, list) => typeof list === 'string'
+  ? list.endsWith(/** @type {string} */ (a))
+  : _matchesAt(a, list, list.length - a.length)
 
 /**
  * @name endsWith
@@ -15,6 +15,7 @@ const endsWith = (a, list) => compose(deepEq(a), slice(-a.length, Infinity), lis
  * a -> List -> Boolean
  * String -> String -> Boolean
  * @description Checks to see if the provided value is at the end of a given list
+ * Strings are checked like `String.prototype.endsWith`, arrays have each item compared with SameValueZero (like `includes`), so objects only match if they're the same object
  * @param {String|Array} a The value to check for at the end of the list
  * @param {String|Array} list The list to check through
  * @return {Boolean} If the value is at the end of the provided list
@@ -25,6 +26,7 @@ const endsWith = (a, list) => compose(deepEq(a), slice(-a.length, Infinity), lis
  * endsWith(['c'], ['a', 'b', 'c']) // => true
  * endsWith('b', 'abc') // => false
  * endsWith(['b'], ['a', 'b', 'c']) // => false
+ * endsWith('', 'abc') // => true
  *
  * // It's also curried
  * const fn = endsWith('c')
