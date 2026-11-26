@@ -1,14 +1,21 @@
 import _curry2 from '../_internals/_curry2.js'
-import _assocǃ from '../_internals/_assocǃ.js'
-import values from '../object/values.js'
 
 /** @private @type {<T = any, U = any>(fn: (a: T) => U, list: ReadonlyArray<T>) => T[]} */
-const uniqBy = (fn, list) =>
-  values(list.reduce((acc, a) => {
+const uniqBy = (fn, list) => {
+  const seen = new Set()
+
+  return list.filter(a => {
     const k = fn(a)
 
-    return !Object.prototype.hasOwnProperty.call(acc, /** @type {any} */ (k)) ? _assocǃ(acc, /** @type {any} */ (k), a) : acc
-  }, {}))
+    if (seen.has(k)) {
+      return false
+    }
+
+    seen.add(k)
+
+    return true
+  })
+}
 
 /**
  * @name uniqBy

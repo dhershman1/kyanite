@@ -23,3 +23,10 @@ test('intersection -- Handles dupes in both arrays', () => {
   assert.deepEqual(fn([4, 4, 2, 3, 3]), [2, 3, 4])
   assert.deepEqual(fn2(['baz', 'baz', 'bar', 'bar', 'foo']), ['foo', 'bar', 'baz'])
 })
+
+test('intersection -- Compares with SameValueZero instead of string keys', () => {
+  const a = { a: 1 }
+
+  assert.deepEqual(intersection([1, 2, a], ['1', 2, { a: 1 }, a]), [2, a])
+  assert.deepEqual(intersection([3, 1], [1, 3]), [3, 1], 'Keeps the order of the first list')
+})

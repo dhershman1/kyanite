@@ -13,3 +13,11 @@ test('uniqBy -- Is curried', () => {
 
   assert.deepEqual(uq(['and', 'here', 'are', 'some', 'words']), ['and', 'here', 'words'])
 })
+
+test('uniqBy -- Does not turn the keys into strings', () => {
+  assert.deepEqual(uniqBy(x => x.id, [{ id: 1 }, { id: '1' }, { id: 1 }]), [{ id: 1 }, { id: '1' }])
+})
+
+test('uniqBy -- Keeps the first value of each key in order', () => {
+  assert.deepEqual(uniqBy(Math.floor, [3.1, 1.2, 3.9, 2.5, 1.7]), [3.1, 1.2, 2.5])
+})

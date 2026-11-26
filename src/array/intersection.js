@@ -1,15 +1,11 @@
 import _curry2 from '../_internals/_curry2.js'
-import groupBy from './groupBy.js'
-import has from '../function/has.js'
-import identity from '../function/identity.js'
 import uniq from './uniq.js'
-import filter from './filter.js'
 
 /** @private @type {<T = any>(a: ReadonlyArray<T>, b: ReadonlyArray<T>) => T[]} */
 const intersection = (a, b) => {
-  const grouped = groupBy(identity, b)
+  const inB = new Set(b)
 
-  return uniq(filter(x => has(x, grouped), a))
+  return uniq(a.filter(x => inB.has(x)))
 }
 
 /**

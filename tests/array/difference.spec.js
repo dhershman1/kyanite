@@ -27,3 +27,13 @@ test('difference -- Handles dupes in both arrays', () => {
 test('difference -- Handles odd edge cases', () => {
   assert.deepEqual(difference([[NaN], [NaN]]).length, 0)
 })
+
+test('difference -- Compares with SameValueZero instead of string keys', () => {
+  assert.deepEqual(difference([[1], ['1']]), [1, '1'])
+  assert.deepEqual(difference([[{ a: 1 }], [{ b: 2 }]]), [{ a: 1 }, { b: 2 }])
+  assert.deepEqual(difference([[3, 1], [2]]), [3, 1, 2], 'Keeps the order values are first seen in')
+})
+
+test('difference -- Handles __proto__', () => {
+  assert.deepEqual(difference([['__proto__'], ['a']]), ['__proto__', 'a'])
+})
