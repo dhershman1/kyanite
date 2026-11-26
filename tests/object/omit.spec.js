@@ -1,8 +1,9 @@
 import omit from '../../src/object/omit.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('omit -- Test omit()', t => {
-  t.deepEqual(omit(['test'], {
+test('omit -- Test omit()', () => {
+  assert.deepEqual(omit(['test'], {
     test: 1,
     cool: 2,
     cat: 'Mew!'
@@ -11,17 +12,16 @@ test('omit -- Test omit()', t => {
     cat: 'Mew!'
   })
 
-  t.deepEqual(omit(['cool', 'test'], {
+  assert.deepEqual(omit(['cool', 'test'], {
     test: 1,
     cool: 2,
     cat: 'Mew!'
   }), {
     cat: 'Mew!'
   })
-  t.end()
 })
 
-test('omit -- Test curried omit single key', t => {
+test('omit -- Test curried omit single key', () => {
   const omiter = omit(['test'])
   const results = omiter({
     test: 1,
@@ -29,14 +29,13 @@ test('omit -- Test curried omit single key', t => {
     cat: 'Mew!'
   })
 
-  t.deepEqual(results, {
+  assert.deepEqual(results, {
     cool: 2,
     cat: 'Mew!'
   })
-  t.end()
 })
 
-test('omit -- Test curried omit array of keys', t => {
+test('omit -- Test curried omit array of keys', () => {
   const omiter = omit(['cool', 'test'])
   const results = omiter({
     test: 1,
@@ -44,6 +43,5 @@ test('omit -- Test curried omit array of keys', t => {
     cat: 'Mew!'
   })
 
-  t.deepEqual(results, { cat: 'Mew!' })
-  t.end()
+  assert.deepEqual(results, { cat: 'Mew!' })
 })

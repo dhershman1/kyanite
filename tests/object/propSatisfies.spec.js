@@ -1,20 +1,19 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import propSatisfies from '../../src/object/propSatisfies.js'
 
-test('propSatisfies -- Basic', t => {
-  t.same(propSatisfies(x => x > 0, 'x', { x: 1, y: 2 }), true)
-  t.same(propSatisfies(y => y > 0, 'y', { x: 1, y: 4 }), true)
-  t.same(propSatisfies(y => y > 0, 'b', { a: 3 }), false)
-  t.end()
+test('propSatisfies -- Basic', () => {
+  assert.deepEqual(propSatisfies(x => x > 0, 'x', { x: 1, y: 2 }), true)
+  assert.deepEqual(propSatisfies(y => y > 0, 'y', { x: 1, y: 4 }), true)
+  assert.deepEqual(propSatisfies(y => y > 0, 'b', { a: 3 }), false)
 })
 
-test('propSatisfies -- Is curries', t => {
+test('propSatisfies -- Is curries', () => {
   const fn = propSatisfies(y => y > 0)
   const safetyProp = fn('y')
 
-  t.same(fn('x', { x: 1 }), true)
-  t.same(fn('x', { a: 1 }), false)
-  t.same(safetyProp({ x: 1, y: 4 }), true)
-  t.same(safetyProp({ a: 1, b: 2 }), false)
-  t.end()
+  assert.deepEqual(fn('x', { x: 1 }), true)
+  assert.deepEqual(fn('x', { a: 1 }), false)
+  assert.deepEqual(safetyProp({ x: 1, y: 4 }), true)
+  assert.deepEqual(safetyProp({ a: 1, b: 2 }), false)
 })

@@ -1,6 +1,10 @@
 import _curry2 from '../_internals/_curry2.js'
 import _reduce from '../_internals/_reduce.js'
 
+/** @private @type {<R = any>(fns: ReadonlyArray<(a: any) => any>, init: any) => R} */
+const pipe = (arr, init) =>
+  _reduce((fn, acc) => fn(acc), init, arr)
+
 /**
  * @name pipe
  * @function
@@ -23,7 +27,7 @@ import _reduce from '../_internals/_reduce.js'
  *
  * piper(10) // => 24
  */
-const pipe = (arr, init) =>
-  _reduce((fn, acc) => fn(acc), init, arr)
-
-export default _curry2(pipe)
+export default /** @type {{
+  <R = any>(fns: ReadonlyArray<(a: any) => any>): (init: any) => R
+  <R = any>(fns: ReadonlyArray<(a: any) => any>, init: any): R
+}} */ (_curry2(pipe))

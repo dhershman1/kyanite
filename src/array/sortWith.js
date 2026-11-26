@@ -1,6 +1,11 @@
 import _curry2 from '../_internals/_curry2.js'
 import _reduce from '../_internals/_reduce.js'
 
+/** @private @type {<T = any>(fns: ReadonlyArray<(a: T, b: T) => number>, arr: ReadonlyArray<T>) => T[]} */
+const sortWith = (fns, arr) =>
+  [...arr].sort((a, b) =>
+    _reduce((f, acc) => acc === 0 ? f(a, b) : acc, 0, fns))
+
 /**
  * @name sortWith
  * @function
@@ -32,8 +37,7 @@ import _reduce from '../_internals/_reduce.js'
  *
  * ageNameSort(data) // =>[{name: 'alice', age: 40}, {name: 'clara', age: 40}, {name: 'bob', age: 30}]
  */
-const sortWith = (fns, arr) =>
-  [...arr].sort((a, b) =>
-    _reduce((f, acc) => acc === 0 ? f(a, b) : acc, 0, fns))
-
-export default _curry2(sortWith)
+export default /** @type {{
+  <T = any>(fns: ReadonlyArray<(a: T, b: T) => number>): (arr: ReadonlyArray<T>) => T[]
+  <T = any>(fns: ReadonlyArray<(a: T, b: T) => number>, arr: ReadonlyArray<T>): T[]
+}} */ (_curry2(sortWith))

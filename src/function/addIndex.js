@@ -1,6 +1,24 @@
 import concatMap from '../array/concatMap.js'
 import identity from './identity.js'
 
+/** @private @type {(fn: Function) => Function} */
+const addIndex = fn => (/** @type {any[]} */ ...args) => {
+  let idx = 0
+  const [origFn] = args
+  const list = args[args.length - 1]
+  const copiedArgs = args.slice()
+
+  copiedArgs[0] = (/** @type {any[]} */ ...innerArgs) => {
+    const result = origFn(...concatMap(identity, [innerArgs, [idx, list]]))
+
+    idx += 1
+
+    return result
+  }
+
+  return fn(...copiedArgs)
+}
+
 /**
  * @name addIndex
  * @function
@@ -22,21 +40,6 @@ import identity from './identity.js'
  * f((_, i) => i > 2, data) // => ['b', 'a', 'r']
  * r((val, acc, i) => acc.concat(val + i), [], data) // => ['f0', 'o1', 'o2', 'b3', 'a4', 'r5']
  */
-const addIndex = fn => (...args) => {
-  let idx = 0
-  const [origFn] = args
-  const list = args[args.length - 1]
-  const copiedArgs = args.slice()
-
-  copiedArgs[0] = (...innerArgs) => {
-    const result = origFn(...concatMap(identity, [innerArgs, [idx, list]]))
-
-    idx += 1
-
-    return result
-  }
-
-  return fn(...copiedArgs)
-}
-
-export default addIndex
+export default /** @type {{
+  (fn: Function): Function
+}} */ (addIndex)

@@ -1,14 +1,13 @@
 import gcd from '../../src/number/gcd.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('gcd -- Returns the gcd of two numbers', t => {
-  t.is(gcd(80, 90), 10)
-  t.end()
+test('gcd -- Returns the gcd of two numbers', () => {
+  assert.equal(gcd(80, 90), 10)
 })
 
-test('gcd -- Is curried', t => {
+test('gcd -- Is curried', () => {
   const x = gcd(80)
 
-  t.is(x(90), 10)
-  t.end()
+  assert.equal(x(90), 10)
 })

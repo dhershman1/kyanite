@@ -5,6 +5,11 @@ import not from '../function/not.js'
 import _reduce from '../_internals/_reduce.js'
 import keys from './keys.js'
 
+/** @private @type {<T, E extends string>(keys: ReadonlyArray<E>, obj: T) => Omit<T, E>} */
+const omit = (ks, obj) =>
+  _reduce((prop, acc) =>
+    not(includes(prop, ks)) ? _assocǃ(acc, prop, /** @type {any} */ (obj)[prop]) : acc, {}, keys(obj))
+
 /**
  * @name omit
  * @function
@@ -29,8 +34,7 @@ import keys from './keys.js'
  *
  * omitKeys({ test: '3432', thing: 123 }) // => { thing: 123 }
  */
-const omit = (ks, obj) =>
-  _reduce((prop, acc) =>
-    not(includes(prop, ks)) ? _assocǃ(acc, prop, obj[prop]) : acc, {}, keys(obj))
-
-export default _curry2(omit)
+export default /** @type {{
+  <E extends string>(keys: ReadonlyArray<E>): <T>(obj: T) => Omit<T, E>
+  <T, E extends string>(keys: ReadonlyArray<E>, obj: T): Omit<T, E>
+}} */ (_curry2(omit))

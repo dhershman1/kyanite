@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(a: any, b: any) => any} */
+const or = (a, b) => a || b
+
 /**
  * @name or
  * @function
@@ -19,6 +22,7 @@ import _curry2 from '../_internals/_curry2.js'
  * or(true, false) // => true
  * or(false, false) // => false
  */
-const or = (a, b) => a || b
-
-export default _curry2(or)
+export default /** @type {{
+  (a: any): (b: any) => any
+  (a: any, b: any): any
+}} */ (_curry2(or))

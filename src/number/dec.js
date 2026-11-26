@@ -1,3 +1,6 @@
+/** @private @type {(n: number) => number} */
+const dec = n => n - 1
+
 /**
  * @name dec
  * @since v0.11.0
@@ -13,6 +16,6 @@
  * dec(1) // => 0
  * dec(dec(3)) // => 1
  */
-const dec = n => n - 1
-
-export default dec
+export default /** @type {{
+  (n: number): number
+}} */ (dec)

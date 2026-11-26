@@ -1,5 +1,8 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {<L extends ReadonlyArray<any> | string>(a: number, b: number, list: L) => L extends string ? string : L extends ReadonlyArray<infer T> ? T[] : never} */
+const slice = (a, b, list) => /** @type {any} */ (list.slice(a, b))
+
 /**
  * @name slice
  * @function
@@ -28,6 +31,11 @@ import _curry3 from '../_internals/_curry3.js'
  * slicer([1, 2, 3, 4, 5]) // => [2, 3]
  * slicer('kyanite') // => 'yan'
  */
-const slice = (a, b, list) => list.slice(a, b)
-
-export default _curry3(slice)
+export default /** @type {{
+  (a: number): {
+    (b: number): <L extends ReadonlyArray<any> | string>(list: L) => L extends string ? string : L extends ReadonlyArray<infer T> ? T[] : never
+    <L extends ReadonlyArray<any> | string>(b: number, list: L): L extends string ? string : L extends ReadonlyArray<infer T> ? T[] : never
+  }
+  (a: number, b: number): <L extends ReadonlyArray<any> | string>(list: L) => L extends string ? string : L extends ReadonlyArray<infer T> ? T[] : never
+  <L extends ReadonlyArray<any> | string>(a: number, b: number, list: L): L extends string ? string : L extends ReadonlyArray<infer T> ? T[] : never
+}} */ (_curry3(slice))

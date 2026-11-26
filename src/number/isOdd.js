@@ -1,4 +1,10 @@
-import eq from '../function/eq.js'
+/** @private @type {(x: number) => boolean} */
+const isOdd = n => {
+  // Negative odd numbers leave -1, decimals and NaN leave something else
+  const r = n % 2
+
+  return r === 1 || r === -1
+}
 
 /**
  * @name isOdd
@@ -18,14 +24,6 @@ import eq from '../function/eq.js'
  * isOdd(2) // => false
  * isOdd(NaN) // => false
  */
-const isOdd = n => {
-  if (!eq(n, NaN)) {
-    const _eq = eq(n % 2)
-
-    return !_eq(NaN) && !_eq(0)
-  }
-
-  return false
-}
-
-export default isOdd
+export default /** @type {{
+  (x: number): boolean
+}} */ (isOdd)

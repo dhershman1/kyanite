@@ -1,23 +1,21 @@
 import includes from '../../src/list/includes.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('includes -- Basic simple functionality', t => {
+test('includes -- Basic simple functionality', () => {
   const list = [1, 2, 3, 4]
 
-  t.true(includes(2, list))
-  t.true(includes(4, list))
-  t.end()
+  assert.ok(includes(2, list))
+  assert.ok(includes(4, list))
 })
 
-test('includes -- Basic curry functionality', t => {
+test('includes -- Basic curry functionality', () => {
   const list = [1, 2, 3]
   const checker = includes(3)
 
-  t.true(checker(list))
-  t.end()
+  assert.ok(checker(list))
 })
 
-test('includes -- Returns false for invalid type comparisons', t => {
-  t.false(includes('1', [1]))
-  t.end()
+test('includes -- Returns false for invalid type comparisons', () => {
+  assert.ok(!includes('1', [1]))
 })

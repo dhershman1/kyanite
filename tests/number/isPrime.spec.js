@@ -1,30 +1,26 @@
 import isPrime from '../../src/number/isPrime.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('isPrime -- Basic functionality', t => {
-  t.same(isPrime(2), true)
-  t.same(isPrime(5), true)
-  t.same(isPrime(3), true)
-  t.same(isPrime(4), false)
-
-  t.end()
+test('isPrime -- Basic functionality', () => {
+  assert.deepEqual(isPrime(2), true)
+  assert.deepEqual(isPrime(5), true)
+  assert.deepEqual(isPrime(3), true)
+  assert.deepEqual(isPrime(4), false)
 })
 
-test('isPrime -- Larger numbers', t => {
-  t.same(isPrime(2671), true)
-  t.same(isPrime(5009), true)
-  t.same(isPrime(7877), true)
-  t.same(isPrime(7878), false)
-  t.same(isPrime(5010), false)
-  t.same(isPrime(10543000), false)
-  t.end()
+test('isPrime -- Larger numbers', () => {
+  assert.deepEqual(isPrime(2671), true)
+  assert.deepEqual(isPrime(5009), true)
+  assert.deepEqual(isPrime(7877), true)
+  assert.deepEqual(isPrime(7878), false)
+  assert.deepEqual(isPrime(5010), false)
+  assert.deepEqual(isPrime(10543000), false)
 })
 
-test('isPrime -- Handles some edge cases', t => {
-  t.same(isPrime(0), false)
-  t.same(isPrime(undefined), false)
-  t.same(isPrime(NaN), false)
-  t.same(isPrime(-2), false)
-
-  t.end()
+test('isPrime -- Handles some edge cases', () => {
+  assert.deepEqual(isPrime(0), false)
+  assert.deepEqual(isPrime(undefined), false)
+  assert.deepEqual(isPrime(NaN), false)
+  assert.deepEqual(isPrime(-2), false)
 })

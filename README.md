@@ -30,12 +30,6 @@
     <img alt="codebeat badge" src="https://codebeat.co/badges/4eeb4e32-dfe2-4d12-ac1a-bd13cf31ee55" />
   </a>
 </p>
-<br />
-<p align=center>
-  <a href="https://github.com/standard/standard">
-    <img alt="Standard JS" src="https://cdn.rawgit.com/standard/standard/master/badge.svg">
-  </a>
-</p>
 
 ## Why The Name Kyanite?
 
@@ -48,6 +42,7 @@ Because I think mineral names are cool
 - [Philosophy](#philosophy)
 - [Key Features](#key-features)
 - [How To](#how-to)
+- [Transducers](#transducers)
 - [Testing](#testing)
 - [Credit](#credit)
 
@@ -64,8 +59,7 @@ The goal for Kyanite is to be stripped down, light weight, and intuitive. The id
 
 ## How To
 
-> **Note:** As of `v2.0.0` the module should be imported as just `K` instead of `kyanite`
-> The unminified version of the library is no longer available as of 2.0.0
+> **Note:** As of `v4.0.0` the script tag build adds a global named `kyanite` instead of `K`
 
 With a CDN
 
@@ -74,7 +68,10 @@ With a CDN
 <script src="https://cdn.jsdelivr.net/npm/kyanite@latest/dist/kyanite.iife.min.js"></script>
 
 <script>
-  K.isEmpty({})
+  kyanite.isEmpty({})
+
+  // Or give it a shorter name
+  const K = kyanite
 </script>
 ```
 
@@ -83,20 +80,45 @@ Or installing with `npm i kyanite` and then:
 Standard module system
 
 ```js
-// This will use the module path in the package.json (src/index.js)
 import * as K from 'kyanite'
+
+// Or just the functions you need
+import { map, pipe } from 'kyanite'
 ```
 
 Common JS
 
 ```js
-// For the prod minified version
 const K = require('kyanite')
 ```
 
+## Transducers
+
+A chain like `pipe([map(inc), filter(isEven), take(3)], list)` builds a whole new array at every step, even though `take` only needs the first few values. Transducers run the same steps in a single pass instead: each value goes through every step before the next one is read, no in between arrays are built, and once `take` has enough nothing else in the list is looked at.
+
+Leave the list off a list function and hand it to `transduce` or `into`. The steps go in an array and run first to last, just like `pipe`:
+
+```js
+import { filter, into, map, take, transduce } from 'kyanite'
+
+const isEven = n => n % 2 === 0
+
+// into collects the results into an array, string, or object
+into([], [map(n => n + 1), filter(isEven), take(3)], [1, 2, 3, 4, 5, 6, 7, 8]) // => [2, 4, 6]
+
+// transduce takes a reducer, the same kind reduce does
+transduce([filter(isEven), take(3)], (n, acc) => acc + n, 0, [1, 2, 3, 4, 5, 6, 7, 8]) // => 12
+```
+
+They work with any iterable, even a generator that never ends, since `take` stops reading once it has enough.
+
+These work as transducers: `map`, `filter`, `reject`, `take`, `takeWhile`, `drop`, `dropWhile`, `uniq`, `uniqBy`, `concatMap`, and `pluck`. You can stop early from your own reducer with `reduced`.
+
+Kyanite follows the [standard transducer protocol](https://github.com/cognitect-labs/transducers-js#transformer-protocol), so transducers and transformers from other libraries that follow it work with `transduce`, and Kyanite's work with theirs.
+
 ## Testing
 
-Kyanite follows the [tap](http://testanything.org/) setup using the [tape](https://github.com/substack/tape) testing suite.
+Kyanite uses the built in [Node.js test runner](https://nodejs.org/api/test.html) (`node:test`) with `node:assert`
 
 To run the tests:
 

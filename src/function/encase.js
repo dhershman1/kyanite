@@ -1,5 +1,14 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T>(fn: (data: T) => any, a: T) => any | undefined} */
+const encase = (fn, a) => {
+  try {
+    return fn(a)
+  } catch (err) {
+    return undefined
+  }
+}
+
 /**
  * @name encase
  * @function
@@ -22,14 +31,9 @@ import _curry2 from '../_internals/_curry2.js'
  * const en = encase(getter)
  *
  * en({a: 0}) // => undefined
- * en(a: {b: {c: 0}}}) // => 0
+ * en({a: {b: {c: 0}}}) // => 0
  */
-const encase = (fn, a) => {
-  try {
-    return fn(a)
-  } catch (err) {
-    return undefined
-  }
-}
-
-export default _curry2(encase)
+export default /** @type {{
+  <T>(fn: (data: T) => any): (a: T) => any | undefined
+  <T>(fn: (data: T) => any, a: T): any | undefined
+}} */ (_curry2(encase))

@@ -1,5 +1,11 @@
 import _curry2 from '../_internals/_curry2.js'
 import keys from './keys.js'
+/** @import { Schema } from '../_internals/_types.js' */
+
+/** @private @type {(schema: Schema, obj: { [key: string]: any }) => boolean} */
+const whole = (schema, obj) =>
+  keys(schema).every(key =>
+    schema[key](obj[key]))
 
 /**
  * @name whole
@@ -20,8 +26,7 @@ import keys from './keys.js'
  * run({ a: 'foo', b: 'xxx', x: 11, y: 19 }) // => true
  * run({ a: 'xxx', b: 'xxx', x: 11, y: 19 }) // => false
  */
-const whole = (schema, obj) =>
-  keys(schema).every(key =>
-    schema[key](obj[key]))
-
-export default _curry2(whole)
+export default /** @type {{
+  (schema: Schema): (obj: { [key: string]: any }) => boolean
+  (schema: Schema, obj: { [key: string]: any }): boolean
+}} */ (_curry2(whole))

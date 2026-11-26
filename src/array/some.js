@@ -2,6 +2,11 @@ import _curry2 from '../_internals/_curry2.js'
 import _reduce from '../_internals/_reduce.js'
 import _reduced from '../_internals/_reduced.js'
 
+/** @private @type {<T = any>(fn: (a: T) => boolean, x: ReadonlyArray<T>) => boolean} */
+const some = (fn, arr) =>
+  _reduce((val, acc) =>
+    fn(val) ? _reduced(true) : acc, false, arr)
+
 /**
  * @name some
  * @function
@@ -31,8 +36,7 @@ import _reduced from '../_internals/_reduced.js'
  * run([-1, 0, 1]) // => true
  * run([-3, -2, -1]) // => false
  */
-const some = (fn, arr) =>
-  _reduce((val, acc) =>
-    fn(val) ? _reduced(true) : acc, false, arr)
-
-export default _curry2(some)
+export default /** @type {{
+  <T = any>(fn: (a: T) => boolean): (x: ReadonlyArray<T>) => boolean
+  <T = any>(fn: (a: T) => boolean, x: ReadonlyArray<T>): boolean
+}} */ (_curry2(some))

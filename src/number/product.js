@@ -1,6 +1,9 @@
 import _reduce from '../_internals/_reduce.js'
 import multiply from './multiply.js'
 
+/** @private @type {(arr: ReadonlyArray<number>) => number} */
+const product = list => _reduce(multiply, 1, list)
+
 /**
  * @name product
  * @since v0.11.3
@@ -17,6 +20,6 @@ import multiply from './multiply.js'
  * product([1, 2, 3]) // => 6
  * product([2, 3, 0]) // => 0
  */
-const product = list => _reduce(multiply, 1, list)
-
-export default product
+export default /** @type {{
+  (arr: ReadonlyArray<number>): number
+}} */ (product)

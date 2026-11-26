@@ -1,6 +1,27 @@
 import _curry2 from '../_internals/_curry2.js'
 import type from './type.js'
 
+/** @private @type {(key: unknown, data: unknown) => boolean} */
+const has = (key, data) => {
+  const t = type(data)
+  // type() already told us what data is, TypeScript can't narrow from it
+  const d = /** @type {any} */ (data)
+
+  switch (t) {
+    case 'Array':
+    case 'String':
+      return d.includes(key)
+    case 'Object':
+    case 'Arguments':
+      return Object.prototype.hasOwnProperty.call(d, /** @type {PropertyKey} */ (key))
+    case 'Map':
+    case 'Set':
+      return d.has(key)
+    default:
+      throw new TypeError(`Unsupported type: ${t}`)
+  }
+}
+
 /**
  * @name has
  * @function
@@ -32,22 +53,7 @@ import type from './type.js'
  * fn(new Map([['foo', 1]]) // => true
  * fn(['bar']) // => false
  */
-const has = (key, data) => {
-  const t = type(data)
-
-  switch (t) {
-    case 'Array':
-    case 'String':
-      return data.includes(key)
-    case 'Object':
-    case 'Arguments':
-      return Object.prototype.hasOwnProperty.call(data, key)
-    case 'Map':
-    case 'Set':
-      return data.has(key)
-    default:
-      throw new TypeError(`Unsupported type: ${t}`)
-  }
-}
-
-export default _curry2(has)
+export default /** @type {{
+  (key: unknown): (data: unknown) => boolean
+  (key: unknown, data: unknown): boolean
+}} */ (_curry2(has))

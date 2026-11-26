@@ -1,26 +1,30 @@
 import reject from '../../src/array/reject.js'
-import test from 'tape'
+import into from '../../src/function/into.js'
+import map from '../../src/array/map.js'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
 const even = x => x % 2 === 0
 
-test('reject -- Reduces an array to the ones not matching a filter', t => {
-  t.deepEqual(reject(even, [1, 2, 3, 4, 5]), [1, 3, 5])
-  t.end()
+test('reject -- Reduces an array to the ones not matching a filter', () => {
+  assert.deepEqual(reject(even, [1, 2, 3, 4, 5]), [1, 3, 5])
 })
 
-test('reject -- Returns an empty array if no elements passes function test', t => {
-  t.deepEqual(reject(x => x < 100, [1, 90, 99]), [])
-  t.end()
+test('reject -- Returns an empty array if no elements passes function test', () => {
+  assert.deepEqual(reject(x => x < 100, [1, 90, 99]), [])
 })
 
-test('reject -- Returns an empty array when an empty array is passed in', t => {
-  t.deepEqual(reject(even, []), [])
-  t.end()
+test('reject -- Returns an empty array when an empty array is passed in', () => {
+  assert.deepEqual(reject(even, []), [])
 })
 
-test('reject -- Is curried', t => {
+test('reject -- Is curried', () => {
   const rejecter = reject(even)
 
-  t.deepEqual(rejecter([1, 2, 3, 4, 5]), [1, 3, 5])
-  t.end()
+  assert.deepEqual(rejecter([1, 2, 3, 4, 5]), [1, 3, 5])
+})
+
+test('reject -- Works as a transducer', () => {
+  assert.deepEqual(into([], [reject(n => n % 2 === 0)], [1, 2, 3, 4]), [1, 3])
+  assert.deepEqual(into([], [reject(n => n % 2 === 0), map(n => n * 10)], [1, 2, 3, 4]), [10, 30])
 })

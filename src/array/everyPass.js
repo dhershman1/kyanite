@@ -2,6 +2,9 @@ import _curry2 from '../_internals/_curry2.js'
 import _reduce from '../_internals/_reduce.js'
 import _reduced from '../_internals/_reduced.js'
 
+/** @private @type {<T>(fns: ReadonlyArray<(a: T) => boolean>, data: T) => boolean} */
+const everyPass = (fns, data) => _reduce((f, acc) => !f(data) ? _reduced(false) : acc, true, fns)
+
 /**
  * @name everyPass
  * @function
@@ -28,6 +31,7 @@ import _reduced from '../_internals/_reduced.js'
  * fn(2) // => true
  * fn(0) // => false
  */
-const everyPass = (fns, data) => _reduce((f, acc) => !f(data) ? _reduced(false) : acc, true, fns)
-
-export default _curry2(everyPass)
+export default /** @type {{
+  <T>(fns: ReadonlyArray<(a: T) => boolean>): (data: T) => boolean
+  <T>(fns: ReadonlyArray<(a: T) => boolean>, data: T): boolean
+}} */ (_curry2(everyPass))

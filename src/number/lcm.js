@@ -1,6 +1,10 @@
 import _curry2 from '../_internals/_curry2.js'
 import gcd from './gcd.js'
 
+/** @private @type {(a: number, b: number) => number} */
+const lcm = (a, b) =>
+  Math.abs(Math.floor(a / gcd(a, b) * b))
+
 /**
  * @name lcm
  * @function
@@ -25,7 +29,6 @@ import gcd from './gcd.js'
  * a(70) // => 630
  * a(4) // => 180
  */
-const lcm = (a, b) =>
-  Math.abs(Math.floor(a / gcd(a, b) * b))
-
-export default _curry2(lcm)
+export default /** @type {{
+  (a: number, b: number): number
+}} */ (_curry2(lcm))

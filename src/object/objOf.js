@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T = any>(key: string, val: T) => { [index: string]: T }} */
+const objOf = (k, v) => ({ [k]: v })
+
 /**
  * @name objOf
  * @function
@@ -22,6 +25,7 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * fn(1) // => { a: 1 }
  */
-const objOf = (k, v) => ({ [k]: v })
-
-export default _curry2(objOf)
+export default /** @type {{
+  <T = any>(key: string): (val: T) => { [index: string]: T }
+  <T = any>(key: string, val: T): { [index: string]: T }
+}} */ (_curry2(objOf))

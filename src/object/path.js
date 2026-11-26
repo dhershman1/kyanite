@@ -1,5 +1,19 @@
 import _curry2 from '../_internals/_curry2.js'
 import isNil from '../function/isNil.js'
+/** @import { Path } from '../_internals/_types.js' */
+
+/** @private @type {(keys: Path, obj: any) => any} */
+const path = ([p, ...keys], obj) => {
+  if (isNil(obj)) {
+    return undefined
+  }
+
+  if (!keys.length) {
+    return obj[p]
+  }
+
+  return path(keys, obj[p])
+}
 
 /**
  * @name path
@@ -24,16 +38,7 @@ import isNil from '../function/isNil.js'
  *
  * safetyPath({ a: { b: 2 } }) // => 2
  */
-const path = ([p, ...keys], obj) => {
-  if (isNil(obj) || isNil(obj[p])) {
-    return undefined
-  }
-
-  if (!keys.length) {
-    return obj[p]
-  }
-
-  return path(keys, obj[p])
-}
-
-export default _curry2(path)
+export default /** @type {{
+  (keys: Path): (obj: any) => any
+  (keys: Path, obj: any): any
+}} */ (_curry2(path))

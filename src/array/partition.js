@@ -2,6 +2,11 @@ import _curry2 from '../_internals/_curry2.js'
 import _appendǃ from '../_internals/_appendǃ.js'
 import _reduce from '../_internals/_reduce.js'
 
+/** @private @type {<T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>) => [T[], T[]]} */
+const partition = (fn, list) =>
+  _reduce((v, [pass, fail]) =>
+    fn(v) ? [_appendǃ(pass, v), fail] : [pass, _appendǃ(fail, v)], [[], []], list)
+
 /**
  * @name partition
  * @function
@@ -27,8 +32,7 @@ import _reduce from '../_internals/_reduce.js'
  *
  * part(['foo', 'bar', 100]) // => [ ['foo', 'bar'], [100] ]
  */
-const partition = (fn, list) =>
-  _reduce((v, [pass, fail]) =>
-    fn(v) ? [_appendǃ(pass, v), fail] : [pass, _appendǃ(fail, v)], [[], []], list)
-
-export default _curry2(partition)
+export default /** @type {{
+  <T = any>(fn: (a: T) => boolean): (list: ReadonlyArray<T>) => [T[], T[]]
+  <T = any>(fn: (a: T) => boolean, list: ReadonlyArray<T>): [T[], T[]]
+}} */ (_curry2(partition))

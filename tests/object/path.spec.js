@@ -1,30 +1,41 @@
 import path from '../../src/object/path.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('path -- Returns back value when found', t => {
+test('path -- Returns back value when found', () => {
   const result = path(['a', 'b'], { a: { b: 2 } })
 
-  t.is(result, 2, 'Found the value of 2 from the object')
-  t.end()
+  assert.equal(result, 2, 'Found the value of 2 from the object')
 })
 
-test('path -- Safely Navigates bad objects', t => {
+test('path -- Safely Navigates bad objects', () => {
   const result = path(['a', 'b', 'c'], { a: 2 })
 
-  t.notOk(result, 'Returns a falsy value for bad objects')
-  t.end()
+  assert.ok(!result, 'Returns a falsy value for bad objects')
 })
 
-test('path -- Navigates tricky broken objects', t => {
+test('path -- Navigates tricky broken objects', () => {
   const result = path(['a', 'b', 'c'], { a: { c: { b: 4 } } })
 
-  t.notOk(result, 'Correctly did not find the value with the given path')
-  t.end()
+  assert.ok(!result, 'Correctly did not find the value with the given path')
 })
 
-test('path -- Is curried', t => {
+test('path -- Is curried', () => {
   const fn = path(['foo', 'bar'])
 
-  t.same(fn({ foo: { bar: 1 } }), 1)
-  t.end()
+  assert.deepEqual(fn({ foo: { bar: 1 } }), 1)
+})
+
+test('path -- Returns a null value instead of undefined', () => {
+  assert.equal(path(['a', 'b'], { a: { b: null } }), null)
+  assert.equal(path(['a'], { a: null }), null)
+})
+
+test('path -- Returns undefined when the path goes through null', () => {
+  assert.equal(path(['a', 'b'], { a: null }), undefined)
+})
+
+test('path -- Returns falsy values', () => {
+  assert.equal(path(['a', 'b'], { a: { b: 0 } }), 0)
+  assert.equal(path(['a'], { a: false }), false)
 })

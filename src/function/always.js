@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T = any>(a: T, b: any) => T} */
+const always = (a, _) => a
+
 /**
  * @name always
  * @function
@@ -23,6 +26,7 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * fn('') // => 'dino'
  */
-const always = (a, _) => a
-
-export default _curry2(always)
+export default /** @type {{
+  <T = any>(a: T): (b?: any) => T
+  <T = any>(a: T, b: any): T
+}} */ (_curry2(always))

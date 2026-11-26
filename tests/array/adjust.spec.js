@@ -1,50 +1,51 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
 import adjust from '../../src/array/adjust.js'
 
-test('adjust -- Basic usage', t => {
+test('adjust -- Basic usage', () => {
   const results = adjust(
     1,
     x => x.toUpperCase(),
     ['a', 'b', 'c', 'd']
   )
 
-  t.same(results, ['a', 'B', 'c', 'd'], 'Results were adjusted to capitlaized B')
-  t.end()
+  assert.deepEqual(results, ['a', 'B', 'c', 'd'], 'Results were adjusted to capitlaized B')
 })
 
-test('adjust -- offsets negative indexes from the end of the array', t => {
-  t.same(adjust(
+test('adjust -- offsets negative indexes from the end of the array', () => {
+  assert.deepEqual(adjust(
     -3,
     x => x + 1,
     [0, 1, 2, 3]
   ), [0, 2, 2, 3], 'Array negative offset')
-  t.end()
 })
 
-test('adjust -- Basic usage strings', t => {
-  t.same(adjust(
+test('adjust -- Basic usage strings', () => {
+  assert.deepEqual(adjust(
     1,
     x => x.toUpperCase(),
     'abcd'
   ), ['a', 'B', 'c', 'd'])
-
-  t.end()
 })
 
-test('adjust -- returns the original array if the supplied index is out of bounds', t => {
+test('adjust -- returns the original array if the supplied index is out of bounds', () => {
   const list = [0, 1, 2, 3]
   adjust(4, x => x + 1, list)
-  t.same(adjust(4, x => x + 1, list), list, 'Returned back list for out of bounds index')
-  t.same(adjust(-6, x => x + 1, list), list, 'Returned back list for out of bounds index')
-
-  t.end()
+  assert.deepEqual(adjust(4, x => x + 1, list), list, 'Returned back list for out of bounds index')
+  assert.deepEqual(adjust(-6, x => x + 1, list), list, 'Returned back list for out of bounds index')
 })
 
-test('adjust -- Does not mutate original array', t => {
+test('adjust -- Does not mutate original array', () => {
   const list = [0, 1, 2, 3]
 
-  t.same(adjust(2, x => x + 1, list), [0, 1, 3, 3], 'List updated as expected')
-  t.same(list, [0, 1, 2, 3], 'Original list was not mutated')
-  t.end()
+  assert.deepEqual(adjust(2, x => x + 1, list), [0, 1, 3, 3], 'List updated as expected')
+  assert.deepEqual(list, [0, 1, 2, 3], 'Original list was not mutated')
+})
+
+test('adjust -- Returns a copy when the index is out of bounds', () => {
+  const list = [0, 1, 2, 3]
+
+  assert.notEqual(adjust(4, x => x + 1, list), list)
+  assert.notEqual(adjust(-6, x => x + 1, list), list)
 })

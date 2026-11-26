@@ -1,6 +1,10 @@
 import _curry2 from '../_internals/_curry2.js'
 import map from '../array/map.js'
 
+/** @private @type {<P extends string, T = any>(keys: ReadonlyArray<P>, obj: Record<P, T>) => T[]} */
+const props = (keys, obj) =>
+  map(k => obj[k], keys)
+
 /**
  * @name props
  * @function
@@ -22,7 +26,8 @@ import map from '../array/map.js'
  *
  * g({ a: 1, b: 2, c: 3 }) // => [1, 2]
  */
-const props = (keys, obj) =>
-  map(k => obj[k], keys)
-
-export default _curry2(props)
+export default /** @type {{
+  <P extends string>(keys: ReadonlyArray<P>): <T = any>(obj: Record<P, T>) => T[]
+  <P extends string, T = any>(keys: ReadonlyArray<P>): (obj: Record<P, T>) => T[]
+  <P extends string, T = any>(keys: ReadonlyArray<P>, obj: Record<P, T>): T[]
+}} */ (_curry2(props))

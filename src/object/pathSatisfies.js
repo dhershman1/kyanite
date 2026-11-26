@@ -1,5 +1,10 @@
 import _curry3 from '../_internals/_curry3.js'
 import path from './path.js'
+/** @import { Path } from '../_internals/_types.js' */
+
+/** @private @type {<T = any, U = any>(pred: (val: T) => boolean, keys: Path, obj: U) => boolean} */
+const pathSatisfies = (pred, keys, obj) =>
+  pred(path(keys, obj))
 
 /**
  * @name pathSatisfies
@@ -25,7 +30,11 @@ import path from './path.js'
  *
  * safetyPath({ x: { y: 2 } }) // => true
  */
-const pathSatisfies = (pred, keys, obj) =>
-  pred(path(keys, obj))
-
-export default _curry3(pathSatisfies)
+export default /** @type {{
+  <T = any>(pred: (val: T) => boolean): {
+    (keys: Path): <U = any>(obj: U) => boolean
+    <U = any>(keys: Path, obj: U): boolean
+  }
+  <T = any>(pred: (val: T) => boolean, keys: Path): <U = any>(obj: U) => boolean
+  <T = any, U = any>(pred: (val: T) => boolean, keys: Path, obj: U): boolean
+}} */ (_curry3(pathSatisfies))

@@ -1,29 +1,25 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import zip from '../../src/array/zip.js'
 
-test('zip -- Zipped even arrays', t => {
+test('zip -- Zipped even arrays', () => {
   const result = zip(['a', 'b', 'c'], [1, 2, 3])
 
-  t.same(result, { a: 1, b: 2, c: 3 })
-  t.end()
+  assert.deepEqual(result, { a: 1, b: 2, c: 3 })
 })
 
-test('zip -- Zipped different length arrays', t => {
+test('zip -- Zipped different length arrays', () => {
   const res1 = zip(['a', 'b', 'c'], [1, 2, 3, 4])
   const res2 = zip(['a', 'b', 'c'], [1, 2])
 
-  t.same(res1, { a: 1, b: 2, c: 3 })
-  t.same(res2, { a: 1, b: 2 })
-
-  t.end()
+  assert.deepEqual(res1, { a: 1, b: 2, c: 3 })
+  assert.deepEqual(res2, { a: 1, b: 2 })
 })
 
-test('zip -- It is curried', t => {
+test('zip -- It is curried', () => {
   const z = zip(['a', 'b', 'c'])
 
-  t.same(z([1, 2, 3]), { a: 1, b: 2, c: 3 })
-  t.same(z([1, 2, 3, 4]), { a: 1, b: 2, c: 3 })
-  t.same(z([1, 2]), { a: 1, b: 2 })
-
-  t.end()
+  assert.deepEqual(z([1, 2, 3]), { a: 1, b: 2, c: 3 })
+  assert.deepEqual(z([1, 2, 3, 4]), { a: 1, b: 2, c: 3 })
+  assert.deepEqual(z([1, 2]), { a: 1, b: 2 })
 })

@@ -1,6 +1,9 @@
 import _curry2 from '../_internals/_curry2.js'
 import flip from '../function/flip.js'
 
+/** @private @type {<T = any>(fn: (a: T, acc: T) => T, arr: ReadonlyArray<T>) => T} */
+const fold = (fn, arr) => arr.reduce(flip(fn))
+
 /**
  * @name fold
  * @function
@@ -25,6 +28,7 @@ import flip from '../function/flip.js'
  * fn([5, 4, 19, 20, 32, 1]) // => 1
  * fn(['z', 'x', 'd', 'p']) // => 'd'
  */
-const fold = (fn, arr) => arr.reduce(flip(fn))
-
-export default _curry2(fold)
+export default /** @type {{
+  <T = any>(fn: (a: T, acc: T) => T): (arr: ReadonlyArray<T>) => T
+  <T = any>(fn: (a: T, acc: T) => T, arr: ReadonlyArray<T>): T
+}} */ (_curry2(fold))

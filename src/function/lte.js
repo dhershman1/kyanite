@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(a: number, b: number) => boolean} */
+const lte = (a, b) => b <= a
+
 /**
  * @name lte
  * @function
@@ -25,6 +28,7 @@ import _curry2 from '../_internals/_curry2.js'
  * fn(2) // => true
  * fn(3) // => true
  */
-const lte = (a, b) => b <= a
-
-export default _curry2(lte)
+export default /** @type {{
+  (a: number): (b: number) => boolean
+  (a: number, b: number): boolean
+}} */ (_curry2(lte))

@@ -1,5 +1,9 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T>(a: T, b: T) => boolean} */
+// SameValue equality: +0 and -0 are different, NaN equals NaN
+const eq = (a, b) => Object.is(a, b)
+
 /**
  * @name eq
  * @function
@@ -28,14 +32,7 @@ import _curry2 from '../_internals/_curry2.js'
  * const test = eq(NaN)
  * test(NaN) // => true
  */
-const eq = (a, b) => {
-  if (a === b) {
-    // +0 !== -0
-    return a !== 0 || 1 / a === 1 / b
-  }
-
-  // NaN === NaN
-  return a !== a && b !== b // eslint-disable-line no-self-compare
-}
-
-export default _curry2(eq)
+export default /** @type {{
+  <T>(a: T): (b: T) => boolean
+  <T>(a: T, b: T): boolean
+}} */ (_curry2(eq))

@@ -1,3 +1,7 @@
+/** @private @type {(x: any) => string} */
+const type = x =>
+  Object.prototype.toString.call(x).slice(8, -1)
+
 /**
  * @name type
  * @function
@@ -21,7 +25,6 @@
  * type(new Date()) // => 'Date'
  * type(true) // => 'Boolean'
  */
-const type = x =>
-  Object.prototype.toString.call(x).slice(8, -1)
-
-export default type
+export default /** @type {{
+  (x: any): string
+}} */ (type)

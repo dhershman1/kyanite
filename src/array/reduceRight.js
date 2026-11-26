@@ -1,5 +1,20 @@
 import _curry3 from '../_internals/_curry3.js'
-import _xwrap from '../_internals/_xwrap.js'
+/** @import { Reduced } from '../_internals/_types.js' */
+
+/** @private @type {<T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult, list: ReadonlyArray<T>) => TResult} */
+const reduceRight = (fn, acc, arr) => {
+  for (let i = arr.length - 1; i >= 0; i--) {
+    const step = /** @type {any} */ (fn(arr[i], acc))
+
+    if (step && step['@@transducer/reduced']) {
+      return step['@@transducer/value']
+    }
+
+    acc = step
+  }
+
+  return acc
+}
 
 /**
  * @name reduceRight
@@ -18,26 +33,18 @@ import _xwrap from '../_internals/_xwrap.js'
  * import { reduceRight } from 'kyanite'
  *
  * reduceRight((n, acc) =>
- *   typeof n === 'number' ? acc.push(n) : acc, [], ['', 1, 2, '0', 3]) // => [3, 2, 1]
+ *   typeof n === 'number' ? [...acc, n] : acc, [], ['', 1, 2, '0', 3]) // => [3, 2, 1]
  *
  * // It's also curried
- * const fn = reduceRight((x, acc) => typeof n === 'number' ? acc.push(n) : acc)
+ * const fn = reduceRight((n, acc) => typeof n === 'number' ? [...acc, n] : acc)
  *
  * fn([], ['', 1, 2, '0', 3]) // => [3, 2, 1]
  */
-const reduceRight = (fn, acc, arr) => {
-  const xf = _xwrap(fn)
-
-  for (let i = arr.length - 1; i >= 0; i--) {
-    acc = xf['@@transducer/step'](arr[i], acc)
-
-    if (acc && acc['@@transducer/reduced']) {
-      acc = acc['@@transducer/value']
-      break
-    }
+export default /** @type {{
+  <T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>): {
+    (acc: TResult): (list: ReadonlyArray<T>) => TResult
+    (acc: TResult, list: ReadonlyArray<T>): TResult
   }
-
-  return xf['@@transducer/result'](acc)
-}
-
-export default _curry3(reduceRight)
+  <T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult): (list: ReadonlyArray<T>) => TResult
+  <T = any, TResult = any>(fn: (a: T, acc: TResult) => TResult | Reduced<TResult>, acc: TResult, list: ReadonlyArray<T>): TResult
+}} */ (_curry3(reduceRight))

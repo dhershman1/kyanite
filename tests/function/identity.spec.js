@@ -1,21 +1,19 @@
 import filter from '../../src/array/filter.js'
 import identity from '../../src/function/identity.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('identity -- Returns value given to it', t => {
-  t.is(identity(10), 10)
-  t.end()
+test('identity -- Returns value given to it', () => {
+  assert.equal(identity(10), 10)
 })
 
-test('identity -- Handles being used as a function callback', t => {
-  t.deepEqual(filter(identity, [0, 'cool', null, 1]), ['cool', 1])
-  t.end()
+test('identity -- Handles being used as a function callback', () => {
+  assert.deepEqual(filter(identity, [0, 'cool', null, 1]), ['cool', 1])
 })
 
-test('identity -- Returns with ability to access as argument type', t => {
+test('identity -- Returns with ability to access as argument type', () => {
   const results = identity(10)
 
-  t.ok(results)
-  t.is(typeof results.constructor, 'function')
-  t.end()
+  assert.ok(results)
+  assert.equal(typeof results.constructor, 'function')
 })

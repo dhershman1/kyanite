@@ -2,6 +2,9 @@ import _curry2 from '../_internals/_curry2.js'
 import complement from './complement.js'
 import eq from './eq.js'
 
+/** @private @type {(a: any, b: any) => boolean} */
+const notEq = (a, b) => complement(eq(a), b)
+
 /**
  * @name notEq
  * @function
@@ -27,6 +30,7 @@ import eq from './eq.js'
  * fn(2) // => true
  * fn(1) // => false
  */
-const notEq = (a, b) => complement(eq(a), b)
-
-export default _curry2(notEq)
+export default /** @type {{
+  (a: any): (b: any) => boolean
+  (a: any, b: any): boolean
+}} */ (_curry2(notEq))

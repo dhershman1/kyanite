@@ -1,3 +1,12 @@
+/** @private @type {(fn: (...a: any[]) => any, ...args: any[]) => any} */
+const curry = (f, ...args) => {
+  if (f.length <= args.length) {
+    return f(...args)
+  }
+
+  return (/** @type {any[]} */ ...rest) => curry(f, ...args, ...rest)
+}
+
 /**
  * @name curry
  * @function
@@ -30,12 +39,6 @@
  * bar() // => [Function]
  * bar(null) // => 1
  */
-const curry = (f, ...args) => {
-  if (f.length <= args.length) {
-    return f(...args)
-  }
-
-  return (...rest) => curry(f, ...args, ...rest)
-}
-
-export default curry
+export default /** @type {{
+  (fn: (...a: any[]) => any): (...a: any[]) => any
+}} */ (curry)

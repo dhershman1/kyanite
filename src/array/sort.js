@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T = any>(fn: (a: T, b: T) => number, list: ReadonlyArray<T>) => T[]} */
+const sort = (fn, a) => a.slice().sort(fn)
+
 /**
  * @name sort
  * @function
@@ -23,6 +26,7 @@ import _curry2 from '../_internals/_curry2.js'
  * sorter([99, 23, 10, 53, 1]) // => [1, 10, 23, 53, 99]
  * sorter([5, 3, 4, 6, 2, 1]) // => [1, 2, 3, 4, 5, 6]
  */
-const sort = (fn, a) => a.slice().sort(fn)
-
-export default _curry2(sort)
+export default /** @type {{
+  <T = any>(fn: (a: T, b: T) => number): (list: ReadonlyArray<T>) => T[]
+  <T = any>(fn: (a: T, b: T) => number, list: ReadonlyArray<T>): T[]
+}} */ (_curry2(sort))

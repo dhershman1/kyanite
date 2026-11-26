@@ -1,3 +1,19 @@
+/** @typedef {import('./_internals/_types.js').Ord} Ord */
+/** @typedef {import('./_internals/_types.js').Path} Path */
+/** @typedef {import('./_internals/_types.js').Schema} Schema */
+/** @typedef {import('./_internals/_types.js').Arity1Fn} Arity1Fn */
+/** @typedef {import('./_internals/_types.js').Pred} Pred */
+/** @typedef {import('./_internals/_types.js').Transformer} Transformer */
+/** @typedef {import('./_internals/_types.js').Transducer} Transducer */
+/**
+ * @template K, V
+ * @typedef {import('./_internals/_types.js').KeyValuePair<K, V>} KeyValuePair
+ */
+/**
+ * @template T
+ * @typedef {import('./_internals/_types.js').Reduced<T>} Reduced
+ */
+
 export { default as adjust } from './array/adjust.js'
 export { default as chunk } from './array/chunk.js'
 export { default as concatMap } from './array/concatMap.js'
@@ -63,7 +79,6 @@ export { default as converge } from './function/converge.js'
 export { default as count } from './function/count.js'
 export { default as curry } from './function/curry.js'
 export { default as curryN } from './function/curryN.js'
-export { default as deepEq } from './function/deepEq.js'
 export { default as defaultTo } from './function/defaultTo.js'
 export { default as descend } from './function/descend.js'
 export { default as descendBy } from './function/descendBy.js'
@@ -76,6 +91,7 @@ export { default as gt } from './function/gt.js'
 export { default as gte } from './function/gte.js'
 export { default as has } from './function/has.js'
 export { default as identity } from './function/identity.js'
+export { default as into } from './function/into.js'
 export { default as isEmpty } from './function/isEmpty.js'
 export { default as isNil } from './function/isNil.js'
 export { default as lt } from './function/lt.js'
@@ -89,6 +105,7 @@ export { default as pipe } from './function/pipe.js'
 export { default as pipeP } from './function/pipeP.js'
 export { default as reduce } from './function/reduce.js'
 export { default as reduced } from './function/reduced.js'
+export { default as transduce } from './function/transduce.js'
 export { default as type } from './function/type.js'
 export { default as unless } from './function/unless.js'
 export { default as when } from './function/when.js'
@@ -144,6 +161,7 @@ export { default as path } from './object/path.js'
 export { default as pathOr } from './object/pathOr.js'
 export { default as pathSatisfies } from './object/pathSatisfies.js'
 export { default as pick } from './object/pick.js'
+export { default as pickBy } from './object/pickBy.js'
 export { default as plan } from './object/plan.js'
 export { default as prop } from './object/prop.js'
 export { default as propEq } from './object/propEq.js'
@@ -155,7 +173,6 @@ export { default as values } from './object/values.js'
 export { default as whole } from './object/whole.js'
 export { default as withDefaults } from './object/withDefaults.js'
 export { default as capitalize } from './string/capitalize.js'
-export { default as fuzzySearch } from './string/fuzzySearch.js'
 export { default as match } from './string/match.js'
 export { default as replace } from './string/replace.js'
 export { default as split } from './string/split.js'

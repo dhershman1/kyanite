@@ -1,18 +1,17 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import when from '../../src/function/when.js'
 
-test('when -- Handles simple types', t => {
+test('when -- Handles simple types', () => {
   const testFn = when(x => x > 3, x => x * 2)
   const strTest = when(x => x.length > 3, x => x.length * 2)
 
-  t.is(testFn(5), 10)
-  t.is(testFn(2), 2)
-  t.is(strTest('foobar'), 12)
-  t.is(strTest('foo'), 'foo')
-  t.end()
+  assert.equal(testFn(5), 10)
+  assert.equal(testFn(2), 2)
+  assert.equal(strTest('foobar'), 12)
+  assert.equal(strTest('foo'), 'foo')
 })
 
-test('when -- Handles array complex types', t => {
-  t.same(when(x => x.length === 3, x => x.concat(4), [1, 2, 3]), [1, 2, 3, 4])
-  t.end()
+test('when -- Handles array complex types', () => {
+  assert.deepEqual(when(x => x.length === 3, x => x.concat(4), [1, 2, 3]), [1, 2, 3, 4])
 })

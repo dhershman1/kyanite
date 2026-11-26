@@ -1,8 +1,8 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import T from '../../src/function/T.js'
 
-test('T Basic Tests', t => {
-  t.same(T(), true, 'Returns true')
-  t.same(T(1, 2), true, 'Ignore Parameters')
-  t.end()
+test('T Basic Tests', () => {
+  assert.deepEqual(T(), true, 'Returns true')
+  assert.deepEqual(T(1, 2), true, 'Ignore Parameters')
 })

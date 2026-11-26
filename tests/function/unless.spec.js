@@ -1,16 +1,15 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import unless from '../../src/function/unless.js'
 
-test('unless -- Basic usage', t => {
-  t.same(unless(x => x > 2, x => x * 2, 5), 5)
-  t.same(unless(x => x > 5, x => x * 2, 5), 10)
-  t.end()
+test('unless -- Basic usage', () => {
+  assert.deepEqual(unless(x => x > 2, x => x * 2, 5), 5)
+  assert.deepEqual(unless(x => x > 5, x => x * 2, 5), 10)
 })
 
-test('unless -- Is curried', t => {
+test('unless -- Is curried', () => {
   const un = unless(x => x > 2, x => x * 2)
 
-  t.same(un(5), 5)
-  t.same(un(1), 2)
-  t.end()
+  assert.deepEqual(un(5), 5)
+  assert.deepEqual(un(1), 2)
 })

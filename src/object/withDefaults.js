@@ -4,6 +4,11 @@ import _reduce from '../_internals/_reduce.js'
 import defaultTo from '../function/defaultTo.js'
 import keys from './keys.js'
 
+/** @private @type {<V = any>(def: { [key: string]: V }, obj: any) => any} */
+const withDefaults = (def, obj) =>
+  _reduce((k, acc) =>
+    _assocǃ(acc, k, defaultTo(def[k], obj[k])), {}, keys(def))
+
 /**
  * @name withDefaults
  * @function
@@ -28,8 +33,7 @@ import keys from './keys.js'
  * fn({ a: 12 }) // => { a: 12, b: 2, c: 3 }
  * fn({}) // => { a: 1, b: 2, c: 3 }
  */
-const withDefaults = (def, obj) =>
-  _reduce((k, acc) =>
-    _assocǃ(acc, k, defaultTo(def[k], obj[k])), {}, keys(def))
-
-export default _curry2(withDefaults)
+export default /** @type {{
+  <V = any>(def: { [key: string]: V }): (obj: any) => any
+  <V = any>(def: { [key: string]: V }, obj: any): any
+}} */ (_curry2(withDefaults))

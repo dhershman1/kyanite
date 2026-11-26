@@ -2,6 +2,11 @@ import _curry2 from '../_internals/_curry2.js'
 import _reduce from '../_internals/_reduce.js'
 import _reduced from '../_internals/_reduced.js'
 
+/** @private @type {<T>(fn: (a: T) => boolean, x: T[]) => boolean} */
+const every = (fn, data) =>
+  _reduce((val, acc) =>
+    fn(val) ? acc : _reduced(false), true, data)
+
 /**
  * @name every
  * @function
@@ -29,8 +34,7 @@ import _reduced from '../_internals/_reduced.js'
  * run([1, 2, 3]) // => true
  * run([-1, 0, 1]) // => false
  */
-const every = (fn, data) =>
-  _reduce((val, acc) =>
-    fn(val) ? acc : _reduced(false), true, data)
-
-export default _curry2(every)
+export default /** @type {{
+  <T>(fn: (a: T) => boolean): (x: T[]) => boolean
+  <T>(fn: (a: T) => boolean, x: T[]): boolean
+}} */ (_curry2(every))

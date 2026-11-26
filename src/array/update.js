@@ -2,6 +2,9 @@ import _curry3 from '../_internals/_curry3.js'
 import adjust from './adjust.js'
 import always from '../function/always.js'
 
+/** @private @type {<T = any>(index: number, val: any, list: ReadonlyArray<T>) => T[]} */
+const update = (idx, val, list) => adjust(idx, always(val), list)
+
 /**
  * @name update
  * @function
@@ -32,6 +35,11 @@ import always from '../function/always.js'
  * const val = index(10)
  * val([1, 2, 3]) // => [1, 2, 10]
  */
-const update = (idx, val, list) => adjust(idx, always(val), list)
-
-export default _curry3(update)
+export default /** @type {{
+  (index: number): {
+    (val: any): <T = any>(list: ReadonlyArray<T>) => T[]
+    <T = any>(val: any, list: ReadonlyArray<T>): T[]
+  }
+  (index: number, val: any): <T = any>(list: ReadonlyArray<T>) => T[]
+  <T = any>(index: number, val: any, list: ReadonlyArray<T>): T[]
+}} */ (_curry3(update))

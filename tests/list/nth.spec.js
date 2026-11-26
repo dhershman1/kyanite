@@ -1,26 +1,24 @@
 import nth from '../../src/list/nth.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('nth -- Test base functionality', t => {
+test('nth -- Test base functionality', () => {
   const list = ['foo', 'bar', 'baz', 'quux']
 
-  t.is(nth(1, list), 'bar')
-  t.is(nth(-1, list), 'quux')
-  t.notOk(nth(-99, list))
-  t.end()
+  assert.equal(nth(1, list), 'bar')
+  assert.equal(nth(-1, list), 'quux')
+  assert.ok(!nth(-99, list))
 })
 
-test('nth -- Test string functionality', t => {
-  t.is(nth(1, 'abc'), 'b')
-  t.is(nth(3, 'abc'), undefined)
-  t.is(nth(0, 'abc'), 'a')
-  t.end()
+test('nth -- Test string functionality', () => {
+  assert.equal(nth(1, 'abc'), 'b')
+  assert.equal(nth(3, 'abc'), undefined)
+  assert.equal(nth(0, 'abc'), 'a')
 })
 
-test('nth -- Test curried nth', t => {
+test('nth -- Test curried nth', () => {
   const third = nth(2)
 
-  t.is(third([1, 2, 3, 4]), 3)
-  t.is(third('abcd'), 'c')
-  t.end()
+  assert.equal(third([1, 2, 3, 4]), 3)
+  assert.equal(third('abcd'), 'c')
 })

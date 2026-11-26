@@ -1,16 +1,15 @@
 import flip from '../../src/function/flip.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('flip -- Basic functionlity', t => {
-  t.same(flip((a, b) => b > a, 2, 1), true)
-  t.same(flip((a, b) => b > a, 1, 2), false)
-  t.end()
+test('flip -- Basic functionlity', () => {
+  assert.deepEqual(flip((a, b) => b > a, 2, 1), true)
+  assert.deepEqual(flip((a, b) => b > a, 1, 2), false)
 })
 
-test('flip -- Is curried', t => {
+test('flip -- Is curried', () => {
   const _gt = flip((a, b) => b > a)
 
-  t.same(_gt(1, 2), false)
-  t.same(_gt(2, 1), true)
-  t.end()
+  assert.deepEqual(_gt(1, 2), false)
+  assert.deepEqual(_gt(2, 1), true)
 })

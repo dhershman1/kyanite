@@ -1,5 +1,10 @@
 import _curry2 from '../_internals/_curry2.js'
 
+// search ignores the g and y flags and leaves lastIndex alone, so the same regex
+// gives the same answer every time (reg.test would continue from the last match)
+/** @private @type {(reg: RegExp, str: string) => boolean} */
+const test = (reg, str) => String(str).search(reg) !== -1
+
 /**
  * @name test
  * @since v0.10.2
@@ -23,6 +28,7 @@ import _curry2 from '../_internals/_curry2.js'
  * fn('abc') // => true
  * fn('bca') // => false
  */
-const test = (reg, str) => reg.test(str)
-
-export default _curry2(test)
+export default /** @type {{
+  (reg: RegExp): (str: string) => boolean
+  (reg: RegExp, str: string): boolean
+}} */ (_curry2(test))

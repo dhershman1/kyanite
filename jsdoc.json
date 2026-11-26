@@ -8,11 +8,17 @@
       "src/",
       "package.json",
       "./README.md"
+    ],
+    "exclude": [
+      "src/_internals",
+      "src/index.js"
     ]
   },
   "sourceType": "module",
   "plugins": [
-    "node_modules/pinet/tags.js"
+    "plugins/markdown",
+    "node_modules/pinet/tags.js",
+    "scripts/jsdoc-strip-types.cjs"
   ],
   "opts": {
     "encoding": "utf8",

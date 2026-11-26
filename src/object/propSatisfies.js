@@ -1,5 +1,9 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {<T = any>(pred: (val: T) => boolean, key: PropertyKey, obj: any) => boolean} */
+const propSatisfies = (pred, key, obj) =>
+  pred(obj[key])
+
 /**
  * @name propSatisfies
  * @function
@@ -24,7 +28,11 @@ import _curry3 from '../_internals/_curry3.js'
  *
  * safetyProp({ x: 1, y: 4 }) // => true
  */
-const propSatisfies = (pred, key, obj) =>
-  pred(obj[key])
-
-export default _curry3(propSatisfies)
+export default /** @type {{
+  <T = any>(pred: (val: T) => boolean): {
+    (key: PropertyKey): (obj: any) => boolean
+    (key: PropertyKey, obj: any): boolean
+  }
+  <T = any>(pred: (val: T) => boolean, key: PropertyKey): (obj: any) => boolean
+  <T = any>(pred: (val: T) => boolean, key: PropertyKey, obj: any): boolean
+}} */ (_curry3(propSatisfies))

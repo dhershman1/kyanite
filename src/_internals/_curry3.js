@@ -4,20 +4,26 @@ import _curry2 from './_curry2.js'
  * This is an optimized internal curry function for 3 param functions
  * @private
  * @category Function
- * @param {Function} fn The function to curry
- * @return {Function} The curried function
+ * @param {(a: any, b: any, c: any) => any} fn The function to curry
+ * @return {any} The curried function, each export casts this to its own public type
  */
 function _curry3 (fn) {
+  /**
+   * @param {any} [a]
+   * @param {any} [b]
+   * @param {any} [c]
+   * @returns {any}
+   */
   return function f3 (a, b, c) {
     switch (arguments.length) {
       case 0:
         return f3
       case 1:
-        return _curry2(function (_b, _c) {
+        return _curry2(function (/** @type {any} */ _b, /** @type {any} */ _c) {
           return fn(a, _b, _c)
         })
       case 2:
-        return function (_c) {
+        return function (/** @type {any} */ _c) {
           return fn(a, b, _c)
         }
       default:

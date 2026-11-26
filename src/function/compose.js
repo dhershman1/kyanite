@@ -1,5 +1,9 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {<T = any, R1 = any, R2 = any>(fn: (data: R1) => R2, gn: (data: T) => R1, data: T) => R2} */
+const compose = (fn, gn, a) =>
+  fn(gn(a))
+
 /**
  * @name compose
  * @function
@@ -23,7 +27,11 @@ import _curry3 from '../_internals/_curry3.js'
  * comp(99) // => 10
  * comp(399) // => 20
  */
-const compose = (fn, gn, a) =>
-  fn(gn(a))
-
-export default _curry3(compose)
+export default /** @type {{
+  <R1 = any, R2 = any>(fn: (data: R1) => R2): {
+    <T = any>(gn: (data: T) => R1): (data: T) => R2
+    <T = any>(gn: (data: T) => R1, data: T): R2
+  }
+  <T = any, R1 = any, R2 = any>(fn: (data: R1) => R2, gn: (data: T) => R1): (data: T) => R2
+  <T = any, R1 = any, R2 = any>(fn: (data: R1) => R2, gn: (data: T) => R1, data: T): R2
+}} */ (_curry3(compose))

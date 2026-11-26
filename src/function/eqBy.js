@@ -1,6 +1,10 @@
 import _curry3 from '../_internals/_curry3.js'
 import eq from './eq.js'
 
+/** @private @type {<T, U = T>(fn: (a: T) => U, a: T, b: T) => boolean} */
+const eqBy = (fn, a, b) =>
+  eq(fn(a), fn(b))
+
 /**
  * @name eqBy
  * @function
@@ -26,7 +30,11 @@ import eq from './eq.js'
  * fn(5, -5) // => true
  * fn(5, -1) // => false
  */
-const eqBy = (fn, a, b) =>
-  eq(fn(a), fn(b))
-
-export default _curry3(eqBy)
+export default /** @type {{
+  <T, U = T>(fn: (a: T) => U): {
+    (a: T): (b: T) => boolean
+    (a: T, b: T): boolean
+  }
+  <T, U = T>(fn: (a: T) => U, a: T): (b: T) => boolean
+  <T, U = T>(fn: (a: T) => U, a: T, b: T): boolean
+}} */ (_curry3(eqBy))

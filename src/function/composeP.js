@@ -1,5 +1,9 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {<T = any, R1 = any, R2 = any>(fn: (data: R1) => Promise<R2>, gn: (data: T) => Promise<R1>, data: T) => Promise<R2>} */
+const composeP = (fn, gn, a) =>
+  gn(a).then(fn)
+
 /**
  * @name composeP
  * @function
@@ -17,15 +21,19 @@ import _curry3 from '../_internals/_curry3.js'
  * const foo = a => new Promise(resolve => resolve(a + '123'))
  * const bar = a => new Promise(resolve => resolve(a + '555'))
  *
- * compose(bar, foo, '100').then(console.log) // => '100123555'
+ * composeP(bar, foo, '100').then(console.log) // => '100123555'
  *
  * // It's also curried
- * const fn = compose(bar, foo)
+ * const fn = composeP(bar, foo)
  *
  * fn('100').then(console.log) // => '100123555'
  *
  */
-const composeP = (fn, gn, a) =>
-  gn(a).then(fn)
-
-export default _curry3(composeP)
+export default /** @type {{
+  <R1 = any, R2 = any>(fn: (data: R1) => Promise<R2>): {
+    <T = any>(gn: (data: T) => Promise<R1>): (data: T) => Promise<R2>
+    <T = any>(gn: (data: T) => Promise<R1>, data: T): Promise<R2>
+  }
+  <T = any, R1 = any, R2 = any>(fn: (data: R1) => Promise<R2>, gn: (data: T) => Promise<R1>): (data: T) => Promise<R2>
+  <T = any, R1 = any, R2 = any>(fn: (data: R1) => Promise<R2>, gn: (data: T) => Promise<R1>, data: T): Promise<R2>
+}} */ (_curry3(composeP))

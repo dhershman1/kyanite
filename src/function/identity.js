@@ -1,3 +1,6 @@
+/** @private @type {(a: any) => any} */
+const identity = a => a
+
 /**
  * @name identity
  * @function
@@ -14,6 +17,6 @@
  *
  * [0, 'cool', null, 1].filter(identity) // => ['cool', 1]
  */
-const identity = a => a
-
-export default identity
+export default /** @type {{
+  (a: any): any
+}} */ (identity)

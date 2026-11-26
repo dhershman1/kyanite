@@ -1,3 +1,6 @@
+/** @private @type {(x: unknown) => x is null | undefined} */
+const isNil = x => x == null
+
 /**
  * @name isNil
  * @function
@@ -17,6 +20,6 @@
  * isNil(0) // => false
  * isNil('') // => false
  */
-const isNil = x => x == null
-
-export default isNil
+export default /** @type {{
+  (x: unknown): x is null | undefined
+}} */ (isNil)

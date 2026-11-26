@@ -2,6 +2,17 @@ import _curry3 from '../_internals/_curry3.js'
 import isNil from '../function/isNil.js'
 import prop from './prop.js'
 
+/** @private @type {<T, P extends PropertyKey, O>(def: T, key: P, obj: O) => P extends keyof O ? NonNullable<O[P]> | T : T} */
+const propOr = (def, key, obj) => {
+  const val = prop(key, obj)
+
+  if (isNil(val)) {
+    return def
+  }
+
+  return /** @type {any} */ (val)
+}
+
 /**
  * @name propOr
  * @function
@@ -28,14 +39,11 @@ import prop from './prop.js'
  * gn({ foo: 1 }) // => 1
  * gn({ baz: 1 }) // => 'N/A'
  */
-const propOr = (def, key, obj) => {
-  const val = prop(key, obj)
-
-  if (isNil(val)) {
-    return def
+export default /** @type {{
+  <T>(def: T): {
+    <P extends PropertyKey>(key: P): <O>(obj: O) => P extends keyof O ? NonNullable<O[P]> | T : T
+    <P extends PropertyKey, O>(key: P, obj: O): P extends keyof O ? NonNullable<O[P]> | T : T
   }
-
-  return val
-}
-
-export default _curry3(propOr)
+  <T, P extends PropertyKey>(def: T, key: P): <O>(obj: O) => P extends keyof O ? NonNullable<O[P]> | T : T
+  <T, P extends PropertyKey, O>(def: T, key: P, obj: O): P extends keyof O ? NonNullable<O[P]> | T : T
+}} */ (_curry3(propOr))

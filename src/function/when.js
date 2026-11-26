@@ -1,5 +1,9 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {<T = any, U = any>(fn: (a: T) => boolean, act: (a: T) => U, x: T) => T | U} */
+const when = (fn, act, x) =>
+  fn(x) ? act(x) : x
+
 /**
  * @name when
  * @function
@@ -24,7 +28,11 @@ import _curry3 from '../_internals/_curry3.js'
  * w(5) // => 10
  * w(1) // => 1
  */
-const when = (fn, act, x) =>
-  fn(x) ? act(x) : x
-
-export default _curry3(when)
+export default /** @type {{
+  <T = any>(fn: (a: T) => boolean): {
+    <U = any>(act: (a: T) => U): (x: T) => T | U
+    <U = any>(act: (a: T) => U, x: T): T | U
+  }
+  <T = any, U = any>(fn: (a: T) => boolean, act: (a: T) => U): (x: T) => T | U
+  <T = any, U = any>(fn: (a: T) => boolean, act: (a: T) => U, x: T): T | U
+}} */ (_curry3(when))

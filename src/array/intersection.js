@@ -1,9 +1,21 @@
 import _curry2 from '../_internals/_curry2.js'
-import groupBy from './groupBy.js'
-import has from '../function/has.js'
-import identity from '../function/identity.js'
 import uniq from './uniq.js'
-import filter from './filter.js'
+
+/** @private @type {<T = any>(a: ReadonlyArray<T>, b: ReadonlyArray<T>) => T[]} */
+const intersection = (a, b) => {
+  const inB = new Set(b)
+  /** @type {any[]} */
+  const both = []
+
+  // for...of so any iterable works, not just arrays
+  for (const x of a) {
+    if (inB.has(x)) {
+      both.push(x)
+    }
+  }
+
+  return uniq(both)
+}
 
 /**
  * @name intersection
@@ -27,10 +39,7 @@ import filter from './filter.js'
  *
  * inter([3, 4, 5, 6]) // => [3, 4]
  */
-const intersection = (a, b) => {
-  const grouped = groupBy(identity, b)
-
-  return uniq(filter(x => has(x, grouped), a))
-}
-
-export default _curry2(intersection)
+export default /** @type {{
+  <T = any>(a: ReadonlyArray<T>): (b: ReadonlyArray<T>) => T[]
+  <T = any>(a: ReadonlyArray<T>, b: ReadonlyArray<T>): T[]
+}} */ (_curry2(intersection))

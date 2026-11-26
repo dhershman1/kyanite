@@ -1,5 +1,16 @@
 import rem from './rem.js'
 
+/** @private @type {(x: number) => boolean} */
+const isPrime = n => {
+  for (let i = 2, s = Math.sqrt(n); i <= s; i++) {
+    if (!rem(i, n)) {
+      return false
+    }
+  }
+
+  return n > 1
+}
+
 /**
  * @name isPrime
  * @function
@@ -17,14 +28,6 @@ import rem from './rem.js'
  * isPrime(6) // => false
  * isPrime(5010) // => false
  */
-const isPrime = n => {
-  for (let i = 2, s = Math.sqrt(n); i <= s; i++) {
-    if (!rem(i, n)) {
-      return false
-    }
-  }
-
-  return n > 1
-}
-
-export default isPrime
+export default /** @type {{
+  (x: number): boolean
+}} */ (isPrime)

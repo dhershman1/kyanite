@@ -1,3 +1,6 @@
+/** @private @type {(str: string) => string} */
+const trim = str => str.trim()
+
 /**
  * @name trim
  * @function
@@ -14,6 +17,6 @@
  * trim('my new cow   ') // => 'my new cow'
  * trim('   new things   ') // => 'new things'
  */
-const trim = str => str.trim()
-
-export default trim
+export default /** @type {{
+  (str: string): string
+}} */ (trim)

@@ -1,7 +1,8 @@
 import branch from '../../src/function/branch.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('branch -- Branches truthy', t => {
+test('branch -- Branches truthy', () => {
   const results = branch(
     x => x < 10,
     x => x + 1,
@@ -9,11 +10,10 @@ test('branch -- Branches truthy', t => {
     0
   )
 
-  t.same(results, 1)
-  t.end()
+  assert.deepEqual(results, 1)
 })
 
-test('branch -- Branches falsy', t => {
+test('branch -- Branches falsy', () => {
   const results = branch(
     x => x < 10,
     x => x + 1,
@@ -21,27 +21,24 @@ test('branch -- Branches falsy', t => {
     10
   )
 
-  t.same(results, 9)
-  t.end()
+  assert.deepEqual(results, 9)
 })
 
-test('branch -- Is curried', t => {
+test('branch -- Is curried', () => {
   const b = branch(
     x => x < 10,
     x => x + 1,
     x => x - 1
   )
 
-  t.same(b(0), 1)
-  t.same(b(10), 9)
-  t.end()
+  assert.deepEqual(b(0), 1)
+  assert.deepEqual(b(10), 9)
 })
 
-test('branch -- break down curried', t => {
+test('branch -- break down curried', () => {
   const fn = branch(x => x < 10)
   const fn2 = fn(x => x + 1, x => x - 1)
 
-  t.same(fn2(0), 1)
-  t.same(fn2(10), 9)
-  t.end()
+  assert.deepEqual(fn2(0), 1)
+  assert.deepEqual(fn2(10), 9)
 })

@@ -1,17 +1,16 @@
 import join from '../../src/array/join.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('join -- Joins an array together', t => {
+test('join -- Joins an array together', () => {
   const results = join(' ', ['test', 'this', 'thing'])
 
-  t.same(results, 'test this thing')
-  t.end()
+  assert.deepEqual(results, 'test this thing')
 })
 
-test('join -- It is curried', t => {
+test('join -- It is curried', () => {
   const j = join(' ')
   const results = j(['test', 'this', 'thing'])
 
-  t.same(results, 'test this thing')
-  t.end()
+  assert.deepEqual(results, 'test this thing')
 })

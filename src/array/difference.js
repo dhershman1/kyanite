@@ -1,8 +1,16 @@
-import concatMap from './concatMap.js'
-import groupBy from './groupBy.js'
-import identity from '../function/identity.js'
-import uniq from './uniq.js'
-import filter from './filter.js'
+/** @private @type {<T = any>(arrs: ReadonlyArray<ReadonlyArray<T>>) => T[]} */
+const difference = arrs => {
+  // How many of the lists each value shows up in, in the order they're first seen
+  const counts = new Map()
+
+  for (const arr of arrs) {
+    for (const x of new Set(arr)) {
+      counts.set(x, (counts.get(x) || 0) + 1)
+    }
+  }
+
+  return [...counts].filter(([, n]) => n === 1).map(([x]) => x)
+}
 
 /**
  * @name difference
@@ -21,11 +29,6 @@ import filter from './filter.js'
  * difference([[1], [1, 2, 3]]) // => [2, 3]
  * difference([[1], [1, 2, 3], [2, 4]]) // => [3, 4]
  */
-const difference = arrs => {
-  const arr = concatMap(uniq, arrs)
-  const grouped = groupBy(identity, arr)
-
-  return filter(x => grouped[x].length === 1, arr)
-}
-
-export default difference
+export default /** @type {{
+  <T = any>(arrs: ReadonlyArray<ReadonlyArray<T>>): T[]
+}} */ (difference)

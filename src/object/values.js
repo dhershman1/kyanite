@@ -2,6 +2,10 @@ import _reduce from '../_internals/_reduce.js'
 import _appendǃ from '../_internals/_appendǃ.js'
 import keys from './keys.js'
 
+/** @private @type {<T = any>(obj: { [key: string]: T }) => T[]} */
+const values = obj =>
+  _reduce((k, acc) => _appendǃ(acc, obj[k]), [], keys(obj))
+
 /**
  * @name values
  * @function
@@ -16,7 +20,6 @@ import keys from './keys.js'
  *
  * values({ a: 1, b: 2, c: 3 }) // => [1, 2, 3]
  */
-const values = obj =>
-  _reduce((k, acc) => _appendǃ(acc, obj[k]), [], keys(obj))
-
-export default values
+export default /** @type {{
+  <T = any>(obj: { [key: string]: T }): T[]
+}} */ (values)

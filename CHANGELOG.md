@@ -1,5 +1,143 @@
 # Changelog
 
+## v4.0.0
+
+### Breaking Changes
+
+- Removed `fuzzySearch`, it was deprecated in `v3.2.0`
+- Removed `deepEq`. It was by far the largest function in Kyanite (about 2 KB of the minified bundle), slow on large `Set`s and `Map`s, and gave wrong answers for some types
+  - If you need deep equality, use a library built for it. Node has `isDeepStrictEqual` built into `node:util`, and `dequal`, lodash's `isEqual`, and Ramda's `equals` all work in the browser
+- `startsWith` and `endsWith` compare array items with SameValueZero (like `includes`) instead of deep equality, so objects only match if they're the same object. `startsWith([{ a: 1 }], [{ a: 1 }, 2])` is now `false`
+  - Strings work the same as before, they use `String.prototype.startsWith` and `endsWith`
+- `omitBy` now omits the keys whose values pass the predicate, matching its name. Before, it kept them and dropped the rest
+  - For the old behavior use the new `pickBy`, it takes the same arguments: `omitBy(fn, obj)` becomes `pickBy(fn, obj)`
+- Kyanite is no longer transpiled down to ES5 with Babel
+  - The bundles in `dist/` now ship modern JavaScript
+  - Internet Explorer and other legacy browsers are no longer supported out of the box. If you still need them, transpile `kyanite` as part of your own build
+- The IIFE (script tag) build now adds a global named `kyanite` instead of `K`, this is to avoid collisions with other scripts or globals when using the IIFE
+  - Use `kyanite.map(...)`, or keep the short name with `const K = kyanite`
+  - The types declare the global as `kyanite` to match
+- The fallback `default` condition in `exports` now points at the ESM build instead of the IIFE build, which has no exports
+- The published package now only contains `dist/`, the README, and the license
+  - `src/` is no longer shipped, it was never reachable through `exports` anyway
+- TypeScript types are now generated from the source and describe the real exports
+  - They're built into `dist/kyanite.d.ts` (ESM) and `dist/kyanite.d.cts` (CommonJS), replacing the `types/` folder
+  - The types no longer use `export =`, so `import K from 'kyanite'` is now a type error. There has never been a default export at runtime, use `import * as K from 'kyanite'` or named imports instead. `const K = require('kyanite')` still works
+  - Shared types can be imported directly: `import type { Reduced, Ord, Path, Pred, Schema, KeyValuePair, Arity1Fn, Transformer, Transducer } from 'kyanite'`
+  - `Omit` and `ObjFunc` are no longer exported. `Omit` shadowed TypeScript's built in `Omit`, which works the same way, and `ObjFunc` wasn't used by anything
+  - `Schema` no longer allows nested schemas. `plan` calls every value in its schema as a function, so a nested schema threw at runtime. `any` and `whole` now use `Schema` too, instead of a plain `object`
+  - Removed the types for `prime` and `size`, these functions don't exist in Kyanite
+- Corrected types that didn't match how the functions behave
+  - `on` now types `fn` as taking two arguments (it's called with both mapped values), and `on(fn, gn)` can be called with `(a, b)` or `(a)(b)`
+  - `ap` is now typed as the S combinator it is, `ap(fn, gn, x)` returns `fn(x)(gn(x))`, instead of applying a list of functions to a list
+  - `always(a)` now returns a function that accepts the ignored argument, instead of one that takes no arguments
+  - `ascend` and `descend` no longer claim to be curried, they never were at runtime
+  - `concatMap` now accepts functions that return arrays and returns the flattened result, matching what it does
+  - `pipe` and `pipeP` now accept functions that change the type of the value as it moves through the pipeline. The result type defaults to `any`, and can be set with `pipe<number>([...], data)`
+  - Functions curried over 3 or 4 arguments now type every way they can be called. A partial call accepts the rest of its arguments all at once or one at a time, so `adjust(1)(toUpper, list)` works alongside `adjust(1)(toUpper)(list)`
+    - Generics move to the call that can infer them, so `adjust(1)` still infers the list type from the function you pass it next
+  - `ascendBy` and `descendBy` can now be called with `(fn, a)(b)` and `(fn)(a)(b)`
+  - `converge` accepts any number of branch functions instead of exactly one
+  - `slice` accepts strings, returning a string
+  - `propEq` and `propOr` accept objects that don't have the key, which is what `propOr`'s default is for. `propOr` now returns the property's type or the default's type
+  - `prop` accepts numeric keys (like array indexes), keys the object doesn't have (`undefined`), and `null` or `undefined` objects, which it already handled at runtime
+  - `pluck` returns the plucked values, not a list of the objects it was given
+  - `difference` takes a list of lists, like `difference([[1, 2], [2, 3]])`, instead of a flat list
+  - `multiples` returns the list of multiples instead of a `number`
+  - `zip` returns the single object it builds instead of a list of objects
+  - `match` can return `null` when nothing matches, and accepts a string pattern as well as a `RegExp`
+  - `when` and `unless` return `T | U`, since they hand back the original value when they don't apply their function
+  - `keys` returns `string[]` (like `Object.keys`) and accepts any value, instead of claiming `Array<keyof T>`
+  - `fold` returns a value of the list's own type, `chunk` returns a list of the list's own values, and `adjust` and `update` accept readonly lists
+  - `findIndex` accepts anything array like, including strings
+  - `isNil` is now a type guard, so `if (!isNil(x))` narrows `x`
+  - `path` accepts any value as its object, it already returned `undefined` for `null` and `undefined`
+  - `omitBy` returns `Partial<T>`. Before, it returned `Omit<T, E>` with an `E` nothing could infer, which came out as `{}`
+  - `applyN` types the list as the function's arguments, `applyN(fn: (...args: A) => R, args: A): R`
+  - `has` accepts any key, since it checks array values and `Map`/`Set` entries as well as object keys
+- Overloads are now listed fewest arguments first. When a function is passed as a callback TypeScript reads its last overload, so curried functions like `add` and `ascend` now work in `reduce(add, 0, list)` or `on(ascend, fn)` instead of being read as their partial form
+- Fixed bugs that change what some functions return
+  - `uniq`, `uniqBy`, `intersection`, and `difference` now compare values with `SameValueZero` (the same as `Set`) instead of turning them into object keys
+    - Numbers keep their original order. Before, they came back sorted, `uniq([3, 1, 2])` gave `[1, 2, 3]`
+    - `1` and `'1'` are no longer treated as the same value
+    - Objects are compared by reference. Before, every object became `'[object Object]'`, so `uniq([{ a: 1 }, { b: 2 }])` kept only the first
+  - `max` of a list of only negative numbers now returns the largest number instead of `''`, and `max([])` returns `undefined` instead of `''`
+  - `min([])` returns `undefined` instead of throwing. `max` and `min` are typed as returning `T | undefined`
+  - `prepend` always adds its value as a single item. Before, an array value was flattened in, so `prepend([1], [[2]])` gave `[1, [2]]` instead of `[[1], [2]]`
+  - `path` returns `null` when the value at the end of the path is `null`, instead of `undefined`
+  - `dropWhile` on a string returns `''` when every character matches, instead of `[]`
+  - `adjust` with an out of bounds index, and `takeWhile` when every value passes, return a copy of the list instead of the list itself
+
+### New
+
+- Hovering any function in your editor now shows its full documentation and examples
+- `startsWith` and `propSatisfies` now have types
+- Added `pickBy`, the opposite of `omitBy`: It builds a new object with only the keys whose values pass the predicate, which is given the value and the key
+- Transducers! Finally a fully fledged transducer flow built right into Kyanite! We finally made it Ma!
+  - Run a list through several steps in a single pass, without building a new list for each step, and stop as soon as there's nothing left to do
+  - Added `transduce(xf, fn, acc, list)`. `xf` is an array of transducers that each value goes through in order (like `pipe`), `fn` is a reducer like the one `reduce` takes
+  - Added `into(acc, xf, list)`, which collects the results into a copy of an array, a string, or an object (from `[key, value]` pairs) without writing a reducer
+  - `map`, `filter`, `reject`, `take`, `takeWhile`, `drop`, `dropWhile`, `uniq`, `uniqBy`, `concatMap`, and `pluck` work as transducers when used in `transduce` or `into`, with their list left off: `into([], [map(inc), filter(isEven), take(3)], list)`
+    - `uniq` already takes just the list, so it goes in as is: `into([], [map(f), uniq], list)`
+  - Both work with any iterable, including generators that never end, since `take` stops reading once it has enough
+  - Kyanite follows the standard transducer protocol (`@@transducer/init`, `step`, and `result`), so transducers and transformers from other libraries that follow it work with `transduce`, and Kyanite's work with theirs
+  - `reduced` can stop a `transduce` early from the reducer, the same way it stops `reduce`
+  - The `Transformer` and `Transducer` types can be imported: `import type { Transformer, Transducer } from 'kyanite'`
+
+### Changed
+
+- Simplified the build: one Rollup config now produces the ESM, CommonJS, and IIFE bundles
+  - The minified ESM bundle went from 19.9 KB (6.2 KB gzip) to 12.8 KB (4.6 KB gzip), even with transducers added
+- Bundle sizes are now reported by a small inline Rollup plugin instead of `rollup-plugin-filesize`
+- `scripts/create-export.js` now uses `node:fs` instead of `globby`
+- Replaced `tape` and `tap-on` with the built in `node:test` runner and `node:assert/strict`
+  - Promise based tests now `await` their results, so a failed assertion inside a `.then` can no longer be missed
+- Swapped `standard` for `neostandard`, using ESLint's flat config. Tests are now linted along with `src/`
+- Removed `@babel/*`, `@codecov/rollup-plugin`, `dotenv`, `globby`, `npm-run-all`, and `rollup-plugin-filesize`
+- Moved to `pinet` 2.0.0, and the docs now render markdown in descriptions via jsdoc's `plugins/markdown`
+- CI now runs on Node.js 22 and 24 with the latest GitHub Actions
+- All files now use LF line endings, enforced through `.gitattributes`
+- Replaced `.npmignore` with a `files` list in `package.json`
+- `kyanite/package.json` can now be imported or required, for tools that read a package's version
+- Type definitions are generated from the JSDoc in `src/` instead of being written by hand
+  - Each function's public types sit right on its `export default`, so they live next to the code they describe
+  - Each function's implementation is typed with its full signature too, and the source is checked with TypeScript's `strict` mode. This is what caught most of the corrected types above
+  - `npm run build` now runs `tsc` first to check the source and generate declarations, then bundles them with `rollup-plugin-dts`
+  - A small jsdoc plugin (`scripts/jsdoc-strip-types.cjs`) hides the TypeScript only comments from jsdoc, which can't parse them. jsdoc only needs each file's `@name` block
+- Added type tests (`npm run test:types`, run in CI) that check every way of calling the functions curried over 3 or 4 arguments, using their documented examples, along with every corrected type
+  - Known limitation: a literal passed in a partial call becomes the type for the rest of it, so `eqBy(Math.abs, 5)(-5)` is a type error. Widen it with `5 as number`
+- `xor` and `round` were rewritten to pass type checking, they behave exactly the same
+  - `xor` uses `!a !== !b` instead of `Boolean(!a ^ !b)`
+  - `round` converts its string to a number with `Number()` before calling `Math.round`, which did that conversion implicitly before
+- Performance! With the introduction of the transducer flows, `reduce`, `reduceRight`, and the functions built on them now call your reducer directly instead of going through a wrapper object
+  - Measured on a 1000 item list, `filter` is about 40% faster, `find` about 4.5x, and `pipe` about 6x
+  - `map` sets each value directly instead of through an internal curried helper, making it about twice as fast
+  - `concatMap` adds to one result array instead of copying the whole result for every value, which made it slower the longer the list got. It's about 25x faster on a 100 item list, and 65x on a 1000 item list
+- `eq` now uses `Object.is`, which is the same SameValue comparison it implemented by hand (`+0` and `-0` are different, `NaN` equals `NaN`)
+
+### Fixed
+
+- The `encase` docs example was missing its opening brace
+- `groupBy`, `countBy`, and `fromPairs` now keep a `__proto__` key as a normal key. Before, it replaced the result's prototype and the data was lost
+- `fromPairs` no longer drops the falsy keys `0` and `''`. Empty pairs like `[]` are still skipped
+- `memoizeWith` caches falsy results (`0`, `false`, `''`, `null`) instead of calling the function again every time, and keys like `'constructor'` or `'toString'` no longer hit values inherited from `Object.prototype`
+- `min` works with any iterable, like `max` always has. Before, it threw on a `Set`
+- `endsWith` with an empty value returns `true`, like `String.prototype.endsWith` and Kyanite's own `startsWith`. `endsWith('', 'abc')` and `endsWith([], [1, 2])` returned `false`
+- `isOdd` returns `false` for decimals, `isOdd(1.5)` returned `true`
+- `test` gives the same answer every time it's called with a global (`/g`) or sticky (`/y`) regex. It used `reg.test`, which continues from the regex's `lastIndex`, so calling it twice with the same string could return `true` then `false`
+- Removed `keys`'s fallback for environments without `Object.keys`, which every supported environment has
+- Docs examples that didn't work
+  - `composeP` called `compose`
+  - `reduceRight` used `acc.push`, which returns a number instead of the list
+  - `replace` named a variable `with`, which is a reserved word
+  - `on` called its partial form with a string where it expected a function
+  - `omitBy` passed a list of keys instead of a predicate function
+  - `adjust` had a missing quote
+  - `uniqBy` showed `[3, 4, 5]` as the result of `uniqBy(x => x > 2, [1, 2, 3, 4, 5])`, it's `[1, 3]`, the first value for `false` and the first for `true`
+  - `isEmpty` claimed `NaN`, `true`, and `false` return `true`. Like `count`, it throws a `TypeError` for types that aren't collections, and the docs now say so
+- `concat`'s docs now show that an array value is joined in, the same way `Array.prototype.concat` works
+- The tests for `isEmpty` and `count` throwing on unsupported types now use `assert.throws`. Before, they would also have passed if nothing was thrown
+
 ## v3.2.0
 
 ### New

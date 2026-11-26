@@ -1,5 +1,21 @@
 import _curry2 from '../_internals/_curry2.js'
 
+const pick = _curry2(function pick (keys, obj) {
+  /** @type {{ [key: PropertyKey]: any }} */
+  const result = {}
+  let idx = 0
+
+  while (idx < keys.length) {
+    if (keys[idx] in obj) {
+      result[keys[idx]] = obj[keys[idx]]
+    }
+
+    idx += 1
+  }
+
+  return result
+})
+
 /**
  * @name pick
  * @function
@@ -23,19 +39,7 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * picker({ a: 1, b: 2, c: 3, d: 4 }) // => { a: 1, d: 4 }
  */
-const pick = _curry2(function pick (keys, obj) {
-  const result = {}
-  let idx = 0
-
-  while (idx < keys.length) {
-    if (keys[idx] in obj) {
-      result[keys[idx]] = obj[keys[idx]]
-    }
-
-    idx += 1
-  }
-
-  return result
-})
-
-export default pick
+export default /** @type {{
+  <U = any>(keys: ReadonlyArray<string>): (obj: U) => U
+  <U = any>(keys: ReadonlyArray<string>, obj: U): U
+}} */ (pick)

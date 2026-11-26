@@ -1,5 +1,15 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {<T = any>(i: number, d: T, arr: ReadonlyArray<T>) => T[]} */
+const insert = (i, d, arr) => {
+  const idx = i < arr.length && i >= 0 ? i : arr.length
+  const result = arr.slice(0)
+
+  result.splice(idx, 0, d)
+
+  return result
+}
+
 /**
  * @name insert
  * @function
@@ -23,13 +33,11 @@ import _curry3 from '../_internals/_curry3.js'
  *
  * ins('x', [1, 2, 3, 4]) // => [1, 2, 'x', 3, 4]
  */
-const insert = (i, d, arr) => {
-  const idx = i < arr.length && i >= 0 ? i : arr.length
-  const result = arr.slice(0)
-
-  result.splice(idx, 0, d)
-
-  return result
-}
-
-export default _curry3(insert)
+export default /** @type {{
+  (i: number): {
+    <T = any>(d: T): (arr: ReadonlyArray<T>) => T[]
+    <T = any>(d: T, arr: ReadonlyArray<T>): T[]
+  }
+  <T = any>(i: number, d: T): (arr: ReadonlyArray<T>) => T[]
+  <T = any>(i: number, d: T, arr: ReadonlyArray<T>): T[]
+}} */ (_curry3(insert))

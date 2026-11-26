@@ -1,26 +1,23 @@
 import gt from '../../src/function/gt.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('gt -- Determines if the numbers are gt', t => {
-  t.true(gt(1, 2))
-  t.false(gt(7.0, 7.0))
-  t.end()
+test('gt -- Determines if the numbers are gt', () => {
+  assert.ok(gt(1, 2))
+  assert.ok(!gt(7.0, 7.0))
 })
 
-test('gt -- Determines if the letters are gt', t => {
-  t.true(gt('a', 'b'))
-  t.true(gt('abc', 'abcd'))
-  t.end()
+test('gt -- Determines if the letters are gt', () => {
+  assert.ok(gt('a', 'b'))
+  assert.ok(gt('abc', 'abcd'))
 })
 
-test('gt -- It is curried', t => {
+test('gt -- It is curried', () => {
   const g = gt(1)
 
-  t.true(g(2))
-  t.end()
+  assert.ok(g(2))
 })
 
-test('gt -- Compares equal values', t => {
-  t.false(gt(1, 1))
-  t.end()
+test('gt -- Compares equal values', () => {
+  assert.ok(!gt(1, 1))
 })

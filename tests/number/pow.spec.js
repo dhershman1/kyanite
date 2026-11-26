@@ -1,26 +1,23 @@
 import pow from '../../src/number/pow.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('pow -- Takes a number and brings its value to the exponent', t => {
-  t.is(pow(3, 7), 343)
-  t.is(pow(0.5, 4), 2)
-  t.end()
+test('pow -- Takes a number and brings its value to the exponent', () => {
+  assert.equal(pow(3, 7), 343)
+  assert.equal(pow(0.5, 4), 2)
 })
 
-test('pow -- Converts string and gets power anyway', t => {
-  t.is(pow(3, '7'), 343)
-  t.is(pow('0.5', 4), 2)
-  t.end()
+test('pow -- Converts string and gets power anyway', () => {
+  assert.equal(pow(3, '7'), 343)
+  assert.equal(pow('0.5', 4), 2)
 })
 
-test('pow -- Handles invalid powers', t => {
-  t.true(isNaN(pow(0.5, -7)))
-  t.end()
+test('pow -- Handles invalid powers', () => {
+  assert.ok(isNaN(pow(0.5, -7)))
 })
 
-test('pow -- Is curried', t => {
+test('pow -- Is curried', () => {
   const p = pow(3)
 
-  t.is(p(7), 343)
-  t.end()
+  assert.equal(p(7), 343)
 })

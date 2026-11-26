@@ -1,6 +1,24 @@
 import _curry2 from '../_internals/_curry2.js'
 import _appendǃ from '../_internals/_appendǃ.js'
 
+/** @private @type {(limit: number, n: number) => number[]} */
+const multiples = (limit, n) => {
+  /** @type {number[]} */
+  const m = []
+
+  for (let i = 0; i < limit; i++) {
+    const result = i * n
+
+    if (result > limit) {
+      return m
+    }
+
+    _appendǃ(m, result)
+  }
+
+  return m
+}
+
 /**
  * @name multiples
  * @function
@@ -23,20 +41,7 @@ import _appendǃ from '../_internals/_appendǃ.js'
  * fn(5) // => [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
  * fn(6) // => [0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96]
  */
-const multiples = (limit, n) => {
-  const m = []
-
-  for (let i = 0; i < limit; i++) {
-    const result = i * n
-
-    if (result > limit) {
-      return m
-    }
-
-    _appendǃ(m, result)
-  }
-
-  return m
-}
-
-export default _curry2(multiples)
+export default /** @type {{
+  (limit: number): (n: number) => number[]
+  (limit: number, n: number): number[]
+}} */ (_curry2(multiples))

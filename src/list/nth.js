@@ -1,5 +1,12 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T = any>(o: number, list: ReadonlyArray<T>) => T | undefined} */
+const nth = (o, list) => {
+  const i = o < 0 ? list.length + o : o
+
+  return list[i]
+}
+
 /**
  * @name nth
  * @function
@@ -24,10 +31,7 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * third([1, 2, 3, 4, 5]) // => 3
  */
-const nth = (o, list) => {
-  const i = o < 0 ? list.length + o : o
-
-  return list[i]
-}
-
-export default _curry2(nth)
+export default /** @type {{
+  (o: number): <T = any>(list: ReadonlyArray<T>) => T | undefined
+  <T = any>(o: number, list: ReadonlyArray<T>): T | undefined
+}} */ (_curry2(nth))

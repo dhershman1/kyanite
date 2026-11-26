@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(a: object, b: object) => object} */
+const amend = (a, b) => ({ ...a, ...b })
+
 /**
  * @name amend
  * @function
@@ -21,6 +24,7 @@ import _curry2 from '../_internals/_curry2.js'
  * fn({ a: 1 }) // => { a: 1, b: 2 }
  * fn({ c: 3 }) // => { c: 3, b: 2 }
  */
-const amend = (a, b) => ({ ...a, ...b })
-
-export default _curry2(amend)
+export default /** @type {{
+  (a: object): (b: object) => object
+  (a: object, b: object): object
+}} */ (_curry2(amend))

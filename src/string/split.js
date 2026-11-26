@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(char: string | RegExp, str: string) => string[]} */
+const split = (char, str) => str.split(char)
+
 /**
  * @name split
  * @function
@@ -20,6 +23,7 @@ import _curry2 from '../_internals/_curry2.js'
  *
  * sp('abc') // => ['a', 'b', 'c']
  */
-const split = (char, str) => str.split(char)
-
-export default _curry2(split)
+export default /** @type {{
+  (char: string | RegExp): (str: string) => string[]
+  (char: string | RegExp, str: string): string[]
+}} */ (_curry2(split))

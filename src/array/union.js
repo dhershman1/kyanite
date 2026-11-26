@@ -1,6 +1,9 @@
 import _curry2 from '../_internals/_curry2.js'
 import uniq from './uniq.js'
 
+/** @private @type {<T = any>(a: ReadonlyArray<T>, b: ReadonlyArray<T>) => T[]} */
+const union = (list, other) => uniq(list.concat(other))
+
 /**
  * @name union
  * @function
@@ -25,6 +28,7 @@ import uniq from './uniq.js'
  * un([3, 4, 5]) // => [1, 2, 3, 4, 5]
  * un([[3, 4, 5], [4, 5, 6]]) // => [1, 2, 3, 4, 5, 6]
  */
-const union = (list, other) => uniq(list.concat(other))
-
-export default _curry2(union)
+export default /** @type {{
+  <T = any>(a: ReadonlyArray<T>): (b: ReadonlyArray<T>) => T[]
+  <T = any>(a: ReadonlyArray<T>, b: ReadonlyArray<T>): T[]
+}} */ (_curry2(union))

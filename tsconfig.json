@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true,
+    "noEmitOnError": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "module": "nodenext",
+    "target": "es2022",
+    "lib": ["es2022"],
+    "rootDir": "src",
+    "outDir": ".types"
+  },
+  "include": ["src"]
+}

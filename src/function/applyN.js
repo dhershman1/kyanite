@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<A extends any[], R>(fn: (...args: A) => R, args: A) => R} */
+const applyN = (fn, a) => fn(...a)
+
 /**
  * @name applyN
  * @function
@@ -23,7 +26,7 @@ import _curry2 from '../_internals/_curry2.js'
  * fn([2]) // => 4
  * fn([100]) // => 200
  */
-
-const applyN = (fn, a) => fn(...a)
-
-export default _curry2(applyN)
+export default /** @type {{
+  <A extends any[], R>(fn: (...args: A) => R): (args: A) => R
+  <A extends any[], R>(fn: (...args: A) => R, args: A): R
+}} */ (_curry2(applyN))

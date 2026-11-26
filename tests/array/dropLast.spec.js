@@ -1,30 +1,27 @@
 import dropLast from '../../src/array/dropLast.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('dropLast -- Handles dropping values', t => {
+test('dropLast -- Handles dropping values', () => {
   const results = dropLast(3, [1, 2, 3, 4, 5])
 
-  t.same(results, [1, 2])
-  t.end()
+  assert.deepEqual(results, [1, 2])
 })
 
-test('dropLast -- Handles dropping values when number is larger than length', t => {
+test('dropLast -- Handles dropping values when number is larger than length', () => {
   const results = dropLast(6, [1, 2, 3, 4, 5])
 
-  t.same(results, [])
-  t.end()
+  assert.deepEqual(results, [])
 })
 
-test('dropLast -- Handles invalid data sets', t => {
+test('dropLast -- Handles invalid data sets', () => {
   const results = dropLast(3, [])
 
-  t.same(results, [])
-  t.end()
+  assert.deepEqual(results, [])
 })
 
-test('dropLast -- Is curried', t => {
+test('dropLast -- Is curried', () => {
   const d = dropLast(3)
 
-  t.same(d([1, 2, 3, 4, 5]), [1, 2])
-  t.end()
+  assert.deepEqual(d([1, 2, 3, 4, 5]), [1, 2])
 })

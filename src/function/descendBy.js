@@ -1,6 +1,9 @@
 import _curry3 from '../_internals/_curry3.js'
 import descend from './descend.js'
 
+/** @private @type {<T = any>(fn: (obj: T) => any, a: T, b: T) => number} */
+const descendBy = (fn, a, b) => descend(fn(a), fn(b))
+
 /**
  * @name descendBy
  * @function
@@ -34,6 +37,11 @@ import descend from './descend.js'
  *  { name: 'amanda' }
  * ].sort(desc) // => [{ name: 'carl' }, { name: 'bob' }, { name: 'amanda' }, { name: 'amanda' }]
  */
-const descendBy = (fn, a, b) => descend(fn(a), fn(b))
-
-export default _curry3(descendBy)
+export default /** @type {{
+  <T = any>(fn: (obj: T) => any): {
+    (a: T): (b: T) => number
+    (a: T, b: T): number
+  }
+  <T = any>(fn: (obj: T) => any, a: T): (b: T) => number
+  <T = any>(fn: (obj: T) => any, a: T, b: T): number
+}} */ (_curry3(descendBy))

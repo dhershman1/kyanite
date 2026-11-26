@@ -1,64 +1,54 @@
 {
   "name": "kyanite",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "description": "A small library of pure functional utilities to make life easier and data better",
   "main": "dist/kyanite.min.cjs",
   "type": "module",
   "module": "dist/kyanite.min.js",
+  "types": "dist/kyanite.d.ts",
   "unpkg": "dist/kyanite.iife.min.js",
   "jsdelivr": "dist/kyanite.iife.min.js",
-  "typings": "types/index.d.ts",
-  "directories": {
-    "test": "tests",
-    "lib": "src"
-  },
   "exports": {
     ".": {
       "require": {
-        "types": "./types/index.d.cts",
+        "types": "./dist/kyanite.d.cts",
         "default": "./dist/kyanite.min.cjs"
       },
       "import": {
-        "types": "./types/index.d.ts",
+        "types": "./dist/kyanite.d.ts",
         "default": "./dist/kyanite.min.js"
       },
       "default": {
-        "types": "./types/index.d.ts",
-        "default": "./dist/kyanite.iife.min.js"
+        "types": "./dist/kyanite.d.ts",
+        "default": "./dist/kyanite.min.js"
       }
-    }
+    },
+    "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@babel/core": "7.25.8",
-    "@babel/plugin-transform-object-assign": "7.25.7",
-    "@babel/preset-env": "7.25.8",
-    "@codecov/rollup-plugin": "^1.2.0",
-    "@rollup/plugin-babel": "6.0.4",
-    "@rollup/plugin-terser": "0.4.4",
-    "c8": "10.1.2",
-    "dotenv": "^16.4.5",
-    "globby": "14.0.2",
-    "jsdoc": "4.0.3",
-    "npm-run-all": "4.1.5",
-    "pinet": "1.2.1",
-    "rollup": "4.24.0",
-    "rollup-plugin-filesize": "10.0.0",
-    "standard": "17.1.2",
-    "tap-on": "1.0.0",
-    "tape": "5.9.0"
+    "@rollup/plugin-terser": "1.0.2",
+    "@typescript/typescript6": "^6.0.2",
+    "c8": "^12.0.0",
+    "eslint": "10.15.0",
+    "jsdoc": "4.0.5",
+    "neostandard": "0.14.1",
+    "pinet": "2.0.0",
+    "rollup": "4.68.5",
+    "rollup-plugin-dts": "^6.5.1",
+    "typescript": "^7.0.2"
   },
   "scripts": {
-    "test": "tape tests/**/*.spec.js | tap-on -u",
-    "test:cov": "c8 tape tests/**/*.spec.js",
+    "prepack": "npm run create && npm run lint && npm test && npm run test:types && npm run build",
+    "create": "node scripts/create-export.js",
+    "docs": "jsdoc -c jsdoc.json",
+    "build": "npm run build:types && rollup -c",
+    "lint": "eslint",
+    "test": "node --test \"tests/**/*.spec.js\"",
+    "test:cov": "c8 node --test \"tests/**/*.spec.js\"",
+    "test:types": "node node_modules/typescript/bin/tsc -p tests/types/tsconfig.json",
     "coverage": "c8 check-coverage --lines 100 --branches 100 --functions 100 --statements 100",
     "report": "c8 report --reporter=text-lcov > coverage.lcov",
-    "lint": "standard --fix src/**/*.js",
-    "build": "rollup -c",
-    "create": "node scripts/create-export.js && standard --fix src/index.js",
-    "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
-    "scripts": "npm-run-all create build",
-    "ts": "tsc -p types/tsconfig.json",
-    "prepack": "npm-run-all --parallel create lint test --serial build"
+    "build:types": "node node_modules/typescript/bin/tsc -p tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -88,10 +78,13 @@
     "email": "dustinh17@gmail.com"
   },
   "homepage": "https://kyanite.dusty.codes",
-  "standard": {
-    "ignore": [
-      "dist",
-      "types"
-    ]
+  "files": [
+    "dist/"
+  ],
+  "overrides": {
+    "test-exclude": {
+      "glob": "^14.0.2",
+      "minimatch": "^11.0.1"
+    }
   }
 }

@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T extends { and?: ((...a: any[]) => any); } | number | boolean | string | null>(fn1: T, val2: any) => boolean} */
+const and = (a, b) => a && b
+
 /**
  * @name and
  * @function
@@ -19,6 +22,7 @@ import _curry2 from '../_internals/_curry2.js'
  * and(true, false) // => false
  * and(false, false) // => false
  */
-const and = (a, b) => a && b
-
-export default _curry2(and)
+export default /** @type {{
+  <T extends { and?: ((...a: any[]) => any); } | number | boolean | string | null>(fn1: T): (val2: any) => boolean
+  <T extends { and?: ((...a: any[]) => any); } | number | boolean | string | null>(fn1: T, val2: any): boolean
+}} */ (_curry2(and))

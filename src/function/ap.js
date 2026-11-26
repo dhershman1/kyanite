@@ -1,5 +1,8 @@
 import _curry3 from '../_internals/_curry3.js'
 
+/** @private @type {<T, U, R>(fn: (x: T) => (y: U) => R, gn: (x: T) => U, x: T) => R} */
+const ap = (fn, gn, x) => fn(x)(gn(x))
+
 /**
  * @name ap
  * @function
@@ -33,6 +36,11 @@ import _curry3 from '../_internals/_curry3.js'
  * fn(2) // => 6
  * fn(3) // => 9
  */
-const ap = (fn, gn, x) => fn(x)(gn(x))
-
-export default _curry3(ap)
+export default /** @type {{
+  <T, U, R>(fn: (x: T) => (y: U) => R): {
+    (gn: (x: T) => U): (x: T) => R
+    (gn: (x: T) => U, x: T): R
+  }
+  <T, U, R>(fn: (x: T) => (y: U) => R, gn: (x: T) => U): (x: T) => R
+  <T, U, R>(fn: (x: T) => (y: U) => R, gn: (x: T) => U, x: T): R
+}} */ (_curry3(ap))

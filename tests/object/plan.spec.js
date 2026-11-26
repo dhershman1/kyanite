@@ -1,38 +1,36 @@
 import plan from '../../src/object/plan.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
 const testFns = {
   a: x => x * 2,
   b: x => x + 10
 }
 
-test('plan -- Applies the schema functions accordingly', t => {
+test('plan -- Applies the schema functions accordingly', () => {
   const results = plan(testFns, {
     a: 2,
     b: 15
   })
 
-  t.deepEqual(results, { a: 4, b: 25 })
-  t.end()
+  assert.deepEqual(results, { a: 4, b: 25 })
 })
 
-test('plan -- Is curried', t => {
+test('plan -- Is curried', () => {
   const p = plan(testFns)
   const results = p({ a: 5, b: 10 })
 
-  t.deepEqual(results, { a: 10, b: 20 })
-  t.end()
+  assert.deepEqual(results, { a: 10, b: 20 })
 })
 
-test('plan -- Handles missing properties', t => {
+test('plan -- Handles missing properties', () => {
   const results = plan(testFns, { a: 5 })
 
-  t.deepEqual(results, { a: 10 })
-  t.same(plan(testFns, { a: 5, c: 10 }), { a: 10, c: 10 })
-  t.end()
+  assert.deepEqual(results, { a: 10 })
+  assert.deepEqual(plan(testFns, { a: 5, c: 10 }), { a: 10, c: 10 })
 })
 
-test('plan -- Handles if the object has the own prop', t => {
+test('plan -- Handles if the object has the own prop', () => {
   const data = {
     id: 123,
     firstName: '   Test ',
@@ -50,7 +48,7 @@ test('plan -- Handles if the object has the own prop', t => {
     })
   })
 
-  t.same(result(data), {
+  assert.deepEqual(result(data), {
     id: 123,
     firstName: 'Test',
     data: {
@@ -58,5 +56,4 @@ test('plan -- Handles if the object has the own prop', t => {
       remaining: 999
     }
   })
-  t.end()
 })

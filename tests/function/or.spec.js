@@ -1,39 +1,34 @@
 import or from '../../src/function/or.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('or -- Returns true when both params are true', t => {
-  t.true(or(true, true))
-  t.end()
+test('or -- Returns true when both params are true', () => {
+  assert.ok(or(true, true))
 })
 
-test('or -- Returns true when one param is false', t => {
-  t.true(or(true, false))
-  t.end()
+test('or -- Returns true when one param is false', () => {
+  assert.ok(or(true, false))
 })
 
-test('or -- Returns false when both params are false', t => {
-  t.false(or(false, false))
-  t.end()
+test('or -- Returns false when both params are false', () => {
+  assert.ok(!or(false, false))
 })
 
-test('or -- gives back a value', t => {
-  t.same(or(1, 0), 1)
-  t.same(or('truly', ''), 'truly')
-  t.end()
+test('or -- gives back a value', () => {
+  assert.deepEqual(or(1, 0), 1)
+  assert.deepEqual(or('truly', ''), 'truly')
 })
 
-test('or -- Is curried true', t => {
+test('or -- Is curried true', () => {
   const a = or(true)
 
-  t.true(a(true))
-  t.true(a(false))
-  t.end()
+  assert.ok(a(true))
+  assert.ok(a(false))
 })
 
-test('or -- Is curried false', t => {
+test('or -- Is curried false', () => {
   const a = or(false)
 
-  t.same(a(true), true)
-  t.same(a(false), false)
-  t.end()
+  assert.deepEqual(a(true), true)
+  assert.deepEqual(a(false), false)
 })

@@ -1,3 +1,6 @@
+/** @private @type {<T = any>(a: T, b: T) => number} */
+const descend = (a, b) => a > b ? -1 : a < b ? 1 : 0
+
 /**
  * @name descend
  * @function
@@ -14,6 +17,6 @@
  *
  * [4, 10, 1, 6, 7, 12].sort(descend) // => [12, 10, 7, 6, 4, 1]
  */
-const descend = (a, b) => a > b ? -1 : a < b ? 1 : 0
-
-export default descend
+export default /** @type {{
+  <T = any>(a: T, b: T): number
+}} */ (descend)

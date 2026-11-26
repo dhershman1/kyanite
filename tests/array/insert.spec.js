@@ -1,30 +1,27 @@
 import insert from '../../src/array/insert.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('insert -- Inserts the desired value into the array', t => {
+test('insert -- Inserts the desired value into the array', () => {
   const results = insert(2, 'x', [1, 2, 3, 4])
 
-  t.deepEqual(results, [1, 2, 'x', 3, 4])
-  t.end()
+  assert.deepEqual(results, [1, 2, 'x', 3, 4])
 })
 
-test('insert -- Is curried', t => {
+test('insert -- Is curried', () => {
   const fn = insert()
   const ins = fn(2, 'x')
 
-  t.deepEqual(ins([1, 2, 3, 4]), [1, 2, 'x', 3, 4])
-  t.end()
+  assert.deepEqual(ins([1, 2, 3, 4]), [1, 2, 'x', 3, 4])
 })
 
-test('insert -- Handles double curry', t => {
+test('insert -- Handles double curry', () => {
   const x = insert(2)
   const y = x('x')
 
-  t.deepEqual(y([1, 2, 3, 4]), [1, 2, 'x', 3, 4])
-  t.end()
+  assert.deepEqual(y([1, 2, 3, 4]), [1, 2, 'x', 3, 4])
 })
 
-test('insert -- Sets the id to the current array length', t => {
-  t.deepEqual(insert(-1, 'b', ['a', 'c', 'd']), ['a', 'c', 'd', 'b'])
-  t.end()
+test('insert -- Sets the id to the current array length', () => {
+  assert.deepEqual(insert(-1, 'b', ['a', 'c', 'd']), ['a', 'c', 'd', 'b'])
 })

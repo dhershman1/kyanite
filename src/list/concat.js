@@ -1,5 +1,9 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(val: any, list: ReadonlyArray<any> | string) => any[] | string} */
+const concat = (val, list) =>
+  list.concat(val)
+
 /**
  * @name concat
  * @function
@@ -16,9 +20,14 @@ import _curry2 from '../_internals/_curry2.js'
  * import { concat } from 'kyanite'
  *
  * concat(4, [1, 2, 3]) // => [1, 2, 3, 4]
+ * // Like Array.prototype.concat, an array value is joined in rather than added as one item
+ * concat([4, 5], [1, 2, 3]) // => [1, 2, 3, 4, 5]
+ * concat([[4]], [1, 2, 3]) // => [1, 2, 3, [4]]
  * concat('bar', 'foo') // => 'foobar'
  */
-const concat = (val, list) =>
-  list.concat(val)
-
-export default _curry2(concat)
+export default /** @type {{
+  <T>(val: T): (list: ReadonlyArray<T>) => T[]
+  (val: string): (list: string) => string
+  <T>(val: T, list: ReadonlyArray<T>): T[]
+  (val: string, list: string): string
+}} */ (_curry2(concat))

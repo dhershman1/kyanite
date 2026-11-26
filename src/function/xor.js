@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {<T = any, U = any>(a: T, b: U) => boolean} */
+const xor = (a, b) => !a !== !b
+
 /**
  * @name xor
  * @function
@@ -20,6 +23,7 @@ import _curry2 from '../_internals/_curry2.js'
  * xor(false, true) // => true
  * xor(false, false) // => false
  */
-const xor = (a, b) => Boolean(!a ^ !b)
-
-export default _curry2(xor)
+export default /** @type {{
+  <T = any>(a: T): <U = any>(b: U) => boolean
+  <T = any, U = any>(a: T, b: U): boolean
+}} */ (_curry2(xor))

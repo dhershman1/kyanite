@@ -2,6 +2,15 @@ import _curry2 from '../_internals/_curry2.js'
 import some from '../array/some.js'
 import identity from '../function/identity.js'
 
+/** @private @type {(a: number, b: number) => number} */
+const mod = (a, b) => {
+  if (some(identity, [!Number.isInteger(a), !Number.isInteger(b), b < 1])) {
+    return NaN
+  }
+
+  return ((a % b) + b) % b
+}
+
 /**
  * @name mod
  * @function
@@ -32,12 +41,7 @@ import identity from '../function/identity.js'
  * fn(0) // => NaN
  * fn(5.3) // => NaN
  */
-const mod = (a, b) => {
-  if (some(identity, [!Number.isInteger(a), !Number.isInteger(b), b < 1])) {
-    return NaN
-  }
-
-  return ((a % b) + b) % b
-}
-
-export default _curry2(mod)
+export default /** @type {{
+  (a: number): (b: number) => number
+  (a: number, b: number): number
+}} */ (_curry2(mod))

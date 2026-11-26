@@ -1,7 +1,8 @@
 import descendBy from '../../src/function/descendBy.js'
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 
-test('descendBy -- Properly decends using the desired function', t => {
+test('descendBy -- Properly decends using the desired function', () => {
   const results = [
     { name: 'bob' },
     { name: 'amanda' },
@@ -9,16 +10,15 @@ test('descendBy -- Properly decends using the desired function', t => {
     { name: 'amanda' }
   ].sort(descendBy(x => x.name))
 
-  t.same(results, [
+  assert.deepEqual(results, [
     { name: 'carl' },
     { name: 'bob' },
     { name: 'amanda' },
     { name: 'amanda' }
   ])
-  t.end()
 })
 
-test('descendBy -- Is curried', t => {
+test('descendBy -- Is curried', () => {
   const desc = descendBy(x => x.name)
   const results = [
     { name: 'bob' },
@@ -27,11 +27,10 @@ test('descendBy -- Is curried', t => {
     { name: 'amanda' }
   ].sort(desc)
 
-  t.same(results, [
+  assert.deepEqual(results, [
     { name: 'carl' },
     { name: 'bob' },
     { name: 'amanda' },
     { name: 'amanda' }
   ])
-  t.end()
 })

@@ -1,17 +1,25 @@
-import test from 'tape'
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
 import omitBy from '../../src/object/omitBy.js'
 
-test('Basic Omit', t => {
-  const original = {
-    a: 1,
-    b: 2,
-    c: 3,
-    d: 4
-  }
-  const expected = { a: 1, b: 2 }
+test('omitBy -- Omits the values that pass the predicate', () => {
+  const original = { a: 1, b: 2, c: 3, d: 4 }
 
-  t.same(omitBy(x => x < 3, original), expected, 'Omitted out values that did not pass our pred')
-  t.same(original.c, 3, 'Original still has c value')
-  t.same(original.d, 4, 'Original still has d value')
-  t.end()
+  assert.deepEqual(omitBy(x => x < 3, original), { c: 3, d: 4 })
+  assert.deepEqual(original, { a: 1, b: 2, c: 3, d: 4 }, 'The original is not mutated')
+})
+
+test('omitBy -- Passes the key as the second argument', () => {
+  assert.deepEqual(omitBy((_, k) => k === 'c', { a: 1, b: 2, c: 3 }), { a: 1, b: 2 })
+})
+
+test('omitBy -- Handles empty results', () => {
+  assert.deepEqual(omitBy(() => true, { a: 1 }), {})
+  assert.deepEqual(omitBy(() => false, {}), {})
+})
+
+test('omitBy -- Is curried', () => {
+  const omitStrings = omitBy(x => typeof x === 'string')
+
+  assert.deepEqual(omitStrings({ test: '3432', thing: 123 }), { thing: 123 })
 })

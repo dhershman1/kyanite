@@ -1,5 +1,8 @@
 import _curry2 from '../_internals/_curry2.js'
 
+/** @private @type {(precision: number, num: number) => number} */
+const round = (precision, num) => Number(`${Math.round(Number(`${num}e${precision}`))}e-${precision}`)
+
 /**
  * @name round
  * @function
@@ -23,6 +26,7 @@ import _curry2 from '../_internals/_curry2.js'
  * rounder(122.4456) // => 112.446
  * rounder(122.332) // => 122.332
  */
-const round = (precision, num) => Number(`${Math.round(`${num}e${precision}`)}e-${precision}`)
-
-export default _curry2(round)
+export default /** @type {{
+  (precision: number): (num: number) => number
+  (precision: number, num: number): number
+}} */ (_curry2(round))

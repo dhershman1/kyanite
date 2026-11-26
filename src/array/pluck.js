@@ -1,6 +1,12 @@
 import _curry2 from '../_internals/_curry2.js'
 import map from './map.js'
 import prop from '../object/prop.js'
+/** @import { Transformer } from '../_internals/_types.js' */
+
+/** @private @type {<K extends PropertyKey, T extends { [P in K]?: any }>(p: K, list: ReadonlyArray<T>) => Array<T[K]>} */
+// map builds its transformer when it's handed one instead of a list, so pluck works as a transducer too
+const pluck = (p, list) =>
+  map(/** @type {(a: any) => any} */ (prop(p)), list)
 
 /**
  * @name pluck
@@ -12,8 +18,11 @@ import prop from '../object/prop.js'
  * @param {String|Number} p The key to pluck the value of
  * @param {Array} list The list of objects to map through
  * @return {Array} A new array of values plucked from our original list
+ *
+ * When it's used with `transduce` or `into`, `pluck(p)` passes along the property from each value instead of building a new list
+ *
  * @example
- * import { pluck } from 'kyanite'
+ * import { filter, into, pluck } from 'kyanite'
  *
  * pluck('age', [{ name: 'george', age: 19 }, { name: 'gavin', age: 26 }]) // => [19, 26]
  * pluck(0, [[1, 2], [3, 4]]) // => [1, 3]
@@ -22,8 +31,15 @@ import prop from '../object/prop.js'
  * const fn = pluck('age')
  *
  * fn([{ name: 'george', age: 19 }, { name: 'gavin', age: 26 }]) // => [19, 26]
+ *
+ * // It also works as a transducer
+ *
+ * into([], [pluck('age'), filter(age => age > 20)], [{ name: 'george', age: 19 }, { name: 'gavin', age: 26 }]) // => [26]
  */
-const pluck = (p, list) =>
-  map(prop(p), list)
-
-export default _curry2(pluck)
+export default /** @type {{
+  <K extends PropertyKey>(p: K): {
+    (xf: Transformer): Transformer
+    <T extends { [P in K]?: any }>(list: ReadonlyArray<T>): Array<T[K]>
+  }
+  <K extends PropertyKey, T extends { [P in K]?: any }>(p: K, list: ReadonlyArray<T>): Array<T[K]>
+}} */ (_curry2(pluck))
