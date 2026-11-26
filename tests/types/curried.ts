@@ -4,7 +4,8 @@ import {
   add, adjust, ap, ascend, ascendBy, sortWith, between, both, branch, clamp, compose, composeP, converge, descendBy,
   either, eqBy, flip, inc, insert, length, on, over, pathOr, pathSatisfies, propEq, propOr,
   propSatisfies, reduce, reduceRight, reduced, replace, slice, sum, toUpper, unless, update,
-  when, within, divide, transduce, into, map, filter, take
+  when, within, divide, transduce, into, map, filter, take,
+  reject, takeWhile, drop, dropWhile, uniq, uniqBy, concatMap, pluck
 } from '../../src/index.js'
 import type { Transformer, Transducer } from '../../src/index.js'
 import { expectType } from './helpers.js'
@@ -302,3 +303,25 @@ expectType<number[] | string>()(take<number>(1)([1, 2]))
 expectType<number[]>()(compose(map((n: number) => n + 1), filter(isEven))([1, 2]))
 // and as transducers
 expectType<Transformer>()(map((n: number) => n + 1)(collect))
+
+// The rest of the list functions that work as transducers
+expectType<Transformer>()(reject(isEven)(collect))
+expectType<Transformer>()(takeWhile((n: number) => n < 3)(collect))
+expectType<Transformer>()(drop(1)(collect))
+expectType<Transformer>()(dropWhile((n: number) => n < 3)(collect))
+expectType<Transformer>()(uniq(collect))
+expectType<Transformer>()(uniqBy((s: string) => s.length)(collect))
+expectType<Transformer>()(concatMap((n: number) => [n, n])(collect))
+expectType<Transformer>()(pluck('age')(collect))
+expectType<number>()(transduce([
+  reject(isEven), takeWhile((n: number) => n < 9), drop(1), dropWhile((n: number) => n < 2),
+  uniq, uniqBy((n: number) => n), concatMap((n: number) => [n, n]), pluck('length')
+], total, 0, [1, 2, 3]))
+
+// and their list forms type the same as before
+expectType<number[]>()(reject(isEven)([1, 2]))
+expectType<number[]>()(uniq([1, 2, 1]))
+expectType<string[]>()(uniqBy((s: string) => s.length)(['a', 'bb']))
+expectType<number[]>()(concatMap((n: number) => [n, n])([1, 2]))
+expectType<number[]>()(pluck('age')([{ age: 19 }, { age: 26 }]))
+expectType<number[] | string>()(drop<number>(1)([1, 2]))
